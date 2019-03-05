@@ -1,177 +1,161 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import {Helmet} from "react-helmet";
+
+const software_image_right = (icon, title, desc, image) => {
+  return (
+    <div className="two column row feature-padding">
+      <div className="column feature-padding-text">
+        <img src={icon} className="smallFeatureImg" alt={title}/>
+        <p className="contentTitle">{title}</p>
+        <p>{desc}</p>
+      </div>
+      <div className="column mobile only">
+        <center>
+          <img src={image} className="ui fluid image" alt={title} />
+        </center>
+      </div>
+      <div className="column mobile hidden">
+        <center>
+          <img src={image} className="ui fluid image" alt={title} />
+        </center>
+      </div>
+    </div>
+  );
+};
+const software_image_left = (icon, title, desc, image) => {
+  return (
+    <div className="two column row feature-padding feature-margin">
+      <div className="column mobile hidden">
+        <img src={image} className="ui fluid image" alt={title} />
+      </div>
+      <div className="column feature-padding-text-right">
+        <img src={icon} className="smallFeatureImg" alt={title} />
+        <p className="contentTitle">{title}</p>
+        <p>{desc}</p>
+      </div>
+      <div className="column mobile only">
+        <center>
+          <img src={image} className="ui fluid image"  alt={title} />
+        </center>
+      </div>
+    </div>
+  );
+};
 
 const Software = () => {
   return (
     <div className="ui container containerFeature">
-    <div className="ui stackable divided grid beautyDetail">
-      <div className="two column row feature-padding">
-        <div className="column feature-padding-text">
-          <img
-            src="img/Apps/icons/New-Office.png"
-            className="smallFeatureImg"
-          />
-          <p className="contentTitle">Office Applications</p>
-          <p>
-            KOOMPI come with pre-installed LibreOffice, which is the open source
-            office suite developed by The Document Foundation. Available in 115
-            languages, the suite comprises program for work processing,
-            spreadsheets, slideshows, diagram and drawings, working with
-            databases, and composing mathematical formulae.
-          </p>
-        </div>
-        <div className="column mobile only">
-          <center>
-            <img src="img/Apps/Office.jpg" className="ui fluid image" />
-          </center>
-        </div>
-        <div className="column mobile hidden">
-          <center>
-            <img src="img/Apps/Office.jpg" className="ui fluid image" />
-          </center>
-        </div>
-      </div>
-      <div className="two column row feature-padding feature-margin">
-        <div className="column mobile hidden">
-          <img src="img/Apps/App-Store.jpg" className="ui fluid image" />
-        </div>
-        <div className="column feature-padding-text-right">
-          <img src="img/store.png" className="smallFeatureImg" />
-          <p className="contentTitle">Software Center</p>
-          <p>
-            Koompi uses GNOME Software utility for easy software installation
+      <div className="ui stackable divided grid beautyDetail">
+        {software_image_right(
+          "img/Apps/icons/New-Office.png",
+
+          "Office Applications",
+
+          ` KOOMPI come with pre-installed LibreOffice, which is the open
+            source office suite developed by The Document Foundation.
+            Available in 115 languages, the suite comprises program for work
+            processing, spreadsheets, slideshows, diagram and drawings,
+            working with databases, and composing mathematical formulae.`,
+
+          "img/Apps/Office.jpg"
+        )}
+        {software_image_left(
+          "img/store.png",
+
+          "Software Center",
+
+          ` Koompi uses GNOME Software utility for easy software installation
             and updates. It is the GNOME front-end to the PackageKit daemon,
-            which itself is a front-end to several package management systems.
-          </p>
-        </div>
-        <div className="column mobile only">
-          <center>
-            <img src="img/App-Store.png" className="ui fluid image" />
-          </center>
-        </div>
-      </div>
-      <div className="two column row feature-padding feature-margin">
-        <div className="column feature-padding-text">
-          <img src="img/Apps/icons/firefox.png" className="smallFeatureImg" />
-          <p className="contentTitle">Browser</p>
-          <p>
-            A powerful web browser developed by Mozilla Foundation and its
+            which itself is a front-end to several package management systems.`,
+
+          "img/Apps/App-Store.jpg",
+
+        )}
+        {software_image_right(
+          "img/Apps/icons/firefox.png",
+
+          "Browser",
+
+          ` A powerful web browser developed by Mozilla Foundation and its
             subsidiary, Mozilla Corporation, is a free and open source that
             available for variety of OS. Already pre-installed with KOOMPI to
             support for better users experience and familiar friendly approach
-            for the general use.
-          </p>
-        </div>
-        <div className="column">
-          <center>
-            <img src="img/Apps/Firefox.jpg" className="ui fluid image" />
-          </center>
-        </div>
-      </div>
-      <div className="two column row feature-padding feature-margin">
-        <div className="column mobile hidden">
-          <center>
-            <img src="img/Apps/VLC.jpg" className="ui fluid image" />
-          </center>
-        </div>
-        <div className="column feature-padding-text-right">
-          <img src="img/video-player.png" className="smallFeatureImg" />
-          <p className="contentTitle">Video Player</p>
-          <p>
-            Both powerful video player Gnome MPV and VLC are available with
-            Koompi pre-installed. They are more than just an alternative video
-            player since the internet radio streams, video streams, apply
-            various audio and video filters, quality adjustment, framerate,
-            color management and frame timing.
-          </p>
-        </div>
-        <div className="column mobile only">
-          <img src="img/Apps/VLC.jpg" className="ui fluid image" />
-        </div>
-      </div>
-      <div className="two column row feature-padding feature-margin">
-        <div className="column feature-padding-text">
-          <img src="img/Apps/icons/Krita.png" className="smallFeatureImg" />
-          <p className="contentTitle">Krita</p>
-          <p>
-            Krita is under open source software license and offers many features
-            comparable to commercial solution. Krita has a lot of cool features
-            that assist your whole processing of painting. With an intuitive
-            user interface, you can customize your own specific workflow. KOOMPI
-            seeks for a helping tools that can guide the user to freely create
-            anything that they want.
-          </p>
-        </div>
-        <div className="column">
-          <img src="img/Apps/Krita.jpg" className="ui fluid image" />
-        </div>
-      </div>
-      <div className="two column row feature-padding feature-margin">
-        <div className="column mobile hidden">
-          <center>
-            <img src="img/Apps/VsCode.jpg" className="ui fluid image" />
-          </center>
-        </div>
-        <div className="column feature-padding-text-right">
-          <img src="img/koompi-visual-icon.png" className="smallFeatureImg" />
-          <p className="contentTitle">Visual Studio Code</p>
-          <p>
-            A source code editor with intelligent code completion, snippets,
+            for the general use.`,
+
+          "img/Apps/Firefox.jpg"
+        )}
+        {software_image_left(
+          "img/video-player.png",
+
+          "Video Player",
+
+          ` Koompi uses GNOME Software utility for easy software installation
+            and updates. It is the GNOME front-end to the PackageKit daemon,
+            which itself is a front-end to several package management systems.`,
+
+            "img/Apps/VLC.jpg",
+        )}
+
+        {software_image_right(
+          "img/Apps/icons/Krita.png",
+
+          "Krita",
+
+          ` Krita is under open source software license and offers many
+            features comparable to commercial solution. Krita has a lot of
+            cool features that assist your whole processing of painting. With
+            an intuitive user interface, you can customize your own specific
+            workflow. KOOMPI seeks for a helping tools that can guide the user
+            to freely create anything that they want.`,
+
+          "img/Apps/Krita.jpg"
+        )}
+
+        {software_image_left(
+          "img/koompi-visual-icon.png",
+
+          "Visual Studio Code",
+
+          ` A source code editor with intelligent code completion, snippets,
             syntax highlighting, debugging and Git control that developed by
-            Microsoft re available in Koompi.
-          </p>
-        </div>
-        <div className="column mobile only">
-          <center>
-            <img src="img/Apps/VsCode.jpg" className="ui fluid image" />
-          </center>
-        </div>
-      </div>
-      <div className="two column row feature-padding feature-margin">
-        <div className="column feature-padding-text">
-          <img
-            src="img/Apps/icons/Popcorn_Time.png"
-            className="smallFeatureImg"
-          />
-          <p className="contentTitle">Popcorn Time</p>
-          <p>
-            Popcorn Time is a multi-platform, free software client that includes
-            an integrated media player. A newly application feature in KOOMPI
-            pre-installed to satisfied entertainment needed for all users.
-          </p>
-        </div>
-        <div className="column">
-          <img src="img/Apps/PopCornTime.jpg" className="ui fluid image" />
-        </div>
-      </div>
-      <div className="two column row feature-padding feature-margin">
-        <div className="column mobile hidden">
-          <center>
-            <img src="img/Apps/Office365.jpg" className="ui fluid image" />
-          </center>
-        </div>
-        <div className="column feature-padding-text-right">
-          <img
-            src="img/Apps/icons/microsoft-365.png"
-            className="smallFeatureImg"
-          />
-          <p className="contentTitle">Office 365</p>
-          <p>
-            KOOMPI come along with the online MS office suite for desktop,
+            Microsoft re available in Koompi.`,
+
+          "img/Apps/VsCode.jpg",
+          
+        )}
+
+        {software_image_right(
+          "img/Apps/icons/Popcorn_Time.png",
+
+          "Popcorn Time",
+
+          ` Popcorn Time is a multi-platform, free software client that
+            includes an integrated media player. A newly application feature
+            in KOOMPI pre-installed to satisfied entertainment needed for all
+            users.`,
+
+          "img/Apps/PopCornTime.jpg"
+        )}
+
+        {software_image_left(
+          "img/Apps/icons/microsoft-365.png",
+
+          "Office 365",
+
+          ` KOOMPI come along with the online MS office suite for desktop,
             evernote client and other. Accessible to current version desktop
             application of MS. This feature aim to generate better daily users
-            experience for computing and digital.
-          </p>
-        </div>
-        <div className="column mobile only">
-          <center>
-            <img src="img/Apps/Office365.jpg" className="ui fluid image" />
-          </center>
-        </div>
+            experience for computing and digital.`,
+
+          "img/Apps/Office365.jpg",
+          
+        )}
+        
+        
       </div>
     </div>
-  </div>
   );
 };
 
@@ -180,6 +164,10 @@ class Feature extends Component {
   render() {
     return (
       <React.Fragment>
+        <Helmet>
+            <title>Feature | Koompi mission is build and provide tools for the next generation of
+      engineers, problem solvers and discoverers</title>
+        </Helmet>
         <Navbar />
         <div className="backgroundColorBanner">
           <div className="featureBanner">
@@ -187,6 +175,7 @@ class Feature extends Component {
               <img
                 src="img/feature-koompi-banner1.png"
                 className="bannerImageFeature"
+                alt="koompi-feature"
               />
               <div className="featureBannerContent">
                 <h2>
@@ -205,7 +194,7 @@ class Feature extends Component {
                 <p>
                   <i className="fas fa-angle-right featureIcon" />
                   <i className="fas fa-angle-right featureIcon" />
-                  <a href="https://goo.gl/jHSZRL" target="_blank">
+                  <a href="https://goo.gl/jHSZRL" target="_blank" rel="noopener noreferrer">
                     Learn More
                   </a>
                 </p>
@@ -230,7 +219,8 @@ class Feature extends Component {
                 <a
                   href="https://goo.gl/jHSZRL"
                   target="_blank"
-                  class="linkColor"
+                  className="linkColor"
+                  rel="noopener noreferrer"
                 >
                   Learn More
                 </a>
@@ -239,7 +229,7 @@ class Feature extends Component {
           </div>
         </div>
         {Software()}
-        <Footer/>
+        <Footer />
       </React.Fragment>
     );
   }

@@ -9,11 +9,11 @@ const Banner = () => {
         <div className="bannerText">
           <h1 className="bannerTitle">Koompi Kosmos</h1>
           <p className="bannerDesc">beautiful, high performance, affordable</p>
-          <span className="leanMoreBanner">
+          <h6 className="leanMoreBanner">
             <a href="/order">
               <i className="fas fa-angle-right" /> GET KOOMPI
             </a>
-          </span>
+          </h6>
           <p>
             KOOMPI is a practical, affordable and effective entry level laptop.
             It can perform daily tasks for working and schooling. We
@@ -290,20 +290,8 @@ const Battery = () => {
 };
 
 class Index extends Component {
-  state = {
-    loading: true
-  };
-  componentDidMount() {
-    this.timerHandle = setTimeout(
-      () => this.setState({ loading: false }),
-      1000
-    );
-    // this.setState({ loading: false })
-  }
   render() {
-    return this.state.loading ? (
-      <h2>loading...</h2>
-    ) : (
+    return (
       <React.Fragment>
         <Navbar />
         {Banner()}
