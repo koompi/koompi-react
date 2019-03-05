@@ -14,7 +14,7 @@ const Navbar = () => {
                     <NavLink className="item navbarTop menuFadeIn" to="/feature" activeClassName="active">Feature</NavLink>
                     <NavLink className="item navbarTop menuFadeIn" to="/about-us" activeClassName="active">About</NavLink>
                     <div className="item mobile only">
-                        <i className="fas fa-times btnAnimationClose"></i>
+                        {/* <i className="fas fa-times btnAnimationClose"></i> */}
                     </div>
                 </div>
             </div>
