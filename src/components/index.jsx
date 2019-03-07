@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
@@ -10,9 +11,9 @@ const Banner = () => {
           <h1 className="bannerTitle">Koompi Kosmos</h1>
           <p className="bannerDesc">beautiful, high performance, affordable</p>
           <h6 className="leanMoreBanner">
-            <a href="/order">
+            <Link to="/retailer">
               <i className="fas fa-angle-right" /> GET KOOMPI
-            </a>
+            </Link>
           </h6>
           <p>
             KOOMPI is a practical, affordable and effective entry level laptop.

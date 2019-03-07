@@ -7,6 +7,21 @@ h1,h2,h3,h4,h5,h6,p,span{
     font-family: 'Nunito', sans-serif !important;
 }
 
+/* Retailer */
+.image-card{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.25);
+    padding: 30px 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.image-card:hover{
+    box-shadow: 0 20px 32px 0 rgba(53,78,84,.15);
+}
+
+
+/* End Retailer */
+
 .ui.secondary.menu {
     background: 0 0;
     margin-left: 0px !important;

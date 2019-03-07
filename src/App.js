@@ -6,6 +6,7 @@ import Feature from './components/feature';
 // import Error from './components/error';
 import About from './components/about';
 import Privacy from './components/privacy'
+import Retailer from './components/retailer';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/feature" component={Feature} />
           <Route exact path="/about-us" component={About} />
           <Route exact path="/privacy" component={Privacy} />
+          <Route exact path="/retailer" component={Retailer} />
           <Redirect to="/" component={Index} />
         </Switch>
       </div>
