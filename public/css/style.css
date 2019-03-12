@@ -13,6 +13,7 @@ h1,h2,h3,h4,h5,h6,p,span{
     padding: 30px 20px;
     border-radius: 10px;
     transition: 0.3s;
+    min-height: 220px !important;
 }
 .retailer{
     padding: 40px 0px;
@@ -20,6 +21,13 @@ h1,h2,h3,h4,h5,h6,p,span{
 
 .image-card:hover{
     box-shadow: 0 20px 32px 0 rgba(53,78,84,.15);
+}
+.koompi-retailer-image{
+    transform: scale(1.2);
+    position: relative !important;
+    margin-left: 20%;
+    margin-top: -5%;
+    overflow: hidden;
 }
 
 
@@ -741,7 +749,15 @@ p{
     margin-top: 20%;
     overflow: hidden;
 }
+.backgroundRetailer{
+    background-color: #e5e5e5;
+    padding: 70px 0px;
+}
+.backgroundRetailer .koompi-retailer-image{
 
+    transform: scale(1.4);
+    margin:0px !important;
+}
 @keyframes loadingPage {
     0% {
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 9px 0 rgba(0, 0, 0, 0.19);

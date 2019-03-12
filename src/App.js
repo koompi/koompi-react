@@ -10,6 +10,7 @@ import Retailer from './components/retailer';
 
 class App extends Component {
   render() {
+    window.scrollTo(0,0)
     return (
       <div className="App">
         <Switch>
@@ -17,7 +18,7 @@ class App extends Component {
           <Route exact path="/feature" component={Feature} />
           <Route exact path="/about-us" component={About} />
           <Route exact path="/privacy" component={Privacy} />
-          <Route exact path="/retailer" component={Retailer} />
+          <Route exact path="/retailers" component={Retailer} />
           <Redirect to="/" component={Index} />
         </Switch>
       </div>

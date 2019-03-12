@@ -459,11 +459,6 @@ h5 {
     font-size: 16.8px !important;
     line-height: 20px;
 }
-
-textarea {
-    
-}
-
 .loadingBack {
     background-color: #000;
     height: 100vh;
@@ -773,6 +768,11 @@ p{
 /* .aboutPadding {
     padding-right: 35% !important;
 } */
+.retailerPadding{
+    position: relative;
+    top: 10% !important;
+    
+}
 
 @media only screen and (max-width: 1450px) {
     .container {

@@ -14,6 +14,7 @@ const Footer = () => {
           <Link to="/privacy">Privacy </Link>
           <Link to="/feature"> Feature</Link>
           <Link to="/about-us"> About Us</Link>
+          <Link to="/retailers"> Retailers</Link>
         </p>
         <a
           href="https://www.facebook.com/koompi/"
