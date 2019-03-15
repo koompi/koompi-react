@@ -11,7 +11,7 @@ const Banner = () => {
           <h1 className="bannerTitle">Koompi Kosmos</h1>
           <p className="bannerDesc">beautiful, high performance, affordable</p>
           <h6 className="leanMoreBanner">
-            <Link to="/retailer">
+            <Link to="/retailers">
               <i className="fas fa-angle-right" /> GET KOOMPI
             </Link>
           </h6>
