@@ -6,9 +6,16 @@ class Retailer extends Component {
   state = {
     data: [
       {
+        id: 0,
+        logo: "img/retailers/sw-greens.png",
+        name: "SmallWorld Venture",
+        location:
+          "https://www.facebook.com/pg/smallworldventure/about/?ref=page_internal"
+      },
+      {
         id: 1,
         logo: "img/retailers/it-store.png",
-        name: "IT Store",
+        name: "Sombok IT Store",
         location:
           "https://www.facebook.com/pg/store.sombokit/about/?ref=page_internal"
       },
@@ -25,13 +32,6 @@ class Retailer extends Component {
         name: "E-Shop Cambodia",
         location:
           "https://www.facebook.com/pg/eshopcambo/about/?ref=page_internal"
-      },
-      {
-        id: 4,
-        logo: "img/retailers/PRC.png",
-        name: "PRC បញ្ញរ៉ុង",
-        location:
-          "https://www.facebook.com/pg/prcomputerservice/about/?ref=page_internal"
       },
       {
         id: 5,
@@ -53,6 +53,27 @@ class Retailer extends Component {
         name: "One Gears",
         location:
           "https://www.facebook.com/pg/onegears/about/?ref=page_internal"
+      },
+      {
+        id: 8,
+        logo: "img/retailers/my-psar.png",
+        name: "My PHSAR",
+        location: "https://www.facebook.com/pg/myphsar/about/?ref=page_internal"
+      },
+      {
+        id: 9,
+        logo: "img/retailers/K4.png",
+        name: "KFOUR",
+        location:
+          "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
+      },
+
+      {
+        id: 10,
+        logo: "img/retailers/PRC.png",
+        name: "PRC បញ្ញរ៉ុង",
+        location:
+          "https://www.facebook.com/pg/prcomputerservice/about/?ref=page_internal"
       }
     ]
   };
@@ -65,7 +86,10 @@ class Retailer extends Component {
             <div className="ui divided grid">
               <div className="ui stackable two column grid">
                 <div className="column ten wide">
-                  <div className="retailerPadding" style={{paddingTop: "10%"}}>
+                  <div
+                    className="retailerPadding"
+                    style={{ paddingTop: "10%" }}
+                  >
                     <h2>Get KOOMPI</h2>
                     <p>
                       Engaging and interact with KOOMPI wherever you are, get
@@ -99,13 +123,15 @@ class Retailer extends Component {
                       alt={data.name}
                     />
                     <h2>{data.name}</h2>
-                    <a
-                      href={data.location}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <h5>SHOP HERE</h5>
-                    </a>
+                    <div className="shopHere">
+                      <a
+                        href={data.location}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <p>Shop Here</p>
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}

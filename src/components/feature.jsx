@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const software_image_right = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding">
       <div className="column feature-padding-text">
-        <img src={icon} className="smallFeatureImg" alt={title}/>
+        <img src={icon} className="smallFeatureImg" alt={title} />
         <p className="contentTitle">{title}</p>
         <p>{desc}</p>
       </div>
       <div className="column mobile only">
         <center>
-          <img src={image} className="ui fluid image" alt={title} />
+          <img
+            src={image}
+            className="ui fluid image image-margin-top"
+            alt={title}
+          />
         </center>
       </div>
       <div className="column mobile hidden">
@@ -28,7 +32,11 @@ const software_image_left = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding feature-margin">
       <div className="column mobile hidden">
-        <img src={image} className="ui fluid image" alt={title} />
+        <img
+          src={image}
+          className="ui fluid image image-margin-top"
+          alt={title}
+        />
       </div>
       <div className="column feature-padding-text-right">
         <img src={icon} className="smallFeatureImg" alt={title} />
@@ -37,7 +45,7 @@ const software_image_left = (icon, title, desc, image) => {
       </div>
       <div className="column mobile only">
         <center>
-          <img src={image} className="ui fluid image"  alt={title} />
+          <img src={image} className="ui fluid image" alt={title} />
         </center>
       </div>
     </div>
@@ -51,13 +59,13 @@ const Software = () => {
         {software_image_right(
           "img/Apps/icons/New-Office.png",
 
-          "Office Applications",
+          "Apache OpenOffice",
 
-          ` KOOMPI come with pre-installed LibreOffice, which is the open
-            source office suite developed by The Document Foundation.
-            Available in 115 languages, the suite comprises program for work
-            processing, spreadsheets, slideshows, diagram and drawings,
-            working with databases, and composing mathematical formulae.`,
+          ` Apache OpenOffice as an open source office software suite, 
+          developed by Apache Software Foundation contains a word processor, 
+          spreadsheet, presentation application, drawing application, a formula 
+          editor and data base management.  Its default file format is a OpenDocument 
+          Format (ODF) mean to assist users for any office work.`,
 
           "img/Apps/Office.jpg"
         )}
@@ -70,32 +78,30 @@ const Software = () => {
             and updates. It is the GNOME front-end to the PackageKit daemon,
             which itself is a front-end to several package management systems.`,
 
-          "img/Apps/App-Store.jpg",
-
+          "img/Apps/App-Store.jpg"
         )}
         {software_image_right(
           "img/Apps/icons/firefox.png",
 
-          "Browser",
+          "Brave ( web browser )",
 
-          ` A powerful web browser developed by Mozilla Foundation and its
-            subsidiary, Mozilla Corporation, is a free and open source that
-            available for variety of OS. Already pre-installed with KOOMPI to
-            support for better users experience and familiar friendly approach
-            for the general use.`,
+          ` Developed by Brave Software Inc. Brave web browser is a free and open source 
+          browser. It protect the users by block ads and website tracker. Pre-installed 
+          on KOOMPI to support for better users experience.`,
 
           "img/Apps/Firefox.jpg"
         )}
         {software_image_left(
           "img/video-player.png",
 
-          "Video Player",
+          "KMPlayer",
 
-          ` Koompi uses GNOME Software utility for easy software installation
-            and updates. It is the GNOME front-end to the PackageKit daemon,
-            which itself is a front-end to several package management systems.`,
+          ` KOOMPI use K-Multimedia player known as KMPlayer for media player that can
+           play on a large numbers of format. Bring out the whole new delight experience 
+           for the users.
+          `,
 
-            "img/Apps/VLC.jpg",
+          "img/Apps/VLC.jpg"
         )}
 
         {software_image_right(
@@ -122,8 +128,7 @@ const Software = () => {
             syntax highlighting, debugging and Git control that developed by
             Microsoft re available in Koompi.`,
 
-          "img/Apps/VsCode.jpg",
-          
+          "img/Apps/VsCode.jpg"
         )}
 
         {software_image_right(
@@ -149,24 +154,25 @@ const Software = () => {
             application of MS. This feature aim to generate better daily users
             experience for computing and digital.`,
 
-          "img/Apps/Office365.jpg",
-          
+          "img/Apps/Office365.jpg"
         )}
-        
-        
       </div>
     </div>
   );
 };
 
 class Feature extends Component {
-  state = {};
+  state = {
+    data: []
+  };
   render() {
     return (
       <React.Fragment>
         <Helmet>
-            <title>Feature | Koompi mission is build and provide tools for the next generation of
-      engineers, problem solvers and discoverers</title>
+          <title>
+            Feature | Koompi mission is build and provide tools for the next
+            generation of engineers, problem solvers and discoverers
+          </title>
         </Helmet>
         <Navbar />
         <div className="backgroundColorBanner">
@@ -192,9 +198,13 @@ class Feature extends Component {
                   learn more.
                 </p>
                 <p>
-                  <i className="fas fa-angle-right featureIcon" />
-                  <i className="fas fa-angle-right featureIcon" />
-                  <a href="https://goo.gl/jHSZRL" target="_blank" rel="noopener noreferrer">
+                  {/* <i className="fas fa-angle-right featureIcon" />
+                  <i className="fas fa-angle-right featureIcon" /> */}
+                  <a
+                    href="https://goo.gl/jHSZRL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Learn More
                   </a>
                 </p>

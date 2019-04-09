@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -291,6 +291,10 @@ const Battery = () => {
 };
 
 class Index extends Component {
+  state = {
+    data: ""
+  };
+
   render() {
     return (
       <React.Fragment>

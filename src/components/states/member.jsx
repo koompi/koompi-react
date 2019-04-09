@@ -24,7 +24,7 @@ class MemberState extends Component {
       {
         id: 4,
         name: "Vuthy SAN",
-        position: "Full Stack Developer",
+        position: "Full Stack Web Developer",
         image: "img/team/vuthy.png"
       },
       {
@@ -80,7 +80,7 @@ class MemberState extends Component {
         name: "Sreysor KHEM",
         position: "Customer Services",
         image: "img/team/sreysor.jpg"
-      },
+      }
     ]
   };
   render() {
@@ -96,7 +96,7 @@ class MemberState extends Component {
                     <img
                       src={info.image}
                       className="ui fluid image teamImage"
-                      alt= {info.name + info.position } 
+                      alt={info.name + info.position}
                     />
                     <h3 className="memberName">{info.name}</h3>
                     <p className="memberPosition">{info.position}</p>
