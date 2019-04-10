@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import { css } from "@emotion/core";
 import { BeatLoader } from "react-spinners";
-import { Button, Modal, Image } from "semantic-ui-react";
+import { Modal, Image } from "semantic-ui-react";
 
 const override = css`
   display: block;
