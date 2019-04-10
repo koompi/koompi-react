@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
+import { css } from "@emotion/core";
+import { BeatLoader } from "react-spinners";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  margin-top: 20%;
+  margin-left: 50%;
+`;
 
 const Banner = () => {
   return (
@@ -290,12 +300,34 @@ const Battery = () => {
   );
 };
 
+function demoAsyncCall() {
+  return new Promise(resolve => setTimeout(() => resolve(), 1000));
+}
+
 class Index extends Component {
   state = {
-    data: ""
+    data: "",
+    loading: true
   };
 
+  componentDidMount() {
+    demoAsyncCall().then(() => this.setState({ loading: false }));
+  }
+
   render() {
+    const { loading } = this.state;
+    if (loading) {
+      // if your component doesn't have to wait for an async action, remove this block
+      return (
+        <BeatLoader
+          css={override}
+          sizeUnit={"px"}
+          size={20}
+          color={"#000000"}
+          loading={this.state.loading}
+        />
+      ); // render null when app is not ready
+    }
     return (
       <React.Fragment>
         <Navbar />

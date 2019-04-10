@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import { css } from "@emotion/core";
 import { BeatLoader } from "react-spinners";
+import { Button, Modal, Image } from "semantic-ui-react";
 
 const override = css`
   display: block;
@@ -21,8 +22,30 @@ function strip_html_tags(str) {
 class News extends Component {
   state = {
     data: null,
-    loading: true
+    loading: true,
+    open: false,
+    title: "",
+    content: "",
+    thumbnail: ""
   };
+
+  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+    this.setState({ closeOnEscape, closeOnDimmerClick, open: true });
+  };
+
+  close = () => this.setState({ open: false });
+
+  displayData = ({ ...data }) => {
+    this.setState({ open: true });
+    this.setState({ title: data.title });
+    this.setState({ content: data.content });
+    this.setState({ thumbnail: data.thumbnail });
+  };
+
+  card = () => {
+    return <div>Hello World</div>;
+  };
+
   componentDidMount() {
     axios
       .get(
@@ -33,6 +56,7 @@ class News extends Component {
       });
   }
   render() {
+    const { open, closeOnEscape, closeOnDimmerClick } = this.state;
     return (
       <React.Fragment>
         <Navbar />
@@ -42,6 +66,20 @@ class News extends Component {
             generation of engineers, problem solvers and discoverers
           </title>
         </Helmet>
+        <Modal
+          open={open}
+          closeOnEscape={closeOnEscape}
+          closeOnDimmerClick={closeOnDimmerClick}
+          onClose={this.close}
+          size="small"
+        >
+          {/* <Modal.Header></Modal.Header> */}
+          <Image src={this.state.thumbnail} fluid />
+          <Modal.Content>
+            <h3>{this.state.title}</h3>
+            <p> {strip_html_tags(this.state.content)} </p>
+          </Modal.Content>
+        </Modal>
         <div className="ui container">
           <center>
             <h1 className="kosmosConentNews">News and Events</h1>
@@ -56,45 +94,46 @@ class News extends Component {
                 loading={this.state.loading}
               />
             ) : (
-              this.state.data.map(res => {
+              this.state.data.map(post => {
                 return (
-                  <div className="column blur" key={res.pubDate}>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={res.guid}
-                    >
-                      <center className="shadowEvent">
-                        <div
-                          style={{
-                            backgroundImage: `url(${res.thumbnail})`,
-                            height: "200px",
-                            backgroundPosition: "center center",
-                            backgroundSize: "cover"
-                          }}
-                        />
-                        <div className="index-background">
-                          <p className="byDate">
-                            <span>{new Date(res.pubDate).toDateString()}</span>
-                          </p>
-                          <h4>{res.title}</h4>
-                          <p className="index-description">
-                            {strip_html_tags(
-                              res.content.substring(0, 100) + "..."
-                            )}
-                          </p>
-                          <p className="bySomeOne">
-                            By: <span>{res.author}</span>
-                          </p>
-                        </div>
-                      </center>
-                    </a>
+                  <div
+                    className="column blur"
+                    key={post.pubDate}
+                    onClick={e => {
+                      this.displayData({ ...post });
+                    }}
+                  >
+                    <center className="shadowEvent">
+                      <div
+                        style={{
+                          backgroundImage: `url(${post.thumbnail})`,
+                          height: "200px",
+                          backgroundPosition: "center center",
+                          backgroundSize: "cover"
+                        }}
+                      />
+                      <div className="index-background">
+                        <p className="byDate">
+                          <span>{new Date(post.pubDate).toDateString()}</span>
+                        </p>
+                        <h4>{post.title}</h4>
+                        <p className="index-description">
+                          {strip_html_tags(
+                            post.content.substring(0, 100) + "..."
+                          )}
+                        </p>
+                        <p className="bySomeOne">
+                          By: <span>{post.author}</span>
+                        </p>
+                      </div>
+                    </center>
                   </div>
                 );
               })
             )}
           </div>
         </div>
+        {this.state.open ? this.card() : ""}
         <Footer />
       </React.Fragment>
     );

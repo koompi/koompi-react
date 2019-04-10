@@ -57,7 +57,7 @@ const Software = () => {
     <div className="ui container containerFeature">
       <div className="ui stackable divided grid beautyDetail">
         {software_image_right(
-          "img/Apps/icons/New-Office.png",
+          "img/Apps/icons/orb.png",
 
           "Apache OpenOffice",
 
@@ -81,7 +81,7 @@ const Software = () => {
           "img/Apps/App-Store.jpg"
         )}
         {software_image_right(
-          "img/Apps/icons/firefox.png",
+          "img/Apps/icons/brave_logo_horz.png",
 
           "Brave ( web browser )",
 
@@ -92,7 +92,7 @@ const Software = () => {
           "img/Apps/Firefox.jpg"
         )}
         {software_image_left(
-          "img/video-player.png",
+          "img/Apps/icons/KMP.png",
 
           "KMPlayer",
 
@@ -155,6 +155,26 @@ const Software = () => {
             experience for computing and digital.`,
 
           "img/Apps/Office365.jpg"
+        )}
+
+        {software_image_right(
+          "img/Apps/icons/new-kdenlive-logo.png",
+
+          "Kdenlive",
+
+          ` KOOMPI want to offer a wide range of application to support the users need. The users can use Kdenlive for video editing as it is totally free and open source.`,
+
+          "img/Apps/Kdenlive.jpg"
+        )}
+
+        {software_image_left(
+          "img/Apps/icons/Guvcview.png",
+
+          "Guvcview",
+
+          ` Already per-installed on KOOMPI is a free software webcam application to let users enjoy smoothly webcam experience.`,
+
+          "img/Apps/Guvcview.jpg"
         )}
       </div>
     </div>
