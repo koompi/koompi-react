@@ -3,6 +3,14 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import { css } from "@emotion/core";
+import { BeatLoader } from "react-spinners";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function strip_html_tags(str) {
   if (str === null || str === "") return false;
@@ -12,7 +20,8 @@ function strip_html_tags(str) {
 
 class News extends Component {
   state = {
-    data: []
+    data: null,
+    loading: true
   };
   componentDidMount() {
     axios
@@ -38,39 +47,52 @@ class News extends Component {
             <h1 className="kosmosConentNews">News and Events</h1>
           </center>
           <div className="ui stackable three column grid">
-            {console.log(this.state.data)}
-            {this.state.data.map(res => {
-              return (
-                <div className="column blur" key={res.pubDate}>
-                  <a target="_blank" rel="noopener noreferrer" href={res.guid}>
-                    <center className="shadowEvent">
-                      <div
-                        style={{
-                          backgroundImage: `url(${res.thumbnail})`,
-                          height: "200px",
-                          backgroundPosition: "center center",
-                          backgroundSize: "cover"
-                        }}
-                      />
-                      <div className="index-background">
-                        <p className="byDate">
-                          <span>{new Date(res.pubDate).toDateString()}</span>
-                        </p>
-                        <h4>{res.title}</h4>
-                        <p className="index-description">
-                          {strip_html_tags(
-                            res.content.substring(0, 100) + "..."
-                          )}
-                        </p>
-                        <p className="bySomeOne">
-                          By: <span>{res.author}</span>
-                        </p>
-                      </div>
-                    </center>
-                  </a>
-                </div>
-              );
-            })}
+            {!this.state.data ? (
+              <BeatLoader
+                css={override}
+                sizeUnit={"px"}
+                size={20}
+                color={"#000000"}
+                loading={this.state.loading}
+              />
+            ) : (
+              this.state.data.map(res => {
+                return (
+                  <div className="column blur" key={res.pubDate}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={res.guid}
+                    >
+                      <center className="shadowEvent">
+                        <div
+                          style={{
+                            backgroundImage: `url(${res.thumbnail})`,
+                            height: "200px",
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover"
+                          }}
+                        />
+                        <div className="index-background">
+                          <p className="byDate">
+                            <span>{new Date(res.pubDate).toDateString()}</span>
+                          </p>
+                          <h4>{res.title}</h4>
+                          <p className="index-description">
+                            {strip_html_tags(
+                              res.content.substring(0, 100) + "..."
+                            )}
+                          </p>
+                          <p className="bySomeOne">
+                            By: <span>{res.author}</span>
+                          </p>
+                        </div>
+                      </center>
+                    </a>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
         <Footer />

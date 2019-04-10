@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:300,300i,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 body {
-  font-family: "Nunito", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
   font-weight: 300 !important;
 }
 h1,
@@ -8,17 +8,16 @@ h2,
 h3,
 h4,
 h5,
-h6,
-p,
-span {
-  font-family: "Nunito", sans-serif !important;
+h6 {
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 500;
 }
 
 /* Retailer */
 .image-card {
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 40px 0 rgba(197, 197, 197, 0.85);
   padding: 30px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: 0.3s;
   min-height: 220px !important;
 }
@@ -144,6 +143,9 @@ span {
   transition: 0.3s;
   cursor: pointer;
 }
+/* .image-card img {
+  filter: grayscale(100%);
+} */
 
 @keyframes btnAnimationClose {
   0% {
@@ -332,6 +334,25 @@ h5 {
   font-size: 25px;
   font-weight: 700;
 }
+.shopHere {
+  transition: 0.3s;
+}
+.image-card h2 {
+  font-size: 18px !important;
+}
+.shopHere a p {
+  background-color: black;
+  display: inherit;
+  color: #fff;
+  padding: 2px 15px;
+  border-radius: 3px;
+  font-size: 16px !important;
+}
+/* .image-card a h5:hover {
+  animation-name: btnSlideUp;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+} */
 
 .performancePadding h2 {
   color: rgb(0, 174, 255) !important;
@@ -403,6 +424,7 @@ h5 {
 .feature-padding-text p,
 .feature-padding-text-right p {
   font-size: 18px;
+  color: #2d3133;
 }
 
 .feature-margin {
@@ -416,7 +438,7 @@ h5 {
 .featureBannerContent {
   position: absolute;
   overflow: hidden;
-  top: 45%;
+  top: 40%;
   left: 35%;
   transform: translate(-50%, -50%);
 }
@@ -429,7 +451,7 @@ h5 {
 }
 
 .featureBannerContent h2 {
-  color: #68757d;
+  color: #1a1b1b;
 }
 
 .ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
@@ -716,12 +738,24 @@ textarea {
 }
 .featureBannerContent p {
   font-size: 18px;
+  color: #2d3133 !important;
 }
 
 .featureBannerContent p a {
-  font-weight: 600 !important;
-  color: #68757d !important;
+  color: #f1f1f1 !important;
   margin-left: 5px;
+  background-color: #1a1b1b;
+  padding: 7px 16px;
+  border-radius: 4px;
+  font-weight: 300 !important;
+  font-size: 15px;
+  position: relative;
+  top: 0px;
+  transition: 0.3s;
+}
+
+.featureBannerContent p a:hover {
+  color: rgb(0, 174, 255) !important;
 }
 
 .pressRelease {
@@ -782,6 +816,47 @@ p {
   padding: 70px 0px;
 }
 
+.shadowEvent {
+  box-shadow: 0 0 40px 0 rgba(197, 197, 197, 0.85);
+  border-radius: 5px;
+  transition: 0.3s;
+  height: 24vw;
+}
+.shadowEvent:hover {
+  box-shadow: 0 11px 30px -5px rgba(43, 43, 43, 0.65);
+  border-radius: 5px;
+  transform: translateY(-5px);
+}
+.byDate span {
+  background-color: rgb(0, 174, 255) !important;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 13px !important;
+}
+.index-background {
+  padding: 20px 20px !important;
+}
+.blur h4 {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
+}
+.blur p {
+  font-size: 16px !important;
+  text-align: left;
+  color: #666;
+}
+
+.kosmosConentNews {
+  color: #333;
+  font-size: 30px;
+  padding: 40px 0;
+}
+
 .backgroundAbout .ui.container p {
   font-size: 20px !important;
 }
@@ -797,16 +872,23 @@ p {
 
 .teamImage {
   border-radius: 100% 50% 50% 100% / 75% 69% 69% 75%;
+  /* border-radius: 50%; */
   position: relative;
   box-shadow: 0 2px 20px -2px rgba(0, 0, 0, 0.12);
+  transition: 0.2s;
 }
-
+.teamImage:hover {
+  box-shadow: 0 2px 11px 5px rgba(0, 0, 0, 0.12);
+}
 .memberName {
   margin-bottom: 0px !important;
 }
 
 .memberPosition {
   margin-bottom: 20px !important;
+  color: #9e9e9e !important;
+  font-size: 18px !important;
+  margin: 5px;
 }
 
 /* .aboutPadding {
@@ -930,6 +1012,12 @@ p {
     margin-top: 10%;
     overflow: hidden;
   }
+  .shadowEvent {
+    box-shadow: 0 0 40px 0 rgba(197, 197, 197, 0.85);
+    border-radius: 5px;
+    transition: 0.3s;
+    height: auto !important;
+  }
 }
 
 @media only screen and (max-width: 1290px) {
@@ -963,6 +1051,12 @@ p {
   }
   .koompiBattery {
     transform: scale(1);
+  }
+  .shadowEvent {
+    box-shadow: 0 0 40px 0 rgba(197, 197, 197, 0.85);
+    border-radius: 5px;
+    transition: 0.3s;
+    height: auto !important;
   }
 }
 
@@ -1078,11 +1172,23 @@ p {
   .bannerText .bannerDesc {
     display: inline !important;
   }
+  .shadowEvent {
+    box-shadow: 0 0 40px 0 rgba(197, 197, 197, 0.85);
+    border-radius: 5px;
+    transition: 0.3s;
+    height: auto !important;
+  }
 }
 
 @media only screen and (max-width: 767px) {
   .feature-padding-text {
     padding: 55px 0px !important;
+  }
+  .shadowEvent {
+    box-shadow: 0 0 40px 0 rgba(197, 197, 197, 0.85);
+    border-radius: 5px;
+    transition: 0.3s;
+    height: auto;
   }
   .koompiBeautyImg {
     max-width: 65% !important;
@@ -1230,6 +1336,9 @@ p {
   }
   .marginLogo {
     margin-left: 15px !important;
+  }
+  .footerBack {
+    margin-top: 45px !important;
   }
 }
 
@@ -1381,7 +1490,7 @@ p {
 
   .footerBack {
     background-color: #282c2f;
-    margin-top: 0px;
+    margin-top: 45px !important;
   }
 
   .bannerText {

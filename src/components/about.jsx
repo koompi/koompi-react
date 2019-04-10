@@ -1,16 +1,18 @@
 import React from "react";
 import Navbar from "./navbar";
-import MemberState from './states/member';
+import MemberState from "./states/member";
 import Footer from "./footer";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const About = () => {
   return (
     <React.Fragment>
       <Helmet>
-            <title>About | Koompi mission is build and provide tools for the next generation of
-      engineers, problem solvers and discoverers</title>
-        </Helmet>
+        <title>
+          About | Koompi mission is build and provide tools for the next
+          generation of engineers, problem solvers and discoverers
+        </title>
+      </Helmet>
       <Navbar />
       <div className="backgroundAbout">
         <div className="ui container">
@@ -44,7 +46,7 @@ const About = () => {
               <div className="column six wide">
                 <img
                   className="ui fluid image koompi-about-image"
-                  src="img/koompi-about.svg"
+                  src="img/teamwork.svg"
                   alt="koompi-about"
                 />
               </div>
@@ -52,7 +54,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      
+
       {/* about state components */}
       <MemberState />
       <Footer />
