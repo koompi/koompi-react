@@ -78,7 +78,7 @@ class News extends Component {
           {/* <Image src={this.state.thumbnail} fluid /> */}
           <Modal.Content>
             <h3>{this.state.title}</h3>
-            <p
+            <div
               dangerouslySetInnerHTML={{
                 __html: this.state.content
               }}

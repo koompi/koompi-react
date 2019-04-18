@@ -131,7 +131,10 @@ h6 {
     opacity: 1;
   }
 }
-
+figure img {
+  width: 100% !important;
+  height: auto !important;
+}
 .btnAnimation {
   animation-name: btnAnimation;
   animation-duration: 300ms;
