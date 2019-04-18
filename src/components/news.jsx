@@ -60,6 +60,7 @@ class News extends Component {
     return (
       <React.Fragment>
         <Navbar />
+        {console.log(this.state.data)}
         <Helmet>
           <title>
             News | Koompi mission is build and provide tools for the next
@@ -74,10 +75,14 @@ class News extends Component {
           size="small"
         >
           {/* <Modal.Header></Modal.Header> */}
-          <Image src={this.state.thumbnail} fluid />
+          {/* <Image src={this.state.thumbnail} fluid /> */}
           <Modal.Content>
             <h3>{this.state.title}</h3>
-            <p> {strip_html_tags(this.state.content)} </p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: this.state.content
+              }}
+            />
           </Modal.Content>
         </Modal>
         <div className="ui container">
@@ -122,6 +127,7 @@ class News extends Component {
                             post.content.substring(0, 100) + "..."
                           )}
                         </p>
+
                         <p className="bySomeOne">
                           By: <span>{post.author}</span>
                         </p>
