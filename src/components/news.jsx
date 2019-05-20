@@ -7,6 +7,8 @@ import { css } from "@emotion/core";
 import { BeatLoader } from "react-spinners";
 import { Modal, Image } from "semantic-ui-react";
 
+import parse from "html-react-parser";
+
 const override = css`
   display: block;
   margin: 0 auto;
@@ -18,6 +20,8 @@ function strip_html_tags(str) {
   else str = str.toString();
   return str.replace(/<[^>]*>/g, "");
 }
+
+const regex = /(<([^>]+)>)/gi;
 
 class News extends Component {
   state = {
@@ -77,7 +81,7 @@ class News extends Component {
           <Image src={this.state.thumbnail} fluid />
           <Modal.Content>
             <h3>{this.state.title}</h3>
-            <p> {strip_html_tags(this.state.content)} </p>
+            <p> {parse(this.state.content)} </p>
           </Modal.Content>
         </Modal>
         <div className="ui container">
@@ -134,6 +138,7 @@ class News extends Component {
           </div>
         </div>
         {this.state.open ? this.card() : ""}
+        {console.log(this.state.data)}
         <Footer />
       </React.Fragment>
     );

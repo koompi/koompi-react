@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "express": "^4.16.4",
     "helmet": "^3.15.1",
+    "html-react-parser": "^0.7.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
@@ -20,13 +21,13 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^1.17.0"
+  }
 }

@@ -7,13 +7,13 @@ import { Helmet } from "react-helmet";
 const About = () => {
   return (
     <React.Fragment>
+      <Navbar />
       <Helmet>
         <title>
           About | Koompi mission is build and provide tools for the next
           generation of engineers, problem solvers and discoverers
         </title>
       </Helmet>
-      <Navbar />
       <div className="backgroundAbout">
         <div className="ui container">
           <div className="ui divided grid">
@@ -26,6 +26,11 @@ const About = () => {
                   skills and knowledge. Inspired by គម្ពីរ known as BOOK OF
                   KNOWLEDGE . KOOMPI also want to be a book full of knowledge to
                   everyone too. So that way. WE ARE BORN.
+                </p>
+                <h2>Misson</h2>
+                <p>
+                  Koompi mission is build and provide tools for the next
+                  generation of engineers, problem solvers and discoverers.
                 </p>
                 <h2>About Us</h2>
                 <p>

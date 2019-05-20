@@ -9,6 +9,20 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="google-site-verification"
+      content="OVngeCUcj_8n8-69w2-JQZX1IgJuLOfL-5eI03qeOZ8"
+    />
+    <meta
+      name="description"
+      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KramaOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+    />
+    <meta
+      name="keywords"
+      content="koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+    />
+    <meta name="author" content="KOOMPI" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!-- CSS path -->
     <link rel="stylesheet" href="css/semantic.min.css" />
@@ -32,6 +46,7 @@
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
+
       function gtag() {
         dataLayer.push(arguments);
       }
@@ -39,7 +54,40 @@
 
       gtag("config", "UA-135640949-1");
     </script>
+
+    <!-- Facebook -->
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml: true,
+          version: "v3.3"
+        });
+      };
+
+      (function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+
+    <!-- Your customer chat code -->
+    <div
+      class="fb-customerchat"
+      attribution="setup_tool"
+      page_id="207093766731226"
+      logged_in_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
+      logged_out_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
+    ></div>
   </head>
+
   <body>
     <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
     <div id="root"></div>
