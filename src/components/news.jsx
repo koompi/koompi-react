@@ -15,14 +15,6 @@ const override = css`
   border-color: red;
 `;
 
-function strip_html_tags(str) {
-  if (str === null || str === "") return false;
-  else str = str.toString();
-  return str.replace(/<[^>]*>/g, "");
-}
-
-const regex = /(<([^>]+)>)/gi;
-
 class News extends Component {
   state = {
     data: null,
@@ -64,6 +56,7 @@ class News extends Component {
     return (
       <React.Fragment>
         <Navbar />
+        {console.log(this.state.data)}
         <Helmet>
           <title>
             News | Koompi mission is build and provide tools for the next
@@ -122,10 +115,9 @@ class News extends Component {
                         </p>
                         <h4>{post.title}</h4>
                         <p className="index-description">
-                          {strip_html_tags(
-                            post.content.substring(0, 100) + "..."
-                          )}
+                          {parse(post.content.substring(0, 100) + "...")}
                         </p>
+
                         <p className="bySomeOne">
                           By: <span>{post.author}</span>
                         </p>
