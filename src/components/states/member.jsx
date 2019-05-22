@@ -7,79 +7,79 @@ class MemberState extends Component {
         id: 1,
         name: "Rithy THUL",
         position: "PR and Partnership",
-        image: "img/team/rithy.png"
+        image: "img/team/rithy.webp"
       },
       {
         id: 2,
         name: "Sela THUL",
         position: "Linux Developer",
-        image: "img/team/sela.png"
+        image: "img/team/sela.webp"
       },
       {
         id: 3,
         name: "Saing SAB",
         position: "Kernel Developer",
-        image: "img/team/saing.png"
+        image: "img/team/saing.webp"
       },
       {
         id: 4,
         name: "Vuthy SAN",
         position: "Full Stack Web Developer",
-        image: "img/team/vuthy.png"
+        image: "img/team/vuthy.webp"
       },
       {
         id: 5,
         name: "Panha YOU",
         position: "Sale & Marketing Manager",
-        image: "img/team/panha_you.jpg"
+        image: "img/team/panha_you.webp"
       },
       {
         id: 6,
         name: "Panha Sok",
         position: "Graphic Designer",
-        image: "img/team/panha.png"
+        image: "img/team/panha.webp"
       },
       {
         id: 7,
         name: "Sokunthy CHAN",
         position: "Accountant",
-        image: "img/team/khunthy.png"
+        image: "img/team/khunthy.webp"
       },
       {
         id: 8,
         name: "Brilliant PHAL",
         position: "Linux Administator",
-        image: "img/team/brillaint.jpg"
+        image: "img/team/brillaint.webp"
       },
       {
         id: 9,
         name: "Sreyleap SUN",
         position: "Customer service",
-        image: "img/team/leap.jpg"
+        image: "img/team/leap.webp"
       },
       {
         id: 10,
         name: "Chandara VIREAK",
         position: "Head of Design",
-        image: "img/team/dara.png"
+        image: "img/team/dara.webp"
       },
       {
         id: 11,
         name: "Sofy THY",
         position: "Marketing Officer",
-        image: "img/team/sofy.jpg"
+        image: "img/team/sofy.webp"
       },
       {
         id: 12,
         name: "Raksme VEN",
         position: "Accountant",
-        image: "img/team/reaksmie.jpg"
+        image: "img/team/reaksmie.webp"
       },
       {
         id: 13,
         name: "Sreysor KHEM",
         position: "Customer Services",
-        image: "img/team/sreysor.jpg"
+        image: "img/team/sreysor.webp"
       }
     ]
   };

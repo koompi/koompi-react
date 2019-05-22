@@ -1,68 +1,69 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import ContentLoader, { Code } from "react-content-loader";
 
 class Retailer extends Component {
   state = {
     data: [
       {
         id: 0,
-        logo: "img/retailers/sw-greens.png",
+        logo: "img/retailers/sw-greens.webp",
         name: "SmallWorld Venture",
         location:
           "https://www.facebook.com/pg/smallworldventure/about/?ref=page_internal"
       },
       {
         id: 1,
-        logo: "img/retailers/it-store.png",
+        logo: "img/retailers/it-store.webp",
         name: "Sombok IT Store",
         location:
           "https://www.facebook.com/pg/store.sombokit/about/?ref=page_internal"
       },
       {
         id: 2,
-        logo: "img/retailers/ufo-logo.png",
+        logo: "img/retailers/ufo-logo.webp",
         name: "UFO Store",
         location:
           "https://www.facebook.com/pg/ufostorekh/about/?ref=page_internal"
       },
       {
         id: 3,
-        logo: "img/retailers/E-shop-cam.png",
+        logo: "img/retailers/E-shop-cam.webp",
         name: "E-Shop Cambodia",
         location:
           "https://www.facebook.com/pg/eshopcambo/about/?ref=page_internal"
       },
       {
         id: 5,
-        logo: "img/retailers/LS.png",
+        logo: "img/retailers/LS.webp",
         name: "Leang sreng computer",
         location:
           "https://www.facebook.com/pg/Leang-sreng-computer-1-229172480968041/about/?ref=page_internal"
       },
       {
         id: 6,
-        logo: "img/retailers/BCS.png",
+        logo: "img/retailers/BCS.webp",
         name: "BCS Computer",
         location:
           "https://www.facebook.com/pg/bcscomputer1/about/?ref=page_internal"
       },
       {
         id: 7,
-        logo: "img/retailers/One-Gears.png",
+        logo: "img/retailers/One-Gears.webp",
         name: "One Gears",
         location:
           "https://www.facebook.com/pg/onegears/about/?ref=page_internal"
       },
       {
         id: 8,
-        logo: "img/retailers/my-psar.png",
+        logo: "img/retailers/my-psar.webp",
         name: "My PHSAR",
         location: "https://www.facebook.com/pg/myphsar/about/?ref=page_internal"
       },
       {
         id: 9,
-        logo: "img/retailers/K4.png",
+        logo: "img/retailers/K4.webp",
         name: "KFOUR",
         location:
           "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
@@ -70,13 +71,33 @@ class Retailer extends Component {
 
       {
         id: 10,
-        logo: "img/retailers/PRC.png",
+        logo: "img/retailers/PRC.webp",
         name: "PRC បញ្ញរ៉ុង",
         location:
           "https://www.facebook.com/pg/prcomputerservice/about/?ref=page_internal"
       }
-    ]
+    ],
+    isLoading: true
   };
+
+  displayLoading = () => {
+    let loading = [];
+    for (let index = 0; index < 10; index++) {
+      loading.push(
+        <div className="column blur">
+          <Code />
+        </div>
+      );
+    }
+    return loading;
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 500);
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -102,7 +123,7 @@ class Retailer extends Component {
                 <div className="column six wide">
                   <img
                     className="ui fluid image koompi-retailer-image koompi-about-image"
-                    src="img/Koompi_Retailer Website_Banner.jpg"
+                    src="img/Koompi_Retailer.webp"
                     alt="koompi-about"
                   />
                 </div>
@@ -114,27 +135,29 @@ class Retailer extends Component {
           <center>
             <h2 className="retailer">Our Retailer</h2>
             <div className="ui stackable four column grid">
-              {this.state.data.map(data => (
-                <div className="column" key={data.id}>
-                  <div className="image-card">
-                    <img
-                      src={data.logo}
-                      className="ui fluid image"
-                      alt={data.name}
-                    />
-                    <h2>{data.name}</h2>
-                    <div className="shopHere">
-                      <a
-                        href={data.location}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <p>Shop Here</p>
-                      </a>
+              {this.state.isLoading
+                ? this.displayLoading()
+                : this.state.data.map(data => (
+                    <div className="column" key={data.id}>
+                      <div className="image-card">
+                        <img
+                          src={data.logo}
+                          className="ui fluid image"
+                          alt={data.name}
+                        />
+                        <h2>{data.name}</h2>
+                        <div className="shopHere">
+                          <a
+                            href={data.location}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <p>Shop Here</p>
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
+                  ))}
             </div>
           </center>
         </div>

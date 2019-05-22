@@ -7,7 +7,7 @@ const Footer = () => {
       <center>
         <a href="http://smallworldcambodia.com">
           <img
-            src="img/smallworld-logo.png"
+            src="img/smallworld-logo.webp"
             className="smallworldLogo"
             alt="smallworld-venture"
           />
@@ -17,7 +17,7 @@ const Footer = () => {
         <p className="privacy">
           <Link to="/privacy">Privacy </Link>
           <Link to="/feature"> Feature</Link>
-          <Link to="/about\"> About Us</Link>
+          <Link to="/about-us"> About Us</Link>
           <Link to="/retailers"> Retailer</Link>
           <Link to="/news-and-events"> News</Link>
         </p>

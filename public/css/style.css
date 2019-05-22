@@ -228,7 +228,7 @@ p:last-child {
 }
 
 .bannerBackground {
-  background-image: url(../img/koompi-banner-1.png);
+  background-image: url(../img/koompi-banner-1.webp);
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
@@ -423,7 +423,7 @@ h5 {
 }
 
 /* .featureKoompi {
-  background: url(../img/feature-koompi-banner.png);
+  background: url(../img/feature-koompi-banner.webp);
   width: 100%;
   height: 710px;
   background-size: contain;

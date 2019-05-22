@@ -6,6 +6,7 @@ import axios from "axios";
 import { css } from "@emotion/core";
 import { BeatLoader } from "react-spinners";
 import { Modal, Image } from "semantic-ui-react";
+import ContentLoader, { Facebook } from "react-content-loader";
 
 import parse from "html-react-parser";
 
@@ -51,6 +52,19 @@ class News extends Component {
         this.setState({ data: res.data.items });
       });
   }
+
+  displayLoading = () => {
+    let loading = [];
+    for (let index = 0; index < 10; index++) {
+      loading.push(
+        <div className="column blur">
+          <Facebook />
+        </div>
+      );
+    }
+    return loading;
+  };
+
   render() {
     const { open, closeOnEscape, closeOnDimmerClick } = this.state;
     return (
@@ -83,13 +97,7 @@ class News extends Component {
           </center>
           <div className="ui stackable three column grid">
             {!this.state.data ? (
-              <BeatLoader
-                css={override}
-                sizeUnit={"px"}
-                size={20}
-                color={"#000000"}
-                loading={this.state.loading}
-              />
+              <React.Fragment>{this.displayLoading()}</React.Fragment>
             ) : (
               this.state.data.map(post => {
                 return (

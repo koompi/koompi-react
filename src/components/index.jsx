@@ -90,7 +90,7 @@ const Shapelines = () => {
               </div>
               <div className="column">
                 <img
-                  src="img/koompi-beauty-1.jpg"
+                  src="img/koompi-beauty-1.webp"
                   className="koompiBeautyImg"
                   alt="koompi-beauty"
                 />
@@ -101,7 +101,7 @@ const Shapelines = () => {
       </div>
       <div className="backgroundKoompiGallery">
         <img
-          src="img/Presentation-Price.jpg"
+          src="img/Presentation-Price.webp"
           className="koompi-gallery"
           alt="koompi-gallery"
         />
@@ -152,7 +152,7 @@ const Screen = () => {
               </div>
               <div className="column">
                 <img
-                  src="img/screen.png"
+                  src="img/screen.webp"
                   className="koompiBeautyImg"
                   alt="koompi-screen"
                 />
@@ -173,13 +173,13 @@ const Performance = () => {
           <div className="row removeShadow">
             <div className="six wide column performanceImage">
               <img
-                src="img/koompi-performance.png"
+                src="img/koompi-performance.webp"
                 heigh="400px"
                 className="mobile hidden"
                 alt="koompi-performance"
               />
               <img
-                src="img/koompi-performance1.png"
+                src="img/koompi-performance1.webp"
                 heigh="400px"
                 className="mobile only"
                 alt="koompi-performance"
@@ -287,7 +287,7 @@ const Battery = () => {
               </div>
               <div className="column">
                 <img
-                  src="img/koompi-battery.png"
+                  src="img/koompi-battery.webp"
                   className="koompiBattery"
                   alt="koompi-battery"
                 />

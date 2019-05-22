@@ -67,10 +67,10 @@ const Software = () => {
           editor and data base management.  Its default file format is a OpenDocument 
           Format (ODF) mean to assist users for any office work.`,
 
-          "img/Apps/Office.jpg"
+          "img/Apps/Office.webp"
         )}
         {software_image_left(
-          "img/store.png",
+          "img/store.webp",
 
           "Software Center",
 
@@ -78,7 +78,7 @@ const Software = () => {
             and updates. It is the GNOME front-end to the PackageKit daemon,
             which itself is a front-end to several package management systems.`,
 
-          "img/Apps/App-Store.jpg"
+          "img/Apps/App-Store.webp"
         )}
         {software_image_right(
           "img/Apps/icons/brave_logo_horz.png",
@@ -89,7 +89,7 @@ const Software = () => {
           browser. It protect the users by block ads and website tracker. Pre-installed 
           on KOOMPI to support for better users experience.`,
 
-          "img/Apps/Firefox.jpg"
+          "img/Apps/Firefox.webp"
         )}
         {software_image_left(
           "img/Apps/icons/KMP.png",
@@ -101,7 +101,7 @@ const Software = () => {
            for the users.
           `,
 
-          "img/Apps/VLC.jpg"
+          "img/Apps/VLC.webp"
         )}
 
         {software_image_right(
@@ -116,11 +116,11 @@ const Software = () => {
             workflow. KOOMPI seeks for a helping tools that can guide the user
             to freely create anything that they want.`,
 
-          "img/Apps/Krita.jpg"
+          "img/Apps/Krita.webp"
         )}
 
         {software_image_left(
-          "img/koompi-visual-icon.png",
+          "img/koompi-visual-icon.webp",
 
           "Visual Studio Code",
 
@@ -128,7 +128,7 @@ const Software = () => {
             syntax highlighting, debugging and Git control that developed by
             Microsoft re available in Koompi.`,
 
-          "img/Apps/VsCode.jpg"
+          "img/Apps/VsCode.webp"
         )}
 
         {software_image_right(
@@ -141,7 +141,7 @@ const Software = () => {
             in KOOMPI pre-installed to satisfied entertainment needed for all
             users.`,
 
-          "img/Apps/PopCornTime.jpg"
+          "img/Apps/PopCornTime.webp"
         )}
 
         {software_image_left(
@@ -154,7 +154,7 @@ const Software = () => {
             application of MS. This feature aim to generate better daily users
             experience for computing and digital.`,
 
-          "img/Apps/Office365.jpg"
+          "img/Apps/Office365.webp"
         )}
 
         {software_image_right(
@@ -164,7 +164,7 @@ const Software = () => {
 
           ` KOOMPI want to offer a wide range of application to support the users need. The users can use Kdenlive for video editing as it is totally free and open source.`,
 
-          "img/Apps/Kdenlive.jpg"
+          "img/Apps/Kdenlive.webp"
         )}
 
         {software_image_left(
@@ -174,7 +174,7 @@ const Software = () => {
 
           ` Already per-installed on KOOMPI is a free software webcam application to let users enjoy smoothly webcam experience.`,
 
-          "img/Apps/Guvcview.jpg"
+          "img/Apps/Guvcview.webp"
         )}
       </div>
     </div>
@@ -199,7 +199,7 @@ class Feature extends Component {
           <div className="featureBanner">
             <div className="featureKoompi mobile hidden">
               <img
-                src="img/feature-koompi-banner1.png"
+                src="img/feature-koompi-banner1.webp"
                 className="bannerImageFeature"
                 alt="koompi-feature"
               />
