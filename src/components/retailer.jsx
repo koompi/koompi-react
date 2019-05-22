@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import ContentLoader, { Code } from "react-content-loader";
+import { Code } from "react-content-loader";
 
 class Retailer extends Component {
   state = {

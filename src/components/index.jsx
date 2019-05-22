@@ -2,16 +2,6 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
-import { css } from "@emotion/core";
-import { BeatLoader } from "react-spinners";
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-  margin-top: 20%;
-  margin-left: 50%;
-`;
 
 const Banner = () => {
   return (
@@ -301,7 +291,7 @@ const Battery = () => {
 };
 
 function demoAsyncCall() {
-  return new Promise(resolve => setTimeout(() => resolve(), 1000));
+  return new Promise(resolve => setTimeout(() => resolve(), 1200));
 }
 
 class Index extends Component {
@@ -319,13 +309,9 @@ class Index extends Component {
     if (loading) {
       // if your component doesn't have to wait for an async action, remove this block
       return (
-        <BeatLoader
-          css={override}
-          sizeUnit={"px"}
-          size={20}
-          color={"#000000"}
-          loading={this.state.loading}
-        />
+        <div className="loadingImage">
+          <img src="/img/loading.gif" alt="loading ..." />
+        </div>
       ); // render null when app is not ready
     }
     return (

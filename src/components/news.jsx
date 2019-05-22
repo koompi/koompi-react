@@ -3,18 +3,10 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import { Helmet } from "react-helmet";
 import axios from "axios";
-import { css } from "@emotion/core";
-import { BeatLoader } from "react-spinners";
 import { Modal, Image } from "semantic-ui-react";
-import ContentLoader, { Facebook } from "react-content-loader";
+import { Facebook } from "react-content-loader";
 
 import parse from "html-react-parser";
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
 
 class News extends Component {
   state = {

@@ -29,7 +29,17 @@ figure img {
 .retailer {
   padding: 40px 0px;
 }
-
+.loadingImage {
+  height: 100vh;
+  background: #191f26 !important;
+}
+.loadingImage img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+}
 .content p {
   line-height: 1.48;
   font-size: 18px !important;
@@ -232,7 +242,7 @@ p:last-child {
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
-  height: 90vh;
+  height: 95vh;
   width: 100%;
   background-repeat: no-repeat;
   position: relative;
