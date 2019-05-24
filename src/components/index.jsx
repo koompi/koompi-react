@@ -277,7 +277,7 @@ const Battery = () => {
               </div>
               <div className="column">
                 <img
-                  src="img/koompi-battery.webp"
+                  src="img/battery-koompi.jpg"
                   className="koompiBattery"
                   alt="koompi-battery"
                 />
@@ -291,7 +291,7 @@ const Battery = () => {
 };
 
 function demoAsyncCall() {
-  return new Promise(resolve => setTimeout(() => resolve(), 1200));
+  return new Promise(resolve => setTimeout(() => resolve(), 2000));
 }
 
 class Index extends Component {
@@ -310,7 +310,10 @@ class Index extends Component {
       // if your component doesn't have to wait for an async action, remove this block
       return (
         <div className="loadingImage">
-          <img src="/img/loading.gif" alt="loading ..." />
+          <img src="/img/koompi-logo-w-02.svg" alt="loading ..." />
+          <center>
+            <div className="loader" />
+          </center>
         </div>
       ); // render null when app is not ready
     }
