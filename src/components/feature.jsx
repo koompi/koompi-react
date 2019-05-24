@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Helmet } from "react-helmet";
+import FadeIn from "react-lazyload-fadein";
 
 const software_image_right = (icon, title, desc, image) => {
   return (
@@ -13,16 +14,30 @@ const software_image_right = (icon, title, desc, image) => {
       </div>
       <div className="column mobile only">
         <center>
-          <img
-            src={image}
-            className="ui fluid image image-margin-top"
-            alt={title}
-          />
+          <FadeIn height={600} duration={100}>
+            {onload => (
+              <img
+                src={image}
+                className="ui fluid image image-margin-top"
+                alt={title}
+                onload={onload}
+              />
+            )}
+          </FadeIn>
         </center>
       </div>
       <div className="column mobile hidden">
         <center>
-          <img src={image} className="ui fluid image" alt={title} />
+          <FadeIn height={600} duration={100}>
+            {onload => (
+              <img
+                src={image}
+                className="ui fluid image"
+                alt={title}
+                onLoad={onload}
+              />
+            )}
+          </FadeIn>
         </center>
       </div>
     </div>
@@ -32,11 +47,16 @@ const software_image_left = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding feature-margin">
       <div className="column mobile hidden">
-        <img
-          src={image}
-          className="ui fluid image image-margin-top"
-          alt={title}
-        />
+        <FadeIn height={600} duration={100}>
+          {onload => (
+            <img
+              src={image}
+              className="ui fluid image image-margin-top"
+              alt={title}
+              onLoad={onload}
+            />
+          )}
+        </FadeIn>
       </div>
       <div className="column feature-padding-text-right">
         <img src={icon} className="smallFeatureImg" alt={title} />

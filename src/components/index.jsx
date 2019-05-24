@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
+import FadeIn from "react-lazyload-fadein";
 
 const Banner = () => {
   return (
@@ -79,11 +80,16 @@ const Shapelines = () => {
                 </div>
               </div>
               <div className="column">
-                <img
-                  src="img/koompi-beauty-1.webp"
-                  className="koompiBeautyImg"
-                  alt="koompi-beauty"
-                />
+                <FadeIn height={600} duration={100}>
+                  {onload => (
+                    <img
+                      src="img/koompi-beauty-1.webp"
+                      className="koompiBeautyImg"
+                      alt="koompi-beauty"
+                      onLoad={onload}
+                    />
+                  )}
+                </FadeIn>
               </div>
             </div>
           </div>
@@ -141,11 +147,16 @@ const Screen = () => {
                 </div>
               </div>
               <div className="column">
-                <img
-                  src="img/screen.webp"
-                  className="koompiBeautyImg"
-                  alt="koompi-screen"
-                />
+                <FadeIn height={600} duration={100}>
+                  {onload => (
+                    <img
+                      src="img/screen.webp"
+                      className="koompiBeautyImg"
+                      alt="koompi-screen"
+                      onLoad={onload}
+                    />
+                  )}
+                </FadeIn>
               </div>
             </div>
           </div>
@@ -276,11 +287,16 @@ const Battery = () => {
                 </div>
               </div>
               <div className="column">
-                <img
-                  src="img/battery-koompi.jpg"
-                  className="koompiBattery"
-                  alt="koompi-battery"
-                />
+                <FadeIn height={600} duration={100}>
+                  {onload => (
+                    <img
+                      src="img/koompi-battery.webp"
+                      className="koompiBeautyImg "
+                      alt="koompi-battery"
+                      onLoad={onload}
+                    />
+                  )}
+                </FadeIn>
               </div>
             </div>
           </div>
