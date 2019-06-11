@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Code } from "react-content-loader";
+import { Helmet } from "react-helmet";
 
 class Retailer extends Component {
   state = {
@@ -101,6 +102,17 @@ class Retailer extends Component {
   render() {
     return (
       <React.Fragment>
+        <Helmet>
+          <title>KOOMPI Retailer</title>
+          <meta
+            name="keywords"
+            content="get koompi, koompi retailer, retailer koompi, koompi, smallworld venture"
+          />
+          <meta
+            name="description"
+            content="Engaging and interact with KOOMPI wherever you are, get KOOMPI from your nearest store. We aim to satisfied the users need and be convenient for everyone."
+          />
+        </Helmet>
         <Navbar />
         <div className="backgroundRetailer">
           <div className="ui container">

@@ -10,7 +10,7 @@ const Banner = () => {
       <div className="bannerBackground">
         <div className="bannerText">
           <h1 className="bannerTitle">Koompi Kosmos</h1>
-          <p className="bannerDesc">beautiful, high performance, affordable</p>
+          <p className="bannerDesc">Beautiful, High Performance, Open Source</p>
           <h6 className="leanMoreBanner">
             <Link to="/retailers">
               <i className="fas fa-angle-right" /> GET KOOMPI

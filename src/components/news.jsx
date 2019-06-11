@@ -64,10 +64,12 @@ class News extends Component {
         <Navbar />
         {console.log(this.state.data)}
         <Helmet>
-          <title>
-            News | Koompi mission is build and provide tools for the next
-            generation of engineers, problem solvers and discoverers
-          </title>
+          <title>KOOMPI | News and Events</title>
+          <meta
+            name="keywords"
+            content="koompi news, news and events koompi, koompi news and events, koompi, smallworld venture"
+          />
+          <meta name="description" content="koompi news and events" />
         </Helmet>
         <Modal
           open={open}
