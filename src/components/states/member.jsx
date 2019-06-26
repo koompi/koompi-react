@@ -17,10 +17,11 @@ class MemberState extends Component {
       },
       {
         id: 3,
-        name: "Saing SAB",
-        position: "Kernel Developer",
-        image: "img/team/saing.webp"
+        name: "Brilliant PHAL",
+        position: "Linux Administator",
+        image: "img/team/brillaint.webp"
       },
+
       {
         id: 4,
         name: "Vuthy SAN",
@@ -47,9 +48,9 @@ class MemberState extends Component {
       },
       {
         id: 8,
-        name: "Brilliant PHAL",
-        position: "Linux Administator",
-        image: "img/team/brillaint.webp"
+        name: "Lykheang MOEURN",
+        position: "Backend Developer",
+        image: "img/team/lykhhean.webp"
       },
       {
         id: 9,
@@ -80,6 +81,24 @@ class MemberState extends Component {
         name: "Sreysor KHEM",
         position: "Customer Services",
         image: "img/team/sreysor.webp"
+      },
+      {
+        id: 14,
+        name: "Veasna MA",
+        position: "Web Design",
+        image: "img/team/veasna.webp"
+      },
+      {
+        id: 15,
+        name: "Sovanden SARIM ",
+        position: "Web Design",
+        image: "img/team/den.webp"
+      },
+      {
+        id: 16,
+        name: "Nath LAY ",
+        position: "Backend Developer",
+        image: "img/team/net.webp"
       }
     ]
   };
