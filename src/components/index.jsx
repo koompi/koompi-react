@@ -17,9 +17,9 @@ const Banner = () => {
             </Link>
           </h6>
           <p>
-            KOOMPI is a practical, affordable and effective entry level laptop.
-            It can perform daily tasks for working and schooling. We
-            customized...
+          KOOMPI is a practical and affordable entry level notebook computer able to perform all the daily tasks required for work and school.
+          
+
             <a href="/about-us">Read More</a>
           </p>
         </div>
@@ -119,9 +119,9 @@ const Screen = () => {
                   FHD IPS Panel with Anti-glare Glasses
                 </h2>
                 <p className="websiteContent">
-                  KOOMPI works out-of-the-box with handpicked software that is
-                  needed in everyday computing. Check out ourfeatures for more
-                  details.
+                KOOMPI works out-of-the-box with a full suite of custom-selected software packages 
+                needed for everyday computing. Check out our features for the fine details.
+
                 </p>
                 <div className="ui grid beautyDetail">
                   <div className="two column row">
@@ -190,13 +190,13 @@ const Performance = () => {
               <div className="performancePadding">
                 <h5>Unprecedented Performance</h5>
                 <p>
-                  KOOMPI, the sleek and lightweight next generation tool offers
-                  an experience that’s next to none, combining modest hardware
-                  with powerful open-source software. A multi-purpose enabler,
-                  Koompi seeks to empower Cambodian youth as the creators and
-                  innovators of tomorrow. A packaged functional environment that
-                  lets the user focus on the challenges and not on the tools.
-                  Powerful yet easy and light enough to carry almost anywhere.
+                KOOMPI, the sleek and lightweight next-generation productivity tool 
+                offering an experience next to none, combining modest hardware with 
+                powerful open-source software. As a multi-purpose enabler, the KOOMPI 
+                seeks to empower the next generation of Cambodian youth as the creators 
+                and innovators of tomorrow. The KOOMPI offers a pre-packaged functional 
+                software environment that allows users to focus on the challenges of the 
+                task at hand rather than the tools. Powerful yet easy and light enough to carry almost anywhere.
                 </p>
                 <div className="ui two column divided grid">
                   <div className="row performanceRemoveMargin">
@@ -268,10 +268,10 @@ const Battery = () => {
             <div className="ui stackable two column grid">
               <div className="column controlColor">
                 <h4 className="smallTitle">BATTERY</h4>
-                <h2 className="fontWidth">Faster Charging, Longer living</h2>
+                <h2 className="fontWidth">Fast Charging, Longer life</h2>
                 <p className="websiteContent">
-                  We have designed the beautiful ultra thin of battery that last
-                  for 7-hour with special high-capacity as 5000mAh.
+                Designed with an ultra thin high performance 5000mAh battery that will last for up to 7 hours
+
                 </p>
                 <div className="ui grid beautyDetail">
                   <div className="two column row">

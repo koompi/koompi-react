@@ -125,10 +125,11 @@ class Retailer extends Component {
                   >
                     <h2>Get KOOMPI</h2>
                     <p>
-                      Engaging and interact with KOOMPI wherever you are, get
-                      KOOMPI from your nearest store. We aim to satisfied the
-                      users need and be convenient for everyone. You can find
-                      KOOMPI from our partner retailer that list down below:
+                    We aim to satisfy your individual needs while offering the best and most convenient tools for everyone. 
+                    Take this opportunity to engage and interact with the KOOMPI wherever you are.
+                    Test drive a new 
+                    KOOMPI from any of our retail partners listed below:
+
                     </p>
                   </div>
                 </div>
