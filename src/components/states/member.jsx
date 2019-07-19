@@ -40,12 +40,7 @@ class MemberState extends Component {
         position: "Graphic Designer",
         image: "img/team/panha.webp"
       },
-      {
-        id: 7,
-        name: "Sokunthy CHAN",
-        position: "Accountant",
-        image: "img/team/khunthy.webp"
-      },
+
       {
         id: 8,
         name: "Lykheang MOEURN",

@@ -34,12 +34,15 @@ const About = () => {
                 </p>
                 <h2>About Us</h2>
                 <p>
-                  KOOMPI is a practical, affordable and effective entry level
-                  laptop. High-end perform daily tasks for working and
-                  schooling. Create with a customized operating system by our
-                  own called, KramaOS based on well-known open source Linux.
-                  Both philosophy and design fit specifically with KOOMPI’s
-                  hardware.
+                  KOOMPI is a practical, affordable and effective entry-level
+                  notebook computer specifically designed for performing all
+                  daily tasks required for work and school. We've created a
+                  customized operating system of our own called KramaOS based on
+                  the well-known open-source Linux software. Both our philosophy
+                  and software selections provide a perfect fit with the sleek
+                  and practical KOOMPI hardware. Our integrated software suite
+                  allows KOOMPI users to challenge themselves as they explore
+                  their own personal world of computing.
                 </p>
                 <p>
                   Generate better daily users experience to engage more people
