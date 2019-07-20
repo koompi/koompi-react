@@ -31,32 +31,20 @@ class MemberState extends Component {
       {
         id: 5,
         name: "Panha YOU",
-        position: "Sale & Marketing Manager",
+        position: "Sale & Marketing",
         image: "img/team/panha_you.webp"
       },
       {
         id: 6,
         name: "Panha Sok",
-        position: "Graphic Designer",
+        position: "Graphic Design",
         image: "img/team/panha.webp"
-      },
-      {
-        id: 7,
-        name: "Sokunthy CHAN",
-        position: "Accountant",
-        image: "img/team/khunthy.webp"
       },
       {
         id: 8,
         name: "Lykheang MOEURN",
         position: "Backend Developer",
         image: "img/team/lykhhean.webp"
-      },
-      {
-        id: 9,
-        name: "Sreyleap SUN",
-        position: "Customer service",
-        image: "img/team/leap.webp"
       },
       {
         id: 10,
@@ -67,7 +55,7 @@ class MemberState extends Component {
       {
         id: 11,
         name: "Sofy THY",
-        position: "Marketing Officer",
+        position: "Marketing",
         image: "img/team/sofy.webp"
       },
       {
@@ -79,7 +67,7 @@ class MemberState extends Component {
       {
         id: 13,
         name: "Sreysor KHEM",
-        position: "Customer Services",
+        position: "Customer Service",
         image: "img/team/sreysor.webp"
       },
       {
@@ -105,7 +93,7 @@ class MemberState extends Component {
   render() {
     return (
       <div className="ui container paddingAbout">
-        <h1 className="memberTitle">Team Member</h1>
+        <h1 className="memberTitle">Team Members</h1>
         <div className="ui grid">
           <div className="doubling five column row">
             {this.state.data.map(info => (

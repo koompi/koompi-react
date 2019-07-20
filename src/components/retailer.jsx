@@ -118,22 +118,24 @@ class Retailer extends Component {
           <div className="ui container">
             <div className="ui divided grid">
               <div className="ui stackable two column grid">
-                <div className="column ten wide">
+                <div className="column nine wide">
                   <div
                     className="retailerPadding"
                     style={{ paddingTop: "10%" }}
                   >
                     <h2>Get KOOMPI</h2>
                     <p>
-                    We aim to satisfy your individual needs while offering the best and most convenient tools for everyone. 
-                    Take this opportunity to engage and interact with the KOOMPI wherever you are.
-                    Test drive a new 
-                    KOOMPI from any of our retail partners listed below:
-
+                      We aim to satisfy your individual needs while offering the
+                      best and most convenient tools for everyone. <br /> <br />
+                      Take this opportunity to engage and interact with the
+                      KOOMPI wherever you are. <br />
+                      <br />
+                      Test drive a new KOOMPI from any of our retail partners
+                      listed below:
                     </p>
                   </div>
                 </div>
-                <div className="column six wide">
+                <div className="column seven wide">
                   <img
                     className="ui fluid image koompi-retailer-image koompi-about-image"
                     src="img/Koompi_Retailer.webp"

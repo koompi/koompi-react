@@ -513,6 +513,9 @@ h5 {
   box-shadow: none !important;
 }
 
+.feature-padding {
+  margin-bottom: 20px !important;
+}
 .feature-padding-text {
   padding: 8% 0% 0% 8% !important;
 }
@@ -533,7 +536,7 @@ h5 {
 .featureBannerContent {
   position: absolute;
   overflow: hidden;
-  top: 40%;
+  top: 50%;
   left: 35%;
   transform: translate(-50%, -50%);
 }
@@ -889,7 +892,7 @@ p {
   padding: 70px 0px;
 }
 .backgroundRetailer .koompi-retailer-image {
-  transform: scale(1.4);
+  transform: scale(1);
   margin: 0px !important;
 }
 @keyframes loadingPage {

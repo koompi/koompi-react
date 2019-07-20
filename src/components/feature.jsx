@@ -84,12 +84,14 @@ const Software = () => {
           `Apache OpenOffice is an office productivity software suite 
           containing a word processor (Writer), a spreadsheet (Calc), 
           a presentation application (Impress), a drawing application (Draw), 
-          a formula editor (Math), and a database management application (Base). 
+          a formula editor (Math), and a database management application (Base).
           It's default file format is the OpenDocument Format (ODF), and can also 
           read and write a wide variety of other file formats, including those from Microsoft Office.`,
 
           "img/Apps/Office.webp"
         )}
+        <br />
+        <br />
         {software_image_left(
           "img/store.webp",
 
@@ -235,26 +237,25 @@ class Feature extends Component {
                   Everything You Need <br /> Available Here
                 </h2>
                 <p>
-                  KOOMPI handpicked software for everyday computing, net
-                  browsing,
-                  <br /> office suites for productivity, entertainment and more.
-                  We believe
-                  <br /> that the computer should be simple and free; free in
-                  terms of freedom.
-                  <br /> This is a tool which helps the user achieve more and
-                  learn more.
+                  The KOOMPI contains a handpicked suite of software for <br />
+                  everyday computing, Internet browsing, <br /> office
+                  productivity, entertainment and more.
                 </p>
                 <p>
-                  {/* <i className="fas fa-angle-right featureIcon" />
-                  <i className="fas fa-angle-right featureIcon" /> */}
-                  <a
-                    href="https://goo.gl/jHSZRL"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Learn More
-                  </a>
+                  We've compiled the KOOMPI computer software suite to offer a{" "}
+                  <br />
+                  user experience providing simplicity, power, privacy and
+                  freedom.
                 </p>
+                <p>
+                  KOOMPI users can achieve more and learn more with less effort
+                  and frustration.
+                </p>
+                {/* <p> */}
+                {/* <i className="fas fa-angle-right featureIcon" />
+                  <i className="fas fa-angle-right featureIcon" /> */}
+                {/* <Link href="/feature">Learn More</Link> */}
+                {/* </p> */}
               </div>
             </div>
             <div className="mobile only mobileFeature">
@@ -262,12 +263,14 @@ class Feature extends Component {
                 Everything You Need <br /> Available Here
               </h2>
               <p>
-              The KOOMPI contains a handpicked suite of software for everyday computing, Internet browsing,
+                The KOOMPI contains a handpicked suite of software for everyday
+                computing, Internet browsing,
                 <br /> office productivity, entertainment and more.
-                <br /> We've compiled the KOOMPI computer software suite to offer a user experience 
-                providing simplicity, power, privacy and freedom.
-                <br /> KOOMPI users can achieve more and learn more with less effort and frustration.
-                learn more.
+                <br /> We've compiled the KOOMPI computer software suite to
+                offer a user experience providing simplicity, power, privacy and
+                freedom.
+                <br /> KOOMPI users can achieve more and learn more with less
+                effort and frustration. learn more.
               </p>
               <p>
                 <i className="fas fa-angle-right featureIcon" />
