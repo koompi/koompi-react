@@ -333,6 +333,8 @@ class Index extends Component {
         </div>
       ); // render null when app is not ready
     }
+    
+    
     return (
       <React.Fragment>
         <Navbar />
