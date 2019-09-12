@@ -1731,11 +1731,21 @@ height: 12rem;
 }
 .background-color-middle-form{
   border-radius: 12px 12px 0 0;
-  background-color: #F0F8Ff;
+  background-color: #DCDCDC;
   /* height: 52rem; */
 }
 .submit-button button{
   margin-bottom: 19px !important ;
+}
+
+/* .modal-popup{
+  background-color: #00b5ad;
+  height: 411px;
+  
+} */
+.width-modal{
+  width: 633px;
+  margin: 18px auto;
 }
 /* .color-field-background{
   background-color:#FFFAFA;

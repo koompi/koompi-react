@@ -19,6 +19,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "react-spinners": "^0.5.4",
+    "rodal": "^1.6.3",
     "semantic-ui-react": "^0.86.0",
     "semantic-ui-react-form-validator": "^1.0.2",
     "sweetalert-react": "^0.4.11"

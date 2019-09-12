@@ -5,14 +5,8 @@ export default class Examples extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible : false
-        }
-    }
-
-    openModal() {
-        this.setState({
             visible : true
-        });
+        }
     }
 
     closeModal() {
@@ -20,25 +14,27 @@ export default class Examples extends Component {
             visible : false
         });
     }
-
     render() {
         return (
             <section>
-                <h1>React-Modal Examples</h1>
-                <input type="button" value="Open" onClick={() => this.openModal()} />
+                <div>
+                {/* <input type="button" value="Open" onClick={() => this.openModal()} /> */}
                 <Modal 
                     visible={this.state.visible}
-                    width="400"
-                    height="300"
+                    width="666"
+                    height="411"
                     effect="fadeInUp"
                     onClickAway={() => this.closeModal()}
                 >
-                    <div>
-                        <h1>Title</h1>
-                        <p>Some Contents</p>
-                        <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                    <div className="modal-popup">
+                    <div className="width-modal">
+                        <h3>200$</h3>
+                        <img src="video-player.webp" alt=""/>
+                        {/* <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a> */}
+                    </div>
                     </div>
                 </Modal>
+                </div>
             </section>
         );
     }

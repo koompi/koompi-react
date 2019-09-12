@@ -49,6 +49,13 @@ const Navbar = () => {
           >
             News
           </NavLink>
+          <NavLink
+            className="item navbarTop menuFadeIn"
+            to="/preoder"
+            activeClassName="active"
+          >
+            Order
+          </NavLink>
           <div className="item mobile only">
             {/* <i className="fas fa-times btnAnimationClose"></i> */}
           </div>

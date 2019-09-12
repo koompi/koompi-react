@@ -3,6 +3,7 @@ import useForm from './useForm';
 import validate from './validateLogin';
 import Navbar from './navbar'
 import Footer from './footer'
+// import Popup from './popup'
 //  import {Form,Input} from 'semantic-ui-react-form-validator'
 
 const Input = ({name, label, value, onChange, errors, type}) => {
@@ -36,7 +37,7 @@ const InputRadio = ({ value, checked, onChange, label }) => {
 
 
 function preoder() {
-  const {handlerCange, handleSubmit, values, errors, handleMethodColor, handldePaymet, handleMessage} = useForm(submit,validate);
+  const {handlerCange, handleSubmit, values, errors, handleMethodColor, handldePaymet} = useForm(submit,validate);
 
   console.log('====================================');
   console.log(values);
@@ -74,6 +75,7 @@ function submit () {
     return (
       <React.Fragment>
        <Navbar/>
+       {/* <Popup/> */}
        <div>
         <div className="container-form ui text container">
         <form onSubmit={handleSubmit} noValidate className="background-color-middle-form ui form">
