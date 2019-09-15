@@ -3,6 +3,7 @@ import useForm from './useForm';
 import validate from './validateLogin';
 import Navbar from './navbar'
 import Footer from './footer'
+import Popup from './popup'
 // import Popup from './popup'
 //  import {Form,Input} from 'semantic-ui-react-form-validator'
 
@@ -75,7 +76,7 @@ function submit () {
     return (
       <React.Fragment>
        <Navbar/>
-       {/* <Popup/> */}
+       <Popup/>
        <div>
         <div className="container-form ui text container">
         <form onSubmit={handleSubmit} noValidate className="background-color-middle-form ui form">
@@ -127,7 +128,7 @@ function submit () {
             <div>
               <Input 
                   // validators={['required']} 
-                  // errorMessages={['this field is required']}
+                  // errorMessages={['}this field is required']}
                   label="Email" 
                   type="text" 
                   name="email" 

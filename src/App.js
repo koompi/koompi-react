@@ -8,7 +8,6 @@ import About from "./components/about";
 import Privacy from "./components/privacy";
 import Retailer from "./components/retailer";
 import News from "./components/news";
-import popup from "./components/popup"
 import preoder from "./components/preoder"
 
 class App extends Component {
@@ -23,7 +22,6 @@ class App extends Component {
           <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/retailers" component={Retailer} />
           <Route exact path="/news-and-events" component={News} />
-          <Route exact path="/popup" component={popup}/>
           <Route exact path="/preoder" component={preoder}/>
           <Redirect to="/" component={Index} />
         </Switch>

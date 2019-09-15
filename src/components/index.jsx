@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
 import FadeIn from "react-lazyload-fadein";
+import Popup from "./popup"
 
 const Banner = () => {
   return (
@@ -27,10 +28,23 @@ const Banner = () => {
     </div>
   );
 };
+// const Toggle = () => {
+//   return(
+//       <div style={{
+//         width:"50%", height:"80%", background:"red", position:"fixed", top:"10%", left:"25%", zIndex:"100"
+//       }}></div>
+//     )
+// }
 
 const Shapelines = () => {
+  // const [open, setOpen] = useState(true);
+  // const toggle = () => {
+  //   setOpen(!open)
+  
   return (
     <React.Fragment>
+      {/* {open ? <Toggle/> : ""}
+      <button onClick={toggle}>toggle</button> */}
       <div className="ui container">
         <div className="beautyPadding">
           <div className="ui vertically divided grid">
@@ -313,7 +327,8 @@ function demoAsyncCall() {
 class Index extends Component {
   state = {
     data: "",
-    loading: true
+    loading: true,
+    open: true
   };
 
   componentDidMount() {
@@ -337,7 +352,12 @@ class Index extends Component {
     
     return (
       <React.Fragment>
+        {/* <button
+          style={{position: "absolute", top: 0, right: 0}}
+          onClick={e=>this.setState({open: !this.state.open})}>Click Me</button>
+        {this.state.open ? <Toggle/> : ""} */}
         <Navbar />
+        <Popup/>
         {Banner()}
         {Shapelines()}
         {Screen()}

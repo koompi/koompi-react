@@ -1743,10 +1743,68 @@ height: 12rem;
   height: 411px;
   
 } */
-.width-modal{
+/* .width-modal{
   width: 633px;
   margin: 18px auto;
+} */
+
+
+
+
+
+
+
+
+/* .Module-background{
+  width: 666px;
+  height:450px;
+  background-color: red;
+  position: fixed;
+  top:25%;
+  left:33%;
+  z-index: 100; */
+  /* height: 50%;
+  width: 30%;
+} */
+.styles_modal__gNwvD{
+  margin: auto !important;
+  border-radius: 10px 10px 10px 10px;
+  height: 411px;
+  width: 666px;
+  background-color: rgb(139, 74, 74);
 }
+.image-popup img{
+  width: 170px !important;
+}
+
+
+.swing-enter-done {
+  display: block !important;
+  width: 666px !important;
+  height: 411px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* .color-field-background{
   background-color:#FFFAFA;
   margin-top: -18px;
