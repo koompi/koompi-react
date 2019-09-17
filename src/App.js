@@ -8,7 +8,7 @@ import About from "./components/about";
 import Privacy from "./components/privacy";
 import Retailer from "./components/retailer";
 import News from "./components/news";
-import preoder from "./components/preoder"
+import preorder from "./components/preoder"
 
 class App extends Component {
   render() {
@@ -22,7 +22,7 @@ class App extends Component {
           <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/retailers" component={Retailer} />
           <Route exact path="/news-and-events" component={News} />
-          <Route exact path="/preoder" component={preoder}/>
+          <Route exact path="/preorder" component={preorder}/>
           <Redirect to="/" component={Index} />
         </Switch>
       </div>

@@ -3,7 +3,8 @@ import useForm from './useForm';
 import validate from './validateLogin';
 import Navbar from './navbar'
 import Footer from './footer'
-import Popup from './popup'
+import Helmet from 'react-helmet';
+
 // import Popup from './popup'
 //  import {Form,Input} from 'semantic-ui-react-form-validator'
 
@@ -76,13 +77,15 @@ function submit () {
     return (
       <React.Fragment>
        <Navbar/>
-       <Popup/>
+       <Helmet>
+                <style>{'body { background-image:linear-gradient(to right,#7f7fd5, #86a8e7, #91eae4); }'}</style>
+            </Helmet>
        <div>
-        <div className="container-form ui text container">
+        <div className="container-form ui container">
         <form onSubmit={handleSubmit} noValidate className="background-color-middle-form ui form">
         <center className="order-margin">
         <img className="koompi-logo-order" src="koompi-logo-w-02.svg" alt=""/>
-          <h1>Pre-Order</h1>
+          <h1>Pre Order</h1>
         </center>
         <div className="field">
           <div className=" middle-form two fields">

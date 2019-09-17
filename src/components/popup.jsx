@@ -75,6 +75,7 @@
 
 import React, {useState} from 'react'
 import Modal from 'react-responsive-modal'
+import { NavLink, Link } from "react-router-dom";
 // import Modal from "react-animated-modal";
 
 
@@ -92,15 +93,22 @@ function popup() {
         <div>
             {/* <button onClick={openModal}>Open modal</button> */}
             <Modal 
-
             type="swing" open={open} onClose={onCloseModal}>
             <div className="Module-background">
-                <h3>339$ </h3>
-                <img className="image-popup ui centered small image" src="koompi-logo-w-02.svg"/>
-                <center>
-                <h1>KOOMPI</h1> 
+                <h3>$339.00</h3>
+                <center className="image-popup">
+                <img className=" ui small image" src="/img/IMG_5515 (2).png"/>
                 </center>
-                
+                <center className=" p-of-popup">
+                <h1>KOOMPI</h1> 
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti et repellat magni quos, consequatur sed. Exercitationem consequatur minima temporibus adipisci.</p>
+                <NavLink
+                className="ui button"
+                to="/preorder"
+                >
+                Buy
+                </NavLink>
+                </center>          
             </div>
             </Modal>
         </div>
@@ -108,57 +116,5 @@ function popup() {
 }
 
 export default popup
-
-
-
-// import React, {useState} from "react";
-// import Modal from "react-animated-modal";
-
-// function popup() {
-//     const [popup, setPopup] = useState({showModal:true})
-//     const closeModal = () => {
-//         setPopup(!popup)
-//     }
-//     const showModal = popup;
-//     return (
-//         <div>
-//             <Modal
-//             visible={showModal}
-//             closemodal={closeModal}
-//             type="swing"
-//             />
-//         </div>
-//     )
-// }
-
-// export default popup
-
- 
-
-
-// import React from "react";
-// import Modal from "react-animated-modal";
- 
-// export default class App extends React.Component {
-//     state = {
-//         showModal: true
-//     };
-//     render() {
-//         return (
-//             <div>
-//                 <Modal
-//                     visible={this.state.showModal}
-//                     closemodal={() => this.setState({ showModal: false })}
-//                     type="swing"
-//                 >
-//                     Some text or JSX inside modal goes here...
-//                 </Modal>
-//                 {/* <div onClick={() => this.setState({ showModal: true })}>
-//                     Open Modal
-//                 </div> */}
-//             </div>
-//         );
-//     }
-// }
 
 

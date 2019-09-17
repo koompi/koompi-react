@@ -82,7 +82,8 @@ figure img {
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  background-color: #050507 !important;
+  /* background-color: #050507 !important; */
+  background-color:#252e3c !important;
   margin-bottom: 0px;
 }
 
@@ -298,7 +299,7 @@ p:last-child {
 }
 
 .bannerBackground {
-  background-image: url(../img/koompi-banner-1.webp);
+  background-image: url(../img/Banner.jpg);
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
@@ -570,7 +571,8 @@ h5 {
 }
 
 .footerBack {
-  background-color: #2c2c2c;
+  /* background-color: #2c2c2c; */
+  background-color: #252e3c;
   padding: 40px;
   margin-top: 40px;
 }
@@ -831,6 +833,13 @@ textarea {
   color: #898989 !important;
   margin-left: 20px;
 }
+
+@media screen and (max-width:800px){
+  .privacy{
+    display: none;
+  }
+}
+
 .featureBannerContent p {
   font-size: 18px;
   color: #2d3133 !important;
@@ -1713,7 +1722,8 @@ p {
 .order-margin{
 margin: 18px auto;
 border-radius: 10px 10px 0 0;
-background-color: black;
+/* background-color: black; */
+background-color: #252e3c;
 height: 12rem;
 }
 .order-margin h1{
@@ -1737,6 +1747,12 @@ height: 12rem;
 .submit-button button{
   margin-bottom: 19px !important ;
 }
+.p-of-popup p{
+  font-size: 13px !important;
+}
+.p-of-popup{
+  margin:33px !important;
+}
 
 /* .modal-popup{
   background-color: #00b5ad;
@@ -1752,29 +1768,16 @@ height: 12rem;
 
 
 
-
-
-
-/* .Module-background{
-  width: 666px;
-  height:450px;
-  background-color: red;
-  position: fixed;
-  top:25%;
-  left:33%;
-  z-index: 100; */
-  /* height: 50%;
-  width: 30%;
-} */
 .styles_modal__gNwvD{
   margin: auto !important;
   border-radius: 10px 10px 10px 10px;
   height: 411px;
-  width: 666px;
-  background-color: rgb(139, 74, 74);
+  width: 612px;
+  background-color: white;
 }
-.image-popup img{
-  width: 170px !important;
+.image-popup.ui.centered.small.image img{
+  width: 370px !important;
+  margin-top:-46px;
 }
 
 
@@ -1785,6 +1788,46 @@ height: 12rem;
 }
 
 
+/* responsive sidebar */
+
+@media screen and (max-width:800px){
+  .ui.secondary.menu.big-navbar-menu{
+    display: none;
+  }
+}
+.menu-logo {
+  width: 3rem;
+  padding-left: 1rem;
+}
+.ui.secondary.menu {
+  margin: 0px;
+  padding: 7px 0px;
+}
+.toggleicon {
+    margin-left: -38px;
+    width:22px;
+    margin-top:6px;
+}
+
+.ui.visible.left.overlay.sidebar {
+  position: fixed;
+  top: 0;
+  width: 60% !important;
+  /* background-color: #063e63; */
+  background-color:#252e3c;
+}
+
+/* .ui.small.image, .ui.small.images .image, .ui.small.images img, .ui.small.images svg{
+  width: 300px;
+  height: auto;
+  font-size: .92857143rem;
+  margin: auto;
+} */
+
+.image-popup img{
+  width:370px !important;
+  margin:-49px !important;
+}
 
 
 
