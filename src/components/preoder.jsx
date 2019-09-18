@@ -8,6 +8,10 @@ import Helmet from 'react-helmet';
 // import Popup from './popup'
 //  import {Form,Input} from 'semantic-ui-react-form-validator'
 
+
+
+
+
 const Input = ({name, label, value, onChange, errors, type}) => {
   return(
     <div className={errors ? "field error" : "field"}>
@@ -44,6 +48,30 @@ function preoder() {
   console.log('====================================');
   console.log(values);
   console.log('====================================');
+
+
+
+
+
+const [data] = useState([
+  {
+  image:"./img/Screenshot_20190915_183237.png",
+  header: "KOOMPI",
+  descri:"hello world",
+  },
+  {
+    image:"./img/Screenshot_20190915_183237.png",
+    header: "KOOMPI",
+    descri:"hello world",
+    },
+    {
+      image:"./img/Screenshot_20190915_183237.png",
+      header: "KOOMPI",
+      descri:"hello world",
+      }
+
+])
+
   
 // const [value, setValue] = useState({
 //     firstname:'',
@@ -77,15 +105,37 @@ function submit () {
     return (
       <React.Fragment>
        <Navbar/>
-       <Helmet>
+       {/* <Helmet>
                 <style>{'body { background-image:linear-gradient(to right,#7f7fd5, #86a8e7, #91eae4); }'}</style>
-            </Helmet>
+            </Helmet> */}
        <div>
-        <div className="container-form ui container">
+       <div className="bannerPage">
+      <div className="bannerBackground">
+        <div className="bannerText">
+          <h1 className="bannerTitle">Koompi Kosmos</h1>
+          <p className="bannerDesc">Beautiful, High Performance, Open Source</p>
+          <h6 className="leanMoreBanner">
+            {/* <Link to="/retailers">
+              <i className="fas fa-angle-right" /> GET KOOMPI
+            </Link> */}
+          </h6>
+          <p>
+            KOOMPI is a practical, affordable and effective entry level laptop.
+            It can perform daily tasks for working and schooling. We
+            customized...
+            <a href="/about-us">Read More</a>
+          </p>
+        </div>
+      </div>
+    </div>
+        <div className="container-form ui text container">
         <form onSubmit={handleSubmit} noValidate className="background-color-middle-form ui form">
-        <center className="order-margin">
+        {/* <center className="order-margin">
         <img className="koompi-logo-order" src="koompi-logo-w-02.svg" alt=""/>
           <h1>Pre Order</h1>
+        </center> */}
+        <center className= "order-margin">
+          <h1>Order</h1>
         </center>
         <div className="field">
           <div className=" middle-form two fields">
@@ -224,6 +274,22 @@ function submit () {
       </form>
      </div>
      </div>
+
+     <div className="ui stackable three column grid ui container">
+        {data.map(value => (
+          <React.Fragment>
+          <div className="column">
+         <div className="box-style">
+         <img className="ui big image" src={value.image} alt=""/>
+          <center>
+            <h1>{value.header}</h1>
+            <p>{value.descri}</p>
+          </center>
+         </div>
+        </div>
+          </React.Fragment>
+        ))}
+      </div>
 
      <Footer/>
      </React.Fragment>
