@@ -48,12 +48,6 @@ class MemberState extends Component {
         image: "img/team/lykhhean.webp"
       },
       {
-        id: 9,
-        name: "Sreyleap SUN",
-        position: "Customer service",
-        image: "img/team/leap.webp"
-      },
-      {
         id: 10,
         name: "Chandara VIREAK",
         position: "Head of Design",

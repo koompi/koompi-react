@@ -38,7 +38,7 @@ class News extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@koompi"
+        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/koompi"
       )
       .then(res => {
         this.setState({ data: res.data.items });
@@ -85,11 +85,11 @@ class News extends Component {
             <p> {parse(this.state.content)} </p>
           </Modal.Content>
         </Modal>
-        <div className="ui container">
+        <div className="ui container ">
           <center>
             <h1 className="kosmosConentNews">News and Events</h1>
           </center>
-          <div className="ui stackable three column grid">
+          <div className="ui stackable three column equal height stretched grid">
             {!this.state.data ? (
               <React.Fragment>{this.displayLoading()}</React.Fragment>
             ) : (

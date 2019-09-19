@@ -123,38 +123,24 @@ function submit () {
     return (
       <React.Fragment>
        <Navbar/>
-       {/* <Helmet>
-                <style>{'body { background-image:linear-gradient(to right,#7f7fd5, #86a8e7, #91eae4); }'}</style>
-            </Helmet> */}
-       <div>
        <div className="bannerPage">
-      <div className="bannerBackground">
-        <div className="bannerText">
-          <h1 className="bannerTitle">Koompi Kosmos</h1>
-          <p className="bannerDesc">Beautiful, High Performance, Open Source</p>
-          <h6 className="leanMoreBanner">
-            {/* <Link to="/retailers">
-              <i className="fas fa-angle-right" /> GET KOOMPI
-            </Link> */}
-          </h6>
-          <p>
-            KOOMPI is a practical, affordable and effective entry level laptop.
-            It can perform daily tasks for working and schooling. We
-            customized...
-            <a href="/about-us">Read More</a>
-          </p>
-        </div>
-      </div>
-    </div>
+       <div className="order-banner">
+       <div className="bannerText" >
+       <h1 className="order-bannerTitle">order</h1>
+       </div>
+       </div>
+       </div>
+      
+       <div>
         <div className="container-form ui text container">
         <form onSubmit={handleSubmit} noValidate className="background-color-middle-form ui form">
         {/* <center className="order-margin">
         <img className="koompi-logo-order" src="koompi-logo-w-02.svg" alt=""/>
           <h1>Pre Order</h1>
         </center> */}
-        <center className= "order-margin">
+        {/* <center className= "order-margin">
           <h1>Order</h1>
-        </center>
+        </center> */}
         <div className="field">
           <div className=" middle-form two fields">
             <div className="field">
@@ -293,11 +279,10 @@ function submit () {
      </div>
      </div>
 
-<div className="ui container margin-buttons">
-     <h2 className="newsAndEvent">KOOMPI News</h2>
+{/* <div className="ui container margin-buttons"> 
       <div className="ui stackable three column equal height stretched grid">
         {
-          posts.koompi.slice(0,3).map((data, index) => {
+          posts.koompi.slice(0,3).map((data) => {
             return(
             <div className="column" key={data.title}>
                 <div className="shadowEvent">
@@ -346,7 +331,7 @@ function submit () {
           )})
         }
       </div>
-</div>
+</div> */}
      <Footer/>
      </React.Fragment>
     )
