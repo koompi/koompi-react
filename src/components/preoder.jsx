@@ -1,14 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import useForm from './useForm';
 import validate from './validateLogin';
 import Navbar from './navbar'
 import Footer from './footer'
 import Helmet from 'react-helmet';
+import axios from 'axios';
 
 // import Popup from './popup'
 //  import {Form,Input} from 'semantic-ui-react-form-validator'
 
-
+function strip_html_tags(str) {
+  if (str === null || str === "") return false;
+  else str = str.toString();
+  return str.replace(/<[^>]*>/g, "");
+}
 
 
 
@@ -51,26 +56,39 @@ function preoder() {
 
 
 
+const [posts, setPost] = useState({koompi:[]})
 
+useEffect(() => {
+  axios.get( "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/koompi")
+  .then(res => {
+    console.log(res)
+    setPost({koompi: res.data.items});
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}, [])
 
-const [data] = useState([
-  {
-  image:"./img/Screenshot_20190915_183237.png",
-  header: "KOOMPI",
-  descri:"hello world",
-  },
-  {
-    image:"./img/Screenshot_20190915_183237.png",
-    header: "KOOMPI",
-    descri:"hello world",
-    },
-    {
-      image:"./img/Screenshot_20190915_183237.png",
-      header: "KOOMPI",
-      descri:"hello world",
-      }
+  
 
-])
+// const [data] = useState([
+//   {
+//   image:"./img/Screenshot_20190915_183237.png",
+//   header: "KOOMPI",
+//   descri:"hello world",
+//   },
+//   {
+//     image:"./img/Screenshot_20190915_183237.png",
+//     header: "KOOMPI",
+//     descri:"hello world",
+//     },
+//     {
+//       image:"./img/Screenshot_20190915_183237.png",
+//       header: "KOOMPI",
+//       descri:"hello world",
+//       }
+
+// ])
 
   
 // const [value, setValue] = useState({
@@ -275,22 +293,60 @@ function submit () {
      </div>
      </div>
 
-     <div className="ui stackable three column grid ui container">
-        {data.map(value => (
-          <React.Fragment>
-          <div className="column">
-         <div className="box-style">
-         <img className="ui big image" src={value.image} alt=""/>
-          <center>
-            <h1>{value.header}</h1>
-            <p>{value.descri}</p>
-          </center>
-         </div>
-        </div>
-          </React.Fragment>
-        ))}
-      </div>
+<div className="ui container margin-buttons">
+     <h2 className="newsAndEvent">KOOMPI News</h2>
+      <div className="ui stackable three column equal height stretched grid">
+        {
+          posts.koompi.slice(0,3).map((data, index) => {
+            return(
+            <div className="column" key={data.title}>
+                <div className="shadowEvent">
+                <a
+                        className="newsDetail"
+                        href={data.guid}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {data.thumbnail.match(/[^/]+(jpg|png|gif|jpeg)$/) ? (
+                          <div
+                            style={{
+                              backgroundImage: `url(${data.thumbnail})`,
+                              height: "200px",
+                              backgroundPosition: "center center",
+                              backgroundSize: "cover"
+                            }}
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              backgroundImage: `url("/images/default_img.png")`,
+                              height: "200px",
+                              backgroundPosition: "center center",
+                              backgroundSize: "cover"
+                            }}
+                          />
+                        )}
 
+                        <div className="backgroundEvent">
+                          <center>
+                            <h3>{data.title}</h3>
+                          </center>
+                          <br />
+                          <p>
+                            {strip_html_tags(
+                              data.content.substring(0, 110) + "..."
+                            )}
+                          </p>
+                          <p className="badge">{data.author}</p>
+                        </div>
+                      </a>
+                </div>
+                
+            </div>
+          )})
+        }
+      </div>
+</div>
      <Footer/>
      </React.Fragment>
     )
