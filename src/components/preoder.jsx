@@ -3,7 +3,6 @@ import useForm from './useForm';
 import validate from './validateLogin';
 import Navbar from './navbar'
 import Footer from './footer'
-import Helmet from 'react-helmet';
 import axios from 'axios';
 
 // import Popup from './popup'
@@ -68,53 +67,6 @@ useEffect(() => {
     console.log(err)
   })
 }, [])
-
-  
-
-// const [data] = useState([
-//   {
-//   image:"./img/Screenshot_20190915_183237.png",
-//   header: "KOOMPI",
-//   descri:"hello world",
-//   },
-//   {
-//     image:"./img/Screenshot_20190915_183237.png",
-//     header: "KOOMPI",
-//     descri:"hello world",
-//     },
-//     {
-//       image:"./img/Screenshot_20190915_183237.png",
-//       header: "KOOMPI",
-//       descri:"hello world",
-//       }
-
-// ])
-
-  
-// const [value, setValue] = useState({
-//     firstname:'',
-//     lastname:'',
-//     email:'',
-//     phonenumber:''
-// })
-
-// const handlerCange = event => {
-//     const {name, value} = event.target;
-//     console.log(event.target.name);
-//     console.log(event.target.value);
-//     setValue({
-//         ...value,
-//         [name]: value
-//     });
-// };
-
-// const handleSubmit = event => {
-//     event.preventDefault();
-//     submit();
-// };
-
-
-
 
 function submit () {
     console.log ("submited sucessfully")

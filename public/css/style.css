@@ -16,6 +16,12 @@ h6 {
   font-family: "Open Sans", sans-serif !important;
   font-weight: 600;
 }
+html{
+  width: calc(100% - 0px);
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
+}
 
 /* Retailer */
 .image-card {
@@ -1801,6 +1807,7 @@ height: 12rem;
     display: none;
   }
 }
+
 .menu-logo {
   width: 3rem;
   padding-left: 1rem;
@@ -1871,6 +1878,12 @@ p {
 .order-banner{
  background-image: url(../img/orderBanner.jpg) ;
  height: 438px;
+ background-size: cover;
+ background-position: center;
+ width: 100%;
+ background-repeat: no-repeat;
+ position: relative;
+ z-index: 1;
 }
 .banner-order-text h1{
   margin: 100px auto;
@@ -1903,4 +1916,11 @@ p {
   overflow-x: hidden !important;
   z-index: 1000;
   padding: 0px !important;
+}
+
+@media screen and (max-width:800px){
+  .order-banner{
+    width: 100%;
+    height: 156px;
+  }
 }
