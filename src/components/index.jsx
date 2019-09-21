@@ -3,7 +3,7 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
 import FadeIn from "react-lazyload-fadein";
-import Popup from "./popup"
+import Popup from "./popup";
 
 const Banner = () => {
   return (
@@ -28,19 +28,8 @@ const Banner = () => {
     </div>
   );
 };
-// const Toggle = () => {
-//   return(
-//       <div style={{
-//         width:"50%", height:"80%", background:"red", position:"fixed", top:"10%", left:"25%", zIndex:"100"
-//       }}></div>
-//     )
-// }
 
 const Shapelines = () => {
-  // const [open, setOpen] = useState(true);
-  // const toggle = () => {
-  //   setOpen(!open)
-  
   return (
     <React.Fragment>
       {/* {open ? <Toggle/> : ""}
@@ -94,16 +83,11 @@ const Shapelines = () => {
                 </div>
               </div>
               <div className="column">
-                <FadeIn height={600} duration={100}>
-                  {onload => (
-                    <img
-                      src="img/koompi-beauty-1.webp"
-                      className="koompiBeautyImg"
-                      alt="koompi-beauty"
-                      onLoad={onload}
-                    />
-                  )}
-                </FadeIn>
+                <img
+                  src="img/koompi-beauty-1.webp"
+                  className="koompiBeautyImg"
+                  alt="koompi-beauty"
+                />
               </div>
             </div>
           </div>
@@ -161,16 +145,11 @@ const Screen = () => {
                 </div>
               </div>
               <div className="column">
-                <FadeIn height={600} duration={100}>
-                  {onload => (
-                    <img
-                      src="img/screen.webp"
-                      className="koompiBeautyImg"
-                      alt="koompi-screen"
-                      onLoad={onload}
-                    />
-                  )}
-                </FadeIn>
+                <img
+                  src="img/screen.webp"
+                  className="koompiBeautyImg"
+                  alt="koompi-screen"
+                />
               </div>
             </div>
           </div>
@@ -301,16 +280,11 @@ const Battery = () => {
                 </div>
               </div>
               <div className="column">
-                <FadeIn height={600} duration={100}>
-                  {onload => (
-                    <img
-                      src="img/koompi-battery.webp"
-                      className="koompiBeautyImg "
-                      alt="koompi-battery"
-                      onLoad={onload}
-                    />
-                  )}
-                </FadeIn>
+                <img
+                  src="img/koompi-battery.webp"
+                  className="koompiBeautyImg "
+                  alt="koompi-battery"
+                />
               </div>
             </div>
           </div>
@@ -348,8 +322,7 @@ class Index extends Component {
         </div>
       ); // render null when app is not ready
     }
-    
-    
+
     return (
       <React.Fragment>
         {/* <button
@@ -357,7 +330,7 @@ class Index extends Component {
           onClick={e=>this.setState({open: !this.state.open})}>Click Me</button>
         {this.state.open ? <Toggle/> : ""} */}
         <Navbar />
-        <Popup/>
+        <Popup />
         {Banner()}
         {Shapelines()}
         {Screen()}
