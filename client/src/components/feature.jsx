@@ -237,17 +237,13 @@ class Feature extends Component {
                   <br /> This is a tool which helps the user achieve more and
                   learn more.
                 </p>
-                <p>
-                  {/* <i className="fas fa-angle-right featureIcon" />
-                  <i className="fas fa-angle-right featureIcon" /> */}
-                  <a
-                    href="https://goo.gl/jHSZRL"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Learn More
-                  </a>
-                </p>
+                <a
+                  href="https://goo.gl/jHSZRL"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn More
+                </a>
               </div>
             </div>
             <div className="mobile only mobileFeature">

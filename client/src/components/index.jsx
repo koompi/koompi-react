@@ -310,18 +310,18 @@ class Index extends Component {
   }
 
   render() {
-    const { loading } = this.state;
-    if (loading) {
-      // if your component doesn't have to wait for an async action, remove this block
-      return (
-        <div className="loadingImage">
-          <img src="/img/koompi-logo-w-02.svg" alt="loading ..." />
-          <center>
-            <div className="loader" />
-          </center>
-        </div>
-      ); // render null when app is not ready
-    }
+    // const { loading } = this.state;
+    // if (loading) {
+    //   // if your component doesn't have to wait for an async action, remove this block
+    //   return (
+    //     <div className="loadingImage">
+    //       <img src="/img/koompi-logo-w-02.svg" alt="loading ..." />
+    //       <center>
+    //         <div className="loader" />
+    //       </center>
+    //     </div>
+    //   ); // render null when app is not ready
+    // }
 
     return (
       <React.Fragment>

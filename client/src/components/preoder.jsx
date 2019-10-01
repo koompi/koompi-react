@@ -3,7 +3,7 @@ import useForm from "./useForm";
 import validate from "./validateLogin";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import axios from "axios";
+import Swal from "sweetalert2";
 
 const Input = ({ name, label, value, onChange, errors, type }) => {
   return (
@@ -43,25 +43,7 @@ function PreOrder() {
     handldePaymet
   } = useForm(submit, validate);
 
-  const [posts, setPost] = useState({ koompi: [] });
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/koompi"
-      )
-      .then(res => {
-        console.log(res);
-        setPost({ koompi: res.data.items });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
-
-  function submit() {
-    console.log("submited sucessfully");
-  }
+  function submit() {}
 
   return (
     <React.Fragment>
@@ -91,10 +73,10 @@ function PreOrder() {
                     // errorMessages={['this field is required']}
                     label="First Name"
                     type="text"
-                    name="firstname"
-                    value={values.firstname}
+                    name="firstName"
+                    value={values.firstName}
                     onChange={handlerCange}
-                    errors={errors.firstname}
+                    errors={errors.firstName}
                   />
                 </div>
                 <div className="field">
@@ -102,10 +84,10 @@ function PreOrder() {
                     <Input
                       label="Last Name"
                       type="text"
-                      name="lastname"
-                      value={values.lastname}
+                      name="lastName"
+                      value={values.lastName}
                       onChange={handlerCange}
-                      errors={errors.lastname}
+                      errors={errors.lastName}
                     />
                     {/* {errors.lastname && <p>{errors.lastname}</p>} */}
                   </div>
@@ -132,11 +114,11 @@ function PreOrder() {
                     <Input
                       label="Phone"
                       type="number"
-                      name="phonenumber"
-                      value={values.phonenumber}
+                      name="phoneNumber"
+                      value={values.phoneNumber}
                       placeholder="Phone Number"
                       onChange={handlerCange}
-                      errors={errors.phonenumber}
+                      errors={errors.phoneNumber}
                     />
                   </div>
                 </div>
@@ -194,8 +176,8 @@ function PreOrder() {
             <div className="middle-form field">
               <label>Message</label>
               <textarea
-                name="Message"
-                value={values.Message}
+                name="message"
+                value={values.message}
                 onChange={handlerCange}
               />
             </div>
