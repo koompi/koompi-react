@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap");
-* {
+/* * {
   font-family: "Roboto", sans-serif !important;
-}
+} */
 body {
   font-family: "Open Sans", sans-serif !important;
   font-weight: 300 !important;
@@ -309,7 +309,7 @@ p:last-child {
 }
 
 .bannerBackground {
-  background-image: url(../img/Banner.jpg);
+  background-image: url(../img/Banner-2.jpg);
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
@@ -1171,7 +1171,7 @@ p {
   height: 100%;
 }
 .image-popup {
-  background-image: url("/img/banner_order.jpg");
+  background-image: url("/img/Banner-2.jpg");
   height: 15vw;
   width: 100%;
   background-position: center;
@@ -1255,7 +1255,7 @@ p {
   font-size: 18px !important;
 }
 .order-banner {
-  background-image: url(../img/banner_order.jpg);
+  background-image: url(../img/Banner-2.jpg);
   height: 438px;
   background-size: cover;
   background-position: center;
@@ -1586,7 +1586,7 @@ p {
   }
 
   .image-popup {
-    background-image: url("/img/banner_order.jpg");
+    background-image: url("/img/Banner-2.jpg");
     height: 35vw;
     width: 100%;
     background-position: center;
@@ -1772,7 +1772,7 @@ p {
   }
 
   .image-popup {
-    background-image: url("/img/banner_order.jpg");
+    background-image: url("/img/Banner-2.jpg");
     height: 40vw;
     width: 100%;
     background-position: center;

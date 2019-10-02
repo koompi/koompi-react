@@ -81,11 +81,7 @@ const Software = () => {
 
           "Apache OpenOffice",
 
-          ` Apache OpenOffice as an open source office software suite, 
-          developed by Apache Software Foundation contains a word processor, 
-          spreadsheet, presentation application, drawing application, a formula 
-          editor and data base management.  Its default file format is a OpenDocument 
-          Format (ODF) mean to assist users for any office work.`,
+          ` Apache OpenOffice is an office productivity software suite containing a word processor (Writer), a spreadsheet (Calc), a presentation application (Impress), a drawing application (Draw), a formula editor (Math), and a database management application (Base). It's default file format is the OpenDocument Format (ODF), and can also read and write a wide variety of other file formats, including those from Microsoft Office.`,
 
           "img/Apps/Office.webp"
         )}
@@ -94,9 +90,7 @@ const Software = () => {
 
           "Software Center",
 
-          ` Koompi uses GNOME Software utility for easy software installation
-            and updates. It is the GNOME front-end to the PackageKit daemon,
-            which itself is a front-end to several package management systems.`,
+          ` KOOMPI uses the GNOME Software utility for software application installations and updates. The Software Center allows for easy installations and updates of software applications and system extensions.`,
 
           "img/Apps/App-Store.webp"
         )}
@@ -105,9 +99,7 @@ const Software = () => {
 
           "Brave ( web browser )",
 
-          ` Developed by Brave Software Inc. Brave web browser is a free and open source 
-          browser. It protect the users by block ads and website tracker. Pre-installed 
-          on KOOMPI to support for better users experience.`,
+          `Much more than a web browser, Brave is a new way of thinking about how the web works. Brave is open source and built by a team of privacy focused, performance oriented pioneers of the web. Brave fights malware and prevents tracking while keeping your information safe and secure.`,
 
           "img/Apps/Firefox.webp"
         )}
@@ -116,9 +108,7 @@ const Software = () => {
 
           "KMPlayer",
 
-          ` KOOMPI use K-Multimedia player known as KMPlayer for media player that can
-           play on a large numbers of format. Bring out the whole new delight experience 
-           for the users.
+          ` KMPlayer is a highly customizable multimedia software providing high-quality video playback of media files with much more additional functionality. KMPlayer recognizes a large number of file formats, is able to capture videos from online sources and allows users to make animated GIFs.
           `,
 
           "img/Apps/VLC.webp"
@@ -129,12 +119,7 @@ const Software = () => {
 
           "Krita",
 
-          ` Krita is under open source software license and offers many
-            features comparable to commercial solution. Krita has a lot of
-            cool features that assist your whole processing of painting. With
-            an intuitive user interface, you can customize your own specific
-            workflow. KOOMPI seeks for a helping tools that can guide the user
-            to freely create anything that they want.`,
+          `Krita is a raster graphics editor designed primarily for digital painting and animation. It is a fast, flexible, and free Photoshop alternative built by artists and perfect for everyone from amateur to professional. Krita gives budding artists and illustrators a pro-level set of tools with a natural painting toolbox.`,
 
           "img/Apps/Krita.webp"
         )}
@@ -144,9 +129,7 @@ const Software = () => {
 
           "Visual Studio Code",
 
-          ` A source code editor with intelligent code completion, snippets,
-            syntax highlighting, debugging and Git control that developed by
-            Microsoft re available in Koompi.`,
+          ` Visual Studio Code is a source-code editor developed by Microsoft which includes support for debugging, embedded Git control and GitHub, syntax highlighting, intelligent code completion, snippets, and code refactoring. It is highly customizable, allowing users to change the theme, keyboard shortcuts, preferences, and install extensions that add additional functionality.`,
 
           "img/Apps/VsCode.webp"
         )}
@@ -156,10 +139,7 @@ const Software = () => {
 
           "Popcorn Time",
 
-          ` Popcorn Time is a multi-platform, free software client that
-            includes an integrated media player. A newly application feature
-            in KOOMPI pre-installed to satisfied entertainment needed for all
-            users.`,
+          `Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player. Popcorn Time provide a free "alternative" to subscription-based video streaming services such as Netflix.`,
 
           "img/Apps/PopCornTime.webp"
         )}
@@ -169,10 +149,7 @@ const Software = () => {
 
           "Office 365",
 
-          ` KOOMPI come along with the online MS office suite for desktop,
-            evernote client and other. Accessible to current version desktop
-            application of MS. This feature aim to generate better daily users
-            experience for computing and digital.`,
+          ` Office 365 is a cloud-based subscription service that brings together the best tools for the way people work today. Combining the best-in-class apps like Excel and Outlook with cloud services like OneDrive and Microsoft Teams, Office 365 lets anyone create and share anywhere on any device.`,
 
           "img/Apps/Office365.webp"
         )}
@@ -182,7 +159,7 @@ const Software = () => {
 
           "Kdenlive",
 
-          ` KOOMPI want to offer a wide range of application to support the users need. The users can use Kdenlive for video editing as it is totally free and open source.`,
+          ` Kdenlive is a non-linear video editing software featuring multi-track editing with a timeline. It supports an unlimited number of video and audio tracks and includes tools to create, move, crop and delete video, audio, text and image clips. Kdenlive has a built-in title editor and the ability to add custom effects and transitions.`,
 
           "img/Apps/Kdenlive.webp"
         )}
@@ -192,7 +169,7 @@ const Software = () => {
 
           "Guvcview",
 
-          ` Already per-installed on KOOMPI is a free software webcam application to let users enjoy smoothly webcam experience.`,
+          `Guvcview is a webcam application at providing a simple interface for capturing and viewing video from v4l2 devices.`,
 
           "img/Apps/Guvcview.webp"
         )}
@@ -228,22 +205,24 @@ class Feature extends Component {
                   Everything You Need <br /> Available Here
                 </h2>
                 <p>
-                  KOOMPI handpicked software for everyday computing, net
-                  browsing,
-                  <br /> office suites for productivity, entertainment and more.
-                  We believe
-                  <br /> that the computer should be simple and free; free in
-                  terms of freedom.
-                  <br /> This is a tool which helps the user achieve more and
-                  learn more.
+                The KOOMPI contains a handpicked suite of software for 
+                  <br /> everyday computing, Internet browsing,
+                  <br /> office productivity, entertainment and more.
+                  <br /> 
+                  <br/>
+                  We've compiled the KOOMPI computer software suite to offer a
+                  <br/> user experience providing simplicity, power, privacy and freedom.
+                  <br/>
+                  <br/>
+                  KOOMPI users can achieve more and learn more with less effort and frustration.
                 </p>
-                <a
+                {/* <a
                   href="https://goo.gl/jHSZRL"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Learn More
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="mobile only mobileFeature">

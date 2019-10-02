@@ -125,11 +125,13 @@ class Retailer extends Component {
                   >
                     <h2>Get KOOMPI</h2>
                     <p>
-                      We aim to satisfy your individual needs while offering the
-                      best and most convenient tools for everyone. Take this
-                      opportunity to engage and interact with the KOOMPI
-                      wherever you are. Test drive a new KOOMPI from any of our
-                      retail partners listed below:
+                    We aim to satisfy your individual needs while offering the best and most convenient tools for everyone.
+                    <br/>
+                    <br/>
+                    Take this opportunity to engage and interact with the KOOMPI wherever you are. 
+                    <br/>
+                    <br/>
+                    Test drive a new KOOMPI from any of our retail partners listed below:
                     </p>
                   </div>
                 </div>
