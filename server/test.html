@@ -1,39 +1,4 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const exphbs = require("express-handlebars");
-const path = require("path");
-const nodemailer = require("nodemailer");
-const cors = require("cors");
-const app = express();
-
-app.use(cors("*"));
-
-app.all("/*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-  res.header("Access-Control-Allow-Methods", "GET, POST", "PUT");
-  next();
-});
-
-// parse application/x-www-form-urlencoded
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
-
-// parse application/json
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// View engine setup
-app.engine("handlebars", exphbs());
-app.set("view engine", "handlebars");
-
-app.post("/api/form", (req, res) => {
-  const request = req.body;
-  const output = `
-  <!DOCTYPE html>
+<!DOCTYPE html>
         <html>
           <head>
             <meta name="viewport" content="width=device-width" />
@@ -372,11 +337,7 @@ app.post("/api/form", (req, res) => {
                                   request.phoneNumber
                                 }</b></p>
                                 <p>Payment Option: <b>${request.payment}</b></p>
-                                <p>Color: <b>${
-                                  request.color === "space_gray"
-                                    ? "Space Gray"
-                                    : "Rose Gold"
-                                }</b></p>
+                                <p>Color: <b>${request.color}</b></p>
                                 <p>Message: <b>${request.message}</b></p>
                                 <p>Thanks</p>
                                 <p>Love, KOOMPI TEAM</p>
@@ -414,34 +375,3 @@ app.post("/api/form", (req, res) => {
             </table>
           </body>
         </html>
-  `;
-
-  // Step 1
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    tls: true,
-    secure: true,
-    auth: {
-      user: "amoogli.web@gmail.com",
-      pass: "AmoogliWeb2017*$$$$$"
-    }
-  });
-  // Step 2
-  const mailOptions = {
-    from: "koompi.com@gmail.com", // sender address
-    to: `${req.body.email}, koompi.com@gmail.com`, // list of receivers
-    subject: "Congratulations", // Subject line
-    html: output // html body
-  };
-  // Step 3
-  transporter.sendMail(mailOptions, function(err, info) {
-    if (err) console.log(err);
-    else res.send(info);
-  });
-});
-
-const port = process.env.PORT || 5001;
-
-app.listen(port, () => {
-  console.log(`App listening on port ${port}!`);
-});
