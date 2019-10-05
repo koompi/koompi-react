@@ -14,30 +14,16 @@ const software_image_right = (icon, title, desc, image) => {
       </div>
       <div className="column mobile only">
         <center>
-          <FadeIn height={600} duration={100}>
-            {onload => (
-              <img
-                src={image}
-                className="ui fluid image image-margin-top"
-                alt={title}
-                onload={onload}
-              />
-            )}
-          </FadeIn>
+          <img
+            src={image}
+            className="ui fluid image image-margin-top"
+            alt={title}
+          />
         </center>
       </div>
       <div className="column mobile hidden">
         <center>
-          <FadeIn height={600} duration={100}>
-            {onload => (
-              <img
-                src={image}
-                className="ui fluid image"
-                alt={title}
-                onLoad={onload}
-              />
-            )}
-          </FadeIn>
+          <img src={image} className="ui fluid image" alt={title} />
         </center>
       </div>
     </div>
@@ -47,16 +33,11 @@ const software_image_left = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding feature-margin">
       <div className="column mobile hidden">
-        <FadeIn height={600} duration={100}>
-          {onload => (
-            <img
-              src={image}
-              className="ui fluid image image-margin-top"
-              alt={title}
-              onLoad={onload}
-            />
-          )}
-        </FadeIn>
+        <img
+          src={image}
+          className="ui fluid image image-margin-top"
+          alt={title}
+        />
       </div>
       <div className="column feature-padding-text-right">
         <img src={icon} className="smallFeatureImg" alt={title} />
@@ -205,16 +186,18 @@ class Feature extends Component {
                   Everything You Need <br /> Available Here
                 </h2>
                 <p>
-                The KOOMPI contains a handpicked suite of software for 
+                  The KOOMPI contains a handpicked suite of software for
                   <br /> everyday computing, Internet browsing,
                   <br /> office productivity, entertainment and more.
-                  <br /> 
-                  <br/>
+                  <br />
+                  <br />
                   We've compiled the KOOMPI computer software suite to offer a
-                  <br/> user experience providing simplicity, power, privacy and freedom.
-                  <br/>
-                  <br/>
-                  KOOMPI users can achieve more and learn more with less effort and frustration.
+                  <br /> user experience providing simplicity, power, privacy
+                  and freedom.
+                  <br />
+                  <br />
+                  KOOMPI users can achieve more and learn more with less effort
+                  and frustration.
                 </p>
                 {/* <a
                   href="https://goo.gl/jHSZRL"
@@ -238,7 +221,7 @@ class Feature extends Component {
                 <br /> This is a tool which helps the user achieve more and
                 learn more.
               </p>
-              <p>
+              {/* <p>
                 <i className="fas fa-angle-right featureIcon" />
                 <i className="fas fa-angle-right featureIcon" />
                 <a
@@ -249,7 +232,7 @@ class Feature extends Component {
                 >
                   Learn More
                 </a>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
