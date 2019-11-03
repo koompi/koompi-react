@@ -6,8 +6,14 @@
     <link rel="icon" type="image/svg" href="%PUBLIC_URL%/favicon.ico" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
     />
+
+    <!-- Tell the browser it's a PWA -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <!-- Tell iOS it's a PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
     <meta name="theme-color" content="#000000" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -33,12 +39,20 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
 
     <title>
       Koompi | Our mission is build and provide tools for the next generation of
       engineers, problem solvers and discoverers.
     </title>
+  </head>
+
+  <body>
+    <!-- Root -->
+    <div id="root"></div>
 
     <!-- <!— Global site tag (gtag.js) - Google Analytics —> -->
     <script
@@ -54,6 +68,34 @@
 
       gtag("config", "UA-121852068-1");
     </script>
+
+    <!-- The PWA -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("worker.js")
+            .then(
+              function(registration) {
+                console.log(
+                  "Worker registration successful",
+                  registration.scope
+                );
+              },
+              function(err) {
+                console.log("Worker registration failed", err);
+              }
+            )
+            .catch(function(err) {
+              console.log(err);
+            });
+        });
+      } else {
+        console.log("Service Worker is not supported by browser.");
+      }
+    </script>
+
+    <!-- End The PWA -->
 
     <!-- Facebook -->
 
@@ -86,10 +128,5 @@
       logged_in_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
       logged_out_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
     ></div>
-  </head>
-
-  <body>
-    <!-- Root -->
-    <div id="root"></div>
   </body>
 </html>

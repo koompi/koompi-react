@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const useForm = (callback, validate) => {
+const useForm = () => {
   const [values, setValue] = useState({
     firstName: "",
     lastName: "",
@@ -13,9 +13,7 @@ const useForm = (callback, validate) => {
     message: ""
   });
 
-  const [errors, setErrors] = useState({});
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors] = useState({});
 
   const handlerCange = event => {
     setValue({
@@ -61,7 +59,7 @@ const useForm = (callback, validate) => {
         title: "All fields are required."
       });
     } else {
-      axios.post("http://localhost:5001/api/form", { ...values }).then(
+      axios.post("https://mail.koompi.com/api/form", { ...values }).then(
         Toast.fire({
           type: "success",
           title: "Thank you for your order. Please, check your email."

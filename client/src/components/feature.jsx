@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Helmet } from "react-helmet";
-import FadeIn from "react-lazyload-fadein";
 
 const software_image_right = (icon, title, desc, image) => {
   return (

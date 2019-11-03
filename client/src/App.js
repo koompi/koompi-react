@@ -8,13 +8,22 @@ import About from "./components/about";
 import Privacy from "./components/privacy";
 import Retailer from "./components/retailer";
 import News from "./components/news";
-import preorder from "./components/preoder"
+import preorder from "./components/preoder";
+import AddToHomescreen from "react-add-to-homescreen";
 
 class App extends Component {
+  handleAddToHomescreenClick = () => {
+    alert(`
+      1. Open Share menu
+      2. Tap on "Add to Home Screen" button`);
+  };
   render() {
     window.scrollTo(0, 0);
     return (
       <div className="App">
+        <AddToHomescreen
+          onAddToHomescreenClick={this.handleAddToHomescreenClick}
+        />
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/feature" component={Feature} />
@@ -22,7 +31,7 @@ class App extends Component {
           <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/retailers" component={Retailer} />
           <Route exact path="/news-and-events" component={News} />
-          <Route exact path="/preorder" component={preorder}/>
+          <Route exact path="/preorder" component={preorder} />
           <Redirect to="/" component={Index} />
         </Switch>
       </div>

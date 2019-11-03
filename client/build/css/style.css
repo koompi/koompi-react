@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,600,700");
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap");
+/* * {
+  font-family: "Roboto", sans-serif !important;
+} */
 body {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: "Roboto", monospace;
   font-weight: 300 !important;
 }
 h1,
@@ -10,8 +13,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: "Roboto", monospace;
   font-weight: 600;
+}
+html {
+  width: calc(100% - 0px);
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 
 /* Retailer */
@@ -82,7 +91,8 @@ figure img {
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  background-color: #050507 !important;
+  /* background-color: #050507 !important; */
+  background-color: #252e3c !important;
   margin-bottom: 0px;
 }
 
@@ -295,10 +305,11 @@ p:last-child {
 
 .bannerPage {
   position: relative;
+  background-color: black;
 }
 
 .bannerBackground {
-  background-image: url(../img/koompi-banner-1.webp);
+  background-image: url(../img/Banner-2.jpg);
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
@@ -306,6 +317,7 @@ p:last-child {
   width: 100%;
   background-repeat: no-repeat;
   position: relative;
+  z-index: 1;
   /* position: absolute; */
   /* display: block; */
 }
@@ -436,7 +448,7 @@ h5 {
   font-size: 18px !important;
 }
 .shopHere a p {
-  background-color: black;
+  background-color: #252e3c;
   display: inherit;
   color: #fff;
   padding: 2px 15px;
@@ -513,6 +525,12 @@ h5 {
   box-shadow: none !important;
 }
 
+.grid h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #252e3c;
+}
+
 .feature-padding-text {
   padding: 8% 0% 0% 8% !important;
 }
@@ -546,7 +564,7 @@ h5 {
 }
 
 .featureBannerContent h2 {
-  color: #1a1b1b;
+  color: #252e3c;
 }
 
 .ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
@@ -570,7 +588,8 @@ h5 {
 }
 
 .footerBack {
-  background-color: #2c2c2c;
+  /* background-color: #2c2c2c; */
+  background-color: #252e3c;
   padding: 40px;
   margin-top: 40px;
 }
@@ -613,7 +632,8 @@ h5 {
   line-height: 20px;
 }
 
-textarea {
+.ui.vertical.inverted.menu .item::before {
+  background: rgba(255, 255, 255, 0) !important;
 }
 
 .loadingBack {
@@ -750,6 +770,126 @@ textarea {
   animation-timing-function: linear;
 }
 
+/* .order-margin{
+margin: 18px auto;
+border-radius: 10px 10px 0 0;
+background-color: #252e3c;
+height: 12rem;
+} */
+.order-margin h1 {
+  margin: 18px 0 18px 0;
+}
+.order-margin img {
+  width: 57px;
+  margin-top: 18px;
+}
+/* .middle-form{
+  margin:18px auto !important;
+  width:96%;
+  
+} */
+/* .background-color-middle-form{
+  border-radius: 12px 12px 0 0;
+  background-color: #DCDCDC;
+  
+} */
+
+.background-color-middle-form {
+  margin-top: 40px;
+}
+.submit-button button {
+  margin-bottom: 19px !important ;
+  background-color: #252e3c;
+  color: #fff;
+  text-shadow: none;
+  background-image: none;
+  width: 21%;
+  transition: 0.5s;
+  border-radius: 30px !important;
+  -webkit-border-radius: 30px !important;
+  -moz-border-radius: 30px !important;
+  -ms-border-radius: 30px !important;
+  -o-border-radius: 30px !important;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.p-of-popup p {
+  font-size: 18px !important;
+}
+.p-of-popup {
+  margin: 33px !important;
+}
+.p-of-popup .button {
+  width: 30% !important;
+  background-color: #252e3c !important;
+  border-radius: 30px !important;
+  -webkit-border-radius: 30px !important;
+  -moz-border-radius: 30px !important;
+  -ms-border-radius: 30px !important;
+  -o-border-radius: 30px !important;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  color: #ffffff !important;
+}
+.submit-button .button:hover {
+  background-color: #252e3c94 !important;
+}
+
+/* .modal-popup{
+  background-color: #00b5ad;
+  height: 411px;
+  
+} */
+/* .width-modal{
+  width: 633px;
+  margin: 18px auto;
+} */
+
+.container-form input {
+  background: #e3e2e285 !important;
+  border: 1px solid rgb(240, 240, 240) !important;
+}
+.ui.form label {
+  font-size: 17px !important;
+}
+.ui.form textarea {
+  background: #f0f0f0 none repeat scroll 0% 0% !important;
+  border: 1px solid rgb(240, 240, 240) !important;
+}
+.ui.radio.checkbox {
+  margin-top: 15px !important;
+}
+.ui.checkbox input[type="radio"] {
+  opacity: 1px !important;
+}
+.styles_modal__gNwvD {
+  margin: auto !important;
+  border-radius: 10px 10px 8px 8px;
+  height: auto;
+  width: 612px;
+  background-color: white;
+  -webkit-border-radius: 10px 10px 8px 8px;
+  -moz-border-radius: 10px 10px 8px 8px;
+  -ms-border-radius: 10px 10px 8px 8px;
+  -o-border-radius: 10px 10px 8px 8px;
+}
+.image-popup.ui.centered.small.image img {
+  width: 370px !important;
+  margin-top: -46px;
+}
+
+.swing-enter-done {
+  display: block !important;
+  width: 666px !important;
+  height: 411px !important;
+}
+
 @keyframes bounceIn {
   0% {
     opacity: 0;
@@ -828,9 +968,16 @@ textarea {
 }
 
 .privacy a {
-  color: #898989 !important;
+  color: #9b9b9b !important;
   margin-left: 20px;
 }
+
+@media screen and (max-width: 800px) {
+  .privacy {
+    display: none;
+  }
+}
+
 .featureBannerContent p {
   font-size: 18px;
   color: #2d3133 !important;
@@ -839,7 +986,7 @@ textarea {
 .featureBannerContent p a {
   color: #f1f1f1 !important;
   margin-left: 5px;
-  background-color: #1a1b1b;
+  background-color: #252e3c;
   padding: 7px 16px;
   border-radius: 4px;
   font-weight: 300 !important;
@@ -915,7 +1062,7 @@ p {
   box-shadow: 0 0 40px 0 rgba(197, 197, 197, 0.85);
   border-radius: 5px;
   transition: 0.3s;
-  height: 24vw;
+  /* height: 24vw; */
   cursor: pointer;
 }
 .shadowEvent:hover {
@@ -990,6 +1137,181 @@ p {
 .ui.modal > .header:not(.ui) {
   color: #333 !important;
 }
+.styles_closeButton__20ID4 {
+  cursor: pointer;
+}
+
+.menu-logo {
+  width: 40%;
+  padding-left: 1rem;
+}
+.ui.secondary.menu {
+  margin: 0px;
+  padding: 10px 0px;
+}
+.toggleicon {
+  margin-left: -38px;
+  width: 22px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+.ui.labeled.icon.menu .item {
+  text-align: left !important;
+}
+.koompi_logo_mobile {
+  width: 55%;
+  padding: 10px 0px;
+  position: relative;
+  left: -10px;
+}
+
+.menu_close_icon {
+  margin-left: -35px;
+  width: 18px;
+  margin-top: 10px;
+}
+
+.ui.visible.left.overlay.sidebar {
+  width: 100% !important;
+  background-color: #000005bd;
+}
+
+.navbar_slider {
+  position: fixed;
+  top: 0;
+  width: 70% !important;
+  background-color: #252e3c;
+  height: 100%;
+}
+.image-popup {
+  background-image: url("/img/Banner-2.jpg");
+  height: 15vw;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px 8px 0px 0px;
+  background-repeat: no-repeat;
+}
+
+.image-popup h1 {
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+  top: 3.9vw;
+}
+
+/* .image-popup img {
+  width: 100% !important;
+  margin: 0px !important;
+  border-radius: 9px 9px 0px 0px !important;
+  -webkit-border-radius: 9px 9px 0px 0px !important;
+  -moz-border-radius: 9px 9px 0px 0px !important;
+  -ms-border-radius: 9px 9px 0px 0px !important;
+  -o-border-radius: 9px 9px 0px 0px !important;
+} */
+.koompi_price {
+  position: absolute;
+  color: #fff;
+  z-index: 100;
+  left: 20px;
+  top: 8px;
+}
+.koompi_price h3 {
+  font-size: 35px;
+  font-weight: bold;
+}
+.styles_modal__gNwvD {
+  padding: 0px !important;
+}
+.styles_closeIcon__1QwbI {
+  fill: #fff !important;
+}
+
+/* 3 image under preorder */
+.fab {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.fas {
+  font-family: "Font Awesome 5 Free" !important;
+}
+
+.newsDetail p {
+  color: #95a5a6;
+  size: 10px;
+}
+.newsDetail h3 {
+  color: #95a5a6;
+  size: 10px;
+  font-weight: 500;
+}
+.backgroundEvent {
+  padding: 0px 15px 20px 15px !important;
+  color: #fff !important;
+  border-radius: 0px 0px 5px 5px;
+}
+.backgroundEvent h3 {
+  color: #063e63;
+  padding-top: 20px;
+}
+.backgroundEvent p {
+  color: #616161;
+}
+.badge {
+  background-color: #063e63;
+  display: inline-block;
+  padding: 0px 10px;
+  border-radius: 4px;
+  color: #fff !important;
+  font-size: 13px !important;
+}
+p {
+  font-size: 18px !important;
+}
+.order-banner {
+  background-image: url(../img/Banner-2.jpg);
+  height: 438px;
+  background-size: cover;
+  background-position: center;
+  width: 40%;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  margin: 0px auto;
+}
+.banner-order-text h1 {
+  margin: 100px auto;
+  color: white;
+}
+.order-bannerTitle {
+  text-transform: uppercase;
+  margin: 0px;
+  font-size: 50px;
+  position: relative;
+  top: -50px;
+}
+.order-banner .bannerText {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.styles_overlay__CLSq- {
+  background: rgba(50, 49, 49, 0.74);
+  display: flex;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  z-index: 1000;
+  padding: 25px !important;
+}
 
 /* .aboutPadding {
     padding-right: 35% !important;
@@ -1022,7 +1344,7 @@ p {
 
   .performancePadding p {
     color: #f5f5f5 !important;
-    font-size: 17px !important;
+    font-size: 18px !important;
   }
 
   .performancePadding h5 {
@@ -1213,7 +1535,7 @@ p {
 
   .performancePadding p {
     color: #f5f5f5 !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
 
   .beautyDetailDesc {
@@ -1274,6 +1596,30 @@ p {
     border-radius: 5px;
     transition: 0.3s;
     height: auto !important;
+  }
+
+  .image-popup {
+    background-image: url("/img/Banner-2.jpg");
+    height: 35vw;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px 8px 0px 0px;
+    background-repeat: no-repeat;
+  }
+  .koompi_price h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .image-popup h1 {
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    top: 10vw;
+    font-size: 18px;
+  }
+  .p-of-popup .button {
+    width: 40% !important;
   }
 }
 
@@ -1437,9 +1783,42 @@ p {
   .footerBack {
     margin-top: 45px !important;
   }
+
+  .image-popup {
+    background-image: url("/img/Banner-2.jpg");
+    height: 40vw;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px 8px 0px 0px;
+    background-repeat: no-repeat;
+  }
+  .order-banner {
+    width: 100%;
+    height: 66vw !important;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .order-bannerTitle {
+    text-transform: uppercase;
+    margin: 0px !important;
+    font-size: 35px;
+    text-align: center;
+    position: relative;
+    top: -30px;
+  }
+  .submit-button button {
+    width: 60%;
+    position: relative;
+    top: 15px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
+  .p-of-popup .button {
+    width: 80% !important;
+  }
   .linkColor {
     font-weight: 600 !important;
     color: #68757d !important;
@@ -1593,7 +1972,7 @@ p {
   .bannerText {
     text-align: center;
     position: absolute;
-    top: 25%;
+    top: 30%;
     left: 35%;
     transform: translate(-24%, -50%);
     color: white;
@@ -1707,4 +2086,28 @@ p {
   [class*="widescreen or lower hidden"] {
     display: none !important;
   }
+}
+
+/* responsive sidebar */
+
+@media screen and (max-width: 800px) {
+  .ui.secondary.menu.big-navbar-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .order-banner {
+    width: 100%;
+    height: 156px;
+  }
+}
+
+.animating.ui.overlay.sidebar,
+.ui.visible.overlay.sidebar {
+  -webkit-transition: transform 0.05s ease;
+  transition: transform 0.05s ease;
+  -moz-transition: transform 0.05s ease;
+  -ms-transition: transform 0.05s ease;
+  -o-transition: transform 0.05s ease;
 }

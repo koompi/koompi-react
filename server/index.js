@@ -8,23 +8,27 @@ const app = express();
 
 app.use(cors("*"));
 
-app.all("/*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-  res.header("Access-Control-Allow-Methods", "GET, POST", "PUT");
-  next();
-});
+const corsMiddleware = function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "178.128.217.213"); //replace localhost with actual host
+  res.header(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, PUT, PATCH, POST, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, X-Requested-With, Authorization"
+  );
 
-// parse application/x-www-form-urlencoded
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
+  next();
+};
+
+//app.use(corsMiddleware);
 
 // parse application/json
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.get("/hello", (req, res) => res.send("Hello World!"));
 
 // View engine setup
 app.engine("handlebars", exphbs());
@@ -423,7 +427,7 @@ app.post("/api/form", (req, res) => {
     secure: true,
     auth: {
       user: "amoogli.web@gmail.com",
-      pass: "AmoogliWeb2017*$$$$$"
+      pass: "AmoogliWeb2017*$$$$$$"
     }
   });
   // Step 2
@@ -440,7 +444,7 @@ app.post("/api/form", (req, res) => {
   });
 });
 
-const port = process.env.PORT || 5001;
+const port = 5005;
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);

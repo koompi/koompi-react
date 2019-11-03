@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useForm from "./useForm";
 import validate from "./validateLogin";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import Swal from "sweetalert2";
 
 const Input = ({ name, label, value, onChange, errors, type }) => {
   return (
@@ -162,6 +161,12 @@ function PreOrder() {
                     checked={values.payment === "WING"}
                     onChange={handldePaymet}
                     label="WING"
+                  />
+                  <InputRadio
+                    value="PiPay"
+                    checked={values.payment === "PiPay"}
+                    onChange={handldePaymet}
+                    label="PI PAY"
                   />
                   <InputRadio
                     value="Other"

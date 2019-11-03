@@ -24,12 +24,14 @@ export class Navbar extends Component {
             style={{}}
           >
             <div className="navbar_slider">
-              <img
-                src="/img/koompi-logo-w-01.svg"
-                className="koompi_logo_mobile"
-                alt="koompi"
-              />
-              <Link to="/" className="item">
+              <Link to="/home">
+                <img
+                  src="/img/koompi-logo-w-01.svg"
+                  className="koompi_logo_mobile"
+                  alt="koompi"
+                />
+              </Link>
+              <Link to="/feature" className="item">
                 Feature
               </Link>
               <Link to="/about-us" className="item">

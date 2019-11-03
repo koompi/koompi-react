@@ -1,8 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
-import FadeIn from "react-lazyload-fadein";
 import Popup from "./popup";
 
 const Banner = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import { Code } from "react-content-loader";
+import ContentLoader from "react-content-loader";
 import { Helmet } from "react-helmet";
 
 class Retailer extends Component {
@@ -86,7 +86,19 @@ class Retailer extends Component {
     for (let index = 0; index < 10; index++) {
       loading.push(
         <div className="column blur">
-          <Code />
+          <div className="image-card">
+            <ContentLoader
+              height={220}
+              width={160}
+              speed={2}
+              primaryColor="#f3f3f3"
+              secondaryColor="#ecebeb"
+            >
+              <rect x="-1" y="-7" rx="0" ry="0" width="164" height="100" />
+              <rect x="21" y="105" rx="0" ry="0" width="118" height="12" />
+              <rect x="49" y="126" rx="0" ry="0" width="61" height="14" />
+            </ContentLoader>
+          </div>
         </div>
       );
     }
@@ -125,13 +137,16 @@ class Retailer extends Component {
                   >
                     <h2>Get KOOMPI</h2>
                     <p>
-                    We aim to satisfy your individual needs while offering the best and most convenient tools for everyone.
-                    <br/>
-                    <br/>
-                    Take this opportunity to engage and interact with the KOOMPI wherever you are. 
-                    <br/>
-                    <br/>
-                    Test drive a new KOOMPI from any of our retail partners listed below:
+                      We aim to satisfy your individual needs while offering the
+                      best and most convenient tools for everyone.
+                      <br />
+                      <br />
+                      Take this opportunity to engage and interact with the
+                      KOOMPI wherever you are.
+                      <br />
+                      <br />
+                      Test drive a new KOOMPI from any of our retail partners
+                      listed below:
                     </p>
                   </div>
                 </div>
