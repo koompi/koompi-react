@@ -1,24 +1,22 @@
-import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { Component } from "react"
+import { NavLink, Link } from "react-router-dom"
 export class Navbar extends Component {
   state = {
     toggleclick: false
-  };
+  }
   setTogglestate = () => {
     this.setState({
       toggleclick: !this.state.toggleclick
-    });
-  };
+    })
+  }
   render() {
     return (
       <React.Fragment>
-        <div
-          className={this.state.toggleclick ? "phone-background-navbar" : ""}
-        >
+        <div className={this.state.toggleclick ? "phone-background-navbar" : ""}>
           <div
             className={this.state.toggleclick ? "mobile_background" : ""}
             onClick={() => {
-              this.setState({ toggleclick: false });
+              this.setState({ toggleclick: false })
             }}
           />
 
@@ -94,11 +92,7 @@ export class Navbar extends Component {
             </div>
             <Link to="/home">
               <center>
-                <img
-                  className="menu-logo"
-                  src="img/koompi-logo-w-01.svg"
-                  alt=""
-                />
+                <img className="menu-logo" src="img/koompi-logo-w-01.svg" alt="" />
               </center>
             </Link>
             {/* <div className="left menu">
@@ -175,8 +169,8 @@ export class Navbar extends Component {
           </div>
         </div>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Navbar;
+export default Navbar

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
-import ContentLoader from "react-content-loader";
-import { Helmet } from "react-helmet";
+import React, { Component } from "react"
+import Navbar from "./navbar"
+import Footer from "./footer"
+import ContentLoader from "react-content-loader"
+import { Helmet } from "react-helmet"
 
 class Retailer extends Component {
   state = {
@@ -25,15 +25,13 @@ class Retailer extends Component {
         id: 2,
         logo: "img/retailers/ufo-logo.webp",
         name: "UFO Store",
-        location:
-          "https://www.facebook.com/pg/ufostorekh/about/?ref=page_internal"
+        location: "https://www.facebook.com/pg/ufostorekh/about/?ref=page_internal"
       },
       {
         id: 3,
         logo: "img/retailers/E-shop-cam.webp",
         name: "E-Shop Cambodia",
-        location:
-          "https://www.facebook.com/pg/eshopcambo/about/?ref=page_internal"
+        location: "https://www.facebook.com/pg/eshopcambo/about/?ref=page_internal"
       },
       {
         id: 5,
@@ -46,15 +44,13 @@ class Retailer extends Component {
         id: 6,
         logo: "img/retailers/BCS.webp",
         name: "BCS Computer",
-        location:
-          "https://www.facebook.com/pg/bcscomputer1/about/?ref=page_internal"
+        location: "https://www.facebook.com/pg/bcscomputer1/about/?ref=page_internal"
       },
       {
         id: 7,
         logo: "img/retailers/One-Gears.webp",
         name: "One Gears",
-        location:
-          "https://www.facebook.com/pg/onegears/about/?ref=page_internal"
+        location: "https://www.facebook.com/pg/onegears/about/?ref=page_internal"
       },
       {
         id: 8,
@@ -66,8 +62,7 @@ class Retailer extends Component {
         id: 9,
         logo: "img/retailers/K4.webp",
         name: "KFOUR",
-        location:
-          "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
+        location: "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
       },
 
       {
@@ -79,10 +74,10 @@ class Retailer extends Component {
       }
     ],
     isLoading: true
-  };
+  }
 
   displayLoading = () => {
-    let loading = [];
+    let loading = []
     for (let index = 0; index < 10; index++) {
       loading.push(
         <div className="column blur">
@@ -100,15 +95,15 @@ class Retailer extends Component {
             </ContentLoader>
           </div>
         </div>
-      );
+      )
     }
-    return loading;
-  };
+    return loading
+  }
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 500);
+      this.setState({ isLoading: false })
+    }, 500)
   }
 
   render() {
@@ -131,22 +126,19 @@ class Retailer extends Component {
             <div className="ui divided grid">
               <div className="ui stackable two column grid">
                 <div className="column ten wide">
-                  <div
-                    className="retailerPadding"
-                    style={{ paddingTop: "10%" }}
-                  >
+                  <div className="retailerPadding" style={{ paddingTop: "10%" }}>
                     <h2>Get KOOMPI</h2>
                     <p>
-                      We aim to satisfy your individual needs while offering the
-                      best and most convenient tools for everyone.
+                      We aim to satisfy your individual needs while offering the best
+                      and most convenient tools for everyone.
                       <br />
                       <br />
-                      Take this opportunity to engage and interact with the
-                      KOOMPI wherever you are.
+                      Take this opportunity to engage and interact with the KOOMPI
+                      wherever you are.
                       <br />
                       <br />
-                      Test drive a new KOOMPI from any of our retail partners
-                      listed below:
+                      Test drive a new KOOMPI from any of our retail partners listed
+                      below:
                     </p>
                   </div>
                 </div>
@@ -167,7 +159,7 @@ class Retailer extends Component {
             <div className="ui stackable four column grid">
               {this.state.isLoading
                 ? this.displayLoading()
-                : this.state.data.map(data => (
+                : this.state.data.map((data) => (
                     <div className="column" key={data.id}>
                       <div className="image-card">
                         <img
@@ -193,8 +185,8 @@ class Retailer extends Component {
         </div>
         <Footer />
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Retailer;
+export default Retailer

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 class MemberState extends Component {
   state = {
@@ -197,14 +197,14 @@ class MemberState extends Component {
         cate: 6
       }
     ]
-  };
+  }
   render() {
-    const business_dev = this.state.data.filter(user => user.cate === 1);
-    const software_team = this.state.data.filter(user => user.cate === 2);
-    const hardware_team = this.state.data.filter(user => user.cate === 3);
-    const steam_team = this.state.data.filter(user => user.cate === 4);
-    const sale_team = this.state.data.filter(user => user.cate === 5);
-    const communication_team = this.state.data.filter(user => user.cate === 6);
+    const business_dev = this.state.data.filter((user) => user.cate === 1)
+    const software_team = this.state.data.filter((user) => user.cate === 2)
+    const hardware_team = this.state.data.filter((user) => user.cate === 3)
+    const steam_team = this.state.data.filter((user) => user.cate === 4)
+    const sale_team = this.state.data.filter((user) => user.cate === 5)
+    const communication_team = this.state.data.filter((user) => user.cate === 6)
     return (
       <div className="ui container paddingAbout">
         <h1 className="memberTitle">Team Member</h1>
@@ -212,7 +212,7 @@ class MemberState extends Component {
         <div className="ui grid">
           <h2>Business Development</h2>
           <div className="doubling five column row">
-            {business_dev.map(info => (
+            {business_dev.map((info) => (
               <div className="column" key={info.id}>
                 <div>
                   <center>
@@ -233,7 +233,7 @@ class MemberState extends Component {
         <div className="ui grid">
           <h2>Hardware Teams</h2>
           <div className="doubling five column row">
-            {hardware_team.map(info => (
+            {hardware_team.map((info) => (
               <div className="column" key={info.id}>
                 <div>
                   <center>
@@ -254,7 +254,7 @@ class MemberState extends Component {
         <div className="ui grid">
           <h2>KOOMPI FORCE</h2>
           <div className="doubling five column row">
-            {steam_team.map(info => (
+            {steam_team.map((info) => (
               <div className="column" key={info.id}>
                 <div>
                   <center>
@@ -275,7 +275,7 @@ class MemberState extends Component {
         <div className="ui grid">
           <h2>Sales and Supplier Relation</h2>
           <div className="doubling five column row">
-            {sale_team.map(info => (
+            {sale_team.map((info) => (
               <div className="column" key={info.id}>
                 <div>
                   <center>
@@ -296,7 +296,7 @@ class MemberState extends Component {
         <div className="ui grid">
           <h2>Communication and Marketing</h2>
           <div className="doubling five column row">
-            {communication_team.map(info => (
+            {communication_team.map((info) => (
               <div className="column" key={info.id}>
                 <div>
                   <center>
@@ -317,7 +317,7 @@ class MemberState extends Component {
         <div className="ui grid">
           <h2>Software Teams</h2>
           <div className="doubling five column row">
-            {software_team.map(info => (
+            {software_team.map((info) => (
               <div className="column" key={info.id}>
                 <div>
                   <center>
@@ -335,8 +335,8 @@ class MemberState extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default MemberState;
+export default MemberState

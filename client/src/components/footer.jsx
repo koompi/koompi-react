@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   return (
@@ -55,7 +55,7 @@ const Footer = () => {
         </a>
       </center>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import Footer from "./footer";
-import Navbar from "./navbar";
-import { Helmet } from "react-helmet";
-import axios from "axios";
-import { Modal, Image } from "semantic-ui-react";
-import ContentLoader from "react-content-loader";
+import React, { Component } from "react"
+import Footer from "./footer"
+import Navbar from "./navbar"
+import { Helmet } from "react-helmet"
+import axios from "axios"
+import { Modal, Image } from "semantic-ui-react"
+import ContentLoader from "react-content-loader"
 
-import parse from "html-react-parser";
+import parse from "html-react-parser"
 
 class News extends Component {
   state = {
@@ -16,37 +16,37 @@ class News extends Component {
     title: "",
     content: "",
     thumbnail: ""
-  };
+  }
 
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-    this.setState({ closeOnEscape, closeOnDimmerClick, open: true });
-  };
+    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+  }
 
-  close = () => this.setState({ open: false });
+  close = () => this.setState({ open: false })
 
   displayData = ({ ...data }) => {
-    this.setState({ open: true });
-    this.setState({ title: data.title });
-    this.setState({ content: data.content });
-    this.setState({ thumbnail: data.thumbnail });
-  };
+    this.setState({ open: true })
+    this.setState({ title: data.title })
+    this.setState({ content: data.content })
+    this.setState({ thumbnail: data.thumbnail })
+  }
 
   card = () => {
-    return <div>Hello World</div>;
-  };
+    return <div>Hello World</div>
+  }
 
   componentDidMount() {
     axios
       .get(
         "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/koompi"
       )
-      .then(res => {
-        this.setState({ data: res.data.items });
-      });
+      .then((res) => {
+        this.setState({ data: res.data.items })
+      })
   }
 
   displayLoading = () => {
-    let loading = [];
+    let loading = []
     for (let index = 0; index < 10; index++) {
       loading.push(
         <div className="column blur">
@@ -72,13 +72,13 @@ class News extends Component {
             </ContentLoader>
           </div>
         </div>
-      );
+      )
     }
-    return loading;
-  };
+    return loading
+  }
 
   render() {
-    const { open, closeOnEscape, closeOnDimmerClick } = this.state;
+    const { open, closeOnEscape, closeOnDimmerClick } = this.state
     return (
       <React.Fragment>
         <Navbar />
@@ -112,13 +112,13 @@ class News extends Component {
             {!this.state.data ? (
               <React.Fragment>{this.displayLoading()}</React.Fragment>
             ) : (
-              this.state.data.map(post => {
+              this.state.data.map((post) => {
                 return (
                   <div
                     className="column blur"
                     key={post.pubDate}
-                    onClick={e => {
-                      this.displayData({ ...post });
+                    onClick={(e) => {
+                      this.displayData({ ...post })
                     }}
                   >
                     <center className="shadowEvent">
@@ -145,7 +145,7 @@ class News extends Component {
                       </div>
                     </center>
                   </div>
-                );
+                )
               })
             )}
           </div>
@@ -153,8 +153,8 @@ class News extends Component {
         {this.state.open ? this.card() : ""}
         <Footer />
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default News;
+export default News

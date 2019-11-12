@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
-import { Helmet } from "react-helmet";
+import React, { Component } from "react"
+import Navbar from "./navbar"
+import Footer from "./footer"
+import { Helmet } from "react-helmet"
 
 const software_image_right = (icon, title, desc, image) => {
   return (
@@ -13,11 +13,7 @@ const software_image_right = (icon, title, desc, image) => {
       </div>
       <div className="column mobile only">
         <center>
-          <img
-            src={image}
-            className="ui fluid image image-margin-top"
-            alt={title}
-          />
+          <img src={image} className="ui fluid image image-margin-top" alt={title} />
         </center>
       </div>
       <div className="column mobile hidden">
@@ -26,17 +22,13 @@ const software_image_right = (icon, title, desc, image) => {
         </center>
       </div>
     </div>
-  );
-};
+  )
+}
 const software_image_left = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding feature-margin">
       <div className="column mobile hidden">
-        <img
-          src={image}
-          className="ui fluid image image-margin-top"
-          alt={title}
-        />
+        <img src={image} className="ui fluid image image-margin-top" alt={title} />
       </div>
       <div className="column feature-padding-text-right">
         <img src={icon} className="smallFeatureImg" alt={title} />
@@ -49,8 +41,8 @@ const software_image_left = (icon, title, desc, image) => {
         </center>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Software = () => {
   return (
@@ -155,13 +147,13 @@ const Software = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 class Feature extends Component {
   state = {
     data: []
-  };
+  }
   render() {
     return (
       <React.Fragment>
@@ -188,12 +180,12 @@ class Feature extends Component {
                   <br />
                   <br />
                   We've compiled the KOOMPI computer software suite to offer a
-                  <br /> user experience providing simplicity, power, privacy
-                  and freedom.
+                  <br /> user experience providing simplicity, power, privacy and
+                  freedom.
                   <br />
                   <br />
-                  KOOMPI users can achieve more and learn more with less effort
-                  and frustration.
+                  KOOMPI users can achieve more and learn more with less effort and
+                  frustration.
                 </p>
                 {/* <a
                   href="https://goo.gl/jHSZRL"
@@ -210,12 +202,12 @@ class Feature extends Component {
               </h2>
               <p>
                 KOOMPI handpicked software for everyday computing, net browsing,
-                <br /> office suites for productivity, entertainment and more.
-                We believe
-                <br /> that the computer should be simple and free; free in
-                terms of freedom.
-                <br /> This is a tool which helps the user achieve more and
-                learn more.
+                <br /> office suites for productivity, entertainment and more. We
+                believe
+                <br /> that the computer should be simple and free; free in terms of
+                freedom.
+                <br /> This is a tool which helps the user achieve more and learn
+                more.
               </p>
               {/* <p>
                 <i className="fas fa-angle-right featureIcon" />
@@ -235,8 +227,8 @@ class Feature extends Component {
         {Software()}
         <Footer />
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Feature;
+export default Feature

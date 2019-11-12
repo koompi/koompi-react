@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
-import { Link } from "react-router-dom";
-import Popup from "./popup";
+import React, { Component } from "react"
+import Navbar from "./navbar"
+import Footer from "./footer"
+import { Link } from "react-router-dom"
+import Popup from "./popup"
 
 const Banner = () => {
   return (
@@ -17,15 +17,15 @@ const Banner = () => {
             </Link>
           </h6>
           <p>
-            KOOMPI is a practical and affordable entry level notebook computer
-            able to perform all the daily tasks required for work and school...
+            KOOMPI is a practical and affordable entry level notebook computer able
+            to perform all the daily tasks required for work and school...
             <a href="/about-us">Read More</a>
           </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Shapelines = () => {
   return (
@@ -99,8 +99,8 @@ const Shapelines = () => {
         />
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
 const Screen = () => {
   return (
@@ -113,9 +113,9 @@ const Screen = () => {
                 <h4 className="smallTitle">Screen</h4>
                 <h2 className="fontWidth">FHD IPS Anti-glare Panel</h2>
                 <p className="websiteContent">
-                  KOOMPI works out-of-the-box with a full suite of
-                  custom-selected software packages needed for everyday
-                  computing. Check out our features for the fine details.
+                  KOOMPI works out-of-the-box with a full suite of custom-selected
+                  software packages needed for everyday computing. Check out our
+                  features for the fine details.
                 </p>
                 <div className="ui grid beautyDetail">
                   <div className="two column row">
@@ -132,9 +132,7 @@ const Screen = () => {
                       <h3 className="beautyDetailDesc">1920 x 1080 </h3>
                     </div>
                     <div className="column">
-                      <h5 className="beautyDetailTitle">
-                        Screen to body ratio
-                      </h5>
+                      <h5 className="beautyDetailTitle">Screen to body ratio</h5>
                       <h3 className="beautyDetailDesc">73.44%</h3>
                     </div>
                   </div>
@@ -152,8 +150,8 @@ const Screen = () => {
         </div>
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
 const Performance = () => {
   return (
@@ -179,20 +177,20 @@ const Performance = () => {
               <div className="performancePadding">
                 <h5>Unprecedented Performance</h5>
                 <p>
-                  KOOMPI, the sleek and lightweight next-generation productivity
-                  tool offering an experience next to none, combining modest
-                  hardware with powerful open-source software.
+                  KOOMPI, the sleek and lightweight next-generation productivity tool
+                  offering an experience next to none, combining modest hardware with
+                  powerful open-source software.
                   <br />
                   <br />
-                  As a multi-purpose enabler, the KOOMPI seeks to empower the
-                  next generation of Cambodian youth as the creators and
-                  innovators of tomorrow.
+                  As a multi-purpose enabler, the KOOMPI seeks to empower the next
+                  generation of Cambodian youth as the creators and innovators of
+                  tomorrow.
                   <br />
                   <br />
-                  The KOOMPI offers a pre-packaged functional software
-                  environment that allows users to focus on the challenges of
-                  the task at hand rather than the tools. Powerful yet easy and
-                  light enough to carry almost anywhere.
+                  The KOOMPI offers a pre-packaged functional software environment
+                  that allows users to focus on the challenges of the task at hand
+                  rather than the tools. Powerful yet easy and light enough to carry
+                  almost anywhere.
                 </p>
                 <div className="ui two column divided grid">
                   <div className="row performanceRemoveMargin">
@@ -252,8 +250,8 @@ const Performance = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Battery = () => {
   return (
@@ -266,8 +264,8 @@ const Battery = () => {
                 <h4 className="smallTitle">BATTERY</h4>
                 <h2 className="fontWidth">Fast Charging, Longer life</h2>
                 <p className="websiteContent">
-                  Designed with an ultra thin high performance 5000mAh battery
-                  that will last for up to 7 hours
+                  Designed with an ultra thin high performance 5000mAh battery that
+                  will last for up to 7 hours
                 </p>
                 <div className="ui grid beautyDetail">
                   <div className="two column row">
@@ -294,11 +292,11 @@ const Battery = () => {
         </div>
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
 function demoAsyncCall() {
-  return new Promise(resolve => setTimeout(() => resolve(), 2000));
+  return new Promise((resolve) => setTimeout(() => resolve(), 2000))
 }
 
 class Index extends Component {
@@ -306,10 +304,10 @@ class Index extends Component {
     data: "",
     loading: true,
     open: true
-  };
+  }
 
   componentDidMount() {
-    demoAsyncCall().then(() => this.setState({ loading: false }));
+    demoAsyncCall().then(() => this.setState({ loading: false }))
   }
 
   render() {
@@ -341,8 +339,8 @@ class Index extends Component {
         {Battery()}
         <Footer />
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Index;
+export default Index

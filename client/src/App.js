@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React, { Component } from "react"
+import { Route, Switch, Redirect } from "react-router-dom"
 // Components
-import Index from "./components/index";
-import Feature from "./components/feature";
+import Index from "./components/index"
+import Feature from "./components/feature"
 // import Error from './components/error';
-import About from "./components/about";
-import Privacy from "./components/privacy";
-import Retailer from "./components/retailer";
-import News from "./components/news";
-import preorder from "./components/preoder";
+import About from "./components/about"
+import Privacy from "./components/privacy"
+import Retailer from "./components/retailer"
+import News from "./components/news"
+import preorder from "./components/preoder"
 
 class App extends Component {
   render() {
-    window.scrollTo(0, 0);
-    var deferredPrompt;
+    window.scrollTo(0, 0)
+    var deferredPrompt
 
     window.addEventListener("beforeinstallprompt", function(e) {
       e.preventDefault();
 
       // Stash the event so it can be triggered later.
-      deferredPrompt = e;
+      deferredPrompt = e
 
-      return false;
-    });
+      return false
+    })
 
     return (
       <div className="App">
@@ -37,8 +37,8 @@ class App extends Component {
           <Redirect to="/" component={Index} />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

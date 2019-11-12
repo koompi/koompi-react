@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-import Modal from "react-responsive-modal";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import Modal from "react-responsive-modal"
+import { Link } from "react-router-dom"
 
-function Popup() {
-  const [popup, setPopup] = useState({ open: true });
+function popup() {
+  const [Popup, setPopup] = useState({ open: true })
   const onCloseModal = () => {
-    setPopup({ open: false });
-  };
-  const { open } = popup;
+    setPopup({ open: false })
+  }
+  const { open } = Popup
   return (
     <div>
-      <Modal
-        className="modal_popup"
-        type="swing"
-        open={open}
-        onClose={onCloseModal}
-      >
+      <Modal className="modal_popup" type="swing" open={open} onClose={onCloseModal}>
         <div className="image-popup">
           <center>
             <h1>KOOMPI</h1>
@@ -40,7 +35,7 @@ function Popup() {
         </div>
       </Modal>
     </div>
-  );
+  )
 }
 
 export default Popup;
