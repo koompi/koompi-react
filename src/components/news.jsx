@@ -4,7 +4,7 @@ import Navbar from "./navbar";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import { Modal, Image } from "semantic-ui-react";
-import { Facebook } from "react-content-loader";
+import ContentLoader from "react-content-loader";
 
 import parse from "html-react-parser";
 
@@ -38,7 +38,7 @@ class News extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@koompi"
+        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/koompi"
       )
       .then(res => {
         this.setState({ data: res.data.items });
@@ -50,7 +50,27 @@ class News extends Component {
     for (let index = 0; index < 10; index++) {
       loading.push(
         <div className="column blur">
-          <Facebook />
+          <div
+            style={{
+              backgroundColor: "#c7c7c775",
+              padding: "10px",
+              borderRadius: "5px"
+            }}
+          >
+            <ContentLoader
+              height={357}
+              width={447}
+              speed={2}
+              primaryColor="#f3f3f3"
+              secondaryColor="#ecebeb"
+            >
+              <rect x="-16" y="-3" rx="0" ry="0" width="483" height="98" />
+              <rect x="30" y="110" rx="0" ry="0" width="119" height="25" />
+              <rect x="30" y="144" rx="0" ry="0" width="384" height="27" />
+              <rect x="31" y="183" rx="0" ry="0" width="386" height="123" />
+              <rect x="29" y="321" rx="0" ry="0" width="110" height="16" />
+            </ContentLoader>
+          </div>
         </div>
       );
     }
@@ -64,7 +84,7 @@ class News extends Component {
         <Navbar />
         {console.log(this.state.data)}
         <Helmet>
-          <title>KOOMPI | News and Events</title>
+          <title>News and Events | Koompi Kosmos</title>
           <meta
             name="keywords"
             content="koompi news, news and events koompi, koompi news and events, koompi, smallworld venture"
@@ -85,11 +105,11 @@ class News extends Component {
             <p> {parse(this.state.content)} </p>
           </Modal.Content>
         </Modal>
-        <div className="ui container">
+        <div className="ui container ">
           <center>
             <h1 className="kosmosConentNews">News and Events</h1>
           </center>
-          <div className="ui stackable three column grid">
+          <div className="ui stackable three column equal height stretched grid">
             {!this.state.data ? (
               <React.Fragment>{this.displayLoading()}</React.Fragment>
             ) : (

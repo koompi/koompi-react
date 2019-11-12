@@ -3,27 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
-    "express": "^4.16.4",
-    "helmet": "^3.15.1",
-    "html-react-parser": "^0.7.0",
+    "@sweetalert/with-react": "^0.1.1",
+    "axios": "^0.18.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "html-react-parser": "^0.7.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.3",
+    "react": "^16.11.0",
     "react-add-to-homescreen": "^1.1.0",
-    "react-content-loader": "^4.2.1",
-    "react-dom": "^16.8.3",
+    "react-animated-modal": "^1.1.1",
+    "react-awesome-modal": "^2.0.5",
+    "react-content-loader": "^4.3.2",
+    "react-dom": "^16.11.0",
     "react-helmet": "^5.2.0",
-    "react-lazyload-fadein": "^1.1.0",
+    "react-modal-image": "^2.5.0",
+    "react-responsive-modal": "^4.0.1",
     "react-router-dom": "^4.3.1",
+    "react-router-sitemap": "^1.2.0",
     "react-scripts": "2.1.5",
-    "react-spinners": "^0.5.4",
-    "semantic-ui-react": "^0.86.0"
+    "react-spinners": "^0.5.12",
+    "rodal": "^1.7.0",
+    "semantic-ui-react": "^0.86.0",
+    "semantic-ui-react-form-validator": "^1.0.2",
+    "sweetalert-react": "^0.4.11",
+    "sweetalert2": "^8.19.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sitemap": "./node_modules/.bin/babel-node src/config/sitemap.js"
   },
   "browserslist": [
     ">0.2%",
@@ -32,6 +42,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "prettier": "^1.19.1"
   }
 }

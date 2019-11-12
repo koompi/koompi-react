@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
-import FadeIn from "react-lazyload-fadein";
+import Popup from "./popup";
 
 const Banner = () => {
   return (
@@ -17,9 +17,8 @@ const Banner = () => {
             </Link>
           </h6>
           <p>
-            KOOMPI is a practical, affordable and effective entry level laptop.
-            It can perform daily tasks for working and schooling. We
-            customized...
+            KOOMPI is a practical and affordable entry level notebook computer
+            able to perform all the daily tasks required for work and school...
             <a href="/about-us">Read More</a>
           </p>
         </div>
@@ -31,6 +30,8 @@ const Banner = () => {
 const Shapelines = () => {
   return (
     <React.Fragment>
+      {/* {open ? <Toggle/> : ""}
+      <button onClick={toggle}>toggle</button> */}
       <div className="ui container">
         <div className="beautyPadding">
           <div className="ui vertically divided grid">
@@ -80,16 +81,11 @@ const Shapelines = () => {
                 </div>
               </div>
               <div className="column">
-                <FadeIn height={600} duration={100}>
-                  {onload => (
-                    <img
-                      src="img/koompi-beauty-1.webp"
-                      className="koompiBeautyImg"
-                      alt="koompi-beauty"
-                      onLoad={onload}
-                    />
-                  )}
-                </FadeIn>
+                <img
+                  src="img/koompi-beauty-1.webp"
+                  className="koompiBeautyImg"
+                  alt="koompi-beauty"
+                />
               </div>
             </div>
           </div>
@@ -115,13 +111,11 @@ const Screen = () => {
             <div className="ui stackable two column grid">
               <div className="column controlColor">
                 <h4 className="smallTitle">Screen</h4>
-                <h2 className="fontWidth">
-                  FHD IPS Panel with Anti-glare Glasses
-                </h2>
+                <h2 className="fontWidth">FHD IPS Anti-glare Panel</h2>
                 <p className="websiteContent">
-                  KOOMPI works out-of-the-box with handpicked software that is
-                  needed in everyday computing. Check out ourfeatures for more
-                  details.
+                  KOOMPI works out-of-the-box with a full suite of
+                  custom-selected software packages needed for everyday
+                  computing. Check out our features for the fine details.
                 </p>
                 <div className="ui grid beautyDetail">
                   <div className="two column row">
@@ -147,16 +141,11 @@ const Screen = () => {
                 </div>
               </div>
               <div className="column">
-                <FadeIn height={600} duration={100}>
-                  {onload => (
-                    <img
-                      src="img/screen.webp"
-                      className="koompiBeautyImg"
-                      alt="koompi-screen"
-                      onLoad={onload}
-                    />
-                  )}
-                </FadeIn>
+                <img
+                  src="img/koompi_screen.png"
+                  className="koompiBeautyImg"
+                  alt="koompi-screen"
+                />
               </div>
             </div>
           </div>
@@ -174,13 +163,13 @@ const Performance = () => {
           <div className="row removeShadow">
             <div className="six wide column performanceImage">
               <img
-                src="img/koompi-performance.webp"
+                src="img/koompi_performance.png"
                 heigh="400px"
                 className="mobile hidden"
                 alt="koompi-performance"
               />
               <img
-                src="img/koompi-performance1.webp"
+                src="img/koompi_performance.png"
                 heigh="400px"
                 className="mobile only"
                 alt="koompi-performance"
@@ -190,13 +179,20 @@ const Performance = () => {
               <div className="performancePadding">
                 <h5>Unprecedented Performance</h5>
                 <p>
-                  KOOMPI, the sleek and lightweight next generation tool offers
-                  an experience that’s next to none, combining modest hardware
-                  with powerful open-source software. A multi-purpose enabler,
-                  Koompi seeks to empower Cambodian youth as the creators and
-                  innovators of tomorrow. A packaged functional environment that
-                  lets the user focus on the challenges and not on the tools.
-                  Powerful yet easy and light enough to carry almost anywhere.
+                  KOOMPI, the sleek and lightweight next-generation productivity
+                  tool offering an experience next to none, combining modest
+                  hardware with powerful open-source software.
+                  <br />
+                  <br />
+                  As a multi-purpose enabler, the KOOMPI seeks to empower the
+                  next generation of Cambodian youth as the creators and
+                  innovators of tomorrow.
+                  <br />
+                  <br />
+                  The KOOMPI offers a pre-packaged functional software
+                  environment that allows users to focus on the challenges of
+                  the task at hand rather than the tools. Powerful yet easy and
+                  light enough to carry almost anywhere.
                 </p>
                 <div className="ui two column divided grid">
                   <div className="row performanceRemoveMargin">
@@ -268,10 +264,10 @@ const Battery = () => {
             <div className="ui stackable two column grid">
               <div className="column controlColor">
                 <h4 className="smallTitle">BATTERY</h4>
-                <h2 className="fontWidth">Faster Charging, Longer living</h2>
+                <h2 className="fontWidth">Fast Charging, Longer life</h2>
                 <p className="websiteContent">
-                  We have designed the beautiful ultra thin of battery that last
-                  for 7-hour with special high-capacity as 5000mAh.
+                  Designed with an ultra thin high performance 5000mAh battery
+                  that will last for up to 7 hours
                 </p>
                 <div className="ui grid beautyDetail">
                   <div className="two column row">
@@ -287,16 +283,11 @@ const Battery = () => {
                 </div>
               </div>
               <div className="column">
-                <FadeIn height={600} duration={100}>
-                  {onload => (
-                    <img
-                      src="img/koompi-battery.webp"
-                      className="koompiBeautyImg "
-                      alt="koompi-battery"
-                      onLoad={onload}
-                    />
-                  )}
-                </FadeIn>
+                <img
+                  src="img/koompi-battery.webp"
+                  className="koompiBeautyImg "
+                  alt="koompi-battery"
+                />
               </div>
             </div>
           </div>
@@ -313,7 +304,8 @@ function demoAsyncCall() {
 class Index extends Component {
   state = {
     data: "",
-    loading: true
+    loading: true,
+    open: true
   };
 
   componentDidMount() {
@@ -321,21 +313,27 @@ class Index extends Component {
   }
 
   render() {
-    const { loading } = this.state;
-    if (loading) {
-      // if your component doesn't have to wait for an async action, remove this block
-      return (
-        <div className="loadingImage">
-          <img src="/img/koompi-logo-w-02.svg" alt="loading ..." />
-          <center>
-            <div className="loader" />
-          </center>
-        </div>
-      ); // render null when app is not ready
-    }
+    // const { loading } = this.state;
+    // if (loading) {
+    //   // if your component doesn't have to wait for an async action, remove this block
+    //   return (
+    //     <div className="loadingImage">
+    //       <img src="/img/koompi-logo-w-02.svg" alt="loading ..." />
+    //       <center>
+    //         <div className="loader" />
+    //       </center>
+    //     </div>
+    //   ); // render null when app is not ready
+    // }
+
     return (
       <React.Fragment>
+        {/* <button
+          style={{position: "absolute", top: 0, right: 0}}
+          onClick={e=>this.setState({open: !this.state.open})}>Click Me</button>
+        {this.state.open ? <Toggle/> : ""} */}
         <Navbar />
+        <Popup />
         {Banner()}
         {Shapelines()}
         {Screen()}
