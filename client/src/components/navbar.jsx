@@ -16,34 +16,67 @@ export class Navbar extends Component {
           className={this.state.toggleclick ? "phone-background-navbar" : ""}
         >
           <div
+            className={this.state.toggleclick ? "mobile_background" : ""}
+            onClick={() => {
+              this.setState({ toggleclick: false });
+            }}
+          />
+
+          <div
             className={
               this.state.toggleclick
-                ? "ui left  vertical inverted labeled icon sidebar menu overlay visible mobile only slideIn sidebar-style"
-                : "ui left  vertical inverted labeled icon sidebar menu overlay  mobile only slideOut"
+                ? "ui left vertical inverted labeled icon sidebar menu overlay visible mobile only sidebar-style"
+                : "ui left vertical inverted labeled icon sidebar menu overlay visible hidden mobile only sidebar-style"
             }
             style={{}}
           >
             <div className="navbar_slider">
-              <Link to="/home">
+              <Link to="/home" className="item">
                 <img
-                  src="/img/koompi-logo-w-01.svg"
-                  className="koompi_logo_mobile"
-                  alt="koompi"
+                  src="/img/icons/home.png"
+                  alt="koompi-home"
+                  className="mobile_navbar_icon"
                 />
+                Home
               </Link>
               <Link to="/feature" className="item">
+                <img
+                  src="/img/icons/feature.png"
+                  alt="koompi-home"
+                  className="mobile_navbar_icon"
+                />
                 Feature
               </Link>
               <Link to="/about-us" className="item">
+                <img
+                  src="/img/icons/about.png"
+                  alt="koompi-home"
+                  className="mobile_navbar_icon"
+                />
                 About
               </Link>
               <Link to="/retailers" className="item">
+                <img
+                  src="/img/icons/retailer.png"
+                  alt="koompi-home"
+                  className="mobile_navbar_icon"
+                />
                 Retailer
               </Link>
               <NavLink to="/news-and-events" className="item">
+                <img
+                  src="/img/icons/news.png"
+                  alt="koompi-home"
+                  className="mobile_navbar_icon"
+                />
                 News
               </NavLink>
               <Link to="/preorder" className="item">
+                <img
+                  src="/img/icons/order.png"
+                  alt="koompi-home"
+                  className="mobile_navbar_icon"
+                />
                 Pre-Order
               </Link>
             </div>
@@ -51,36 +84,33 @@ export class Navbar extends Component {
         </div>
         <div className="navbar-menu">
           <div className="ui secondary  container menu mobile only mobile-menu">
-            <div className="left menu">
-              <Link to="/home">
+            <div className="image">
+              <img
+                className="toggleicon"
+                src="./img/menu.png"
+                alt="Toogle icon"
+                onClick={this.setTogglestate}
+              />
+            </div>
+            <Link to="/home">
+              <center>
                 <img
                   className="menu-logo"
                   src="img/koompi-logo-w-01.svg"
                   alt=""
                 />
-              </Link>
-            </div>
-            <div className="right menu">
+              </center>
+            </Link>
+            {/* <div className="left menu">
               <div className="image">
-                {this.state.toggleclick ? (
-                  <img
-                    className="toggleicon menu_close_icon"
-                    style={{ position: "relative", zIndex: "1000" }}
-                    src="./img/close.png"
-                    alt="Toogle icon"
-                    onClick={this.setTogglestate}
-                  />
-                ) : (
-                  <img
-                    className="toggleicon"
-                    style={{ position: "relative", zIndex: "1000" }}
-                    src="./img/menu.png"
-                    alt="Toogle icon"
-                    onClick={this.setTogglestate}
-                  />
-                )}
+                <img
+                  className="toggleicon"
+                  src="./img/menu.png"
+                  alt="Toogle icon"
+                  onClick={this.setTogglestate}
+                />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

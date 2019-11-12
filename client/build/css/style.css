@@ -530,7 +530,9 @@ h5 {
   font-weight: bold;
   color: #252e3c;
 }
-
+.price_discount {
+  font-size: 22px !important;
+}
 .feature-padding-text {
   padding: 8% 0% 0% 8% !important;
 }
@@ -1142,18 +1144,20 @@ p {
 }
 
 .menu-logo {
-  width: 40%;
-  padding-left: 1rem;
+  width: 42%;
+  position: relative;
+  top: 4px;
 }
 .ui.secondary.menu {
   margin: 0px;
   padding: 10px 0px;
 }
 .toggleicon {
-  margin-left: -38px;
-  width: 22px;
+  margin-left: 20px;
+  width: 30px;
   margin-top: 6px;
   cursor: pointer;
+  transform: rotateY(-180deg);
 }
 .ui.labeled.icon.menu .item {
   text-align: left !important;
@@ -1162,7 +1166,7 @@ p {
   width: 55%;
   padding: 10px 0px;
   position: relative;
-  left: -10px;
+  left: -35px;
 }
 
 .menu_close_icon {
@@ -1172,15 +1176,48 @@ p {
 }
 
 .ui.visible.left.overlay.sidebar {
+  width: 70% !important;
+  z-index: 101;
+  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-out;
+  -webkit-transition: transform 0.3s ease-out;
+  -moz-transition: transform 0.3s ease-out;
+  -ms-transition: transform 0.3s ease-out;
+  -o-transition: transform 0.3s ease-out;
+  transform: translateX(0%);
+  -webkit-transform: translateX(0%);
+  -moz-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  -o-transform: translateX(0%);
+}
+
+.ui.visible.hidden {
+  transform: translateX(-100%) !important;
+  -webkit-transform: translateX(-100%) !important;
+  -moz-transform: translateX(-100%) !important;
+  -ms-transform: translateX(-100%) !important;
+  -o-transform: translateX(-100%) !important;
+  transition: transform 0.3s ease-out !important;
+  -webkit-transition: transform 0.3s ease-out !important;
+  -moz-transition: transform 0.3s ease-out !important;
+  -ms-transition: transform 0.3s ease-out !important;
+  -o-transition: transform 0.3s ease-out !important;
+}
+
+.mobile_background {
   width: 100% !important;
-  background-color: #000005bd;
+  background-color: #252e3cc2;
+  position: fixed;
+  height: 100%;
+  z-index: 100;
+  right: 0;
 }
 
 .navbar_slider {
   position: fixed;
   top: 0;
-  width: 70% !important;
-  background-color: #252e3c;
+  width: 100% !important;
+  background-color: #ffffff;
   height: 100%;
 }
 .image-popup {
@@ -1219,12 +1256,19 @@ p {
 .koompi_price h3 {
   font-size: 35px;
   font-weight: bold;
+  position: relative;
+  top: -25px;
 }
 .styles_modal__gNwvD {
   padding: 0px !important;
 }
 .styles_closeIcon__1QwbI {
   fill: #fff !important;
+}
+
+.animated {
+  -webkit-animation-duration: 0.2s !important;
+  animation-duration: 0.2s !important;
 }
 
 /* 3 image under preorder */
@@ -1812,6 +1856,17 @@ p {
     width: 60%;
     position: relative;
     top: 15px;
+  }
+  .ui.labeled.icon.menu .item {
+    font-size: 18px !important;
+    color: #2d3133 !important;
+  }
+  .mobile_navbar_icon {
+    height: 30px !important;
+    float: left !important;
+    margin-right: 20px !important;
+    position: relative;
+    top: -3px;
   }
 }
 

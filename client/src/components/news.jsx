@@ -84,7 +84,7 @@ class News extends Component {
         <Navbar />
         {console.log(this.state.data)}
         <Helmet>
-          <title>KOOMPI | News and Events</title>
+          <title>News and Events | Koompi Kosmos</title>
           <meta
             name="keywords"
             content="koompi news, news and events koompi, koompi news and events, koompi, smallworld venture"

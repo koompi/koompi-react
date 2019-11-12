@@ -9,21 +9,24 @@ import Privacy from "./components/privacy";
 import Retailer from "./components/retailer";
 import News from "./components/news";
 import preorder from "./components/preoder";
-import AddToHomescreen from "react-add-to-homescreen";
 
 class App extends Component {
-  handleAddToHomescreenClick = () => {
-    alert(`
-      1. Open Share menu
-      2. Tap on "Add to Home Screen" button`);
-  };
   render() {
     window.scrollTo(0, 0);
+    var deferredPrompt;
+
+    window.addEventListener("beforeinstallprompt", function(e) {
+      console.log("beforeinstallprompt Event fired");
+      e.preventDefault();
+
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+
+      return false;
+    });
+
     return (
       <div className="App">
-        <AddToHomescreen
-          onAddToHomescreenClick={this.handleAddToHomescreenClick}
-        />
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/feature" component={Feature} />

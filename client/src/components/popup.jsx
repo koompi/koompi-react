@@ -21,7 +21,10 @@ function popup() {
             <h1>KOOMPI</h1>
           </center>
           <div className="koompi_price">
-            <h3>$369.00</h3>
+            <h4>
+              <strike>$369.00</strike>
+            </h4>
+            <h3>$333.00</h3>
           </div>
         </div>
         <div className="Module-background submit-button">
@@ -31,7 +34,7 @@ function popup() {
               Beautifully Open Source.
             </p>
             <Link className="ui button" to="/preorder">
-              Shop Now
+              Pre-Order Now
             </Link>
           </center>
         </div>

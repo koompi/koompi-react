@@ -382,6 +382,8 @@ app.post("/api/form", (req, res) => {
                                     : "Rose Gold"
                                 }</b></p>
                                 <p>Message: <b>${request.message}</b></p>
+                                <br/>
+                                <p>Our team will contact you soon!</p>
                                 <p>Thanks</p>
                                 <p>Love, KOOMPI TEAM</p>
                               </td>

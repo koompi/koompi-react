@@ -115,7 +115,7 @@ class Retailer extends Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>KOOMPI Retailer</title>
+          <title>Retailer | Koompi Kosmos</title>
           <meta
             name="keywords"
             content="get koompi, koompi retailer, retailer koompi, koompi, smallworld venture"

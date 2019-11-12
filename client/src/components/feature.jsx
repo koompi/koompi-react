@@ -166,10 +166,7 @@ class Feature extends Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>
-            Feature | Koompi mission is build and provide tools for the next
-            generation of engineers, problem solvers and discoverers
-          </title>
+          <title>Feature | Koompi Kosmos</title>
         </Helmet>
         <Navbar />
         <div className="backgroundColorBanner">
