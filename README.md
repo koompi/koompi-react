@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ```bash
 git clone https://github.com/koompi/koompi-react.git
-cd koompi-react
+cd client/koompi-react
 npm i
 ```
 
