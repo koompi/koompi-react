@@ -1,26 +1,11 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
-const path = require("path");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const app = express();
 
 app.use(cors("*"));
-
-const corsMiddleware = function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "178.128.217.213"); //replace localhost with actual host
-  res.header(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, PUT, PATCH, POST, DELETE"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Content-Type, X-Requested-With, Authorization"
-  );
-
-  next();
-};
+require("dotenv").config();
 
 //app.use(corsMiddleware);
 
@@ -428,8 +413,8 @@ app.post("/api/form", (req, res) => {
     tls: true,
     secure: true,
     auth: {
-      user: "amoogli.web@gmail.com",
-      pass: "AmoogliWeb2017*$$$$$$"
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD
     }
   });
   // Step 2
