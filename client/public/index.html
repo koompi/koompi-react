@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
+    />
+    <!-- Tell the browser it's a PWA -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <!-- Tell iOS it's a PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="google-site-verification"
+      content="OVngeCUcj_8n8-69w2-JQZX1IgJuLOfL-5eI03qeOZ8"
+    />
+    <meta
+      name="description"
+      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KramaOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+    />
+    <meta
+      name="keywords"
+      content="koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+    />
+    <meta name="author" content="KOOMPI" />
+    <!-- Device ICON -->
+    <link rel="icon" type="image/svg" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- CSS path -->
+    <link rel="stylesheet" href="css/semantic.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    /> -->
+
+    <title>
+      Koompi | Our mission is build and provide tools for the next generation of
+      engineers, problem solvers and discoverers.
+    </title>
+  </head>
+
+  <body>
+    <!-- Root -->
+    <div id="root"></div>
+    <noscript key="noscript"
+      >Your browser does not support JavaScript!</noscript
+    >
+
+    <!-- <!— Global site tag (gtag.js) - Google Analytics —> -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-121852068-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-121852068-1");
+    </script>
+
+    <!-- The PWA -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("worker.js")
+            .then(
+              function(registration) {
+                console.log(
+                  "Worker registration successful",
+                  registration.scope
+                );
+              },
+              function(err) {
+                console.log("Worker registration failed", err);
+              }
+            )
+            .catch(function(err) {
+              console.log(err);
+            });
+        });
+      } else {
+        console.log("Service Worker is not supported by browser.");
+      }
+    </script>
+
+    <!-- End The PWA -->
+
+    <!-- Facebook -->
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml: true,
+          version: "v3.3"
+        });
+      };
+
+      (function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+
+    <!-- Your customer chat code -->
+    <div
+      class="fb-customerchat"
+      attribution="setup_tool"
+      page_id="207093766731226"
+      logged_in_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
+      logged_out_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
+    ></div>
+  </body>
+</html>
