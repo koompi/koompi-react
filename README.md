@@ -25,7 +25,7 @@ Open <http://localhost:3000> to view it in the browser.
 
 ## Screenshots
 
-![screenshot](pulic/img/../../public/img/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/cbun097/koompi-react/linting/public/img/screenshot.png)
 
 ## Learn More
 
