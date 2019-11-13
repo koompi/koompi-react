@@ -6,18 +6,21 @@ class MemberState extends Component {
     this.state = {
       data: [
         {
+          id: 0,
           name: "Rithy THUL",
           position: "PR and Partnership",
           image: "img/team/rithy.webp",
           cate: 1
         },
         {
+          id: 1,
           name: "Sela THUL",
           position: "Linux Developer",
           image: "img/team/sela.webp",
           cate: 2
         },
         {
+          id: 3,
           name: "Hongsea HENG",
           position: "Junior System Engineer",
           image: "img/team/Hongsea.webp",
@@ -30,108 +33,126 @@ class MemberState extends Component {
         //   cate: 2
         // },
         {
+          id: 4,
           name: "Veasna MA",
           position: "Linux Developer",
           image: "img/team/veasna.webp",
           cate: 2
         },
         {
+          id: 5,
           name: "Sereyvathana AING",
           position: "Linux Developer",
           image: "img/team/Chheng.webp",
           cate: 2
         },
         {
+          id: 6,
           name: "Brilliant PHAL",
           position: "Linux Administator",
           image: "img/team/brillaint.webp",
           cate: 2
         },
         {
+          id: 7,
           name: "Lykheang MOEURN",
           position: "Backend Developer",
           image: "img/team/lykhhean.webp",
           cate: 2
         },
         {
+          id: 8,
           name: "Nath LAY ",
           position: "Backend Developer",
           image: "img/team/net.webp",
           cate: 2
         },
         {
+          id: 9,
           name: "Vuthy SAN",
           position: "Full Stack Web Developer",
           image: "img/team/vuthy.webp",
           cate: 2
         },
         {
+          id: 10,
           name: "Sovanden SARIM ",
           position: "Frontend Web Developer",
           image: "img/team/Den.webp",
           cate: 2
         },
         {
+          id: 11,
           name: "Sophal LOEM",
           position: "Web Design",
           image: "img/team/sophal.webp",
           cate: 2
         },
         {
+          id: 12,
           name: "Sovannchornai SO",
           position: "Web Design",
           image: "img/team/chorernai.webp",
           cate: 2
         },
         {
+          id: 13,
           name: "Shenshing LY",
           position: "Research and Development (Pionium)",
           image: "img/team/Shing.webp",
           cate: 2
         },
         {
+          id: 14,
           name: "Thith THIN",
           position: "Research and Development (Pionium)",
           image: "img/team/Thith.webp",
           cate: 2
         },
         {
+          id: 15,
           name: "Kalin LEOB",
           position: "Research and Development (Pionium)",
           image: "img/team/Kalin.webp",
           cate: 2
         },
         {
+          id: 16,
           name: "Sophim PHIN",
           position: "Mobile Developer",
           image: "img/team/Phim.webp",
           cate: 2
         },
         {
+          id: 17,
           name: "Panha Sok",
           position: "Graphic Designer",
           image: "img/team/panha.webp",
           cate: 2
         },
         {
+          id: 18,
           name: "Chandara VIREAK",
           position: "Head of Design",
           image: "img/team/dara.webp",
           cate: 2
         },
         {
+          id: 19,
           name: "Visai TRY ",
           position: "Technician",
           image: "img/team/sai.webp",
           cate: 3
         },
         {
+          id: 20,
           name: "Sivyean SUY",
           position: "Technician",
           image: "img/team/sivyean.webp",
           cate: 3
         },
         {
+          id: 21,
           name: "Mesa MENG",
           position: "Technician",
           image: "img/team/Mesa.webp",
@@ -144,54 +165,63 @@ class MemberState extends Component {
         //   cate: 3
         // },
         {
+          id: 22,
           name: "Makara SANN",
           position: "Facilitator",
           image: "img/team/Makra.webp",
           cate: 4
         },
         {
+          id: 23,
           name: "Kimhong HIENG",
           position: "Mathematician",
           image: "img/team/Hong.webp",
           cate: 4
         },
         {
+          id: 24,
           name: "Phearin HAY",
           position: "KOOMPI FORCE Content Producer",
           image: "img/team/Phearin.webp",
           cate: 4
         },
         {
+          id: 25,
           name: "Panha YOU",
           position: "Sale & Marketing Manager",
           image: "img/team/panha_you.webp",
           cate: 5
         },
         {
+          id: 26,
           name: "Sreyneang SOKHA",
           position: "Sale & Marketing",
           image: "img/team/sreyneang.webp",
           cate: 5
         },
         {
+          id: 27,
           name: "Raksme VEN",
           position: "Accountant",
           image: "img/team/reaksmie.webp",
           cate: 5
         },
         {
+          id: 28,
           name: "Sofy THY",
           position: "Business Development officer",
           image: "img/team/sofy.webp",
           cate: 6
         },
         {
+          id: 29,
           name: "Monika VIRAK",
           position: "Community Manager",
           image: "img/team/Molika.webp",
           cate: 6
         },
         {
+          id: 30,
           name: "Hengsrun SEANG",
           position: " Communication & Marketing ",
           image: "img/team/Srun.webp",
