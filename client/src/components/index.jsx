@@ -29,7 +29,7 @@ const Banner = () => {
 
 const Shapelines = () => {
   return (
-    <React.Fragment>
+    <>
       {/* {open ? <Toggle/> : ""}
       <button onClick={toggle}>toggle</button> */}
       <div className="ui container">
@@ -98,13 +98,13 @@ const Shapelines = () => {
           alt="koompi-gallery"
         />
       </div>
-    </React.Fragment>
+    </>
   )
 }
 
 const Screen = () => {
   return (
-    <React.Fragment>
+    <>
       <div className="ui container">
         <div className="beautyPadding">
           <div className="ui vertically divided grid">
@@ -149,7 +149,7 @@ const Screen = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }
 
@@ -255,7 +255,7 @@ const Performance = () => {
 
 const Battery = () => {
   return (
-    <React.Fragment>
+    <>
       <div className="ui container">
         <div className="beautyPadding">
           <div className="ui vertically divided grid">
@@ -291,7 +291,7 @@ const Battery = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }
 
@@ -300,10 +300,13 @@ function demoAsyncCall() {
 }
 
 class Index extends Component {
-  state = {
-    data: "",
-    loading: true,
-    open: true
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: "",
+      loading: true,
+      open: true
+    }
   }
 
   componentDidMount() {
@@ -325,7 +328,7 @@ class Index extends Component {
     // }
 
     return (
-      <React.Fragment>
+      <>
         {/* <button
           style={{position: "absolute", top: 0, right: 0}}
           onClick={e=>this.setState({open: !this.state.open})}>Click Me</button>
@@ -338,7 +341,7 @@ class Index extends Component {
         {Performance()}
         {Battery()}
         <Footer />
-      </React.Fragment>
+      </>
     )
   }
 }

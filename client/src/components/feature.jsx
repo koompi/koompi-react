@@ -1,9 +1,9 @@
 import React, { Component } from "react"
+import { Helmet } from "react-helmet"
 import Navbar from "./navbar"
 import Footer from "./footer"
-import { Helmet } from "react-helmet"
 
-const software_image_right = (icon, title, desc, image) => {
+const softwareImageRight = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding">
       <div className="column feature-padding-text">
@@ -24,7 +24,7 @@ const software_image_right = (icon, title, desc, image) => {
     </div>
   )
 }
-const software_image_left = (icon, title, desc, image) => {
+const softwareImageLeft = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding feature-margin">
       <div className="column mobile hidden">
@@ -48,7 +48,7 @@ const Software = () => {
   return (
     <div className="ui container containerFeature">
       <div className="ui stackable divided grid beautyDetail">
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/orb.png",
 
           "Apache OpenOffice",
@@ -57,7 +57,7 @@ const Software = () => {
 
           "img/Apps/Office.webp"
         )}
-        {software_image_left(
+        {softwareImageLeft(
           "img/store.webp",
 
           "Software Center",
@@ -66,7 +66,7 @@ const Software = () => {
 
           "img/Apps/App-Store.webp"
         )}
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/brave_logo_horz.png",
 
           "Brave ( web browser )",
@@ -75,7 +75,7 @@ const Software = () => {
 
           "img/Apps/Firefox.webp"
         )}
-        {software_image_left(
+        {softwareImageLeft(
           "img/Apps/icons/KMP.png",
 
           "KMPlayer",
@@ -86,7 +86,7 @@ const Software = () => {
           "img/Apps/VLC.webp"
         )}
 
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/Krita.png",
 
           "Krita",
@@ -96,7 +96,7 @@ const Software = () => {
           "img/Apps/Krita.webp"
         )}
 
-        {software_image_left(
+        {softwareImageLeft(
           "img/koompi-visual-icon.webp",
 
           "Visual Studio Code",
@@ -106,7 +106,7 @@ const Software = () => {
           "img/Apps/VsCode.webp"
         )}
 
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/Popcorn_Time.png",
 
           "Popcorn Time",
@@ -116,7 +116,7 @@ const Software = () => {
           "img/Apps/PopCornTime.webp"
         )}
 
-        {software_image_left(
+        {softwareImageLeft(
           "img/Apps/icons/microsoft-365.png",
 
           "Office 365",
@@ -126,7 +126,7 @@ const Software = () => {
           "img/Apps/Office365.webp"
         )}
 
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/new-kdenlive-logo.png",
 
           "Kdenlive",
@@ -136,7 +136,7 @@ const Software = () => {
           "img/Apps/Kdenlive.webp"
         )}
 
-        {software_image_left(
+        {softwareImageLeft(
           "img/Apps/icons/Guvcview.png",
 
           "Guvcview",
@@ -151,12 +151,16 @@ const Software = () => {
 }
 
 class Feature extends Component {
-  state = {
-    data: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
   }
+
   render() {
     return (
-      <React.Fragment>
+      <>
         <Helmet>
           <title>Feature | Koompi Kosmos</title>
         </Helmet>
@@ -226,7 +230,7 @@ class Feature extends Component {
         </div>
         {Software()}
         <Footer />
-      </React.Fragment>
+      </>
     )
   }
 }

@@ -1,12 +1,12 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 import Navbar from "./navbar"
 import MemberState from "./states/member"
 import Footer from "./footer"
-import { Helmet } from "react-helmet"
 
 const About = () => {
   return (
-    <React.Fragment>
+    <>
       <Navbar />
       <Helmet>
         <title>About | Koompi Kosmos</title>
@@ -53,7 +53,7 @@ const About = () => {
       {/* about state components */}
       <MemberState />
       <Footer />
-    </React.Fragment>
+    </>
   )
 }
 

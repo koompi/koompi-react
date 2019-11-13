@@ -4,7 +4,7 @@ import Footer from "./footer"
 
 const Privacy = () => {
   return (
-    <React.Fragment>
+    <>
       <Navbar />
       <div className="ui container containerPrivacy">
         <h1>Privacy Policy</h1>
@@ -187,7 +187,7 @@ const Privacy = () => {
         </ul>
       </div>
       <Footer />
-    </React.Fragment>
+    </>
   )
 }
 

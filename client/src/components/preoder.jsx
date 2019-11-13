@@ -38,7 +38,7 @@ function PreOrder() {
   function submit() {}
 
   return (
-    <React.Fragment>
+    <>
       <Navbar />
       <div className="bannerPage">
         <div className="order-banner">
@@ -189,7 +189,7 @@ function PreOrder() {
         </div>
       </div>
       <Footer />
-    </React.Fragment>
+    </>
   )
 }
 
