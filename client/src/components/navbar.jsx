@@ -22,6 +22,7 @@ export class Navbar extends Component {
       <>
         <div className={toggleClick ? "phone-background-navbar" : ""}>
           <div
+            role="presentation"
             className={toggleClick ? "mobile_background" : ""}
             onClick={() => {
               this.setState({ toggleClick: false })
@@ -92,6 +93,7 @@ export class Navbar extends Component {
           <div className="ui secondary  container menu mobile only mobile-menu">
             <div className="image">
               <img
+                role="presentation"
                 className="toggleicon"
                 src="./img/menu.png"
                 alt="Toogle icon"

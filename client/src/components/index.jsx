@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from "react"
-import Navbar from "./navbar"
-import Footer from "./footer"
 import { Link } from "react-router-dom"
+import { Navbar } from "./navbar"
+import Footer from "./footer"
 import Popup from "./popup"
 
 const Banner = () => {
@@ -66,7 +67,7 @@ const Shapelines = () => {
                     <div className="column">
                       <h5 className="beautyDetailTitle">Compact design</h5>
                       <h3 className="beautyDetailDesc">
-                        13.3"
+                        13.3&quot;
                         <span className="tourDetailSize"> size</span>
                       </h3>
                     </div>

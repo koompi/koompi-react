@@ -34,8 +34,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sitemap": "./node_modules/.bin/babel-node src/config/sitemap.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "lint:fix": "eslint --fix  \"**/*.{js,jsx}\"",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
   },
   "browserslist": [

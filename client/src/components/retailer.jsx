@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import ContentLoader from "react-content-loader"
 import { Helmet } from "react-helmet"
-import Navbar from "./navbar"
+import { Navbar } from "./navbar"
 import Footer from "./footer"
 
 class Retailer extends Component {
@@ -68,6 +68,7 @@ class Retailer extends Component {
           location:
             "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
         },
+
         {
           id: 10,
           logo: "img/retailers/PRC.webp",
@@ -87,7 +88,7 @@ class Retailer extends Component {
   }
 
   displayLoading = () => {
-    let loading = []
+    const loading = []
     for (let index = 0; index < 10; index++) {
       loading.push(
         <div className="column blur">

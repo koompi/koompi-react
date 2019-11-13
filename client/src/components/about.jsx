@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import Navbar from "./navbar"
+import { Navbar } from "./navbar"
 import MemberState from "./states/member"
 import Footer from "./footer"
 
@@ -28,7 +28,7 @@ const About = () => {
                   tasks required for work and school.
                   <br />
                   <br />
-                  We've created a customized operating system of our own called
+                  We&apos;ve created a customized operating system of our own called
                   PionuxOS based on the well-known open-source Linux software.
                   <br />
                   <br />

@@ -4,20 +4,37 @@ import axios from "axios"
 import { Modal, Image } from "semantic-ui-react"
 import ContentLoader from "react-content-loader"
 import parse from "html-react-parser"
-import Navbar from "./navbar"
 import Footer from "./footer"
+import { Navbar } from "./navbar"
 
 class News extends Component {
   constructor(props) {
     super(props)
     this.state = {
       data: null,
-      loading: true,
       open: false,
       title: "",
       content: "",
       thumbnail: ""
     }
+  }
+
+  // eslint-disable-next-line react/sort-comp
+  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+  }
+
+  close = () => this.setState({ open: false })
+
+  displayData = ({ ...data }) => {
+    this.setState({ open: true })
+    this.setState({ title: data.title })
+    this.setState({ content: data.content })
+    this.setState({ thumbnail: data.thumbnail })
+  }
+
+  card = () => {
+    return <div>Hello World</div>
   }
 
   componentDidMount() {
@@ -30,26 +47,9 @@ class News extends Component {
       })
   }
 
-  card = () => {
-    return <div>Hello World</div>
-  }
-
-  close = () => this.setState({ open: false })
-
-  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
-  }
-
-  displayData = ({ ...data }) => {
-    this.setState({ open: true })
-    this.setState({ title: data.title })
-    this.setState({ content: data.content })
-    this.setState({ thumbnail: data.thumbnail })
-  }
-
   displayLoading = () => {
     const loading = []
-    for (let index = 0; index < 10; index) {
+    for (let index = 0; index < 10; index++) {
       loading.push(
         <div className="column blur">
           <div
@@ -84,10 +84,10 @@ class News extends Component {
       open,
       closeOnEscape,
       closeOnDimmerClick,
-      data,
       thumbnail,
       title,
-      content
+      content,
+      data
     } = this.state
     return (
       <>
@@ -125,9 +125,10 @@ class News extends Component {
               data.map((post) => {
                 return (
                   <div
+                    role="presentation"
                     className="column blur"
                     key={post.pubDate}
-                    onClick={(e) => {
+                    onClick={() => {
                       this.displayData({ ...post })
                     }}
                   >

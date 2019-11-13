@@ -1,6 +1,5 @@
-//firstname
 export default function validate(values) {
-  let errors = {}
+  const errors = {}
   if (!values.email) {
     errors.email = "Email address is required"
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
@@ -8,18 +7,14 @@ export default function validate(values) {
   }
 
   if (!values.firstname) {
-    errors.firstname = "FirstName is required"
+    errors.firstname = "First name is required"
   }
   if (!values.lastname) {
-    errors.lastname = "LastName is required"
+    errors.lastname = "Last name is required"
   }
   if (!values.phonenumber) {
-    errors.phonenumber = "Phonenumber is required"
+    errors.phonenumber = "Phone number is required"
   }
-
-  // if(!values.color){
-  //     errors.color
-  // }
 
   return errors
 }

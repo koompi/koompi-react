@@ -22,14 +22,14 @@ const useForm = () => {
     })
   }
 
-  const handleMethodColor = event => {
+  const handleMethodColor = (event) => {
     setValue({
       ...values,
       color: event.target.value
     })
   }
 
-  const handldePaymet = event => {
+  const handldePaymet = (event) => {
     setValue({
       ...values,
       payment: event.target.value

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Helmet } from "react-helmet"
-import Navbar from "./navbar"
+import { Navbar } from "./navbar"
 import Footer from "./footer"
 
 const softwareImageRight = (icon, title, desc, image) => {
@@ -183,7 +183,7 @@ class Feature extends Component {
                   <br /> office productivity, entertainment and more.
                   <br />
                   <br />
-                  We've compiled the KOOMPI computer software suite to offer a
+                  We&apos;ve compiled the KOOMPI computer software suite to offer a
                   <br /> user experience providing simplicity, power, privacy and
                   freedom.
                   <br />

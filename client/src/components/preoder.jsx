@@ -1,7 +1,7 @@
 import React from "react"
 import useForm from "./useForm"
 import validate from "./validateLogin"
-import Navbar from "./navbar"
+import { Navbar } from "./navbar"
 import Footer from "./footer"
 
 const Input = ({ name, label, value, onChange, errors, type }) => {
@@ -9,15 +9,17 @@ const Input = ({ name, label, value, onChange, errors, type }) => {
     <div className={errors ? "field error" : "field"}>
       <label>{label}</label>
       <input type={type} value={value} name={name} onChange={onChange} />
-      {errors && <div class="ui pointing basic label">{label + " is required"}</div>}
+      {errors && (
+        <div className="ui pointing basic label">{`${label} is required`}</div>
+      )}
     </div>
   )
 }
 
 const InputRadio = ({ value, checked, onChange, label }) => {
   return (
-    <div class="field">
-      <div class="ui big radio checkbox">
+    <div className="field">
+      <div className="ui big radio checkbox">
         <input type="radio" value={value} checked={checked} onChange={onChange} />
         <label>{label}</label>
       </div>
@@ -26,6 +28,8 @@ const InputRadio = ({ value, checked, onChange, label }) => {
 }
 
 function PreOrder() {
+  function submit() {}
+
   const {
     handlerCange,
     handleSubmit,
@@ -34,8 +38,6 @@ function PreOrder() {
     handleMethodColor,
     handldePaymet
   } = useForm(submit, validate)
-
-  function submit() {}
 
   return (
     <>
@@ -119,8 +121,8 @@ function PreOrder() {
 
             <div className="middle-form field">
               <label>What is your favourite color?</label>
-              <div class="ui form">
-                <div class="inline fields">
+              <div className="ui form">
+                <div className="inline fields">
                   <InputRadio
                     type="checkbox"
                     value="space_gray"
@@ -141,8 +143,8 @@ function PreOrder() {
 
             <div className="middle-form field">
               <label>Payment Options</label>
-              <div class="ui form">
-                <div class="inline fields">
+              <div className="ui form">
+                <div className="inline fields">
                   <InputRadio
                     value="ABA"
                     checked={values.payment === "ABA"}
