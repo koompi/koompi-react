@@ -1,30 +1,37 @@
-import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { Component } from "react"
+import { NavLink, Link } from "react-router-dom"
+
 export class Navbar extends Component {
-  state = {
-    toggleclick: false
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      toggleClick: false
+    }
+  }
+
   setTogglestate = () => {
+    const { toggleClick } = this.state
     this.setState({
-      toggleclick: !this.state.toggleclick
-    });
-  };
+      toggleClick: !toggleClick
+    })
+  }
+
   render() {
+    const { toggleClick } = this.state
     return (
-      <React.Fragment>
-        <div
-          className={this.state.toggleclick ? "phone-background-navbar" : ""}
-        >
+      <>
+        <div className={toggleClick ? "phone-background-navbar" : ""}>
           <div
-            className={this.state.toggleclick ? "mobile_background" : ""}
+            role="presentation"
+            className={toggleClick ? "mobile_background" : ""}
             onClick={() => {
-              this.setState({ toggleclick: false });
+              this.setState({ toggleClick: false })
             }}
           />
 
           <div
             className={
-              this.state.toggleclick
+              toggleClick
                 ? "ui left vertical inverted labeled icon sidebar menu overlay visible mobile only sidebar-style"
                 : "ui left vertical inverted labeled icon sidebar menu overlay visible hidden mobile only sidebar-style"
             }
@@ -86,6 +93,7 @@ export class Navbar extends Component {
           <div className="ui secondary  container menu mobile only mobile-menu">
             <div className="image">
               <img
+                role="presentation"
                 className="toggleicon"
                 src="./img/menu.png"
                 alt="Toogle icon"
@@ -94,11 +102,7 @@ export class Navbar extends Component {
             </div>
             <Link to="/home">
               <center>
-                <img
-                  className="menu-logo"
-                  src="img/koompi-logo-w-01.svg"
-                  alt=""
-                />
+                <img className="menu-logo" src="img/koompi-logo-w-01.svg" alt="" />
               </center>
             </Link>
             {/* <div className="left menu">
@@ -174,9 +178,9 @@ export class Navbar extends Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
-export default Navbar;
+export default Navbar

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
-import { Helmet } from "react-helmet";
+import React, { Component } from "react"
+import { Helmet } from "react-helmet"
+import { Navbar } from "./navbar"
+import Footer from "./footer"
 
-const software_image_right = (icon, title, desc, image) => {
+const softwareImageRight = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding">
       <div className="column feature-padding-text">
@@ -13,11 +13,7 @@ const software_image_right = (icon, title, desc, image) => {
       </div>
       <div className="column mobile only">
         <center>
-          <img
-            src={image}
-            className="ui fluid image image-margin-top"
-            alt={title}
-          />
+          <img src={image} className="ui fluid image image-margin-top" alt={title} />
         </center>
       </div>
       <div className="column mobile hidden">
@@ -26,17 +22,13 @@ const software_image_right = (icon, title, desc, image) => {
         </center>
       </div>
     </div>
-  );
-};
-const software_image_left = (icon, title, desc, image) => {
+  )
+}
+const softwareImageLeft = (icon, title, desc, image) => {
   return (
     <div className="two column row feature-padding feature-margin">
       <div className="column mobile hidden">
-        <img
-          src={image}
-          className="ui fluid image image-margin-top"
-          alt={title}
-        />
+        <img src={image} className="ui fluid image image-margin-top" alt={title} />
       </div>
       <div className="column feature-padding-text-right">
         <img src={icon} className="smallFeatureImg" alt={title} />
@@ -49,14 +41,14 @@ const software_image_left = (icon, title, desc, image) => {
         </center>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Software = () => {
   return (
     <div className="ui container containerFeature">
       <div className="ui stackable divided grid beautyDetail">
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/orb.png",
 
           "Apache OpenOffice",
@@ -65,7 +57,7 @@ const Software = () => {
 
           "img/Apps/Office.webp"
         )}
-        {software_image_left(
+        {softwareImageLeft(
           "img/store.webp",
 
           "Software Center",
@@ -74,7 +66,7 @@ const Software = () => {
 
           "img/Apps/App-Store.webp"
         )}
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/brave_logo_horz.png",
 
           "Brave ( web browser )",
@@ -83,7 +75,7 @@ const Software = () => {
 
           "img/Apps/Firefox.webp"
         )}
-        {software_image_left(
+        {softwareImageLeft(
           "img/Apps/icons/KMP.png",
 
           "KMPlayer",
@@ -94,7 +86,7 @@ const Software = () => {
           "img/Apps/VLC.webp"
         )}
 
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/Krita.png",
 
           "Krita",
@@ -104,7 +96,7 @@ const Software = () => {
           "img/Apps/Krita.webp"
         )}
 
-        {software_image_left(
+        {softwareImageLeft(
           "img/koompi-visual-icon.webp",
 
           "Visual Studio Code",
@@ -114,7 +106,7 @@ const Software = () => {
           "img/Apps/VsCode.webp"
         )}
 
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/Popcorn_Time.png",
 
           "Popcorn Time",
@@ -124,7 +116,7 @@ const Software = () => {
           "img/Apps/PopCornTime.webp"
         )}
 
-        {software_image_left(
+        {softwareImageLeft(
           "img/Apps/icons/microsoft-365.png",
 
           "Office 365",
@@ -134,7 +126,7 @@ const Software = () => {
           "img/Apps/Office365.webp"
         )}
 
-        {software_image_right(
+        {softwareImageRight(
           "img/Apps/icons/new-kdenlive-logo.png",
 
           "Kdenlive",
@@ -144,7 +136,7 @@ const Software = () => {
           "img/Apps/Kdenlive.webp"
         )}
 
-        {software_image_left(
+        {softwareImageLeft(
           "img/Apps/icons/Guvcview.png",
 
           "Guvcview",
@@ -155,16 +147,20 @@ const Software = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 class Feature extends Component {
-  state = {
-    data: []
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+  }
+
   render() {
     return (
-      <React.Fragment>
+      <>
         <Helmet>
           <title>Feature | Koompi Kosmos</title>
         </Helmet>
@@ -187,13 +183,13 @@ class Feature extends Component {
                   <br /> office productivity, entertainment and more.
                   <br />
                   <br />
-                  We've compiled the KOOMPI computer software suite to offer a
-                  <br /> user experience providing simplicity, power, privacy
-                  and freedom.
+                  We&apos;ve compiled the KOOMPI computer software suite to offer a
+                  <br /> user experience providing simplicity, power, privacy and
+                  freedom.
                   <br />
                   <br />
-                  KOOMPI users can achieve more and learn more with less effort
-                  and frustration.
+                  KOOMPI users can achieve more and learn more with less effort and
+                  frustration.
                 </p>
                 {/* <a
                   href="https://goo.gl/jHSZRL"
@@ -210,12 +206,12 @@ class Feature extends Component {
               </h2>
               <p>
                 KOOMPI handpicked software for everyday computing, net browsing,
-                <br /> office suites for productivity, entertainment and more.
-                We believe
-                <br /> that the computer should be simple and free; free in
-                terms of freedom.
-                <br /> This is a tool which helps the user achieve more and
-                learn more.
+                <br /> office suites for productivity, entertainment and more. We
+                believe
+                <br /> that the computer should be simple and free; free in terms of
+                freedom.
+                <br /> This is a tool which helps the user achieve more and learn
+                more.
               </p>
               {/* <p>
                 <i className="fas fa-angle-right featureIcon" />
@@ -234,9 +230,9 @@ class Feature extends Component {
         </div>
         {Software()}
         <Footer />
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
-export default Feature;
+export default Feature
