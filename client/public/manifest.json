@@ -1,20 +1,21 @@
 {
-  "short_name": "KOOMPI APP",
-  "name": "KOOMPI APP",
+  "short_name": "Koompi",
+  "name": "Koompi",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "/favicon.ico",
+      "sizes": "192x192",
       "type": "image/x-icon"
     },
     {
-      "src": "koompi_mobile.png",
+      "src": "/koompi_mobile.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "theme_color": "#000000",
+  "scope": "/",
   "background_color": "#ffffff"
 }

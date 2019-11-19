@@ -2,12 +2,12 @@ import React, { useState } from "react"
 import Modal from "react-responsive-modal"
 import { Link } from "react-router-dom"
 
-function popup() {
-  const [Popup, setPopup] = useState({ open: true })
+function DisplayModal() {
+  const [popup, setPopup] = useState({ open: true })
   const onCloseModal = () => {
     setPopup({ open: false })
   }
-  const { open } = Popup
+  const { open } = popup
   return (
     <div>
       <Modal className="modal_popup" type="swing" open={open} onClose={onCloseModal}>
@@ -28,7 +28,7 @@ function popup() {
               Enjoy the revolution of simplicity, power, privacy and freedom.
               Beautifully Open Source.
             </p>
-            <Link className="ui button" to="/preorder">
+            <Link className="ui button" to="/order">
               Pre-Order Now
             </Link>
           </center>
@@ -38,4 +38,4 @@ function popup() {
   )
 }
 
-export default Popup;
+export default DisplayModal

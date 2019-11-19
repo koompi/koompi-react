@@ -11,59 +11,59 @@ class Retailer extends Component {
       data: [
         {
           id: 0,
-          logo: "img/retailers/sw-greens.webp",
+          logo: "img/retailers/sw-greens.png",
           name: "SmallWorld Venture",
           location:
             "https://www.facebook.com/pg/smallworldventure/about/?ref=page_internal"
         },
         {
           id: 1,
-          logo: "img/retailers/it-store.webp",
+          logo: "img/retailers/it-store.png",
           name: "Sombok IT Store",
           location:
             "https://www.facebook.com/pg/store.sombokit/about/?ref=page_internal"
         },
         {
           id: 2,
-          logo: "img/retailers/ufo-logo.webp",
+          logo: "img/retailers/ufo-logo.png",
           name: "UFO Store",
           location: "https://www.facebook.com/pg/ufostorekh/about/?ref=page_internal"
         },
         {
           id: 3,
-          logo: "img/retailers/E-shop-cam.webp",
+          logo: "img/retailers/E-shop-cam.png",
           name: "E-Shop Cambodia",
           location: "https://www.facebook.com/pg/eshopcambo/about/?ref=page_internal"
         },
         {
           id: 5,
-          logo: "img/retailers/LS.webp",
+          logo: "img/retailers/LS.png",
           name: "Leang sreng computer",
           location:
             "https://www.facebook.com/pg/Leang-sreng-computer-1-229172480968041/about/?ref=page_internal"
         },
         {
           id: 6,
-          logo: "img/retailers/BCS.webp",
+          logo: "img/retailers/BCS.png",
           name: "BCS Computer",
           location:
             "https://www.facebook.com/pg/bcscomputer1/about/?ref=page_internal"
         },
         {
           id: 7,
-          logo: "img/retailers/One-Gears.webp",
+          logo: "img/retailers/One-Gears.png",
           name: "One Gears",
           location: "https://www.facebook.com/pg/onegears/about/?ref=page_internal"
         },
         {
           id: 8,
-          logo: "img/retailers/my-psar.webp",
+          logo: "img/retailers/my-psar.png",
           name: "My PHSAR",
           location: "https://www.facebook.com/pg/myphsar/about/?ref=page_internal"
         },
         {
           id: 9,
-          logo: "img/retailers/K4.webp",
+          logo: "img/retailers/K4.png",
           name: "KFOUR",
           location:
             "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
@@ -71,7 +71,7 @@ class Retailer extends Component {
 
         {
           id: 10,
-          logo: "img/retailers/PRC.webp",
+          logo: "img/retailers/PRC.png",
           name: "PRC បញ្ញរ៉ុង",
           location:
             "https://www.facebook.com/pg/prcomputerservice/about/?ref=page_internal"
@@ -116,15 +116,16 @@ class Retailer extends Component {
     return (
       <>
         <Helmet>
-          <title>Retailer | Koompi Kosmos</title>
+          <title>Our Retailers</title>
           <meta
             name="keywords"
             content="get koompi, koompi retailer, retailer koompi, koompi, smallworld venture"
           />
           <meta
             name="description"
-            content="Engaging and interact with KOOMPI wherever you are, get KOOMPI from your nearest store. We aim to satisfied the users need and be convenient for everyone."
+            content="We aim to satisfy your individual needs while offering the best and most convenient tools for everyone."
           />
+          <link rel="canonical" href="https://koompi.com/retailers" />
         </Helmet>
         <Navbar />
         <div className="backgroundRetailer">
@@ -151,7 +152,7 @@ class Retailer extends Component {
                 <div className="column six wide">
                   <img
                     className="ui fluid image koompi-retailer-image koompi-about-image"
-                    src="img/Koompi_Retailer.webp"
+                    src="img/Koompi_Retailer.png"
                     alt="koompi-about"
                   />
                 </div>

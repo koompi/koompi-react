@@ -26,38 +26,29 @@
     />
     <meta name="author" content="KOOMPI" />
     <!-- Device ICON -->
-    <link rel="icon" type="image/svg" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="/image/svg" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="/image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="/image/png" sizes="16x16" href="/favicon-16x16.png" />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!-- CSS path -->
-    <link rel="stylesheet" href="css/semantic.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
-    /> -->
+    <link rel="stylesheet" type="text/css" href="/css/semantic.min.css" />
 
     <title>
-      Koompi | Our mission is build and provide tools for the next generation of
-      engineers, problem solvers and discoverers.
+      Koompi
     </title>
   </head>
 
   <body>
     <!-- Root -->
     <div id="root"></div>
-    <noscript key="noscript"
-      >Your browser does not support JavaScript!</noscript
-    >
+    <noscript key="noscript">Your browser does not support JavaScript!</noscript>
+
+    <!-- Windows Scroll -->
+    <script>
+    // window.scrollTo(0, 0);
+    </script>
 
     <!-- <!— Global site tag (gtag.js) - Google Analytics —> -->
     <script
@@ -65,13 +56,13 @@
       src="https://www.googletagmanager.com/gtag/js?id=UA-121852068-1"
     ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || []
       function gtag() {
-        dataLayer.push(arguments);
+        dataLayer.push(arguments)
       }
-      gtag("js", new Date());
+      gtag("js", new Date())
 
-      gtag("config", "UA-121852068-1");
+      gtag("config", "UA-121852068-1")
     </script>
 
     <!-- The PWA -->
@@ -82,21 +73,18 @@
             .register("worker.js")
             .then(
               function(registration) {
-                console.log(
-                  "Worker registration successful",
-                  registration.scope
-                );
+                console.log("Worker registration successful", registration.scope)
               },
               function(err) {
-                console.log("Worker registration failed", err);
+                console.log("Worker registration failed", err)
               }
             )
             .catch(function(err) {
-              console.log(err);
-            });
-        });
+              console.log(err)
+            })
+        })
       } else {
-        console.log("Service Worker is not supported by browser.");
+        console.log("Service Worker is not supported by browser.")
       }
     </script>
 
@@ -111,18 +99,17 @@
         FB.init({
           xfbml: true,
           version: "v3.3"
-        });
-      };
-
-      (function(d, s, id) {
+        })
+      }
+      ;(function(d, s, id) {
         var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "facebook-jssdk");
+          fjs = d.getElementsByTagName(s)[0]
+        if (d.getElementById(id)) return
+        js = d.createElement(s)
+        js.id = id
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"
+        fjs.parentNode.insertBefore(js, fjs)
+      })(document, "script", "facebook-jssdk")
     </script>
 
     <!-- Your customer chat code -->

@@ -1,6 +1,6 @@
 require("babel-register")
 
-const router = require("./router").default
-const Sitemap = require("../").default
+const router = require("/router").default
+const Sitemap = require("./").default
 
-new Sitemap(router).build("https://www.koompi.com/").save("./sitemap.xml")
+new Sitemap(router).build("http://localhost:3000").save("/sitemap.xml")

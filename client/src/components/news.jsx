@@ -93,12 +93,13 @@ class News extends Component {
       <>
         <Navbar />
         <Helmet>
-          <title>News and Events | Koompi Kosmos</title>
+          <title>News and Events</title>
           <meta
-            name="keywords"
-            content="koompi news, news and events koompi, koompi news and events, koompi, smallworld venture"
-          />
-          <meta name="description" content="koompi news and events" />
+         name="keywords"
+         content="news, koompi news, koompi events, event, news and events, koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+        />
+        <meta name="description" content="Bold Mission; we assemble, fine tune and provide for our youths a comprehensive stack of modern learning applications to empower the next generation of engineers, problem solvers and discoverers." />
+        <link rel="canonical" href="https://koompi.com/news-and-events" />
         </Helmet>
         <Modal
           open={open}

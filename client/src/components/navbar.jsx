@@ -78,7 +78,7 @@ export class Navbar extends Component {
                 />
                 News
               </NavLink>
-              <Link to="/preorder" className="item">
+              <Link to="/order" className="item">
                 <img
                   src="/img/icons/order.png"
                   alt="koompi-home"
@@ -95,7 +95,7 @@ export class Navbar extends Component {
               <img
                 role="presentation"
                 className="toggleicon"
-                src="./img/menu.png"
+                src="/img/menu.png"
                 alt="Toogle icon"
                 onClick={this.setTogglestate}
               />
@@ -109,7 +109,7 @@ export class Navbar extends Component {
               <div className="image">
                 <img
                   className="toggleicon"
-                  src="./img/menu.png"
+                  src="/img/menu.png"
                   alt="Toogle icon"
                   onClick={this.setTogglestate}
                 />
@@ -167,7 +167,7 @@ export class Navbar extends Component {
               </NavLink>
               <NavLink
                 className="item navbarTop menuFadeIn"
-                to="/preorder"
+                to="/order"
                 activeClassName="active"
               >
                 Pre-Order

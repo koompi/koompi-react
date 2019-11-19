@@ -9,222 +9,222 @@ class MemberState extends Component {
           id: 0,
           name: "Rithy THUL",
           position: "PR and Partnership",
-          image: "img/team/rithy.webp",
+          image: "img/team/rithy.png",
           cate: 1
         },
         {
           id: 1,
           name: "Sela THUL",
           position: "Linux Developer",
-          image: "img/team/sela.webp",
+          image: "img/team/sela.png",
           cate: 2
         },
         {
           id: 3,
           name: "Hongsea HENG",
           position: "Junior System Engineer",
-          image: "img/team/Hongsea.webp",
+          image: "img/team/Hongsea.png",
           cate: 2
         },
         // {
         //   name: "Rithy SOUN",
         //   position: "Linux Developer",
-        //   image: "img/team/sela.webp",
+        //   image: "img/team/sela.png",
         //   cate: 2
         // },
         {
           id: 4,
           name: "Veasna MA",
           position: "Linux Developer",
-          image: "img/team/veasna.webp",
+          image: "img/team/veasna.png",
           cate: 2
         },
         {
           id: 5,
           name: "Sereyvathana AING",
           position: "Linux Developer",
-          image: "img/team/Chheng.webp",
+          image: "img/team/Chheng.png",
           cate: 2
         },
         {
           id: 6,
           name: "Brilliant PHAL",
           position: "Linux Administator",
-          image: "img/team/brillaint.webp",
+          image: "img/team/brillaint.png",
           cate: 2
         },
         {
           id: 7,
           name: "Lykheang MOEURN",
           position: "Backend Developer",
-          image: "img/team/lykhhean.webp",
+          image: "img/team/lykhhean.png",
           cate: 2
         },
         {
           id: 8,
           name: "Nath LAY ",
           position: "Backend Developer",
-          image: "img/team/net.webp",
+          image: "img/team/net.png",
           cate: 2
         },
         {
           id: 9,
           name: "Vuthy SAN",
           position: "Full Stack Web Developer",
-          image: "img/team/vuthy.webp",
+          image: "img/team/vuthy_san.png",
           cate: 2
         },
         {
           id: 10,
           name: "Sovanden SARIM ",
           position: "Frontend Web Developer",
-          image: "img/team/Den.webp",
+          image: "img/team/Den.png",
           cate: 2
         },
         {
           id: 11,
           name: "Sophal LOEM",
           position: "Web Design",
-          image: "img/team/sophal.webp",
+          image: "img/team/sophal.png",
           cate: 2
         },
         {
           id: 12,
           name: "Sovannchornai SO",
           position: "Web Design",
-          image: "img/team/chorernai.webp",
+          image: "img/team/chorernai.png",
           cate: 2
         },
         {
           id: 13,
           name: "Shenshing LY",
           position: "Research and Development (Pionium)",
-          image: "img/team/Shing.webp",
+          image: "img/team/Shing.png",
           cate: 2
         },
         {
           id: 14,
           name: "Thith THIN",
           position: "Research and Development (Pionium)",
-          image: "img/team/Thith.webp",
+          image: "img/team/Thith.png",
           cate: 2
         },
         {
           id: 15,
           name: "Kalin LEOB",
           position: "Research and Development (Pionium)",
-          image: "img/team/Kalin.webp",
+          image: "img/team/Kalin.png",
           cate: 2
         },
         {
           id: 16,
           name: "Sophim PHIN",
           position: "Mobile Developer",
-          image: "img/team/Phim.webp",
+          image: "img/team/Phim.png",
           cate: 2
         },
         {
           id: 17,
           name: "Panha Sok",
           position: "Graphic Designer",
-          image: "img/team/panha.webp",
+          image: "img/team/panha.png",
           cate: 2
         },
         {
           id: 18,
           name: "Chandara VIREAK",
           position: "Head of Design",
-          image: "img/team/dara.webp",
+          image: "img/team/dara.png",
           cate: 2
         },
         {
           id: 19,
           name: "Visai TRY ",
           position: "Technician",
-          image: "img/team/sai.webp",
+          image: "img/team/sai.png",
           cate: 3
         },
         {
           id: 20,
           name: "Sivyean SUY",
           position: "Technician",
-          image: "img/team/sivyean.webp",
+          image: "img/team/sivyean.png",
           cate: 3
         },
         {
           id: 21,
           name: "Mesa MENG",
           position: "Technician",
-          image: "img/team/Mesa.webp",
+          image: "img/team/Mesa.png",
           cate: 3
         },
         // {
         //   name: "Monirak YIM",
         //   position: "Hardware",
-        //   image: "img/team/den.webp",
+        //   image: "img/team/den.png",
         //   cate: 3
         // },
         {
           id: 22,
           name: "Makara SANN",
           position: "Facilitator",
-          image: "img/team/Makra.webp",
+          image: "img/team/Makra.png",
           cate: 4
         },
         {
           id: 23,
           name: "Kimhong HIENG",
           position: "Mathematician",
-          image: "img/team/Hong.webp",
+          image: "img/team/Hong.png",
           cate: 4
         },
         {
           id: 24,
           name: "Phearin HAY",
           position: "KOOMPI FORCE Content Producer",
-          image: "img/team/Phearin.webp",
+          image: "img/team/Phearin.png",
           cate: 4
         },
         {
           id: 25,
           name: "Panha YOU",
           position: "Sale & Marketing Manager",
-          image: "img/team/panha_you.webp",
+          image: "img/team/panha_you.png",
           cate: 5
         },
         {
           id: 26,
           name: "Sreyneang SOKHA",
           position: "Sale & Marketing",
-          image: "img/team/sreyneang.webp",
+          image: "img/team/sreyneang.png",
           cate: 5
         },
         {
           id: 27,
           name: "Raksme VEN",
           position: "Accountant",
-          image: "img/team/reaksmie.webp",
+          image: "img/team/reaksmie.png",
           cate: 5
         },
         {
           id: 28,
           name: "Sofy THY",
           position: "Business Development officer",
-          image: "img/team/sofy.webp",
+          image: "img/team/sofy.png",
           cate: 6
         },
         {
           id: 29,
           name: "Monika VIRAK",
           position: "Community Manager",
-          image: "img/team/Molika.webp",
+          image: "img/team/Molika.png",
           cate: 6
         },
         {
           id: 30,
           name: "Hengsrun SEANG",
           position: " Communication & Marketing ",
-          image: "img/team/Srun.webp",
+          image: "img/team/Srun.png",
           cate: 6
         }
       ]
@@ -253,7 +253,7 @@ class MemberState extends Component {
                     <img
                       src={info.image}
                       className="ui fluid image teamImage"
-                      alt={info.name + info.position}
+                      alt={info.name}
                     />
                     <h3 className="memberName">{info.name}</h3>
                     <p className="memberPosition">{info.position}</p>
@@ -274,7 +274,7 @@ class MemberState extends Component {
                     <img
                       src={info.image}
                       className="ui fluid image teamImage"
-                      alt={info.name + info.position}
+                      alt={info.name}
                     />
                     <h3 className="memberName">{info.name}</h3>
                     <p className="memberPosition">{info.position}</p>
@@ -295,7 +295,7 @@ class MemberState extends Component {
                     <img
                       src={info.image}
                       className="ui fluid image teamImage"
-                      alt={info.name + info.position}
+                      alt={info.name}
                     />
                     <h3 className="memberName">{info.name}</h3>
                     <p className="memberPosition">{info.position}</p>
@@ -316,7 +316,7 @@ class MemberState extends Component {
                     <img
                       src={info.image}
                       className="ui fluid image teamImage"
-                      alt={info.name + info.position}
+                      alt={info.name}
                     />
                     <h3 className="memberName">{info.name}</h3>
                     <p className="memberPosition">{info.position}</p>
@@ -337,7 +337,7 @@ class MemberState extends Component {
                     <img
                       src={info.image}
                       className="ui fluid image teamImage"
-                      alt={info.name + info.position}
+                      alt={info.name}
                     />
                     <h3 className="memberName">{info.name}</h3>
                     <p className="memberPosition">{info.position}</p>
@@ -358,7 +358,7 @@ class MemberState extends Component {
                     <img
                       src={info.image}
                       className="ui fluid image teamImage"
-                      alt={info.name + info.position}
+                      alt={info.name}
                     />
                     <h3 className="memberName">{info.name}</h3>
                     <p className="memberPosition">{info.position}</p>

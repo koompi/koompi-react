@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { Navbar } from "./navbar"
 import Footer from "./footer"
 import Popup from "./popup"
+import { Helmet } from "react-helmet"
 
 const Banner = () => {
   return (
@@ -83,7 +84,7 @@ const Shapelines = () => {
               </div>
               <div className="column">
                 <img
-                  src="img/koompi-beauty-1.webp"
+                  src="/img/koompi-beauty-1.png"
                   className="koompiBeautyImg"
                   alt="koompi-beauty"
                 />
@@ -94,10 +95,15 @@ const Shapelines = () => {
       </div>
       <div className="backgroundKoompiGallery">
         <img
-          src="img/Presentation-Price.webp"
-          className="koompi-gallery"
-          alt="koompi-gallery"
-        />
+          srcSet="https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/price_info_small.png?alt=media&token=127ca3ad-1633-4225-8d57-649325383599 320w,
+          https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/price_info_medium.png?alt=media&token=0a3fbb3b-6400-4baf-a4e7-28c333d4937f 480w,
+             https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/price_info_big.png?alt=media&token=fb1ad1cf-775d-408a-9099-e73ad0e67b93 800w"
+          sizes="(max-width: 320px) 280px,
+            (max-width: 480px) 440px,
+            800px"
+          src="https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/price_info_big.png?alt=media&token=fb1ad1cf-775d-408a-9099-e73ad0e67b93"
+          alt="Koompi Price"
+        ></img>
       </div>
     </>
   )
@@ -141,8 +147,8 @@ const Screen = () => {
               </div>
               <div className="column">
                 <img
-                  src="img/koompi_screen.webp"
-                  className="koompiBeautyImg"
+                  src="https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/koompi_screen.png?alt=media&token=a08eccdc-482d-44bc-b325-476e5e6e10ad"
+                  className="koompiBeautyImg "
                   alt="koompi-screen"
                 />
               </div>
@@ -162,13 +168,13 @@ const Performance = () => {
           <div className="row removeShadow">
             <div className="six wide column performanceImage">
               <img
-                src="img/koompi_performance.webp"
+                src="https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/koompi_performance.png?alt=media&token=14d36b08-ebb0-41c1-8861-73a601c08473"
                 heigh="400px"
                 className="mobile hidden"
                 alt="koompi-performance"
               />
               <img
-                src="img/koompi_performance.webp"
+                src="https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/koompi_performance.png?alt=media&token=14d36b08-ebb0-41c1-8861-73a601c08473"
                 heigh="400px"
                 className="mobile only"
                 alt="koompi-performance"
@@ -283,7 +289,7 @@ const Battery = () => {
               </div>
               <div className="column">
                 <img
-                  src="img/koompi-battery.webp"
+                  src="/img/koompi-battery.png"
                   className="koompiBeautyImg "
                   alt="koompi-battery"
                 />
@@ -320,7 +326,7 @@ class Index extends Component {
     //   // if your component doesn't have to wait for an async action, remove this block
     //   return (
     //     <div className="loadingImage">
-    //       <img src="/img/koompi-logo-w-02.svg" alt="loading ..." />
+    //       <img src="//img/koompi-logo-w-02.svg" alt="loading ..." />
     //       <center>
     //         <div className="loader" />
     //       </center>
@@ -330,10 +336,18 @@ class Index extends Component {
 
     return (
       <>
-        {/* <button
-          style={{position: "absolute", top: 0, right: 0}}
-          onClick={e=>this.setState({open: !this.state.open})}>Click Me</button>
-        {this.state.open ? <Toggle/> : ""} */}
+        <Helmet>
+          <title>Koompi</title>
+          <meta
+            name="description"
+            content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KramaOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+          />
+          <meta
+            name="keywords"
+            content="koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+          />
+          <link rel="canonical" href="https://koompi.com/home" />
+        </Helmet>
         <Navbar />
         <Popup />
         {Banner()}

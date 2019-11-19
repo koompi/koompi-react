@@ -7,7 +7,7 @@ const Footer = () => {
       <center>
         <a href="http://smallworldcambodia.com">
           <img
-            src="img/smallworld-logo.webp"
+            src="img/smallworld-logo.png"
             className="smallworldLogo"
             alt="smallworld-venture"
           />
@@ -21,38 +21,36 @@ const Footer = () => {
           <Link to="/retailers"> Retailer</Link>
           <Link to="/news-and-events"> News</Link>
         </p>
-        <a
-          href="https://www.facebook.com/koompi/"
-          target="_blank"
-          data-tooltip="Follow us on Facebook"
-          rel="noopener noreferrer"
-        >
-          <i className="fab fa-facebook-f" />
-        </a>
-        <a
-          href="https://t.me/koompi"
-          target="_blank"
-          data-tooltip="Follow us on Telegram"
-          rel="noopener noreferrer"
-        >
-          <i className="fab fa-telegram-plane socailMedia" />
-        </a>
-        <a
-          href="https://twitter.com/koompi_official"
-          target="_blank"
-          data-tooltip="Follow us on Twitter"
-          rel="noopener noreferrer"
-        >
-          <i className="fab fa-twitter socailMedia" />
-        </a>
-        <a
-          href=" https://medium.com/@koompi"
-          target="_blank"
-          data-tooltip="Follow us on Medium"
-          rel="noopener noreferrer"
-        >
-          <i className="fab fa-medium-m socailMedia" />
-        </a>
+        <div className="footer_socail_media">
+          <a
+            href="https://www.facebook.com/koompi/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/img/icons/facebook.png" alt="koompi facebook page" />
+          </a>
+          <a href="https://t.me/koompi" target="_blank" rel="noopener noreferrer">
+            <img src="/img/icons/telegram.png" alt="koompi telegram" />
+          </a>
+          <a
+            href="https://twitter.com/koompi_official"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/img/icons/twitter.png" alt="koompi twitter" />
+          </a>
+          <a
+            href=" https://medium.com/@koompi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/img/icons/medium.png"
+              alt="koompi twitter"
+              className="medium_logo"
+            />
+          </a>
+        </div>
       </center>
     </div>
   )
