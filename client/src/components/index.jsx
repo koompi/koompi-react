@@ -1,10 +1,9 @@
-/* eslint-disable react/no-unused-state */
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import { Helmet } from "react-helmet"
 import { Navbar } from "./navbar"
 import Footer from "./footer"
 import Popup from "./popup"
-import { Helmet } from "react-helmet"
 
 const Banner = () => {
   return (
@@ -103,7 +102,7 @@ const Shapelines = () => {
             800px"
           src="https://firebasestorage.googleapis.com/v0/b/koompi-a55b9.appspot.com/o/price_info_big.png?alt=media&token=fb1ad1cf-775d-408a-9099-e73ad0e67b93"
           alt="Koompi Price"
-        ></img>
+         />
       </div>
     </>
   )

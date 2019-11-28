@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import SocialLinks from "../data/socialLinks.json"
 
 const Footer = () => {
   return (
@@ -22,23 +23,18 @@ const Footer = () => {
           <Link to="/news-and-events"> News</Link>
         </p>
         <div className="footer_socail_media">
-          <a
-            href="https://www.facebook.com/koompi/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/img/icons/facebook.png" alt="koompi facebook page" />
-          </a>
-          <a href="https://t.me/koompi" target="_blank" rel="noopener noreferrer">
-            <img src="/img/icons/telegram.png" alt="koompi telegram" />
-          </a>
-          <a
-            href="https://twitter.com/koompi_official"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/img/icons/twitter.png" alt="koompi twitter" />
-          </a>
+          {SocialLinks.map((data) => {
+            return (
+              <a
+                href={data.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={data.id}
+              >
+                <img src={data.srcImage} alt={data.altImage} />
+              </a>
+            )
+          })}
           <a
             href=" https://medium.com/@koompi"
             target="_blank"

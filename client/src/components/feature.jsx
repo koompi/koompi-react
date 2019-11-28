@@ -164,13 +164,16 @@ class Feature extends Component {
         <Helmet>
           <title>Our Features</title>
           <meta
-         name="keywords"
-         content="feature, our feature, koompi feature, koompi apps, koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
-        />
-        <meta name="description" content="The KOOMPI contains a handpicked suite of software for
+            name="keywords"
+            content="feature, our feature, koompi feature, koompi apps, koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+          />
+          <meta
+            name="description"
+            content="The KOOMPI contains a handpicked suite of software for
 everyday computing, Internet browsing,
-office productivity, entertainment and more." />
-        <link rel="canonical" href="https://koompi.com/feature" />
+office productivity, entertainment and more."
+          />
+          <link rel="canonical" href="https://koompi.com/feature" />
         </Helmet>
         <Navbar />
         <div className="backgroundColorBanner">
