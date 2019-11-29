@@ -3,3 +3,5 @@ build/**
 node_modules/**
 src/serviceWorker.js
 index.js
+worker.js
+Semantic.css

@@ -1,9 +1,9 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 import useForm from "./useForm"
 import validate from "./validateLogin"
 import { Navbar } from "./navbar"
 import Footer from "./footer"
-import { Helmet } from "react-helmet"
 
 const Input = ({ name, label, value, onChange, errors, type }) => {
   return (
@@ -44,14 +44,17 @@ function PreOrder() {
     <>
       <Navbar />
       <Helmet>
-          <title>Order</title>
-          <meta
-         name="keywords"
-         content="koompi order, order, pre-order, buy koompi, koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+        <title>Order</title>
+        <meta
+          name="keywords"
+          content="koompi order, order, pre-order, buy koompi, koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
         />
-        <meta name="description" content="Koompi is working on laptop several hours most users described it as “easy to use and has useful software package”." />
+        <meta
+          name="description"
+          content="Koompi is working on laptop several hours most users described it as “easy to use and has useful software package”."
+        />
         <link rel="canonical" href="https://koompi.com/order" />
-        </Helmet>
+      </Helmet>
 
       <div className="bannerPage">
         <div className="order-banner">
@@ -206,4 +209,4 @@ function PreOrder() {
   )
 }
 
-export default PreOrder;
+export default PreOrder
