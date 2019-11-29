@@ -11,10 +11,13 @@ const About = () => {
       <Helmet>
         <title>About Us</title>
         <meta
-         name="keywords"
-         content="about, about us, our mission, mission, team, our team, koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+          name="keywords"
+          content="about, about us, our mission, mission, team, our team, koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
         />
-        <meta name="description" content="KOOMPI is a practical, affordable and effective entry-level notebook computer specifically designed for performing all daily tasks required for work and school." />
+        <meta
+          name="description"
+          content="KOOMPI is a practical, affordable and effective entry-level notebook computer specifically designed for performing all daily tasks required for work and school."
+        />
         <link rel="canonical" href="https://koompi.com/about-us" />
       </Helmet>
       <div className="backgroundAbout">

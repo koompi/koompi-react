@@ -32,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "sitemap": "/node_modules/.bin/babel-node src/config/sitemap.js",
     "lint": "eslint \"**/*.{js,jsx}\"",
@@ -47,6 +47,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
