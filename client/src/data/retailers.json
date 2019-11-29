@@ -1,68 +1,62 @@
 [
-    {
-      "id": 0,
-      "logo": "img/retailers/sw-greens.png",
-      "name": "SmallWorld Venture",
-      "location":
-        "https://www.facebook.com/pg/smallworldventure/about/?ref=page_internal"
-    },
-    {
-      "id": 1,
-      "logo": "img/retailers/it-store.png",
-      "name": "Sombok IT Store",
-      "location":
-        "https://www.facebook.com/pg/store.sombokit/about/?ref=page_internal"
-    },
-    {
-      "id": 2,
-      "logo": "img/retailers/ufo-logo.png",
-      "name": "UFO Store",
-      "location": "https://www.facebook.com/pg/ufostorekh/about/?ref=page_internal"
-    },
-    {
-      "id": 3,
-      "logo": "img/retailers/E-shop-cam.png",
-      "name": "E-Shop Cambodia",
-      "location": "https://www.facebook.com/pg/eshopcambo/about/?ref=page_internal"
-    },
-    {
-      "id": 5,
-      "logo": "img/retailers/LS.png",
-      "name": "Leang sreng computer",
-      "location":
-        "https://www.facebook.com/pg/Leang-sreng-computer-1-229172480968041/about/?ref=page_internal"
-    },
-    {
-      "id": 6,
-      "logo": "img/retailers/BCS.png",
-      "name": "BCS Computer",
-      "location":
-        "https://www.facebook.com/pg/bcscomputer1/about/?ref=page_internal"
-    },
-    {
-      "id": 7,
-      "logo": "img/retailers/One-Gears.png",
-      "name": "One Gears",
-      "location": "https://www.facebook.com/pg/onegears/about/?ref=page_internal"
-    },
-    {
-      "id": 8,
-      "logo": "img/retailers/my-psar.png",
-      "name": "My PHSAR",
-      "location": "https://www.facebook.com/pg/myphsar/about/?ref=page_internal"
-    },
-    {
-      "id": 9,
-      "logo": "img/retailers/K4.png",
-      "name": "KFOUR",
-      "location":
-        "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
-    },
-    {
-      "id": 10,
-      "logo": "img/retailers/PRC.png",
-      "name": "PRC បញ្ញរ៉ុង",
-      "location":
-        "https://www.facebook.com/pg/prcomputerservice/about/?ref=page_internal"
-    }
-  ]
+  {
+    "id": 0,
+    "logo": "img/retailers/sw-greens.png",
+    "name": "SmallWorld Venture",
+    "location": "https://www.facebook.com/pg/smallworldventure/about/?ref=page_internal"
+  },
+  {
+    "id": 1,
+    "logo": "img/retailers/it-store.png",
+    "name": "Sombok IT Store",
+    "location": "https://www.facebook.com/pg/store.sombokit/about/?ref=page_internal"
+  },
+  {
+    "id": 2,
+    "logo": "img/retailers/ufo-logo.png",
+    "name": "UFO Store",
+    "location": "https://www.facebook.com/pg/ufostorekh/about/?ref=page_internal"
+  },
+  {
+    "id": 3,
+    "logo": "img/retailers/E-shop-cam.png",
+    "name": "E-Shop Cambodia",
+    "location": "https://www.facebook.com/pg/eshopcambo/about/?ref=page_internal"
+  },
+  {
+    "id": 5,
+    "logo": "img/retailers/LS.png",
+    "name": "Leang sreng computer",
+    "location": "https://www.facebook.com/pg/Leang-sreng-computer-1-229172480968041/about/?ref=page_internal"
+  },
+  {
+    "id": 6,
+    "logo": "img/retailers/BCS.png",
+    "name": "BCS Computer",
+    "location": "https://www.facebook.com/pg/bcscomputer1/about/?ref=page_internal"
+  },
+  {
+    "id": 7,
+    "logo": "img/retailers/One-Gears.png",
+    "name": "One Gears",
+    "location": "https://www.facebook.com/pg/onegears/about/?ref=page_internal"
+  },
+  {
+    "id": 8,
+    "logo": "img/retailers/my-psar.png",
+    "name": "My PHSAR",
+    "location": "https://www.facebook.com/pg/myphsar/about/?ref=page_internal"
+  },
+  {
+    "id": 9,
+    "logo": "img/retailers/K4.png",
+    "name": "KFOUR",
+    "location": "https://www.facebook.com/pg/Kfour.Group/about/?ref=page_internal"
+  },
+  {
+    "id": 10,
+    "logo": "img/retailers/PRC.png",
+    "name": "PRC បញ្ញរ៉ុង",
+    "location": "https://www.facebook.com/pg/prcomputerservice/about/?ref=page_internal"
+  }
+]

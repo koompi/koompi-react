@@ -1,23 +1,23 @@
 [
-    {
-        "id": 0,
-        "name": "Facebook",
-        "link": "https://www.facebook.com/koompi/",
-        "srcImage": "/img/icons/facebook.png",
-        "altImage": "koompi facebook page"
-    },
-    {
-        "id": 1,
-        "name": "Telegram",
-        "link": "https://t.me/koompi",
-        "srcImage": "/img/icons/telegram.png",
-        "altImage": "koompi telegram"
-    },
-    {
-        "id": 2,
-        "name": "Twitter",
-        "link": "https://twitter.com/koompi_official",
-        "srcImage": "/img/icons/twitter.png",
-        "altImage": "koompi twitter"
-    }
+  {
+    "id": 0,
+    "name": "Facebook",
+    "link": "https://www.facebook.com/koompi/",
+    "srcImage": "/img/icons/facebook.png",
+    "altImage": "koompi facebook page"
+  },
+  {
+    "id": 1,
+    "name": "Telegram",
+    "link": "https://t.me/koompi",
+    "srcImage": "/img/icons/telegram.png",
+    "altImage": "koompi telegram"
+  },
+  {
+    "id": 2,
+    "name": "Twitter",
+    "link": "https://twitter.com/koompi_official",
+    "srcImage": "/img/icons/twitter.png",
+    "altImage": "koompi twitter"
+  }
 ]

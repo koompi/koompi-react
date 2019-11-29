@@ -1,19 +1,28 @@
-var express = require("express")
-var path = require("path")
-var compression = require("compression")
+const express = require('express');
+const path = require('path')
+const app = express();
 
-var app = express()
+const PORT = 5000;
 
-app.use(compression())
+app.use("/", express.static(path.join(__dirname, "public")))
+app.use('/static/css/*', express.static(path.join(__dirname, 'public'), {
+    setHeaders: function(res, path) {
+      res.type("text/css");
+    }
+  }));
+  app.use('/static/js/*', express.static(path.join(__dirname, 'public'), {
+    setHeaders: function(res, path) {
+      res.type("text/javascript");
+    }
+  }));
+  app.use('/static/media', express.static(path.join(__dirname, 'public'), {
+    setHeaders: function(res, path) {
+      res.type("jpg");
+      res.type("png");
+      res.type("svg");
+    }
+  }));
 
-app.use("/", express.static(path.join(__dirname, "build")))
+app.get("*", (req,res)=> res.sendFile(path.join(__dirname, "./public", "index.html")));
 
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "/build/index.html"))
-})
-
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(5000)
-  console.log("Express started on port 5000")
-}
+app.listen(PORT);
