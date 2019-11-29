@@ -24,7 +24,7 @@ class Retailer extends Component {
     const loading = []
     for (let index = 0; index < 10; index++) {
       loading.push(
-        <div className="column blur">
+        <div className="column blur" key={index}>
           <div className="image-card">
             <ContentLoader
               height={220}
