@@ -43,5 +43,5 @@ Open <http://localhost:3000> to view it in the browser.
 
 ## License
 
-- MIT
+- [MIT](LICENSE)
 - Copyrights 2019 @ [KOOMPI]()
