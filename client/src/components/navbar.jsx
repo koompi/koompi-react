@@ -2,36 +2,6 @@ import React, { useState } from "react"
 import { NavLink, Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
-// export class Navbar extends Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       toggleClick: false
-//     }
-//   }
-
-//   setTogglestate = () => {
-//     const { toggleClick } = this.state
-//     this.setState({
-//       toggleClick: !toggleClick
-//     })
-//   }
-
-//   render() {
-//     const { toggleClick } = this.state
-
-//     const { t, i18n } = useTranslation()
-
-//     const handleClick = (lang) => {
-//       i18n.changeLanguage(lang)
-//     }
-
-//     return (
-
-//     )
-//   }
-// }
-
 function Navbar() {
   const [toggleClick, setTogglestate] = useState(false)
 
