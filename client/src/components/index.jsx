@@ -6,41 +6,6 @@ import Footer from "./footer"
 import Popup from "./popup"
 import { useTranslation } from "react-i18next"
 
-// function demoAsyncCall() {
-//   return new Promise((resolve) => setTimeout(() => resolve(), 2000))
-// }
-
-// class Index extends Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       data: "",
-//       loading: true,
-//       open: true
-//     }
-//   }
-
-//   componentDidMount() {
-//     demoAsyncCall().then(() => this.setState({ loading: false }))
-//   }
-
-//   render() {
-//     // const { loading } = this.state;
-//     // if (loading) {
-//     //   // if your component doesn't have to wait for an async action, remove this block
-//     //   return (
-//     //     <div className="loadingImage">
-//     //       <img src="//img/koompi-logo-w-02.svg" alt="loading ..." />
-//     //       <center>
-//     //         <div className="loader" />
-//     //       </center>
-//     //     </div>
-//     //   ); // render null when app is not ready
-//     // }
-
-//   }
-// }
-
 function Index() {
   const { t } = useTranslation()
 
@@ -230,71 +195,52 @@ function Index() {
               </div>
               <div className="eight wide column">
                 <div className="performancePadding">
-                  <h5>Unprecedented Performance</h5>
+                  <h5>{t("SectionFourIndex.1")}</h5>
                   <p>
-                    KOOMPI, the sleek and lightweight next-generation productivity
-                    tool offering an experience next to none, combining modest
-                    hardware with powerful open-source software.
+                    {t("SectionFourIndex.2")}
                     <br />
                     <br />
-                    As a multi-purpose enabler, the KOOMPI seeks to empower the next
-                    generation of Cambodian youth as the creators and innovators of
-                    tomorrow.
+                    {t("SectionFourIndex.3")}
                     <br />
                     <br />
-                    The KOOMPI offers a pre-packaged functional software environment
-                    that allows users to focus on the challenges of the task at hand
-                    rather than the tools. Powerful yet easy and light enough to
-                    carry almost anywhere.
+                    {t("SectionFourIndex.4")}
                   </p>
                   <div className="ui two column divided grid">
                     <div className="row performanceRemoveMargin">
                       <div className="column">
                         <div className="performanceTitle">
-                          Intel Celeron CPU
-                          <h2>N4100</h2>
+                          {t("SectionFourIndex.5")}
+                          <h2>{t("SectionFourIndex.6")}</h2>
                         </div>
                       </div>
                       <div className="column">
                         <div className="performanceTitle">
-                          Boost to
-                          <h2>
-                            2.4<span className="koompiSpeedMB">GHz</span>
-                          </h2>
+                          {t("SectionFourIndex.7")}
+                          <h2>{t("SectionFourIndex.8")}</h2>
                         </div>
                       </div>
                       <div className="column">
                         <div className="performanceTitle">
-                          M.2 SATA3 SSD
-                          <h2>
-                            128<span className="koompiSpeedMB">GB</span> | 256
-                            <span className="koompiSpeedMB">GB</span>
-                          </h2>
+                          {t("SectionFourIndex.9")}
+                          <h2>{t("SectionFourIndex.10")}</h2>
                         </div>
                       </div>
                       <div className="column">
                         <div className="performanceTitle">
-                          Speed Read | Write
-                          <h2>
-                            537 <span className="koompiSpeedMB">MB/s</span> | 439{" "}
-                            <span className="koompiSpeedMB">MB/s</span>
-                          </h2>
+                          {t("SectionFourIndex.11")}
+                          <h2>{t("SectionFourIndex.12")}</h2>
                         </div>
                       </div>
                       <div className="column">
                         <div className="performanceTitle">
-                          RAM DDR4
-                          <h2>
-                            8<span className="koompiSpeedMB">GB</span>
-                          </h2>
+                          {t("SectionFourIndex.13")}
+                          <h2>{t("SectionFourIndex.14")}</h2>
                         </div>
                       </div>
                       <div className="column">
                         <div className="performanceTitle">
-                          USB-C Port
-                          <h2>
-                            10<span className="koompiSpeedMB">Gbps</span>
-                          </h2>
+                          {t("SectionFourIndex.15")}
+                          <h2>{t("SectionFourIndex.16")}</h2>
                         </div>
                       </div>
                     </div>
@@ -316,21 +262,26 @@ function Index() {
             <div className="ui vertically divided grid">
               <div className="ui stackable two column grid">
                 <div className="column controlColor">
-                  <h4 className="smallTitle">BATTERY</h4>
-                  <h2 className="fontWidth">Fast Charging, Longer life</h2>
-                  <p className="websiteContent">
-                    Designed with an ultra thin high performance 5000mAh battery that
-                    will last for up to 7 hours
-                  </p>
+                  <h4 className="smallTitle">{t("SectionFiveIndex.1")}</h4>
+                  <h2 className="fontWidth">{t("SectionFiveIndex.2")}</h2>
+                  <p className="websiteContent">{t("SectionFiveIndex.3")}</p>
                   <div className="ui grid beautyDetail">
                     <div className="two column row">
                       <div className="column">
-                        <h5 className="beautyDetailTitle">Li-polymer battery</h5>
-                        <h3 className="beautyDetailDesc">5000mAH</h3>
+                        <h5 className="beautyDetailTitle">
+                          {t("SectionFiveIndex.4")}
+                        </h5>
+                        <h3 className="beautyDetailDesc">
+                          {t("SectionFiveIndex.5")}
+                        </h3>
                       </div>
                       <div className="column">
-                        <h5 className="beautyDetailTitle">Battery life</h5>
-                        <h3 className="beautyDetailDesc">Up to 7h</h3>
+                        <h5 className="beautyDetailTitle">
+                          {t("SectionFiveIndex.6")}
+                        </h5>
+                        <h3 className="beautyDetailDesc">
+                          {t("SectionFiveIndex.7")}
+                        </h3>
                       </div>
                     </div>
                   </div>

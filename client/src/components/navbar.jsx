@@ -9,6 +9,11 @@ function Navbar() {
 
   const handleClick = (lang) => {
     i18n.changeLanguage(lang)
+    if (lang === "kh") {
+      console.log("Khmer")
+    } else {
+      console.log("English")
+    }
   }
 
   return (
@@ -165,8 +170,22 @@ function Navbar() {
             >
               Pre-Order
             </NavLink>
-            <button onClick={() => handleClick("en")}>English</button>
-            <button onClick={() => handleClick("kh")}>Khmer</button>
+
+            {window.localStorage.getItem("i18nextLng") === "kh" ? (
+              <img
+                onClick={() => handleClick("en")}
+                src="/img/icons/kh.svg"
+                alt=""
+                srcset=""
+              />
+            ) : (
+              <img
+                onClick={() => handleClick("kh")}
+                src="/img/icons/en.svg"
+                alt=""
+                srcset=""
+              />
+            )}
             <div className="item mobile only">
               {/* <i className="fas fa-times btnAnimationClose"></i> */}
             </div>
