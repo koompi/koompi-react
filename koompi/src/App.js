@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          KOOMPI Pro
+          KOOMPI
         </a>
       </header>
     </div>
