@@ -1,0 +1,31 @@
+.logo{
+  height: 52px !important;
+}
+.text-container{
+  width:65%;
+}
+.laptop-img{
+  height: 400px;
+}
+.banner{
+  background-color:whitesmoke;
+}
+.readmore{
+  margin-top:-14px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+.text{
+  font-size: 19px;
+}
+.content1{
+  margin-top:100px;
+}
+.text-container-content1{
+  width:41%;
+}
+.banner1{
+  background-image: url("/img/0.png");
+  height: 438px;
+  z-index: 10000;
+}
