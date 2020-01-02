@@ -1,31 +1,58 @@
-.logo{
-  height: 52px !important;
+* {
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.text-container{
-  width:65%;
+.logo {
+	height: 52px !important;
 }
-.laptop-img{
-  height: 400px;
+.text-container {
+	width: 65%;
+	margin: 0 auto;
 }
-.banner{
-  background-color:whitesmoke;
+.laptop-img {
+	height: 400px;
 }
-.readmore{
-  margin-top:-14px;
-  margin-bottom: 5px;
-  font-size: 15px;
+.banner {
+	background-color: whitesmoke;
 }
-.text{
-  font-size: 19px;
+.readmore {
+	margin-top: -14px;
+	margin-bottom: 5px;
+	font-size: 15px;
 }
-.content1{
-  margin-top:100px;
+.text {
+	font-size: 19px;
 }
-.text-container-content1{
-  width:41%;
+.content1 {
+	margin-top: 100px;
 }
-.banner1{
-  background-image: url("/img/0.png");
-  height: 438px;
-  z-index: 10000;
+.text-container-content1 {
+	width: 41%;
+}
+.banner1 {
+	background-image: url('/img/laptop.webp');
+	height: 380px;
+	width: 34%;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
+	margin: 0 auto;
+	background-size: contain;
+	margin-left: auto;
+	margin-right: auto;
+}
+.readmore-a {
+	padding: 12px;
+}
+.koompi {
+	float: right;
+}
+.subTittle-E11 {
+	font-size: 64px;
+	line-height: 67px;
+	font-weight: 600;
+}
+.disciption-tab {
+	text-align: center;
 }
