@@ -81,56 +81,58 @@ function Index() {
 					</Row>
 				</Content>
 			</div>
-			<div className='content1'>
-				<center>
-					<h1>KOOMPI E11</h1>
-					<p className='text-container-content1 text'>
-						Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the
-						industry's standard dummy text ever since the 1500s,
-						when an unknown printer took a galley of type and
-						scrambled it to make a type specimen book
-					</p>
-					<div className='readmore'>
-						<a href='#'> Read More</a>
-					</div>
-					{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
-				</center>
-				<div className='banner1'></div>
-			</div>
-			<div className='content1'>
-				<center>
-					<h1>KOOMPI B14</h1>
-					<p className='text-container-content1 text'>
-						Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the
-						industry's standard dummy text ever since the 1500s,
-						when an unknown printer took a galley of type and
-						scrambled it to make a type specimen book
-					</p>
-					<div className='readmore'>
-						<a href='#'> Read More</a>
-					</div>
-					{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
-				</center>
-				<div className='banner1'></div>
-			</div>
-			<div className='content1'>
-				<center>
-					<h1>KOOMPI B15</h1>
-					<p className='text-container-content1 text'>
-						Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the
-						industry's standard dummy text ever since the 1500s,
-						when an unknown printer took a galley of type and
-						scrambled it to make a type specimen book
-					</p>
-					<div className='readmore'>
-						<a href='#'> Read More</a>
-					</div>
-					{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
-				</center>
-				<div className='banner1'></div>
+			<div className='container'>
+				<div className='content1'>
+					<center>
+						<h1>KOOMPI E11</h1>
+						<p className='text-container-content1 text'>
+							Lorem Ipsum is simply dummy text of the printing and
+							typesetting industry. Lorem Ipsum has been the
+							industry's standard dummy text ever since the 1500s,
+							when an unknown printer took a galley of type and
+							scrambled it to make a type specimen book
+						</p>
+						<div className='readmore'>
+							<a href='#'> Read More</a>
+						</div>
+						{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
+					</center>
+					<div className='banner1'></div>
+				</div>
+				<div className='content1'>
+					<center>
+						<h1>KOOMPI B14</h1>
+						<p className='text-container-content1 text'>
+							Lorem Ipsum is simply dummy text of the printing and
+							typesetting industry. Lorem Ipsum has been the
+							industry's standard dummy text ever since the 1500s,
+							when an unknown printer took a galley of type and
+							scrambled it to make a type specimen book
+						</p>
+						<div className='readmore'>
+							<a href='#'> Read More</a>
+						</div>
+						{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
+					</center>
+					<div className='banner1'></div>
+				</div>
+				<div className='content1'>
+					<center>
+						<h1>KOOMPI B15</h1>
+						<p className='text-container-content1 text'>
+							Lorem Ipsum is simply dummy text of the printing and
+							typesetting industry. Lorem Ipsum has been the
+							industry's standard dummy text ever since the 1500s,
+							when an unknown printer took a galley of type and
+							scrambled it to make a type specimen book
+						</p>
+						<div className='readmore'>
+							<a href='#'> Read More</a>
+						</div>
+						{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
+					</center>
+					<div className='banner1'></div>
+				</div>
 			</div>
 		</React.Fragment>
 	);

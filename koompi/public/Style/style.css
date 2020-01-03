@@ -5,8 +5,11 @@
 	height: 52px !important;
 }
 .text-container {
-	width: 65%;
-	margin: 0 auto;
+	max-width: 700px;
+	line-height: 1.5;
+	margin-left: auto;
+	margin-right: auto;
+	/* margin: 0 auto; */
 }
 .laptop-img {
 	height: 400px;
@@ -21,12 +24,14 @@
 }
 .text {
 	font-size: 19px;
+	color: white;
 }
 .content1 {
 	margin-top: 100px;
 }
 .text-container-content1 {
-	width: 41%;
+	/* width: 41%; */
+	max-width: 700px;
 }
 .banner1 {
 	background-image: url('/img/laptop.webp');
@@ -52,7 +57,111 @@
 	font-size: 64px;
 	line-height: 67px;
 	font-weight: 600;
+	color: white !important;
+	margin-top: 12px !important;
+	margin-bottom: 80px !important;
 }
 .disciption-tab {
 	text-align: center;
+}
+@media only screen and (min-width: 1200px) {
+	.container {
+		width: 1127px;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+.p-of-performance {
+	font-size: 23px;
+	color: #63636e !important;
+}
+.upperSpec {
+	line-height: 12px !important;
+	margin-bottom: 41px;
+}
+.upperSpec h1 {
+	font-size: 43px;
+	color: #fff;
+}
+.upperSpec span {
+	color: #63636e;
+}
+.Performance {
+	margin: 46px 0 60px 0;
+}
+
+/* .Carousel1 {
+	background-image: url('/img/matebookxpro2019-grey.png');
+	height: 800px;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
+	margin: 0 auto;
+	background-size: contain;
+} */
+.professional-performance {
+	background-color: black;
+	overflow: hidden;
+	margin-top: 56px !important;
+}
+.professional-performance-h {
+	color: white !important;
+	margin-top: 61px;
+}
+.professional-performance-p {
+	color: #63636e !important;
+}
+.Microchip {
+	margin-top: 60px;
+	margin-bottom: 55px;
+}
+.background-color {
+	background-color: #121217;
+}
+.banner-overview {
+	max-width: 1143px;
+}
+.ant-tabs-bar {
+	background-color: #121217;
+	border-bottom: 0.02px solid white !important;
+	color: white;
+	width: 700px;
+	margin: 0 auto !important;
+}
+.KoompiE11 {
+	margin-top: 90px;
+	color: #63636e !important;
+}
+.p-of-powerBattery {
+	font-size: 23px;
+	color: #63636e !important;
+}
+.title-of-powerBattery {
+	color: #63636e !important;
+}
+.p-power-batter-show {
+	color: white !important;
+}
+.title-of-powerBattery-show {
+	color: white !important;
+	margin-bottom: 4px !important;
+}
+.title-of-powerBattery-show span {
+	font-size: 18px !important;
+}
+.Power-Batter {
+	margin-top: 56px;
+}
+.show-padding-powerBatter {
+	padding-left: 114px;
+	padding-right: 114px;
+}
+.title-of-voidCommand {
+	color: #63636e !important;
+}
+.p-of-voidCommand {
+	color: #63636e !important;
+	font-size: 23px;
 }
