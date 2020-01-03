@@ -42,6 +42,7 @@ npm start
 ##### Frontend
 - [ReactJS](https://reactjs.org/)
 - [Ant Design](https://ant.design/)
+- [Apollo Graphql](https://www.apollographql.com/docs/react/get-started/)
 
 ##### Backend
 - [NodeJS](https://nodejs.org/en/)
