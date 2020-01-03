@@ -122,10 +122,9 @@
   -o-border-radius: 50%;
 }
 .card_desc {
-  font-size: 35px;
+  font-size: 20px;
   margin: 0px !important;
   text-align: center;
-  font-weight: 500;
 }
 .loginContainer {
   width: 30%;
@@ -138,6 +137,11 @@
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 50px 40px 40px 40px;
+  border-radius: 10px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }
 .loginTitle {
   font-size: 30px;
@@ -204,8 +208,8 @@
 
 .ant-btn-primary[disabled] {
   color: rgba(0, 0, 0, 0.25) !important;
-  background-color: #f5f5f5 !important;
-  border-color: #d9d9d9 !important;
+  background-color: #41c1ff !important;
+  border-color: #41c1ff !important;
   text-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -215,7 +219,7 @@
 }
 
 .ant-btn-sm.ant-btn-primary {
-  padding: 0px 20px;
+  padding: 0px 40px;
   background: #aed4f6;
   border: 1px solid transparent;
   color: #1890ff !important;
@@ -231,4 +235,15 @@
 .ant-btn-sm.ant-btn-primary:hover {
   background: #1890ff;
   color: #ffffff !important;
+}
+.loginBackground {
+  background: linear-gradient(rgba(10, 10, 10, 0.623), rgba(27, 27, 27, 0.664)),
+    url("/images/login-background.jpg");
+  height: 100vh;
+  position: relative;
+  filter: blur(0px);
+}
+.apexcharts-svg,
+.apexcharts-canvas {
+  width: 100% !important;
 }

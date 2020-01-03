@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Layout, Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 function LeftNavbar(props) {
+  const userData = useContext(UserContext);
   const [collapsed, setcollapsed] = useState(false);
   const onCollapse = () => {
     setcollapsed(!collapsed);
   };
 
   const pathname = window.location.pathname;
+
+  const { fullname, email, isAdmin } = userData.user;
+  if (fullname === "") {
+    return null;
+  }
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -23,8 +30,8 @@ function LeftNavbar(props) {
         mode="inline"
       >
         {/* ========= Dashboard Section ========= */}
-        <Menu.Item key="/admin">
-          <Link to="/admin" className="nav-text">
+        <Menu.Item key="/admin/dashboard">
+          <Link to="/admin/dashboard" className="nav-text">
             <Icon type="pie-chart" />
             <span>Dashboard</span>
           </Link>
@@ -122,9 +129,64 @@ function LeftNavbar(props) {
           </Menu.Item>
         </SubMenu>
 
-        {/* ========= User Section ========= */}
+        {/* ========= Retailer Section ========= */}
+        <SubMenu
+          key={"/admin/new-member" && "/admin/all-members"}
+          title={
+            <span>
+              <Icon type="carry-out" />
+              <span>Retailers</span>
+            </span>
+          }
+        >
+          <Menu.Item key="/admin/new-member">
+            <Link to="/admin/new-member">New Retailer</Link>
+          </Menu.Item>
+          <Menu.Item key="/admin/all-members">
+            <Link to="/admin/all-members">All Retailers</Link>
+          </Menu.Item>
+        </SubMenu>
+
+        {/* ========= Social Media Section ========= */}
+        <SubMenu
+          key={"/admin/new-member" && "/admin/all-members"}
+          title={
+            <span>
+              <Icon type="deployment-unit" />
+              <span>Social Media</span>
+            </span>
+          }
+        >
+          <Menu.Item key="/admin/new-member">
+            <Link to="/admin/new-member">Add Social Media</Link>
+          </Menu.Item>
+          <Menu.Item key="/admin/all-members">
+            <Link to="/admin/all-members">All Social Media</Link>
+          </Menu.Item>
+        </SubMenu>
+
+        {/* ========= Payment Section ========= */}
+        {isAdmin && (
+          <Menu.Item key="/user">
+            <Link to="/user" className="nav-text">
+              <Icon type="dollar" />
+              <span>User Payment</span>
+            </Link>
+          </Menu.Item>
+        )}
+
+        {/* ========= Mail Sender Section ========= */}
+        {isAdmin && (
+          <Menu.Item key="/user">
+            <Link to="/user" className="nav-text">
+              <Icon type="mail" />
+              <span>Mail Sender</span>
+            </Link>
+          </Menu.Item>
+        )}
+        {/* ========= Mail Sender Section ========= */}
         <Menu.Item key="/user">
-          <Link to="/user" className="nav-text">
+          <Link to="/admin/users" className="nav-text">
             <Icon type="user" />
             <span>Users</span>
           </Link>

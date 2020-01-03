@@ -1,30 +1,41 @@
 const graphql = require("graphql");
+const bcrypt = require("bcryptjs");
 
-const roles = [{}];
+// ======== Models Section =========
+const User = require("../models/User");
 
-const { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLID } = graphql;
+// ======== Type Section =========
+const UserType = require("./types/user");
 
-const RoleType = new GraphQLObjectType({
-  name: "RoleMutation",
-  fields: () => ({
-    title: {
-      type: GraphQLString
-    }
-  })
-});
+const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = graphql;
 
 const RootMutation = new GraphQLObjectType({
   name: "RootMutationType",
   fields: {
-    role: {
-      type: RoleType,
+    // ===== Create User =====
+    create_user: {
+      type: UserType,
       args: {
-        title: { type: GraphQLString }
+        fullname: { type: new GraphQLNonNull(GraphQLString) },
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve(args) {
-        const role = roles.push(args.title);
-        console.log(role);
-        return role;
+      resolve: async (parent, args) => {
+        try {
+          // Check Email
+          const isEmail = await User.findOne({ email: args.email });
+          if (isEmail) {
+            throw new Error("This email already exist...");
+          }
+          // Hash the password
+          const saltRounds = 10;
+          const hashPassword = await bcrypt.hash(args.password, saltRounds);
+          const user = new User({ ...args, password: hashPassword });
+          return user.save();
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
       }
     }
   }

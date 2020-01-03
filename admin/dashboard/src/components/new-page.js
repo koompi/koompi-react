@@ -125,39 +125,6 @@ function NewPage(props) {
                         </section>
                       )}
                     </FormItem>
-
-                    {/* ======= SEO and Keywords ======= */}
-                    <FormItem label="SEO or Keywords">
-                      {getFieldDecorator("keywords", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The keywords is required"
-                          }
-                        ]
-                      })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          onChange={handleSEOChange}
-                          size="large"
-                        >
-                          {children}
-                        </Select>
-                      )}
-                    </FormItem>
-
-                    {/* ======= Post Description ======= */}
-                    <FormItem label="Page Description: ">
-                      {getFieldDecorator("pageDescription", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The Page Description is required"
-                          }
-                        ]
-                      })(<TextArea rows={4} />)}
-                    </FormItem>
                   </Col>
                 </Row>
               </Form>

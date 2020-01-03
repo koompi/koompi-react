@@ -115,12 +115,7 @@ function NewPost(props) {
                             message: "Please select your category!"
                           }
                         ]
-                      })(
-                        <Select placeholder="Select categories">
-                          <Option value="news">news</Option>
-                          <Option value="event">events</Option>
-                        </Select>
-                      )}
+                      })(<Select placeholder="Select categories"></Select>)}
                     </Form.Item>
 
                     {/* ======= Drag and Drop Image ======= */}

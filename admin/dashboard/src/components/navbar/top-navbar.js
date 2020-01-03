@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Popover } from "antd";
+import { UserContext, UserProvider } from "../../context/userContext";
+
 const { Header } = Layout;
+
 function TopNavbar() {
+  const userContext = useContext(UserContext);
+  const { avatar, fullname, email } = userContext.user;
   const content = (
     <div>
       <p>Settings</p>
-      <p>Sign out</p>
+      <p>
+        <a href="/logout">Logout</a>
+      </p>
     </div>
   );
+
   return (
     <Header style={{ background: "#fff", padding: 0 }}>
       <Popover
@@ -15,18 +23,14 @@ function TopNavbar() {
         title={
           <div>
             <div>
-              <b>SAN Vuthy</b>
+              <b>{fullname}</b>
             </div>
-            <p>san.vuthy08@gmail.com</p>
+            <p>{email}</p>
           </div>
         }
         content={content}
       >
-        <img
-          src="https://randomuser.me/api/portraits/women/57.jpg"
-          alt=""
-          className="avatar"
-        />
+        <img src={avatar} alt={fullname} className="avatar" />
       </Popover>
     </Header>
   );

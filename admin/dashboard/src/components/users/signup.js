@@ -1,13 +1,43 @@
-import React from "react";
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import React, { useState } from "react";
+import { Form, Icon, Input, Button, message } from "antd";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
+import three_dots from "../../assets/img/three-dots.svg";
+
+// ===== Create User =====
+import { CREATE_USER } from "../../graphql/mutation";
 
 function SignupForm(props) {
+  const [createUser] = useMutation(CREATE_USER);
+
+  // ===== State Section =====
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = e => {
     e.preventDefault();
-    props.form.validateFields((err, values) => {
+    props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
+        const { fullname, email, password } = values;
+        await createUser({
+          variables: {
+            fullname,
+            email,
+            password
+          }
+        })
+          .then(async () => {
+            setLoading(true);
+            await message.success("Register Successfully.", 10);
+            await window.location.replace("/login");
+          })
+          .catch(error => {
+            setLoading(true);
+            setTimeout(() => {
+              setLoading(false);
+            }, 3000);
+            let err = JSON.parse(JSON.stringify(error));
+            message.error(err.graphQLErrors[0].message);
+          });
       } else {
         console.log(err);
       }
@@ -17,6 +47,7 @@ function SignupForm(props) {
   const { getFieldDecorator } = props.form;
   return (
     <>
+      <div className="loginBackground"></div>
       <div className="loginContainer">
         <h1 className="loginTitle">Register</h1>
         <Form onSubmit={handleSubmit} className="login-form">
@@ -72,22 +103,19 @@ function SignupForm(props) {
 
           {/* Remember Me */}
           <Form.Item>
-            {getFieldDecorator("remember", {
-              valuePropName: "checked",
-              initialValue: true
-            })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
-            <br />
             {/* Button Submit */}
             <Button
               size="small"
               type="primary"
               htmlType="submit"
               className="login-form-button"
+              disabled={loading ? true : false}
             >
-              Submit
+              {loading ? (
+                <img src={three_dots} alt="koompi-steam-loading" height="10" />
+              ) : (
+                "Sign Up"
+              )}
             </Button>
             <br />
             Have an account? <Link to="/login">Login</Link>
