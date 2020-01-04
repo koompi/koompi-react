@@ -1,5 +1,6 @@
 * {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Nunito', sans-serif;
+	letter-spacing: 0.5px;
 }
 .logo {
 	height: 52px !important;
@@ -34,9 +35,9 @@
 	max-width: 700px;
 }
 .banner1 {
-	background-image: url('/img/laptop.webp');
+	background-image: url('/img/Macbook.png');
 	height: 380px;
-	width: 34%;
+	width: 100%;
 	background-size: cover;
 	background-position: 50%;
 	background-repeat: no-repeat;
@@ -164,4 +165,90 @@
 .p-of-voidCommand {
 	color: #63636e !important;
 	font-size: 23px;
+}
+.text-koompi-section-banner {
+	color: black;
+	font-size: 23px;
+}
+.text-koompie11-banner {
+	color: black;
+	font-size: 23px;
+}
+.text-koompib14-banner {
+	color: black;
+	font-size: 23px;
+}
+.text-koompib15-banner {
+	color: black;
+	font-size: 23px;
+}
+.img-show-all-section img {
+	height: 200px;
+}
+.li-show-all-section {
+	margin-left: 145px;
+	font-size: 16px;
+	line-height: 30px;
+}
+.title-show-all-section {
+	margin-left: 145px;
+	margin-top: 30px;
+}
+.button-show-all-section button {
+	margin-top: 30px;
+	border-radius: 35px !important;
+}
+.link-show-all-section {
+	padding: 12px;
+	font-size: 16px;
+}
+.icon-right {
+	font-size: 9px;
+}
+.boss-show-all-section {
+	margin-top: 45px;
+}
+.subboss-show-all-section {
+	margin-top: 58px;
+}
+.voice-text {
+	font-size: 19px;
+	color: #63636e !important;
+	margin-top: 18px;
+}
+.boss-voice {
+	margin-top: 90px !important;
+}
+.boss-command {
+	margin-top: 75px;
+}
+.command-text {
+	font-size: 19px;
+	color: #63636e !important;
+	margin-top: 18px;
+}
+.title-of-slim {
+	color: #63636e !important;
+}
+.text-of-slim {
+	font-size: 19px;
+	color: #63636e !important;
+	margin-top: 18px;
+}
+.boss-of-slim {
+	margin-top: 56px;
+}
+.title-of-slim {
+	color: white !important;
+	margin-bottom: 4px !important;
+}
+.p-of-slim {
+	color: white !important;
+}
+.title-of-slim span {
+	font-size: 18px !important;
+}
+.header-of-slim {
+	margin-top: 56px;
+	color: #63636e !important;
 }

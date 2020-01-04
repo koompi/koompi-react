@@ -10,6 +10,8 @@ import {
 	Icon
 } from 'antd';
 import Navbar from './Navbar';
+import { Typography, Divider } from 'antd';
+const { Title, Paragraph, Text } = Typography;
 
 const { Header, Content, Footer } = Layout;
 // const menu = (
@@ -23,7 +25,7 @@ const { Header, Content, Footer } = Layout;
 // 		<Menu.Item key='3'>KOOMPI B15</Menu.Item>
 // 	</Menu>
 // );
-const koompiPro = [{ img: '/img/laptop.webp' }];
+const koompiPro = [{ img: '/img/Macbook.png' }];
 const koompiE11 = [{ img: '/img/0.png' }];
 function Index() {
 	const [state, setState] = useState(koompiPro);
@@ -48,7 +50,7 @@ function Index() {
 							<center>
 								{/* ========= KOOMPI SECTION =========  */}
 								<h1>KOOMPI PRO</h1>
-								<p className='text-container text'>
+								<p className='text-container text-koompi-section-banner'>
 									Lorem Ipsum is simply dummy text of the
 									printing and typesetting industry. Lorem
 									Ipsum has been the industry's standard dummy
@@ -81,11 +83,13 @@ function Index() {
 					</Row>
 				</Content>
 			</div>
-			<div className='container'>
+
+			{/* =============Big Section ===============*/}
+			<div>
 				<div className='content1'>
 					<center>
 						<h1>KOOMPI E11</h1>
-						<p className='text-container-content1 text'>
+						<p className='text-container-content1 text-koompie11-banner'>
 							Lorem Ipsum is simply dummy text of the printing and
 							typesetting industry. Lorem Ipsum has been the
 							industry's standard dummy text ever since the 1500s,
@@ -95,14 +99,13 @@ function Index() {
 						<div className='readmore'>
 							<a href='#'> Read More</a>
 						</div>
-						{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
 					</center>
 					<div className='banner1'></div>
 				</div>
 				<div className='content1'>
 					<center>
 						<h1>KOOMPI B14</h1>
-						<p className='text-container-content1 text'>
+						<p className='text-container-content1 text-koompib14-banner'>
 							Lorem Ipsum is simply dummy text of the printing and
 							typesetting industry. Lorem Ipsum has been the
 							industry's standard dummy text ever since the 1500s,
@@ -112,14 +115,13 @@ function Index() {
 						<div className='readmore'>
 							<a href='#'> Read More</a>
 						</div>
-						{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
 					</center>
 					<div className='banner1'></div>
 				</div>
 				<div className='content1'>
 					<center>
 						<h1>KOOMPI B15</h1>
-						<p className='text-container-content1 text'>
+						<p className='text-container-content1 text-koompib15-banner'>
 							Lorem Ipsum is simply dummy text of the printing and
 							typesetting industry. Lorem Ipsum has been the
 							industry's standard dummy text ever since the 1500s,
@@ -129,9 +131,187 @@ function Index() {
 						<div className='readmore'>
 							<a href='#'> Read More</a>
 						</div>
-						{/* <img className="laptop-img" src="./img/laptop.webp"></img> */}
 					</center>
 					<div className='banner1'></div>
+				</div>
+			</div>
+			<div className='boss-show-all-section'>
+				<div>
+					<Typography>
+						<center>
+							<Title>Which KOOMPI Right For You?</Title>
+						</center>
+					</Typography>
+					<div className='container subboss-show-all-section'>
+						<Row>
+							<Col sm={12}>
+								<div className='img-show-all-section'>
+									<center>
+										<img src='/img/Macbook.png' />
+									</center>
+									<Title
+										className='title-show-all-section'
+										level={3}>
+										KOOMPI Pro
+									</Title>
+									<Paragraph className='li-show-all-section'>
+										{/* 13.3-inch Retina display1 <br></br>
+											2-core Intel Core i5 processor{' '}
+											<br></br>
+											Up to 16GB memory <br></br>
+											Up to 1TB storage2 <br></br>
+											Up to 12 hours battery life3{' '}
+											<br></br>
+											Touch ID<br></br>
+											Backlit keyboard */}
+										<li>13.3-inch Retina display1</li>
+										<li>2-core Intel Core i5 processor</li>
+										<li>Up to 16GB memory </li>
+										<li>Up to 1TB storage2 </li>
+										<li>Up to 12 hours battery life3</li>
+										<li>Backlit keyboard</li>
+										<div className='button-show-all-section'>
+											<Button type='primary'>Buy</Button>
+											<a
+												className='link-show-all-section'
+												href='#'>
+												readmore
+												<Icon
+													className='icon-right'
+													type='right'
+												/>
+											</a>
+										</div>
+									</Paragraph>
+								</div>
+							</Col>
+							<Col sm={12}>
+								<div className='img-show-all-section'>
+									<center>
+										<img src='/img/Macbook.png' />
+									</center>
+									<Title
+										className='title-show-all-section'
+										level={3}>
+										KOOMPI E11
+									</Title>
+									<Paragraph className='li-show-all-section'>
+										{/* 13.3-inch Retina display1 <br></br>
+											2-core Intel Core i5 processor{' '}
+											<br></br>
+											Up to 16GB memory <br></br>
+											Up to 1TB storage2 <br></br>
+											Up to 12 hours battery life3{' '}
+											<br></br>
+											Touch ID<br></br>
+											Backlit keyboard */}
+										<li>13.3-inch Retina display1</li>
+										<li>2-core Intel Core i5 processor</li>
+										<li>Up to 16GB memory </li>
+										<li>Up to 1TB storage2 </li>
+										<li>Up to 12 hours battery life3</li>
+										<li>Backlit keyboard</li>
+										<div className='button-show-all-section'>
+											<Button type='primary'>Buy</Button>
+											<a
+												className='link-show-all-section'
+												href='#'>
+												readmore
+												<Icon
+													className='icon-right'
+													type='right'
+												/>
+											</a>
+										</div>
+									</Paragraph>
+								</div>
+							</Col>
+						</Row>
+						<Row>
+							<Col sm={12}>
+								<div className='img-show-all-section'>
+									<center>
+										<img src='/img/Macbook.png' />
+									</center>
+									<Title
+										className='title-show-all-section'
+										level={3}>
+										KOOMPI B14
+									</Title>
+									<Paragraph className='li-show-all-section'>
+										{/* 13.3-inch Retina display1 <br></br>
+											2-core Intel Core i5 processor{' '}
+											<br></br>
+											Up to 16GB memory <br></br>
+											Up to 1TB storage2 <br></br>
+											Up to 12 hours battery life3{' '}
+											<br></br>
+											Touch ID<br></br>
+											Backlit keyboard */}
+										<li>13.3-inch Retina display1</li>
+										<li>2-core Intel Core i5 processor</li>
+										<li>Up to 16GB memory </li>
+										<li>Up to 1TB storage2 </li>
+										<li>Up to 12 hours battery life3</li>
+										<li>Backlit keyboard</li>
+										<div className='button-show-all-section'>
+											<Button type='primary'>Buy</Button>
+											<a
+												className='link-show-all-section'
+												href='#'>
+												readmore
+												<Icon
+													className='icon-right'
+													type='right'
+												/>
+											</a>
+										</div>
+									</Paragraph>
+								</div>
+							</Col>
+							<Col sm={12}>
+								<div className='img-show-all-section'>
+									<center>
+										<img src='/img/Macbook.png' />
+									</center>
+									<Title
+										className='title-show-all-section'
+										level={3}>
+										KOOMPI B15
+									</Title>
+									<Paragraph className='li-show-all-section'>
+										{/* 13.3-inch Retina display1 <br></br>
+											2-core Intel Core i5 processor{' '}
+											<br></br>
+											Up to 16GB memory <br></br>
+											Up to 1TB storage2 <br></br>
+											Up to 12 hours battery life3{' '}
+											<br></br>
+											Touch ID<br></br>
+											Backlit keyboard */}
+										<li>13.3-inch Retina display1</li>
+										<li>2-core Intel Core i5 processor</li>
+										<li>Up to 16GB memory </li>
+										<li>Up to 1TB storage2 </li>
+										<li>Up to 12 hours battery life3</li>
+										<li>Backlit keyboard</li>
+										<div className='button-show-all-section'>
+											<Button type='primary'>Buy</Button>
+											<a
+												className='link-show-all-section'
+												href='#'>
+												readmore
+												<Icon
+													className='icon-right'
+													type='right'
+												/>
+											</a>
+										</div>
+									</Paragraph>
+								</div>
+							</Col>
+						</Row>
+					</div>
 				</div>
 			</div>
 		</React.Fragment>

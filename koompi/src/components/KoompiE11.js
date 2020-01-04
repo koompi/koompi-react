@@ -246,14 +246,172 @@ function KoompiE11() {
 											</Title>
 											<Paragraph className='p-of-voidCommand'>
 												Featuring quad microphones, the
-												HUAWEI MateBook X Pro can
-												accurately pick up your voice
-												from 4 meters away.12 The
-												Cortana and other voice-enabled
-												apps can clearly hear and
-												support you easily.
+												KOOMPI E11 can accurately pick
+												up your voice from 4 meters
+												away.12 The Cortana and other
+												voice-enabled apps can clearly
+												hear and support you easily.
 											</Paragraph>
 										</Typography>
+									</div>
+									<div>
+										<Row>
+											<Col sm={12}>
+												<img src='/img/koompii.png' />
+											</Col>
+											<Col sm={12}>
+												<div>
+													<div className='boss-voice'>
+														<center>
+															<img src='/img/icons8-microphone-50.png' />
+														</center>
+														<div className='text-container'>
+															<Typography>
+																<Paragraph className='voice-text'>
+																	Sunt ullamco
+																	et eu
+																	pariatur
+																	laboris.
+																	Ipsum amet
+																	laborum sit
+																	magna
+																	cupidatat
+																	consectetur
+																	aliquip ex
+																	labore
+																	proident
+																	culpa. Sint
+																	consequat et
+																	duis veniam
+																	ut sint sint
+																	et duis
+																	irure et.
+																	Officia
+																	minim
+																	commodo
+																	ullamco sit
+																	velit
+																	excepteur ad
+																	velit labore
+																	et ad
+																	incididunt.
+																	Proident
+																	enim dolor
+																	reprehenderit
+																	esse
+																	ullamco.
+																</Paragraph>
+															</Typography>
+														</div>
+													</div>
+													<div className='boss-command'>
+														<div>
+															<center>
+																<img src='/img/icons8-console-48.png' />
+															</center>
+															<div className='text-container'>
+																<Typography>
+																	<Paragraph className='command-text'>
+																		Sunt
+																		ullamco
+																		et eu
+																		pariatur
+																		laboris.
+																		Ipsum
+																		amet
+																		laborum
+																		sit
+																		magna
+																		cupidatat
+																		consectetur
+																		aliquip
+																		ex
+																		labore
+																		proident
+																		culpa.
+																		Sint
+																		consequat
+																		et duis
+																		veniam
+																		ut sint
+																		sint et
+																		duis
+																		irure
+																		et.
+																		Officia
+																		minim
+																		commodo
+																		ullamco
+																		sit
+																		velit
+																		excepteur
+																		ad velit
+																		labore
+																		et ad
+																		incididunt.
+																		Proident
+																		enim
+																		dolor
+																		reprehenderit
+																		esse
+																		ullamco.
+																	</Paragraph>
+																</Typography>
+															</div>
+														</div>
+													</div>
+												</div>
+											</Col>
+										</Row>
+									</div>
+								</div>
+								{/* ============Slim creative Design=========== */}
+								<div className='boss-of-slim'>
+									<div className='text-container'>
+										<Typography>
+											<Title className='header-of-slim'>
+												Chic, incredibly portable.
+											</Title>
+											<Paragraph className='text-of-slim'>
+												A professional notebook that's
+												also portable. The elegant
+												metallic body with perfect
+												diamond cutting and sandblast
+												finishing is just 14.6 mm thin
+												and weighs only 1.33 kg.
+												Comfortable to take it anywhere
+												for work or entertainment.
+											</Paragraph>
+										</Typography>
+										<div>
+											<Row>
+												<Col span={12}>
+													<div>
+														<Title className='title-of-slim'>
+															14.6 <span>mm</span>
+														</Title>
+														<Paragraph className='p-of-slim'>
+															Thin
+														</Paragraph>
+													</div>
+												</Col>
+												<Col span={12}>
+													<div>
+														<Title className='title-of-slim'>
+															1.33 <span>kg</span>
+														</Title>
+														<Paragraph className='p-of-slim'>
+															Light
+														</Paragraph>
+													</div>
+												</Col>
+											</Row>
+										</div>
+									</div>
+									<div>
+										<center>
+											<img src='/img/slimmacbook.webp' />
+										</center>
 									</div>
 								</div>
 							</div>
