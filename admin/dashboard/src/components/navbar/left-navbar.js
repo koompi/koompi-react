@@ -22,7 +22,11 @@ function LeftNavbar(props) {
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-      <div className="logo" />
+      <div>
+        <center>
+          <img src="/images/KOOMPI_Logo.svg" alt="" className="KOOMPI_LOGO" />
+        </center>
+      </div>
       <Menu
         theme="dark"
         defaultSelectedKeys={[pathname]}
@@ -86,30 +90,14 @@ function LeftNavbar(props) {
           </Menu.Item>
         </SubMenu>
 
-        {/* ========= Category Section ========= */}
+        {/* ========= Categories Section ========= */}
 
-        <SubMenu
-          key={
-            pathname === "/admin/new-category"
-              ? "/admin/new-category"
-              : pathname === "/admin/all-categories"
-              ? "/admin/all-categories"
-              : ""
-          }
-          title={
-            <span>
-              <Icon type="appstore" />
-              <span>Categories</span>
-            </span>
-          }
-        >
-          <Menu.Item key="/admin/new-category">
-            <Link to="/admin/new-category">New Category</Link>
-          </Menu.Item>
-          <Menu.Item key="/admin/all-categories">
-            <Link to="/admin/all-categories">All Categories</Link>
-          </Menu.Item>
-        </SubMenu>
+        <Menu.Item key="/admin/categories">
+          <Link to="/admin/categories">
+            <Icon type="appstore" />
+            Categories
+          </Link>
+        </Menu.Item>
 
         {/* ========= Member Section ========= */}
         <SubMenu

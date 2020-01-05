@@ -1,4 +1,13 @@
 import React, { useState } from "react";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import ReactQuill from "react-quill"; // ES6
+import "react-quill/dist/quill.snow.css"; // ES6
+import LeftNavbar from "../navbar/left-navbar";
+import TopNavbar from "../navbar/top-navbar";
+import PageFooter from "../footer";
+
+// ===== Query and Mutation Section =====
+import { GET_CATEGORIES } from "../../graphql/query";
 import {
   Form,
   Icon,
@@ -9,14 +18,9 @@ import {
   Upload,
   Select,
   Layout,
-  message
+  message,
+  Alert
 } from "antd";
-
-import ReactQuill from "react-quill"; // ES6
-import "react-quill/dist/quill.snow.css"; // ES6
-import LeftNavbar from "./navbar/left-navbar";
-import TopNavbar from "./navbar/top-navbar";
-import PageFooter from "./footer";
 
 const FormItem = Form.Item;
 const { Content } = Layout;
@@ -27,10 +31,59 @@ const children = [];
 
 function NewPost(props) {
   const { getFieldDecorator } = props.form;
+  const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES);
+
+  const DisplayCategories = () => {
+    const { error, loading, data } = useQuery(GET_CATEGORIES);
+    if (error) console.log(error);
+    if (loading) return "Loading ...";
+    if (data.categories.length === 0) {
+      return (
+        <Form.Item label="Categories">
+          {getFieldDecorator("category", {
+            rules: [
+              {
+                required: true,
+                message: "Please select your category!"
+              }
+            ]
+          })(<Select placeholder="No Category"></Select>)}
+        </Form.Item>
+      );
+    } else {
+      return (
+        <Form.Item label="Categories" hasFeedback>
+          {getFieldDecorator("category", {
+            rules: [
+              {
+                required: true,
+                message: "Please select your category!"
+              }
+            ],
+            initialValue: data.categories[0].title
+          })(
+            <Select placeholder="Please select the category">
+              {data.categories.map(cate => {
+                return (
+                  <Option value={cate.title} key={cate.id}>
+                    {cate.title}
+                  </Option>
+                );
+              })}
+            </Select>
+          )}
+        </Form.Item>
+      );
+    }
+  };
 
   const handleSEOChange = value => {
     console.log(`selected ${value}`);
   };
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -53,11 +106,12 @@ function NewPost(props) {
           {/* ======= Display content ====== */}
           <div className="koompi container">
             <div className="background_container">
-              <h1 className="title_new_post">Add New Post</h1>
+              <h1 className="title_new_post">New Post</h1>
+
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
-                    <FormItem label="Title: ">
+                    <FormItem label="Title" hasFeedback>
                       {getFieldDecorator("title", {
                         rules: [
                           {
@@ -106,27 +160,15 @@ function NewPost(props) {
                   </Col>
 
                   <Col span={8}>
-                    {/* ======= Category Sections ======= */}
-                    <Form.Item label="Categories">
-                      {getFieldDecorator("category", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "Please select your category!"
-                          }
-                        ]
-                      })(<Select placeholder="Select categories"></Select>)}
-                    </Form.Item>
-
                     {/* ======= Drag and Drop Image ======= */}
                     <FormItem label="Feaure Image">
                       {getFieldDecorator("image", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The Feature Image is required"
-                          }
-                        ]
+                        // rules: [
+                        //   {
+                        //     required: true,
+                        //     message: "The Feature Image is required"
+                        //   }
+                        // ]
                       })(
                         <section>
                           <Upload.Dragger name="files" action="#">
@@ -144,6 +186,29 @@ function NewPost(props) {
                       )}
                     </FormItem>
 
+                    {/* ======= Category Sections ======= */}
+                    <DisplayCategories />
+
+                    {/* ======= Tags ======= */}
+                    <FormItem label="Tags">
+                      {getFieldDecorator("tags", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "The tags is required"
+                          }
+                        ]
+                      })(
+                        <Select
+                          mode="tags"
+                          style={{ width: "100%" }}
+                          size="large"
+                        >
+                          {children}
+                        </Select>
+                      )}
+                    </FormItem>
+
                     {/* ======= SEO and Keywords ======= */}
                     <FormItem label="SEO or Keywords">
                       {getFieldDecorator("keywords", {
@@ -157,7 +222,6 @@ function NewPost(props) {
                         <Select
                           mode="tags"
                           style={{ width: "100%" }}
-                          onChange={handleSEOChange}
                           size="large"
                         >
                           {children}
@@ -174,7 +238,7 @@ function NewPost(props) {
                             message: "The Post Description is required"
                           }
                         ]
-                      })(<TextArea rows={4} />)}
+                      })(<TextArea rows={1} />)}
                     </FormItem>
                   </Col>
                 </Row>

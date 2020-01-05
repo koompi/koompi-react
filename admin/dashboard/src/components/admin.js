@@ -1,36 +1,16 @@
 import React, { useState } from "react";
 import { Row, Col, Layout } from "antd";
-import { useQuery } from "@apollo/react-hooks";
 
-import user_img from "../assets/img/user.png";
 import LeftNavbar from "./navbar/left-navbar";
 import TopNavbar from "./navbar/top-navbar";
 import PageFooter from "./footer";
+import { UserTotal } from "./data/admin";
 
 import Chart from "react-apexcharts";
-
-// ===== Query Section =====
-import { GET_USERS } from "../graphql/query";
 
 const { Content } = Layout;
 
 function Admin() {
-  const UserTotal = () => {
-    const { error, loading, data } = useQuery(GET_USERS);
-    if (loading) {
-      return <p className="card_desc">loading ...</p>;
-    }
-    if (error) console.log(error);
-    if (data) {
-      console.log();
-      return (
-        <div>
-          <center>{data.users.length} users</center>
-        </div>
-      );
-    }
-  };
-
   const [chart, setChart] = useState({
     series: [
       {
@@ -88,23 +68,55 @@ function Admin() {
               <Col span={6}>
                 <div className="card_back">
                   <div className="icons_back">
-                    <img src={user_img} alt="user" className="card_icon" />
+                    <img
+                      src="/images/icons/User.svg"
+                      alt="user"
+                      className="card_icon"
+                    />
                   </div>
                   <UserTotal />
                 </div>
               </Col>
               <Col span={6}>
-                <div className="card_back">Hello World</div>
+                <div className="card_back">
+                  <div className="icons_back">
+                    <img
+                      src="/images/icons/Post.svg"
+                      alt="user"
+                      className="card_icon"
+                    />
+                  </div>
+                  <UserTotal />
+                </div>
               </Col>
               <Col span={6}>
-                <div className="card_back">Hello World</div>
+                <div className="card_back">
+                  <div className="icons_back">
+                    <img
+                      src="/images/icons/Page.svg"
+                      alt="user"
+                      className="card_icon"
+                    />
+                  </div>
+                  <UserTotal />
+                </div>
               </Col>
               <Col span={6}>
-                <div className="card_back">Hello World</div>
+                <div className="card_back">
+                  <div className="icons_back">
+                    <img
+                      src="/images/icons/Retailers.svg"
+                      alt="user"
+                      className="card_icon"
+                    />
+                  </div>
+                  <UserTotal />
+                </div>
               </Col>
             </Row>
             <Row gutter={[16, 16]}>
               <Col span={8}>
+                <h5>KOOMPI </h5>
                 <div className="card_back">
                   <Chart
                     series={chart.series}

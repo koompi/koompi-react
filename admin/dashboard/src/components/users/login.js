@@ -14,7 +14,6 @@ import three_dots from "../../assets/img/three-dots.svg";
 import jwt from "jsonwebtoken";
 
 import nProgress from "nprogress";
-import "nprogress/nprogress.css";
 
 function LoginForm(props) {
   const [loading, setLoading] = useState(false);

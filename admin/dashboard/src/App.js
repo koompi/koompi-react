@@ -9,16 +9,17 @@ import SignupForm from "./components/users/signup";
 import PrivateRoute from "./PrivateRoute";
 
 // Call Component
-import NewPost from "./components/new-post";
-import AllPosts from "./components/all-post";
+import NewPost from "./components/posts/new-post";
+import AllPosts from "./components/posts/all-post";
 import NewPage from "./components/new-page";
 import Admin from "./components/admin";
 import AllPages from "./components/all-pages";
 import Users from "./components/users";
 import Logout from "./components/users/logout";
 import { UserProvider } from "./context/userContext";
-import Category from "./components/category";
-
+import Category from "./components/categories/category";
+import "nprogress/nprogress.css";
+import editCategory from "./components/categories/edit-category";
 const { Content } = Layout;
 
 function App() {
@@ -38,10 +39,11 @@ function App() {
             <PrivateRoute exact path="/admin/new-page" component={NewPage} />
             <PrivateRoute exact path="/admin/all-pages" component={AllPages} />
             <PrivateRoute exact path="/admin/users" component={Users} />
+            <PrivateRoute exact path="/admin/categories" component={Category} />
             <PrivateRoute
               exact
-              path="/admin/new-category"
-              component={Category}
+              path="/admin/category/edit/:id"
+              component={editCategory}
             />
           </div>
         </Switch>

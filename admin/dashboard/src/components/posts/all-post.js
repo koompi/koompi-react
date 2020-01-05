@@ -1,8 +1,8 @@
 import React from "react";
 import { Table, Divider, Tag, Button, Layout } from "antd";
-import TopNavbar from "./navbar/top-navbar";
-import LeftNavbar from "./navbar/left-navbar";
-import PageFooter from "./footer";
+import TopNavbar from "../navbar/top-navbar";
+import LeftNavbar from "../navbar/left-navbar";
+import PageFooter from "../footer";
 
 const { Content } = Layout;
 
