@@ -1,102 +1,154 @@
 * {
-  font-family: 'Nunito', sans-serif;
-  letter-spacing: 0.5px;
+	font-family: 'Nunito', sans-serif;
+	letter-spacing: 0.5px;
 }
 .logo {
-  height: 52px !important;
+	height: 52px !important;
 }
 .text-container {
-  max-width: 780px;
-  line-height: 1.5;
-  margin-left: auto;
-  margin-right: auto;
-  /* margin: 0 auto; */
+	max-width: 780px;
+	line-height: 1.5;
+	margin-left: auto;
+	margin-right: auto;
+	/* margin: 0 auto; */
 }
 .laptop-img {
-  height: 365px;
+	/* height: 365px; */
+	max-width: 100%;
 }
 .banner {
-  background-color: whitesmoke;
+	background-color: whitesmoke;
 }
 .readmore {
-  margin-top: -14px;
-  margin-bottom: 5px;
-  font-size: 15px;
+	margin-top: -14px;
+	margin-bottom: 5px;
+	font-size: 15px;
 }
 .text {
-  font-size: 19px;
-  color: white;
+	font-size: 19px;
+	color: white;
 }
 .content1 {
-  margin-top: 100px;
+	margin-top: 100px;
 }
 .text-container-content1 {
-  /* width: 41%; */
-  max-width: 700px;
+	/* width: 41%; */
+	max-width: 700px;
 }
 .banner1 {
-  background-image: url('/img/Macbook.png');
-  height: 380px;
-  width: 100%;
-  background-size: cover;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  position: relative;
-  z-index: 1;
-  margin: 0 auto;
-  background-size: contain;
-  margin-left: auto;
-  margin-right: auto;
+	background-image: url('/img/Macbook.png');
+	height: 380px;
+	width: 100%;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
+	margin: 0 auto;
+	background-size: contain;
+	margin-left: auto;
+	margin-right: auto;
 }
 .readmore-a {
-  padding: 12px;
+	padding: 12px;
 }
 .koompi {
-  float: right;
+	float: right;
 }
 .subTittle-E11 {
-  font-size: 64px;
-  line-height: 67px;
-  font-weight: 600;
-  color: white !important;
-  margin-top: 12px !important;
-  margin-bottom: 80px !important;
+	font-size: 64px;
+	line-height: 67px;
+	font-weight: 600;
+	color: white !important;
+	margin-top: 12px !important;
+	margin-bottom: 80px !important;
 }
 .subTittle-Pro {
-  font-size: 64px;
-  line-height: 67px;
-  font-weight: 600;
-  color: white !important;
-  margin-top: 12px !important;
-  margin-bottom: 80px !important;
-}
-.disciption-tab {
-  text-align: center;
+	font-size: 64px;
+	line-height: 67px;
+	font-weight: 600;
+	color: white !important;
+	margin-top: 12px !important;
+	margin-bottom: 80px !important;
 }
 @media only screen and (min-width: 1200px) {
-  .container {
-    width: 1127px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+	.container {
+		width: 1127px;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
 }
+@media only screen and (min-width: 767px) {
+	.disciption-tab {
+		text-align: center !important;
+	}
+}
+@media only screen and (max-width: 1119px) {
+	.container {
+		width: 90%;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+@media only screen and (max-width: 574px) {
+	.img-show-all-section img {
+		max-width: 100%;
+		height: auto !important;
+	}
+}
+@media only screen and (max-width: 518px) {
+	.title-show-all-section {
+		margin-left: auto !important;
+	}
+	.li-show-all-section {
+		margin-left: auto !important;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.upperSpec {
+		display: none;
+	}
+	.show-padding-powerBatter {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	.title-of-powerBattery-show {
+		font-size: 30px !important;
+	}
+	.title-of-slim {
+		font-size: 30px !important;
+	}
+}
+@media only screen and (min-width: 768px) {
+	.upperSpec-width-767px {
+		display: none;
+	}
+}
+.upperSpec-width-767px h1 {
+	font-size: 20px !important;
+	color: #fff;
+}
+.upperSpec-width-767px span {
+	color: #63636e !important;
+}
+
 .p-of-performance {
-  font-size: 23px;
-  color: #63636e !important;
+	font-size: 23px;
+	color: #63636e !important;
 }
 .upperSpec {
-  line-height: 12px !important;
-  margin-bottom: 41px;
+	line-height: 12px !important;
+	margin-bottom: 41px;
 }
 .upperSpec h1 {
-  font-size: 43px;
-  color: #fff;
+	font-size: 43px;
+	color: #fff;
 }
 .upperSpec span {
-  color: #63636e;
+	color: #63636e;
 }
 .Performance {
-  margin: 46px 0 60px 0;
+	margin: 46px 0 60px 0;
 }
 
 /* .Carousel1 {
@@ -111,226 +163,233 @@
 	background-size: contain;
 } */
 .professional-performance {
-  background-color: black;
-  overflow: hidden;
-  margin-top: 56px !important;
+	background-color: black;
+	overflow: hidden;
+	margin-top: 56px !important;
 }
 .professional-performance-h {
-  color: white !important;
-  margin-top: 61px;
+	color: white !important;
+	margin-top: 61px;
 }
 .professional-performance-p {
-  color: #63636e !important;
+	color: #63636e !important;
 }
 .Microchip {
-  margin-top: 60px;
-  margin-bottom: 55px;
+	margin-top: 60px;
+	margin-bottom: 55px;
 }
 .background-color {
-  background-color: #121217;
+	background-color: #121217;
 }
 .banner-overview {
-  max-width: 1143px;
+	/* max-width: 1143px; */
+	max-width: 100%;
 }
 .ant-tabs-bar {
-  /* background-color: #121217; */
-  border-bottom: 0.02px solid white !important;
-  color: white;
-  width: 700px;
-  margin: 0 auto !important;
+	/* background-color: #121217; */
+	border-bottom: 0.02px solid white !important;
+	color: white;
+	width: 700px;
+	margin: 0 auto !important;
 }
 .KoompiE11 {
-  margin-top: 90px;
-  color: #63636e !important;
+	margin-top: 90px;
+	color: #63636e !important;
 }
 .KoompiPro {
-  margin-top: 90px;
-  color: #63636e !important;
+	margin-top: 90px;
+	color: #63636e !important;
 }
 .p-of-powerBattery {
-  font-size: 23px;
-  color: #63636e !important;
+	font-size: 23px;
+	color: #63636e !important;
 }
 .title-of-powerBattery {
-  color: #63636e !important;
+	color: #63636e !important;
 }
 .p-power-batter-show {
-  color: white !important;
+	color: #63636e !important;
 }
 .title-of-powerBattery-show {
-  color: white !important;
-  margin-bottom: 4px !important;
+	color: white !important;
+	margin-bottom: 4px !important;
 }
 .title-of-powerBattery-show span {
-  font-size: 18px !important;
+	font-size: 18px !important;
 }
 .Power-Batter {
-  margin-top: 56px;
+	margin-top: 56px;
 }
 .show-padding-powerBatter {
-  padding-left: 114px;
-  padding-right: 114px;
+	padding-left: 114px;
+	padding-right: 114px;
 }
 .title-of-voidCommand {
-  color: #63636e !important;
+	color: #63636e !important;
 }
 .p-of-voidCommand {
-  color: #63636e !important;
-  font-size: 23px;
+	color: #63636e !important;
+	font-size: 23px;
 }
 .text-koompi-section-banner {
-  color: black;
-  font-size: 23px;
+	color: black;
+	font-size: 23px;
 }
 .text-koompie11-banner {
-  color: black;
-  font-size: 23px;
+	color: black;
+	font-size: 23px;
 }
 .text-koompib14-banner {
-  color: black;
-  font-size: 23px;
+	color: black;
+	font-size: 23px;
 }
 .text-koompib15-banner {
-  color: black;
-  font-size: 23px;
+	color: black;
+	font-size: 23px;
 }
 .img-show-all-section img {
-  height: 200px;
+	height: 200px;
+	max-width: 100%;
 }
 .li-show-all-section {
-  margin-left: 145px;
-  font-size: 16px;
-  line-height: 30px;
+	margin-left: 145px;
+	font-size: 16px;
+	line-height: 30px;
 }
 .title-show-all-section {
-  margin-left: 145px;
-  margin-top: 30px;
+	margin-left: 145px;
+	margin-top: 30px;
 }
 .button-show-all-section button {
-  margin-top: 30px;
-  border-radius: 35px !important;
+	margin-top: 30px;
+	border-radius: 35px !important;
 }
 .link-show-all-section {
-  padding: 12px;
-  font-size: 16px;
+	padding: 12px;
+	font-size: 16px;
 }
 .icon-right {
-  font-size: 9px;
+	font-size: 9px;
 }
 .boss-show-all-section {
-  margin-top: 45px;
+	margin-top: 45px;
 }
 .subboss-show-all-section {
-  margin-top: 58px;
+	margin-top: 58px;
 }
 .voice-text {
-  font-size: 23px;
-  color: #63636e !important;
-  margin-top: 18px;
+	font-size: 23px;
+	color: #63636e !important;
+	margin-top: 18px;
 }
 .boss-voice {
-  margin-top: 90px !important;
+	margin-top: 90px !important;
 }
 .boss-command {
-  margin-top: 75px;
+	margin-top: 75px;
 }
 .command-text {
-  font-size: 23px;
-  color: #63636e !important;
-  margin-top: 18px;
+	font-size: 23px;
+	color: #63636e !important;
+	margin-top: 18px;
 }
 .title-of-slim {
-  color: #63636e !important;
+	color: #fff !important;
+	margin-bottom: 4px !important;
 }
 .text-of-slim {
-  font-size: 23px;
-  color: #63636e !important;
-  margin-top: 18px;
+	font-size: 23px;
+	color: #63636e !important;
+	margin-top: 18px;
 }
 .boss-of-slim {
-  margin-top: 56px;
+	margin-top: 56px;
 }
-.title-of-slim {
-  color: white !important;
-  margin-bottom: 4px !important;
-}
+/* .title-of-slim {
+	color: white !important;
+	margin-bottom: 4px !important;
+} */
+
 .p-of-slim {
-  color: white !important;
+	color: #63636e !important;
 }
 .title-of-slim span {
-  font-size: 18px !important;
+	font-size: 18px !important;
 }
 .header-of-slim {
-  margin-top: 56px;
-  color: #63636e !important;
+	margin-top: 56px;
+	color: #63636e !important;
 }
 .banner-overview-koompiE11 {
-  max-width: 1143px;
+	/* max-width: 1143px; */
+	max-width: 100%;
 }
 .banner-overview-display-koompiE11 {
-  max-width: 1143px;
+	/* max-width: 1143px; */
+	max-width: 100%;
 }
 .Title-Display-koompiE11 {
-  color: #63636e !important;
+	color: #63636e !important;
 }
 .text-Display-koompiE11 {
-  font-size: 23px;
-  color: #63636e !important;
+	font-size: 23px;
+	color: #63636e !important;
 }
 .text-show-all-Display {
-  margin-top: -24px;
-  color: #63636e !important;
+	margin-top: -24px;
+	color: #63636e !important;
 }
 .sunIcon-Display {
-  height: 42px;
+	height: 42px;
 }
 .text1-show-all-Display {
-  color: #63636e !important;
+	color: #63636e !important;
 }
 .title-Display-Descrip {
-  color: white !important;
+	color: white !important;
 }
 .banner-Performance-koompiE11 {
-  max-width: 1143px;
+	/* max-width: 1143px; */
+	max-width: 100%;
 }
 .title-performance-koompiE11 {
-  color: #63636e !important;
+	color: #63636e !important;
 }
 .text-performence-koompiE11 {
-  color: #63636e !important;
-  font-size: 23px;
+	color: #63636e !important;
+	font-size: 23px;
 }
 .margin-display-koompiE11 {
-  margin-top: 100px;
+	margin-top: 100px;
 }
 .margin-performence-koompiE11 {
-  margin-top: 100px;
+	margin-top: 100px;
 }
 .title-performance-koompiE11-descrip {
-  color: white !important;
+	color: white !important;
 }
 .title-performance-koompiE11-descrip span {
-  font-size: 23px;
+	font-size: 23px;
 }
 .text-performence-koompiE11-descrip {
-  color: #63636e !important;
-  margin-top: -24px;
+	color: #63636e !important;
+	margin-top: -24px;
 }
 .text-performence-koompiE11-descripOfIcon {
-  color: #63636e !important;
+	color: #63636e !important;
 }
 .Icon-performence-koompiE11 {
-  height: 40px;
+	height: 40px;
 }
 .IconBatter-of-koompiE11 {
-  margin-top: 26px !important;
+	margin-top: 26px !important;
 }
 .text-battery-koompiE11 {
-  color: #63636e !important;
-  font-size: 15px;
+	color: #63636e !important;
+	font-size: 15px;
 }
 .border-battery {
-  margin-top: 26px !important;
-  border-top: 0.02px solid white;
-  margin-bottom: 12px;
+	margin-top: 26px !important;
+	border-top: 0.02px solid white;
+	margin-bottom: 12px;
 }
