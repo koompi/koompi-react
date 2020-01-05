@@ -6,14 +6,14 @@
   height: 52px !important;
 }
 .text-container {
-  max-width: 700px;
+  max-width: 780px;
   line-height: 1.5;
   margin-left: auto;
   margin-right: auto;
   /* margin: 0 auto; */
 }
 .laptop-img {
-  height: 400px;
+  height: 365px;
 }
 .banner {
   background-color: whitesmoke;
@@ -280,4 +280,57 @@
 .text-show-all-Display {
   margin-top: -24px;
   color: #63636e !important;
+}
+.sunIcon-Display {
+  height: 42px;
+}
+.text1-show-all-Display {
+  color: #63636e !important;
+}
+.title-Display-Descrip {
+  color: white !important;
+}
+.banner-Performance-koompiE11 {
+  max-width: 1143px;
+}
+.title-performance-koompiE11 {
+  color: #63636e !important;
+}
+.text-performence-koompiE11 {
+  color: #63636e !important;
+  font-size: 23px;
+}
+.margin-display-koompiE11 {
+  margin-top: 100px;
+}
+.margin-performence-koompiE11 {
+  margin-top: 100px;
+}
+.title-performance-koompiE11-descrip {
+  color: white !important;
+}
+.title-performance-koompiE11-descrip span {
+  font-size: 23px;
+}
+.text-performence-koompiE11-descrip {
+  color: #63636e !important;
+  margin-top: -24px;
+}
+.text-performence-koompiE11-descripOfIcon {
+  color: #63636e !important;
+}
+.Icon-performence-koompiE11 {
+  height: 40px;
+}
+.IconBatter-of-koompiE11 {
+  margin-top: 26px !important;
+}
+.text-battery-koompiE11 {
+  color: #63636e !important;
+  font-size: 15px;
+}
+.border-battery {
+  margin-top: 26px !important;
+  border-top: 0.02px solid white;
+  margin-bottom: 12px;
 }
