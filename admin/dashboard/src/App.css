@@ -248,3 +248,9 @@
   font-weight: bold;
   padding: 0px 30px;
 }
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon {
+  margin-top: 20px !important;
+}
+.ant-upload.ant-upload-drag .ant-upload {
+  padding: 0px !important;
+}

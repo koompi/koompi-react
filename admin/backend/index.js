@@ -9,6 +9,8 @@ const app = express();
 const schema = require("./schema/schema");
 const graphqlHTTP = require("express-graphql");
 const jwt = require("jsonwebtoken");
+const fileUpload = require("express-fileupload");
+const path = require("path");
 
 // ===== User Models =====
 const User = require("./models/User");
@@ -42,6 +44,11 @@ app.use(
   })
 );
 
+app.use("/public", express.static(path.join(__dirname, "public")));
+app.use("/static", express.static(path.join(__dirname, "public")));
+
+app.use(fileUpload());
+
 // parse cookies
 app.use(cookieParser());
 
@@ -67,13 +74,6 @@ app.use(
     })
   })
 );
-mongoose
-  .connect(MongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log("Databse is connected..."))
-  .catch(err => console.log(err));
 
 //  ===== Login =====
 app.post("/login", async (req, res) => {
@@ -103,6 +103,37 @@ app.post("/login", async (req, res) => {
     console.log(error);
   }
 });
+
+app.post("/upload/image", (req, res) => {
+  console.log(req.files);
+
+  if (req.files === null) {
+    return res.status(400).json({ msg: "no file uploaded" });
+  }
+
+  const file = req.files.file;
+  console.log(file.name.replace(/ /g, "-").toLowerCase());
+
+  file.mv(
+    `${__dirname}/public/uploads/${file.name.replace(/ /g, "-").toLowerCase()}`,
+    err => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+      }
+
+      res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+    }
+  );
+});
+
+mongoose
+  .connect(MongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log("Databse is connected..."))
+  .catch(err => console.log(err));
 
 const port = 8080;
 app.listen(port, () => {

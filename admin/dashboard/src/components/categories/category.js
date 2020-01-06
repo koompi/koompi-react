@@ -60,13 +60,13 @@ function Category(props) {
       sorter: (a, b) => a.title.length - b.title.length
     },
     {
-      title: "Created By",
+      title: "Author",
       dataIndex: "created_by",
       sorter: (a, b) => a.created_by.length - b.created_by.length
     },
 
     {
-      title: "Created At",
+      title: "Date",
       dataIndex: "created_at"
     },
 
@@ -124,6 +124,7 @@ function Category(props) {
                     onConfirm={() => {
                       deleteCategory({ variables: { id: `${cate.id}` } });
                       message.success("The Category has been Deleted");
+                      categoryRefetch();
                     }}
                     okText="Yes"
                     cancelText="No"
@@ -219,7 +220,6 @@ function Category(props) {
                     </FormItem>
                   </Col>
                   <Col span={4}>
-                    {" "}
                     <FormItem>
                       {getFieldDecorator("created_by", {
                         initialValue: userData.user.fullname,
