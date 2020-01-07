@@ -2,100 +2,106 @@ import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import { Row, Col, Layout } from 'antd';
 import { Typography, Divider } from 'antd';
+import { Modal, Button } from 'antd';
+import { List, Avatar } from 'antd';
 
 const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
 
-const KOOMPIPRO = props => {
-	const { KoompiPro, children } = props;
-	return (
-		<div>
-			{KoompiPro.ram} ${KoompiPro.price}
-			{children}
-		</div>
-	);
-};
 function KoompiProBuy() {
-	const [KoompiPros] = useState([
-		{ ram: '8GB', price: 50 },
-		{ ram: '8GB', price: 50 },
-		{ ram: '8GB', price: 50 }
-	]);
-	const [cart, setCart] = useState([]);
-
-	const addToCart = index => {
-		setCart(cart.concat(KoompiPros[index]));
-	};
-	const calculatePrice = () => {
-		return cart.reduce((price, KoompiPro) => price + KoompiPro.price, 0);
-	};
-	return (
-		<React.Fragment>
-			<Navbar />
-			<div className='container'>
-				<div>
-					<Content style={{ paddingTop: '100px' }}>
-						<Row gutter={[56, 0]}>
-							<Col sm={12}>
-								<div>
-									<img
-										style={{ maxWidth: '100%' }}
-										src='/img/Macbook.png'></img>
-									<center>
-										<Row>
-											<Col span={12}>
-												<div className='greyColorKoompiPro'></div>
-											</Col>
-											<Col span={12}>
-												<div className='roseGoldColorKoompiPro'></div>
-											</Col>
-										</Row>
-									</center>
-								</div>
-							</Col>
-							<Col xsm={12}>
-								<div className='container'>
-									<Typography>
-										<Title>Choose Your Koompi Pro</Title>
-										<Paragraph className='li-show-all-section'>
-											<li>13.3-inch Retina display1</li>
-											<li>
-												2-core Intel Core i5 processor
-											</li>
-											<li>Up to 16GB memory </li>
-											<li>Up to 1TB storage2 </li>
-											<li>
-												Up to 12 hours battery life3
-											</li>
-											<li>Backlit keyboard</li>
-										</Paragraph>
-									</Typography>
-								</div>
-								{/* <div>
-									<Typography>
-										<Title level={3}>RAM</Title>
-
-										{KoompiPros.map((KoompiPro, index) => (
-											<KoompiPro
-												key={index}
-												KoompiPro={KoompiPro}>
-												<button
-													onClick={() =>
-														addToCart(index)
-													}>
-													Add to cart
-												</button>
-											</KoompiPro>
-										))}
-									</Typography>
-								</div> */}
-							</Col>
-						</Row>
-					</Content>
-				</div>
-			</div>
-		</React.Fragment>
-	);
+  const handleRemoveItem = e => {};
+  const [vesible, setVisible] = useState(false);
+  const [KoompiPro] = useState([{ img: '/img/Macbook.png', price: 369 }]);
+  const [cart, setCart] = useState([]);
+  const addToCart = () => {
+    setCart(cart.concat(KoompiPro));
+  };
+  const calculatePrice = () => {
+    return cart.reduce((price, KoompiPro) => price + KoompiPro.price, 0);
+  };
+  return (
+    <React.Fragment>
+      <Navbar />
+      <div className="container">
+        <div>
+          <Content style={{ paddingTop: '100px' }}>
+            <Row>
+              <Col sm={12}>
+                <div>
+                  {KoompiPro.map((KoompiPros, index) => (
+                    <img
+                      style={{ maxWidth: '100%' }}
+                      src={KoompiPros.img}
+                    ></img>
+                  ))}
+                  <center>
+                    <Row>
+                      <Col span={12}>
+                        <div className="greyColorKoompiPro"></div>
+                      </Col>
+                      <Col span={12}>
+                        <div className="roseGoldColorKoompiPro"></div>
+                      </Col>
+                    </Row>
+                  </center>
+                </div>
+              </Col>
+              <Col xsm={12}>
+                <div className="container">
+                  <Typography>
+                    <Title>Choose Your Koompi Pro</Title>
+                    <Paragraph className="li-show-all-section">
+                      <li>13.3-inch Retina display1</li>
+                      <li>2-core Intel Core i5 processor</li>
+                      <li>Up to 16GB memory </li>
+                      <li>Up to 1TB storage2 </li>
+                      <li>Up to 12 hours battery life3</li>
+                      <li>Backlit keyboard</li>
+                    </Paragraph>
+                  </Typography>
+                  <div>
+                    {KoompiPro.map((KoompiPros, index) => (
+                      <h1 id={index}>Price ${KoompiPros.price}</h1>
+                    ))}
+                  </div>
+                  <div>
+                    <Button onClick={() => setVisible(true)} type="primary">
+                      {cart.length}
+                    </Button>
+                    <Modal
+                      visible={vesible}
+                      onOk={() => setVisible(false)}
+                      onCancel={() => setVisible(false)}
+                    >
+                      {cart.map((KoompiPro, index) => (
+                        <div>
+                          <Row>
+                            <Col sm={12}>
+                              <img
+                                style={{ maxWidth: '100%' }}
+                                src={KoompiPro.img}
+                              ></img>
+                            </Col>
+                            <Col sm={12}>
+                              <h1>{KoompiPro.price}</h1>
+                              <h2>remove</h2>
+                            </Col>
+                          </Row>
+                          <hr></hr>
+                        </div>
+                      ))}
+                      <h1>TOTAL is : ${calculatePrice()}</h1>
+                    </Modal>
+                  </div>
+                </div>
+                <button onClick={() => addToCart()}>Add to cart</button>
+              </Col>
+            </Row>
+          </Content>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default KoompiProBuy;
