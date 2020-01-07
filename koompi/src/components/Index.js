@@ -44,13 +44,16 @@ function Index() {
 		<React.Fragment>
 			<Navbar />
 			<div className='banner'>
-				<Content style={{ padding: '100px' }}>
+				<Content
+					style={{ paddingTop: '100px', paddingBottom: '100px' }}>
 					<Row>
 						<Col sm={12}>
 							<center>
 								{/* ========= KOOMPI SECTION =========  */}
-								<h1>KOOMPI PRO</h1>
-								<p className='text-container text-koompi-section-banner'>
+								<h1 className='bossTittle-KoompiHome'>
+									KOOMPI PRO
+								</h1>
+								<p className=' container text-koompi-section-banner'>
 									Lorem Ipsum is simply dummy text of the
 									printing and typesetting industry. Lorem
 									Ipsum has been the industry's standard dummy
@@ -61,6 +64,7 @@ function Index() {
 
 								<Dropdown overlay={menu} trigger={['click']}>
 									<Button
+										color='#2db7f5'
 										// onClick={() => setState(koompiPro)}
 										type='primary'>
 										KOOMPI PRO <Icon type='down' />
@@ -87,55 +91,76 @@ function Index() {
 			{/* =============Big Section ===============*/}
 			<div>
 				<div className='content1'>
-					<center>
-						<h1>KOOMPI E11</h1>
-						<p className='text-container-content1 text-koompie11-banner'>
-							Lorem Ipsum is simply dummy text of the printing and
-							typesetting industry. Lorem Ipsum has been the
-							industry's standard dummy text ever since the 1500s,
-							when an unknown printer took a galley of type and
-							scrambled it to make a type specimen book
-						</p>
-						<div className='readmore'>
-							<a href='#'> Read More</a>
-						</div>
-					</center>
-					<div className='banner1'></div>
+					<div className='banner1'>
+						<center>
+							<h1 className='tittle-koompiPro-banner'>
+								KOOMPI E11
+							</h1>
+							<p className='container text-container-content1 text-koompiePro-banner'>
+								Lorem Ipsum is simply dummy text of the printing
+								and typesetting industry. Lorem Ipsum has been
+								the industry's standard dummy text ever since
+								the 1500s, when an unknown printer took a galley
+								of type and scrambled it to make a type specimen
+								book
+							</p>
+							<div className='readmore'>
+								<a href='#'> Read More</a>
+							</div>
+							<div className='subBanner-koompiPro'>
+								<img src='/img/Macbook.png' />
+							</div>
+						</center>
+					</div>
+				</div>
+				<div className='content2'>
+					<div className='banner2'>
+						<center>
+							<h1 className='tittle-koompiPro-banner'>
+								KOOMPI E11
+							</h1>
+							<p className='container text-container-content1  text-koompiePro-banner'>
+								Lorem Ipsum is simply dummy text of the printing
+								and typesetting industry. Lorem Ipsum has been
+								the industry's standard dummy text ever since
+								the 1500s, when an unknown printer took a galley
+								of type and scrambled it to make a type specimen
+								book
+							</p>
+							<div className='readmore'>
+								<a href='#'> Read More</a>
+							</div>
+							<div className='subBanner-koompiPro'>
+								<img src='/img/Macbook.png' />
+							</div>
+						</center>
+					</div>
 				</div>
 				<div className='content1'>
-					<center>
-						<h1>KOOMPI B14</h1>
-						<p className='text-container-content1 text-koompib14-banner'>
-							Lorem Ipsum is simply dummy text of the printing and
-							typesetting industry. Lorem Ipsum has been the
-							industry's standard dummy text ever since the 1500s,
-							when an unknown printer took a galley of type and
-							scrambled it to make a type specimen book
-						</p>
-						<div className='readmore'>
-							<a href='#'> Read More</a>
-						</div>
-					</center>
-					<div className='banner1'></div>
-				</div>
-				<div className='content1'>
-					<center>
-						<h1>KOOMPI B15</h1>
-						<p className='text-container-content1 text-koompib15-banner'>
-							Lorem Ipsum is simply dummy text of the printing and
-							typesetting industry. Lorem Ipsum has been the
-							industry's standard dummy text ever since the 1500s,
-							when an unknown printer took a galley of type and
-							scrambled it to make a type specimen book
-						</p>
-						<div className='readmore'>
-							<a href='#'> Read More</a>
-						</div>
-					</center>
-					<div className='banner1'></div>
+					<div className='banner3'>
+						<center>
+							<h1 className='tittle-koompiPro-banner'>
+								KOOMPI E11
+							</h1>
+							<p className='container text-container-content1 text-koompiePro-banner'>
+								Lorem Ipsum is simply dummy text of the printing
+								and typesetting industry. Lorem Ipsum has been
+								the industry's standard dummy text ever since
+								the 1500s, when an unknown printer took a galley
+								of type and scrambled it to make a type specimen
+								book
+							</p>
+							<div className='readmore'>
+								<a href='#'> Read More</a>
+							</div>
+							<div className='subBanner-koompiPro'>
+								<img src='/img/Macbook.png' />
+							</div>
+						</center>
+					</div>
 				</div>
 			</div>
-			<div className='boss-show-all-section'>
+			{/* <div className='boss-show-all-section'>
 				<div>
 					<Typography>
 						<center>
@@ -155,15 +180,7 @@ function Index() {
 										KOOMPI Pro
 									</Title>
 									<Paragraph className='li-show-all-section'>
-										{/* 13.3-inch Retina display1 <br></br>
-											2-core Intel Core i5 processor{' '}
-											<br></br>
-											Up to 16GB memory <br></br>
-											Up to 1TB storage2 <br></br>
-											Up to 12 hours battery life3{' '}
-											<br></br>
-											Touch ID<br></br>
-											Backlit keyboard */}
+										
 										<li>13.3-inch Retina display1</li>
 										<li>2-core Intel Core i5 processor</li>
 										<li>Up to 16GB memory </li>
@@ -196,15 +213,7 @@ function Index() {
 										KOOMPI E11
 									</Title>
 									<Paragraph className='li-show-all-section'>
-										{/* 13.3-inch Retina display1 <br></br>
-											2-core Intel Core i5 processor{' '}
-											<br></br>
-											Up to 16GB memory <br></br>
-											Up to 1TB storage2 <br></br>
-											Up to 12 hours battery life3{' '}
-											<br></br>
-											Touch ID<br></br>
-											Backlit keyboard */}
+										
 										<li>13.3-inch Retina display1</li>
 										<li>2-core Intel Core i5 processor</li>
 										<li>Up to 16GB memory </li>
@@ -239,15 +248,7 @@ function Index() {
 										KOOMPI B14
 									</Title>
 									<Paragraph className='li-show-all-section'>
-										{/* 13.3-inch Retina display1 <br></br>
-											2-core Intel Core i5 processor{' '}
-											<br></br>
-											Up to 16GB memory <br></br>
-											Up to 1TB storage2 <br></br>
-											Up to 12 hours battery life3{' '}
-											<br></br>
-											Touch ID<br></br>
-											Backlit keyboard */}
+										
 										<li>13.3-inch Retina display1</li>
 										<li>2-core Intel Core i5 processor</li>
 										<li>Up to 16GB memory </li>
@@ -280,15 +281,7 @@ function Index() {
 										KOOMPI B15
 									</Title>
 									<Paragraph className='li-show-all-section'>
-										{/* 13.3-inch Retina display1 <br></br>
-											2-core Intel Core i5 processor{' '}
-											<br></br>
-											Up to 16GB memory <br></br>
-											Up to 1TB storage2 <br></br>
-											Up to 12 hours battery life3{' '}
-											<br></br>
-											Touch ID<br></br>
-											Backlit keyboard */}
+										
 										<li>13.3-inch Retina display1</li>
 										<li>2-core Intel Core i5 processor</li>
 										<li>Up to 16GB memory </li>
@@ -313,7 +306,7 @@ function Index() {
 						</Row>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</React.Fragment>
 	);
 }
