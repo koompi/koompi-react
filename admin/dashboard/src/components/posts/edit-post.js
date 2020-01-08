@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import ReactQuill from "react-quill"; // ES6
-import "react-quill/dist/quill.snow.css"; // ES6
+import QuillTextEditor from "../QuillTextEditor";
 import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
@@ -12,7 +11,6 @@ import { GET_CATEGORIES, GET_POST, GET_POSTS } from "../../graphql/query";
 import { UPDATE_POST } from "../../graphql/mutation";
 import {
   Form,
-  Icon,
   Input,
   Button,
   Row,
@@ -20,8 +18,7 @@ import {
   Upload,
   Select,
   Layout,
-  message,
-  Alert
+  message
 } from "antd";
 
 const FormItem = Form.Item;
@@ -219,13 +216,13 @@ function EditPost(props) {
                           : description
                       })(
                         <div>
-                          <ReactQuill
+                          <QuillTextEditor
                             defaultValue={
                               postLoading
                                 ? "Loading ..."
                                 : postData.post.description
                             }
-                            onChange={handleDescChange}
+                            handleDescChange={handleDescChange}
                           />
                         </div>
                       )}

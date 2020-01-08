@@ -95,8 +95,16 @@ function AllPosts() {
           <Table
             columns={columns}
             dataSource={data.posts.map(post => {
+              const {
+                id,
+                title,
+                category,
+                tags,
+                created_at,
+                created_by
+              } = post;
               return {
-                key: parse(post.title.substring(0, 30)),
+                key: title,
                 image: (
                   <img
                     src={"http://localhost:8080" + post.thumnail}
@@ -106,16 +114,22 @@ function AllPosts() {
                     style={{ borderRadius: "50%" }}
                   />
                 ),
-                title: post.title,
-                category: <Tag color="green">{post.category.title}</Tag>,
-                tags: post.tags.map(tag => <Tag color="blue">{tag}</Tag>),
-                created_by: post.created_by,
+                title:
+                  title.length <= 25 ? title : title.substring(0, 25) + " ...",
+                category: <Tag color="green">{category.title}</Tag>,
+                tags:
+                  tags.length <= 3
+                    ? tags.map(tag => <Tag color="blue">{tag}</Tag>)
+                    : tags
+                        .slice(0, 3)
+                        .map(tag => <Tag color="blue">{tag}</Tag>),
+                created_by: created_by,
                 created_at: moment
-                  .unix(post.created_at / 1000)
+                  .unix(created_at / 1000)
                   .format("YYYY-MM-DD HH:mm:ss"),
-                action: visible ? null : (
+                action: (
                   <div>
-                    <Link to={`/admin/post/edit/${post.id}`}>
+                    <Link to={`/admin/post/edit/${id}`}>
                       <Tag className="btn" color="#2db7f5">
                         Edit
                       </Tag>
@@ -127,7 +141,7 @@ function AllPosts() {
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deletePost({ variables: { id: `${post.id}` } });
+                        deletePost({ variables: { id: `${id}` } });
                         message.success("The Post has been Deleted");
                         postRefetch();
                       }}
@@ -140,22 +154,12 @@ function AllPosts() {
                 )
               };
             })}
-            pagination={visible ? false : true}
+            pagination={true}
           />
         );
       };
       return (
         <div>
-          <Modal
-            title={"Details Informtion"}
-            visible={visible}
-            onOk={hideModal}
-            onCancel={hideModal}
-            footer={null}
-            width="98%"
-          >
-            <DisplayTable />
-          </Modal>
           <DisplayTable />
         </div>
       );

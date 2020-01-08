@@ -286,3 +286,21 @@
 .ant-tag-green {
   background: #e5ffca !important;
 }
+.ant-form-item-control {
+  line-height: 30px !important;
+}
+.ql-snow .ql-picker {
+  height: 30px !important;
+}
+.ql-container {
+  font-size: 18px !important;
+}
+.ql-container.ql-snow {
+  border: 1px solid #f0f2f5 !important;
+}
+.ql-toolbar.ql-snow {
+  border: 1px solid #f0f2f5 !important;
+  box-sizing: border-box;
+  padding: 5px 10px !important;
+  background: #f0f2f5 !important;
+}

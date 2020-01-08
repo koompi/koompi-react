@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import ReactQuill from "react-quill"; // ES6
-import "react-quill/dist/quill.snow.css"; // ES6
+import QuillTextEditor from "../QuillTextEditor";
 import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
@@ -144,9 +143,8 @@ function NewPage(props) {
                         initialValue: description
                       })(
                         <div>
-                          <ReactQuill
-                            onChange={handleDescChange}
-                            setFieldsValue=""
+                          <QuillTextEditor
+                            handleDescChange={handleDescChange}
                           />
                         </div>
                       )}

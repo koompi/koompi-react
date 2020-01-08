@@ -1,16 +1,16 @@
 import React, { useState, useContext } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import ReactQuill from "react-quill"; // ES6
-import "react-quill/dist/quill.snow.css"; // ES6
 import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
 import { UserContext } from "../../context/userContext";
 import three_dots from "../../assets/img/three-dots.svg";
+import QuillTextEditor from "../QuillTextEditor";
 
 // ===== Query and Mutation Section =====
 import { GET_CATEGORIES } from "../../graphql/query";
 import { CREATE_POST } from "../../graphql/mutation";
+
 import {
   Form,
   Icon,
@@ -29,7 +29,6 @@ const FormItem = Form.Item;
 const { Content } = Layout;
 const { TextArea } = Input;
 const { Option } = Select;
-const { Quill, Mixin, Toolbar } = ReactQuill;
 
 const children = [];
 
@@ -93,6 +92,8 @@ function NewPost(props) {
   };
 
   const handleDescChange = value => {
+    console.log(value);
+
     setDescription(value);
   };
 
@@ -119,9 +120,9 @@ function NewPost(props) {
     e.preventDefault();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values);
+        console.log(props.description);
 
-        createPost({ variables: { description, ...values } })
+        createPost({ variables: { ...values } })
           .then(async () => {
             setLoading(true);
             setTimeout(() => {
@@ -184,15 +185,12 @@ function NewPost(props) {
 
                     <FormItem label="Description: ">
                       {getFieldDecorator("description", {
-                        rules: [
-                          {
-                            required: true
-                          }
-                        ],
                         initialValue: description
                       })(
                         <div>
-                          <ReactQuill onChange={handleDescChange} />
+                          <QuillTextEditor
+                            handleDescChange={handleDescChange}
+                          />
                         </div>
                       )}
                     </FormItem>
