@@ -3,15 +3,21 @@ import Navbar from '../Navbar';
 import { Row, Col, Layout } from 'antd';
 import { Typography, Divider } from 'antd';
 import { Modal, Button } from 'antd';
-import { List, Avatar } from 'antd';
+import { Icon, Badge } from 'antd';
 
 const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
-
+const defaultKoompiPro = [{ img: '/img/Macbook.png', price: 369 }];
 function KoompiProBuy() {
-  const handleRemoveItem = e => {};
+  const handleRemoveItem = index => {
+    const cartt = [...cart];
+    // setCart(cartt => cartt.filter(item => item.img !== img));
+    cartt.splice(index, 1);
+    setCart(cartt);
+  };
+
   const [vesible, setVisible] = useState(false);
-  const [KoompiPro] = useState([{ img: '/img/Macbook.png', price: 369 }]);
+  const [KoompiPro, setKoompiPro] = useState(defaultKoompiPro);
   const [cart, setCart] = useState([]);
   const addToCart = () => {
     setCart(cart.concat(KoompiPro));
@@ -19,6 +25,7 @@ function KoompiProBuy() {
   const calculatePrice = () => {
     return cart.reduce((price, KoompiPro) => price + KoompiPro.price, 0);
   };
+
   return (
     <React.Fragment>
       <Navbar />
@@ -29,12 +36,14 @@ function KoompiProBuy() {
               <Col sm={12}>
                 <div>
                   {KoompiPro.map((KoompiPros, index) => (
-                    <img
-                      style={{ maxWidth: '100%' }}
-                      src={KoompiPros.img}
-                    ></img>
+                    <center>
+                      <img
+                        style={{ maxWidth: '100%' }}
+                        src={KoompiPros.img}
+                      ></img>
+                    </center>
                   ))}
-                  <center>
+                  {/* <center>
                     <Row>
                       <Col span={12}>
                         <div className="greyColorKoompiPro"></div>
@@ -43,13 +52,13 @@ function KoompiProBuy() {
                         <div className="roseGoldColorKoompiPro"></div>
                       </Col>
                     </Row>
-                  </center>
+                  </center> */}
                 </div>
               </Col>
-              <Col xsm={12}>
+              <Col sm={12}>
                 <div className="container">
                   <Typography>
-                    <Title>Choose Your Koompi Pro</Title>
+                    <Title>Koompi Pro</Title>
                     <Paragraph className="li-show-all-section">
                       <li>13.3-inch Retina display1</li>
                       <li>2-core Intel Core i5 processor</li>
@@ -65,9 +74,15 @@ function KoompiProBuy() {
                     ))}
                   </div>
                   <div>
-                    <Button onClick={() => setVisible(true)} type="primary">
+                    {/* <Badge onClick={() => setVisible(true)} type="primary">
+                      <Icon type="shopping-cart" />
                       {cart.length}
-                    </Button>
+                    </Badge> */}
+                    <Badge count={cart.length}>
+                      <Button onClick={() => setVisible(true)} type="primary">
+                        <Icon type="shopping-cart" />
+                      </Button>
+                    </Badge>
                     <Modal
                       visible={vesible}
                       onOk={() => setVisible(false)}
@@ -84,7 +99,10 @@ function KoompiProBuy() {
                             </Col>
                             <Col sm={12}>
                               <h1>{KoompiPro.price}</h1>
-                              <h2>remove</h2>
+                              <Icon
+                                onClick={() => handleRemoveItem()}
+                                type="delete"
+                              />
                             </Col>
                           </Row>
                           <hr></hr>
