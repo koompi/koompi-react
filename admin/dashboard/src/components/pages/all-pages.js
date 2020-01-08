@@ -26,8 +26,8 @@ import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 // ===== Query and Mutation Section =====
-import { GET_POSTS } from "../../graphql/query";
-import { DELETE_POST } from "../../graphql/mutation";
+import { GET_PAGES } from "../../graphql/query";
+import { DELETE_PAGE } from "../../graphql/mutation";
 
 // =====  make the first letter of a string uppercase =====
 function capitalizeFirstLetter(string) {
@@ -36,13 +36,13 @@ function capitalizeFirstLetter(string) {
 
 const { Content } = Layout;
 
-function AllPosts() {
+function AllPages() {
   // ===== State Management =====
   const [visible, setVisible] = useState(false);
 
   // ===== Mutation Varile Section =====
-  const [deletePost] = useMutation(DELETE_POST);
-  const { refetch: postRefetch } = useQuery(GET_POSTS);
+  const [deletePage] = useMutation(DELETE_PAGE);
+  const { refetch: pageRefetch } = useQuery(GET_PAGES);
 
   const columns = [
     {
@@ -55,26 +55,23 @@ function AllPosts() {
       key: "title"
     },
     {
-      title: "Category",
-      dataIndex: "category",
-      key: "category"
-    },
-    {
       title: "Author",
       dataIndex: "created_by",
       key: "created_by"
-    },
-    {
-      title: "Tags",
-      dataIndex: "tags",
-      key: "tags"
     },
     {
       title: "Date",
       dataIndex: "created_at",
       key: "created_at"
     },
-
+    {
+      title: "Updated By",
+      dataIndex: "updated_by"
+    },
+    {
+      title: "Updated At",
+      dataIndex: "updated_at"
+    },
     {
       title: "Actions",
       dataIndex: "action"
@@ -86,7 +83,7 @@ function AllPosts() {
   };
 
   const DisplayPost = () => {
-    const { error, loading, data, refetch } = useQuery(GET_POSTS);
+    const { error, loading, data, refetch } = useQuery(GET_PAGES);
     if (error) console.log(error);
     if (loading) return <Table loading={true}></Table>;
     if (data) {
@@ -94,28 +91,42 @@ function AllPosts() {
         return (
           <Table
             columns={columns}
-            dataSource={data.posts.map(post => {
+            dataSource={data.pages.map(page => {
+              const {
+                id,
+                title,
+                image,
+                created_at,
+                created_by,
+                updated_at,
+                updated_by
+              } = page;
               return {
-                key: parse(post.title.substring(0, 30)),
+                key: parse(title.substring(0, 30)),
                 image: (
                   <img
-                    src={"http://localhost:8080" + post.thumnail}
+                    src={"http://localhost:8080" + image}
                     alt="post"
                     height="50px"
                     width="50px"
                     style={{ borderRadius: "50%" }}
                   />
                 ),
-                title: post.title,
-                category: <Tag color="green">{post.category.title}</Tag>,
-                tags: post.tags.map(tag => <Tag color="blue">{tag}</Tag>),
-                created_by: post.created_by,
+                title: title,
+                created_by: created_by,
+                updated_by: updated_by === null ? "No Update" : updated_by,
                 created_at: moment
-                  .unix(post.created_at / 1000)
+                  .unix(created_at / 1000)
                   .format("YYYY-MM-DD HH:mm:ss"),
+                updated_at:
+                  updated_at === null
+                    ? "No Update"
+                    : moment
+                        .unix(updated_at / 1000)
+                        .format("YYYY-MM-DD HH:mm:ss"),
                 action: visible ? null : (
                   <div>
-                    <Link to={`/admin/post/edit/${post.id}`}>
+                    <Link to={`/admin/page/edit/${id}`}>
                       <Tag className="btn" color="#2db7f5">
                         Edit
                       </Tag>
@@ -123,13 +134,13 @@ function AllPosts() {
                     <Divider type="vertical" />
                     <Popconfirm
                       placement="topRight"
-                      title="Are you sure to delete this Post?"
+                      title="Are you sure to delete this Page?"
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deletePost({ variables: { id: `${post.id}` } });
-                        message.success("The Post has been Deleted");
-                        postRefetch();
+                        deletePage({ variables: { id: `${id}` } });
+                        message.success("The Page has been Deleted");
+                        pageRefetch();
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -175,7 +186,7 @@ function AllPosts() {
             {/* ======= Display content ====== */}
 
             <div className="background_container">
-              <h1 className="title_new_post">All Posts</h1>
+              <h1 className="title_new_post">All Pages</h1>
               <DisplayPost />
             </div>
           </div>
@@ -186,4 +197,4 @@ function AllPosts() {
   );
 }
 
-export default AllPosts;
+export default AllPages;

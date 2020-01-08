@@ -5,11 +5,17 @@ const { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLID } = graphql;
 const User = require("../models/User");
 const Category = require("../models/Category");
 const Post = require("../models/Post");
+const Page = require("../models/Page");
+const Member = require("../models/Member");
+const Retailer = require("../models/Retailer");
 
 // ======== Type Section =========
 const UserType = require("./types/user");
 const CategoryType = require("./types/category");
 const PostType = require("./types/post");
+const PageType = require("./types/page");
+const MemberType = require("./types/member");
+const RetailerType = require("./types/retailer");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -38,7 +44,7 @@ const RootQuery = new GraphQLObjectType({
         return Category.findById({ _id: args.id });
       }
     },
-    // ===== Get Post  =====
+    // ===== Get Posts  =====
     posts: {
       type: new GraphQLList(PostType),
       resolve: (parent, args) => {
@@ -53,6 +59,57 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve: (parent, args) => {
         return Post.findById({ _id: args.id });
+      }
+    },
+    // ===== Get Pages  =====
+    pages: {
+      type: new GraphQLList(PageType),
+      resolve: (parent, args) => {
+        return Page.find();
+      }
+    },
+    // ===== Get Page by ID  =====
+    page: {
+      type: PageType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Page.findById({ _id: args.id });
+      }
+    },
+    // ===== Get Member  =====
+    members: {
+      type: new GraphQLList(MemberType),
+      resolve: (parent, args) => {
+        return Member.find();
+      }
+    },
+    // ===== Get Member by ID  =====
+    member: {
+      type: MemberType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Member.findById({ _id: args.id });
+      }
+    },
+    // ===== Get Retailers  =====
+    retailers: {
+      type: new GraphQLList(RetailerType),
+      resolve: (parent, args) => {
+        return Retailer.find();
+      }
+    },
+    // ===== Get Retailer by ID  =====
+    retailer: {
+      type: RetailerType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Retailer.findById({ _id: args.id });
       }
     }
   }

@@ -62,7 +62,7 @@ function Users() {
               admin: isAdmin ? (
                 <Popconfirm
                   placement="topRight"
-                  title="Are you sure to approve this user as Admin?"
+                  title="Are you sure to make this user a normal user?"
                   onConfirm={() => {
                     makeAsAdmin({ variables: { id: `${id}`, isAdmin: false } });
                     message.success(`${fullname} updated successfully `);
@@ -78,7 +78,7 @@ function Users() {
               ) : (
                 <Popconfirm
                   placement="topRight"
-                  title="Are you sure to make this user a normal user?"
+                  title="Are you sure to approve this user as Admin?"
                   onConfirm={() => {
                     makeAsAdmin({ variables: { id: `${id}`, isAdmin: true } });
 
@@ -108,7 +108,7 @@ function Users() {
                   cancelText="No"
                 >
                   <Tag color="green" key={id} style={{ cursor: "pointer" }}>
-                    Ppproved
+                    Approved
                   </Tag>
                 </Popconfirm>
               ) : (
@@ -126,7 +126,7 @@ function Users() {
                   cancelText="No"
                 >
                   <Tag color="orange" key={id} style={{ cursor: "pointer" }}>
-                    Pedding
+                    Pending
                   </Tag>
                 </Popconfirm>
               ),
@@ -173,7 +173,7 @@ function Users() {
           <div className="koompi container">
             {/* ======= Display content ====== */}
             <div className="background_container">
-              <h1 className="title_new_post">All Pages</h1>
+              <h1 className="title_new_post">Users</h1>
               <DisplayUser />
             </div>
           </div>

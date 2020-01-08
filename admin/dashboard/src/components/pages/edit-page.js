@@ -8,8 +8,8 @@ import PageFooter from "../footer";
 import { UserContext } from "../../context/userContext";
 import three_dots from "../../assets/img/three-dots.svg";
 // ===== Query and Mutation Section =====
-import { GET_CATEGORIES, GET_POST, GET_POSTS } from "../../graphql/query";
-import { UPDATE_POST } from "../../graphql/mutation";
+import { GET_PAGE, GET_PAGES } from "../../graphql/query";
+import { UPDATE_PAGE } from "../../graphql/mutation";
 import {
   Form,
   Icon,
@@ -31,10 +31,10 @@ const { Option } = Select;
 
 const children = [];
 
-function EditPost(props) {
+function EditPage(props) {
   const { getFieldDecorator } = props.form;
   //   ===== Global Data =====
-  const { loading: postLoading, data: postData } = useQuery(GET_POST, {
+  const { loading: pageLoading, data: pageData } = useQuery(GET_PAGE, {
     variables: { id: window.location.pathname.split("/")[4] }
   });
 
@@ -46,55 +46,12 @@ function EditPost(props) {
   // ===== User Context Section =====
   const userData = useContext(UserContext);
 
-  const { refetch: postRefetch } = useQuery(GET_POSTS);
-  const [updatePost] = useMutation(UPDATE_POST);
-
-  const DisplayCategories = () => {
-    const { error, loading, data } = useQuery(GET_CATEGORIES);
-    if (error) console.log(error);
-    if (loading) return "Loading ...";
-    if (data.categories.length === 0) {
-      message.error("Please create a category.", 5);
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ]
-          })(<Select placeholder="No Category"></Select>)}
-        </Form.Item>
-      );
-    } else {
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ],
-            initialValue: data.categories[0].title
-          })(
-            <Select placeholder="Please select the category" size="large">
-              {data.categories.map(cate => {
-                return (
-                  <Option value={cate.title} key={cate.id}>
-                    {cate.title}
-                  </Option>
-                );
-              })}
-            </Select>
-          )}
-        </Form.Item>
-      );
-    }
-  };
+  const { refetch: pageRefetch } = useQuery(GET_PAGES);
+  const [updatePage] = useMutation(UPDATE_PAGE);
 
   const handleDescChange = value => {
+    console.log(value);
+
     setDescription(value);
   };
 
@@ -104,7 +61,7 @@ function EditPost(props) {
       if (!err) {
         console.log(values);
 
-        updatePost({
+        updatePage({
           variables: {
             id: window.location.pathname.split("/")[4],
             ...values
@@ -115,9 +72,9 @@ function EditPost(props) {
             setTimeout(() => {
               setLoading(false);
             }, 3000);
-            postRefetch();
-            await message.success("Post updated successfully.", 3);
-            await props.history.push("/admin/all-posts");
+            pageRefetch();
+            await message.success("Page updated successfully.", 3);
+            await props.history.push("/admin/all-pages");
           })
           .catch(error => {
             console.log(error);
@@ -145,7 +102,7 @@ function EditPost(props) {
     }
   };
 
-  if (postLoading) {
+  if (pageLoading) {
     return "Loading...";
   }
 
@@ -161,7 +118,7 @@ function EditPost(props) {
           {/* ======= Display content ====== */}
           <div className="koompi container">
             <div className="background_container">
-              <h1 className="title_new_post">Update Post</h1>
+              <h1 className="title_new_post">Update Page</h1>
 
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Row gutter={[24, 8]}>
@@ -174,12 +131,15 @@ function EditPost(props) {
                             message: "The title is required"
                           }
                         ],
-                        initialValue: postData.post.title
+                        initialValue: pageData.page.title
                       })(<Input size="large" />)}
                     </FormItem>
 
-                    {/* ======= Category Sections ======= */}
-                    <DisplayCategories />
+                    <FormItem label="SubTitle">
+                      {getFieldDecorator("subTitle", {
+                        initialValue: pageData.page.subTitle
+                      })(<Input size="large" />)}
+                    </FormItem>
 
                     <FormItem label="Updated By: " style={{ display: "none" }}>
                       {getFieldDecorator("updated_by", {
@@ -212,18 +172,17 @@ function EditPost(props) {
                             required: true
                           }
                         ],
-                        initialValue: postLoading
-                          ? ""
-                          : description === ""
-                          ? postData.post.description
-                          : description
+                        initialValue:
+                          description === ""
+                            ? pageData.page.description
+                            : description
                       })(
                         <div>
                           <ReactQuill
                             defaultValue={
-                              postLoading
+                              pageLoading
                                 ? "Loading ..."
-                                : postData.post.description
+                                : pageData.page.description
                             }
                             onChange={handleDescChange}
                           />
@@ -249,12 +208,12 @@ function EditPost(props) {
                   <Col span={8}>
                     {/* ======= Drag and Drop Image ======= */}
 
-                    <FormItem label="Thumnail">
+                    <FormItem label="Image">
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
                             src={`${"http://localhost:8080" +
-                              postData.post.thumnail}`}
+                              pageData.page.image}`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -268,40 +227,19 @@ function EditPost(props) {
                         )}
                       </Upload.Dragger>
                       <div style={{ display: "none" }}>
-                        {getFieldDecorator("thumnail", {
+                        {getFieldDecorator("image", {
                           rules: [
                             {
                               required: true,
-                              message: "Thumnail is required"
+                              message: "Imae is required"
                             }
                           ],
                           initialValue:
                             image === null
-                              ? postData.post.thumnail
+                              ? pageData.page.image
                               : "/public/uploads/" + image
                         })(<Input size="large" />)}
                       </div>
-                    </FormItem>
-
-                    {/* ======= Tags ======= */}
-                    <FormItem label="Tags">
-                      {getFieldDecorator("tags", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The tags is required"
-                          }
-                        ],
-                        initialValue: postLoading ? "" : postData.post.tags
-                      })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          size="large"
-                        >
-                          {children}
-                        </Select>
-                      )}
                     </FormItem>
 
                     {/* ======= SEO and Keywords ======= */}
@@ -313,7 +251,7 @@ function EditPost(props) {
                             message: "The keywords is required"
                           }
                         ],
-                        initialValue: postLoading ? "" : postData.post.keywords
+                        initialValue: pageLoading ? "" : pageData.page.keywords
                       })(
                         <Select
                           mode="tags"
@@ -334,7 +272,7 @@ function EditPost(props) {
                             message: "The Meta Description is required"
                           }
                         ],
-                        initialValue: postLoading ? "" : postData.post.meta_desc
+                        initialValue: pageLoading ? "" : pageData.page.meta_desc
                       })(<TextArea rows={4} />)}
                     </FormItem>
                   </Col>
@@ -349,4 +287,4 @@ function EditPost(props) {
   );
 }
 
-export default Form.create()(EditPost);
+export default Form.create()(EditPage);

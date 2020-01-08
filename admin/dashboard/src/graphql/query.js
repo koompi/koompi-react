@@ -78,4 +78,114 @@ const GET_POST = gql`
   }
 `;
 
-export { GET_USERS, GET_CATEGORIES, EDIT_CATEGORY, GET_POSTS, GET_POST };
+const GET_PAGES = gql`
+  query {
+    pages {
+      id
+      title
+      subTitle
+      created_by
+      description
+      meta_desc
+      keywords
+      image
+      updated_at
+      updated_by
+      created_at
+    }
+  }
+`;
+
+const GET_PAGE = gql`
+  query($id: String!) {
+    page(id: $id) {
+      id
+      title
+      subTitle
+      created_by
+      description
+      meta_desc
+      keywords
+      image
+      updated_at
+      updated_by
+      created_at
+    }
+  }
+`;
+
+const GET_MEMBERS = gql`
+  query {
+    members {
+      id
+      fullname
+      phoneNumber
+      email
+      created_by
+      position
+      photo
+      department
+      created_at
+    }
+  }
+`;
+
+const GET_MEMBER = gql`
+  query($id: String!) {
+    member(id: $id) {
+      id
+      fullname
+      phoneNumber
+      email
+      created_by
+      position
+      photo
+      department
+      created_at
+    }
+  }
+`;
+
+const GET_RETAILERS = gql`
+  query {
+    retailers {
+      name
+      id
+      email
+      logo
+      location
+      created_by
+      phoneNumber
+      created_at
+    }
+  }
+`;
+
+const GET_RETAILER = gql`
+  query($id: String!) {
+    retailer(id: $id) {
+      name
+      id
+      email
+      logo
+      location
+      created_by
+      phoneNumber
+      created_at
+    }
+  }
+`;
+
+export {
+  GET_USERS,
+  GET_CATEGORIES,
+  EDIT_CATEGORY,
+  GET_POSTS,
+  GET_POST,
+  GET_PAGES,
+  GET_PAGE,
+  GET_MEMBERS,
+  GET_MEMBER,
+  GET_RETAILERS,
+  GET_RETAILER
+};

@@ -9,8 +9,9 @@ import { UserContext } from "../../context/userContext";
 import three_dots from "../../assets/img/three-dots.svg";
 
 // ===== Query and Mutation Section =====
-import { GET_CATEGORIES } from "../../graphql/query";
-import { CREATE_POST } from "../../graphql/mutation";
+import { CREATE_MEMBER } from "../../graphql/mutation";
+import { GET_MEMBERS } from "../../graphql/query";
+
 import {
   Form,
   Icon,
@@ -29,72 +30,20 @@ const FormItem = Form.Item;
 const { Content } = Layout;
 const { TextArea } = Input;
 const { Option } = Select;
-const { Quill, Mixin, Toolbar } = ReactQuill;
 
 const children = [];
 
-function NewPost(props) {
+function NewMember(props) {
   const { getFieldDecorator } = props.form;
 
   // ===== State Management =====
   const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
   // ===== User Context Section =====
   const userData = useContext(UserContext);
-
-  const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES);
-  const [createPost] = useMutation(CREATE_POST);
-
-  const DisplayCategories = () => {
-    const { error, loading, data } = useQuery(GET_CATEGORIES);
-    if (error) console.log(error);
-    if (loading) return "Loading ...";
-    if (data.categories.length === 0) {
-      message.error("Please create a category.", 5);
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ]
-          })(<Select placeholder="No Category"></Select>)}
-        </Form.Item>
-      );
-    } else {
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ],
-            initialValue: data.categories[0].title
-          })(
-            <Select placeholder="Please select the category" size="large">
-              {data.categories.map(cate => {
-                return (
-                  <Option value={cate.title} key={cate.id}>
-                    {cate.title}
-                  </Option>
-                );
-              })}
-            </Select>
-          )}
-        </Form.Item>
-      );
-    }
-  };
-
-  const handleDescChange = value => {
-    setDescription(value);
-  };
+  const { refetch: memberRefetch } = useQuery(GET_MEMBERS);
+  const [createMember] = useMutation(CREATE_MEMBER);
 
   const uploadImage = {
     name: "file",
@@ -121,16 +70,15 @@ function NewPost(props) {
       if (!err) {
         console.log(values);
 
-        createPost({ variables: { description, ...values } })
+        createMember({ variables: { ...values } })
           .then(async () => {
             setLoading(true);
             setTimeout(() => {
               setLoading(false);
             }, 3000);
-            categoryRefetch();
+            memberRefetch();
             props.form.resetFields();
-            setDescription("");
-            await message.success("Post created successfully.", 3);
+            await message.success("Member added successfully.", 3);
           })
           .catch(error => {
             console.log(error);
@@ -151,24 +99,88 @@ function NewPost(props) {
           {/* ======= Display content ====== */}
           <div className="koompi container">
             <div className="background_container">
-              <h1 className="title_new_post">New Post</h1>
+              <h1 className="title_new_post">Add Member</h1>
 
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
-                    <FormItem label="Title">
-                      {getFieldDecorator("title", {
+                    <FormItem label="Full Name">
+                      {getFieldDecorator("fullname", {
                         rules: [
                           {
                             required: true,
-                            message: "The title is required"
+                            message: "The fullname is required"
                           }
                         ]
                       })(<Input size="large" />)}
                     </FormItem>
 
-                    {/* ======= Category Sections ======= */}
-                    <DisplayCategories />
+                    {/* ======= Deparment Sections ======= */}
+                    <Form.Item label="Department">
+                      {getFieldDecorator("department", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Please select member department!"
+                          }
+                        ],
+                        initialValue: "software-team"
+                      })(
+                        <Select defaultValue="software-team" size="large">
+                          <Option value="business-development">
+                            Business Development
+                          </Option>
+                          <Option value="hardware-team">
+                            KOOMPI Hardware Team
+                          </Option>
+                          <Option value="academy">KOOMPI ACADEMY</Option>
+                          <Option value="sales-and-supplier-relation">
+                            Sales and Supplier Relation
+                          </Option>
+                          <Option value="communication-and-marketing">
+                            Communication and Marketing
+                          </Option>
+                          <Option value="software-team">Software Teams</Option>
+                        </Select>
+                      )}
+                    </Form.Item>
+
+                    <FormItem label="Postion: ">
+                      {getFieldDecorator("position", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Position is required"
+                          }
+                        ]
+                      })(<Input size="large" />)}
+                    </FormItem>
+
+                    <FormItem label="Phone Number: ">
+                      {getFieldDecorator("phoneNumber", {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Phone Number is required"
+                          }
+                        ]
+                      })(<Input size="large" />)}
+                    </FormItem>
+
+                    <FormItem label="Email: ">
+                      {getFieldDecorator("email", {
+                        rules: [
+                          {
+                            type: "email",
+                            message: "The input is not valid E-mail!"
+                          },
+                          {
+                            required: true,
+                            message: "Email is required"
+                          }
+                        ]
+                      })(<Input size="large" />)}
+                    </FormItem>
 
                     <FormItem label="Created By: " style={{ display: "none" }}>
                       {getFieldDecorator("created_by", {
@@ -182,20 +194,6 @@ function NewPost(props) {
                       })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
-                    <FormItem label="Description: ">
-                      {getFieldDecorator("description", {
-                        rules: [
-                          {
-                            required: true
-                          }
-                        ],
-                        initialValue: description
-                      })(
-                        <div>
-                          <ReactQuill onChange={handleDescChange} />
-                        </div>
-                      )}
-                    </FormItem>
                     <div>
                       <Button
                         type="primary"
@@ -216,7 +214,7 @@ function NewPost(props) {
                   <Col span={8}>
                     {/* ======= Drag and Drop Image ======= */}
 
-                    <FormItem label="Thumnail">
+                    <FormItem label="Photo">
                       <Upload.Dragger {...uploadImage}>
                         {image ? (
                           <img
@@ -233,68 +231,16 @@ function NewPost(props) {
                         )}
                       </Upload.Dragger>
                       <div style={{ display: "none" }}>
-                        {getFieldDecorator("thumnail", {
+                        {getFieldDecorator("photo", {
                           rules: [
                             {
                               required: true,
-                              message: "Thumnail is required"
+                              message: "Photo is required"
                             }
                           ],
                           initialValue: "/public/uploads/" + image
                         })(<Input size="large" />)}
                       </div>
-                    </FormItem>
-
-                    {/* ======= Tags ======= */}
-                    <FormItem label="Tags">
-                      {getFieldDecorator("tags", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The tags is required"
-                          }
-                        ]
-                      })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          size="large"
-                        >
-                          {children}
-                        </Select>
-                      )}
-                    </FormItem>
-
-                    {/* ======= SEO and Keywords ======= */}
-                    <FormItem label="SEO or Keywords">
-                      {getFieldDecorator("keywords", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The keywords is required"
-                          }
-                        ]
-                      })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          size="large"
-                        >
-                          {children}
-                        </Select>
-                      )}
-                    </FormItem>
-
-                    {/* ======= Post Description ======= */}
-                    <FormItem label="Meta Description: ">
-                      {getFieldDecorator("meta_desc", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The Meta Description is required"
-                          }
-                        ]
-                      })(<TextArea rows={4} />)}
                     </FormItem>
                   </Col>
                 </Row>
@@ -308,4 +254,4 @@ function NewPost(props) {
   );
 }
 
-export default Form.create()(NewPost);
+export default Form.create()(NewMember);

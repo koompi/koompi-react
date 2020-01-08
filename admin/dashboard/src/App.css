@@ -17,13 +17,14 @@
   top: 7px;
 }
 .container {
-  width: 75%;
+  width: 90%;
+  max-width: 90%;
   margin: 0px auto;
 }
 .background_container {
   background-color: #ffffff;
   padding: 30px;
-  margin: 20px 0px;
+  margin: 60px 0px;
   box-shadow: 0px 0 10px 0 rgba(183, 192, 206, 0.2);
   border-radius: 5px;
 }
@@ -40,9 +41,13 @@
 }
 .ant-layout-sider {
   background: #1e272e !important;
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
 }
 .ant-menu-dark {
-  background: #4b5258 !important;
+  background: #1e272e !important;
 }
 .ant-menu-dark .ant-menu-inline.ant-menu-sub {
   background: #323b42 !important;
@@ -50,6 +55,7 @@
 }
 .ant-layout-sider-trigger {
   background: #1890ff !important;
+  width: 250px !important;
 }
 .ant-menu.ant-menu-dark .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
@@ -253,4 +259,30 @@
 }
 .ant-upload.ant-upload-drag .ant-upload {
   padding: 0px !important;
+}
+.ant-table {
+  font-size: 18px !important;
+}
+.ant-tag,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-item .anticon + span,
+.ant-menu-submenu-title .anticon + span,
+.ant-menu-item .anticon,
+.ant-menu-submenu-title .anticon {
+  font-size: 17px !important;
+}
+.ant-tag {
+  border: none !important;
+  padding: 3px 10px;
+}
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  padding: 12px !important;
+}
+.ant-menu-inline > .ant-menu-item {
+  height: 45px !important;
+  line-height: 45px !important;
+}
+.ant-tag-green {
+  background: #e5ffca !important;
 }

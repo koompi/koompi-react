@@ -4,7 +4,7 @@ import { Row, Col, Layout } from "antd";
 import LeftNavbar from "./navbar/left-navbar";
 import TopNavbar from "./navbar/top-navbar";
 import PageFooter from "./footer";
-import { UserTotal, TotalPost } from "./data/admin";
+import { UserTotal, TotalPost, TotalPage, TotalRetailer } from "./data/admin";
 
 import Chart from "react-apexcharts";
 
@@ -98,7 +98,7 @@ function Admin() {
                       className="card_icon"
                     />
                   </div>
-                  <UserTotal />
+                  <TotalPage />
                 </div>
               </Col>
               <Col span={6}>
@@ -110,7 +110,7 @@ function Admin() {
                       className="card_icon"
                     />
                   </div>
-                  <UserTotal />
+                  <TotalRetailer />
                 </div>
               </Col>
             </Row>

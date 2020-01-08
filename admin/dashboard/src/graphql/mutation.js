@@ -146,6 +146,199 @@ const UPDATE_POST = gql`
   }
 `;
 
+const CREATE_PAGE = gql`
+  mutation(
+    $title: String!
+    $subTitle: String
+    $created_by: String!
+    $description: String!
+    $image: String
+    $keywords: [String]!
+    $meta_desc: String!
+  ) {
+    create_page(
+      title: $title
+      subTitle: $subTitle
+      created_by: $created_by
+      description: $description
+      image: $image
+      keywords: $keywords
+      meta_desc: $meta_desc
+    ) {
+      id
+      title
+      created_by
+      created_at
+    }
+  }
+`;
+
+const DELETE_PAGE = gql`
+  mutation($id: String!) {
+    delete_page(id: $id) {
+      title
+    }
+  }
+`;
+
+const UPDATE_PAGE = gql`
+  mutation(
+    $id: String!
+    $title: String!
+    $subTitle: String
+    $description: String!
+    $image: String
+    $keywords: [String]!
+    $meta_desc: String!
+    $updated_by: String!
+    $updated_at: String!
+  ) {
+    update_page(
+      id: $id
+      title: $title
+      subTitle: $subTitle
+      description: $description
+      image: $image
+      keywords: $keywords
+      meta_desc: $meta_desc
+      updated_by: $updated_by
+      updated_at: $updated_at
+    ) {
+      id
+      title
+      created_at
+    }
+  }
+`;
+
+const CREATE_MEMBER = gql`
+  mutation(
+    $fullname: String!
+    $department: String!
+    $position: String!
+    $phoneNumber: String!
+    $email: String
+    $photo: String!
+    $created_by: String!
+  ) {
+    add_member(
+      fullname: $fullname
+      department: $department
+      position: $position
+      phoneNumber: $phoneNumber
+      email: $email
+      photo: $photo
+      created_by: $created_by
+    ) {
+      fullname
+      department
+      position
+      phoneNumber
+      email
+      photo
+      created_by
+    }
+  }
+`;
+
+const DELETE_MEMBER = gql`
+  mutation($id: String!) {
+    delete_member(id: $id) {
+      fullname
+    }
+  }
+`;
+
+const UPDATE_MEMBER = gql`
+  mutation(
+    $id: String!
+    $fullname: String!
+    $department: String!
+    $position: String!
+    $phoneNumber: String!
+    $email: String
+    $photo: String!
+    $created_by: String!
+  ) {
+    update_member(
+      id: $id
+      fullname: $fullname
+      department: $department
+      position: $position
+      phoneNumber: $phoneNumber
+      email: $email
+      photo: $photo
+      created_by: $created_by
+    ) {
+      fullname
+      department
+      position
+    }
+  }
+`;
+
+const CREATE_RETAILER = gql`
+  mutation(
+    $name: String!
+    $location: String!
+    $logo: String!
+    $phoneNumber: String
+    $email: String
+    $created_by: String!
+  ) {
+    add_retailer(
+      name: $name
+      location: $location
+      logo: $logo
+      phoneNumber: $phoneNumber
+      email: $email
+      created_by: $created_by
+    ) {
+      name
+      location
+      logo
+      phoneNumber
+      email
+      created_by
+    }
+  }
+`;
+
+const DELETE_RETAILER = gql`
+  mutation($id: String!) {
+    delete_retailer(id: $id) {
+      name
+    }
+  }
+`;
+
+const UPDATE_RETAILER = gql`
+  mutation(
+    $id: String!
+    $name: String!
+    $location: String!
+    $logo: String!
+    $phoneNumber: String
+    $email: String
+  ) {
+    update_retailer(
+      id: $id
+      name: $name
+      location: $location
+      logo: $logo
+      phoneNumber: $phoneNumber
+      email: $email
+    ) {
+      name
+      location
+      logo
+      phoneNumber
+      email
+      created_by
+    }
+  }
+`;
+
 export {
   CREATE_USER,
   CREATE_CATEGORY,
@@ -156,5 +349,14 @@ export {
   UPDATE_POST,
   APPROVE_USER,
   DELETE_USER,
-  ISADMIN
+  ISADMIN,
+  CREATE_PAGE,
+  DELETE_PAGE,
+  UPDATE_PAGE,
+  CREATE_MEMBER,
+  DELETE_MEMBER,
+  UPDATE_MEMBER,
+  CREATE_RETAILER,
+  DELETE_RETAILER,
+  UPDATE_RETAILER
 };

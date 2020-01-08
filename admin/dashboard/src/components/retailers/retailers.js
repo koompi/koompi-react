@@ -26,8 +26,8 @@ import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 // ===== Query and Mutation Section =====
-import { GET_POSTS } from "../../graphql/query";
-import { DELETE_POST } from "../../graphql/mutation";
+import { GET_RETAILERS } from "../../graphql/query";
+import { DELETE_RETAILER } from "../../graphql/mutation";
 
 // =====  make the first letter of a string uppercase =====
 function capitalizeFirstLetter(string) {
@@ -36,38 +36,38 @@ function capitalizeFirstLetter(string) {
 
 const { Content } = Layout;
 
-function AllPosts() {
+function Retailers() {
   // ===== State Management =====
   const [visible, setVisible] = useState(false);
 
   // ===== Mutation Varile Section =====
-  const [deletePost] = useMutation(DELETE_POST);
-  const { refetch: postRefetch } = useQuery(GET_POSTS);
+  const [deleteRetailer] = useMutation(DELETE_RETAILER);
+  const { refetch: retailerRefetch } = useQuery(GET_RETAILERS);
 
   const columns = [
     {
-      title: "Image",
-      dataIndex: "image"
+      title: "Logo",
+      dataIndex: "logo"
     },
     {
-      title: "Title",
-      dataIndex: "title",
-      key: "title"
+      title: "Name",
+      dataIndex: "name",
+      key: "name"
     },
     {
-      title: "Category",
-      dataIndex: "category",
-      key: "category"
+      title: "Phone Number",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber"
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email"
     },
     {
       title: "Author",
       dataIndex: "created_by",
       key: "created_by"
-    },
-    {
-      title: "Tags",
-      dataIndex: "tags",
-      key: "tags"
     },
     {
       title: "Date",
@@ -86,7 +86,7 @@ function AllPosts() {
   };
 
   const DisplayPost = () => {
-    const { error, loading, data, refetch } = useQuery(GET_POSTS);
+    const { error, loading, data, refetch } = useQuery(GET_RETAILERS);
     if (error) console.log(error);
     if (loading) return <Table loading={true}></Table>;
     if (data) {
@@ -94,28 +94,39 @@ function AllPosts() {
         return (
           <Table
             columns={columns}
-            dataSource={data.posts.map(post => {
+            dataSource={data.retailers.map(retailer => {
+              const {
+                id,
+                name,
+                phoneNumber,
+                email,
+                created_by,
+                location,
+                logo,
+                created_at
+              } = retailer;
               return {
-                key: parse(post.title.substring(0, 30)),
-                image: (
+                key: parse(name),
+                logo: (
                   <img
-                    src={"http://localhost:8080" + post.thumnail}
-                    alt="post"
+                    src={`http://localhost:8080${logo}`}
+                    alt={name}
                     height="50px"
                     width="50px"
                     style={{ borderRadius: "50%" }}
                   />
                 ),
-                title: post.title,
-                category: <Tag color="green">{post.category.title}</Tag>,
-                tags: post.tags.map(tag => <Tag color="blue">{tag}</Tag>),
-                created_by: post.created_by,
+                name,
+                email: email === null ? "Null" : email,
+                phoneNumber: phoneNumber === null ? "Null" : phoneNumber,
+
+                created_by: created_by,
                 created_at: moment
-                  .unix(post.created_at / 1000)
+                  .unix(created_at / 1000)
                   .format("YYYY-MM-DD HH:mm:ss"),
-                action: visible ? null : (
+                action: (
                   <div>
-                    <Link to={`/admin/post/edit/${post.id}`}>
+                    <Link to={`/admin/retailer/edit/${id}`}>
                       <Tag className="btn" color="#2db7f5">
                         Edit
                       </Tag>
@@ -123,13 +134,13 @@ function AllPosts() {
                     <Divider type="vertical" />
                     <Popconfirm
                       placement="topRight"
-                      title="Are you sure to delete this Post?"
+                      title="Are you sure to delete this retailer?"
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deletePost({ variables: { id: `${post.id}` } });
-                        message.success("The Post has been Deleted");
-                        postRefetch();
+                        deleteRetailer({ variables: { id: `${id}` } });
+                        message.success("The Retailer has been Deleted");
+                        retailerRefetch();
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -175,7 +186,7 @@ function AllPosts() {
             {/* ======= Display content ====== */}
 
             <div className="background_container">
-              <h1 className="title_new_post">All Posts</h1>
+              <h1 className="title_new_post">Retailers</h1>
               <DisplayPost />
             </div>
           </div>
@@ -186,4 +197,4 @@ function AllPosts() {
   );
 }
 
-export default AllPosts;
+export default Retailers;

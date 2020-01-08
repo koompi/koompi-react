@@ -69,7 +69,6 @@ function Category(props) {
       title: "Date",
       dataIndex: "created_at"
     },
-
     {
       title: "Updated By",
       dataIndex: "updated_by"

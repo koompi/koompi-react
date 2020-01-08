@@ -26,8 +26,8 @@ import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 // ===== Query and Mutation Section =====
-import { GET_POSTS } from "../../graphql/query";
-import { DELETE_POST } from "../../graphql/mutation";
+import { GET_MEMBERS } from "../../graphql/query";
+import { DELETE_MEMBER } from "../../graphql/mutation";
 
 // =====  make the first letter of a string uppercase =====
 function capitalizeFirstLetter(string) {
@@ -36,38 +36,38 @@ function capitalizeFirstLetter(string) {
 
 const { Content } = Layout;
 
-function AllPosts() {
+function Members() {
   // ===== State Management =====
   const [visible, setVisible] = useState(false);
 
   // ===== Mutation Varile Section =====
-  const [deletePost] = useMutation(DELETE_POST);
-  const { refetch: postRefetch } = useQuery(GET_POSTS);
+  const [deleteMember] = useMutation(DELETE_MEMBER);
+  const { refetch: memberRefetch } = useQuery(GET_MEMBERS);
 
   const columns = [
     {
-      title: "Image",
-      dataIndex: "image"
+      title: "Photo",
+      dataIndex: "photo"
     },
     {
-      title: "Title",
-      dataIndex: "title",
-      key: "title"
+      title: "Full Name",
+      dataIndex: "fullname",
+      key: "fullname"
     },
     {
-      title: "Category",
-      dataIndex: "category",
-      key: "category"
+      title: "Email",
+      dataIndex: "email",
+      key: "email"
+    },
+    {
+      title: "Phone Number",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber"
     },
     {
       title: "Author",
       dataIndex: "created_by",
       key: "created_by"
-    },
-    {
-      title: "Tags",
-      dataIndex: "tags",
-      key: "tags"
     },
     {
       title: "Date",
@@ -86,7 +86,7 @@ function AllPosts() {
   };
 
   const DisplayPost = () => {
-    const { error, loading, data, refetch } = useQuery(GET_POSTS);
+    const { error, loading, data, refetch } = useQuery(GET_MEMBERS);
     if (error) console.log(error);
     if (loading) return <Table loading={true}></Table>;
     if (data) {
@@ -94,28 +94,40 @@ function AllPosts() {
         return (
           <Table
             columns={columns}
-            dataSource={data.posts.map(post => {
+            dataSource={data.members.map(member => {
+              const {
+                id,
+                fullname,
+                phoneNumber,
+                email,
+                created_by,
+                position,
+                photo,
+                department,
+                created_at
+              } = member;
               return {
-                key: parse(post.title.substring(0, 30)),
-                image: (
+                key: parse(fullname),
+                photo: (
                   <img
-                    src={"http://localhost:8080" + post.thumnail}
+                    src={`http://localhost:8080${photo}`}
                     alt="post"
                     height="50px"
                     width="50px"
                     style={{ borderRadius: "50%" }}
                   />
                 ),
-                title: post.title,
-                category: <Tag color="green">{post.category.title}</Tag>,
-                tags: post.tags.map(tag => <Tag color="blue">{tag}</Tag>),
-                created_by: post.created_by,
+                fullname,
+                email,
+                phoneNumber,
+
+                created_by: created_by,
                 created_at: moment
-                  .unix(post.created_at / 1000)
+                  .unix(created_at / 1000)
                   .format("YYYY-MM-DD HH:mm:ss"),
-                action: visible ? null : (
+                action: (
                   <div>
-                    <Link to={`/admin/post/edit/${post.id}`}>
+                    <Link to={`/admin/member/edit/${id}`}>
                       <Tag className="btn" color="#2db7f5">
                         Edit
                       </Tag>
@@ -123,13 +135,13 @@ function AllPosts() {
                     <Divider type="vertical" />
                     <Popconfirm
                       placement="topRight"
-                      title="Are you sure to delete this Post?"
+                      title="Are you sure to delete this member?"
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deletePost({ variables: { id: `${post.id}` } });
-                        message.success("The Post has been Deleted");
-                        postRefetch();
+                        deleteMember({ variables: { id: `${id}` } });
+                        message.success("The member has been Deleted");
+                        memberRefetch();
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -172,6 +184,15 @@ function AllPosts() {
           <TopNavbar />
 
           <div className="koompi container">
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              {window.location.pathname.split("/").map(data => {
+                return (
+                  <Breadcrumb.Item>
+                    {capitalizeFirstLetter(data)}
+                  </Breadcrumb.Item>
+                );
+              })}
+            </Breadcrumb>
             {/* ======= Display content ====== */}
 
             <div className="background_container">
@@ -186,4 +207,4 @@ function AllPosts() {
   );
 }
 
-export default AllPosts;
+export default Members;

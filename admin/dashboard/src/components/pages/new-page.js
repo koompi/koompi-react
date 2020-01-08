@@ -1,15 +1,12 @@
 import React, { useState, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
 import ReactQuill from "react-quill"; // ES6
 import "react-quill/dist/quill.snow.css"; // ES6
 import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
 import { UserContext } from "../../context/userContext";
+import { useMutation } from "@apollo/react-hooks";
 import three_dots from "../../assets/img/three-dots.svg";
-// ===== Query and Mutation Section =====
-import { GET_CATEGORIES, GET_POST, GET_POSTS } from "../../graphql/query";
-import { UPDATE_POST } from "../../graphql/mutation";
 import {
   Form,
   Icon,
@@ -20,9 +17,11 @@ import {
   Upload,
   Select,
   Layout,
-  message,
-  Alert
+  message
 } from "antd";
+
+// ===== Query and Mutation Section =====
+import { CREATE_PAGE } from "../../graphql/mutation";
 
 const FormItem = Form.Item;
 const { Content } = Layout;
@@ -31,93 +30,40 @@ const { Option } = Select;
 
 const children = [];
 
-function EditPost(props) {
+function NewPage(props) {
   const { getFieldDecorator } = props.form;
-  //   ===== Global Data =====
-  const { loading: postLoading, data: postData } = useQuery(GET_POST, {
-    variables: { id: window.location.pathname.split("/")[4] }
-  });
 
-  // ===== State Management =====
+  const [createPage] = useMutation(CREATE_PAGE);
+
+  // ===== state management =====
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
 
   // ===== User Context Section =====
   const userData = useContext(UserContext);
 
-  const { refetch: postRefetch } = useQuery(GET_POSTS);
-  const [updatePost] = useMutation(UPDATE_POST);
-
-  const DisplayCategories = () => {
-    const { error, loading, data } = useQuery(GET_CATEGORIES);
-    if (error) console.log(error);
-    if (loading) return "Loading ...";
-    if (data.categories.length === 0) {
-      message.error("Please create a category.", 5);
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ]
-          })(<Select placeholder="No Category"></Select>)}
-        </Form.Item>
-      );
-    } else {
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ],
-            initialValue: data.categories[0].title
-          })(
-            <Select placeholder="Please select the category" size="large">
-              {data.categories.map(cate => {
-                return (
-                  <Option value={cate.title} key={cate.id}>
-                    {cate.title}
-                  </Option>
-                );
-              })}
-            </Select>
-          )}
-        </Form.Item>
-      );
-    }
+  const handleSEOChange = value => {
+    console.log(`selected ${value}`);
   };
 
   const handleDescChange = value => {
     setDescription(value);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values);
-
-        updatePost({
-          variables: {
-            id: window.location.pathname.split("/")[4],
-            ...values
-          }
-        })
+        createPage({ variables: { description, ...values } })
           .then(async () => {
             setLoading(true);
             setTimeout(() => {
               setLoading(false);
             }, 3000);
-            postRefetch();
-            await message.success("Post updated successfully.", 3);
-            await props.history.push("/admin/all-posts");
+            props.form.resetFields();
+            setDescription("");
+            await message.success("Page created successfully.", 3);
           })
           .catch(error => {
             console.log(error);
@@ -145,10 +91,6 @@ function EditPost(props) {
     }
   };
 
-  if (postLoading) {
-    return "Loading...";
-  }
-
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* =========Left Navbar ======= */}
@@ -161,28 +103,27 @@ function EditPost(props) {
           {/* ======= Display content ====== */}
           <div className="koompi container">
             <div className="background_container">
-              <h1 className="title_new_post">Update Post</h1>
-
+              <h1 className="title_new_post">New Page</h1>
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
-                    <FormItem label="Title">
+                    <FormItem label="Title: ">
                       {getFieldDecorator("title", {
                         rules: [
                           {
                             required: true,
                             message: "The title is required"
                           }
-                        ],
-                        initialValue: postData.post.title
+                        ]
                       })(<Input size="large" />)}
                     </FormItem>
 
-                    {/* ======= Category Sections ======= */}
-                    <DisplayCategories />
+                    <FormItem label="SubTitle: ">
+                      {getFieldDecorator("subtitle")(<Input size="large" />)}
+                    </FormItem>
 
-                    <FormItem label="Updated By: " style={{ display: "none" }}>
-                      {getFieldDecorator("updated_by", {
+                    <FormItem label="Created By: " style={{ display: "none" }}>
+                      {getFieldDecorator("created_by", {
                         rules: [
                           {
                             required: true,
@@ -190,19 +131,7 @@ function EditPost(props) {
                           }
                         ],
                         initialValue: userData.user.fullname
-                      })(<Input size="large" />)}
-                    </FormItem>
-
-                    <FormItem label="update at: " style={{ display: "none" }}>
-                      {getFieldDecorator("updated_at", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The user name is required"
-                          }
-                        ],
-                        initialValue: new Date().toISOString()
-                      })(<Input size="large" />)}
+                      })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
                     <FormItem label="Description: ">
@@ -212,35 +141,29 @@ function EditPost(props) {
                             required: true
                           }
                         ],
-                        initialValue: postLoading
-                          ? ""
-                          : description === ""
-                          ? postData.post.description
-                          : description
+                        initialValue: description
                       })(
                         <div>
                           <ReactQuill
-                            defaultValue={
-                              postLoading
-                                ? "Loading ..."
-                                : postData.post.description
-                            }
                             onChange={handleDescChange}
+                            setFieldsValue=""
                           />
                         </div>
                       )}
                     </FormItem>
+
                     <div>
                       <Button
                         type="primary"
                         htmlType="submit"
-                        className="login-form-button"
-                        // disabled=
+                        size="large"
+                        className="btnSubmit"
+                        disabled={loading ? true : false}
                       >
                         {loading ? (
                           <img src={three_dots} alt="btn-loading" height="10" />
                         ) : (
-                          "Update"
+                          "Submit"
                         )}
                       </Button>
                     </div>
@@ -248,60 +171,33 @@ function EditPost(props) {
 
                   <Col span={8}>
                     {/* ======= Drag and Drop Image ======= */}
-
-                    <FormItem label="Thumnail">
+                    <FormItem label="Image">
                       <Upload.Dragger {...uploadImage}>
-                        {image === null ? (
+                        {image ? (
                           <img
-                            src={`${"http://localhost:8080" +
-                              postData.post.thumnail}`}
+                            src={`${"http://localhost:8080/public/uploads/" +
+                              `${image}`}`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
                         ) : (
-                          <img
-                            src={`${"http://localhost:8080/public/uploads/" +
-                              image}`}
-                            alt="avatar"
-                            style={{ width: "100%" }}
-                          />
+                          <p className="ant-upload-drag-icon">
+                            <Icon type="file-image" />
+                            <p>Upload Image</p>
+                          </p>
                         )}
                       </Upload.Dragger>
                       <div style={{ display: "none" }}>
-                        {getFieldDecorator("thumnail", {
+                        {getFieldDecorator("image", {
                           rules: [
                             {
                               required: true,
-                              message: "Thumnail is required"
+                              message: "Image is required"
                             }
                           ],
-                          initialValue:
-                            image === null
-                              ? postData.post.thumnail
-                              : "/public/uploads/" + image
+                          initialValue: "/public/uploads/" + image
                         })(<Input size="large" />)}
                       </div>
-                    </FormItem>
-
-                    {/* ======= Tags ======= */}
-                    <FormItem label="Tags">
-                      {getFieldDecorator("tags", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The tags is required"
-                          }
-                        ],
-                        initialValue: postLoading ? "" : postData.post.tags
-                      })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          size="large"
-                        >
-                          {children}
-                        </Select>
-                      )}
                     </FormItem>
 
                     {/* ======= SEO and Keywords ======= */}
@@ -312,8 +208,7 @@ function EditPost(props) {
                             required: true,
                             message: "The keywords is required"
                           }
-                        ],
-                        initialValue: postLoading ? "" : postData.post.keywords
+                        ]
                       })(
                         <Select
                           mode="tags"
@@ -333,8 +228,7 @@ function EditPost(props) {
                             required: true,
                             message: "The Meta Description is required"
                           }
-                        ],
-                        initialValue: postLoading ? "" : postData.post.meta_desc
+                        ]
                       })(<TextArea rows={4} />)}
                     </FormItem>
                   </Col>
@@ -349,4 +243,4 @@ function EditPost(props) {
   );
 }
 
-export default Form.create()(EditPost);
+export default Form.create()(NewPage);

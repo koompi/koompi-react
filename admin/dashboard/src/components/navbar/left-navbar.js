@@ -101,7 +101,13 @@ function LeftNavbar(props) {
 
         {/* ========= Member Section ========= */}
         <SubMenu
-          key={"/admin/new-member" && "/admin/all-members"}
+          key={
+            pathname === "/admin/new-member"
+              ? "/admin/new-member"
+              : pathname === "/admin/members"
+              ? "/admin/members"
+              : ""
+          }
           title={
             <span>
               <Icon type="team" />
@@ -112,14 +118,20 @@ function LeftNavbar(props) {
           <Menu.Item key="/admin/new-member">
             <Link to="/admin/new-member">New Member</Link>
           </Menu.Item>
-          <Menu.Item key="/admin/all-members">
-            <Link to="/admin/all-members">All Members</Link>
+          <Menu.Item key="/admin/members">
+            <Link to="/admin/members">All Members</Link>
           </Menu.Item>
         </SubMenu>
 
         {/* ========= Retailer Section ========= */}
         <SubMenu
-          key={"/admin/new-member" && "/admin/all-members"}
+          key={
+            pathname === "/admin/new-retailer"
+              ? "/admin/new-retailer"
+              : pathname === "/admin/retailers"
+              ? "/admin/retailers"
+              : ""
+          }
           title={
             <span>
               <Icon type="carry-out" />
@@ -127,17 +139,17 @@ function LeftNavbar(props) {
             </span>
           }
         >
-          <Menu.Item key="/admin/new-member">
-            <Link to="/admin/new-member">New Retailer</Link>
+          <Menu.Item key="">
+            <Link to="/admin/new-retailer">New Retailer</Link>
           </Menu.Item>
-          <Menu.Item key="/admin/all-members">
-            <Link to="/admin/all-members">All Retailers</Link>
+          <Menu.Item key="/admin/retailers">
+            <Link to="/admin/retailers">All Retailers</Link>
           </Menu.Item>
         </SubMenu>
 
         {/* ========= Social Media Section ========= */}
         <SubMenu
-          key={"/admin/new-member" && "/admin/all-members"}
+          key={"" && "/admin/all-members"}
           title={
             <span>
               <Icon type="deployment-unit" />
@@ -145,8 +157,8 @@ function LeftNavbar(props) {
             </span>
           }
         >
-          <Menu.Item key="/admin/new-member">
-            <Link to="/admin/new-member">Add Social Media</Link>
+          <Menu.Item key="">
+            <Link to="">Add Social Media</Link>
           </Menu.Item>
           <Menu.Item key="/admin/all-members">
             <Link to="/admin/all-members">All Social Media</Link>
