@@ -88,11 +88,6 @@ function KoompiE11() {
 			des: 'deffdfsafefdfaf 4'
 		}
 	];
-	// const operations = (
-	// 	<Button style={{ borderRadius: '20px', height: '27px' }} type='primary'>
-	// 		Buy
-	// 	</Button>
-	// );
 	return (
 		<React.Fragment>
 			<Navbar />
@@ -530,7 +525,7 @@ function KoompiE11() {
 								</div>
 							</div>
 						</TabPane>
-
+						{/*================== Spec ====================*/}
 						<TabPane tab='Spec' key='2'>
 							<div className='spec-background'>
 								<div className='container'>
@@ -561,23 +556,12 @@ function KoompiE11() {
 														</Col>
 													</Row>
 												</div>
-												{/* <List.Item.Meta
-													title={
-														<h1>{item.title}</h1>
-													}
-													description={
-														<p>{item.des}</p>
-													}
-												/> */}
 											</List.Item>
 										)}
 									/>
 								</div>
 							</div>
 						</TabPane>
-						{/* <TabPane tab='Tab 3' key='3'>
-					Content of Tab Pane 3
-				</TabPane> */}
 					</Tabs>
 				</div>
 			</div>

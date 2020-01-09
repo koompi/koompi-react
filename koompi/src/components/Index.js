@@ -14,17 +14,6 @@ import { Typography, Divider } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 
 const { Header, Content, Footer } = Layout;
-// const menu = (
-// 	<Menu>
-// 		<Menu.Item key='0'>
-// 			<a href='http://www.alipay.com/'>KOOMPI E11</a>
-// 		</Menu.Item>
-// 		<Menu.Item key='1'>
-// 			<a href='http://www.taobao.com/'>KOOMPI B14</a>
-// 		</Menu.Item>
-// 		<Menu.Item key='3'>KOOMPI B15</Menu.Item>
-// 	</Menu>
-// );
 const koompiPro = [{ img: '/img/Macbook.png' }];
 const koompiE11 = [{ img: '/img/0.png' }];
 function Index() {
@@ -64,9 +53,8 @@ function Index() {
 
 								<Dropdown overlay={menu} trigger={['click']}>
 									<Button
-										color='#2db7f5'
-										// onClick={() => setState(koompiPro)}
-										type='primary'>
+										className='btn-banner'
+										onClick={() => setState(koompiPro)}>
 										KOOMPI PRO <Icon type='down' />
 									</Button>
 								</Dropdown>
