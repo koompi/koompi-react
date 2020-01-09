@@ -304,3 +304,7 @@
   padding: 5px 10px !important;
   background: #f0f2f5 !important;
 }
+.userAvatar .ant-upload {
+  width: 100% !important;
+  padding: 12.5px !important;
+}

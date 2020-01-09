@@ -10,6 +10,27 @@ const CREATE_USER = gql`
   }
 `;
 
+const UPDATE_USER = gql`
+  mutation(
+    $fullname: String!
+    $email: String!
+    $avatar: String!
+    $oldPassword: String
+    $newPassword: String
+  ) {
+    update_user(
+      fullname: $fullname
+      email: $email
+      avatar: $avatar
+      oldPassword: $oldPassword
+      newPassword: $newPassword
+    ) {
+      fullname
+      email
+    }
+  }
+`;
+
 const APPROVE_USER = gql`
   mutation($id: String!, $approve: Boolean!) {
     approve_user(id: $id, approve: $approve) {
@@ -339,6 +360,25 @@ const UPDATE_RETAILER = gql`
   }
 `;
 
+const DELETE_SOCIAL_MEDIA = gql`
+  mutation($id: String!) {
+    delete_social_media(id: $id) {
+      name
+    }
+  }
+`;
+
+const UPDATE_SOCIAL_MEDIA = gql`
+  mutation($id: String!, $name: String!, $link: String!, $logo: String!) {
+    update_social_media(id: $id, name: $name, link: $link, logo: $logo) {
+      name
+      link
+      logo
+      created_by
+    }
+  }
+`;
+
 export {
   CREATE_USER,
   CREATE_CATEGORY,
@@ -358,5 +398,8 @@ export {
   UPDATE_MEMBER,
   CREATE_RETAILER,
   DELETE_RETAILER,
-  UPDATE_RETAILER
+  UPDATE_RETAILER,
+  DELETE_SOCIAL_MEDIA,
+  UPDATE_SOCIAL_MEDIA,
+  UPDATE_USER
 };

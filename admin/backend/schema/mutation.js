@@ -8,6 +8,7 @@ const Post = require("../models/Post");
 const Page = require("../models/Page");
 const Member = require("../models/Member");
 const Retailer = require("../models/Retailer");
+const SocialMedia = require("../models/SocialMedia");
 
 // ======== Type Section =========
 const UserType = require("./types/user");
@@ -16,6 +17,7 @@ const PostType = require("./types/post");
 const PageType = require("./types/page");
 const MemberType = require("./types/member");
 const RetailerType = require("./types/retailer");
+const SocialMediaType = require("./types/socialMedia");
 
 const {
   GraphQLObjectType,
@@ -52,6 +54,45 @@ const RootMutation = new GraphQLObjectType({
         } catch (error) {
           console.log(error);
           throw error;
+        }
+      }
+    },
+    // ===== Create User =====
+    update_user: {
+      type: UserType,
+      args: {
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        fullname: { type: new GraphQLNonNull(GraphQLString) },
+        avatar: { type: new GraphQLNonNull(GraphQLString) },
+        oldPassword: { type: GraphQLString },
+        newPassword: { type: GraphQLString }
+      },
+      resolve: async (parent, args) => {
+        try {
+          const user = await User.findOne({ email: args.email });
+          const { email, fullname, avatar, oldPassword, newPassword } = args;
+          if (
+            oldPassword === "" ||
+            oldPassword === null ||
+            oldPassword === undefined
+          ) {
+            await User.updateMany({ email }, { fullname, avatar });
+            return User.findOne({ email });
+          }
+          const isPassword = bcrypt.compareSync(oldPassword, user.password);
+          if (isPassword) {
+            const saltRounds = 10;
+            const hashPassword = await bcrypt.hash(newPassword, saltRounds);
+            await User.updateMany(
+              { email },
+              { fullname, avatar, password: hashPassword }
+            );
+            return User.findOne({ email });
+          } else {
+            throw "Password is invalid";
+          }
+        } catch (error) {
+          throw new Error(error);
         }
       }
     },
@@ -353,6 +394,52 @@ const RootMutation = new GraphQLObjectType({
         try {
           await Retailer.updateOne({ _id: args.id }, { ...args });
           return Retailer.findById(args.id);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+    // ===== Add Social Media =====
+    add_social_media: {
+      type: SocialMediaType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        link: { type: new GraphQLNonNull(GraphQLString) },
+        logo: { type: new GraphQLNonNull(GraphQLString) },
+        created_by: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        try {
+          const socialMedia = new SocialMedia({ ...args });
+          return socialMedia.save();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+    // ===== Delete Social Media =====
+    delete_social_media: {
+      type: SocialMediaType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: (parent, args) => {
+        return SocialMedia.findOneAndDelete({ _id: args.id });
+      }
+    },
+    // ===== Add Retailer =====
+    update_social_media: {
+      type: SocialMediaType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        link: { type: new GraphQLNonNull(GraphQLString) },
+        logo: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        try {
+          await SocialMedia.updateOne({ _id: args.id }, { ...args });
+          return SocialMedia.findById(args.id);
         } catch (error) {
           console.log(error);
         }

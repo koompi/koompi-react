@@ -139,7 +139,7 @@ function LeftNavbar(props) {
             </span>
           }
         >
-          <Menu.Item key="">
+          <Menu.Item key="/admin/new-retailer">
             <Link to="/admin/new-retailer">New Retailer</Link>
           </Menu.Item>
           <Menu.Item key="/admin/retailers">
@@ -149,7 +149,13 @@ function LeftNavbar(props) {
 
         {/* ========= Social Media Section ========= */}
         <SubMenu
-          key={"" && "/admin/all-members"}
+          key={
+            pathname === "/admin/add-social-media"
+              ? "/admin/add-social-media"
+              : pathname === "/admin/social-media"
+              ? "/admin/social-media"
+              : ""
+          }
           title={
             <span>
               <Icon type="deployment-unit" />
@@ -157,11 +163,11 @@ function LeftNavbar(props) {
             </span>
           }
         >
-          <Menu.Item key="">
-            <Link to="">Add Social Media</Link>
+          <Menu.Item key="/admin/add-social-media">
+            <Link to="/admin/add-social-media">Add Social Media</Link>
           </Menu.Item>
-          <Menu.Item key="/admin/all-members">
-            <Link to="/admin/all-members">All Social Media</Link>
+          <Menu.Item key="/admin/social-media">
+            <Link to="/admin/social-media">Social Media</Link>
           </Menu.Item>
         </SubMenu>
 

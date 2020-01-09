@@ -8,6 +8,7 @@ const Post = require("../models/Post");
 const Page = require("../models/Page");
 const Member = require("../models/Member");
 const Retailer = require("../models/Retailer");
+const SocialMedia = require("../models/SocialMedia");
 
 // ======== Type Section =========
 const UserType = require("./types/user");
@@ -16,6 +17,7 @@ const PostType = require("./types/post");
 const PageType = require("./types/page");
 const MemberType = require("./types/member");
 const RetailerType = require("./types/retailer");
+const SocialMediaType = require("./types/socialMedia");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -25,6 +27,16 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(UserType),
       resolve: (parent, args) => {
         return User.find();
+      }
+    },
+    // ===== Get User by ID =====
+    user: {
+      type: UserType,
+      args: {
+        email: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return User.findOne({ email: args.email });
       }
     },
     // ===== Get Categories =====
@@ -110,6 +122,23 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve: (parent, args) => {
         return Retailer.findById({ _id: args.id });
+      }
+    },
+    // ===== Get Social Media  =====
+    socialMedia: {
+      type: new GraphQLList(SocialMediaType),
+      resolve: (parent, args) => {
+        return SocialMedia.find();
+      }
+    },
+    // ===== Get Retailer by ID  =====
+    oneSocialMedia: {
+      type: SocialMediaType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return SocialMedia.findById({ _id: args.id });
       }
     }
   }

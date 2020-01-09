@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: "/images/avatar.png"
+    default: "/uploads/avatar.png"
   },
   approved: {
     type: Boolean,

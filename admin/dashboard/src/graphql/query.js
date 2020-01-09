@@ -13,6 +13,19 @@ const GET_USERS = gql`
   }
 `;
 
+const GET_USER = gql`
+  query($email: String!) {
+    user(email: $email) {
+      fullname
+      email
+      avatar
+      isAdmin
+      id
+      approved
+    }
+  }
+`;
+
 const GET_CATEGORIES = gql`
   query {
     categories {
@@ -176,8 +189,34 @@ const GET_RETAILER = gql`
   }
 `;
 
+const GET_SOCIAL_MEDIA = gql`
+  query {
+    socialMedia {
+      id
+      name
+      logo
+      link
+      created_by
+      created_at
+    }
+  }
+`;
+const GET_ONE_SOCIAL_MEDIA = gql`
+  query($id: String!) {
+    oneSocialMedia(id: $id) {
+      id
+      name
+      logo
+      link
+      created_by
+      created_at
+    }
+  }
+`;
+
 export {
   GET_USERS,
+  GET_USER,
   GET_CATEGORIES,
   EDIT_CATEGORY,
   GET_POSTS,
@@ -187,5 +226,7 @@ export {
   GET_MEMBERS,
   GET_MEMBER,
   GET_RETAILERS,
-  GET_RETAILER
+  GET_RETAILER,
+  GET_SOCIAL_MEDIA,
+  GET_ONE_SOCIAL_MEDIA
 };

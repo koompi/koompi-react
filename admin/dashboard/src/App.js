@@ -28,6 +28,10 @@ import editMember from "./components/members/edit-member";
 import newRetailer from "./components/retailers/new-retailer";
 import Retailers from "./components/retailers/retailers";
 import editRetailer from "./components/retailers/edit-retailer";
+import newSocialMedia from "./components/socialmedia/new-social-media";
+import SocialMedia from "./components/socialmedia/social-media";
+import editSocialMedia from "./components/socialmedia/edit-social-media";
+import Settings from "./components/settings";
 const { Content } = Layout;
 
 function App() {
@@ -43,6 +47,11 @@ function App() {
             <Route exact path="/register" component={SignupForm} />
             <PrivateRoute exact path="/admin/dashboard" component={Admin} />
             <PrivateRoute exact path="/admin/users" component={Users} />
+            <PrivateRoute
+              exact
+              path="/admin/user/settings"
+              component={Settings}
+            />
             {/* ===== Post Route Section ===== */}
             <PrivateRoute exact path="/admin/new-post" component={NewPost} />
             <PrivateRoute exact path="/admin/all-posts" component={AllPosts} />
@@ -89,6 +98,22 @@ function App() {
               exact
               path="/admin/retailer/edit/:id"
               component={editRetailer}
+            />
+            {/* ===== Social Media Route Section ===== */}
+            <PrivateRoute
+              exact
+              path="/admin/add-social-media"
+              component={newSocialMedia}
+            />
+            <PrivateRoute
+              exact
+              path="/admin/social-media"
+              component={SocialMedia}
+            />
+            <PrivateRoute
+              exact
+              path="/admin/social-media/edit/:id"
+              component={editSocialMedia}
             />
           </div>
         </Switch>
