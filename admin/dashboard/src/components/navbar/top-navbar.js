@@ -1,33 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Popover } from "antd";
+import { useQuery } from "@apollo/react-hooks";
+import { UserContext, UserProvider } from "../../context/userContext";
+import { Link } from "react-router-dom";
+import { GET_USER } from "../../graphql/query";
+
 const { Header } = Layout;
+
 function TopNavbar() {
+  const userContext = useContext(UserContext);
+  const { email } = userContext.user;
   const content = (
     <div>
-      <p>Settings</p>
-      <p>Sign out</p>
+      <Link to="/admin/user/settings">Settings</Link>
+      <p>
+        <a href="/logout">Logout</a>
+      </p>
     </div>
   );
+
+  const DisplayUser = () => {
+    const { error, loading, data, refetch } = useQuery(GET_USER, {
+      variables: { email: "san.vuthy08@gmail.com" }
+    });
+    if (error) console.log(error);
+    if (loading) return "Loading ...";
+    if (data) {
+      const { fullname, avatar, email } = data.user;
+      return (
+        <Popover
+          placement="bottomRight"
+          title={
+            <div>
+              <div>
+                <b>{fullname}</b>
+              </div>
+              <p>{email}</p>
+            </div>
+          }
+          content={content}
+        >
+          <img
+            src={`http://localhost:8080` + avatar}
+            alt={fullname}
+            className="avatar"
+          />
+        </Popover>
+      );
+    }
+  };
+
   return (
     <Header style={{ background: "#fff", padding: 0 }}>
-      <Popover
-        placement="bottomRight"
-        title={
-          <div>
-            <div>
-              <b>SAN Vuthy</b>
-            </div>
-            <p>san.vuthy08@gmail.com</p>
-          </div>
-        }
-        content={content}
-      >
-        <img
-          src="https://randomuser.me/api/portraits/women/57.jpg"
-          alt=""
-          className="avatar"
-        />
-      </Popover>
+      <DisplayUser />
     </Header>
   );
 }
