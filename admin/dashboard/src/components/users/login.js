@@ -13,6 +13,7 @@ import axios from "axios";
 import three_dots from "../../assets/img/three-dots.svg";
 import jwt from "jsonwebtoken";
 import Cookie from "js-cookie";
+import Particles from "react-particles-js";
 
 function LoginForm(props) {
   const [loading, setLoading] = useState(false);
@@ -70,8 +71,8 @@ function LoginForm(props) {
   const { getFieldDecorator } = props.form;
   return (
     <div>
-      <Particles />
       <div className="loginBackground"></div>
+
       <div className="loginContainer">
         <h1 className="loginTitle">Login</h1>
         <Form onSubmit={handleSubmit} className="login-form">
