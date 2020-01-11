@@ -11,7 +11,6 @@ import { GET_PAGE, GET_PAGES } from "../../graphql/query";
 import { UPDATE_PAGE } from "../../graphql/mutation";
 import {
   Form,
-  Icon,
   Input,
   Button,
   Row,
@@ -19,14 +18,12 @@ import {
   Upload,
   Select,
   Layout,
-  message,
-  Alert
+  message
 } from "antd";
 
 const FormItem = Form.Item;
 const { Content } = Layout;
 const { TextArea } = Input;
-const { Option } = Select;
 
 const children = [];
 
@@ -49,11 +46,10 @@ function EditPage(props) {
   const [updatePage] = useMutation(UPDATE_PAGE);
 
   const handleDescChange = value => {
-    console.log(value);
-
     setDescription(value);
   };
 
+  // ===== Handle Form submit =====
   const handleSubmit = async e => {
     e.preventDefault();
     props.form.validateFieldsAndScroll((err, values) => {
@@ -82,6 +78,7 @@ function EditPage(props) {
     });
   };
 
+  // ===== Handle Image Upload =====
   const uploadImage = {
     name: "file",
     multiple: false,
@@ -109,6 +106,7 @@ function EditPage(props) {
     <Layout style={{ minHeight: "100vh" }}>
       {/* =========Left Navbar ======= */}
       <LeftNavbar />
+
       <Layout>
         {/* =========Top Navbar ======= */}
         <TopNavbar />

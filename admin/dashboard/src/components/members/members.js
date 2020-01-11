@@ -1,28 +1,10 @@
 import React, { useState } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Row,
-  Col,
-  Upload,
-  Select,
-  Layout,
-  message,
-  Table,
-  Divider,
-  Modal,
-  Tag,
-  Breadcrumb,
-  Popconfirm
-} from "antd";
+import { Layout, message, Table, Divider, Modal, Tag, Popconfirm } from "antd";
 import TopNavbar from "../navbar/top-navbar";
 import LeftNavbar from "../navbar/left-navbar";
 import PageFooter from "../footer";
 import moment from "moment";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 // ===== Query and Mutation Section =====
@@ -107,7 +89,7 @@ function Members() {
                 created_at
               } = member;
               return {
-                key: parse(fullname),
+                key: id,
                 photo: (
                   <img
                     src={`http://localhost:8080${photo}`}
@@ -184,19 +166,10 @@ function Members() {
           <TopNavbar />
 
           <div className="koompi container">
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              {window.location.pathname.split("/").map(data => {
-                return (
-                  <Breadcrumb.Item>
-                    {capitalizeFirstLetter(data)}
-                  </Breadcrumb.Item>
-                );
-              })}
-            </Breadcrumb>
             {/* ======= Display content ====== */}
 
             <div className="background_container">
-              <h1 className="title_new_post">All Posts</h1>
+              <h1 className="title_new_post">Members</h1>
               <DisplayPost />
             </div>
           </div>

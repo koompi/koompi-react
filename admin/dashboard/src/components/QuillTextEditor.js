@@ -13,7 +13,7 @@ function QuillTextEditor(props) {
         { indent: "-1" },
         { indent: "+1" }
       ],
-      ["link", "image"],
+      ["link"],
       ["clean"]
     ]
   };
@@ -28,8 +28,7 @@ function QuillTextEditor(props) {
     "list",
     "bullet",
     "indent",
-    "link",
-    "image"
+    "link"
   ];
   return (
     <ReactQuill

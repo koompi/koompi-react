@@ -11,7 +11,7 @@ import Chart from "react-apexcharts";
 const { Content } = Layout;
 
 function Admin() {
-  const [chart, setChart] = useState({
+  const [chart] = useState({
     series: [
       {
         name: "series1",

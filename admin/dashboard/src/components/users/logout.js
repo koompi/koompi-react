@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-
+import Cookie from "js-cookie";
 const Logout = () => {
-  useEffect(() => {
-    localStorage.removeItem("token");
+  useEffect(async () => {
+    await Cookie.set("token", "");
     window.location.replace("/login");
   });
   return null;

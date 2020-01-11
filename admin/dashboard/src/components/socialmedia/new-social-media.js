@@ -170,7 +170,6 @@ function NewSocialMedia(props) {
                         ) : (
                           <p className="ant-upload-drag-icon">
                             <Icon type="file-image" />
-                            <p>Upload Logo</p>
                           </p>
                         )}
                       </Upload.Dragger>

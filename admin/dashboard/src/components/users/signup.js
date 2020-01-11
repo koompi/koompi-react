@@ -27,7 +27,7 @@ function SignupForm(props) {
         })
           .then(async () => {
             setLoading(true);
-            await message.success("Register Successfully.", 10);
+            await message.success("Register Successfully.", 3);
             await window.location.replace("/login");
           })
           .catch(error => {

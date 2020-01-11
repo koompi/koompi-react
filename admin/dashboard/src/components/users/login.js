@@ -12,8 +12,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import three_dots from "../../assets/img/three-dots.svg";
 import jwt from "jsonwebtoken";
-
-import nProgress from "nprogress";
+import Cookie from "js-cookie";
 
 function LoginForm(props) {
   const [loading, setLoading] = useState(false);
@@ -30,6 +29,10 @@ function LoginForm(props) {
     });
   };
 
+  const options = {
+    headers: { "X-Custom-Header": "value" }
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
@@ -41,12 +44,13 @@ function LoginForm(props) {
             setTimeout(() => {
               setLoading(false);
             }, 3000);
-            nProgress.inc(0.5);
-            window.localStorage.setItem("token", res.data.token);
-            const token = window.localStorage.getItem("token");
+            Cookie.set("token", res.data.token, { expires: 7 });
+
+            const token = Cookie.get("token");
+            console.log(token);
+
             const decodeToken = jwt.decode(token);
             if (decodeToken.approved) {
-              nProgress.done(true);
               await message.success("Login successfully.", 3);
               window.location.replace("/admin/dashboard");
             } else {

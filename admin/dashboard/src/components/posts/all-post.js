@@ -95,16 +95,9 @@ function AllPosts() {
           <Table
             columns={columns}
             dataSource={data.posts.map(post => {
-              const {
-                id,
-                title,
-                category,
-                tags,
-                created_at,
-                created_by
-              } = post;
+              const { id, title, category, tags, created_at, user } = post;
               return {
-                key: title,
+                key: id,
                 image: (
                   <img
                     src={"http://localhost:8080" + post.thumnail}
@@ -116,14 +109,22 @@ function AllPosts() {
                 ),
                 title:
                   title.length <= 25 ? title : title.substring(0, 25) + " ...",
-                category: <Tag color="green">{category.title}</Tag>,
+                category: (
+                  <Tag color="green">
+                    {category === null ? "No category" : category.title}
+                  </Tag>
+                ),
                 tags:
                   tags.length <= 3
-                    ? tags.map(tag => <Tag color="blue">{tag}</Tag>)
+                    ? tags.map(tag => (
+                        <Tag color="blue" key={tag}>
+                          {tag}
+                        </Tag>
+                      ))
                     : tags
                         .slice(0, 3)
                         .map(tag => <Tag color="blue">{tag}</Tag>),
-                created_by: created_by,
+                created_by: user.fullname,
                 created_at: moment
                   .unix(created_at / 1000)
                   .format("YYYY-MM-DD HH:mm:ss"),

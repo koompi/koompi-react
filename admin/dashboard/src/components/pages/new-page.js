@@ -181,7 +181,6 @@ function NewPage(props) {
                         ) : (
                           <p className="ant-upload-drag-icon">
                             <Icon type="file-image" />
-                            <p>Upload Image</p>
                           </p>
                         )}
                       </Upload.Dragger>

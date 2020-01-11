@@ -40,7 +40,6 @@
   font-size: 16px !important;
 }
 .ant-layout-sider {
-  background: #1e272e !important;
   flex: 0 0 250px !important;
   max-width: 250px !important;
   min-width: 250px !important;
@@ -307,4 +306,16 @@
 .userAvatar .ant-upload {
   width: 100% !important;
   padding: 12.5px !important;
+}
+.themeChange {
+  position: absolute;
+  color: #000 !important;
+  top: 20px;
+  right: -50px;
+}
+.themeChange img {
+  cursor: pointer;
+}
+.ant-menu-inline {
+  border-right: 0px solid transparent;
 }
