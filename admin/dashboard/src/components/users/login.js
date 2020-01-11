@@ -70,6 +70,7 @@ function LoginForm(props) {
   const { getFieldDecorator } = props.form;
   return (
     <div>
+      <Particles />
       <div className="loginBackground"></div>
       <div className="loginContainer">
         <h1 className="loginTitle">Login</h1>
