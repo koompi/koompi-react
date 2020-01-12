@@ -38,6 +38,8 @@ function LoginForm(props) {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
+        console.log(values.remember);
+
         axios
           .post(`http://localhost:8080/login`, { ...values })
           .then(async res => {
@@ -45,10 +47,13 @@ function LoginForm(props) {
             setTimeout(() => {
               setLoading(false);
             }, 3000);
-            Cookie.set("token", res.data.token, { expires: 7 });
+            Cookie.set(
+              "token",
+              res.data.token,
+              values.remember ? { expires: 7 } : null
+            );
 
             const token = Cookie.get("token");
-            console.log(token);
 
             const decodeToken = jwt.decode(token);
             if (decodeToken.approved) {
@@ -71,8 +76,28 @@ function LoginForm(props) {
   const { getFieldDecorator } = props.form;
   return (
     <div>
-      <div className="loginBackground"></div>
-
+      {/* <div className="loginBackground"></div> */}
+      <Particles
+        className="loginBackground"
+        params={{
+          particles: {
+            number: {
+              value: 50
+            },
+            size: {
+              value: 3
+            }
+          },
+          interactivity: {
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse"
+              }
+            }
+          }
+        }}
+      />
       <div className="loginContainer">
         <h1 className="loginTitle">Login</h1>
         <Form onSubmit={handleSubmit} className="login-form">

@@ -3,6 +3,7 @@ import { Form, Icon, Input, Button, message } from "antd";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import three_dots from "../../assets/img/three-dots.svg";
+import Particles from "react-particles-js";
 
 // ===== Create User =====
 import { CREATE_USER } from "../../graphql/mutation";
@@ -47,7 +48,27 @@ function SignupForm(props) {
   const { getFieldDecorator } = props.form;
   return (
     <>
-      <div className="loginBackground"></div>
+      <Particles
+        className="loginBackground"
+        params={{
+          particles: {
+            number: {
+              value: 50
+            },
+            size: {
+              value: 3
+            }
+          },
+          interactivity: {
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse"
+              }
+            }
+          }
+        }}
+      />
       <div className="loginContainer">
         <h1 className="loginTitle">Register</h1>
         <Form onSubmit={handleSubmit} className="login-form">

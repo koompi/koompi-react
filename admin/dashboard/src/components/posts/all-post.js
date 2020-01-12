@@ -86,10 +86,12 @@ function AllPosts() {
   };
 
   const DisplayPost = () => {
-    const { error, loading, data, refetch } = useQuery(GET_POSTS);
+    const { error, loading, data } = useQuery(GET_POSTS);
     if (error) console.log(error);
     if (loading) return <Table loading={true}></Table>;
     if (data) {
+      console.log("data", data);
+
       const DisplayTable = () => {
         return (
           <Table
@@ -124,7 +126,7 @@ function AllPosts() {
                     : tags
                         .slice(0, 3)
                         .map(tag => <Tag color="blue">{tag}</Tag>),
-                created_by: user.fullname,
+                created_by: user === null ? "Null" : user.fullname,
                 created_at: moment
                   .unix(created_at / 1000)
                   .format("YYYY-MM-DD HH:mm:ss"),
