@@ -111,9 +111,11 @@
   .disciption-tab {
     text-align: center !important;
   }
-  /* .tabss {
-    float: right !important;
-  } */
+}
+@media only screen and (max-width: 766px) {
+  .ant-tabs-nav {
+    float: left !important;
+  }
 }
 @media only screen and (max-width: 1119px) {
   .container {
@@ -519,3 +521,6 @@
 .ant-tabs-nav {
   float: right !important;
 } */
+.ant-tabs-nav {
+  float: right;
+}

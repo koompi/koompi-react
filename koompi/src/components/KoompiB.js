@@ -86,12 +86,12 @@ function KoompiB() {
                     </Paragraph>
                   </div>
                 </div>
-                <div style={{ marginTop: '90px' }}>
-                  <Row>
+                <div className="container" style={{ marginTop: '90px' }}>
+                  <Row gutter={[48, 0]}>
                     <Col sm={12}>
                       <div className="text-container">
                         <img
-                          style={{ maxWidth: '100%', height: '560px' }}
+                          style={{ maxWidth: '100%' }}
                           src="/img/koompii.png"
                         />
                       </div>

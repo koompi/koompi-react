@@ -93,7 +93,7 @@ function KoompiE11() {
 			<Navbar />
 			<div className='background-color'>
 				<div className='helo'>
-					<Tabs orientation="rigth"  className="tabss"
+					<Tabs className='disciption-tab1'
 						// tabBarExtraContent={operations}
 						defaultActiveKey='1'
 						onChange={callback}>
