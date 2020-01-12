@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col } from 'antd';
 import { Player, ControlBar } from 'video-react';
 import Modal from 'react-responsive-modal';
+import { BackTop } from 'antd';
 import {
   content,
   Layout,
@@ -44,6 +45,16 @@ function Index() {
   return (
     <React.Fragment>
       <Navbar />
+      {/* <div>
+        <BackTop>
+          <div style={{ color: 'white' }} className="ant-back-top-inner">
+            UP
+          </div>
+        </BackTop>
+        Scroll down to see the bottom-right
+        <strong style={{ color: '#1088e9' }}> blue </strong>
+        button.
+      </div> */}
       <div className="banner">
         <Content style={{ paddingTop: '100px', paddingBottom: '100px' }}>
           <Row>

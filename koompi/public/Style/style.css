@@ -2,6 +2,9 @@
   font-family: 'Saira Condensed', sans-serif;
   letter-spacing: 0.5px;
 }
+/* html {
+  --antd-wave-shadow-color: white !important;
+} */
 .logo {
   height: 40px !important;
   margin-top: -5px !important;
@@ -105,9 +108,9 @@
   }
 }
 @media only screen and (min-width: 767px) {
-  /* .disciption-tab {
+  .disciption-tab {
     text-align: center !important;
-  } */
+  }
   /* .tabss {
     float: right !important;
   } */
