@@ -17,19 +17,23 @@
   top: 7px;
 }
 .container {
-  width: 75%;
+  width: 90%;
+  max-width: 90%;
   margin: 0px auto;
 }
 .background_container {
   background-color: #ffffff;
   padding: 30px;
-  margin: 20px 0px;
+  margin: 60px 0px;
   box-shadow: 0px 0 10px 0 rgba(183, 192, 206, 0.2);
   border-radius: 5px;
 }
 .title_new_post {
-  font-size: 30px !important;
+  font-size: 24px !important;
   font-weight: bolder;
+  text-transform: uppercase;
+  color: #2f2f2f;
+  margin-bottom: 25px;
 }
 .category,
 .tags {
@@ -37,9 +41,13 @@
 }
 .ant-layout-sider {
   background: #1e272e !important;
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
 }
 .ant-menu-dark {
-  background: #4b5258 !important;
+  background: #1e272e !important;
 }
 .ant-menu-dark .ant-menu-inline.ant-menu-sub {
   background: #323b42 !important;
@@ -47,6 +55,7 @@
 }
 .ant-layout-sider-trigger {
   background: #1890ff !important;
+  width: 250px !important;
 }
 .ant-menu.ant-menu-dark .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
@@ -106,8 +115,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 40px;
-  width: 40px;
+  width: 50px;
 }
 .icons_back {
   background-color: #ffffff;
@@ -122,10 +130,9 @@
   -o-border-radius: 50%;
 }
 .card_desc {
-  font-size: 35px;
+  font-size: 20px;
   margin: 0px !important;
   text-align: center;
-  font-weight: 500;
 }
 .loginContainer {
   width: 30%;
@@ -138,6 +145,11 @@
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 50px 40px 40px 40px;
+  border-radius: 10px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }
 .loginTitle {
   font-size: 30px;
@@ -204,8 +216,8 @@
 
 .ant-btn-primary[disabled] {
   color: rgba(0, 0, 0, 0.25) !important;
-  background-color: #f5f5f5 !important;
-  border-color: #d9d9d9 !important;
+  background-color: #41c1ff !important;
+  border-color: #41c1ff !important;
   text-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -214,21 +226,85 @@
   margin-bottom: 15px !important;
 }
 
-.ant-btn-sm.ant-btn-primary {
-  padding: 0px 20px;
-  background: #aed4f6;
-  border: 1px solid transparent;
-  color: #1890ff !important;
-  font-weight: 600 !important;
-  box-shadow: none !important;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
+.loginBackground {
+  background: linear-gradient(rgba(10, 10, 10, 0.623), rgba(27, 27, 27, 0.664)),
+    url("/images/login-background.jpg");
+  height: 100vh;
+  position: relative;
+  filter: blur(0px);
 }
-
-.ant-btn-sm.ant-btn-primary:hover {
-  background: #1890ff;
-  color: #ffffff !important;
+.apexcharts-svg,
+.apexcharts-canvas {
+  width: 100% !important;
+}
+.KOOMPI_LOGO {
+  height: 60px;
+  padding: 15px 0px;
+}
+.adminFirstSectionFont {
+  font-size: 22px;
+}
+.btn {
+  cursor: pointer;
+}
+.btnSubmit {
+  background: #1890ff59;
+  border: #1890ff00;
+  color: #1890ff;
+  font-weight: bold;
+  padding: 0px 30px;
+}
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon {
+  margin-top: 20px !important;
+}
+.ant-upload.ant-upload-drag .ant-upload {
+  padding: 0px !important;
+}
+.ant-table {
+  font-size: 18px !important;
+}
+.ant-tag,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-item .anticon + span,
+.ant-menu-submenu-title .anticon + span,
+.ant-menu-item .anticon,
+.ant-menu-submenu-title .anticon {
+  font-size: 17px !important;
+}
+.ant-tag {
+  border: none !important;
+  padding: 3px 10px;
+}
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  padding: 12px !important;
+}
+.ant-menu-inline > .ant-menu-item {
+  height: 45px !important;
+  line-height: 45px !important;
+}
+.ant-tag-green {
+  background: #e5ffca !important;
+}
+.ant-form-item-control {
+  line-height: 30px !important;
+}
+.ql-snow .ql-picker {
+  height: 30px !important;
+}
+.ql-container {
+  font-size: 18px !important;
+}
+.ql-container.ql-snow {
+  border: 1px solid #f0f2f5 !important;
+}
+.ql-toolbar.ql-snow {
+  border: 1px solid #f0f2f5 !important;
+  box-sizing: border-box;
+  padding: 5px 10px !important;
+  background: #f0f2f5 !important;
+}
+.userAvatar .ant-upload {
+  width: 100% !important;
+  padding: 12.5px !important;
 }

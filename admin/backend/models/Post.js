@@ -5,20 +5,45 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  created_by: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
     required: true
   },
-  image: {
+  thumnail: {
+    type: String
+  },
+  category: {
     type: String,
     required: true
   },
-  created_date: {
+  tags: {
+    type: [String]
+  },
+  keywords: {
+    type: [String]
+  },
+  meta_desc: {
+    type: String,
+    required: true
+  },
+  created_at: {
     type: Date,
     default: Date.now
+  },
+  updated_at: {
+    type: Date,
+    default: null
+  },
+  updated_by: {
+    type: String,
+    default: null
   }
 });
 
-const Post = mongoose.Model("Post", PostSchema);
+const Post = mongoose.model("Post", PostSchema);
 
 module.exports = Post;
