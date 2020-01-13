@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Index from './components/Index';
+import KoompiPro from './components/KoompiPro';
+import KoompiE11 from './components/KoompiE11';
+import KoompiProBuy from './components/buypage/KoompiProBuy';
+import Contact from './components/Contact';
+import KoompiB from './components/KoompiB';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          KOOMPI
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Index}></Route>
+          <Route path="/koompi-pro" component={KoompiPro}></Route>
+          <Route path="/Koompi-e" component={KoompiE11}></Route>
+          <Route path="/buykoompi-pro" component={KoompiProBuy}></Route>
+          <Route path="/contact" component={Contact}></Route>
+          <Route path="/KoompiB" component={KoompiB}></Route>
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 
