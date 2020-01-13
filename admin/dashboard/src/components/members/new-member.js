@@ -126,7 +126,7 @@ function NewMember(props) {
                         ],
                         initialValue: "software-team"
                       })(
-                        <Select defaultValue="software-team" size="large">
+                        <Select size="large">
                           <Option value="business-development">
                             Business Development
                           </Option>
@@ -221,12 +221,11 @@ function NewMember(props) {
                             src={`${"http://localhost:8080/public/uploads/" +
                               `${image}`}`}
                             alt="avatar"
-                            style={{ width: "100%" }}
+                            style={{ width: "250px", height: "250px" }}
                           />
                         ) : (
                           <p className="ant-upload-drag-icon">
                             <Icon type="file-image" />
-                            <p>Upload Image</p>
                           </p>
                         )}
                       </Upload.Dragger>

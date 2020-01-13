@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
+import Cookie from "js-cookie";
 
 export const UserContext = createContext();
 
@@ -11,7 +12,7 @@ export const UserProvider = props => {
   });
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
+    let token = Cookie.get("token");
     let user = jwt.decode(token);
     setUser(user);
   }, []);

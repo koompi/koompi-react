@@ -25,11 +25,11 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: "/uploads/avatar.png"
+    default: "/public/uploads/avatar.png"
   },
   approved: {
     type: Boolean,
-    default: false
+    default: true
   },
   isAdmin: {
     type: Boolean,

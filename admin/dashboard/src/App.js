@@ -41,81 +41,75 @@ function App() {
     <UserProvider>
       <Router>
         <Switch>
-          <div className="App">
-            <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/logout" component={Logout} />
-            <Route exact path="/register" component={SignupForm} />
-            <PrivateRoute exact path="/admin/dashboard" component={Admin} />
-            <PrivateRoute exact path="/admin/users" component={Users} />
-            <PrivateRoute
-              exact
-              path="/admin/user/settings"
-              component={Settings}
-            />
-            {/* ===== Post Route Section ===== */}
-            <PrivateRoute exact path="/admin/new-post" component={NewPost} />
-            <PrivateRoute exact path="/admin/all-posts" component={AllPosts} />
-            <PrivateRoute
-              exact
-              path="/admin/post/edit/:id"
-              component={editPost}
-            />
-            {/* ===== Page Route Section ===== */}
-            <PrivateRoute exact path="/admin/new-page" component={NewPage} />
-            <PrivateRoute exact path="/admin/all-pages" component={AllPages} />
-            <PrivateRoute
-              exact
-              path="/admin/page/edit/:id"
-              component={editPage}
-            />
-            {/* ===== Category Route Section ===== */}
-            <PrivateRoute exact path="/admin/categories" component={Category} />
-            <PrivateRoute
-              exact
-              path="/admin/category/edit/:id"
-              component={editCategory}
-            />
-            {/* ===== Member Route Section ===== */}
-            <PrivateRoute
-              exact
-              path="/admin/new-member"
-              component={newMember}
-            />
-            <PrivateRoute exact path="/admin/members" component={Members} />
-            <PrivateRoute
-              exact
-              path="/admin/member/edit/:id"
-              component={editMember}
-            />
-            {/* ===== Retailer Route Section ===== */}
-            <PrivateRoute
-              exact
-              path="/admin/new-retailer"
-              component={newRetailer}
-            />
-            <PrivateRoute exact path="/admin/retailers" component={Retailers} />
-            <PrivateRoute
-              exact
-              path="/admin/retailer/edit/:id"
-              component={editRetailer}
-            />
-            {/* ===== Social Media Route Section ===== */}
-            <PrivateRoute
-              exact
-              path="/admin/add-social-media"
-              component={newSocialMedia}
-            />
-            <PrivateRoute
-              exact
-              path="/admin/social-media"
-              component={SocialMedia}
-            />
-            <PrivateRoute
-              exact
-              path="/admin/social-media/edit/:id"
-              component={editSocialMedia}
-            />
-          </div>
+          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/logout" component={Logout} />
+          <Route exact path="/register" component={SignupForm} />
+          <PrivateRoute exact path="/admin/dashboard" component={Admin} />
+          <PrivateRoute exact path="/admin/users" component={Users} />
+          <PrivateRoute
+            exact
+            path="/admin/user/settings"
+            component={Settings}
+          />
+          {/* ===== Post Route Section ===== */}
+          <PrivateRoute exact path="/admin/new-post" component={NewPost} />
+          <PrivateRoute exact path="/admin/all-posts" component={AllPosts} />
+          <PrivateRoute
+            exact
+            path="/admin/post/edit/:id"
+            component={editPost}
+          />
+          {/* ===== Page Route Section ===== */}
+          <PrivateRoute exact path="/admin/new-page" component={NewPage} />
+          <PrivateRoute exact path="/admin/all-pages" component={AllPages} />
+          <PrivateRoute
+            exact
+            path="/admin/page/edit/:id"
+            component={editPage}
+          />
+          {/* ===== Category Route Section ===== */}
+          <PrivateRoute exact path="/admin/categories" component={Category} />
+          <PrivateRoute
+            exact
+            path="/admin/category/edit/:id"
+            component={editCategory}
+          />
+          {/* ===== Member Route Section ===== */}
+          <PrivateRoute exact path="/admin/new-member" component={newMember} />
+          <PrivateRoute exact path="/admin/members" component={Members} />
+          <PrivateRoute
+            exact
+            path="/admin/member/edit/:id"
+            component={editMember}
+          />
+          {/* ===== Retailer Route Section ===== */}
+          <PrivateRoute
+            exact
+            path="/admin/new-retailer"
+            component={newRetailer}
+          />
+          <PrivateRoute exact path="/admin/retailers" component={Retailers} />
+          <PrivateRoute
+            exact
+            path="/admin/retailer/edit/:id"
+            component={editRetailer}
+          />
+          {/* ===== Social Media Route Section ===== */}
+          <PrivateRoute
+            exact
+            path="/admin/add-social-media"
+            component={newSocialMedia}
+          />
+          <PrivateRoute
+            exact
+            path="/admin/social-media"
+            component={SocialMedia}
+          />
+          <PrivateRoute
+            exact
+            path="/admin/social-media/edit/:id"
+            component={editSocialMedia}
+          />
         </Switch>
       </Router>
     </UserProvider>

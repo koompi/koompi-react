@@ -136,8 +136,20 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
-        return User.findOneAndDelete({ _id: args.id });
+      resolve: async (parent, args) => {
+        return User.findOne({ _id: args.id }, async (err, data) => {
+          if (!err) {
+            await Post.findOneAndDelete({ created_by: data.fullname });
+            await Page.findOneAndDelete({ created_by: data.fullname });
+            await Category.findOneAndDelete({ created_by: data.fullname });
+            await Member.findOneAndDelete({ created_by: data.fullname });
+            await Retailer.findOneAndDelete({ created_by: data.fullname });
+            await SocialMedia.findOneAndDelete({ created_by: data.fullname });
+            return User.findOneAndDelete({ _id: args.id });
+          } else {
+            console.log(err);
+          }
+        });
       }
     },
 

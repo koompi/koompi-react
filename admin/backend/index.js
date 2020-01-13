@@ -56,7 +56,6 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:3000", // allow to server to accept request from different origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true // allow session cookie from browser to pass through
   })
 );
@@ -97,7 +96,7 @@ app.post("/login", async (req, res) => {
         },
         ACCESS_TOKEN_SECRET
       );
-      res.json({ token: token });
+      res.status(200).json({ token });
     }
   } catch (error) {
     console.log(error);

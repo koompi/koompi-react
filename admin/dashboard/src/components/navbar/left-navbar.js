@@ -9,6 +9,7 @@ const { SubMenu } = Menu;
 function LeftNavbar(props) {
   const userData = useContext(UserContext);
   const [collapsed, setcollapsed] = useState(false);
+  const [isLight, setIsLight] = useState(false);
   const onCollapse = () => {
     setcollapsed(!collapsed);
   };
@@ -20,15 +21,68 @@ function LeftNavbar(props) {
     return null;
   }
 
+  const isDay = () => {
+    const hours = new Date().getHours();
+    return hours >= 6 && hours < 18;
+  };
+
+  const sessionValue = window.sessionStorage.getItem("isLight") === "true";
+
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+    <Sider
+      // collapsible
+      // collapsed={collapsed}
+      // onCollapse={onCollapse}
+      style={
+        isDay()
+          ? sessionValue
+            ? { backgroundColor: "#fff" }
+            : { backgroundColor: "rgb(30, 39, 46)" }
+          : sessionValue
+          ? { backgroundColor: "#fff" }
+          : { backgroundColor: "rgb(30, 39, 46)" }
+      }
+    >
       <div>
         <center>
-          <img src="/images/KOOMPI_Logo.svg" alt="" className="KOOMPI_LOGO" />
+          <img
+            src={
+              isDay()
+                ? sessionValue
+                  ? "/images/KOOMPI_Logo_dark.svg"
+                  : "/images/KOOMPI_Logo.svg"
+                : sessionValue
+                ? "/images/KOOMPI_Logo_dark.svg"
+                : "/images/KOOMPI_Logo.svg"
+            }
+            alt=""
+            className="KOOMPI_LOGO"
+          />
         </center>
+        <div
+          className="themeChange"
+          onClick={() => {
+            setIsLight(!isLight);
+            window.sessionStorage.setItem("isLight", isLight);
+          }}
+        >
+          {sessionValue ? (
+            <img src="/images/night.svg" alt="koompi night" height="25px" />
+          ) : (
+            <img src="/images/day.svg" alt="koompi day" height="25px" />
+          )}
+        </div>
       </div>
       <Menu
-        theme="dark"
+        theme={
+          isDay()
+            ? sessionValue
+              ? "light"
+              : "dark"
+            : sessionValue
+            ? "light"
+            : "dark"
+        }
         defaultSelectedKeys={[pathname]}
         defaultOpenKeys={[pathname]}
         mode="inline"
@@ -46,7 +100,7 @@ function LeftNavbar(props) {
           key={
             pathname === "/admin/new-post"
               ? "/admin/new-post"
-              : pathname === "/admin/all-posts"
+              : "/admin/all-posts"
               ? "/admin/all-posts"
               : ""
           }
@@ -71,7 +125,7 @@ function LeftNavbar(props) {
           key={
             pathname === "/admin/new-page"
               ? "/admin/new-page"
-              : pathname === "/admin/all-pages"
+              : "/admin/all-pages"
               ? "/admin/all-pages"
               : ""
           }
@@ -95,7 +149,7 @@ function LeftNavbar(props) {
         <Menu.Item key="/admin/categories">
           <Link to="/admin/categories">
             <Icon type="appstore" />
-            Categories
+            <span>Categories</span>
           </Link>
         </Menu.Item>
 
@@ -104,7 +158,7 @@ function LeftNavbar(props) {
           key={
             pathname === "/admin/new-member"
               ? "/admin/new-member"
-              : pathname === "/admin/members"
+              : "/admin/members"
               ? "/admin/members"
               : ""
           }
@@ -128,7 +182,7 @@ function LeftNavbar(props) {
           key={
             pathname === "/admin/new-retailer"
               ? "/admin/new-retailer"
-              : pathname === "/admin/retailers"
+              : "/admin/retailers"
               ? "/admin/retailers"
               : ""
           }
@@ -152,7 +206,7 @@ function LeftNavbar(props) {
           key={
             pathname === "/admin/add-social-media"
               ? "/admin/add-social-media"
-              : pathname === "/admin/social-media"
+              : "/admin/social-media"
               ? "/admin/social-media"
               : ""
           }
@@ -173,8 +227,8 @@ function LeftNavbar(props) {
 
         {/* ========= Payment Section ========= */}
         {isAdmin && (
-          <Menu.Item key="/user">
-            <Link to="/user" className="nav-text">
+          <Menu.Item key="/admin/user/payment">
+            <Link to="/admin/user/payment" className="nav-text">
               <Icon type="dollar" />
               <span>User Payment</span>
             </Link>
@@ -183,15 +237,15 @@ function LeftNavbar(props) {
 
         {/* ========= Mail Sender Section ========= */}
         {isAdmin && (
-          <Menu.Item key="/user">
-            <Link to="/user" className="nav-text">
+          <Menu.Item key="/admin/send-mail">
+            <Link to="/user/send-mail" className="nav-text">
               <Icon type="mail" />
               <span>Mail Sender</span>
             </Link>
           </Menu.Item>
         )}
-        {/* ========= Mail Sender Section ========= */}
-        <Menu.Item key="/user">
+        {/* ========= Users Section ========= */}
+        <Menu.Item key="/admin/users">
           <Link to="/admin/users" className="nav-text">
             <Icon type="user" />
             <span>Users</span>

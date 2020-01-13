@@ -16,7 +16,6 @@ const UserTotal = () => {
   }
   if (error) console.log(error);
   if (data) {
-    console.log();
     return (
       <div>
         <center>
@@ -35,7 +34,6 @@ const TotalPost = () => {
   }
   if (error) console.log(error);
   if (data) {
-    console.log();
     return (
       <div>
         <center>
@@ -55,7 +53,6 @@ const TotalPage = () => {
   }
   if (error) console.log(error);
   if (data) {
-    console.log();
     return (
       <div>
         <center>
@@ -75,7 +72,6 @@ const TotalRetailer = () => {
   }
   if (error) console.log(error);
   if (data) {
-    console.log();
     return (
       <div>
         <center>

@@ -21,21 +21,17 @@ import {
   Button,
   Row,
   Col,
-  Upload,
-  Select,
   Layout,
   message,
   Table,
   Divider,
   Modal,
   Tag,
-  Breadcrumb,
   Popconfirm
 } from "antd";
 
 const FormItem = Form.Item;
 const { Content } = Layout;
-const { confirm } = Modal;
 
 function Category(props) {
   const { getFieldDecorator } = props.form;
@@ -182,15 +178,6 @@ function Category(props) {
         <Content style={{ margin: "20px 16px" }}>
           {/* ======= Display content ====== */}
           <div className="koompi container">
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              {window.location.pathname.split("/").map(data => {
-                return (
-                  <Breadcrumb.Item>
-                    {capitalizeFirstLetter(data)}
-                  </Breadcrumb.Item>
-                );
-              })}
-            </Breadcrumb>
             <div className="background_container">
               <h1 className="title_new_post">Categories</h1>
               <Form className="login-form" onSubmit={handleSubmit}>

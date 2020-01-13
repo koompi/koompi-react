@@ -142,7 +142,7 @@ function EditMember(props) {
                         ],
                         initialValue: "software-team"
                       })(
-                        <Select defaultValue="software-team">
+                        <Select>
                           <Option value="business-development">
                             Business Development
                           </Option>
@@ -236,14 +236,14 @@ function EditMember(props) {
                             src={`${"http://localhost:8080" +
                               memberData.member.photo}`}
                             alt="avatar"
-                            style={{ width: "100%" }}
+                            style={{ width: "250px", height: "250px" }}
                           />
                         ) : (
                           <img
                             src={`${"http://localhost:8080/public/uploads/" +
                               image}`}
                             alt="avatar"
-                            style={{ width: "100%" }}
+                            style={{ width: "250px", height: "250px" }}
                           />
                         )}
                       </Upload.Dragger>

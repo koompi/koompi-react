@@ -54,10 +54,12 @@ const GET_POSTS = gql`
     posts {
       id
       title
-      created_by
       description
       category {
         title
+      }
+      user {
+        fullname
       }
       meta_desc
       keywords

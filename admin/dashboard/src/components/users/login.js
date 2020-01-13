@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import three_dots from "../../assets/img/three-dots.svg";
 import jwt from "jsonwebtoken";
-
-import nProgress from "nprogress";
+import Cookie from "js-cookie";
+import Particles from "react-particles-js";
 
 function LoginForm(props) {
   const [loading, setLoading] = useState(false);
@@ -30,10 +30,16 @@ function LoginForm(props) {
     });
   };
 
+  const options = {
+    headers: { "X-Custom-Header": "value" }
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
+        console.log(values.remember);
+
         axios
           .post(`http://localhost:8080/login`, { ...values })
           .then(async res => {
@@ -41,12 +47,16 @@ function LoginForm(props) {
             setTimeout(() => {
               setLoading(false);
             }, 3000);
-            nProgress.inc(0.5);
-            window.localStorage.setItem("token", res.data.token);
-            const token = window.localStorage.getItem("token");
+            Cookie.set(
+              "token",
+              res.data.token,
+              values.remember ? { expires: 7 } : null
+            );
+
+            const token = Cookie.get("token");
+
             const decodeToken = jwt.decode(token);
             if (decodeToken.approved) {
-              nProgress.done(true);
               await message.success("Login successfully.", 3);
               window.location.replace("/admin/dashboard");
             } else {
@@ -66,7 +76,28 @@ function LoginForm(props) {
   const { getFieldDecorator } = props.form;
   return (
     <div>
-      <div className="loginBackground"></div>
+      {/* <div className="loginBackground"></div> */}
+      <Particles
+        className="loginBackground"
+        params={{
+          particles: {
+            number: {
+              value: 50
+            },
+            size: {
+              value: 3
+            }
+          },
+          interactivity: {
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse"
+              }
+            }
+          }
+        }}
+      />
       <div className="loginContainer">
         <h1 className="loginTitle">Login</h1>
         <Form onSubmit={handleSubmit} className="login-form">

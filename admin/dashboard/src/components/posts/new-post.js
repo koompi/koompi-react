@@ -8,7 +8,7 @@ import three_dots from "../../assets/img/three-dots.svg";
 import QuillTextEditor from "../QuillTextEditor";
 
 // ===== Query and Mutation Section =====
-import { GET_CATEGORIES } from "../../graphql/query";
+import { GET_CATEGORIES, GET_POSTS } from "../../graphql/query";
 import { CREATE_POST } from "../../graphql/mutation";
 
 import {
@@ -44,6 +44,7 @@ function NewPost(props) {
   const userData = useContext(UserContext);
 
   const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES);
+  const { refetch: postsRefetch } = useQuery(GET_POSTS);
   const [createPost] = useMutation(CREATE_POST);
 
   const DisplayCategories = () => {
@@ -116,6 +117,8 @@ function NewPost(props) {
     }
   };
 
+  console.log(userData);
+
   const handleSubmit = e => {
     e.preventDefault();
     props.form.validateFieldsAndScroll((err, values) => {
@@ -129,6 +132,7 @@ function NewPost(props) {
               setLoading(false);
             }, 3000);
             categoryRefetch();
+            postsRefetch();
             props.form.resetFields();
             setDescription("");
             await message.success("Post created successfully.", 3);
@@ -226,7 +230,6 @@ function NewPost(props) {
                         ) : (
                           <p className="ant-upload-drag-icon">
                             <Icon type="file-image" />
-                            <p>Upload Image</p>
                           </p>
                         )}
                       </Upload.Dragger>
