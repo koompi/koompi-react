@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import { Row, Col } from 'antd';
 import { List } from 'antd';
 import { Typography, Button, Divider } from 'antd';
-
+import {BackTop} from 'antd'
 const { Title, Paragraph, Text } = Typography;
 const { TabPane } = Tabs;
 function KoompiE11() {
@@ -93,7 +93,7 @@ function KoompiE11() {
 			<Navbar />
 			<div className='background-color'>
 				<div className='helo'>
-					<Tabs  className="tabss"
+					<Tabs className='disciption-tab1'
 						// tabBarExtraContent={operations}
 						defaultActiveKey='1'
 						onChange={callback}>
