@@ -4,6 +4,9 @@
   font-family: "Open Sans", sans-serif !important;
   letter-spacing: 0.5px;
 }
+/* html {
+  --antd-wave-shadow-color: white !important;
+} */
 .logo {
   height: 40px !important;
   margin-top: -5px !important;
@@ -138,12 +141,14 @@
   }
 }
 @media only screen and (min-width: 767px) {
-  /* .disciption-tab {
+  .disciption-tab {
     text-align: center !important;
-  } */
-  /* .tabss {
-    float: right !important;
-  } */
+  }
+}
+@media only screen and (max-width: 766px) {
+  .ant-tabs-nav {
+    float: left !important;
+  }
 }
 @media only screen and (max-width: 1119px) {
   .container {
@@ -540,12 +545,52 @@
   border: none !important;
   border-radius: 58px !important;
 }
-/* .ant-tabs-nav.tabss {
-  float: right !important;
-} */
-/* .ant-tabs-nav.tabss {
-  float: right !important;
-}
+
 .ant-tabs-nav {
-  float: right !important;
-} */
+  float: right;
+}
+.Form-Contact input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.Form-Contact label {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  /* margin-bottom: 13px; */
+  margin-top: 12px;
+  color: black;
+  font-size: 14px;
+  font-weight: 200;
+}
+button[type="submit"],
+.Form-Contact input[type="submit"] {
+  background: #001529;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 40px;
+  padding: 13px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 10px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover,
+.Form-Contact input[type="submit"]:hover {
+  background: #384756;
+}
+.contact-right {
+  background-color: red !important;
+}
+.footerBackground {
+  background-color: #001529;
+  height: 40vh;
+}

@@ -17,6 +17,8 @@ function Navbar(props) {
           mode="horizontal"
           defaultSelectedKeys={["/"]}
           selectedKeys={["/"]}
+          defaultSelectedKeys={["/"]}
+          selectedKeys={["/"]}
         >
           <Menu.Item key="/">
             <img className="logo" src="./img/Koompi-White.png" />
@@ -25,6 +27,9 @@ function Navbar(props) {
 
           <Menu.Item className="koompi" key="1">
             KOOMPI B15
+          </Menu.Item>
+          <Menu.Item className="koompi" key="1">
+            <Link to="/KoompiB">KOOMPI B</Link>
           </Menu.Item>
           <Menu.Item className="koompi" key="/koompi-e">
             <Link to="/koompi-e">KOOMPI E</Link>
