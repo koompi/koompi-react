@@ -319,3 +319,20 @@
 .ant-menu-inline {
   border-right: 0px solid transparent;
 }
+.ce-block__content {
+  width: 98% !important;
+  max-width: 98% !important;
+}
+.ce-toolbar__content {
+  max-width: 100% !important;
+  left: 0px !important;
+}
+.ce-toolbar__plus {
+  left: -25px !important;
+}
+.ce-settings {
+  min-width: 116px !important;
+}
+#editor-js {
+  font-size: 16px !important;
+}

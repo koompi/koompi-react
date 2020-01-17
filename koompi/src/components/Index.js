@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
-import { Player, ControlBar } from 'video-react';
-import Modal from 'react-responsive-modal';
-import { BackTop } from 'antd';
+import React, { useState } from "react";
+import { Row, Col } from "antd";
+import { Player, ControlBar } from "video-react";
+import Modal from "react-responsive-modal";
+import { BackTop } from "antd";
+import Particles from "react-particles-js";
+
 import {
   content,
   Layout,
@@ -11,14 +13,14 @@ import {
   Dropdown,
   Breadcrumb,
   Icon
-} from 'antd';
-import Navbar from './Navbar';
-import { Typography, Divider } from 'antd';
+} from "antd";
+import Navbar from "./Navbar";
+import { Typography, Divider } from "antd";
 const { Title, Paragraph, Text } = Typography;
 
 const { Header, Content, Footer } = Layout;
-const koompiPro = [{ img: '/img/Macbook.png' }];
-const koompiE11 = [{ img: '/img/0.png' }];
+const koompiPro = [{ img: "/img/Macbook.png" }];
+const koompiE11 = [{ img: "/img/0.png" }];
 function Index() {
   const [state, setState] = useState(koompiPro);
   const menu = (
@@ -45,146 +47,218 @@ function Index() {
   return (
     <React.Fragment>
       <Navbar />
-      {/* <div>
-        <BackTop>
-          <div style={{ color: 'white' }} className="ant-back-top-inner">
-            UP
-          </div>
-        </BackTop>
-        Scroll down to see the bottom-right
-        <strong style={{ color: '#1088e9' }}> blue </strong>
-        button.
-      </div> */}
       <div className="banner">
-        <Content style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+        <div className="container">
           <Row>
             <Col sm={12}>
               <center>
-                {/* ========= KOOMPI SECTION =========  */}
-                <h1 className="bossTittle-KoompiHome">KOOMPI PRO</h1>
-                <p className=" container text-koompi-section-banner">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book
-                </p>
+                <div className="banner_content">
+                  {/* ========= KOOMPI SECTION =========  */}
+                  <h1 className="bossTittle-KoompiHome">KOOMPI PRO</h1>
+                  <p className="text-koompi-section-banner">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a
+                    type specimen book
+                  </p>
 
-                <Dropdown overlay={menu} trigger={['click']}>
-                  <Button
-                    className="btn-banner"
-                    onClick={() => setState(koompiPro)}
-                  >
-                    KOOMPI PRO <Icon type="down" />
-                  </Button>
-                </Dropdown>
-                <a className="readmore-a">Readmore</a>
-                <div style={{ marginTop: '10px', cursor: 'pointer' }}>
-                  <h3 onClick={onOpenModal}>
-                    <Icon type="play-circle" /> Watch The Video
-                  </h3>
-                  <Modal
-                    styles={{
-                      modal: {
-                        maxWidth: 'unset',
-                        width: '1300px',
-                        // height: '500px',
-                        padding: 'unset'
-                      },
-                      overlay: {
-                        background: 'rgba(0, 0, 0, 0.5)'
-                      },
-                      closeButton: {
-                        background: 'white',
-                        borderRadius: '45px',
-                        // color: 'white',
-                        cursor: 'pointer'
-                      }
-                    }}
-                    open={open}
-                    onClose={onCloseModal}
-                    center
-                  >
-                    <Player autoPlay src="/video/khmersongs.mp4">
-                      <ControlBar autoHide={false} className="my-class" />
-                    </Player>
-                  </Modal>
+                  <Dropdown overlay={menu} trigger={["click"]}>
+                    <Button
+                      className="btn-banner"
+                      onClick={() => setState(koompiPro)}
+                    >
+                      KOOMPI PRO <Icon type="down" />
+                    </Button>
+                  </Dropdown>
+                  <a className="readmore-a">Readmore</a>
+                  <div style={{ marginTop: "20px", cursor: "pointer" }}>
+                    <h3 onClick={onOpenModal}>
+                      <Icon type="play-circle" /> Watch The Video
+                    </h3>
+                    <Modal
+                      styles={{
+                        modal: {
+                          maxWidth: "unset",
+                          width: "1300px",
+                          // height: '500px',
+                          padding: "unset"
+                        },
+                        overlay: {
+                          background: "rgba(0, 0, 0, 0.5)"
+                        },
+                        closeButton: {
+                          background: "white",
+                          borderRadius: "45px",
+                          // color: 'white',
+                          cursor: "pointer"
+                        }
+                      }}
+                      open={open}
+                      onClose={onCloseModal}
+                      center
+                    >
+                      <Player autoPlay src="/video/khmersongs.mp4">
+                        <ControlBar autoHide={false} className="my-class" />
+                      </Player>
+                    </Modal>
+                  </div>
                 </div>
               </center>
             </Col>
             <Col sm={12}>
               <center>
                 {state.map(states => (
-                  <div>
-                    <img className="laptop-img" src={states.img}></img>
+                  <div className="index_banner">
+                    <img src={states.img}></img>
                   </div>
                 ))}
               </center>
             </Col>
           </Row>
-        </Content>
+        </div>
       </div>
 
       {/* =============Big Section ===============*/}
-      <div>
-        <div className="content1">
-          <div className="banner1">
-            <center>
+      <div className="content1">
+        <Particles
+          className="banner1"
+          params={{
+            particles: {
+              number: {
+                value: 50
+              },
+              size: {
+                value: 3
+              }
+            },
+            interactivity: {
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: "repulse"
+                }
+              }
+            }
+          }}
+        />
+        <div className="koompi_section_position">
+          <center>
+            <div className="koompi_content">
               <h1 className="tittle-koompiPro-banner">KOOMPI E11</h1>
-              <p className="container text-container-content1 text-koompiePro-banner">
+              <p className="text-container-content1 text-koompiePro-banner">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book
               </p>
-              <div className="readmore">
-                <a href="#"> Read More</a>
+              <div>
+                <Button type="primary" className="read_more">
+                  Read More
+                </Button>
               </div>
-              <div className="subBanner-koompiPro">
-                <img src="/img/Macbook.png" />
-              </div>
-            </center>
-          </div>
-        </div>
-        <div className="content2">
-          <div className="banner2">
-            <center>
-              <h1 className="tittle-koompiPro-banner">KOOMPI E11</h1>
-              <p className="container text-container-content1  text-koompiePro-banner">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book
-              </p>
-              <div className="readmore">
-                <a href="#"> Read More</a>
-              </div>
-              <div className="subBanner-koompiPro">
-                <img src="/img/Macbook.png" />
-              </div>
-            </center>
-          </div>
-        </div>
-        <div className="content1">
-          <div className="banner3">
-            <center>
-              <h1 className="tittle-koompiPro-banner">KOOMPI E11</h1>
-              <p className="container text-container-content1 text-koompiePro-banner">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book
-              </p>
-              <div className="readmore">
-                <a href="#"> Read More</a>
-              </div>
-              <div className="subBanner-koompiPro">
-                <img src="/img/Macbook.png" />
-              </div>
-            </center>
-          </div>
+            </div>
+            <div className="subBanner-koompiPro">
+              <img src="/img/Macbook.png" />
+            </div>
+          </center>
         </div>
       </div>
+      <div className="content1">
+        <Particles
+          className="banner2"
+          params={{
+            particles: {
+              number: {
+                value: 120,
+                density: {
+                  enable: true,
+                  value_area: 1500
+                }
+              },
+              line_linked: {
+                enable: true,
+                opacity: 0.02
+              },
+              move: {
+                direction: "right",
+                speed: 0.05
+              },
+              size: {
+                value: 1
+              },
+              opacity: {
+                anim: {
+                  enable: true,
+                  speed: 1,
+                  opacity_min: 0.05
+                }
+              }
+            },
+            interactivity: {
+              events: {
+                onclick: {
+                  enable: true,
+                  mode: "push"
+                }
+              },
+              modes: {
+                push: {
+                  particles_nb: 1
+                }
+              }
+            },
+            retina_detect: true
+          }}
+        />
+        <div className="koompi_section_position">
+          <center>
+            <div className="koompi_content">
+              <h1 className="tittle-koompiPro-banner">KOOMPI E11</h1>
+              <p className="text-container-content1 text-koompiePro-banner">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book
+              </p>
+              <div>
+                <Button type="primary" className="read_more">
+                  Read More
+                </Button>
+              </div>
+            </div>
+            <div className="subBanner-koompiPro">
+              <img src="/img/Macbook.png" />
+            </div>
+          </center>
+        </div>
+      </div>
+      {/* <div className="content1">
+        <div className="banner1">
+          <center>
+            <div className="container">
+              <div className="koompi_content">
+                <h1 className="tittle-koompiPro-banner">KOOMPI E11</h1>
+                <p className="container text-container-content1 text-koompiePro-banner">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book
+                </p>
+                <div>
+                  <Button type="primary" className="read_more">
+                    Read More
+                  </Button>
+                </div>
+              </div>
+              <div className="subBanner-koompiPro">
+                <img src="/img/Macbook.png" />
+              </div>
+            </div>
+          </center>
+        </div>
+      </div> */}
       {/* <div className='boss-show-all-section'>
 				<div>
 					<Typography>

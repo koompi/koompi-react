@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import QuillTextEditor from "../QuillTextEditor";
 import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
@@ -9,6 +8,11 @@ import three_dots from "../../assets/img/three-dots.svg";
 // ===== Query and Mutation Section =====
 import { GET_CATEGORIES, GET_POST, GET_POSTS } from "../../graphql/query";
 import { UPDATE_POST } from "../../graphql/mutation";
+
+// ===== Import EditorJS =====
+import EditorJs from "react-editor-js";
+import { EDITOR_JS_TOOLS } from "./tools";
+
 import {
   Form,
   Input,
@@ -42,6 +46,13 @@ function EditPost(props) {
 
   // ===== User Context Section =====
   const userData = useContext(UserContext);
+
+  // ===== EditorJS =====
+  const editorJsRef = React.useRef(null);
+  const handleSave = React.useCallback(async () => {
+    const savedData = await editorJsRef.current.save();
+    setDescription(savedData);
+  }, []);
 
   const { refetch: postRefetch } = useQuery(GET_POSTS);
   const [updatePost] = useMutation(UPDATE_POST);
@@ -91,19 +102,14 @@ function EditPost(props) {
     }
   };
 
-  const handleDescChange = value => {
-    setDescription(value);
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const handleSubmit = React.useCallback(async () => {
+    const savedData = await editorJsRef.current.save();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values);
-
         updatePost({
           variables: {
             id: window.location.pathname.split("/")[4],
+            description: JSON.stringify(savedData),
             ...values
           }
         })
@@ -121,7 +127,35 @@ function EditPost(props) {
           });
       }
     });
-  };
+  }, []);
+
+  // const handleSubmit = async e => {
+  //   e.preventDefault();
+  //   props.form.validateFieldsAndScroll((err, values) => {
+  //     if (!err) {
+  //       console.log(values);
+
+  //       updatePost({
+  //         variables: {
+  //           id: window.location.pathname.split("/")[4],
+  //           ...values
+  //         }
+  //       })
+  //         .then(async () => {
+  //           setLoading(true);
+  //           setTimeout(() => {
+  //             setLoading(false);
+  //           }, 3000);
+  //           postRefetch();
+  //           await message.success("Post updated successfully.", 3);
+  //           await props.history.push("/admin/all-posts");
+  //         })
+  //         .catch(error => {
+  //           console.log(error);
+  //         });
+  //     }
+  //   });
+  // };
 
   const uploadImage = {
     name: "file",
@@ -146,6 +180,7 @@ function EditPost(props) {
     return "Loading...";
   }
 
+  console.log("Result", postData.post.description);
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* =========Left Navbar ======= */}
@@ -160,7 +195,7 @@ function EditPost(props) {
             <div className="background_container">
               <h1 className="title_new_post">Update Post</h1>
 
-              <Form className="login-form" onSubmit={handleSubmit}>
+              <Form className="login-form">
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
                     <FormItem label="Title">
@@ -174,9 +209,6 @@ function EditPost(props) {
                         initialValue: postData.post.title
                       })(<Input size="large" />)}
                     </FormItem>
-
-                    {/* ======= Category Sections ======= */}
-                    <DisplayCategories />
 
                     <FormItem label="Updated By: " style={{ display: "none" }}>
                       {getFieldDecorator("updated_by", {
@@ -203,44 +235,18 @@ function EditPost(props) {
                     </FormItem>
 
                     <FormItem label="Description: ">
-                      {getFieldDecorator("description", {
-                        rules: [
-                          {
-                            required: true
-                          }
-                        ],
-                        initialValue: postLoading
-                          ? ""
-                          : description === ""
-                          ? postData.post.description
-                          : description
-                      })(
-                        <div>
-                          <QuillTextEditor
-                            defaultValue={
-                              postLoading
-                                ? "Loading ..."
-                                : postData.post.description
-                            }
-                            handleDescChange={handleDescChange}
-                          />
-                        </div>
-                      )}
+                      <EditorJs
+                        instanceRef={instance =>
+                          (editorJsRef.current = instance)
+                        }
+                        tools={EDITOR_JS_TOOLS}
+                        data={
+                          postLoading
+                            ? "Loading ..."
+                            : JSON.parse(postData.post.description)
+                        }
+                      />
                     </FormItem>
-                    <div>
-                      <Button
-                        type="primary"
-                        htmlType="submit"
-                        className="login-form-button"
-                        // disabled=
-                      >
-                        {loading ? (
-                          <img src={three_dots} alt="btn-loading" height="10" />
-                        ) : (
-                          "Update"
-                        )}
-                      </Button>
-                    </div>
                   </Col>
 
                   <Col span={8}>
@@ -279,6 +285,9 @@ function EditPost(props) {
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
+
+                    {/* ======= Category Sections ======= */}
+                    <DisplayCategories />
 
                     {/* ======= Tags ======= */}
                     <FormItem label="Tags">
@@ -334,6 +343,21 @@ function EditPost(props) {
                         initialValue: postLoading ? "" : postData.post.meta_desc
                       })(<TextArea rows={4} />)}
                     </FormItem>
+                    <div style={{ float: "right" }}>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        className="login-form-button"
+                        onClick={handleSubmit}
+                        // disabled=
+                      >
+                        {loading ? (
+                          <img src={three_dots} alt="btn-loading" height="10" />
+                        ) : (
+                          "Update"
+                        )}
+                      </Button>
+                    </div>
                   </Col>
                 </Row>
               </Form>

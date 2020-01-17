@@ -1,5 +1,6 @@
 const graphql = require("graphql");
 const bcrypt = require("bcryptjs");
+const GraphQLJSON = require("graphql-type-json");
 
 // ======== Models Section =========
 const User = require("../models/User");

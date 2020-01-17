@@ -4,8 +4,12 @@ import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
 import { UserContext } from "../../context/userContext";
+
 import three_dots from "../../assets/img/three-dots.svg";
-import QuillTextEditor from "../QuillTextEditor";
+
+// ===== Import EditorJS =====
+import EditorJs from "react-editor-js";
+import { EDITOR_JS_TOOLS } from "./tools";
 
 // ===== Query and Mutation Section =====
 import { GET_CATEGORIES, GET_POSTS } from "../../graphql/query";
@@ -37,7 +41,7 @@ function NewPost(props) {
 
   // ===== State Management =====
   const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState({});
   const [image, setImage] = useState("");
 
   // ===== User Context Section =====
@@ -92,12 +96,6 @@ function NewPost(props) {
     }
   };
 
-  const handleDescChange = value => {
-    console.log(value);
-
-    setDescription(value);
-  };
-
   const uploadImage = {
     name: "file",
     multiple: false,
@@ -117,15 +115,15 @@ function NewPost(props) {
     }
   };
 
-  console.log(userData);
-
-  const handleSubmit = e => {
-    e.preventDefault();
+  // ===== EditorJS =====
+  const editorJsRef = React.useRef(null);
+  const handleSubmit = React.useCallback(async () => {
+    const savedData = await editorJsRef.current.save();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(props.description);
-
-        createPost({ variables: { ...values } })
+        createPost({
+          variables: { ...values, description: JSON.stringify(savedData) }
+        })
           .then(async () => {
             setLoading(true);
             setTimeout(() => {
@@ -134,7 +132,6 @@ function NewPost(props) {
             categoryRefetch();
             postsRefetch();
             props.form.resetFields();
-            setDescription("");
             await message.success("Post created successfully.", 3);
           })
           .catch(error => {
@@ -142,7 +139,7 @@ function NewPost(props) {
           });
       }
     });
-  };
+  }, []);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -158,7 +155,7 @@ function NewPost(props) {
             <div className="background_container">
               <h1 className="title_new_post">New Post</h1>
 
-              <Form className="login-form" onSubmit={handleSubmit}>
+              <Form className="login-form">
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
                     <FormItem label="Title">
@@ -171,9 +168,6 @@ function NewPost(props) {
                         ]
                       })(<Input size="large" />)}
                     </FormItem>
-
-                    {/* ======= Category Sections ======= */}
-                    <DisplayCategories />
 
                     <FormItem label="Created By: " style={{ display: "none" }}>
                       {getFieldDecorator("created_by", {
@@ -188,31 +182,14 @@ function NewPost(props) {
                     </FormItem>
 
                     <FormItem label="Description: ">
-                      {getFieldDecorator("description", {
-                        initialValue: description
-                      })(
-                        <div>
-                          <QuillTextEditor
-                            handleDescChange={handleDescChange}
-                          />
-                        </div>
-                      )}
+                      <EditorJs
+                        instanceRef={instance =>
+                          (editorJsRef.current = instance)
+                        }
+                        tools={EDITOR_JS_TOOLS}
+                        placeholder="Let's write an awesome story!"
+                      />
                     </FormItem>
-                    <div>
-                      <Button
-                        type="primary"
-                        htmlType="submit"
-                        size="large"
-                        className="btnSubmit"
-                        disabled={loading ? true : false}
-                      >
-                        {loading ? (
-                          <img src={three_dots} alt="btn-loading" height="10" />
-                        ) : (
-                          "Submit"
-                        )}
-                      </Button>
-                    </div>
                   </Col>
 
                   <Col span={8}>
@@ -245,6 +222,9 @@ function NewPost(props) {
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
+
+                    {/* ======= Category Sections ======= */}
+                    <DisplayCategories />
 
                     {/* ======= Tags ======= */}
                     <FormItem label="Tags">
@@ -297,6 +277,23 @@ function NewPost(props) {
                         ]
                       })(<TextArea rows={4} />)}
                     </FormItem>
+
+                    <div style={{ float: "right" }}>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        size="large"
+                        className="btnSubmit"
+                        disabled={loading ? true : false}
+                        onClick={handleSubmit}
+                      >
+                        {loading ? (
+                          <img src={three_dots} alt="btn-loading" height="10" />
+                        ) : (
+                          "Submit"
+                        )}
+                      </Button>
+                    </div>
                   </Col>
                 </Row>
               </Form>

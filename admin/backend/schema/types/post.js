@@ -1,4 +1,5 @@
 const graphql = require("graphql");
+const GraphQLJSON = require("graphql-type-json");
 const User = require("../../models/User");
 const Category = require("../../models/Category");
 const { GraphQLString, GraphQLList, GraphQLObjectType } = graphql;
