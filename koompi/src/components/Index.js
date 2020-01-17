@@ -47,6 +47,7 @@ function Index() {
   return (
     <React.Fragment>
       <Navbar />
+
       <div className="banner">
         <div className="container">
           <Row>

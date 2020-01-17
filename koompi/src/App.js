@@ -14,14 +14,14 @@ function App() {
     <CartProvider>
       <Router>
         <Switch>
-          <Route path="/koompi-pro" component={Koompi}></Route>
-          <Route path="/koompi-pro/specs" component={Koompi}></Route>
+          {/* <Route path="/koompi-pro" component={Koompi}></Route>
+          <Route path="/koompi-pro/specs" component={Koompi}></Route> */}
           <Route path="/Koompi-e" component={KoompiE11}></Route>
           <Route path="/Koompi-e/specs" component={KoompiE11}></Route>
           <Route path="/Koompi-b" component={KoompiE11}></Route>
           <Route path="/Koompi-b/specs" component={KoompiE11}></Route>
-          <Route path="/Koompi-b15" component={KoompiE11}></Route>
-          <Route path="/Koompi-b15/specs" component={KoompiE11}></Route>
+          {/* <Route path="/Koompi-b15" component={KoompiE11}></Route>
+          <Route path="/Koompi-b15/specs" component={KoompiE11}></Route> */}
           <Route path="/item" component={Item}></Route>
           <Route path="/shop/bag" component={ShopingCart}></Route>
           <Route path="/koompi-os" component={Koompi}></Route>

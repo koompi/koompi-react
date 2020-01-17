@@ -18,6 +18,15 @@ function totalPrice(items) {
 export default function Cart({ stripeToken }) {
   const [stripe, setStripe] = useState(null);
   const ctx = useContext(CartContext);
+  const [visible, setVisible] = useState(false);
+
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const hideModal = () => {
+    setVisible(false);
+  };
 
   // =====  Show Delete Comfirm  =====
   const showDeleteConfirm = () => {
@@ -57,7 +66,7 @@ export default function Cart({ stripeToken }) {
       <br />
       <div className="container">
         <Row gutter={[16, 16]}>
-          <Col span={24}>
+          <Col span={17}>
             <div className="shopping-cart">
               <center>
                 <h1>Your bag total is ${totalPrice(ctx.items)}.</h1>
@@ -125,7 +134,7 @@ export default function Cart({ stripeToken }) {
               );
             })}
           </Col>
-          {/* <Col span={7}>
+          <Col span={7}>
             <div className="order_summary">
               <h3 className="order_summary_title">Order Summary</h3>
               <div className="subTotal">
@@ -149,13 +158,33 @@ export default function Cart({ stripeToken }) {
                   </Col>
                 </Row>
               </div>
-              <Button type="danger" className="btnBuy">
-                Buy
-              </Button>
+              <center>
+                <Row gutter={16}>
+                  <Col span={6}>
+                    <div onClick={showModal}>Zeetomic</div>
+                  </Col>
+                  <Col span={6}>ABA</Col>
+                  <Col span={6}>Cash</Col>
+                  <Col span={6}>WING</Col>
+                </Row>
+              </center>
             </div>
-          </Col> */}
+          </Col>
         </Row>
       </div>
+
+      <Modal
+        title="Modal"
+        visible={visible}
+        onOk={hideModal}
+        onCancel={hideModal}
+        okText="确认"
+        cancelText="取消"
+      >
+        <p>Bla bla ...</p>
+        <p>Bla bla ...</p>
+        <p>Bla bla ...</p>
+      </Modal>
     </div>
   );
 }

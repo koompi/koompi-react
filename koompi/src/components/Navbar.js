@@ -31,9 +31,6 @@ function Navbar(props) {
               </Link>
             </Menu.Item>
             <Menu.Item className="koompi" key="1">
-              <span>KOOMPI B15</span>
-            </Menu.Item>
-            <Menu.Item className="koompi" key="1">
               <Link to="/KoompiB">
                 <span>KOOMPI B</span>
               </Link>
@@ -41,11 +38,6 @@ function Navbar(props) {
             <Menu.Item className="koompi" key="/koompi-e">
               <Link to="/koompi-e">
                 <span>KOOMPI E</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item className="koompi" key="/koompi-pro">
-              <Link to="/koompi-pro">
-                <span>KOOMPI PRO</span>
               </Link>
             </Menu.Item>
             <Menu.Item className="koompi" key="4">

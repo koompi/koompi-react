@@ -4,6 +4,9 @@
   font-family: "Open Sans", sans-serif !important;
   letter-spacing: 0.5px;
 }
+body {
+  background: rgb(240, 243, 247) !important;
+}
 /* html {
   --antd-wave-shadow-color: white !important;
 } */
@@ -129,7 +132,7 @@
 }
 .shopping-cart {
   padding: 40px !important;
-  background-color: #f2f2f2;
+  background-color: #d9d9d9;
   border-radius: 8px !important;
   margin: 15px 0px;
 }
@@ -151,7 +154,7 @@
 }
 .order_summary {
   padding: 25px;
-  background-color: #f2f2f2;
+  background-color: #d9d9d9;
   margin: 15px 0px;
   border-radius: 8px !important;
 }
