@@ -132,7 +132,7 @@ body {
 }
 .shopping-cart {
   padding: 40px !important;
-  background-color: #d9d9d9;
+  background-color: #e0e1e3;
   border-radius: 8px !important;
   margin: 15px 0px;
 }
@@ -154,7 +154,7 @@ body {
 }
 .order_summary {
   padding: 25px;
-  background-color: #d9d9d9;
+  background-color: #d9d9d9a6;
   margin: 15px 0px;
   border-radius: 8px !important;
 }
@@ -710,4 +710,29 @@ button[type="submit"]:hover,
 .koompi_page_section_title {
   font-size: 40px;
   color: #fff !important;
+}
+
+/* Vuthy */
+.payment_title {
+  font-size: 16px !important;
+  font-weight: bold;
+}
+.ant-form-item {
+  margin-bottom: 15px !important;
+}
+.payment_cart {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 5px 0px;
+  width: 100% !important;
+  max-width: 100%;
+}
+.ant-modal-title {
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+.paymentBtn {
+  padding: 0px 45px !important;
+  margin-top: 10px !important;
 }
