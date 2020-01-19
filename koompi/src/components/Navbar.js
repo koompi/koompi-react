@@ -39,13 +39,10 @@ function Navbar(props) {
                 <span>KOOMPI E</span>
               </NavLink>
             </Menu.Item>
-            <Menu.Item
-              exact
-              activeStyle={{ color: "white" }}
-              className="koompi"
-              key="4"
-            >
-              <span>KOOMPI OS</span>
+            <Menu.Item className="koompi">
+              <NavLink exact activeStyle={{ color: "white" }} to="/koompi-os">
+                <span>KOOMPI OS</span>
+              </NavLink>
             </Menu.Item>
           </Menu>
         </div>

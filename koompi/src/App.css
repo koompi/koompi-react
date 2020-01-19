@@ -337,11 +337,9 @@ body {
 }
 .ant-tabs-bar {
   /* background-color: #121217; */
-
-  border-bottom: 0.02px solid white !important;
-  color: white;
   width: 700px;
   margin: 0 auto !important;
+  text-align: center !important;
 }
 .KoompiE11 {
   margin-top: 130px;
@@ -628,10 +626,6 @@ body {
   color: white !important;
   border: none !important;
   border-radius: 58px !important;
-}
-
-.ant-tabs-nav {
-  float: right;
 }
 .Form-Contact input {
   display: block;

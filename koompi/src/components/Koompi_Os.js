@@ -1,8 +1,12 @@
 import React from "react";
-import { Typography } from "antd";
+import { Typography, Tabs } from "antd";
 import Navbar from "./Navbar";
+const { TabPane } = Tabs;
 const { Title, Paragraph, Text } = Typography;
 function Koompi_Os() {
+  function callback(key) {
+    console.log(key);
+  }
   return (
     <React.Fragment>
       <Navbar />
@@ -39,6 +43,19 @@ function Koompi_Os() {
         <center>
           <img style={{ maxWidth: "100%" }} src="/img/Macbook.png" />
         </center>
+        <div className="text-container">
+          <Tabs defaultActiveKey="1" onChange={callback}>
+            <TabPane style={{ color: "black" }} tab="Coding" key="1">
+              Content of Tab Pane 1
+            </TabPane>
+            <TabPane tab="Video" key="2">
+              Content of Tab Pane 2
+            </TabPane>
+            <TabPane tab="Internet" key="3">
+              Content of Tab Pane 3
+            </TabPane>
+          </Tabs>
+        </div>
       </div>
     </React.Fragment>
   );
