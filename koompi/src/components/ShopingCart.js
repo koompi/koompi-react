@@ -1,5 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Row, Col, Layout, Card, Select, Button, Modal } from "antd";
+import {
+  Row,
+  Col,
+  Layout,
+  Card,
+  Select,
+  Button,
+  Modal,
+  Input,
+  Icon,
+  Form
+} from "antd";
 import { CartContext } from "../CartContext";
 import Navbar from "./Navbar";
 
@@ -15,10 +26,13 @@ function totalPrice(items) {
   return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0);
 }
 
-export default function Cart({ stripeToken }) {
-  const [stripe, setStripe] = useState(null);
+function Cart(props) {
   const ctx = useContext(CartContext);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState({
+    aba: false
+  });
+
+  const { getFieldDecorator } = props.form;
 
   const showModal = () => {
     setVisible(true);
@@ -26,6 +40,10 @@ export default function Cart({ stripeToken }) {
 
   const hideModal = () => {
     setVisible(false);
+  };
+
+  const handleABA = () => {
+    setVisible({ aba: true });
   };
 
   // =====  Show Delete Comfirm  =====
@@ -44,21 +62,6 @@ export default function Cart({ stripeToken }) {
       }
     });
   };
-
-  useEffect(() => {
-    if (window.Stripe) setStripe(window.Stripe(stripeToken));
-  }, [stripeToken]);
-
-  function checkout() {
-    stripe.redirectToCheckout({
-      products: ctx.items.map(item => ({
-        quantity: item.quantity,
-        sku: item.sku
-      })),
-      successUrl: "https://your-website.com/success",
-      cancelUrl: "https://your-website.com/canceled"
-    });
-  }
 
   return (
     <div>
@@ -157,34 +160,153 @@ export default function Cart({ stripeToken }) {
                     <h3 className="totalPrice">US ${totalPrice(ctx.items)}</h3>
                   </Col>
                 </Row>
+                <h4>Choose a payment to checkout</h4>
               </div>
-              <center>
-                <Row gutter={16}>
-                  <Col span={6}>
-                    <div onClick={showModal}>Zeetomic</div>
-                  </Col>
-                  <Col span={6}>ABA</Col>
-                  <Col span={6}>Cash</Col>
-                  <Col span={6}>WING</Col>
-                </Row>
-              </center>
+              <Row gutter={16}>
+                <Col span={24}>
+                  <div className="payment_cart">
+                    <img
+                      src="https://cdn1.iconfinder.com/data/icons/currency-40/512/cambodian-riel-currency-money-exchange-512.png"
+                      height="25px"
+                      width="25px"
+                      alt=""
+                    />{" "}
+                    Pay later / Cash on delivery
+                  </div>
+                </Col>
+                <Col span={24}>
+                  <div className="payment_cart" onClick={handleABA}>
+                    <img
+                      src="https://brandslogo.net/wp-content/uploads/2016/07/mastercard-vector-logo.png"
+                      height="25px"
+                      width="25px"
+                      alt=""
+                    />{" "}
+                    Master/Visa Card
+                  </div>
+                </Col>
+                <Col span={24}>
+                  <div className="payment_cart" onClick={handleABA}>
+                    <img
+                      src="https://lh3.googleusercontent.com/aAOBfkMHGEoOvMvLkNYEc7KJ-W863_e42bmyKN9sZmdgYAs39M_SA38bjH4jVDM0jzM"
+                      height="25px"
+                      width="25px"
+                      alt=""
+                    />{" "}
+                    Wing
+                  </div>
+                </Col>
+                <Col span={24}>
+                  <div className="payment_cart" onClick={handleABA}>
+                    <img
+                      src="http://kirimall.com/img/smartluy.jpg"
+                      height="25px"
+                      width="25px"
+                      alt=""
+                    />{" "}
+                    SmartLuy
+                  </div>
+                </Col>
+              </Row>
             </div>
           </Col>
         </Row>
       </div>
 
+      {/* === Payment === */}
       <Modal
-        title="Modal"
-        visible={visible}
-        onOk={hideModal}
+        footer={null}
+        title="Master/Visa Card"
+        visible={visible.aba}
         onCancel={hideModal}
-        okText="确认"
-        cancelText="取消"
       >
-        <p>Bla bla ...</p>
-        <p>Bla bla ...</p>
-        <p>Bla bla ...</p>
+        <Form>
+          <h2 className="payment_title">Personal Information</h2>
+          <Form.Item>
+            {getFieldDecorator("name", {
+              rules: [{ required: true, message: "Please input your name!" }]
+            })(
+              <Input
+                size="large"
+                prefix={
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                placeholder="Name"
+              />
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator("email address", {
+              rules: [{ required: true, message: "Please input your email!" }]
+            })(
+              <Input
+                size="large"
+                prefix={
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                placeholder="Email"
+              />
+            )}
+          </Form.Item>
+
+          <Form.Item>
+            {getFieldDecorator("phoneNumber", {
+              rules: [
+                { required: true, message: "Please input your Phone Number!" }
+              ]
+            })(
+              <Input
+                size="large"
+                prefix={
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                placeholder="Phone Number"
+              />
+            )}
+          </Form.Item>
+
+          <h2 className="payment_title">Payment Information</h2>
+          <Form.Item label="Card Number">
+            {getFieldDecorator("name", {
+              rules: [{ required: true, message: "Please input your name!" }]
+            })(<Input size="large" placeholder="1234 1234 1234 1234" />)}
+          </Form.Item>
+          <Form.Item label="Card Holder Name">
+            {getFieldDecorator("name", {
+              rules: [{ required: true, message: "Please input your name!" }]
+            })(<Input size="large" placeholder="KOOMPI" />)}
+          </Form.Item>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item label="Expiration Date">
+                {getFieldDecorator("name", {
+                  rules: [
+                    { required: true, message: "Please input your name!" }
+                  ]
+                })(<Input size="large" placeholder="MM / YY" />)}
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="CVC Code">
+                {getFieldDecorator("name", {
+                  rules: [
+                    { required: true, message: "Please input your name!" }
+                  ]
+                })(<Input size="large" placeholder="CVC" />)}
+              </Form.Item>
+            </Col>
+          </Row>
+          <center>
+            <Button type="primary" className="paymentBtn">
+              Submit
+            </Button>
+          </center>
+        </Form>
       </Modal>
+
+      {/* === End Payment */}
     </div>
   );
 }
+
+export default Form.create()(Cart);
