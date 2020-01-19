@@ -4,80 +4,16 @@ import { Tabs } from 'antd';
 import Navbar from './Navbar';
 import { Row, Col } from 'antd';
 import { List } from 'antd';
+import Sub_Navbar_Koompi_E from './Sub_Navbar_Koompi_E';
 const { TabPane } = Tabs;
 const { Title, Paragraph, Text } = Typography;
-const title = [
-	{
-		id: 1,
-		title: 'Processor',
-		des: 'Intel® Core™ i7 7500U Processor'
-	},
-	{
-		id: 2,
-		title: 'Operating System',
-		des: 'KOOMPI OS'
-	},
-	{
-		id: 3,
-		title: 'Memory',
-		des: 'up to 16 GB SDRAM(Optional)'
-	},
-	{
-		id: 4,
-		title: 'Display',
-		des: 'FHD-Anti-Glare'
-	},
-	{
-		id: 5,
-		title: 'Graphic',
-		des: 'NVIDIA® GeForce® MX150 , with 2GB GDDR5 VRAM'
-	},
-	{
-		id: 6,
-		title: 'Keyboard',
-		des: '256SSD SATA 3.0 M.2 SSD'
-	},
-	{
-		id: 7,
-		title: 'Storage',
-		des: 'Chiclet keyboardIlluminated chiclet keyboard(On selected models)'
-	},
-	{
-		id: 8,
-		title: 'WebCam',
-		des: 'VGAWebcam'
-	},
-	{
-		id: 9,
-		title: 'Audio',
-		des: 'Built-in 2 W Stereo Speaker with Microphone'
-	},
-	{
-		id: 10,
-		title: 'Battery',
-		des: '3 -Cell 42 Wh Battery'
-	},
-	{
-		id: 11,
-		title: 'Weight',
-		des: '1.5 kg ~ 1.7 kg with battery'
-	},
-	{
-		id: 12,
-		title: 'Security',
-		des: 'BIOS user password protection HDD user password protection'
-	}
-];
 function KoompiE11() {
-	function callback(key) {
-		console.log(key);
-	}
 	return (
 		<React.Fragment>
+			<div>
 			<Navbar />
-			<div className='background-color'>
-				<Tabs defaultActiveKey='1' onChange={callback}>
-					<TabPane tab='Overview' key='1'>
+			<Sub_Navbar_Koompi_E/>
+			<div className='background-color-Koompi-E'>
 						<div>
 							{/*=========== banner-koompiE11========== */}
 							<div className='container'>
@@ -91,11 +27,13 @@ function KoompiE11() {
 										</Title>
 									</Typography>
 								</center>
+							</div>
+							<center>
 								<img
 									className='banner-overview-koompiE11'
 									src='/img/Macbook.png'
 								/>
-							</div>
+							</center>
 							{/*============== Display KoompiE11========== */}
 							<div className='container margin-display-koompiE11'>
 								<div>
@@ -117,23 +55,7 @@ function KoompiE11() {
 											src='/img/Macbook.png'></img>
 									</center>
 									<div className='text-container'>
-										{/* <Row>
-                      <Col sm={12}>
-                        <div>
-                          <Typography>
-                            <Title>13.3</Title>
-                            <Paragraph>
-                              high-resolution<br></br> Retina display
-                            </Paragraph>
-                          </Typography>
-                        </div>
-                      </Col>
-                      <Col sm={12}>Col</Col>
-                    </Row>
-                    <Row>
-                      <Col sm={12}>Col</Col>
-                      <Col sm={12}>Col</Col>
-                    </Row> */}
+
 										<Row gutter={[48, 0]}>
 											<Col sm={12}>
 												<Paragraph className='text-Display-koompiE11'>
@@ -217,7 +139,7 @@ function KoompiE11() {
 								<div>
 									<Typography className='text-container'>
 										<Title className='title-performance-koompiE11'>
-											Your all‑purpose, all‑day KOOMPIE11.
+											Your all‑purpose <br></br> All‑day KOOMPIE11.
 										</Title>
 										<Paragraph className='text-performence-koompiE11'>
 											Even though it weighs just 2.75
@@ -394,44 +316,7 @@ function KoompiE11() {
 								</center>
 							</div>
 						</div>
-					</TabPane>
-
-					{/* =================Spec============= */}
-					<TabPane tab='Spec' key='2'>
-						<div className='spec-background'>
-							<div className='container'>
-								<List
-									itemLayout='horizontal'
-									dataSource={title}
-									renderItem={item => (
-										<List.Item>
-											<div className=' spec-grid'>
-												<Row>
-													<Col sm={12}>
-														<h2
-															style={{
-																fontSize: '38px'
-															}}>
-															{item.title}
-														</h2>
-													</Col>
-													<Col sm={12}>
-														<p
-															style={{
-																fontSize: '26px'
-															}}>
-															{item.des}
-														</p>
-													</Col>
-												</Row>
-											</div>
-										</List.Item>
-									)}
-								/>
-							</div>
-						</div>
-					</TabPane>
-				</Tabs>
+				</div>
 			</div>
 		</React.Fragment>
 	);
