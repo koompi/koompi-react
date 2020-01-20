@@ -111,19 +111,6 @@ function KoompiE11() {
           {/* ======Performance======= */}
           <div className="container">
             <div className="Performance">
-              {/* <h1>PERFORMANCE</h1>
-										<p className='p-of-performance'>
-											KOOMPI Pro elevates the notebook to
-											a whole new level of performance and
-											portability. Wherever your ideas
-											take you, you’ll get there faster
-											than ever with high‑performance
-											processors and memory, advanced
-											graphics, blazing‑fast storage, and
-											more — all in a compact 3-pound
-											package.
-										</p> */}
-
               <Typography className="text-container">
                 <Title className="professional-performance-p">
                   Performance

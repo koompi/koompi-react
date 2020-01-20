@@ -7,12 +7,18 @@
 body {
   background: rgb(240, 243, 247) !important;
 }
+.background-color-Koompi-E {
+  background-color: #f0f3f7;
+}
 /* html {
   --antd-wave-shadow-color: white !important;
 } */
 .logo {
   height: 40px !important;
   margin-top: -5px !important;
+}
+.background-color {
+  overflow: hidden;
 }
 .text-container {
   max-width: 780px;
@@ -108,6 +114,23 @@ body {
   border-radius: 15px;
   margin-left: 20px;
 }
+.sub-navbar-a span {
+  font-size: 12px !important;
+  /* color: white !important; */
+}
+.sub-navbar-a-koompi-b span {
+  font-size: 12px !important;
+  /* color: rgba(255, 255, 255, 0.65) !important; */
+}
+.sub-navbar-a-koompi-b span:hover {
+  color: blue !important;
+}
+.sub-navbar-a-koompi-b {
+  float: right !important;
+}
+.sub-navbar-a {
+  float: right !important;
+}
 .koompi {
   float: right;
 }
@@ -118,7 +141,8 @@ body {
   font-size: 64px;
   line-height: 67px;
   font-weight: 600;
-  color: white !important;
+  /* color: white !important; */
+  color: black !important;
   margin-top: 12px !important;
   margin-bottom: 80px !important;
 }
@@ -265,9 +289,14 @@ body {
   color: #63636e;
 }
 .Performance {
-  margin: 46px 0 60px 0;
+  margin: 130px 0 60px 0;
 }
-
+.Keybaord {
+  margin-top: 130px;
+}
+.main-banner-koompi-b {
+  margin-top: 130px;
+}
 /* .Carousel1 {
 	background-image: url('/img/matebookxpro2019-grey.png');
 	height: 800px;
@@ -292,6 +321,9 @@ body {
   color: #63636e !important;
   font-size: 21px;
 }
+.performance-koompi-b {
+  color: white !important;
+}
 .Microchip {
   margin-top: 60px;
   margin-bottom: 55px;
@@ -305,14 +337,12 @@ body {
 }
 .ant-tabs-bar {
   /* background-color: #121217; */
-
-  border-bottom: 0.02px solid white !important;
-  color: white;
   width: 700px;
   margin: 0 auto !important;
+  text-align: center !important;
 }
 .KoompiE11 {
-  margin-top: 90px;
+  margin-top: 130px;
   color: #63636e !important;
 }
 .KoompiPro {
@@ -335,9 +365,6 @@ body {
 }
 .title-of-powerBattery-show span {
   font-size: 18px !important;
-}
-.Power-Batter {
-  margin-top: 56px;
 }
 .show-padding-powerBatter {
   padding-left: 114px;
@@ -468,7 +495,8 @@ body {
 }
 .header-of-slim {
   margin-top: 56px;
-  color: #63636e !important;
+  /* color: white !important; */
+  color: black !important ;
 }
 .banner-overview-koompiE11 {
   /* max-width: 1143px; */
@@ -479,7 +507,8 @@ body {
   max-width: 100%;
 }
 .Title-Display-koompiE11 {
-  color: #63636e !important;
+  /* color: white !important; */
+  color: black !important;
 }
 .text-Display-koompiE11 {
   font-size: 21px;
@@ -503,17 +532,18 @@ body {
   max-width: 100%;
 }
 .title-performance-koompiE11 {
-  color: #63636e !important;
+  /* color: white !important; */
+  color: black !important;
 }
 .text-performence-koompiE11 {
   color: #63636e !important;
   font-size: 21px;
 }
 .margin-display-koompiE11 {
-  margin-top: 100px;
+  margin-top: 130px;
 }
 .margin-performence-koompiE11 {
-  margin-top: 100px;
+  margin-top: 130px;
 }
 .title-performance-koompiE11-descrip {
   color: white !important;
@@ -570,7 +600,7 @@ body {
   background-color: transparent !important;
 }
 .boss-of-slim-koompiE {
-  margin-top: 108px;
+  margin-top: 130px;
 }
 .spec-grid {
   width: 845px;
@@ -596,10 +626,6 @@ body {
   color: white !important;
   border: none !important;
   border-radius: 58px !important;
-}
-
-.ant-tabs-nav {
-  float: right;
 }
 .Form-Contact input {
   display: block;
@@ -712,7 +738,21 @@ button[type="submit"]:hover,
   color: #fff !important;
 }
 
+.koompi-os-main-title {
+  font-size: 100px !important;
+}
+.koompi-os-paragraph {
+  font-size: 21px !important;
+}
+.top-of-paragraph {
+  margin-top: -32px;
+}
+.top-sections {
+  margin-top: 130px !important;
+}
+
 /* Vuthy */
+
 .payment_title {
   font-size: 16px !important;
   font-weight: bold;

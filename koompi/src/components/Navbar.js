@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "antd";
 import { Layout, Menu, Breadcrumb, Badge, Icon } from "antd";
 
@@ -19,29 +18,31 @@ function Navbar(props) {
           >
             <Menu.Item key="/">
               <img className="logo" src="./img/Koompi-White.png" />
-              <Link to="/"></Link>
+              <NavLink exact activeStyle={{ color: "white" }} to="/"></NavLink>
             </Menu.Item>
 
             {/* ===== Navbar ===== */}
             <Menu.Item className="koompi" key="4">
-              <Link to="/shop/bag">
+              <NavLink exact activeStyle={{ color: "white" }} to="/shop/bag">
                 <Badge>
                   <Icon type="shopping-cart" className="shopping-cart-icon" />
                 </Badge>
-              </Link>
+              </NavLink>
             </Menu.Item>
             <Menu.Item className="koompi" key="1">
-              <Link to="/KoompiB">
+              <NavLink exact activeStyle={{ color: "white" }} to="/Koompi-b">
                 <span>KOOMPI B</span>
-              </Link>
+              </NavLink>
             </Menu.Item>
             <Menu.Item className="koompi" key="/koompi-e">
-              <Link to="/koompi-e">
+              <NavLink exact activeStyle={{ color: "white" }} to="/koompi-e">
                 <span>KOOMPI E</span>
-              </Link>
+              </NavLink>
             </Menu.Item>
-            <Menu.Item className="koompi" key="4">
-              <span>KOOMPI OS</span>
+            <Menu.Item className="koompi">
+              <NavLink exact activeStyle={{ color: "white" }} to="/koompi-os">
+                <span>KOOMPI OS</span>
+              </NavLink>
             </Menu.Item>
           </Menu>
         </div>
