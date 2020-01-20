@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Tabs } from "antd";
+import { Typography, Tabs, Row, Col } from "antd";
 import Navbar from "./navbar";
 const { TabPane } = Tabs;
 const { Title, Paragraph, Text } = Typography;

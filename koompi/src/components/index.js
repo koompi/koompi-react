@@ -4,7 +4,9 @@ import { Player, ControlBar } from "video-react";
 import Modal from "react-responsive-modal";
 import { BackTop } from "antd";
 import Particles from "react-particles-js";
-
+import { useQuery } from "@apollo/react-hooks";
+import EditorJs from "react-editor-js";
+import parse from "html-react-parser";
 import {
   content,
   Layout,
@@ -16,11 +18,29 @@ import {
 } from "antd";
 import Navbar from "./navbar";
 import { Typography, Divider } from "antd";
+import { GET_PAGES } from "./graphql/query";
+
 const { Title, Paragraph, Text } = Typography;
 
 const { Header, Content, Footer } = Layout;
 const koompiPro = [{ img: "/img/Macbook.png" }];
 const koompiE11 = [{ img: "/img/0.png" }];
+
+function renderHTML(data) {
+  let result = ``;
+  for (let block of JSON.parse(data).blocks) {
+    switch (block.type) {
+      case "paragraph":
+        result += `<p>${block.data.text}</p>`;
+        break;
+      case "header":
+        result += `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
+        break;
+    }
+  }
+  return result;
+}
+
 function Index() {
   const [state, setState] = useState(koompiPro);
   const menu = (
@@ -44,6 +64,22 @@ function Index() {
   };
   const { open } = stateModal;
 
+  const Display_Frist_Section = () => {
+    const { error, loading, data } = useQuery(GET_PAGES);
+    if (error) console.log(error);
+    if (loading) return "loading ...";
+    if (data) {
+      const res = renderHTML(data.pages[0].description);
+
+      return (
+        <>
+          <h1 className="bossTittle-KoompiHome">{data.pages[0].title}</h1>
+          <p className="text-koompi-section-banner">{parse(res)}</p>
+        </>
+      );
+    }
+  };
+
   return (
     <React.Fragment>
       <Navbar />
@@ -56,14 +92,7 @@ function Index() {
               <center>
                 <div className="banner_content">
                   {/* ========= KOOMPI SECTION =========  */}
-                  <h1 className="bossTittle-KoompiHome">KOOMPI PRO</h1>
-                  <p className="text-koompi-section-banner">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book
-                  </p>
+                  <Display_Frist_Section />
 
                   <Dropdown overlay={menu} trigger={["click"]}>
                     <Button
