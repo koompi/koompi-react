@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, message } from "antd";
 import { Form, Input, Typography, Divider } from "antd";
 import { useForm } from "react-hook-form";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 const { Title, Paragraph, Text } = Typography;
 // import { useForm } from 'react-hook-form';
 function Contact() {

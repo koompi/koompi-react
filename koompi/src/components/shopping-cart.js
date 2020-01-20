@@ -12,7 +12,7 @@ import {
   Form
 } from "antd";
 import { CartContext } from "../CartContext";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 
 // import Bongloy from "bongloyjs";
 

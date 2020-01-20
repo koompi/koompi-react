@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Tabs } from "antd";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 const { TabPane } = Tabs;
 const { Title, Paragraph, Text } = Typography;
 function Koompi_Os() {

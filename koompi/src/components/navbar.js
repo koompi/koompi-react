@@ -17,7 +17,7 @@ function Navbar(props) {
             selectedKeys={["/"]}
           >
             <Menu.Item key="/">
-              <img className="logo" src="./img/Koompi-White.png" />
+              <img className="logo" src="./img/koompi-sym-01.png" />
               <NavLink exact activeStyle={{ color: "white" }} to="/"></NavLink>
             </Menu.Item>
 

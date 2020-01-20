@@ -1,9 +1,11 @@
 import React from "react";
+
 import { Row, Col } from "antd";
 import { List } from "antd";
-import Navbar from "./Navbar";
-import Sub_Navbar_Koompi_B from "./Sub_Navbar_Koompi_B";
-const title = [
+import Navbar from "./navbar";
+import Sub_Navbar_Koompi_E from "./Sub_Navbar_Koompi_E";
+
+const data = [
   {
     id: 1,
     title: "Processor",
@@ -65,55 +67,29 @@ const title = [
     des: "BIOS user password protection HDD user password protection"
   }
 ];
-function Koompi_B_Spec() {
+function Koompi_E_Spec() {
   return (
     <div>
       <Navbar />
-      <Sub_Navbar_Koompi_B />
+      <Sub_Navbar_Koompi_E />
       <div className="spec-background">
         <div className="container">
-          <List
-            itemLayout="horizontal"
-            dataSource={title}
-            renderItem={item => (
-              <List.Item>
-                <div className=" spec-grid">
-                  <Row>
-                    <Col sm={12}>
-                      <h2
-                        style={{
-                          fontSize: "38px"
-                        }}
-                      >
-                        {item.title}
-                      </h2>
-                    </Col>
-                    <Col sm={12}>
-                      <p
-                        style={{
-                          fontSize: "26px"
-                        }}
-                      >
-                        {item.des}
-                      </p>
-                    </Col>
-                  </Row>
-                </div>
-              </List.Item>
-            )}
-          />
+          {data.map(item => {
+            return (
+              <Row gutter={16}>
+                <Col sm={8}>
+                  <p className="specs-title">{item.title}</p>
+                </Col>
+                <Col sm={16}>
+                  <p>{item.des}</p>
+                </Col>
+              </Row>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-export default Koompi_B_Spec;
-
-// import React from "react";
-
-// function Koompi_B_Spec() {
-//   return <div className="background-color">hesfsfd</div>;
-// }
-
-// export default Koompi_B_Spec;
+export default Koompi_E_Spec;
