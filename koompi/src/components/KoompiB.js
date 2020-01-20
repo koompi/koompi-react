@@ -37,7 +37,7 @@ function KoompiB() {
             </Col>
           </Row>
         </div>
-        <div style={{ marginTop: "130px" }} className="container">
+        <div className="container top-sections">
           <div>
             <center>
               <Typography>
@@ -156,10 +156,7 @@ function KoompiB() {
             BackLight Keyboard | Typing{" "}
           </Title>
 
-          <Paragraph
-            style={{ color: "#63636e", fontSize: "22px" }}
-            className="text-container"
-          >
+          <Paragraph className="text-container koompi-b-paragraph">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -174,61 +171,55 @@ function KoompiB() {
 
         {/* =====power of battery=====  */}
 
-        <div style={{ marginTop: "130px" }}>
-          <div className=" container">
-            <Title className="text-container" style={{ color: "white" }}>
-              Fast Charging | Longer life
-            </Title>
-            <div className="text-container">
-              <Paragraph style={{ color: "#63636e", fontSize: "21px" }}>
-                Designed with an ultra thin high performance 5000mAh battery
-                that will last for up to 7 hours
-              </Paragraph>
-              <center>
-                <Row>
-                  <Col span={12}>
-                    <Typography>
-                      <Title
-                        level={2}
-                        style={{
-                          color: "white",
-                          marginBottom: " 3px"
-                        }}
-                      >
-                        5000mAH
-                      </Title>
-                      <Text style={{ color: "#63636e" }}>
-                        Li-polymer battery
-                      </Text>
-                    </Typography>
-                  </Col>
-                  <Col span={12}>
-                    <Typography>
-                      <Title
-                        level={2}
-                        style={{
-                          color: "white",
-                          marginBottom: " 3px"
-                        }}
-                      >
-                        Up to 7h
-                      </Title>
-                      <Text style={{ color: "#63636e" }}>Battery life</Text>
-                    </Typography>
-                  </Col>
-                </Row>
-              </center>
-            </div>
-            <div style={{ marginTop: "23px" }}>
-              <center>
-                <img
-                  style={{ maxWidth: "100%" }}
-                  src="/img/laptopbattery.png"
-                />
-              </center>
-            </div>
+        <div className=" container top-sections">
+          <Title className="text-container" style={{ color: "white" }}>
+            Fast Charging | Longer life
+          </Title>
+          <div className="text-container">
+            <Paragraph className="koompi-b-paragraph">
+              Designed with an ultra thin high performance 5000mAh battery that
+              will last for up to 7 hours
+            </Paragraph>
+            <center>
+              <Row>
+                <Col span={12}>
+                  <Typography>
+                    <Title
+                      level={2}
+                      style={{
+                        color: "white",
+                        marginBottom: " 3px"
+                      }}
+                    >
+                      5000mAH
+                    </Title>
+                    <Text style={{ color: "#63636e" }}>Li-polymer battery</Text>
+                  </Typography>
+                </Col>
+                <Col span={12}>
+                  <Typography>
+                    <Title
+                      level={2}
+                      style={{
+                        color: "white",
+                        marginBottom: " 3px"
+                      }}
+                    >
+                      Up to 7h
+                    </Title>
+                    <Text style={{ color: "#63636e" }}>Battery life</Text>
+                  </Typography>
+                </Col>
+              </Row>
+            </center>
+          </div>
+          <div style={{ marginTop: "23px" }}>
+            <center>
+              <img style={{ maxWidth: "100%" }} src="/img/laptopbattery.png" />
+            </center>
           </div>
         </div>
+
         <div className="Power-Batter">
           <div className="container">
             <div>
