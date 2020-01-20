@@ -12,6 +12,7 @@ import Contact from "./components/Contact";
 import Koompi_B_Spec from "./components/Koompi_B_Spec";
 import Koompi_E_Spec from "./components/Koompi_E_Spec";
 import Koompi_Os from "./components/Koompi_Os";
+import About from "./components/About";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/shop/bag" component={ShopingCart}></Route>
           <Route path="/koompi-os" component={Koompi_Os}></Route>
           <Route path="/contact" component={Contact}></Route>
+          <Route path="/about-us" component={About}></Route>
           <Route path="*" exact component={Index}></Route>
         </Switch>
       </Router>

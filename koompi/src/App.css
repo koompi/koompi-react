@@ -669,7 +669,7 @@ button[type="submit"]:hover,
   background-color: red !important;
 }
 .footerBackground {
-  background-color: #001529;
+  background-color: #121217;
   height: 40vh;
 }
 
@@ -753,6 +753,43 @@ button[type="submit"]:hover,
 .koompi-b-paragraph {
   font-size: 21px !important;
   color: #63636e !important;
+}
+.backgroud-about {
+  background-color: #e6e6e6;
+  overflow: hidden;
+  height: 600px;
+}
+.Row-about {
+  margin-top: 120px;
+}
+.about-paragraph {
+  font-size: 18px;
+}
+.veasna-pic {
+  width: 71%;
+  display: block;
+  height: 71%;
+  box-shadow: 4px 4px 16px #cdcdcd;
+  border-radius: 1000px;
+}
+.components-footer a {
+  color: #9b9b9b !important;
+  margin-left: 20px;
+  font-size: 20px !important;
+  text-transform: uppercase !important;
+}
+.footer_socail_media img {
+  margin-left: 15px;
+  height: 45px !important;
+}
+.ant-cart-border {
+  background: #f0f3f7 !important;
+  border: 1px solid #f0f3f7 !important;
+  border-radius: 12px !important;
+  box-shadow: 4px 4px 16px #cdcdcd !important;
+}
+.what-we-do {
+  margin-top: 100px !important;
 }
 /* .Koompi-os-security {
   box-shadow: 4px 4px 16px #cdcdcd;
