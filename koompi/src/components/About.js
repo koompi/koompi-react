@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Typography, Card } from "antd";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "./navbar";
+import Footer from "./footer";
 const { Title, Paragraph, Text } = Typography;
 
 function About() {

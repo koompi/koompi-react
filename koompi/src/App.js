@@ -6,22 +6,13 @@ import { CartProvider } from "./CartContext";
 import Index from "./components/index";
 import KoompiE11 from "./components/koompi-e11";
 import Item from "./components/item";
-<<<<<<< HEAD
-import ShopingCart from "./components/ShopingCart";
-import KoompiB from "./components/KoompiB";
-import Contact from "./components/Contact";
-import Koompi_B_Spec from "./components/Koompi_B_Spec";
-import Koompi_E_Spec from "./components/Koompi_E_Spec";
-import Koompi_Os from "./components/Koompi_Os";
-import About from "./components/About";
-=======
 import ShopingCart from "./components/shopping-cart";
 // import KoompiB from "./components/KoompiB";
 import Contact from "./components/contact";
 // import Koompi_B_Spec from "./components/Koompi_B_Spec";
 import Koompi_E_Spec from "./components/koompi-e-specs";
 import Koompi_Os from "./components/koompi-os";
->>>>>>> ab937d1c7ca651e297ce724a5672a79a7521f88f
+import About from "./components/About";
 
 function App() {
   return (
