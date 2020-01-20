@@ -14,6 +14,8 @@ import {
 import { CartContext } from "../CartContext";
 import Navbar from "./Navbar";
 
+// import Bongloy from "bongloyjs";
+
 const { Option } = Select;
 
 const { confirm } = Modal;
@@ -166,7 +168,7 @@ function Cart(props) {
                 <Col span={24}>
                   <div className="payment_cart">
                     <img
-                      src="https://cdn1.iconfinder.com/data/icons/currency-40/512/cambodian-riel-currency-money-exchange-512.png"
+                      src="https://cdn1.iconfinder.com/data/icons/currency-40/512/cambodian-riel-currency-money-exchange-512. "
                       height="25px"
                       width="25px"
                       alt=""

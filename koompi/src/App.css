@@ -736,3 +736,14 @@ button[type="submit"]:hover,
   padding: 0px 45px !important;
   margin-top: 10px !important;
 }
+.PhnomPenh {
+  background: url("/img/Background_Web1-01.svg");
+  background-repeat: repeat;
+  height: 400px;
+  position: absolute;
+  width: 100%;
+  bottom: -33px;
+  background-repeat: no-repeat;
+  left: 19%;
+  opacity: 0.03;
+}
