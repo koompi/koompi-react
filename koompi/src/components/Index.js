@@ -49,6 +49,7 @@ function Index() {
       <Navbar />
 
       <div className="banner">
+        <div className="PhnomPenh"></div>
         <div className="container">
           <Row>
             <Col sm={12}>
@@ -72,7 +73,7 @@ function Index() {
                       KOOMPI PRO <Icon type="down" />
                     </Button>
                   </Dropdown>
-                  <a className="readmore-a">Readmore</a>
+                  <a className="readmore-a">Read More</a>
                   <div style={{ marginTop: "20px", cursor: "pointer" }}>
                     <h3 onClick={onOpenModal}>
                       <Icon type="play-circle" /> Watch The Video
