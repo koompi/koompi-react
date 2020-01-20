@@ -32,7 +32,7 @@ function Koompi_Os() {
 
       <div className="container top-sections">
         <div className="text-container">
-          <Title className="koompi-os-title">Easy to Use</Title>
+          <Title className="koompi-os-title">You can do anything</Title>
           <Paragraph className="koompi-os-paragraph">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -55,6 +55,51 @@ function Koompi_Os() {
               Content of Tab Pane 3
             </TabPane>
           </Tabs>
+        </div>
+      </div>
+      {/*============ privacy and security ==========*/}
+      <div className="container top-sections">
+        <div className="text-container">
+          <Title>Privacy and Security</Title>
+          <Paragraph className="koompi-os-paragraph">
+            Everything you do with your Mac is protected by strong privacy and
+            security features. That’s because we build data security into
+            everything we make, right from the start.
+          </Paragraph>
+        </div>
+        <div className="text-container">
+          <Row className="koompi-os-privacy" gutter={[48, 0]}>
+            <Col sm={12}>
+              <div>
+                <Title style={{ marginTop: "40px" }} level={3}>
+                  Privacy
+                </Title>
+                <Paragraph className="koompi-os-paragraph">
+                  You trust our products with your most personal information,
+                  and we believe that you should be in complete control of it.
+                  We respect your privacy by enacting strict policies that
+                  govern how all data is handled. And when you browse the web,
+                  Safari helps prevent data companies from tracking the sites
+                  you vis
+                </Paragraph>
+              </div>
+            </Col>
+            <Col sm={12}>
+              <div>
+                <Title style={{ marginTop: "40px" }} level={3}>
+                  Security
+                </Title>
+                <Paragraph className="koompi-os-paragraph">
+                  You trust our products with your most personal information,
+                  and we believe that you should be in complete control of it.
+                  We respect your privacy by enacting strict policies that
+                  govern how all data is handled. And when you browse the web,
+                  Safari helps prevent data companies from tracking the sites
+                  you vis
+                </Paragraph>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
     </React.Fragment>

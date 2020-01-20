@@ -742,6 +742,18 @@ button[type="submit"]:hover,
 .top-sections {
   margin-top: 130px !important;
 }
+.koompi-b-paragraph {
+  font-size: 21px !important;
+  color: #63636e !important;
+}
+/* .Koompi-os-security {
+  box-shadow: 4px 4px 16px #cdcdcd;
+}
+.koompi-os-privacy {
+  box-shadow: 4px 4px 16px #cdcdcd;
+  background-color: #ffffff;
+  border-radius: 10px;
+} */
 
 /* Vuthy */
 
