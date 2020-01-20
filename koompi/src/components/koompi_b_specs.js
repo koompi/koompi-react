@@ -1,10 +1,8 @@
 import React from "react";
-
 import { Row, Col } from "antd";
 import { List } from "antd";
-import Navbar from "./Navbar";
-import Sub_Navbar_Koompi_E from "./Sub_Navbar_Koompi_E";
-
+import Navbar from "./navbar";
+import Sub_Navbar_Koompi_B from "./Sub_Navbar_Koompi_B";
 const title = [
   {
     id: 1,
@@ -67,11 +65,11 @@ const title = [
     des: "BIOS user password protection HDD user password protection"
   }
 ];
-function Koompi_E_Spec() {
+function Koompi_B_Spec() {
   return (
     <div>
       <Navbar />
-      <Sub_Navbar_Koompi_E />
+      <Sub_Navbar_Koompi_B />
       <div className="spec-background">
         <div className="container">
           <List
@@ -110,4 +108,12 @@ function Koompi_E_Spec() {
   );
 }
 
-export default Koompi_E_Spec;
+export default Koompi_B_Spec;
+
+// import React from "react";
+
+// function Koompi_B_Spec() {
+//   return <div className="background-color">hesfsfd</div>;
+// }
+
+// export default Koompi_B_Spec;

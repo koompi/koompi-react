@@ -14,7 +14,7 @@ import {
   Breadcrumb,
   Icon
 } from "antd";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 import { Typography, Divider } from "antd";
 const { Title, Paragraph, Text } = Typography;
 
