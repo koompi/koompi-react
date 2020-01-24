@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import QuillTextEditor from "../QuillTextEditor";
 import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
@@ -9,6 +8,11 @@ import three_dots from "../../assets/img/three-dots.svg";
 // ===== Query and Mutation Section =====
 import { GET_PAGE, GET_PAGES } from "../../graphql/query";
 import { UPDATE_PAGE } from "../../graphql/mutation";
+
+// ===== Import EditorJS =====
+import EditorJs from "react-editor-js";
+import { EDITOR_JS_TOOLS } from "./tools";
+
 import {
   Form,
   Input,
@@ -45,20 +49,16 @@ function EditPage(props) {
   const { refetch: pageRefetch } = useQuery(GET_PAGES);
   const [updatePage] = useMutation(UPDATE_PAGE);
 
-  const handleDescChange = value => {
-    setDescription(value);
-  };
-
-  // ===== Handle Form submit =====
-  const handleSubmit = async e => {
-    e.preventDefault();
+  // ===== EditorJS =====
+  const editorJsRef = React.useRef(null);
+  const handleSubmit = React.useCallback(async () => {
+    const savedData = await editorJsRef.current.save();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values);
-
         updatePage({
           variables: {
             id: window.location.pathname.split("/")[4],
+            description: JSON.stringify(savedData),
             ...values
           }
         })
@@ -76,7 +76,7 @@ function EditPage(props) {
           });
       }
     });
-  };
+  }, []);
 
   // ===== Handle Image Upload =====
   const uploadImage = {
@@ -117,7 +117,7 @@ function EditPage(props) {
             <div className="background_container">
               <h1 className="title_new_post">Update Page</h1>
 
-              <Form className="login-form" onSubmit={handleSubmit}>
+              <Form className="login-form">
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
                     <FormItem label="Title">
@@ -161,37 +161,27 @@ function EditPage(props) {
                         initialValue: new Date().toISOString()
                       })(<Input size="large" />)}
                     </FormItem>
-
                     <FormItem label="Description: ">
-                      {getFieldDecorator("description", {
-                        rules: [
-                          {
-                            required: true
-                          }
-                        ],
-                        initialValue:
-                          description === ""
-                            ? pageData.page.description
-                            : description
-                      })(
-                        <div>
-                          <QuillTextEditor
-                            defaultValue={
-                              pageLoading
-                                ? "Loading ..."
-                                : pageData.page.description
-                            }
-                            handleDescChange={handleDescChange}
-                          />
-                        </div>
-                      )}
+                      <EditorJs
+                        instanceRef={instance =>
+                          (editorJsRef.current = instance)
+                        }
+                        tools={EDITOR_JS_TOOLS}
+                        data={
+                          pageLoading
+                            ? "Loading ..."
+                            : JSON.parse(pageData.page.description)
+                        }
+                      />
                     </FormItem>
+
                     <div>
                       <Button
                         type="primary"
                         htmlType="submit"
                         className="login-form-button"
                         // disabled=
+                        onClick={handleSubmit}
                       >
                         {loading ? (
                           <img src={three_dots} alt="btn-loading" height="10" />

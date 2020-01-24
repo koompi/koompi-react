@@ -1,11 +1,17 @@
 import React, { useState, useContext } from "react";
-import QuillTextEditor from "../QuillTextEditor";
+// import QuillTextEditor from "../QuillTextEditor";
 import LeftNavbar from "../navbar/left-navbar";
 import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
 import { UserContext } from "../../context/userContext";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { GET_PAGES } from "../../graphql/query";
 import three_dots from "../../assets/img/three-dots.svg";
+
+// ===== Import EditorJS =====
+import EditorJs from "react-editor-js";
+import { EDITOR_JS_TOOLS } from "./tools";
+
 import {
   Form,
   Icon,
@@ -39,6 +45,8 @@ function NewPage(props) {
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState("");
 
+  const { refetch: pageRefetch } = useQuery(GET_PAGES);
+
   // ===== User Context Section =====
   const userData = useContext(UserContext);
 
@@ -50,11 +58,15 @@ function NewPage(props) {
     setDescription(value);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  // ===== EditorJS =====
+  const editorJsRef = React.useRef(null);
+  const handleSubmit = React.useCallback(async () => {
+    const savedData = await editorJsRef.current.save();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        createPage({ variables: { description, ...values } })
+        createPage({
+          variables: { ...values, description: JSON.stringify(savedData) }
+        })
           .then(async () => {
             setLoading(true);
             setTimeout(() => {
@@ -62,6 +74,7 @@ function NewPage(props) {
             }, 3000);
             props.form.resetFields();
             setDescription("");
+            pageRefetch();
             await message.success("Page created successfully.", 3);
           })
           .catch(error => {
@@ -69,7 +82,7 @@ function NewPage(props) {
           });
       }
     });
-  };
+  }, []);
 
   const uploadImage = {
     name: "file",
@@ -103,7 +116,7 @@ function NewPage(props) {
           <div className="koompi container">
             <div className="background_container">
               <h1 className="title_new_post">New Page</h1>
-              <Form className="login-form" onSubmit={handleSubmit}>
+              <Form className="login-form">
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
                     <FormItem label="Title: ">
@@ -118,7 +131,7 @@ function NewPage(props) {
                     </FormItem>
 
                     <FormItem label="SubTitle: ">
-                      {getFieldDecorator("subtitle")(<Input size="large" />)}
+                      {getFieldDecorator("subTitle")(<Input size="large" />)}
                     </FormItem>
 
                     <FormItem label="Created By: " style={{ display: "none" }}>
@@ -134,37 +147,14 @@ function NewPage(props) {
                     </FormItem>
 
                     <FormItem label="Description: ">
-                      {getFieldDecorator("description", {
-                        rules: [
-                          {
-                            required: true
-                          }
-                        ],
-                        initialValue: description
-                      })(
-                        <div>
-                          <QuillTextEditor
-                            handleDescChange={handleDescChange}
-                          />
-                        </div>
-                      )}
+                      <EditorJs
+                        instanceRef={instance =>
+                          (editorJsRef.current = instance)
+                        }
+                        tools={EDITOR_JS_TOOLS}
+                        placeholder="Let's write an awesome story!"
+                      />
                     </FormItem>
-
-                    <div>
-                      <Button
-                        type="primary"
-                        htmlType="submit"
-                        size="large"
-                        className="btnSubmit"
-                        disabled={loading ? true : false}
-                      >
-                        {loading ? (
-                          <img src={three_dots} alt="btn-loading" height="10" />
-                        ) : (
-                          "Submit"
-                        )}
-                      </Button>
-                    </div>
                   </Col>
 
                   <Col span={8}>
@@ -228,6 +218,22 @@ function NewPage(props) {
                         ]
                       })(<TextArea rows={4} />)}
                     </FormItem>
+                    <div style={{ float: "right" }}>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        size="large"
+                        className="btnSubmit"
+                        disabled={loading ? true : false}
+                        onClick={handleSubmit}
+                      >
+                        {loading ? (
+                          <img src={three_dots} alt="btn-loading" height="10" />
+                        ) : (
+                          "Submit"
+                        )}
+                      </Button>
+                    </div>
                   </Col>
                 </Row>
               </Form>
