@@ -7,28 +7,11 @@ const cookieParser = require("cookie-parser"); // parse cookie header
 const cors = require("cors");
 const app = express();
 const schema = require("./schema/schema");
+const api = require("./api/schema");
 const graphqlHTTP = require("express-graphql");
 const jwt = require("jsonwebtoken");
 const fileUpload = require("express-fileupload");
 const path = require("path");
-
-// ===== User Models =====
-const User = require("./models/User");
-const { MongoURI, ACCESS_TOKEN_SECRET } = process.env;
-
-// ===== Authentication =====
-const isAuth = (req, res, next) => {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-  if (!token) return res.status(401).send("Access Denied");
-  try {
-    const verified = jwt.verify(token, ACCESS_TOKEN_SECRET);
-    req.user = verified;
-    next();
-  } catch (error) {
-    res.status(400).send("invalid token");
-  }
-};
 
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
@@ -55,15 +38,48 @@ app.use(cookieParser());
 // set up cors to allow us to accept requests from our client
 app.use(
   cors({
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    origin: ["http://localhost:3000", "http://localhost:3001"], // allow to server to accept request from different origin
     credentials: true // allow session cookie from browser to pass through
   })
 );
 
+// ===== User Models =====
+const User = require("./models/User");
+const { MongoURI, ACCESS_TOKEN_SECRET } = process.env;
+
+// ===== Authentication =====
+const isAuth = (req, res, next) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  if (!token) return res.status(401).send("Access Denied");
+  try {
+    const verified = jwt.verify(token, ACCESS_TOKEN_SECRET);
+    req.user = verified;
+    next();
+  } catch (error) {
+    res.status(400).send("invalid token");
+  }
+};
+
 app.use(
   "/admin",
+  // isAuth,
   graphqlHTTP({
     schema,
+    graphiql: true,
+    customFormatErrorFn: error => ({
+      message: error.message,
+      state: error.originalError && error.originalError.state,
+      locations: error.locations,
+      path: error.path
+    })
+  })
+);
+
+app.use(
+  "/api",
+  graphqlHTTP({
+    schema: api,
     graphiql: true,
     customFormatErrorFn: error => ({
       message: error.message,

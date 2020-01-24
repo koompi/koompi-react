@@ -196,6 +196,12 @@ p {
   .ant-tabs-nav {
     float: left !important;
   }
+  .title-big-name {
+    margin-top: 86px !important;
+  }
+  .boss-of-about {
+    margin-bottom: -50px !important;
+  }
 }
 @media only screen and (max-width: 1119px) {
   .container {
@@ -758,9 +764,10 @@ button[type="submit"]:hover,
   font-size: 18px;
 }
 .veasna-pic {
-  width: 71%;
+  max-width: 100%;
   display: block;
-  height: 71%;
+  width: 220px !important;
+  height: 220px;
   box-shadow: 4px 4px 16px #cdcdcd;
   border-radius: 1000px;
 }
@@ -780,17 +787,48 @@ button[type="submit"]:hover,
   border-radius: 12px !important;
   box-shadow: 4px 4px 16px #cdcdcd !important;
 }
+.ant-cart-borders {
+  background: #f0f3f7 !important;
+  border: 1px solid #f0f3f7 !important;
+  border-radius: 12px !important;
+  box-shadow: 4px 4px 16px #cdcdcd !important;
+}
 .what-we-do {
   margin-top: 100px !important;
 }
-/* .Koompi-os-security {
-  box-shadow: 4px 4px 16px #cdcdcd;
+.title-big-name {
+  margin-top: 370px;
+  margin-bottom: 40px;
+  font-weight: 700;
 }
-.koompi-os-privacy {
-  box-shadow: 4px 4px 16px #cdcdcd;
-  background-color: #ffffff;
-  border-radius: 10px;
+.boss-of-about {
+  margin-bottom: -319px;
+}
+
+.backgroud-news {
+  background-color: #e6e6e6;
+  overflow: hidden;
+  height: 600px;
+}
+.Row-news {
+  margin-top: 120px;
+}
+/* .banner-retailer {
+  background-image: url("/img/Koompi_Retailer.png");
+  height: 590px;
+  background-size: 60%;
+  background-position: 50%;
+  background-repeat: no-repeat;
 } */
+.boss-banner-retailer {
+  background-color: #e6e6e6;
+}
+.title-retailer-banner {
+  margin-top: 128px;
+}
+.text-of-retailer {
+  font-size: 20px;
+}
 
 /* Vuthy */
 
