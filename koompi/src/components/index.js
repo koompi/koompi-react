@@ -2,40 +2,61 @@ import React, { useState } from 'react';
 import { Row, Col } from 'antd';
 import { Player, ControlBar } from 'video-react';
 import Modal from 'react-responsive-modal';
+import { BackTop } from 'antd';
 import Particles from 'react-particles-js';
-import parse from 'html-react-parser';
-import { Button, Icon, Result } from 'antd';
-import Navbar from './navbar';
 import { useQuery } from '@apollo/react-hooks';
+import EditorJs from 'react-editor-js';
+import parse from 'html-react-parser';
+import {
+  content,
+  Layout,
+  Button,
+  Menu,
+  Dropdown,
+  Breadcrumb,
+  Icon
+} from 'antd';
+import Navbar from './navbar';
+import { Typography, Divider } from 'antd';
 import { GET_PAGES } from './graphql/query';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-import renderHTML from './editorJsToHtml';
+import { Link } from 'react-router-dom';
 
-function Index() {
-  // ===== State Management =====
-  const [stateModal, setStateModal] = useState([{ open: true }]);
+const { Title, Paragraph, Text } = Typography;
 
-  const { error, loading } = useQuery(GET_PAGES);
+const { Header, Content, Footer } = Layout;
+const koompiPro = [{ img: '/img/Macbook.png' }];
+const koompiE11 = [{ img: '/img/0.png' }];
 
-  if (error) {
-    if (error.networkError) {
-      return (
-        <Result
-          status="500"
-          title="500"
-          subTitle="Sorry, the server is wrong."
-        />
-      );
+function renderHTML(data) {
+  let result = ``;
+  for (let block of JSON.parse(data).blocks) {
+    switch (block.type) {
+      case 'paragraph':
+        result += `<p>${block.data.text}</p>`;
+        break;
+      case 'header':
+        result += `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
+        break;
     }
   }
+  return result;
+}
 
-  if (loading) {
-    NProgress.start();
-    return null;
-  }
-  NProgress.done();
+function Index() {
+  const [state, setState] = useState(koompiPro);
+  const menu = (
+    <Menu>
+      <Menu.Item key="0">
+        <a onClick={() => setState(koompiE11)}>KOOMPI E11</a>
+      </Menu.Item>
+      <Menu.Item key="1">
+        <a href="http://www.taobao.com/">KOOMPI B14</a>
+      </Menu.Item>
+      <Menu.Item key="3">KOOMPI B15</Menu.Item>
+    </Menu>
+  );
 
+  const [stateModal, setStateModal] = useState([{ open: true }]);
   const onOpenModal = () => {
     setStateModal({ open: true });
   };
@@ -46,12 +67,14 @@ function Index() {
 
   // ===== Handle Display KOOMPI E =====
   const Display_Koompi_E = () => {
-    const { data } = useQuery(GET_PAGES);
+    const { error, loading, data } = useQuery(GET_PAGES);
+    if (error) console.log(error);
+    if (loading) return 'loading ...';
     if (data) {
       const res = renderHTML(data.pages[0].description);
       return (
         <>
-          <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+          <Col sm={12}>
             <center>
               <div className="banner_content">
                 {/* ========= KOOMPI SECTION =========  */}
@@ -94,7 +117,7 @@ function Index() {
               </div>
             </center>
           </Col>
-          <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+          <Col sm={12}>
             <center>
               <div className="index_banner">
                 <img src={`http://localhost:8080` + data.pages[0].image}></img>
@@ -108,7 +131,9 @@ function Index() {
 
   // ===== Handle to Display KOOMPI E11 =====
   const Display_Koompi_E11 = () => {
-    const { data } = useQuery(GET_PAGES);
+    const { error, loading, data } = useQuery(GET_PAGES);
+    if (error) console.log(error);
+    if (loading) return 'loading...';
     if (data) {
       const res = renderHTML(data.pages[2].description);
       return (
@@ -134,7 +159,9 @@ function Index() {
 
   // ===== Handle to Display KOOMPI OS =====
   const Display_OS_Section = () => {
-    const { data } = useQuery(GET_PAGES);
+    const { error, loading, data } = useQuery(GET_PAGES);
+    if (error) console.log(error);
+    if (loading) return 'loading...';
     if (data) {
       const res = renderHTML(data.pages[1].description);
       return (
@@ -155,6 +182,7 @@ function Index() {
       );
     }
   };
+
   return (
     <React.Fragment>
       <Navbar />

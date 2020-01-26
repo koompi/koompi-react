@@ -167,6 +167,284 @@ p {
 .shopDesc {
   font-size: 18px !important;
 }
+@media only screen and (max-width: 574px) {
+  .img-show-all-section img {
+    max-width: 100%;
+    height: auto !important;
+  }
+}
+@media only screen and (max-width: 518px) {
+  .title-show-all-section {
+    margin-left: auto !important;
+  }
+  .li-show-all-section {
+    margin-left: auto !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .upperSpec {
+    display: none;
+  }
+  .banner2 {
+    height: auto !important;
+  }
+  .banner1 {
+    height: auto !important;
+  }
+  .banner3 {
+    height: auto !important;
+  }
+  .show-padding-powerBatter {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .title-of-powerBattery-show {
+    font-size: 30px !important;
+  }
+  .title-of-slim {
+    font-size: 30px !important;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .upperSpec-width-767px {
+    display: none;
+  }
+}
+@media only screen and (max-width: 989px) {
+  .img-show-all-section img {
+    height: auto !important;
+    max-width: 100% !important;
+  }
+  .title-show-all-section {
+    margin-left: 0 !important;
+  }
+  .li-show-all-section {
+    margin-left: 0 !important;
+  }
+}
+.upperSpec-width-767px h1 {
+  font-size: 20px !important;
+  color: #fff;
+}
+.upperSpec-width-767px span {
+  color: #63636e !important;
+}
+
+.p-of-performance {
+  font-size: 22px;
+  color: #63636e !important;
+}
+.upperSpec {
+  line-height: 12px !important;
+  margin-bottom: 41px;
+}
+.upperSpec h1 {
+  font-size: 43px;
+  color: #fff;
+}
+.upperSpec span {
+  color: #63636e;
+}
+.Performance {
+  margin: 130px 0 60px 0;
+}
+.Keybaord {
+  margin-top: 130px;
+}
+.main-banner-koompi-b {
+  margin-top: 130px;
+}
+/* .Carousel1 {
+	background-image: url('/img/matebookxpro2019-grey.png');
+	height: 800px;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
+	margin: 0 auto;
+	background-size: contain;
+} */
+.professional-performance {
+  background-color: black;
+  overflow: hidden;
+  margin-top: 56px !important;
+}
+.professional-performance-h {
+  color: white !important;
+  margin-top: 61px;
+}
+.professional-performance-p {
+  color: #63636e !important;
+  font-size: 21px;
+}
+.performance-koompi-b {
+  color: white !important;
+}
+.Microchip {
+  margin-top: 60px;
+  margin-bottom: 55px;
+}
+.background-color {
+  background-color: #121217;
+}
+.banner-overview {
+  /* max-width: 1143px; */
+  max-width: 100%;
+}
+.ant-tabs-bar {
+  /* background-color: #121217; */
+  width: 700px;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+.KoompiE11 {
+  margin-bottom: 0.5em;
+  font-weight: 700 !important;
+  font-size: 35px !important;
+  color: #008af4 !important;
+}
+.KoompiPro {
+  margin-top: 90px;
+  color: #63636e !important;
+}
+.p-of-powerBattery {
+  font-size: 21px;
+  color: #63636e !important;
+}
+.title-of-powerBattery {
+  color: #63636e !important;
+}
+.p-power-batter-show {
+  color: #63636e !important;
+}
+.title-of-powerBattery-show {
+  color: white !important;
+  margin-bottom: 4px !important;
+}
+.title-of-powerBattery-show span {
+  font-size: 18px !important;
+}
+.show-padding-powerBatter {
+  padding-left: 114px;
+  padding-right: 114px;
+}
+.title-of-voidCommand {
+  color: #63636e !important;
+}
+.p-of-voidCommand {
+  color: #63636e !important;
+  font-size: 23px;
+}
+.text-koompi-section-banner {
+  color: black;
+  font-size: 18px;
+  /* margin-top: 50px; */
+}
+.text-koompiePro-banner {
+  color: white;
+  font-size: 18px;
+  padding: 0px 0px !important;
+}
+.tittle-koompiPro-banner {
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
+  margin-top: 60px;
+}
+.text-koompib14-banner {
+  color: black;
+  font-size: 23px;
+}
+.text-koompib15-banner {
+  color: black;
+  font-size: 23px;
+}
+.img-show-all-section img {
+  height: 200px;
+  max-width: 100%;
+}
+.li-show-all-section {
+  /* margin-left: 145px; */
+  font-size: 16px;
+  line-height: 30px;
+}
+.title-show-all-section {
+  margin-left: 145px;
+  margin-top: 30px;
+}
+.button-show-all-section button {
+  margin-top: 30px;
+  border-radius: 35px !important;
+}
+.link-show-all-section {
+  padding: 12px;
+  font-size: 16px;
+}
+.icon-right {
+  font-size: 9px;
+}
+.boss-show-all-section {
+  margin-top: 45px;
+}
+.subboss-show-all-section {
+  margin-top: 58px;
+}
+.read_more {
+  border: 0px !important;
+  border-radius: 15px !important;
+  padding: 0px 30px !important;
+  margin-top: 10px;
+}
+.banner_content {
+  position: absolute;
+  top: 15vh;
+}
+.index_banner {
+  position: relative;
+}
+.index_banner img {
+  position: absolute;
+  transform: scale(1.8) !important;
+  width: 90%;
+  top: 20vh !important;
+  left: 10vw;
+}
+.koompi_content {
+  margin: 40px 0px;
+}
+.voice-text {
+  font-size: 23px;
+  color: #63636e !important;
+  margin-top: 18px;
+}
+.boss-voice {
+  margin-top: 90px !important;
+}
+.boss-command {
+  margin-top: 75px;
+}
+.command-text {
+  font-size: 23px;
+  color: #63636e !important;
+  margin-top: 18px;
+}
+.title-of-slim {
+  color: #fff !important;
+  margin-bottom: 4px !important;
+}
+.text-of-slim {
+  font-size: 21px;
+  color: #63636e !important;
+  margin-top: 18px;
+}
+.boss-of-slim {
+  margin-top: 56px;
+}
+/* .title-of-slim {
+	color: white !important;
+	margin-bottom: 4px !important;
+} */
 
 .KoompiPRICE {
   font-size: 25px;
@@ -1077,171 +1355,4 @@ button[type='submit']:hover,
 }
 .ant-collapse-content > .ant-collapse-content-box {
   padding: 15px !important;
-}
-
-/*=====================================================
-=            Bootstrap 2.3.2 Media Queries            =
-=====================================================*/
-@media only screen and (max-width: 1200px) {
-  .container {
-    width: 80% !important;
-  }
-  .index_banner img {
-    transform: scale(1) !important;
-    position: relative !important;
-    width: 100% !important;
-    top: 0vh !important;
-    left: 0vw !important;
-  }
-  .banner {
-    background-color: whitesmoke;
-    overflow: hidden;
-    position: relative;
-    padding: 0px 0px;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    height: 80vh !important;
-  }
-  .banner_content {
-    position: relative;
-    top: 48px;
-  }
-  .indexPlayButton {
-    margin-top: 50px;
-    margin-bottom: 120px;
-  }
-  .PhnomPenh {
-    height: 400px;
-    position: absolute;
-    width: 100%;
-    background-repeat: no-repeat;
-    left: 0;
-    opacity: 0.03;
-    bottom: 0;
-  }
-  .banner1 {
-    height: 80vh !important;
-  }
-  .subBanner-koompiPro img {
-    height: auto !important;
-  }
-  .koompi_section_position {
-    width: 80% !important;
-  }
-  .banner1 canvas {
-    display: none;
-  }
-  .koompi-logo-koompi-os-section {
-    display: none;
-  }
-  .koompi-os-index-desc {
-    width: 100% !important;
-  }
-  .koompi-page-container {
-    width: 95%;
-  }
-  .area {
-    display: none;
-  }
-  .margin-display-koompiE11 {
-    margin-top: 40px !important;
-  }
-  .switch-koompi-container {
-    width: 40% !important;
-  }
-  .koompi-width {
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: 979px) {
-}
-
-@media only screen and (max-width: 800px) {
-  .container {
-    width: 80% !important;
-  }
-  .index_banner img {
-    transform: scale(1.1) !important;
-    position: relative !important;
-    width: 100% !important;
-    top: 0vh !important;
-    left: 0vw !important;
-  }
-  .banner {
-    background-color: whitesmoke;
-    overflow: hidden;
-    position: relative;
-    padding: 0px 0px;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    height: 70vh !important;
-  }
-  .banner_content {
-    position: relative;
-    top: 48px;
-  }
-  .indexPlayButton {
-    margin-top: 50px;
-    margin-bottom: 120px;
-  }
-  .PhnomPenh {
-    height: 400px;
-    position: absolute;
-    width: 100%;
-    background-repeat: no-repeat;
-    left: 0;
-    opacity: 0.03;
-    bottom: 0;
-  }
-  .banner1 {
-    height: 70vh !important;
-  }
-  .subBanner-koompiPro img {
-    height: auto !important;
-  }
-  .koompi_section_position {
-    width: 80% !important;
-  }
-  .banner1 canvas {
-    display: none;
-  }
-  .koompi-logo-koompi-os-section {
-    display: none;
-  }
-  .koompi-os-index-desc {
-    width: 100% !important;
-  }
-  .koompi-e-section-desc {
-    font-size: 22px !important;
-  }
-  .koompi-screen-section h3 {
-    font-size: 70px;
-    top: -65px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .banner {
-    background-color: whitesmoke;
-    overflow: hidden;
-    position: relative;
-    padding: 0px 0px;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    height: 100vh !important;
-  }
-  .banner_content {
-    position: relative;
-    top: 0;
-  }
-}
-
-@media only screen and (max-width: 320px) {
 }
