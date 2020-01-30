@@ -7,6 +7,7 @@ const CategoryType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLString },
     title: { type: GraphQLString },
+    slug: { type: GraphQLString },
     created_by: { type: GraphQLString },
     updated_by: { type: GraphQLString },
     created_at: { type: GraphQLString },

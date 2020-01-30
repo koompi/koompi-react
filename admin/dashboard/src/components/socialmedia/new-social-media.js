@@ -9,7 +9,7 @@ import { UserContext } from "../../context/userContext";
 import three_dots from "../../assets/img/three-dots.svg";
 
 // ===== Query and Mutation Section =====
-import { CREATE_RETAILER } from "../../graphql/mutation";
+import { CREATE_SOCIAL_MEDIA } from "../../graphql/mutation";
 import { GET_RETAILERS } from "../../graphql/query";
 
 import {
@@ -43,7 +43,7 @@ function NewSocialMedia(props) {
   // ===== User Context Section =====
   const userData = useContext(UserContext);
   const { refetch: refetchRetailer } = useQuery(GET_RETAILERS);
-  const [createRetailer] = useMutation(CREATE_RETAILER);
+  const [addSocailMedia] = useMutation(CREATE_SOCIAL_MEDIA);
 
   const uploadImage = {
     name: "file",
@@ -70,7 +70,7 @@ function NewSocialMedia(props) {
       if (!err) {
         console.log(values);
 
-        createRetailer({ variables: { ...values } })
+        addSocailMedia({ variables: { ...values } })
           .then(async () => {
             setLoading(true);
             setTimeout(() => {
@@ -78,7 +78,7 @@ function NewSocialMedia(props) {
             }, 3000);
             refetchRetailer();
             props.form.resetFields();
-            await message.success("Member added successfully.", 3);
+            await message.success("Socail Media added successfully.", 3);
           })
           .catch(error => {
             console.log(error);

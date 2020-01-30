@@ -126,12 +126,12 @@ function NewRetailer(props) {
                       )(<Input size="large" />)}
                     </FormItem>
 
-                    <FormItem label="Location: ">
+                    <FormItem label="Link Location: ">
                       {getFieldDecorator("location", {
                         rules: [
                           {
                             required: true,
-                            message: "Location is required"
+                            message: "Link Location is required"
                           }
                         ]
                       })(<Input size="large" />)}

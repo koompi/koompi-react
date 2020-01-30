@@ -111,9 +111,8 @@ function Retailers() {
                   <img
                     src={`http://localhost:8080${logo}`}
                     alt={name}
-                    height="50px"
-                    width="50px"
-                    style={{ borderRadius: "50%" }}
+                    height="30px"
+                    width="auto"
                   />
                 ),
                 name,

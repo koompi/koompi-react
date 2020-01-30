@@ -115,7 +115,7 @@ function EditRetailer(props) {
           {/* ======= Display content ====== */}
           <div className="koompi container">
             <div className="background_container">
-              <h1 className="title_new_post">Add Member</h1>
+              <h1 className="title_new_post">Update Retailer</h1>
 
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Row gutter={[24, 8]}>
@@ -143,12 +143,12 @@ function EditRetailer(props) {
                       })(<Input size="large" />)}
                     </FormItem>
 
-                    <FormItem label="Location: ">
+                    <FormItem label="Link Location: ">
                       {getFieldDecorator("location", {
                         rules: [
                           {
                             required: true,
-                            message: "Location is required"
+                            message: "Link Location is required"
                           }
                         ],
                         initialValue: retailerData.retailer.location

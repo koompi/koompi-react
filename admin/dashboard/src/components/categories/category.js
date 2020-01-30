@@ -5,6 +5,7 @@ import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import slugify from "slugify";
 
 import { UserContext } from "../../context/userContext";
 import three_dots from "../../assets/img/three-dots.svg";
@@ -56,6 +57,12 @@ function Category(props) {
       sorter: (a, b) => a.title.length - b.title.length
     },
     {
+      title: "Slug",
+      dataIndex: "slug",
+      onFilter: (value, record) => record.title.indexOf(value) === 0,
+      sorter: (a, b) => a.title.length - b.title.length
+    },
+    {
       title: "Author",
       dataIndex: "created_by",
       sorter: (a, b) => a.created_by.length - b.created_by.length
@@ -92,18 +99,17 @@ function Category(props) {
             return {
               key: cate.id,
               title: cate.title,
+              slug: cate.slug,
               created_by: cate.created_by,
               updated_by:
                 cate.updated_by === "" ? "No Update" : cate.updated_by,
               created_at: moment
                 .unix(cate.created_at / 1000)
-                .format("YYYY-MM-DD HH:mm:ss"),
+                .format("YYYY-MM-DD"),
               updated_at:
                 cate.updated_at === null
                   ? "No Update"
-                  : moment
-                      .unix(cate.updated_at / 1000)
-                      .format("YYYY-MM-DD HH:mm:ss"),
+                  : moment.unix(cate.updated_at / 1000).format("YYYY-MM-DD"),
               action: (
                 <div>
                   <Link to={`/admin/category/edit/${cate.id}`}>
@@ -141,7 +147,9 @@ function Category(props) {
     e.preventDefault();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        createCategory({ variables: { ...values } })
+        createCategory({
+          variables: { ...values, slug: slugify(values.title, { lower: true }) }
+        })
           .then(async () => {
             setLoading(true);
             setTimeout(() => {

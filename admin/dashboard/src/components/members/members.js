@@ -37,6 +37,11 @@ function Members() {
       key: "fullname"
     },
     {
+      title: "Department",
+      dataIndex: "department",
+      key: "department"
+    },
+    {
       title: "Email",
       dataIndex: "email",
       key: "email"
@@ -100,13 +105,12 @@ function Members() {
                   />
                 ),
                 fullname,
+                department,
                 email,
                 phoneNumber,
 
                 created_by: created_by,
-                created_at: moment
-                  .unix(created_at / 1000)
-                  .format("YYYY-MM-DD HH:mm:ss"),
+                created_at: moment.unix(created_at / 1000).format("YYYY-MM-DD"),
                 action: (
                   <div>
                     <Link to={`/admin/member/edit/${id}`}>

@@ -5,7 +5,7 @@ import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
 import { UserContext } from "../../context/userContext";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-import { GET_PAGES } from "../../graphql/query";
+import { GET_PAGES, GET_CATEGORIES } from "../../graphql/query";
 import three_dots from "../../assets/img/three-dots.svg";
 
 // ===== Import EditorJS =====
@@ -22,7 +22,8 @@ import {
   Upload,
   Select,
   Layout,
-  message
+  message,
+  InputNumber
 } from "antd";
 
 // ===== Query and Mutation Section =====
@@ -43,20 +44,11 @@ function NewPage(props) {
   // ===== state management =====
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState("");
 
   const { refetch: pageRefetch } = useQuery(GET_PAGES);
 
   // ===== User Context Section =====
   const userData = useContext(UserContext);
-
-  const handleSEOChange = value => {
-    console.log(`selected ${value}`);
-  };
-
-  const handleDescChange = value => {
-    setDescription(value);
-  };
 
   // ===== EditorJS =====
   const editorJsRef = React.useRef(null);
@@ -65,7 +57,11 @@ function NewPage(props) {
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         createPage({
-          variables: { ...values, description: JSON.stringify(savedData) }
+          variables: {
+            ...values,
+            description: JSON.stringify(savedData),
+            sectionNumber: values.sectionNumber.toString()
+          }
         })
           .then(async () => {
             setLoading(true);
@@ -73,7 +69,6 @@ function NewPage(props) {
               setLoading(false);
             }, 3000);
             props.form.resetFields();
-            setDescription("");
             pageRefetch();
             await message.success("Page created successfully.", 3);
           })
@@ -103,6 +98,51 @@ function NewPage(props) {
     }
   };
 
+  const DisplayCategories = () => {
+    const { error, loading, data } = useQuery(GET_CATEGORIES);
+    if (error) console.log(error);
+    if (loading) return "Loading ...";
+    if (data.categories.length === 0) {
+      message.error("Please create a category.", 5);
+      return (
+        <Form.Item label="Categories">
+          {getFieldDecorator("category", {
+            rules: [
+              {
+                required: true,
+                message: "Please select your category!"
+              }
+            ]
+          })(<Select placeholder="No Category"></Select>)}
+        </Form.Item>
+      );
+    } else {
+      return (
+        <Form.Item label="Page">
+          {getFieldDecorator("category", {
+            rules: [
+              {
+                required: true,
+                message: "Please select your category!"
+              }
+            ],
+            initialValue: data.categories[0].title
+          })(
+            <Select placeholder="Please select the category" size="large">
+              {data.categories.map(cate => {
+                return (
+                  <Option value={cate.title} key={cate.id}>
+                    {cate.title}
+                  </Option>
+                );
+              })}
+            </Select>
+          )}
+        </Form.Item>
+      );
+    }
+  };
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* =========Left Navbar ======= */}
@@ -115,6 +155,7 @@ function NewPage(props) {
           {/* ======= Display content ====== */}
           <div className="koompi container">
             <div className="background_container">
+              {/* <h1 className="koompi-title-brand">KOOMPI</h1> */}
               <h1 className="title_new_post">New Page</h1>
               <Form className="login-form">
                 <Row gutter={[24, 8]}>
@@ -186,6 +227,33 @@ function NewPage(props) {
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
+
+                    <Row gutter={16}>
+                      <Col span={12}>
+                        {/* ======= Section Number ======= */}
+                        <FormItem label="Section Number: ">
+                          {getFieldDecorator("sectionNumber", {
+                            rules: [
+                              {
+                                required: true,
+                                message: "The Section Number is required"
+                              }
+                            ],
+                            initialValue: 1
+                          })(
+                            <InputNumber
+                              min={1}
+                              size="large"
+                              style={{ width: "100%" }}
+                            />
+                          )}
+                        </FormItem>
+                      </Col>
+                      <Col span={12}>
+                        {/* ======= Category Sections ======= */}
+                        <DisplayCategories />
+                      </Col>
+                    </Row>
 
                     {/* ======= SEO and Keywords ======= */}
                     <FormItem label="SEO or Keywords">

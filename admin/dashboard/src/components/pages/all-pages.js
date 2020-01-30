@@ -29,11 +29,6 @@ import { Link } from "react-router-dom";
 import { GET_PAGES } from "../../graphql/query";
 import { DELETE_PAGE } from "../../graphql/mutation";
 
-// =====  make the first letter of a string uppercase =====
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 const { Content } = Layout;
 
 function AllPages() {
@@ -55,6 +50,17 @@ function AllPages() {
       key: "title"
     },
     {
+      title: "SubTitle",
+      dataIndex: "subTitle",
+      key: "subTitle"
+    },
+    {
+      title: "Page",
+      dataIndex: "category",
+      key: "category",
+      sorter: (a, b) => a.category.length - b.category.length
+    },
+    {
       title: "Author",
       dataIndex: "created_by",
       key: "created_by"
@@ -67,10 +73,6 @@ function AllPages() {
     {
       title: "Updated By",
       dataIndex: "updated_by"
-    },
-    {
-      title: "Updated At",
-      dataIndex: "updated_at"
     },
     {
       title: "Actions",
@@ -95,12 +97,14 @@ function AllPages() {
               const {
                 id,
                 title,
+                subTitle,
+                category,
                 image,
                 created_at,
                 created_by,
-                updated_at,
                 updated_by
               } = page;
+
               return {
                 key: parse(title.substring(0, 30)),
                 image: (
@@ -112,18 +116,20 @@ function AllPages() {
                     style={{ borderRadius: "50%" }}
                   />
                 ),
-                title: title,
-                created_by: created_by,
+                title:
+                  title.substring().length > 25
+                    ? parse(title.substring(0, 25) + "... ")
+                    : parse(title),
+                subTitle:
+                  subTitle === null ? (
+                    <Tag color="red">N/A</Tag>
+                  ) : (
+                    <Tag color="green">{subTitle.toUpperCase()}</Tag>
+                  ),
+                category: category === null ? "No category" : category.title,
+                created_by,
                 updated_by: updated_by === null ? "No Update" : updated_by,
-                created_at: moment
-                  .unix(created_at / 1000)
-                  .format("YYYY-MM-DD HH:mm:ss"),
-                updated_at:
-                  updated_at === null
-                    ? "No Update"
-                    : moment
-                        .unix(updated_at / 1000)
-                        .format("YYYY-MM-DD HH:mm:ss"),
+                created_at: moment.unix(created_at / 1000).format("YYYY-MM-DD"),
                 action: visible ? null : (
                   <div>
                     <Link to={`/admin/page/edit/${id}`}>

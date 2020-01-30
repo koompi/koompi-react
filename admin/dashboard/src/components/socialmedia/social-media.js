@@ -80,11 +80,12 @@ function SocialMedia() {
     setVisible(false);
   };
 
-  const DisplayPost = () => {
+  const DisplaySocailMedia = () => {
     const { error, loading, data, refetch } = useQuery(GET_SOCIAL_MEDIA);
     if (error) console.log(error);
     if (loading) return <Table loading={true}></Table>;
     if (data) {
+      refetch();
       const DisplayTable = () => {
         return (
           <Table
@@ -178,7 +179,7 @@ function SocialMedia() {
 
             <div className="background_container">
               <h1 className="title_new_post">Social Media</h1>
-              <DisplayPost />
+              <DisplaySocailMedia />
             </div>
           </div>
         </Content>

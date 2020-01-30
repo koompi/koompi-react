@@ -15,6 +15,14 @@ const PageSchema = new mongoose.Schema({
   image: {
     type: String
   },
+  category: {
+    type: String,
+    required: true
+  },
+  sectionNumber: {
+    type: Number,
+    required: true
+  },
   keywords: {
     type: [String]
   },

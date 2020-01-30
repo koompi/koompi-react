@@ -140,7 +140,7 @@ function EditMember(props) {
                             message: "Please select member department!"
                           }
                         ],
-                        initialValue: "software-team"
+                        initialValue: memberData.member.department
                       })(
                         <Select>
                           <Option value="business-development">

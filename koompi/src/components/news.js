@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Typography, Card, Button } from 'antd';
+import { Row, Col, Typography, Card, Button, Tag } from 'antd';
 import Navbar from './navbar';
 import Footer from './footer';
 const { Title, Paragraph, Text } = Typography;
@@ -9,7 +9,13 @@ function News() {
       <Navbar />
       <div className="backgroud-news">
         <div className="container">
-          <Row className="Row-news" gutter={[48, 0]}>
+          <Row className="Row-news" gutter={16}>
+            <Col sm={12}>
+              <img
+                style={{ maxWidth: '100%' }}
+                src="/img/svg-img/undraw_newspaper_k72w.svg"
+              />
+            </Col>
             <Col sm={12}>
               <Title>News and Event</Title>
               <Paragraph className="about-paragraph">
@@ -22,117 +28,57 @@ function News() {
                 PionuxOS based on the well-known open-source Linux software.
               </Paragraph>
             </Col>
-            <Col sm={12}>
-              <img
-                style={{ maxWidth: '100%' }}
-                src="/img/svg-img/undraw_newspaper_k72w.svg"
-              />
-            </Col>
           </Row>
         </div>
       </div>
       <div
         style={{ marginTop: '90px', marginBottom: '50px' }}
-        className="container "
+        className="container"
       >
-        <Card
-          style={{
-            boxShadow: '4px 4px 16px #cdcdcd',
-            background: '#f0f3f7'
-          }}
-        >
-          <Row>
-            <Col sm={10}>
-              <img style={{ maxWidth: '100%' }} src="/img/Macbook.png" />
-            </Col>
-            <Col sm={14}>
-              <h1>Projects</h1>
+        <Row gutter={24}>
+          <Col span={12}>
+            <Card
+              cover={
+                <img
+                  alt="example"
+                  src="https://image.freepik.com/free-vector/abstract-christmas-background-with-purple-neon-grids-city_73729-61.jpg"
+                />
+              }
+            >
+              <p>
+                <Tag color="blue">Date: 2020, Jan 29</Tag>
+              </p>
+              <h1 className="news-and-events-title">
+                Share your best iPhone Night mode photos
+              </h1>
               <p>
                 We've created a customized operating system of our own called
                 We've created a customized operating system of our own called
               </p>
-              <Button type="primary">Readmore</Button>
-            </Col>
-          </Row>
-        </Card>
-      </div>
-
-      <div
-        style={{ marginTop: '90px', marginBottom: '50px' }}
-        className="container "
-      >
-        <Card
-          style={{
-            boxShadow: '4px 4px 16px #cdcdcd',
-            background: '#f0f3f7'
-          }}
-        >
-          <Row>
-            <Col sm={10}>
-              <img style={{ maxWidth: '100%' }} src="/img/Macbook.png" />
-            </Col>
-            <Col sm={14}>
-              <h1>Projects</h1>
+            </Card>
+          </Col>
+          <Col span={12}>
+            <Card
+              cover={
+                <img
+                  alt="example"
+                  src="https://image.freepik.com/free-vector/abstract-christmas-background-with-purple-neon-grids-city_73729-61.jpg"
+                />
+              }
+            >
+              <p>
+                <Tag color="blue">Date: 2020, Jan 29</Tag>
+              </p>
+              <h1 className="news-and-events-title">
+                Share your best iPhone Night mode photos
+              </h1>
               <p>
                 We've created a customized operating system of our own called
                 We've created a customized operating system of our own called
               </p>
-              <Button type="primary">Readmore</Button>
-            </Col>
-          </Row>
-        </Card>
-      </div>
-
-      <div
-        style={{ marginTop: '90px', marginBottom: '50px' }}
-        className="container "
-      >
-        <Card
-          style={{
-            boxShadow: '4px 4px 16px #cdcdcd',
-            background: '#f0f3f7'
-          }}
-        >
-          <Row>
-            <Col sm={10}>
-              <img style={{ maxWidth: '100%' }} src="/img/Macbook.png" />
-            </Col>
-            <Col sm={14}>
-              <h1>Projects</h1>
-              <p>
-                We've created a customized operating system of our own called
-                We've created a customized operating system of our own called
-              </p>
-              <Button type="primary">Readmore</Button>
-            </Col>
-          </Row>
-        </Card>
-      </div>
-
-      <div
-        style={{ marginTop: '90px', marginBottom: '50px' }}
-        className="container "
-      >
-        <Card
-          style={{
-            boxShadow: '4px 4px 16px #cdcdcd',
-            background: '#f0f3f7'
-          }}
-        >
-          <Row>
-            <Col sm={10}>
-              <img style={{ maxWidth: '100%' }} src="/img/Macbook.png" />
-            </Col>
-            <Col sm={14}>
-              <h1>Projects</h1>
-              <p>
-                We've created a customized operating system of our own called
-                We've created a customized operating system of our own called
-              </p>
-              <Button type="primary">Readmore</Button>
-            </Col>
-          </Row>
-        </Card>
+            </Card>
+          </Col>
+        </Row>
       </div>
 
       <Footer />

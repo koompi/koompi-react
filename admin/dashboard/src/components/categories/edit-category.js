@@ -5,6 +5,7 @@ import TopNavbar from "../navbar/top-navbar";
 import PageFooter from "../footer";
 import { UserContext } from "../../context/userContext";
 import three_dots from "../../assets/img/three-dots.svg";
+import slugify from "slugify";
 
 // ===== Query Section =====
 import { EDIT_CATEGORY } from "../../graphql/query";
@@ -32,7 +33,8 @@ function EditCategory(props) {
         updateCategory({
           variables: {
             id: window.location.pathname.split("/")[4],
-            ...values
+            ...values,
+            slug: slugify(values.title, { lower: true })
           }
         })
           .then(async () => {
@@ -44,7 +46,7 @@ function EditCategory(props) {
             await props.history.push("/admin/categories");
           })
           .catch(error => {
-            message.error(error.graphQLErrors[0].message, 5);
+            message.error(error);
           });
       }
     });

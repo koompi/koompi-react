@@ -60,10 +60,11 @@ const DELETE_USER = gql`
 `;
 
 const CREATE_CATEGORY = gql`
-  mutation($title: String!, $created_by: String!) {
-    create_category(title: $title, created_by: $created_by) {
+  mutation($title: String!, $slug: String!, $created_by: String!) {
+    create_category(title: $title, slug: $slug, created_by: $created_by) {
       id
       title
+      slug
       created_by
       created_at
     }
@@ -82,17 +83,20 @@ const UPDATE_CATEGORY = gql`
   mutation(
     $id: String!
     $title: String!
+    $slug: String!
     $updated_by: String!
     $updated_at: String!
   ) {
     update_category(
       id: $id
       title: $title
+      slug: $slug
       updated_by: $updated_by
       updated_at: $updated_at
     ) {
       id
       title
+      slug
     }
   }
 `;
@@ -174,6 +178,8 @@ const CREATE_PAGE = gql`
     $created_by: String!
     $description: String!
     $image: String
+    $category: String!
+    $sectionNumber: String!
     $keywords: [String]!
     $meta_desc: String!
   ) {
@@ -182,7 +188,9 @@ const CREATE_PAGE = gql`
       subTitle: $subTitle
       created_by: $created_by
       description: $description
+      sectionNumber: $sectionNumber
       image: $image
+      category: $category
       keywords: $keywords
       meta_desc: $meta_desc
     ) {
@@ -209,6 +217,8 @@ const UPDATE_PAGE = gql`
     $subTitle: String
     $description: String!
     $image: String
+    $category: String!
+    $sectionNumber: String!
     $keywords: [String]!
     $meta_desc: String!
     $updated_by: String!
@@ -220,6 +230,8 @@ const UPDATE_PAGE = gql`
       subTitle: $subTitle
       description: $description
       image: $image
+      category: $category
+      sectionNumber: $sectionNumber
       keywords: $keywords
       meta_desc: $meta_desc
       updated_by: $updated_by
@@ -360,6 +372,27 @@ const UPDATE_RETAILER = gql`
   }
 `;
 
+const CREATE_SOCIAL_MEDIA = gql`
+  mutation(
+    $name: String!
+    $link: String!
+    $logo: String!
+    $created_by: String!
+  ) {
+    add_social_media(
+      name: $name
+      link: $link
+      logo: $logo
+      created_by: $created_by
+    ) {
+      name
+      link
+      logo
+      created_by
+    }
+  }
+`;
+
 const DELETE_SOCIAL_MEDIA = gql`
   mutation($id: String!) {
     delete_social_media(id: $id) {
@@ -399,6 +432,7 @@ export {
   CREATE_RETAILER,
   DELETE_RETAILER,
   UPDATE_RETAILER,
+  CREATE_SOCIAL_MEDIA,
   DELETE_SOCIAL_MEDIA,
   UPDATE_SOCIAL_MEDIA,
   UPDATE_USER

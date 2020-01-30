@@ -159,6 +159,7 @@ const RootMutation = new GraphQLObjectType({
       type: CategoryType,
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
+        slug: { type: new GraphQLNonNull(GraphQLString) },
         created_by: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve: (parent, args) => {
@@ -187,6 +188,7 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) },
         title: { type: new GraphQLNonNull(GraphQLString) },
+        slug: { type: new GraphQLNonNull(GraphQLString) },
         updated_at: { type: new GraphQLNonNull(GraphQLString) },
         updated_by: { type: new GraphQLNonNull(GraphQLString) }
       },
@@ -264,6 +266,8 @@ const RootMutation = new GraphQLObjectType({
         created_by: { type: new GraphQLNonNull(GraphQLString) },
         description: { type: new GraphQLNonNull(GraphQLString) },
         image: { type: GraphQLString },
+        category: { type: new GraphQLNonNull(GraphQLString) },
+        sectionNumber: { type: new GraphQLNonNull(GraphQLString) },
         keywords: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
         meta_desc: { type: new GraphQLNonNull(GraphQLString) }
       },
@@ -295,6 +299,8 @@ const RootMutation = new GraphQLObjectType({
         subTitle: { type: GraphQLString },
         description: { type: new GraphQLNonNull(GraphQLString) },
         image: { type: GraphQLString },
+        category: { type: new GraphQLNonNull(GraphQLString) },
+        sectionNumber: { type: new GraphQLNonNull(GraphQLString) },
         keywords: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
         meta_desc: { type: new GraphQLNonNull(GraphQLString) },
         updated_at: { type: new GraphQLNonNull(GraphQLString) },

@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,600i,700,700i,800,800i,900,900i&display=swap');
 * {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   letter-spacing: 0.5px;
 }
 body {
-  background: rgb(240, 243, 247) !important;
+  background: #869fb22b !important;
 }
 .background-color-Koompi-E {
   background-color: #f0f3f7;
@@ -22,13 +21,6 @@ p {
 }
 .background-color {
   overflow: hidden;
-}
-.text-container {
-  max-width: 780px;
-  line-height: 1.5;
-  margin-left: auto;
-  margin-right: auto;
-  /* margin: 0 auto; */
 }
 .laptop-img {
   /* height: 365px; */
@@ -100,9 +92,9 @@ p {
   height: 900px;
 }
 .bossTittle-KoompiHome {
-  color: black;
-  font-size: 35px;
-  font-weight: 700;
+  color: #4a4a4e;
+  font-size: 40px;
+  font-weight: 800;
   /* margin-top: 50px; */
 }
 .subBanner-koompiPro img {
@@ -112,7 +104,7 @@ p {
 }
 .readmore-a {
   padding: 12px;
-  background-color: black;
+  background-color: #374957;
   padding: 5px 20px;
   color: #fff;
   border-radius: 15px;
@@ -140,7 +132,7 @@ p {
 .subTittle-E11 {
   font-weight: 500 !important;
   width: 85% !important;
-  margin-bottom: 50px !important;
+  margin-bottom: 10px !important;
   font-size: 22px !important;
 }
 
@@ -266,7 +258,7 @@ p {
 	background-size: contain;
 } */
 .professional-performance {
-  background-color: black;
+  background-color: #374957;
   overflow: hidden;
   margin-top: 56px !important;
 }
@@ -300,7 +292,7 @@ p {
 }
 .KoompiE11 {
   margin-bottom: 0.5em;
-  font-weight: 700 !important;
+  font-weight: 900 !important;
   font-size: 35px !important;
   color: #008af4 !important;
 }
@@ -337,7 +329,7 @@ p {
   font-size: 23px;
 }
 .text-koompi-section-banner {
-  color: black;
+  color: #374957;
   font-size: 18px;
   /* margin-top: 50px; */
 }
@@ -348,16 +340,16 @@ p {
 }
 .tittle-koompiPro-banner {
   color: white;
-  font-size: 50px;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 800;
   margin-top: 60px;
 }
 .text-koompib14-banner {
-  color: black;
+  color: #374957;
   font-size: 23px;
 }
 .text-koompib15-banner {
-  color: black;
+  color: #374957;
   font-size: 23px;
 }
 .img-show-all-section img {
@@ -510,7 +502,7 @@ p {
 	background-size: contain;
 } */
 .professional-performance {
-  background-color: black;
+  background-color: #374957;
   overflow: hidden;
   margin-top: 56px !important;
 }
@@ -582,27 +574,21 @@ p {
   font-size: 23px;
 }
 .text-koompi-section-banner {
-  color: black;
+  color: #374957;
   font-size: 18px;
   /* margin-top: 50px; */
 }
 .text-koompiePro-banner {
-  color: white;
+  color: #afafaf;
   font-size: 18px;
   padding: 0px 0px !important;
 }
-.tittle-koompiPro-banner {
-  color: white;
-  font-size: 50px;
-  font-weight: 700;
-  margin-top: 60px;
-}
 .text-koompib14-banner {
-  color: black;
+  color: #374957;
   font-size: 23px;
 }
 .text-koompib15-banner {
-  color: black;
+  color: #374957;
   font-size: 23px;
 }
 .img-show-all-section img {
@@ -700,7 +686,7 @@ p {
 .header-of-slim {
   margin-top: 56px;
   /* color: white !important; */
-  color: black !important ;
+  color: #374957 !important ;
 }
 .banner-overview-koompiE11 {
   /* max-width: 1143px; */
@@ -713,7 +699,7 @@ p {
 }
 .Title-Display-koompiE11 {
   /* color: white !important; */
-  color: black !important;
+  color: #374957 !important;
 }
 .text-Display-koompiE11 {
   font-size: 21px;
@@ -738,7 +724,7 @@ p {
 }
 .title-performance-koompiE11 {
   /* color: white !important; */
-  color: black !important;
+  color: #374957 !important;
 }
 .text-performence-koompiE11 {
   color: #63636e !important;
@@ -829,7 +815,7 @@ p {
   box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid black;
+  border: 1px solid #374957;
   padding: 10px 15px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -840,7 +826,7 @@ p {
   display: block;
   /* margin-bottom: 13px; */
   margin-top: 12px;
-  color: black;
+  color: #374957;
   font-size: 14px;
   font-weight: 200;
 }
@@ -866,10 +852,52 @@ button[type='submit']:hover,
   background-color: red !important;
 }
 .footerBackground {
-  background-color: #121217;
-  height: 40vh;
+  background-color: #1d262d;
+  padding: 20px 0px;
+}
+.footerBackground img {
+  filter: grayscale(90%);
+  opacity: 0.9;
+}
+.footer-container h4 {
+  font-size: 16px !important;
+  font-weight: bold;
+  text-align: left;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
+.footerPMagin p {
+  color: #869fb2 !important;
+  text-align: left;
+  font-size: 16px !important;
+  margin-bottom: 5px;
+  transition: 0.5s;
+}
+.footerPMagin p:hover {
+  color: #fff !important;
+}
+.footer-container {
+  width: 60% !important;
+  margin: 0px auto;
+}
+.copyRight {
+  text-align: center !important;
+  font-size: 20px !important;
+  margin: 20px 0px !important;
+  color: #acb8c1 !important;
+}
+.socailMedia {
+  background-color: #333333;
+  padding: 20px 0px;
+  margin-top: 30px !important;
+}
+.connect-us-with {
+  font-size: 20px !important;
+  color: #ffffff;
+  margin: 10px 0px 20px 0px !important;
+  font-weight: 600;
+}
 .order_summary_title {
   font-weight: 700;
   font-size: 24px !important;
@@ -951,23 +979,12 @@ button[type='submit']:hover,
   font-size: 21px !important;
   color: #63636e !important;
 }
-.backgroud-about {
-  background-color: #e6e6e6;
-  overflow: hidden;
-  height: 600px;
-}
 .Row-about {
-  margin-top: 120px;
+  position: relative;
+  padding: 80px 0px;
 }
 .about-paragraph {
   font-size: 18px;
-}
-.veasna-pic {
-  width: 71%;
-  display: block;
-  height: 71%;
-  box-shadow: 4px 4px 16px #cdcdcd;
-  border-radius: 1000px;
 }
 .components-footer a {
   color: #9b9b9b !important;
@@ -976,7 +993,7 @@ button[type='submit']:hover,
   text-transform: uppercase !important;
 }
 .footer_socail_media img {
-  margin-left: 15px;
+  padding: 5px;
   height: 45px !important;
 }
 .ant-cart-border {
@@ -1217,10 +1234,11 @@ button[type='submit']:hover,
   margin-top: 60px;
 }
 .koompi-os-index-desc {
-  width: 75%;
+  width: 65%;
 }
 .koompi-os-index {
   position: relative;
+  margin-bottom: 80px;
 }
 .koompi-logo-koompi-os-section {
   background: url('/img/favicon.svg');
@@ -1231,6 +1249,20 @@ button[type='submit']:hover,
   height: 500px;
   width: 500px;
   right: 10%;
+  opacity: 0.02;
+  transform: rotate(-36deg);
+  z-index: 0 !important;
+}
+
+.koompi-logo-koompi-pro-section {
+  background: url('/img/favicon.svg');
+  background-repeat: repeat;
+  position: absolute;
+  top: 20%;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 500px;
+  left: 10%;
   opacity: 0.02;
   transform: rotate(-36deg);
 }
@@ -1316,32 +1348,15 @@ button[type='submit']:hover,
   position: relative;
   top: 6px;
 }
-.addToCart {
-  background-color: #ebecee;
-  padding: 20px;
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-  bottom: 0;
-}
 .koompi-price {
   color: rgb(0, 138, 244);
   font-weight: 800;
-  font-size: 70px;
+  font-size: 40px;
   margin: 0px;
   text-shadow: 3px 3px 3px rgba(255, 255, 255, 0.418);
 }
 .koompi-width {
   width: 45%;
-}
-.addToBag {
-  position: relative;
-  top: 35px !important;
-  box-shadow: none !important;
-  font-size: 20px !important;
-  padding: 20px !important;
-  line-height: 0 !important;
-  font-size: 18px !important;
 }
 .ant-collapse-content-box {
   background: #e8e6e6 !important;
@@ -1355,4 +1370,149 @@ button[type='submit']:hover,
 }
 .ant-collapse-content > .ant-collapse-content-box {
   padding: 15px !important;
+}
+.koompiBtn {
+  border: 0px !important;
+  margin: 20px 0px 40px 0px;
+  background-color: #008af436 !important;
+  color: #008af4 !important;
+  border-radius: 30px !important;
+  padding: 0px 25px !important;
+  font-weight: 600 !important;
+  transition: 0.3s;
+}
+
+.koompiBtn a {
+  color: #008af4 !important;
+}
+
+.koompiBtn:hover {
+  background-color: #008af4 !important;
+  color: #fff !important;
+}
+.koompiBtn:hover a {
+  color: #fff !important;
+}
+.koompi-pro-index {
+  background: #f2f2f2;
+  padding: 20px 0px 80px 0px;
+  position: relative;
+}
+.footer-project {
+  background-color: rgb(55, 73, 87);
+  font-size: 14px;
+  padding: 10px;
+}
+.koompiProjectTitle {
+  color: #cae3f8 !important;
+  margin: 0px !important;
+  font-weight: bold;
+}
+.koompiProjects {
+  margin-top: 5px;
+}
+.koompiProjects a {
+  float: right;
+  color: #869fb2 !important;
+  padding-right: 20px;
+  font-weight: 600;
+}
+.subNavbarPosition {
+  position: relative;
+  z-index: 100;
+}
+.shopHere {
+  border: 0px !important;
+  background: #1d262d2d !important;
+  color: #63636e !important;
+  border-radius: 30px !important;
+  padding: 0px 30px !important;
+  height: 25px !important;
+  z-index: 100 !important;
+}
+.shopHere:hover {
+  border: 0px;
+  background: #1d262d !important;
+  color: #cae3f8 !important;
+}
+.shopHere span {
+  font-weight: 600 !important;
+  position: relative !important;
+  z-index: 100 !important;
+}
+.ant-card-bordered {
+  border: 0px !important;
+}
+.boss-banner-retailer {
+  margin: 80px 0px !important;
+}
+.retailers-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1d262db7 !important;
+  position: relative;
+  z-index: 1;
+}
+.cardBackground {
+  background-repeat: repeat;
+  height: 117px;
+  width: 100px;
+  position: absolute;
+  z-index: 1;
+  background-repeat: no-repeat;
+  left: 10px;
+  bottom: 0;
+}
+.ant-card-hoverable {
+  cursor: auto !important;
+}
+.ant-card {
+  height: 100% !important;
+}
+.retailers-logo {
+  width: 75% !important;
+  padding-top: 20px;
+}
+.title-retailer-banner {
+  font-size: 40px;
+  font-weight: 800;
+}
+.ourRetailers {
+  margin: 40px 0px;
+}
+.teamMember {
+  font-size: 35px !important;
+  font-weight: 800;
+}
+.memberName {
+  font-size: 20px;
+  font-weight: bold;
+}
+.memberPhoto {
+  width: 80%;
+}
+.teamDepartment {
+  font-size: 22px;
+  font-weight: bold;
+  color: #545555;
+}
+.backgroud-about {
+  margin-bottom: 80px;
+}
+.aboutPosition h2 {
+  font-size: 28px;
+  font-weight: 800 !important;
+}
+.news-and-events-title {
+  font-size: 24px !important;
+  font-weight: bold;
+}
+.ant-tag-blue {
+  color: #008af4 !important;
+  background: #008af459 !important;
+  border-color: #a6d6fb !important;
+  font-size: 14px !important;
+  padding: 1px 20px !important;
+  border-radius: 30px !important;
+  font-weight: 600 !important;
 }

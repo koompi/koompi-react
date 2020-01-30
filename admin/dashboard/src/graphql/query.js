@@ -31,6 +31,7 @@ const GET_CATEGORIES = gql`
     categories {
       id
       title
+      slug
       created_by
       updated_by
       created_at
@@ -99,6 +100,10 @@ const GET_PAGES = gql`
       id
       title
       subTitle
+      category {
+        title
+      }
+      sectionNumber
       created_by
       description
       meta_desc
@@ -117,6 +122,11 @@ const GET_PAGE = gql`
       id
       title
       subTitle
+      category {
+        title
+        slug
+      }
+      sectionNumber
       created_by
       description
       meta_desc

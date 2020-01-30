@@ -52,6 +52,13 @@ const RootQuery = new GraphQLObjectType({
       resolve: (parent, args) => {
         return Retailer.find();
       }
+    },
+    // ===== Get Socail Media  =====
+    socailMedia: {
+      type: new GraphQLList(SocialMediaType),
+      resolve: (parent, args) => {
+        return SocialMedia.find();
+      }
     }
   }
 });

@@ -105,6 +105,8 @@ function EditPost(props) {
   const handleSubmit = React.useCallback(async () => {
     const savedData = await editorJsRef.current.save();
     props.form.validateFieldsAndScroll((err, values) => {
+      console.log(values);
+
       if (!err) {
         updatePost({
           variables: {
