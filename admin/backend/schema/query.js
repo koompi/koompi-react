@@ -26,7 +26,7 @@ const RootQuery = new GraphQLObjectType({
     users: {
       type: new GraphQLList(UserType),
       resolve: (parent, args) => {
-        return User.find();
+        return User.find().sort({ created_at: -1 });
       }
     },
     // ===== Get User by ID =====
@@ -43,7 +43,7 @@ const RootQuery = new GraphQLObjectType({
     categories: {
       type: new GraphQLList(CategoryType),
       resolve: (parent, args) => {
-        return Category.find();
+        return Category.find().sort({ created_at: -1 });
       }
     },
     // ===== Get Category by ID =====
@@ -60,7 +60,7 @@ const RootQuery = new GraphQLObjectType({
     posts: {
       type: new GraphQLList(PostType),
       resolve: (parent, args) => {
-        return Post.find();
+        return Post.find().sort({ created_at: -1 });
       }
     },
     // ===== Get Post by ID  =====
@@ -77,7 +77,7 @@ const RootQuery = new GraphQLObjectType({
     pages: {
       type: new GraphQLList(PageType),
       resolve: (parent, args) => {
-        return Page.find();
+        return Page.find().sort({ created_at: -1 });
       }
     },
     // ===== Get Page by ID  =====
@@ -94,7 +94,7 @@ const RootQuery = new GraphQLObjectType({
     members: {
       type: new GraphQLList(MemberType),
       resolve: (parent, args) => {
-        return Member.find();
+        return Member.find().sort({ created_at: -1 });
       }
     },
     // ===== Get Member by ID  =====
@@ -111,7 +111,7 @@ const RootQuery = new GraphQLObjectType({
     retailers: {
       type: new GraphQLList(RetailerType),
       resolve: (parent, args) => {
-        return Retailer.find();
+        return Retailer.find().sort({ created_at: -1 });
       }
     },
     // ===== Get Retailer by ID  =====
@@ -128,7 +128,7 @@ const RootQuery = new GraphQLObjectType({
     socialMedia: {
       type: new GraphQLList(SocialMediaType),
       resolve: (parent, args) => {
-        return SocialMedia.find();
+        return SocialMedia.find().sort({ created_at: -1 });
       }
     },
     // ===== Get Retailer by ID  =====

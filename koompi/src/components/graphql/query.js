@@ -56,4 +56,75 @@ const GET_SOCAIL_MEDIA = gql`
   }
 `;
 
-export { GET_PAGES, GET_RETAILERS, GET_MEMBERS, GET_SOCAIL_MEDIA };
+const GET_POSTS = gql`
+  query {
+    posts {
+      id
+      title
+      description
+      category {
+        title
+        slug
+      }
+      meta_desc
+      keywords
+      tags
+      updated_at
+      updated_by
+      created_at
+      thumnail
+    }
+  }
+`;
+
+const GET_POST = gql`
+  query($slug: String!) {
+    post(slug: $slug) {
+      id
+      title
+      slug
+      description
+      category {
+        title
+        slug
+      }
+      meta_desc
+      keywords
+      tags
+      updated_at
+      updated_by
+      created_at
+      thumnail
+    }
+  }
+`;
+
+const SEARCH_POST = gql`
+  query($query: String!) {
+    postSearch(query: $query) {
+      id
+      title
+      category {
+        title
+        slug
+      }
+      meta_desc
+      keywords
+      tags
+      updated_at
+      updated_by
+      created_at
+      thumnail
+    }
+  }
+`;
+
+export {
+  GET_PAGES,
+  GET_RETAILERS,
+  GET_MEMBERS,
+  GET_SOCAIL_MEDIA,
+  GET_POSTS,
+  GET_POST,
+  SEARCH_POST
+};

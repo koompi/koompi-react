@@ -55,6 +55,11 @@ function AllPosts() {
       key: "title"
     },
     {
+      title: "Slug",
+      dataIndex: "slug",
+      key: "slug"
+    },
+    {
       title: "Category",
       dataIndex: "category",
       key: "category"
@@ -63,11 +68,6 @@ function AllPosts() {
       title: "Author",
       dataIndex: "created_by",
       key: "created_by"
-    },
-    {
-      title: "Tags",
-      dataIndex: "tags",
-      key: "tags"
     },
     {
       title: "Date",
@@ -90,14 +90,20 @@ function AllPosts() {
     if (error) console.log(error);
     if (loading) return <Table loading={true}></Table>;
     if (data) {
-      console.log("data", data);
-
       const DisplayTable = () => {
         return (
           <Table
             columns={columns}
             dataSource={data.posts.map(post => {
-              const { id, title, category, tags, created_at, user } = post;
+              const {
+                id,
+                title,
+                category,
+                tags,
+                created_at,
+                user,
+                slug
+              } = post;
               return {
                 key: id,
                 image: (
@@ -111,25 +117,15 @@ function AllPosts() {
                 ),
                 title:
                   title.length <= 25 ? title : title.substring(0, 25) + " ...",
+                slug: slug.length <= 25 ? slug : slug.substring(0, 25) + " ...",
                 category: (
                   <Tag color="green">
                     {category === null ? "No category" : category.title}
                   </Tag>
                 ),
-                tags:
-                  tags.length <= 3
-                    ? tags.map(tag => (
-                        <Tag color="blue" key={tag}>
-                          {tag}
-                        </Tag>
-                      ))
-                    : tags
-                        .slice(0, 3)
-                        .map(tag => <Tag color="blue">{tag}</Tag>),
+
                 created_by: user === null ? "Null" : user.fullname,
-                created_at: moment
-                  .unix(created_at / 1000)
-                  .format("YYYY-MM-DD HH:mm:ss"),
+                created_at: moment.unix(created_at / 1000).format("YYYY-MM-DD"),
                 action: (
                   <div>
                     <Link to={`/admin/post/edit/${id}`}>

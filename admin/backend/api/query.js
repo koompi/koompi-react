@@ -1,4 +1,5 @@
 const graphql = require("graphql");
+
 const { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLID } = graphql;
 
 // ======== Models Section =========
@@ -38,6 +39,36 @@ const RootQuery = new GraphQLObjectType({
       }
     },
 
+    // ===== Get Posts  =====
+    posts: {
+      type: new GraphQLList(PostType),
+      resolve: (parent, args) => {
+        return Post.find();
+      }
+    },
+
+    // ===== Get Post  =====
+    post: {
+      type: PostType,
+      args: {
+        slug: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Post.findOne({ slug: args.slug });
+      }
+    },
+
+    // ===== Get Post  =====
+    postSearch: {
+      type: new GraphQLList(PostType),
+      args: {
+        query: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Post.find({ category: { $regex: args.query, $options: "i" } });
+      }
+    },
+
     // ===== Get Member  =====
     members: {
       type: new GraphQLList(MemberType),
@@ -58,6 +89,16 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(SocialMediaType),
       resolve: (parent, args) => {
         return SocialMedia.find();
+      }
+    },
+    // ===== Get Category  =====
+    categories: {
+      type: new GraphQLList(CategoryType),
+      args: {
+        query: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Category.find({ slug: args.query });
       }
     }
   }

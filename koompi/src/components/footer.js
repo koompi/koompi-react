@@ -17,9 +17,15 @@ function Footer() {
       return null;
     };
 
-  console.log('====================================');
-  console.log(data);
-  console.log('====================================');
+  const DisplaySocailMedia = () => {
+    return data.socailMedia.map((res, index) => {
+      return (
+        <a href={`${res.link}`} target="_blank" key={index}>
+          <img src={`http://localhost:8080` + res.logo} />
+        </a>
+      );
+    });
+  };
 
   return (
     <div>
@@ -79,13 +85,7 @@ function Footer() {
             <Col span={6}>
               <h4>Connect With Us</h4>
               <div className="footer_socail_media">
-                {data.socailMedia.map(res => {
-                  return (
-                    <Link to={res.link}>
-                      <img src={`http://localhost:8080` + res.logo} />
-                    </Link>
-                  );
-                })}
+                <DisplaySocailMedia />
               </div>
             </Col>
           </Row>
@@ -95,14 +95,15 @@ function Footer() {
         <div className="footer-container">
           <Row gutter={12}>
             <Col span={6}>
-              {' '}
               <p className="koompiProjectTitle"> KOOMPI Products</p>
             </Col>
             <Col span={18} className="koompiProjects">
               <Link to="">KOOMPI ACADEMY</Link>
-              <Link to="">KOOMPI OS</Link>
-              <Link to="">KOOMPI E13</Link>
-              <Link to="">KOOMPI E11</Link>
+              <a href="https://pionux.org/" target="_blank">
+                KOOMPI OS
+              </a>
+              <Link to="/koompi-e13">KOOMPI E13</Link>
+              <Link to="koompi-e11">KOOMPI E11</Link>
               {/* <Link to="">KOOMPI B14</Link> */}
             </Col>
           </Row>

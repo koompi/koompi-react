@@ -9,6 +9,7 @@ const PostType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLString },
     title: { type: GraphQLString },
+    slug: { type: GraphQLString },
     created_by: { type: GraphQLString },
     description: { type: GraphQLString },
     thumnail: { type: GraphQLString },

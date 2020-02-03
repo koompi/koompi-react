@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { Row, Col, message } from 'antd'
-import { Form, Input, Typography, Divider } from 'antd'
-import { useForm } from 'react-hook-form'
-import Navbar from './navbar'
-const { Title, Paragraph, Text } = Typography
+import React from 'react';
+import { Row, Col } from 'antd';
+import { Input, Typography } from 'antd';
+import { useForm } from 'react-hook-form';
+import Navbar from './navbar';
+const { Title, Paragraph, Text } = Typography;
 // import { useForm } from 'react-hook-form';
 function Contact() {
-  const { TextArea } = Input
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { TextArea } = Input;
+  const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    console.log(data)
-  }
+    console.log(data);
+  };
   return (
     <div>
       <Navbar />
@@ -113,7 +113,7 @@ function Contact() {
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

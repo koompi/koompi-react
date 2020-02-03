@@ -102,6 +102,7 @@ function NewPage(props) {
     const { error, loading, data } = useQuery(GET_CATEGORIES);
     if (error) console.log(error);
     if (loading) return "Loading ...";
+
     if (data.categories.length === 0) {
       message.error("Please create a category.", 5);
       return (

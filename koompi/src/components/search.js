@@ -1,10 +1,8 @@
 import React from 'react';
 import { Row, Col, Card, Tag } from 'antd';
-import Navbar from './navbar';
-import Footer from './footer';
 import renderHTML from './editorJsToHtml';
 import NProgress from 'nprogress';
-import { GET_POSTS, GET_PAGES } from './graphql/query';
+import { SEARCH_POST } from './graphql/query';
 import _ from 'lodash';
 import { useQuery } from '@apollo/react-hooks';
 import parse from 'html-react-parser';
@@ -13,9 +11,17 @@ import countWord from 'word-count';
 import { Link } from 'react-router-dom';
 import slugify from 'slugify';
 import { Helmet } from 'react-helmet';
+import Navbar from './navbar';
+import Footer from './footer';
 
-function News(props) {
-  const { error, loading, data } = useQuery(GET_POSTS);
+const queryString = require('query-string');
+
+function Search(props) {
+  const parsed = queryString.parse(props.location.search);
+  const result = parsed.query;
+  const { error, loading, data } = useQuery(SEARCH_POST, {
+    variables: { query: slugify(result) }
+  });
   if (error) {
     console.log(error);
     return null;
@@ -24,84 +30,23 @@ function News(props) {
     NProgress.start();
     return null;
   }
-
   NProgress.done();
-
-  const DisplayNewsBanner = () => {
-    const { error, loading, data } = useQuery(GET_PAGES);
-    if (error) {
-      console.log(error);
-      return null;
-    }
-    if (loading) {
-      NProgress.start();
-      return null;
-    }
-    const filterNews = _.filter(
-      data.pages,
-      page => page.category.slug === 'news'
-    );
-
-    NProgress.done();
-    return filterNews.map((res, index) => {
-      const { title, image, meta_desc } = res;
-      const description = renderHTML(res.description);
-
-      return (
-        <React.Fragment key={index}>
-          <Helmet>
-            <title>{title + ' - KOOMPI'}</title>
-            <meta
-              name="keywords"
-              content={res.keywords.map(res => res + ',')}
-            />
-            <meta name="description" content={meta_desc} />
-          </Helmet>
-          <Row className="Row-news" gutter={24}>
-            <Col sm={12}>
-              <div className="news-and-events-banner-text">
-                <h2 className="newsBannerTitle">{title}</h2>
-                <div className="about-paragraph">{parse(description)}</div>
-              </div>
-            </Col>
-            <Col sm={12}>
-              <img
-                style={{ maxWidth: '100%' }}
-                src={`http://localhost:8080${image}`}
-              />
-            </Col>
-          </Row>
-        </React.Fragment>
-      );
-    });
-  };
 
   return (
     <React.Fragment>
       <Navbar />
-      <div className="backgroud-news">
-        <div className="container news-and-events-banner">
-          <DisplayNewsBanner />
-        </div>
-      </div>
       <div
         style={{ marginTop: '90px', marginBottom: '50px' }}
         className="container"
       >
+        <h2>Your Result: {result}</h2>
         <Row gutter={24}>
-          {data.posts.map((data, index) => {
+          {data.postSearch.map((data, index) => {
             const title = data.title.replace(/^(.{70}[^\s]*).*/, '$1') + '\n';
-            const { slug, title: categoryTitle } = data.category;
-
             return (
               // {`http://localhost:8080` + data.thumnail}
               <Col span={12} style={{ marginBottom: '24px' }} key={index}>
                 <div className="cardHeight">
-                  <p className="postCategory">
-                    <Link to={`/search?query=${slug}`}>
-                      <Tag color="green">{categoryTitle}</Tag>
-                    </Link>
-                  </p>
                   <Link
                     to={`/news-and-events/${slugify(data.title.toLowerCase())}`}
                   >
@@ -145,4 +90,4 @@ function News(props) {
   );
 }
 
-export default News;
+export default Search;

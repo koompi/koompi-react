@@ -62,7 +62,8 @@ function EditPage(props) {
           variables: {
             id: window.location.pathname.split("/")[4],
             description: JSON.stringify(savedData),
-            ...values
+            ...values,
+            sectionNumber: values.sectionNumber.toString()
           }
         })
           .then(async () => {

@@ -1,20 +1,21 @@
 const graphql = require("graphql");
-const User = require("../../models/User");
-const { GraphQLString, GraphQLObjectType } = graphql;
+const Post = require("../../models/Post");
+const { GraphQLString, GraphQLObjectType, GraphQLList } = graphql;
 
 const CategoryType = new GraphQLObjectType({
-  name: "Category",
+  name: "CategoryAPI",
   fields: () => ({
     id: { type: GraphQLString },
     title: { type: GraphQLString },
+    slug: { type: GraphQLString },
     created_by: { type: GraphQLString },
     updated_by: { type: GraphQLString },
     created_at: { type: GraphQLString },
     updated_at: { type: GraphQLString },
-    user: {
-      type: UserType,
+    posts: {
+      type: new GraphQLList(PostType),
       resolve: (parent, args) => {
-        return User.findOne({ fullname: parent.created_by });
+        return Post.find({ category: parent.title });
       }
     }
   })
@@ -22,4 +23,4 @@ const CategoryType = new GraphQLObjectType({
 
 module.exports = CategoryType;
 
-const UserType = require("../../schema/types/user");
+const PostType = require("../../schema/types/post");

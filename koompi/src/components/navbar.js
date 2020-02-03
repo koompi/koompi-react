@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Button } from 'antd';
-import { Layout, Menu, Breadcrumb, Badge, Icon } from 'antd';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Layout, Menu, Badge, Icon } from 'antd';
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
-function Navbar(props) {
+function Navbar() {
   return (
     <React.Fragment>
       <Header className="header">
@@ -17,7 +16,7 @@ function Navbar(props) {
             selectedKeys={['/']}
           >
             <Menu.Item key="/">
-              <img className="logo" src="/img/koompi-sym-01.png" />
+              <img className="logo" src="/img/koompi-sym-01.png" alt="koompi" />
               <NavLink exact activeStyle={{ color: 'white' }} to="/"></NavLink>
             </Menu.Item>
 
@@ -30,9 +29,13 @@ function Navbar(props) {
               </NavLink>
             </Menu.Item>
             <Menu.Item className="koompi">
-              <NavLink exact activeStyle={{ color: 'white' }} to="/koompi-os">
+              <a
+                href="https://pionux.org/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <span>KOOMPI OS</span>
-              </NavLink>
+              </a>
             </Menu.Item>
 
             <Menu.Item className="koompi" key="/koompi-e">

@@ -38,7 +38,7 @@ function KoompiE11() {
   NProgress.done();
 
   const dataIndex = data.pages.filter(
-    res => res.category.slug === 'koompi-e13'
+    res => res.category.slug === 'koompi-e11'
   );
   const result = _.orderBy(dataIndex, 'sectionNumber', 'asc');
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Typography, Icon } from 'antd';
+import { Row, Col, Icon } from 'antd';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useQuery } from '@apollo/react-hooks';
@@ -8,7 +8,6 @@ import renderHTML from './editorJsToHtml';
 import NProgress from 'nprogress';
 import { GET_MEMBERS, GET_PAGES } from './graphql/query';
 import _ from 'lodash';
-const { Title, Paragraph } = Typography;
 
 function About() {
   const DisplayTeamwork = () => {

@@ -104,6 +104,7 @@ const UPDATE_CATEGORY = gql`
 const CREATE_POST = gql`
   mutation(
     $title: String!
+    $slug: String!
     $category: String!
     $created_by: String!
     $description: String!
@@ -114,6 +115,7 @@ const CREATE_POST = gql`
   ) {
     create_post(
       title: $title
+      slug: $slug
       category: $category
       created_by: $created_by
       description: $description
@@ -124,6 +126,7 @@ const CREATE_POST = gql`
     ) {
       id
       title
+      slug
       created_by
       created_at
     }
@@ -141,6 +144,7 @@ const DELETE_POST = gql`
 const UPDATE_POST = gql`
   mutation(
     $id: String!
+    $slug: String!
     $title: String!
     $category: String!
     $description: String!
@@ -154,6 +158,7 @@ const UPDATE_POST = gql`
     update_post(
       id: $id
       title: $title
+      slug: $slug
       category: $category
       description: $description
       thumnail: $thumnail
@@ -165,6 +170,7 @@ const UPDATE_POST = gql`
     ) {
       id
       title
+      slug
       created_by
       created_at
     }

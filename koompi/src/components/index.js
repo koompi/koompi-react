@@ -12,21 +12,8 @@ import Navbar from './navbar';
 import { GET_PAGES } from './graphql/query';
 import Footer from './footer';
 import _ from 'lodash';
-
-function renderHTML(data) {
-  let result = ``;
-  for (let block of JSON.parse(data).blocks) {
-    switch (block.type) {
-      case 'paragraph':
-        result += `<p>${block.data.text}</p>`;
-        break;
-      case 'header':
-        result += `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
-        break;
-    }
-  }
-  return result;
-}
+import renderHTML from './editorJsToHtml';
+import { Helmet } from 'react-helmet';
 
 function Index() {
   const [stateModal, setStateModal] = useState([{ open: true }]);
@@ -65,6 +52,17 @@ function Index() {
   return (
     <React.Fragment>
       <Navbar />
+      <Helmet>
+        <title>KOOMPI</title>
+        <meta
+          name="keywords"
+          content="KOOMPI, KOOMPI OS, KOOMPI ACADEMY, KHMER LAPTOP,koompi, koompi laptop, koompi computer, koompi os, koompi review"
+        />
+        <meta
+          name="description"
+          content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KramaOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+        />
+      </Helmet>
       {result.map((data, index) => {
         const description = renderHTML(data.description);
         if (data.sectionNumber === '1') {

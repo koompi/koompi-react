@@ -55,6 +55,7 @@ const GET_POSTS = gql`
     posts {
       id
       title
+      slug
       description
       category {
         title
@@ -78,6 +79,7 @@ const GET_POST = gql`
     post(id: $id) {
       id
       title
+      slug
       created_by
       description
       category {

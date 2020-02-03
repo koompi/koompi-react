@@ -1516,3 +1516,95 @@ button[type='submit']:hover,
   border-radius: 30px !important;
   font-weight: 600 !important;
 }
+.ant-tag-green {
+  color: #210013 !important;
+  background: #fff !important;
+  border: none !important;
+  font-size: 14px !important;
+  padding: 1px 20px !important;
+  border-radius: 13px !important;
+  font-weight: 600 !important;
+}
+.Row-news {
+  padding: 80px 0px 0px 0px;
+  margin-bottom: 20px !important;
+}
+.ant-card {
+  cursor: pointer;
+  transition: 0.5s !important;
+}
+.postCategory {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  cursor: pointer !important;
+  z-index: 1;
+}
+.news-and-events-desc p {
+  margin-bottom: 5px;
+  font-size: 16px !important;
+}
+.ant-card {
+  line-height: 1.3 !important;
+}
+.postThumnail {
+  height: 280px;
+  width: 100%;
+  max-width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 3px 3px 0px 0px !important;
+}
+.cardHeight {
+  height: 24vw !important;
+  border-radius: 3px !important;
+}
+.postCategory a span {
+  cursor: pointer !important;
+}
+.newsBannerTitle {
+  font-weight: 800;
+  font-size: 28px;
+}
+.backgroud-news {
+  position: relative;
+}
+.news-and-events-banner-text {
+  position: absolute;
+  transform: translate(0, 20%);
+}
+.img-responsive {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+}
+.background-single-page {
+  background-color: #ffffff;
+  padding: 0px 0px !important;
+  margin: 0px auto;
+  border-radius: 5px;
+  width: 80% !important;
+}
+.single-title {
+  font-size: 30px;
+  font-weight: 800;
+}
+.content-desc {
+  padding: 40px !important;
+}
+.background_socialMedia {
+  background-color: #eaeef2;
+  padding: 10px;
+  height: 45px;
+  border-radius: 50%;
+  position: relative;
+  top: 20px;
+  left: 35px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+.background_socialMedia:hover {
+  background-color: #ffffff;
+}

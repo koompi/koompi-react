@@ -10,10 +10,12 @@ import three_dots from "../../assets/img/three-dots.svg";
 // ===== Import EditorJS =====
 import EditorJs from "react-editor-js";
 import { EDITOR_JS_TOOLS } from "./tools";
+import slugify from "slugify";
 
 // ===== Query and Mutation Section =====
 import { GET_CATEGORIES, GET_POSTS } from "../../graphql/query";
 import { CREATE_POST } from "../../graphql/mutation";
+import _ from "lodash";
 
 import {
   Form,
@@ -70,6 +72,10 @@ function NewPost(props) {
         </Form.Item>
       );
     } else {
+      const filtered_pages = _.filter(data.categories, function(p) {
+        return _.includes(["news", "events"], p.slug);
+      });
+
       return (
         <Form.Item label="Categories">
           {getFieldDecorator("category", {
@@ -79,10 +85,10 @@ function NewPost(props) {
                 message: "Please select your category!"
               }
             ],
-            initialValue: data.categories[0].title
+            initialValue: filtered_pages[0].title
           })(
             <Select placeholder="Please select the category" size="large">
-              {data.categories.map(cate => {
+              {filtered_pages.map(cate => {
                 return (
                   <Option value={cate.title} key={cate.id}>
                     {cate.title}
@@ -122,7 +128,11 @@ function NewPost(props) {
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         createPost({
-          variables: { ...values, description: JSON.stringify(savedData) }
+          variables: {
+            ...values,
+            slug: slugify(values.title, { lower: true }),
+            description: JSON.stringify(savedData)
+          }
         })
           .then(async () => {
             setLoading(true);

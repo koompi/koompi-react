@@ -12,11 +12,12 @@ import KOOMPI_E11_Specs from './components/koompi-e11/koompi-e11-specs';
 import Item from './components/item';
 import ShopingCart from './components/shopping-cart';
 import Contact from './components/contact';
-import Koompi_Os from './components/koompi-os';
 import About from './components/About';
 import News from './components/news';
 import Retailer from './components/retailer';
 import { BackTop, Icon } from 'antd';
+import SinglePage from './components/single-page';
+import Search from './components/search';
 function App() {
   return (
     <CartProvider>
@@ -41,10 +42,24 @@ function App() {
           <Route exact path="/shop/bag" component={ShopingCart}></Route>
           <Route exact path="/contact" component={Contact}></Route>
           <Route exact path="/about-us" component={About}></Route>
-          <Route exact path="/news-and-events" component={News}></Route>
           <Route exact path="/retailers" component={Retailer}></Route>
+          {/* ===== News and Events Route */}
+          <Route exact path="/category" component={News}></Route>
+          <Route exact path="/news-and-events" component={News}></Route>
+          <Route
+            exact
+            path="/news-and-events/:title"
+            component={SinglePage}
+          ></Route>
+          <Route exact path="/search" component={Search}></Route>
+          <Route exact path="/search?query=:title" component={Search}></Route>
+
           <Route exact path="/" exact component={Index}></Route>
-          <Route exact path="*" exact component={Index}></Route>
+          <Route
+            exact
+            path="*"
+            component={() => <h2>Page not found</h2>}
+          ></Route>
         </Switch>
       </Router>
     </CartProvider>

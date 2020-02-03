@@ -207,6 +207,7 @@ const RootMutation = new GraphQLObjectType({
       type: PostType,
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
+        slug: { type: new GraphQLNonNull(GraphQLString) },
         created_by: { type: new GraphQLNonNull(GraphQLString) },
         description: { type: new GraphQLNonNull(GraphQLString) },
         thumnail: { type: GraphQLString },
@@ -239,6 +240,7 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) },
         title: { type: new GraphQLNonNull(GraphQLString) },
+        slug: { type: new GraphQLNonNull(GraphQLString) },
         updated_by: { type: new GraphQLNonNull(GraphQLString) },
         description: { type: new GraphQLNonNull(GraphQLString) },
         thumnail: { type: GraphQLString },

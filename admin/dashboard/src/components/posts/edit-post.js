@@ -8,11 +8,12 @@ import three_dots from "../../assets/img/three-dots.svg";
 // ===== Query and Mutation Section =====
 import { GET_CATEGORIES, GET_POST, GET_POSTS } from "../../graphql/query";
 import { UPDATE_POST } from "../../graphql/mutation";
+import _ from "lodash";
 
 // ===== Import EditorJS =====
 import EditorJs from "react-editor-js";
 import { EDITOR_JS_TOOLS } from "./tools";
-
+import slugify from "slugify";
 import {
   Form,
   Input,
@@ -61,58 +62,47 @@ function EditPost(props) {
     const { error, loading, data } = useQuery(GET_CATEGORIES);
     if (error) console.log(error);
     if (loading) return "Loading ...";
-    if (data.categories.length === 0) {
-      message.error("Please create a category.", 5);
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ]
-          })(<Select placeholder="No Category"></Select>)}
-        </Form.Item>
-      );
-    } else {
-      return (
-        <Form.Item label="Categories">
-          {getFieldDecorator("category", {
-            rules: [
-              {
-                required: true,
-                message: "Please select your category!"
-              }
-            ],
-            initialValue: data.categories[0].title
-          })(
-            <Select placeholder="Please select the category" size="large">
-              {data.categories.map(cate => {
-                return (
-                  <Option value={cate.title} key={cate.id}>
-                    {cate.title}
-                  </Option>
-                );
-              })}
-            </Select>
-          )}
-        </Form.Item>
-      );
-    }
+
+    const filtered_pages = _.filter(data.categories, function(p) {
+      return _.includes(["news", "events"], p.slug);
+    });
+    return (
+      <Form.Item label="Categories">
+        {getFieldDecorator("category", {
+          rules: [
+            {
+              required: true,
+              message: "Please select your category!"
+            }
+          ],
+          initialValue: postData.post.category.title
+        })(
+          <Select placeholder="Please select the category" size="large">
+            {filtered_pages.map(cate => {
+              return (
+                <Option value={cate.title} key={cate.id}>
+                  {cate.title}
+                </Option>
+              );
+            })}
+          </Select>
+        )}
+      </Form.Item>
+    );
   };
 
   const handleSubmit = React.useCallback(async () => {
     const savedData = await editorJsRef.current.save();
     props.form.validateFieldsAndScroll((err, values) => {
-      console.log(values);
+      console.log(slugify(values.title, { lower: true }));
 
       if (!err) {
         updatePost({
           variables: {
             id: window.location.pathname.split("/")[4],
-            description: JSON.stringify(savedData),
-            ...values
+            ...values,
+            slug: slugify(values.title, { lower: true }),
+            description: JSON.stringify(savedData)
           }
         })
           .then(async () => {
