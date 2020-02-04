@@ -41,7 +41,7 @@ function LoginForm(props) {
         console.log(values.remember);
 
         axios
-          .post(`http://localhost:8080/login`, { ...values })
+          .post(`https://admin.koompi.com/login`, { ...values })
           .then(async res => {
             setLoading(true);
             setTimeout(() => {

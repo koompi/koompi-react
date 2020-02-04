@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from 'antd';
+import { Tag, Spin, Row } from 'antd';
 import _ from 'lodash';
 import { useQuery } from '@apollo/react-hooks';
 import parse from 'html-react-parser';
@@ -9,7 +9,7 @@ import Navbar from './navbar';
 import moment from 'moment';
 import renderHTML from './editorJsToHtml';
 import Footer from './footer';
-
+import { Helmet } from 'react-helmet';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -26,27 +26,55 @@ function SinglePage(props) {
   if (error) console.log(error);
   if (loading) {
     NProgress.start();
-    return null;
+    return (
+      <Row className="Row-about" gutter={24}>
+        <center>
+          <Spin tip="Loading ..."></Spin>
+        </center>
+      </Row>
+    );
   }
   NProgress.done();
 
-  console.log(data);
-  const { title, thumnail, created_at, tags, slug } = data.post;
+  const {
+    title,
+    thumnail,
+    created_at,
+    tags,
+    slug,
+    keywords,
+    meta_desc
+  } = data.post;
   const description = renderHTML(data.post.description);
+
   return (
-    <div>
+    <div style={{ backgroundColor: '#fff' }}>
       <Navbar />
-      {/* <p>{description}</p> */}
+
+      {/* All the Meta Tags */}
+      <Helmet>
+        <meta property="og:url" content={window.location} />
+        <meta property="og:type" content="koompi" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={parse(description)} />
+        <meta
+          property="og:image"
+          content={`https://admin.koompi.com${thumnail}`}
+        />
+        <title>{title + ' - KOOMPI'}</title>
+        <meta name="keywords" content={keywords.map(res => res + ',')} />
+        <meta name="description" content={meta_desc} />
+      </Helmet>
       <div className="container">
         <div style={{ margin: '40px 0px' }}>
           <div className="background-single-page">
             <img
-              src={`http://localhost:8080${thumnail}`}
+              src={`https://admin.koompi.com${thumnail}`}
               alt={title}
               className="img-responsive"
             />
             <div>
-              <FacebookShareButton url={slug}>
+              <FacebookShareButton url={window.location}>
                 <img
                   src="/img/socialMedia/facebook.png"
                   alt=""

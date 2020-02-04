@@ -9,7 +9,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 const cache = new InMemoryCache();
 const client = new ApolloClient({
   cache,
-  uri: "http://localhost:8080/admin"
+  uri: "https://admin.koompi.com/admin"
 });
 
 ReactDOM.render(

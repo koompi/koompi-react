@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './navbar';
-import { Row, Col, Typography, Card, Button } from 'antd';
+import { Row, Col, Typography, Card, Button, Spin } from 'antd';
 import Footer from './footer';
 import _ from 'lodash';
 import { useQuery } from '@apollo/react-hooks';
@@ -26,7 +26,13 @@ function Retailer() {
   if (error) console.log(error);
   if (loading) {
     NProgress.start();
-    return null;
+    return (
+      <Row className="Row-about" gutter={24}>
+        <center>
+          <Spin tip="Loading ..."></Spin>
+        </center>
+      </Row>
+    );
   }
   NProgress.done();
 
@@ -82,7 +88,7 @@ function Retailer() {
                           <img
                             className="retailers-logo"
                             alt="example"
-                            src={`http://localhost:8080` + res.logo}
+                            src={`https://admin.koompi.com` + res.logo}
                           />
                         }
                       >

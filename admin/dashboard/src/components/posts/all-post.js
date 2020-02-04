@@ -108,7 +108,7 @@ function AllPosts() {
                 key: id,
                 image: (
                   <img
-                    src={"http://localhost:8080" + post.thumnail}
+                    src={"https://admin.koompi.com" + post.thumnail}
                     alt="post"
                     height="50px"
                     width="50px"

@@ -21,7 +21,7 @@ function Footer() {
     return data.socailMedia.map((res, index) => {
       return (
         <a href={`${res.link}`} target="_blank" key={index}>
-          <img src={`http://localhost:8080` + res.logo} />
+          <img src={`https://admin.koompi.com` + res.logo} />
         </a>
       );
     });

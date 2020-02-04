@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../navbar';
-import { Row, Col, Icon, Result, Button } from 'antd';
+import { Row, Col, Icon, Result, Button, Spin } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_PAGES } from '../graphql/query';
 import NProgress from 'nprogress';
@@ -8,7 +8,7 @@ import 'nprogress/nprogress.css';
 import renderHTML from '../editorJsToHtml';
 import parse from 'html-react-parser';
 
-import SubNavbar from './subNavbar';
+import SubNavbar from '../subNavbar';
 import screen from '../data/screen';
 import shapeliness from '../data/shapeliness';
 import performance from '../data/performance';
@@ -17,7 +17,7 @@ import _ from 'lodash';
 
 function KoompiE11() {
   const [koompiColor, setKoompiColor] = useState(true);
-  const imageLink = `http://localhost:8080`;
+  const imageLink = `https://admin.koompi.com`;
 
   const { error, loading, data } = useQuery(GET_PAGES);
   if (error) {
@@ -33,7 +33,13 @@ function KoompiE11() {
   }
   if (loading) {
     NProgress.start();
-    return null;
+    return (
+      <Row className="Row-about" gutter={24}>
+        <center>
+          <Spin tip="Loading ..."></Spin>
+        </center>
+      </Row>
+    );
   }
   NProgress.done();
 
@@ -253,7 +259,7 @@ function KoompiE11() {
 
       <div>
         <Navbar />
-        <SubNavbar />
+        <SubNavbar title="KOOMPI E11" />
         <div className="background-color-Koompi-E">
           <div class="area">
             <ul class="circles">

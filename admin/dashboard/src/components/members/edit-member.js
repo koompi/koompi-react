@@ -57,7 +57,7 @@ function EditMember(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "http://localhost:8080/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file;
@@ -233,14 +233,14 @@ function EditMember(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"http://localhost:8080" +
+                            src={`${"https://admin.koompi.com" +
                               memberData.member.photo}`}
                             alt="avatar"
                             style={{ width: "250px", height: "250px" }}
                           />
                         ) : (
                           <img
-                            src={`${"http://localhost:8080/public/uploads/" +
+                            src={`${"https://admin.koompi.com/public/uploads/" +
                               image}`}
                             alt="avatar"
                             style={{ width: "250px", height: "250px" }}

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Layout, Menu, Badge, Icon } from 'antd';
 
-const { Header } = Layout;
+const { Header, Sider } = Layout;
 
 function Navbar() {
   return (

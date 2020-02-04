@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/react-hooks';
 import parse from 'html-react-parser';
 import NProgress from 'nprogress';
 import { Link } from 'react-router-dom';
-import { Button, Icon, Result } from 'antd';
+import { Button, Icon, Result, Spin } from 'antd';
 import Navbar from './navbar';
 import { GET_PAGES } from './graphql/query';
 import Footer from './footer';
@@ -42,7 +42,13 @@ function Index() {
   }
   if (loading) {
     NProgress.start();
-    return null;
+    return (
+      <Row className="Row-about" gutter={24}>
+        <center>
+          <Spin tip="Loading ..."></Spin>
+        </center>
+      </Row>
+    );
   }
   NProgress.done();
 
@@ -132,7 +138,9 @@ function Index() {
                   <Col sm={12}>
                     <center>
                       <div className="index_banner">
-                        <img src={`http://localhost:8080` + data.image}></img>
+                        <img
+                          src={`https://admin.koompi.com` + data.image}
+                        ></img>
                       </div>
                     </center>
                   </Col>
@@ -181,7 +189,7 @@ function Index() {
                     </div>
                   </div>
                   <div className="subBanner-koompiPro">
-                    <img src={`http://localhost:8080` + data.image} />
+                    <img src={`https://admin.koompi.com` + data.image} />
                   </div>
                 </center>
               </div>
@@ -207,7 +215,7 @@ function Index() {
                     </div>
                   </div>
                   <div className="subBanner-koompiPro">
-                    <img src={`http://localhost:8080` + data.image} />
+                    <img src={`https://admin.koompi.com` + data.image} />
                   </div>
                 </center>
               </div>

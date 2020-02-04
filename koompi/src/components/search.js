@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Tag } from 'antd';
+import { Row, Col, Card, Tag, Spin } from 'antd';
 import renderHTML from './editorJsToHtml';
 import NProgress from 'nprogress';
 import { SEARCH_POST } from './graphql/query';
@@ -28,7 +28,13 @@ function Search(props) {
   }
   if (loading) {
     NProgress.start();
-    return null;
+    return (
+      <Row className="Row-about" gutter={24}>
+        <center>
+          <Spin tip="Loading ..."></Spin>
+        </center>
+      </Row>
+    );
   }
   NProgress.done();
 
@@ -44,7 +50,7 @@ function Search(props) {
           {data.postSearch.map((data, index) => {
             const title = data.title.replace(/^(.{70}[^\s]*).*/, '$1') + '\n';
             return (
-              // {`http://localhost:8080` + data.thumnail}
+              // {`https://admin.koompi.com` + data.thumnail}
               <Col span={12} style={{ marginBottom: '24px' }} key={index}>
                 <div className="cardHeight">
                   <Link
@@ -54,7 +60,7 @@ function Search(props) {
                       cover={
                         <div
                           style={{
-                            backgroundImage: `url("http://localhost:8080${data.thumnail}")`
+                            backgroundImage: `url("https://admin.koompi.com${data.thumnail}")`
                           }}
                           className="postThumnail"
                         ></div>

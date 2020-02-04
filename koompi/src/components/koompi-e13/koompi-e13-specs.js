@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import Navbar from '../navbar';
-import SubNavbar from './subNavbar';
+import SubNavbar from '../subNavbar';
 import Footer from '../footer';
 
 const data = [

@@ -99,7 +99,7 @@ p {
 }
 .subBanner-koompiPro img {
   max-width: 100%;
-  height: 500px !important;
+  height: auto !important;
   position: relative;
 }
 .readmore-a {
@@ -1201,7 +1201,7 @@ button[type='submit']:hover,
 .indexPlayButton {
   margin-top: 70px;
   border-radius: 50%;
-  font-size: 50px;
+  font-size: 40px;
   animation: playAnimation 2s ease-in-out infinite alternate;
   cursor: pointer;
 }
@@ -1336,7 +1336,6 @@ button[type='submit']:hover,
   background: #008af4;
   text-align: center;
   border-radius: 50%;
-  padding: 20px;
   width: 45px !important;
   height: 45px !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.246),
@@ -1420,6 +1419,12 @@ button[type='submit']:hover,
 .subNavbarPosition {
   position: relative;
   z-index: 100;
+  transition: 0.2s;
+}
+.subNavbarPosition.sticky {
+  padding: 5px 0px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .shopHere {
   border: 0px !important;
@@ -1490,6 +1495,7 @@ button[type='submit']:hover,
 }
 .memberPhoto {
   width: 80%;
+  transition: opacity 1s linear;
 }
 .teamDepartment {
   font-size: 22px;
@@ -1578,7 +1584,6 @@ button[type='submit']:hover,
   min-width: 100%;
   max-width: 100%;
   width: 100%;
-  border-radius: 5px 5px 0px 0px;
 }
 .background-single-page {
   background-color: #ffffff;
@@ -1595,10 +1600,10 @@ button[type='submit']:hover,
   padding: 40px !important;
 }
 .background_socialMedia {
-  background-color: #eaeef2;
+  /* background-color: #eaeef2; */
   padding: 10px;
   height: 45px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   position: relative;
   top: 20px;
   left: 35px;
@@ -1607,4 +1612,30 @@ button[type='submit']:hover,
 }
 .background_socialMedia:hover {
   background-color: #ffffff;
+}
+.memberPhotoBlur {
+  filter: blur(50px);
+  transform: scale(1);
+}
+
+.ant-spin-spinning {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 100 !important;
+}
+.ant-menu-horizontal > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-submenu:hover,
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+  border-bottom: 0px solid transparent !important;
+}
+.subnavbar-logo {
+  margin: 0px !important;
+  font-weight: 900;
 }

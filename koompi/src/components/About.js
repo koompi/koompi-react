@@ -1,5 +1,5 @@
-import React from 'react';
-import { Row, Col, Icon } from 'antd';
+import React, { useState } from 'react';
+import { Row, Col, Icon, Spin } from 'antd';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useQuery } from '@apollo/react-hooks';
@@ -8,14 +8,24 @@ import renderHTML from './editorJsToHtml';
 import NProgress from 'nprogress';
 import { GET_MEMBERS, GET_PAGES } from './graphql/query';
 import _ from 'lodash';
+import Img from 'react-image';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 function About() {
+  const { imageLoad, setImageLoad } = useState(false);
+
   const DisplayTeamwork = () => {
     const { error, loading, data } = useQuery(GET_MEMBERS);
     if (error) console.log(error);
     if (loading) {
       NProgress.start();
-      return null;
+      return (
+        <Row className="Row-about" gutter={24}>
+          <center>
+            <Spin tip="Loading ..."></Spin>
+          </center>
+        </Row>
+      );
     }
     NProgress.done();
 
@@ -56,10 +66,16 @@ function About() {
             return (
               <Col sm={6}>
                 <center>
-                  <img
-                    src={`http://localhost:8080` + member.photo}
+                  <Img
                     className="memberPhoto"
-                  ></img>
+                    src={`https://admin.koompi.com` + member.photo}
+                    loader={
+                      <Img
+                        className="memberPhotoBlur"
+                        src="/img/blur-image.png"
+                      />
+                    }
+                  />
                 </center>
                 <center>
                   <h3 className="memberName">{member.fullname}</h3>
@@ -80,10 +96,16 @@ function About() {
             return (
               <Col sm={6}>
                 <center>
-                  <img
-                    src={`http://localhost:8080` + member.photo}
+                  <Img
                     className="memberPhoto"
-                  ></img>
+                    src={`https://admin.koompi.com` + member.photo}
+                    loader={
+                      <Img
+                        className="memberPhotoBlur"
+                        src="/img/blur-image.png"
+                      />
+                    }
+                  />
                 </center>
                 <center>
                   <h3 className="memberName">{member.fullname}</h3>
@@ -104,10 +126,16 @@ function About() {
             return (
               <Col sm={6}>
                 <center>
-                  <img
-                    src={`http://localhost:8080` + member.photo}
+                  <Img
                     className="memberPhoto"
-                  ></img>
+                    src={`https://admin.koompi.com` + member.photo}
+                    loader={
+                      <Img
+                        className="memberPhotoBlur"
+                        src="/img/blur-image.png"
+                      />
+                    }
+                  />
                 </center>
                 <center>
                   <h3 className="memberName">{member.fullname}</h3>
@@ -128,10 +156,16 @@ function About() {
             return (
               <Col sm={6}>
                 <center>
-                  <img
-                    src={`http://localhost:8080` + member.photo}
+                  <Img
                     className="memberPhoto"
-                  ></img>
+                    src={`https://admin.koompi.com` + member.photo}
+                    loader={
+                      <Img
+                        className="memberPhotoBlur"
+                        src="/img/blur-image.png"
+                      />
+                    }
+                  />
                 </center>
                 <center>
                   <h3 className="memberName">{member.fullname}</h3>
@@ -152,10 +186,16 @@ function About() {
             return (
               <Col sm={6}>
                 <center>
-                  <img
-                    src={`http://localhost:8080` + member.photo}
+                  <Img
                     className="memberPhoto"
-                  ></img>
+                    src={`https://admin.koompi.com` + member.photo}
+                    loader={
+                      <Img
+                        className="memberPhotoBlur"
+                        src="/img/blur-image.png"
+                      />
+                    }
+                  />
                 </center>
                 <center>
                   <h3 className="memberName">{member.fullname}</h3>
@@ -176,10 +216,16 @@ function About() {
             return (
               <Col sm={6}>
                 <center>
-                  <img
-                    src={`http://localhost:8080` + member.photo}
+                  <Img
                     className="memberPhoto"
-                  ></img>
+                    src={`https://admin.koompi.com` + member.photo}
+                    loader={
+                      <Img
+                        className="memberPhotoBlur"
+                        src="/img/blur-image.png"
+                      />
+                    }
+                  />
                 </center>
                 <center>
                   <h3 className="memberName">{member.fullname}</h3>
@@ -198,7 +244,15 @@ function About() {
     if (error) console.log(error);
     if (loading) {
       NProgress.start();
-      return null;
+      return (
+        <React.Fragment>
+          <Row className="Row-about" gutter={24}>
+            <center>
+              <Spin tip="Loading ..."></Spin>
+            </center>
+          </Row>
+        </React.Fragment>
+      );
     }
     NProgress.done();
     const onlyAboutUs = _.filter(
@@ -217,8 +271,14 @@ function About() {
           </Col>
           <Col sm={12}>
             <img
+              onLoad={() => setImageLoad(true)}
               style={{ maxWidth: '100%' }}
-              src={`http://localhost:8080` + about.image}
+            />
+            <Img
+              src={`https://admin.koompi.com` + about.image}
+              loader={
+                <Img className="memberPhotoBlur" src="/img/blur-image.png" />
+              }
             />
           </Col>
         </Row>

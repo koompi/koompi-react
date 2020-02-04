@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Tag } from 'antd';
+import { Row, Col, Card, Tag, Spin } from 'antd';
 import Navbar from './navbar';
 import Footer from './footer';
 import renderHTML from './editorJsToHtml';
@@ -22,7 +22,13 @@ function News(props) {
   }
   if (loading) {
     NProgress.start();
-    return null;
+    return (
+      <Row className="Row-about" gutter={24}>
+        <center>
+          <Spin tip="Loading ..."></Spin>
+        </center>
+      </Row>
+    );
   }
 
   NProgress.done();
@@ -67,7 +73,7 @@ function News(props) {
             <Col sm={12}>
               <img
                 style={{ maxWidth: '100%' }}
-                src={`http://localhost:8080${image}`}
+                src={`https://admin.koompi.com${image}`}
               />
             </Col>
           </Row>
@@ -94,7 +100,7 @@ function News(props) {
             const { slug, title: categoryTitle } = data.category;
 
             return (
-              // {`http://localhost:8080` + data.thumnail}
+              // {`https://admin.koompi.com` + data.thumnail}
               <Col span={12} style={{ marginBottom: '24px' }} key={index}>
                 <div className="cardHeight">
                   <p className="postCategory">
@@ -109,7 +115,7 @@ function News(props) {
                       cover={
                         <div
                           style={{
-                            backgroundImage: `url("http://localhost:8080${data.thumnail}")`
+                            backgroundImage: `url("https://admin.koompi.com${data.thumnail}")`
                           }}
                           className="postThumnail"
                         ></div>

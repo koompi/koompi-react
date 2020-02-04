@@ -103,7 +103,7 @@ function SocialMedia() {
                 key: parse(name),
                 logo: (
                   <img
-                    src={`http://localhost:8080${logo}`}
+                    src={`https://admin.koompi.com${logo}`}
                     alt={name}
                     height="50px"
                     width="50px"

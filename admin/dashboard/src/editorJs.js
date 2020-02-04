@@ -29,7 +29,7 @@ export const EDITOR_JS_TOOLS = {
     config: {
       uploader: {
         uploadByFile: file => {
-          const myAxios = axios.post(`http://localhost:8080/upload/image`);
+          const myAxios = axios.post(`https://admin.koompi.com/upload/image`);
           console.log(myAxios);
         }
       }

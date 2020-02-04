@@ -80,7 +80,7 @@ function Cart(props) {
           if (statusCode === 201) {
             console.log("response", response.id);
 
-            Axios.post("http://localhost:8080/charge", {
+            Axios.post("https://admin.koompi.com/charge", {
               bongloyToken: response.id
             }).then(console.log(response));
           } else {

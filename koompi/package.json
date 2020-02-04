@@ -23,6 +23,8 @@
 		"react-editor-js": "^1.4.2",
 		"react-helmet": "^5.2.1",
 		"react-hook-form": "^4.4.8",
+		"react-image": "^2.2.2",
+		"react-loading-skeleton": "^2.0.1",
 		"react-particles-js": "^2.7.0",
 		"react-responsive-modal": "^4.0.1",
 		"react-router-dom": "^5.1.2",

@@ -109,7 +109,7 @@ function AllPages() {
                 key: parse(title.substring(0, 30)),
                 image: (
                   <img
-                    src={"http://localhost:8080" + image}
+                    src={"https://admin.koompi.com" + image}
                     alt="post"
                     height="50px"
                     width="50px"

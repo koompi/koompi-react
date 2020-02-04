@@ -82,7 +82,7 @@ function NewPage(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "http://localhost:8080/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file;
@@ -205,7 +205,7 @@ function NewPage(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image ? (
                           <img
-                            src={`${"http://localhost:8080/public/uploads/" +
+                            src={`${"https://admin.koompi.com/public/uploads/" +
                               `${image}`}`}
                             alt="avatar"
                             style={{ width: "100%" }}

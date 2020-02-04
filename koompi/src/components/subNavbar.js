@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu } from 'antd';
+import { Menu, Affix } from 'antd';
 
-function SubNavbar() {
+function SubNavbar({ title }) {
+  const [sticky, setSticky] = useState(false);
+
   return (
     <div>
-      <div>
-        <div className="subNavbarPosition" style={{ background: 'white' }}>
+      <Affix offsetTop={0} onChange={affixed => setSticky(affixed)}>
+        <div
+          className={sticky ? 'subNavbarPosition sticky' : 'subNavbarPosition'}
+          style={{ background: 'white' }}
+        >
           <Menu
             style={{ borderBottom: 'none' }}
             className="container"
             theme="white"
             mode="horizontal"
           >
-            {/* <Menu.Item key="/">
-          
-              <Link to="/koompi-e">KOOMPI E</Link>
-            </Menu.Item> */}
-
-            {/* ===== Navbar ===== */}
-
+            {sticky ? (
+              <Menu.Item>
+                <h2 className="subnavbar-logo">{title}</h2>
+              </Menu.Item>
+            ) : null}
             <Menu.Item className="sub-navbar-a">
               <NavLink
                 exact
@@ -40,7 +43,7 @@ function SubNavbar() {
             </Menu.Item>
           </Menu>
         </div>
-      </div>
+      </Affix>
     </div>
   );
 }
