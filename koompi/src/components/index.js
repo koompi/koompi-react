@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col } from 'antd';
-import { Player, ControlBar } from 'video-react';
-import Modal from 'react-responsive-modal';
+import { Row, Col, Modal } from 'antd';
 import Particles from 'react-particles-js';
 import { useQuery } from '@apollo/react-hooks';
 import parse from 'html-react-parser';
@@ -14,19 +12,24 @@ import Footer from './footer';
 import _ from 'lodash';
 import renderHTML from './editorJsToHtml';
 import { Helmet } from 'react-helmet';
+import ReactPlayer from 'react-player';
 
 function Index() {
-  const [stateModal, setStateModal] = useState([{ open: true }]);
+  const [visible, setVisible] = useState(false);
 
   const { data } = useQuery(GET_PAGES);
 
-  const onOpenModal = () => {
-    setStateModal({ open: true });
+  const showModal = () => {
+    setVisible(true);
   };
-  const onCloseModal = () => {
-    setStateModal({ open: false });
+
+  const handleOk = e => {
+    setVisible(false);
   };
-  const { open } = stateModal;
+
+  const handleCancel = e => {
+    setVisible(false);
+  };
 
   const { error, loading } = useQuery(GET_PAGES);
   if (error) {
@@ -92,7 +95,7 @@ function Index() {
                             <Icon type="arrow-right" />
                           </Button>
                         </div>
-                        <div onClick={onOpenModal}>
+                        <div onClick={showModal}>
                           <Icon
                             type="play-circle"
                             className="indexPlayButton"
@@ -104,32 +107,19 @@ function Index() {
                           }}
                         >
                           <Modal
-                            styles={{
-                              modal: {
-                                maxWidth: 'unset',
-                                width: '70vw',
-                                padding: 'unset'
-                              },
-                              overlay: {
-                                background: 'rgba(0, 0, 0, 0.5)'
-                              },
-                              closeButton: {
-                                background: 'white',
-                                borderRadius: '45px',
-                                // color: 'white',
-                                cursor: 'pointer'
-                              }
-                            }}
-                            open={open}
-                            onClose={onCloseModal}
-                            center
+                            onCancel={handleCancel}
+                            onOk={handleOk}
+                            visible={visible}
+                            footer={false}
+                            className="videoModal"
                           >
-                            <Player autoPlay src="/video/khmersongs.mp4">
-                              <ControlBar
-                                autoHide={false}
-                                className="my-class"
-                              />
-                            </Player>
+                            <ReactPlayer
+                              height="auto"
+                              width="100%"
+                              controls={true}
+                              url="https://admin.koompi.com/public/videos/koompi.mp4"
+                              playing={visible}
+                            />
                           </Modal>
                         </div>
                       </div>

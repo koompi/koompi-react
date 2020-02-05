@@ -31,13 +31,16 @@ function Footer() {
     <div>
       <div className="footerBackground">
         <center>
-          <img src="/img/sw-greens.png" />
+          <img className="koompi-footer-logo" src="/img/Koompi-White.png" />
         </center>
 
         <div className="footer-container">
           <p className="copyRight">
             Copyright © 2020 KOOMPI. All rights reserved <br></br> A brainchild
-            of SmallWorld Venture
+            of{' '}
+            <a href="https://smallworldventure.com/" target="_blank">
+              SmallWorld Venture
+            </a>
           </p>
           <Row gutter={16} className="footerPMagin">
             <Col span={6}>

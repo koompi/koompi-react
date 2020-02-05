@@ -18,6 +18,7 @@ import Retailer from './components/retailer';
 import { BackTop, Icon } from 'antd';
 import SinglePage from './components/single-page';
 import Search from './components/search';
+import PageNotFound from './components/page-not-found';
 function App() {
   return (
     <CartProvider>
@@ -55,11 +56,7 @@ function App() {
           <Route exact path="/search?query=:title" component={Search}></Route>
 
           <Route exact path="/" exact component={Index}></Route>
-          <Route
-            exact
-            path="*"
-            component={() => <h2>Page not found</h2>}
-          ></Route>
+          <Route exact path="*" component={PageNotFound}></Route>
         </Switch>
       </Router>
     </CartProvider>

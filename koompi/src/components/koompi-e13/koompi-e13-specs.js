@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import Navbar from '../navbar';
-import SubNavbar from '../subNavbar';
+import SubNavbar from './subNavbar';
 import Footer from '../footer';
 
 const data = [
@@ -82,7 +82,7 @@ function Koompi_E_Spec() {
   return (
     <div>
       <Navbar />
-      <SubNavbar />
+      <SubNavbar title="KOOMPI E13" />
       <div className="spec-background">
         <div className="container">
           {data.map(res => {

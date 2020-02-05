@@ -859,6 +859,9 @@ button[type='submit']:hover,
   filter: grayscale(90%);
   opacity: 0.9;
 }
+.koompi-footer-logo {
+  width: 10% !important;
+}
 .footer-container h4 {
   font-size: 16px !important;
   font-weight: bold;
@@ -1638,4 +1641,39 @@ button[type='submit']:hover,
 .subnavbar-logo {
   margin: 0px !important;
   font-weight: 900;
+}
+.videoModal {
+  width: 70vw !important;
+}
+
+.videoModal .ant-modal-body {
+  padding: 0px !important;
+}
+
+.videoModal .ant-modal-content {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.ant-modal-close {
+  background: #e7e7e74f !important;
+}
+.ant-modal-close-x {
+  font-size: 25px !important;
+}
+.page-not-found {
+  width: 70%;
+  margin-top: 40px !important;
+}
+.page-not-found-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-top: 40px;
+}
+.koompiBtn.goBack {
+  padding: 0 50px !important;
+}
+.koompi-active {
+  color: #fff !important;
+  font-weight: 600 !important;
 }

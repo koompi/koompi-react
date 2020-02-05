@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Row,
   Col,
@@ -10,10 +10,10 @@ import {
   Input,
   Icon,
   Form
-} from "antd";
-import { CartContext } from "../CartContext";
-import Navbar from "./navbar";
-import Axios from "axios";
+} from 'antd';
+import { CartContext } from '../CartContext';
+import Navbar from './navbar';
+import Axios from 'axios';
 
 // import Bongloy from "bongloyjs";
 
@@ -50,19 +50,19 @@ function Cart(props) {
   };
 
   const handleSubmit = e => {
-    const form = document.querySelector("form");
+    const form = document.querySelector('form');
     const bongloyTokenHandler = token => {
-      const hiddenInput = document.createElement("input");
-      hiddenInput.setAttribute("type", "hidden");
-      hiddenInput.setAttribute("name", "bongloyToken");
-      hiddenInput.setAttribute("value", token.id);
+      const hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'bongloyToken');
+      hiddenInput.setAttribute('value', token.id);
       form.appendChild(hiddenInput);
     };
     e.preventDefault();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         var cardObject = {
-          number: "6200000000000005",
+          number: '6200000000000005',
           exp_month: 12,
           exp_year: 21,
           cvc: 123
@@ -70,21 +70,21 @@ function Cart(props) {
 
         // console.log(values);
         window.Bongloy.setPublishableKey(
-          "pk_test_Tbch5Re5EfwhmsZKWqCD0VxTGblcFgGkiWgvp-ivsbk"
+          'pk_test_Tbch5Re5EfwhmsZKWqCD0VxTGblcFgGkiWgvp-ivsbk'
         );
 
-        window.Bongloy.createToken("card", cardObject, function(
+        window.Bongloy.createToken('card', cardObject, function(
           statusCode,
           response
         ) {
           if (statusCode === 201) {
-            console.log("response", response.id);
+            console.log('response', response.id);
 
-            Axios.post("https://admin.koompi.com/charge", {
+            Axios.post('https://admin.koompi.com/charge', {
               bongloyToken: response.id
             }).then(console.log(response));
           } else {
-            console.log("err");
+            console.log('err');
           }
         });
       }
@@ -94,16 +94,16 @@ function Cart(props) {
   // =====  Show Delete Comfirm  =====
   const showDeleteConfirm = () => {
     confirm({
-      title: "Are you sure delete this task?",
-      content: "Some descriptions",
-      okText: "Yes",
-      okType: "danger",
-      cancelText: "No",
+      title: 'Are you sure delete this task?',
+      content: 'Some descriptions',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
       onOk() {
-        console.log("OK");
+        console.log('OK');
       },
       onCancel() {
-        console.log("Cancel");
+        console.log('Cancel');
       }
     });
   };
@@ -132,7 +132,7 @@ function Cart(props) {
                         <Row gutter={16}>
                           <Col span={8}>
                             <img
-                              style={{ width: "100%" }}
+                              style={{ width: '100%' }}
                               src="https://cdn.vox-cdn.com/thumbor/xgWDnHYZHps8Qn2dJVIdeCBAfd0=/0x0:2000x1500/1200x800/filters:focal(840x590:1160x910)/cdn.vox-cdn.com/uploads/chorus_image/image/66027726/02_Legion_Y740S_Hero_Front_Facing_Left.0.png"
                               alt=""
                             />
@@ -153,7 +153,7 @@ function Cart(props) {
                                   <Select
                                     value={item.quantity}
                                     placeholder="Select a option and change input text above"
-                                    style={{ width: "80px" }}
+                                    style={{ width: '80px' }}
                                   >
                                     <Option value={1}>1</Option>
                                     <Option value={2}>2</Option>
@@ -191,7 +191,7 @@ function Cart(props) {
                     <h5>Subtotal</h5>
                   </Col>
                   <Col span={12}>
-                    <h5 style={{ textAlign: "right" }}>
+                    <h5 style={{ textAlign: 'right' }}>
                       US ${totalPrice(ctx.items)}
                     </h5>
                   </Col>
@@ -211,45 +211,34 @@ function Cart(props) {
                 <Col span={24}>
                   <div className="payment_cart">
                     <img
-                      src="https://cdn1.iconfinder.com/data/icons/currency-40/512/cambodian-riel-currency-money-exchange-512. "
+                      src="/img/riel.png"
                       height="25px"
                       width="25px"
                       alt=""
-                    />{" "}
+                    />{' '}
                     Pay later / Cash on delivery
                   </div>
                 </Col>
                 <Col span={24}>
                   <div className="payment_cart" onClick={handleABA}>
                     <img
-                      src="https://brandslogo.net/wp-content/uploads/2016/07/mastercard-vector-logo.png"
+                      src="/img/master-card.png"
                       height="25px"
                       width="25px"
                       alt=""
-                    />{" "}
+                    />{' '}
                     Master/Visa Card
                   </div>
                 </Col>
                 <Col span={24}>
                   <div className="payment_cart" onClick={handleABA}>
                     <img
-                      src="https://lh3.googleusercontent.com/aAOBfkMHGEoOvMvLkNYEc7KJ-W863_e42bmyKN9sZmdgYAs39M_SA38bjH4jVDM0jzM"
+                      src="/img/wing.png"
                       height="25px"
                       width="25px"
                       alt=""
-                    />{" "}
+                    />{' '}
                     Wing
-                  </div>
-                </Col>
-                <Col span={24}>
-                  <div className="payment_cart" onClick={handleABA}>
-                    <img
-                      src="http://kirimall.com/img/smartluy.jpg"
-                      height="25px"
-                      width="25px"
-                      alt=""
-                    />{" "}
-                    SmartLuy
                   </div>
                 </Col>
               </Row>
@@ -312,30 +301,30 @@ function Cart(props) {
 
           <h2 className="payment_title">Payment Information</h2>
           <Form.Item label="Card Number">
-            {getFieldDecorator("name", {
-              rules: [{ required: true, message: "Please input your name!" }]
+            {getFieldDecorator('name', {
+              rules: [{ required: true, message: 'Please input your name!' }]
             })(<Input size="large" placeholder="1234 1234 1234 1234" />)}
           </Form.Item>
           <Form.Item label="Card Holder Name">
-            {getFieldDecorator("name", {
-              rules: [{ required: true, message: "Please input your name!" }]
+            {getFieldDecorator('name', {
+              rules: [{ required: true, message: 'Please input your name!' }]
             })(<Input size="large" placeholder="KOOMPI" />)}
           </Form.Item>
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item label="Expiration Date">
-                {getFieldDecorator("name", {
+                {getFieldDecorator('name', {
                   rules: [
-                    { required: true, message: "Please input your name!" }
+                    { required: true, message: 'Please input your name!' }
                   ]
                 })(<Input size="large" placeholder="MM / YY" />)}
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item label="CVC Code">
-                {getFieldDecorator("name", {
+                {getFieldDecorator('name', {
                   rules: [
-                    { required: true, message: "Please input your name!" }
+                    { required: true, message: 'Please input your name!' }
                   ]
                 })(<Input size="large" placeholder="CVC" />)}
               </Form.Item>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Collapse, Icon } from 'antd';
+import { Row, Col } from 'antd';
 import Navbar from '../navbar';
-
-const { Panel } = Collapse;
+import SubNavbar from './subNavbar';
+import Footer from '../footer';
 
 const data = [
   {
@@ -67,6 +67,12 @@ const data = [
   }
 ];
 function Koompi_E_Spec() {
+  const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
   const customPanelStyle = {
     borderRadius: 0,
     marginBottom: 24,
@@ -76,26 +82,26 @@ function Koompi_E_Spec() {
   return (
     <div>
       <Navbar />
-      <subNavbarE11 />
+      <SubNavbar title="KOOMPI E11" />
       <div className="spec-background">
         <div className="container">
-          <Collapse
-            bordered={false}
-            defaultActiveKey={['1']}
-            expandIcon={({ isActive }) => (
-              <Icon type="caret-right" rotate={isActive ? 90 : 0} />
-            )}
-          >
-            {data.map(data => {
-              return (
-                <Panel header={data.title} key="1" style={customPanelStyle}>
-                  <p style={{ marginBottom: '0px' }}>{data.desc}</p>
-                </Panel>
-              );
-            })}
-          </Collapse>
+          {data.map(res => {
+            return (
+              <div style={{ padding: '5px 0px' }}>
+                <Row gutter={16}>
+                  <Col span={5}>
+                    <h2>{res.title}</h2>
+                  </Col>
+                  <Col span={19}>
+                    <p>{res.desc}</p>
+                  </Col>
+                </Row>
+              </div>
+            );
+          })}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -34,17 +34,26 @@ function Navbar() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <span>KOOMPI ACADEMY</span>
+              </a>
+            </Menu.Item>
+            <Menu.Item className="koompi">
+              <a
+                href="https://pionux.org/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <span>KOOMPI OS</span>
               </a>
             </Menu.Item>
 
             <Menu.Item className="koompi" key="/koompi-e">
-              <NavLink exact activeStyle={{ color: 'white' }} to="/koompi-e13">
+              <NavLink exact activeClassName="koompi-active" to="/koompi-e13">
                 <span>KOOMPI E13</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item className="koompi">
-              <NavLink to="/koompi-e11">
+              <NavLink activeClassName="koompi-active" to="/koompi-e11">
                 <span>KOOMPI E11</span>
               </NavLink>
             </Menu.Item>

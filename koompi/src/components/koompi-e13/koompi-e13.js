@@ -8,7 +8,7 @@ import 'nprogress/nprogress.css';
 import renderHTML from '../editorJsToHtml';
 import parse from 'html-react-parser';
 
-import SubNavbar from '../subNavbar';
+import SubNavbar from './subNavbar';
 import screen from '../data/screen';
 import shapeliness from '../data/shapeliness';
 import performance from '../data/performance';
