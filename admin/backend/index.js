@@ -18,6 +18,16 @@ const bongloy = new Stripe(process.env.BONGLOY_SECRET_KEY, {
   host: "api.bongloy.com"
 });
 
+// set up cors to allow us to accept requests from our client
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000", "http://localhost:3001"], // allow to server to accept request from different origin
+//     credentials: true // allow session cookie from browser to pass through
+//   })
+// );
+
+app.use(cors());
+
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
 
@@ -39,14 +49,6 @@ app.use(fileUpload());
 
 // parse cookies
 app.use(cookieParser());
-
-// set up cors to allow us to accept requests from our client
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"], // allow to server to accept request from different origin
-    credentials: true // allow session cookie from browser to pass through
-  })
-);
 
 // ===== User Models =====
 const User = require("./models/User");
@@ -124,17 +126,23 @@ app.post("/login", async (req, res) => {
     if (!result) {
       return res.status(400).json({ message: "Invalid email or password" });
     } else {
-      const token = jwt.sign(
-        {
-          email,
-          fullname: user.fullname,
-          isAdmin: user.isAdmin,
-          avatar: user.avatar,
-          approved: user.approved
-        },
-        ACCESS_TOKEN_SECRET
-      );
-      res.status(200).json({ token });
+      if (user.approved === false) {
+        res
+          .status(404)
+          .json({ message: "You don't have a permission to access it" });
+      } else {
+        const token = jwt.sign(
+          {
+            email,
+            fullname: user.fullname,
+            isAdmin: user.isAdmin,
+            avatar: user.avatar,
+            approved: user.approved
+          },
+          ACCESS_TOKEN_SECRET
+        );
+        res.status(200).json({ token });
+      }
     }
   } catch (error) {
     console.log(error);
@@ -158,7 +166,6 @@ app.post("/upload/image", (req, res) => {
         console.error(err);
         return res.status(500).send(err);
       }
-
       res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
     }
   );

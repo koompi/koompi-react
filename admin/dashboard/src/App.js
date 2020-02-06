@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/users/login";
 import SignupForm from "./components/users/signup";
 import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 // Call Component
 import Admin from "./components/admin";
@@ -32,6 +33,7 @@ import newSocialMedia from "./components/socialmedia/new-social-media";
 import SocialMedia from "./components/socialmedia/social-media";
 import editSocialMedia from "./components/socialmedia/edit-social-media";
 import Settings from "./components/settings";
+
 const { Content } = Layout;
 
 function App() {
@@ -41,9 +43,15 @@ function App() {
     <UserProvider>
       <Router>
         <Switch>
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/logout" component={Logout} />
-          <Route exact path="/register" component={SignupForm} />
+          <PublicRoute
+            restricted={true}
+            exact
+            path="/login"
+            component={LoginForm}
+          />
+          <PublicRoute exact path="/" restricted={true} component={LoginForm} />
+          <PublicRoute exact path="/logout" component={Logout} />
+          <PublicRoute exact path="/register" component={SignupForm} />
           <PrivateRoute exact path="/admin/dashboard" component={Admin} />
           <PrivateRoute exact path="/admin/users" component={Users} />
           <PrivateRoute

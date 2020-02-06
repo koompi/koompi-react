@@ -91,7 +91,7 @@ function Index() {
                             : parse(description)}
 
                           <Button className="koompiBtn">
-                            <Link to="/koompi-e">Read More</Link>{' '}
+                            <Link to="/koompi-e11">Read More</Link>{' '}
                             <Icon type="arrow-right" />
                           </Button>
                         </div>
@@ -173,7 +173,7 @@ function Index() {
                         ? parse(description.substring(0, 350) + '... ')
                         : parse(description)}
                       <Button className="koompiBtn">
-                        <Link to="/koompi-e">Read More</Link>{' '}
+                        <Link to="/koompi-e13">Read More</Link>{' '}
                         <Icon type="arrow-right" />
                       </Button>
                     </div>
@@ -199,9 +199,11 @@ function Index() {
                       {parse(description.substring(0, 50))}
                     </p>
                     <div>
-                      <Button type="primary" className="koompiBtn">
-                        Read More <Icon type="arrow-right" />
-                      </Button>
+                      <a href="https://pionux.org/" target="_blank">
+                        <Button type="primary" className="koompiBtn">
+                          Read More <Icon type="arrow-right" />
+                        </Button>
+                      </a>
                     </div>
                   </div>
                   <div className="subBanner-koompiPro">

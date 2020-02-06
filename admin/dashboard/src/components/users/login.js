@@ -22,7 +22,7 @@ function LoginForm(props) {
     const token = window.localStorage.getItem("token");
     const decodeToken = jwt.decode(token);
     notification[type]({
-      message: `Hello ${decodeToken.fullname}!`,
+      message: `Hello there!`,
       description:
         "You don't permission to access it yet. Please ask the admin to approve your user.",
       closeIcon: true,
@@ -52,20 +52,22 @@ function LoginForm(props) {
               res.data.token,
               values.remember ? { expires: 7 } : null
             );
-
-            const token = Cookie.get("token");
-
-            const decodeToken = jwt.decode(token);
-            if (decodeToken.approved) {
-              await message.success("Login successfully.", 3);
-              window.location.replace("/admin/dashboard");
-            } else {
-              openNotificationWithIcon("info");
-            }
+            await message.success("Login successfully.", 3);
+            window.location.replace("/admin/dashboard");
           })
           .catch(error => {
-            console.log(error);
-            message.error(error.response.data.message, 10);
+            setLoading(true);
+            setTimeout(() => {
+              setLoading(false);
+            }, 3000);
+            if (
+              error.response.data.message ===
+              "You don't have a permission to access it"
+            ) {
+              openNotificationWithIcon("info");
+            } else {
+              message.error(error.response.data.message, 10);
+            }
           });
       } else {
         console.log(err);
