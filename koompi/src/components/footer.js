@@ -36,24 +36,29 @@ function Footer() {
 
         <div className="footer-container">
           <p className="copyRight">
-            Copyright © 2020 KOOMPI. All rights reserved <br></br> A brainchild
-            of{' '}
+            Copyright © 2019-2020.<br></br> A brainchild of{' '}
             <a href="https://smallworldventure.com/" target="_blank">
               SmallWorld Venture
             </a>
           </p>
-          <Row gutter={16} className="footerPMagin">
-            <Col span={6}>
-              <h4>Help</h4>
+          <Row gutter={16} type="flex" className="footerPMagin">
+            <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
+              <h4>Legal</h4>
               <Link to="">
-                <p>Support</p>
+                <p>Terms & conditions</p>
               </Link>
               <Link to="">
-                <p>FAQs</p>
+                <p>License Agreement</p>
+              </Link>
+              <Link to="">
+                <p>Privacy policy</p>
+              </Link>
+              <Link to="">
+                <p>Copyright information</p>
               </Link>
             </Col>
 
-            <Col span={6}>
+            <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
               <h4>Information</h4>
               <Link to="/news-and-events">
                 <p>News and Event</p>
@@ -70,23 +75,17 @@ function Footer() {
               </Link>
             </Col>
 
-            <Col span={6}>
-              <h4>Legal</h4>
+            <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
+              <h4 className="footerMarginTop">Help</h4>
               <Link to="">
-                <p>Terms & conditions</p>
+                <p>Support</p>
               </Link>
               <Link to="">
-                <p>License Agreement</p>
-              </Link>
-              <Link to="">
-                <p>Privacy policy</p>
-              </Link>
-              <Link to="">
-                <p>Copyright information</p>
+                <p>FAQs</p>
               </Link>
             </Col>
-            <Col span={6}>
-              <h4>Connect With Us</h4>
+            <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
+              <h4 className="footerMarginTop">Connect With Us</h4>
               <div className="footer_socail_media">
                 <DisplaySocailMedia />
               </div>

@@ -66,7 +66,7 @@ function SinglePage(props) {
         <meta name="description" content={meta_desc} />
       </Helmet>
       <div className="container">
-        <div style={{ margin: '40px 0px' }}>
+        <div>
           <div className="background-single-page">
             <img
               src={`https://admin.koompi.com${thumnail}`}

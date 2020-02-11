@@ -51,7 +51,15 @@ function Search(props) {
             const title = data.title.replace(/^(.{70}[^\s]*).*/, '$1') + '\n';
             return (
               // {`https://admin.koompi.com` + data.thumnail}
-              <Col span={12} style={{ marginBottom: '24px' }} key={index}>
+              <Col
+                xs={24}
+                sm={24}
+                md={12}
+                lg={8}
+                xl={8}
+                style={{ marginBottom: '24px' }}
+                key={index}
+              >
                 <div className="cardHeight">
                   <Link
                     to={`/news-and-events/${slugify(data.title.toLowerCase())}`}

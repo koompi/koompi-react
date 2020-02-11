@@ -14,6 +14,7 @@ import {
 import { CartContext } from '../CartContext';
 import Navbar from './navbar';
 import Axios from 'axios';
+import Cash from './payments/cash-or-delivery';
 
 // import Bongloy from "bongloyjs";
 
@@ -209,15 +210,7 @@ function Cart(props) {
               </div>
               <Row gutter={16}>
                 <Col span={24}>
-                  <div className="payment_cart">
-                    <img
-                      src="/img/riel.png"
-                      height="25px"
-                      width="25px"
-                      alt=""
-                    />{' '}
-                    Pay later / Cash on delivery
-                  </div>
+                  <Cash />
                 </Col>
                 <Col span={24}>
                   <div className="payment_cart" onClick={handleABA}>

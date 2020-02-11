@@ -19,7 +19,9 @@ import { BackTop, Icon } from 'antd';
 import SinglePage from './components/single-page';
 import Search from './components/search';
 import PageNotFound from './components/page-not-found';
+import NProgress from 'nprogress';
 function App() {
+  NProgress.configure({ showSpinner: false });
   return (
     <CartProvider>
       <BackTop>

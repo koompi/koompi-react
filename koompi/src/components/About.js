@@ -57,14 +57,14 @@ function About() {
     return (
       <div className="container">
         {/* ===== Business Development ===== */}
-        <Row gutter={16}>
-          <h2 className="teamDepartment">
-            <Icon type="double-right" style={{ marginRight: '10px' }} />
-            Business Development
-          </h2>
+        <h2 className="teamDepartment">
+          <Icon type="double-right" style={{ marginRight: '10px' }} />
+          Business Development
+        </h2>
+        <Row gutter={16} type="flex">
           {businessDevelopment.map(member => {
             return (
-              <Col sm={6}>
+              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
                 <center>
                   <Img
                     className="memberPhoto"
@@ -87,14 +87,14 @@ function About() {
         </Row>
 
         {/* ===== Hardware Team ===== */}
-        <Row gutter={16}>
-          <h2 className="teamDepartment">
-            <Icon type="double-right" style={{ marginRight: '10px' }} />
-            Hardware Teams
-          </h2>
+        <h2 className="teamDepartment">
+          <Icon type="double-right" style={{ marginRight: '10px' }} />
+          Hardware Teams
+        </h2>
+        <Row gutter={16} type="flex">
           {hardware.map(member => {
             return (
-              <Col sm={6}>
+              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
                 <center>
                   <Img
                     className="memberPhoto"
@@ -117,14 +117,14 @@ function About() {
         </Row>
 
         {/* ===== KOOMPI ACADEMY Team ===== */}
-        <Row gutter={16}>
-          <h2 className="teamDepartment">
-            <Icon type="double-right" style={{ marginRight: '10px' }} />
-            KOOMPI ACADEMY
-          </h2>
+        <h2 className="teamDepartment">
+          <Icon type="double-right" style={{ marginRight: '10px' }} />
+          KOOMPI ACADEMY
+        </h2>
+        <Row gutter={16} type="flex">
           {koompiAcademy.map(member => {
             return (
-              <Col sm={6}>
+              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
                 <center>
                   <Img
                     className="memberPhoto"
@@ -147,14 +147,14 @@ function About() {
         </Row>
 
         {/* ===== Sales and Supplier Relation Team ===== */}
-        <Row gutter={16}>
-          <h2 className="teamDepartment">
-            <Icon type="double-right" style={{ marginRight: '10px' }} />
-            Sales and Supplier Relation
-          </h2>
+        <h2 className="teamDepartment">
+          <Icon type="double-right" style={{ marginRight: '10px' }} />
+          Sales and Supplier Relation
+        </h2>
+        <Row gutter={16} type="flex">
           {sales.map(member => {
             return (
-              <Col sm={6}>
+              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
                 <center>
                   <Img
                     className="memberPhoto"
@@ -177,14 +177,14 @@ function About() {
         </Row>
 
         {/* ===== Communication Team ===== */}
-        <Row gutter={16}>
-          <h2 className="teamDepartment">
-            <Icon type="double-right" style={{ marginRight: '10px' }} />
-            Communication and Marketing
-          </h2>
+        <h2 className="teamDepartment">
+          <Icon type="double-right" style={{ marginRight: '10px' }} />
+          Communication and Marketing
+        </h2>
+        <Row gutter={16} type="flex">
           {communication.map(member => {
             return (
-              <Col sm={6}>
+              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
                 <center>
                   <Img
                     className="memberPhoto"
@@ -207,14 +207,14 @@ function About() {
         </Row>
 
         {/* ===== Software Development ===== */}
-        <Row gutter={16}>
-          <h2 className="teamDepartment">
-            <Icon type="double-right" style={{ marginRight: '10px' }} />
-            Software Teams
-          </h2>
+        <h2 className="teamDepartment">
+          <Icon type="double-right" style={{ marginRight: '10px' }} />
+          Software Teams
+        </h2>
+        <Row gutter={16} type="flex">
           {software.map(member => {
             return (
-              <Col sm={6}>
+              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
                 <center>
                   <Img
                     className="memberPhoto"
@@ -276,9 +276,7 @@ function About() {
             />
             <Img
               src={`https://admin.koompi.com` + about.image}
-              loader={
-                <Img className="memberPhotoBlur" src="/img/blur-image.png" />
-              }
+              className="aboutBannerImg"
             />
           </Col>
         </Row>

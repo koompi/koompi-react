@@ -80,7 +80,7 @@ function Index() {
               <div className="PhnomPenh"></div>
               <div className="container">
                 <Row>
-                  <Col sm={12}>
+                  <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                     <center>
                       <div className="banner_content">
                         {/* ========= KOOMPI SECTION =========  */}
@@ -95,7 +95,7 @@ function Index() {
                             <Icon type="arrow-right" />
                           </Button>
                         </div>
-                        <div onClick={showModal}>
+                        <div onClick={showModal} className="videoPlayBtn">
                           <Icon
                             type="play-circle"
                             className="indexPlayButton"
@@ -125,7 +125,7 @@ function Index() {
                       </div>
                     </center>
                   </Col>
-                  <Col sm={12}>
+                  <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                     <center>
                       <div className="index_banner">
                         <img

@@ -88,11 +88,11 @@ function Koompi_E_Spec() {
           {data.map(res => {
             return (
               <div style={{ padding: '5px 0px' }}>
-                <Row gutter={16}>
-                  <Col span={5}>
+                <Row gutter={[16, 16]} type="flex">
+                  <Col xs={24} sm={12} md={8} lg={5} xl={5}>
                     <h2>{res.title}</h2>
                   </Col>
-                  <Col span={19}>
+                  <Col xs={24} sm={12} md={16} lg={19} xl={19}>
                     <p>{res.desc}</p>
                   </Col>
                 </Row>

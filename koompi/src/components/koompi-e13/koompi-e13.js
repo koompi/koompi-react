@@ -214,10 +214,10 @@ function KoompiE13() {
             </div>
             <p className="subTittle-E11">{description}</p>
             <div className="koompi-e-section-margin">
-              <Row gutter={16}>
+              <Row gutter={16} type="flex">
                 {performance.map((data, index) => {
                   return (
-                    <Col span={8} key={index}>
+                    <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
                       <center>
                         <h3 className="koompi-e-section-title">{data.title}</h3>
                         <p className="koompi-e-section-desc">{data.value}</p>

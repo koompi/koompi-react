@@ -42,7 +42,7 @@ function Retailer() {
       <div className="boss-banner-retailer">
         <div className="container">
           <Row gutter={16}>
-            <Col sm={16}>
+            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
               <h2 className="title-retailer-banner">GET KOOMPI</h2>
               <p>
                 We aim to satisfy your individual needs while offering the best
@@ -71,7 +71,11 @@ function Retailer() {
                 {data.retailers.map(res => {
                   return (
                     <Col
-                      span={6}
+                      xs={24}
+                      sm={12}
+                      md={12}
+                      lg={6}
+                      xl={6}
                       style={{ marginBottom: '24px', height: '100%' }}
                     >
                       <div

@@ -59,7 +59,7 @@ function KoompiE11() {
       <center>
         <h2 className="KoompiE11">KOOMPI E11</h2>
 
-        <p className="subTittle-E11">{description}</p>
+        <div className="subTittle-E11">{description}</div>
         <h1 className="koompi-price">$369.00</h1>
         <Button className="koompiBtn">
           Add To Card <Icon type="arrow-right" />
@@ -79,7 +79,7 @@ function KoompiE11() {
               <h3>{subTitle}</h3>
               <h2 className="KoompiE11">{title}</h2>
             </div>
-            <p className="subTittle-E11">{description}</p>
+            <div className="subTittle-E11">{description}</div>
             <div className="koompi-e-section-margin">
               <Row gutter={16}>
                 {screen.map((data, index) => {
@@ -113,7 +113,7 @@ function KoompiE11() {
               <h3>{subTitle}</h3>
               <h2 className="KoompiE11">{title}</h2>
             </div>
-            <p className="subTittle-E11">{description}</p>
+            <div className="subTittle-E11">{description}</div>
             <div className="koompi-e-section-margin">
               <Row gutter={16}>
                 {shapeliness.map((data, index) => {
@@ -170,7 +170,7 @@ function KoompiE11() {
               <h3>{subTitle}</h3>
               <h2 className="KoompiE11">{title}</h2>
             </div>
-            <p className="subTittle-E11">{description}</p>
+            <div className="subTittle-E11">{description}</div>
             <div className="koompi-e-section-margin">
               <Row gutter={16}>
                 {shapeliness.map((data, index) => {
@@ -212,12 +212,12 @@ function KoompiE11() {
               <h3>{subTitle}</h3>
               <h2 className="KoompiE11">{title}</h2>
             </div>
-            <p className="subTittle-E11">{description}</p>
+            <div className="subTittle-E11">{description}</div>
             <div className="koompi-e-section-margin">
-              <Row gutter={16}>
+              <Row gutter={16} type="flex">
                 {performance.map((data, index) => {
                   return (
-                    <Col span={8} key={index}>
+                    <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
                       <center>
                         <h3 className="koompi-e-section-title">{data.title}</h3>
                         <p className="koompi-e-section-desc">{data.value}</p>

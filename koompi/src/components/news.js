@@ -23,7 +23,7 @@ function News(props) {
   if (loading) {
     NProgress.start();
     return (
-      <Row className="Row-about" gutter={24}>
+      <Row className="Row-about" gutter={16} type="flex">
         <center>
           <Spin tip="Loading ..."></Spin>
         </center>
@@ -63,14 +63,14 @@ function News(props) {
             />
             <meta name="description" content={meta_desc} />
           </Helmet>
-          <Row className="Row-news" gutter={24}>
-            <Col sm={12}>
+          <Row className="Row-news" gutter={16} type="flex">
+            <Col xs={24} sm={24} ms={12} lg={12} xl={12}>
               <div className="news-and-events-banner-text">
                 <h2 className="newsBannerTitle">{title}</h2>
                 <div className="about-paragraph">{parse(description)}</div>
               </div>
             </Col>
-            <Col sm={12}>
+            <Col xs={24} sm={24} ms={24} lg={12} xl={12}>
               <img
                 style={{ maxWidth: '100%' }}
                 src={`https://admin.koompi.com${image}`}
@@ -94,14 +94,22 @@ function News(props) {
         style={{ marginTop: '90px', marginBottom: '50px' }}
         className="container"
       >
-        <Row gutter={24}>
+        <Row gutter={16} type="flex">
           {data.posts.map((data, index) => {
             const title = data.title.replace(/^(.{70}[^\s]*).*/, '$1') + '\n';
             const { slug, title: categoryTitle } = data.category;
 
             return (
               // {`https://admin.koompi.com` + data.thumnail}
-              <Col span={12} style={{ marginBottom: '24px' }} key={index}>
+              <Col
+                xs={24}
+                sm={24}
+                md={12}
+                lg={8}
+                xl={8}
+                style={{ marginBottom: '24px' }}
+                key={index}
+              >
                 <div className="cardHeight">
                   <p className="postCategory">
                     <Link to={`/search?query=${slug}`}>

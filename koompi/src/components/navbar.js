@@ -1,68 +1,135 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Layout, Menu, Badge, Icon } from 'antd';
+import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { Layout, Menu, Badge, Icon, Drawer } from 'antd';
+import { IoMdMenu } from 'react-icons/io';
 
 const { Header, Sider } = Layout;
 
+function RightNavbar() {
+  return (
+    <div className="rightNavbarHidden">
+      <Menu theme="dark" mode="horizontal">
+        <Menu.Item>
+          <NavLink activeClassName="koompi-active" to="/koompi-e11">
+            <span>KOOMPI E11</span>
+          </NavLink>
+        </Menu.Item>
+
+        <Menu.Item key="/koompi-e">
+          <NavLink exact activeClassName="koompi-active" to="/koompi-e13">
+            <span>KOOMPI E13</span>
+          </NavLink>
+        </Menu.Item>
+
+        <Menu.Item>
+          <a
+            href="https://pionux.org/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span>KOOMPI OS</span>
+          </a>
+        </Menu.Item>
+
+        <Menu.Item>
+          <a
+            href="https://pionux.org/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span>KOOMPI ACADEMY</span>
+          </a>
+        </Menu.Item>
+
+        <Menu.Item>
+          <NavLink exact activeStyle={{ color: 'white' }} to="/shop/bag">
+            <Badge>
+              <Icon type="shopping-cart" className="shopping-cart-icon" />
+            </Badge>
+          </NavLink>
+        </Menu.Item>
+      </Menu>
+    </div>
+  );
+}
+
 function Navbar() {
+  const [visible, setVisible] = useState(false);
+
+  const handleChange = () => {
+    setVisible(!visible);
+  };
   return (
     <React.Fragment>
       <Header className="header">
         <div className="container">
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['/']}
-            selectedKeys={['/']}
-          >
-            <Menu.Item key="/">
-              <img className="logo" src="/img/koompi-sym-01.png" alt="koompi" />
-              <NavLink exact activeStyle={{ color: 'white' }} to="/"></NavLink>
-            </Menu.Item>
+          <IoMdMenu className="mobileMenu" onClick={handleChange} />
+          <Link to="/">
+            <img className="logo" src="/img/koompi-sym-01.png" alt="koompi" />
+          </Link>
+          <div className="koompi">
+            <RightNavbar />
+            <Drawer
+              title={false}
+              placement="left"
+              closable={false}
+              onClose={handleChange}
+              visible={visible}
+            >
+              <Menu>
+                <Menu.Item>
+                  <NavLink activeClassName="koompi-active" to="/koompi-e11">
+                    <span>KOOMPI E11</span>
+                  </NavLink>
+                </Menu.Item>
 
-            {/* ===== Navbar ===== */}
-            <Menu.Item className="koompi" key="4">
-              <NavLink exact activeStyle={{ color: 'white' }} to="/shop/bag">
-                <Badge>
-                  <Icon type="shopping-cart" className="shopping-cart-icon" />
-                </Badge>
-              </NavLink>
-            </Menu.Item>
-            <Menu.Item className="koompi">
-              <a
-                href="https://pionux.org/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span>KOOMPI ACADEMY</span>
-              </a>
-            </Menu.Item>
-            <Menu.Item className="koompi">
-              <a
-                href="https://pionux.org/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span>KOOMPI OS</span>
-              </a>
-            </Menu.Item>
+                <Menu.Item key="/koompi-e">
+                  <NavLink
+                    exact
+                    activeClassName="koompi-active"
+                    to="/koompi-e13"
+                  >
+                    <span>KOOMPI E13</span>
+                  </NavLink>
+                </Menu.Item>
 
-            <Menu.Item className="koompi" key="/koompi-e">
-              <NavLink exact activeClassName="koompi-active" to="/koompi-e13">
-                <span>KOOMPI E13</span>
-              </NavLink>
-            </Menu.Item>
-            <Menu.Item className="koompi">
-              <NavLink activeClassName="koompi-active" to="/koompi-e11">
-                <span>KOOMPI E11</span>
-              </NavLink>
-            </Menu.Item>
-            {/* <Menu.Item className="koompi" key="1">
-              <NavLink exact activeStyle={{ color: 'white' }} to="/Koompi-b">
-                <span>KOOMPI B14</span>
-              </NavLink>
-            </Menu.Item> */}
-          </Menu>
+                <Menu.Item>
+                  <a
+                    href="https://pionux.org/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span>KOOMPI OS</span>
+                  </a>
+                </Menu.Item>
+
+                <Menu.Item>
+                  <a
+                    href="https://pionux.org/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span>KOOMPI ACADEMY</span>
+                  </a>
+                </Menu.Item>
+
+                <Menu.Item>
+                  <NavLink
+                    exact
+                    activeStyle={{ color: 'white' }}
+                    to="/shop/bag"
+                  >
+                    <Badge>
+                      <Icon
+                        type="shopping-cart"
+                        className="shopping-cart-icon"
+                      />
+                    </Badge>
+                  </NavLink>
+                </Menu.Item>
+              </Menu>
+            </Drawer>
+          </div>
         </div>
       </Header>
     </React.Fragment>
