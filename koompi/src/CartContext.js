@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export const CartContext = React.createContext(null);
 
@@ -7,7 +7,7 @@ export const CartProvider = props => {
 
   function addToCart(item) {
     setItems(prevState => [...prevState, item]);
-    window.localStorage.setItem("koompi", JSON.stringify([...items, item]));
+    // window.localStorage.setItem('koompi', JSON.stringify([...items, item]));
   }
 
   function itemsWithQuantities(items) {

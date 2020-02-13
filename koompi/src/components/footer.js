@@ -53,8 +53,8 @@ function Footer() {
               <Link to="">
                 <p>Privacy policy</p>
               </Link>
-              <Link to="">
-                <p>Copyright information</p>
+              <Link to="/whitepaper/salespolicies">
+                <p>Sale Policy</p>
               </Link>
             </Col>
 

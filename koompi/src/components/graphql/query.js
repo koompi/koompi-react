@@ -46,6 +46,16 @@ const GET_MEMBERS = gql`
   }
 `;
 
+const GET_LEGALS = gql`
+  query {
+    legals {
+      id
+      title
+      description
+    }
+  }
+`;
+
 const GET_SOCAIL_MEDIA = gql`
   query {
     socailMedia {
@@ -126,5 +136,6 @@ export {
   GET_SOCAIL_MEDIA,
   GET_POSTS,
   GET_POST,
-  SEARCH_POST
+  SEARCH_POST,
+  GET_LEGALS
 };

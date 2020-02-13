@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Navbar from '../navbar';
 import { Row, Col, Icon, Result, Button, Spin } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
@@ -15,7 +15,11 @@ import performance from '../data/performance';
 import Footer from '../footer';
 import _ from 'lodash';
 
+import { CartContext } from '../../CartContext';
+import products from '../data/products';
+
 function KoompiE13() {
+  const cartCtx = useContext(CartContext);
   const [koompiColor, setKoompiColor] = useState(true);
   const imageLink = `https://admin.koompi.com`;
 
@@ -48,10 +52,10 @@ function KoompiE13() {
   );
   const result = _.orderBy(dataIndex, 'sectionNumber', 'asc');
 
-  console.log('result', result);
-
   // ===== Chage KOOMPI Color =====
   const changeKoompiColor = () => setKoompiColor(!koompiColor);
+
+  console.log(products);
 
   // ===== KOOMPI E Top Section  =====
   const DisplayKOOMPIE = ({ title, description, image }) => {
@@ -61,7 +65,10 @@ function KoompiE13() {
 
         <p className="subTittle-E11">{description}</p>
         <h1 className="koompi-price">$369.00</h1>
-        <Button className="koompiBtn">
+        <Button
+          className="koompiBtn"
+          onClick={() => cartCtx.addToCart(products[0])}
+        >
           Add To Card <Icon type="arrow-right" />
         </Button>
         <img className="banner-overview-koompiE11" src={imageLink + image} />

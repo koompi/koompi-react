@@ -20,6 +20,7 @@ import SinglePage from './components/single-page';
 import Search from './components/search';
 import PageNotFound from './components/page-not-found';
 import NProgress from 'nprogress';
+import SalePolicy from './components/legals/sale-policy';
 function App() {
   NProgress.configure({ showSpinner: false });
   return (
@@ -46,6 +47,11 @@ function App() {
           <Route exact path="/contact" component={Contact}></Route>
           <Route exact path="/about-us" component={About}></Route>
           <Route exact path="/retailers" component={Retailer}></Route>
+          <Route
+            exact
+            path="/whitepaper/salespolicies"
+            component={SalePolicy}
+          ></Route>
           {/* ===== News and Events Route */}
           <Route exact path="/category" component={News}></Route>
           <Route exact path="/news-and-events" component={News}></Route>

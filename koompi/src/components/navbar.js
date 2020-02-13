@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Layout, Menu, Badge, Icon, Drawer } from 'antd';
 import { IoMdMenu } from 'react-icons/io';
+import { CartContext } from '../CartContext';
 
 const { Header, Sider } = Layout;
+const laptop = localStorage.getItem('koompi');
 
 function RightNavbar() {
+  const ctx = useContext(CartContext);
+  const result = ctx.items;
+
+  result.map(data => console.log('rest', data.quantity));
+
   return (
     <div className="rightNavbarHidden">
       <Menu theme="dark" mode="horizontal">
@@ -40,10 +47,10 @@ function RightNavbar() {
             <span>KOOMPI ACADEMY</span>
           </a>
         </Menu.Item>
-
+        {/* JSON.parse(laptop).length */}
         <Menu.Item>
           <NavLink exact activeStyle={{ color: 'white' }} to="/shop/bag">
-            <Badge>
+            <Badge count={1}>
               <Icon type="shopping-cart" className="shopping-cart-icon" />
             </Badge>
           </NavLink>

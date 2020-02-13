@@ -116,14 +116,6 @@ function Cart(props) {
       <div className="container">
         <Row gutter={[16, 16]}>
           <Col span={17}>
-            <div className="shopping-cart">
-              <center>
-                <h1>Your bag total is ${totalPrice(ctx.items)}.</h1>
-                <br />
-                <Button type="primary">Check out</Button>
-              </center>
-            </div>
-
             {ctx.items.map(item => {
               return (
                 <div className="shopping-cart">
@@ -134,16 +126,13 @@ function Cart(props) {
                           <Col span={8}>
                             <img
                               style={{ width: '100%' }}
-                              src="https://cdn.vox-cdn.com/thumbor/xgWDnHYZHps8Qn2dJVIdeCBAfd0=/0x0:2000x1500/1200x800/filters:focal(840x590:1160x910)/cdn.vox-cdn.com/uploads/chorus_image/image/66027726/02_Legion_Y740S_Hero_Front_Facing_Left.0.png"
+                              src={item.image}
                               alt=""
                             />
                           </Col>
                           <Col span={16}>
                             <h1>{item.name}</h1>
-                            <p className="shopDesc">
-                              Get up to three years of technical support and
-                              accidental damage coverage.
-                            </p>
+                            <p className="shopDesc">{item.desc}</p>
                             <h4 className="KoompiPRICE">
                               USD <b>${item.price}</b>
                             </h4>

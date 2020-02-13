@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import products from "./data/products";
-import Cart from "./buypage/cart";
-import { CartContext } from "../CartContext";
-import Navbar from "./navbar";
+import React, { useContext } from 'react';
+import products from './data/products';
+import Cart from './buypage/cart';
+import { CartContext } from '../CartContext';
+import Navbar from './navbar';
 
 export default function Store() {
   const cartCtx = useContext(CartContext);

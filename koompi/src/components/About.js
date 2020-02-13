@@ -260,8 +260,6 @@ function About() {
       page => page.category.slug === 'about-us'
     );
 
-    console.log(onlyAboutUs);
-
     return onlyAboutUs.map(about => {
       const description = renderHTML(about.description);
       return (
