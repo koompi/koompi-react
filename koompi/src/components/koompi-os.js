@@ -1,11 +1,11 @@
-import React from "react";
-import { Typography, Tabs, Row, Col } from "antd";
-import Navbar from "./navbar";
-const { TabPane } = Tabs;
-const { Title, Paragraph, Text } = Typography;
+import React from "react"
+import { Typography, Tabs, Row, Col } from "antd"
+import Navbar from "./navbar"
+const { TabPane } = Tabs
+const { Title, Paragraph, Text } = Typography
 function Koompi_Os() {
   function callback(key) {
-    console.log(key);
+    console.log(key)
   }
   return (
     <React.Fragment>
@@ -18,9 +18,9 @@ function Koompi_Os() {
         </center>
         <div className="text-container">
           <Paragraph className="koompi-os-paragraph top-of-paragraph">
-            KOOMPI OS is the operating system that powers every computer and
-            comes with an entire suite of beautifully designed apps.It’s been
-            built from the ground up with privacy and security in mind
+            KOOMPI OS is the operating system that powers every computer and comes
+            with an entire suite of beautifully designed apps.It’s been built from
+            the ground up with privacy and security in mind
           </Paragraph>
         </div>
       </div>
@@ -35,9 +35,9 @@ function Koompi_Os() {
           <Title className="koompi-os-title">You can do anything</Title>
           <Paragraph className="koompi-os-paragraph">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            industry. Lorem Ipsum has been the industry's standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
           </Paragraph>
         </div>
         <center>
@@ -63,8 +63,8 @@ function Koompi_Os() {
           <Title>Privacy and Security</Title>
           <Paragraph className="koompi-os-paragraph">
             Everything you do with your Mac is protected by strong privacy and
-            security features. That’s because we build data security into
-            everything we make, right from the start.
+            security features. That’s because we build data security into everything
+            we make, right from the start.
           </Paragraph>
         </div>
         <div className="text-container">
@@ -75,12 +75,11 @@ function Koompi_Os() {
                   Privacy
                 </Title>
                 <Paragraph className="koompi-os-paragraph">
-                  You trust our products with your most personal information,
-                  and we believe that you should be in complete control of it.
-                  We respect your privacy by enacting strict policies that
-                  govern how all data is handled. And when you browse the web,
-                  Safari helps prevent data companies from tracking the sites
-                  you vis
+                  You trust our products with your most personal information, and we
+                  believe that you should be in complete control of it. We respect
+                  your privacy by enacting strict policies that govern how all data
+                  is handled. And when you browse the web, Safari helps prevent data
+                  companies from tracking the sites you vis
                 </Paragraph>
               </div>
             </Col>
@@ -90,12 +89,11 @@ function Koompi_Os() {
                   Security
                 </Title>
                 <Paragraph className="koompi-os-paragraph">
-                  You trust our products with your most personal information,
-                  and we believe that you should be in complete control of it.
-                  We respect your privacy by enacting strict policies that
-                  govern how all data is handled. And when you browse the web,
-                  Safari helps prevent data companies from tracking the sites
-                  you vis
+                  You trust our products with your most personal information, and we
+                  believe that you should be in complete control of it. We respect
+                  your privacy by enacting strict policies that govern how all data
+                  is handled. And when you browse the web, Safari helps prevent data
+                  companies from tracking the sites you vis
                 </Paragraph>
               </div>
             </Col>
@@ -103,7 +101,7 @@ function Koompi_Os() {
         </div>
       </div>
     </React.Fragment>
-  );
+  )
 }
 
-export default Koompi_Os;
+export default Koompi_Os

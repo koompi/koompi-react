@@ -1,40 +1,40 @@
-import React from 'react';
-import Navbar from './navbar';
-import { Row, Col, Typography, Card, Button, Spin } from 'antd';
-import Footer from './footer';
-import _ from 'lodash';
-import { useQuery } from '@apollo/react-hooks';
-import parse from 'html-react-parser';
-import NProgress from 'nprogress';
-import { GET_RETAILERS } from './graphql/query';
-import { Link } from 'react-router-dom';
+import React from "react"
+import Navbar from "./navbar"
+import { Row, Col, Typography, Card, Button, Spin } from "antd"
+import Footer from "./footer"
+import _ from "lodash"
+import { useQuery } from "@apollo/react-hooks"
+import parse from "html-react-parser"
+import NProgress from "nprogress"
+import { GET_RETAILERS } from "./graphql/query"
+import { Link } from "react-router-dom"
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph, Text } = Typography
 
 function Retailer() {
   const randomImage = [
-    '/img/svg-img/01.svg',
-    '/img/svg-img/02.svg',
-    '/img/svg-img/03.svg',
-    '/img/svg-img/04.svg',
-    '/img/svg-img/05.svg',
-    '/img/svg-img/06.svg'
-  ];
+    "/img/svg-img/01.svg",
+    "/img/svg-img/02.svg",
+    "/img/svg-img/03.svg",
+    "/img/svg-img/04.svg",
+    "/img/svg-img/05.svg",
+    "/img/svg-img/06.svg"
+  ]
 
-  const { error, loading, data } = useQuery(GET_RETAILERS);
+  const { error, loading, data } = useQuery(GET_RETAILERS)
 
-  if (error) console.log(error);
+  if (error) console.log(error)
   if (loading) {
-    NProgress.start();
+    NProgress.start()
     return (
       <Row className="Row-about" gutter={24}>
         <center>
           <Spin tip="Loading ..."></Spin>
         </center>
       </Row>
-    );
+    )
   }
-  NProgress.done();
+  NProgress.done()
 
   return (
     <React.Fragment>
@@ -45,12 +45,12 @@ function Retailer() {
             <Col xs={24} sm={12} md={12} lg={6} xl={6}>
               <h2 className="title-retailer-banner">GET KOOMPI</h2>
               <p>
-                We aim to satisfy your individual needs while offering the best
-                and most convenient tools for everyone.<br></br>
+                We aim to satisfy your individual needs while offering the best and
+                most convenient tools for everyone.<br></br>
                 <br></br> Take this opportunity to engage and interact with the
                 KOOMPI wherever you are.<br></br>
-                <br></br> Test drive a new KOOMPI from any of our retail
-                partners listed below:
+                <br></br> Test drive a new KOOMPI from any of our retail partners
+                listed below:
               </p>
             </Col>
             <Col sm={7}>
@@ -68,7 +68,7 @@ function Retailer() {
 
             <div>
               <Row gutter={24} type="flex">
-                {data.retailers.map(res => {
+                {data.retailers.map((res) => {
                   return (
                     <Col
                       xs={24}
@@ -76,7 +76,7 @@ function Retailer() {
                       md={12}
                       lg={6}
                       xl={6}
-                      style={{ marginBottom: '24px', height: '100%' }}
+                      style={{ marginBottom: "24px", height: "100%" }}
                     >
                       <div
                         className="cardBackground"
@@ -106,7 +106,7 @@ function Retailer() {
                         </center>
                       </Card>
                     </Col>
-                  );
+                  )
                 })}
               </Row>
               <br />
@@ -117,7 +117,7 @@ function Retailer() {
 
       <Footer />
     </React.Fragment>
-  );
+  )
 }
 
-export default Retailer;
+export default Retailer

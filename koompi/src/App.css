@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,600i,700,700i,800,800i,900,900i&display=swap");
 * {
-  font-family: 'Nunito', sans-serif !important;
+  font-family: "Nunito", sans-serif !important;
   letter-spacing: 0.5px;
 }
 body {
@@ -13,7 +13,7 @@ p {
   font-size: 18px !important;
 }
 /* html {
-  --antd-wave-shadow-color: white !important;
+  --antd-wave-shadow-color: #ffffff !important;
 } */
 .logo {
   height: 40px !important;
@@ -29,7 +29,6 @@ p {
   margin-top: 45px;
 }
 .banner {
-  background-color: whitesmoke;
   overflow: hidden;
   position: relative;
   padding: 80px 0px;
@@ -43,7 +42,7 @@ p {
 }
 .text {
   font-size: 19px;
-  color: white;
+  color: #ffffff;
 }
 /* .content1 {
 	margin-top: 80px;
@@ -69,9 +68,9 @@ p {
 .banner1 {
   background-color: #0000000;
   background: linear-gradient(rgba(10, 10, 10, 0.93), rgb(27, 27, 27)),
-    url('/img/pionux-walpaper.jpg');
+    url("/img/pionux-walpaper.jpg");
   overflow: hidden;
-  height: 50vw;
+  height: 105vh;
 }
 .koompi_section_position {
   width: 50% !important;
@@ -83,9 +82,9 @@ p {
 .banner2 {
   background-color: #2d3436;
   background: linear-gradient(rgba(10, 10, 10, 0.92), rgba(27, 27, 27, 0.966)),
-    url('/img/Thmor Loy.jpg');
+    url("/img/Thmor Loy.jpg");
   overflow: hidden;
-  height: 50vw;
+  height: 100vh;
 }
 .banner3 {
   background-color: #2d3436;
@@ -114,7 +113,7 @@ p {
 }
 .sub-navbar-a span {
   font-size: 14px !important;
-  /* color: white !important; */
+  /* color: #ffffff !important; */
 }
 .sub-navbar-a-koompi-b {
   float: right !important;
@@ -128,7 +127,8 @@ p {
 .koompi span {
   font-size: 17px !important;
 }
-.subTittle-E11 {
+
+.subTittle-E11 p {
   font-weight: 500 !important;
   width: 85% !important;
   margin-bottom: 10px !important;
@@ -139,13 +139,13 @@ p {
   font-size: 64px;
   line-height: 67px;
   font-weight: 600;
-  color: white !important;
+  color: #ffffff !important;
   margin-top: 12px !important;
   margin-bottom: 80px !important;
 }
 .shopping-cart {
   padding: 40px !important;
-  background-color: #e0e1e3;
+  background-color: #fff;
   border-radius: 8px !important;
   margin: 15px 0px;
 }
@@ -158,61 +158,7 @@ p {
 .shopDesc {
   font-size: 18px !important;
 }
-@media only screen and (max-width: 574px) {
-  .img-show-all-section img {
-    max-width: 100%;
-    height: auto !important;
-  }
-}
-@media only screen and (max-width: 518px) {
-  .title-show-all-section {
-    margin-left: auto !important;
-  }
-  .li-show-all-section {
-    margin-left: auto !important;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .upperSpec {
-    display: none;
-  }
-  .banner2 {
-    height: auto !important;
-  }
-  .banner1 {
-    height: auto !important;
-  }
-  .banner3 {
-    height: auto !important;
-  }
-  .show-padding-powerBatter {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-  .title-of-powerBattery-show {
-    font-size: 30px !important;
-  }
-  .title-of-slim {
-    font-size: 30px !important;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .upperSpec-width-767px {
-    display: none;
-  }
-}
-@media only screen and (max-width: 989px) {
-  .img-show-all-section img {
-    height: auto !important;
-    max-width: 100% !important;
-  }
-  .title-show-all-section {
-    margin-left: 0 !important;
-  }
-  .li-show-all-section {
-    margin-left: 0 !important;
-  }
-}
+
 .upperSpec-width-767px h1 {
   font-size: 20px !important;
   color: #fff;
@@ -262,7 +208,7 @@ p {
   margin-top: 56px !important;
 }
 .professional-performance-h {
-  color: white !important;
+  color: #ffffff !important;
   margin-top: 61px;
 }
 .professional-performance-p {
@@ -270,7 +216,7 @@ p {
   font-size: 21px;
 }
 .performance-koompi-b {
-  color: white !important;
+  color: #ffffff !important;
 }
 .Microchip {
   margin-top: 60px;
@@ -304,7 +250,7 @@ p {
   color: #63636e !important;
 }
 .title-of-powerBattery-show {
-  color: white !important;
+  color: #ffffff !important;
   margin-bottom: 4px !important;
 }
 .title-of-powerBattery-show span {
@@ -327,12 +273,12 @@ p {
   /* margin-top: 50px; */
 }
 .text-koompiePro-banner {
-  color: white;
+  color: #ffffff;
   font-size: 18px;
   padding: 0px 0px !important;
 }
 .tittle-koompiPro-banner {
-  color: white;
+  color: #ffffff;
   font-size: 40px;
   font-weight: 800;
   margin-top: 60px;
@@ -383,7 +329,7 @@ p {
 }
 .banner_content {
   position: absolute;
-  top: 15vh;
+  top: 10vh !important;
 }
 .index_banner {
   position: relative;
@@ -396,7 +342,7 @@ p {
   left: 10vw;
 }
 .koompi_content {
-  margin: 40px 0px;
+  margin: 80px 0px !important;
 }
 .voice-text {
   font-size: 23px;
@@ -427,7 +373,7 @@ p {
   margin-top: 56px;
 }
 /* .title-of-slim {
-	color: white !important;
+	color: #ffffff !important;
 	margin-bottom: 4px !important;
 } */
 
@@ -439,7 +385,7 @@ p {
 }
 .order_summary {
   padding: 25px;
-  background-color: #d9d9d9a6;
+  background-color: #ffffff;
   margin: 15px 0px;
   border-radius: 8px !important;
 }
@@ -500,7 +446,7 @@ p {
   margin-top: 56px !important;
 }
 .professional-performance-h {
-  color: white !important;
+  color: #ffffff !important;
   margin-top: 61px;
 }
 .professional-performance-p {
@@ -508,7 +454,7 @@ p {
   font-size: 21px;
 }
 .performance-koompi-b {
-  color: white !important;
+  color: #ffffff !important;
 }
 .Microchip {
   margin-top: 60px;
@@ -549,7 +495,7 @@ p {
   color: #63636e !important;
 }
 .title-of-powerBattery-show {
-  color: white !important;
+  color: #ffffff !important;
   margin-bottom: 4px !important;
 }
 .title-of-powerBattery-show span {
@@ -620,10 +566,6 @@ p {
   padding: 0px 30px !important;
   margin-top: 10px;
 }
-.banner_content {
-  position: absolute;
-  top: 15vh;
-}
 .index_banner {
   position: relative;
 }
@@ -666,7 +608,7 @@ p {
   margin-top: 56px;
 }
 /* .title-of-slim {
-	color: white !important;
+	color: #ffffff !important;
 	margin-bottom: 4px !important;
 } */
 
@@ -678,7 +620,7 @@ p {
 }
 .header-of-slim {
   margin-top: 56px;
-  /* color: white !important; */
+  /* color: #ffffff !important; */
   color: #374957 !important ;
 }
 .banner-overview-koompiE11 {
@@ -691,7 +633,7 @@ p {
   max-width: 100%;
 }
 .Title-Display-koompiE11 {
-  /* color: white !important; */
+  /* color: #ffffff !important; */
   color: #374957 !important;
 }
 .text-Display-koompiE11 {
@@ -709,14 +651,14 @@ p {
   color: #63636e !important;
 }
 .title-Display-Descrip {
-  color: white !important;
+  color: #ffffff !important;
 }
 .banner-Performance-koompiE11 {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .title-performance-koompiE11 {
-  /* color: white !important; */
+  /* color: #ffffff !important; */
   color: #374957 !important;
 }
 .text-performence-koompiE11 {
@@ -730,7 +672,7 @@ p {
   margin-top: 130px;
 }
 .title-performance-koompiE11-descrip {
-  color: white !important;
+  color: #ffffff !important;
 }
 .title-performance-koompiE11-descrip span {
   font-size: 23px;
@@ -754,7 +696,7 @@ p {
 }
 .border-battery {
   margin-top: 26px !important;
-  border-top: 0.02px solid white;
+  border-top: 0.02px solid #ffffff;
   margin-bottom: 12px;
 }
 .ant-layout-header {
@@ -799,7 +741,7 @@ p {
 }
 .btn-banner {
   background: #001529 !important;
-  color: white !important;
+  color: #ffffff !important;
   border: none !important;
   border-radius: 58px !important;
 }
@@ -823,10 +765,10 @@ p {
   font-size: 14px;
   font-weight: 200;
 }
-button[type='submit'],
-.Form-Contact input[type='submit'] {
+button[type="submit"],
+.Form-Contact input[type="submit"] {
   background: #001529;
-  color: white;
+  color: #ffffff;
   text-transform: uppercase;
   border: none;
   margin-top: 40px;
@@ -837,8 +779,8 @@ button[type='submit'],
   cursor: pointer;
 }
 
-button[type='submit']:hover,
-.Form-Contact input[type='submit']:hover {
+button[type="submit"]:hover,
+.Form-Contact input[type="submit"]:hover {
   background: #384756;
 }
 .contact-right {
@@ -849,7 +791,7 @@ button[type='submit']:hover,
   padding: 20px 0px;
 }
 .footerBackground img {
-  filter: grayscale(90%);
+  filter: grayscale(0%);
   opacity: 0.9;
 }
 .koompi-footer-logo {
@@ -992,8 +934,12 @@ button[type='submit']:hover,
   text-transform: uppercase !important;
 }
 .footer_socail_media img {
-  padding: 5px;
-  height: 45px !important;
+  padding: 9px;
+  height: 40px !important;
+  background: #fff;
+  width: 40px !important;
+  border-radius: 20%;
+  margin: 0px 3px;
 }
 .ant-cart-border {
   background: #f0f3f7 !important;
@@ -1024,11 +970,15 @@ button[type='submit']:hover,
 }
 .payment_cart {
   padding: 15px;
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: #eaeef2;
+  border-radius: 8px;
   margin: 5px 0px;
   width: 100% !important;
   max-width: 100%;
+  cursor: pointer;
+}
+.ant-input {
+  font-size: 15px !important;
 }
 .ant-modal-title {
   font-size: 18px !important;
@@ -1044,9 +994,18 @@ button[type='submit']:hover,
   font-weight: 600 !important;
   transition: 0.3s;
   box-shadow: none !important;
+  line-height: 0px !important;
+  text-transform: none !important;
+}
+.bagIsEmpty {
+  font-size: 60px;
+  padding: 50px;
+}
+.emptyCart {
+  padding: 50px 0px;
 }
 .PhnomPenh {
-  background: url('/img/Background_Web1-01.svg');
+  background: url("/img/Background_Web1-01.svg");
   background-repeat: repeat;
   height: 400px;
   position: absolute;
@@ -1100,7 +1059,7 @@ button[type='submit']:hover,
   list-style: none;
   width: 20px;
   height: 20px;
-  background: url('/img/favicon.svg');
+  background: url("/img/favicon.svg");
   animation: animate 20s linear infinite;
   bottom: -100px;
 }
@@ -1247,7 +1206,7 @@ button[type='submit']:hover,
   margin-bottom: 80px;
 }
 .koompi-logo-koompi-os-section {
-  background: url('/img/favicon.svg');
+  background: url("/img/favicon.svg");
   background-repeat: repeat;
   position: absolute;
   top: 20%;
@@ -1261,7 +1220,7 @@ button[type='submit']:hover,
 }
 
 .koompi-logo-koompi-pro-section {
-  background: url('/img/favicon.svg');
+  background: url("/img/favicon.svg");
   background-repeat: repeat;
   position: absolute;
   top: 20%;
@@ -1344,7 +1303,7 @@ button[type='submit']:hover,
   border-radius: 50%;
   width: 45px !important;
   height: 45px !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.246),
+  box-shadow: 0 0px 10px -1px rgba(0, 0, 0, 0.246),
     0 2px 4px -1px rgba(0, 0, 0, 0.205) !important;
 }
 .ant-back-top svg {
@@ -1390,6 +1349,24 @@ button[type='submit']:hover,
 .koompiBtn a {
   color: #008af4 !important;
 }
+.downloadBtn {
+  border: 0px !important;
+  background-color: #008af436 !important;
+  color: #008af4 !important;
+  border-radius: 30px !important;
+  padding: 0px 25px !important;
+  font-weight: 600 !important;
+  transition: 0.3s;
+}
+.downloadBtn:hover {
+  border: 0px !important;
+  background-color: #008af4 !important;
+  color: #fff !important;
+  border-radius: 30px !important;
+  padding: 0px 25px !important;
+  font-weight: 600 !important;
+  transition: 0.3s;
+}
 
 .koompiBtn:hover {
   background-color: #008af4 !important;
@@ -1429,8 +1406,7 @@ button[type='submit']:hover,
 }
 .subNavbarPosition.sticky {
   padding: 5px 0px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .shopHere {
   border: 0px !important;
@@ -1569,7 +1545,7 @@ button[type='submit']:hover,
   border-radius: 3px 3px 0px 0px !important;
 }
 .cardHeight {
-  height: 24vw !important;
+  /* height: 27vw !important; */
   border-radius: 3px !important;
 }
 .postCategory a span {
@@ -1595,7 +1571,7 @@ button[type='submit']:hover,
   background-color: #ffffff;
   padding: 0px 0px !important;
   margin: 40px 0px !important;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 80% !important;
 }
 .single-title {
@@ -1665,8 +1641,8 @@ button[type='submit']:hover,
   font-size: 25px !important;
 }
 .page-not-found {
-  width: 70%;
-  margin-top: 40px !important;
+  width: 100%;
+  margin: 40px 0px !important;
 }
 .page-not-found-title {
   font-size: 26px;
@@ -1721,10 +1697,78 @@ button[type='submit']:hover,
 .sale-policy-margin {
   margin: 100px 0px;
 }
+.koompi-os-banner {
+  padding: 120px 0px;
+}
+.koompi-os-banner-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.app-logo {
+  width: 72px;
+  height: 72px;
+  background-color: #eaeef2;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  padding: 8px;
+  margin: 15px 0px;
+}
+.app-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+.app-image img {
+  width: 90%;
+}
+.apps {
+  background-color: #fff;
+  padding: 50px 0px;
+}
+.subNavbarPosition .ant-menu-item {
+  padding-left: 0px !important;
+}
+code {
+  background: #ededed !important;
+  border-radius: 3px !important;
+  padding: 3px 15px !important;
+  border-radius: 3px;
+}
+.koompi-os-banner-image {
+  width: 100%;
+}
+.paddingRight {
+  padding-right: 40px;
+}
+.paddingLeft {
+  padding-left: 40px;
+}
+.ant-row {
+  clear: both !important;
+}
+.smallDevice {
+  display: none !important;
+}
+.legals-background {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+}
+.legals-background h2 {
+  font-weight: bold;
+  font-size: 24px;
+}
+.legals-background h3,
+.legals-background h4 {
+  font-weight: bold;
+  font-size: 20px;
+}
+.cdx-list--ordered li {
+  font-size: 18px;
+}
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =
 =====================================================*/
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1600px) {
   .container {
     width: 85% !important;
   }
@@ -1788,7 +1832,7 @@ button[type='submit']:hover,
     display: none;
   }
   .PhnomPenh {
-    background: url('/img/Background_Web1-01.svg');
+    background: url("/img/Background_Web1-01.svg");
     background-repeat: repeat;
     background-repeat: repeat;
     height: 250px;
@@ -2039,6 +2083,18 @@ button[type='submit']:hover,
   .spec-background h2 {
     margin-bottom: 0px !important;
     font-weight: 700;
+  }
+  .app-image img {
+    width: 100%;
+  }
+  .smallDevice {
+    display: block !important;
+  }
+  .bigScreen {
+    display: none !important;
+  }
+  .koompi-os-banner {
+    padding: 60px 0px;
   }
 }
 

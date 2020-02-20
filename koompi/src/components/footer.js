@@ -1,21 +1,21 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import { Link } from 'react-router-dom';
+import React from "react"
+import { Row, Col } from "antd"
+import { Link } from "react-router-dom"
 
-import { useQuery } from '@apollo/react-hooks';
-import parse from 'html-react-parser';
-import renderHTML from './editorJsToHtml';
-import NProgress from 'nprogress';
-import { GET_SOCAIL_MEDIA } from './graphql/query';
+import { useQuery } from "@apollo/react-hooks"
+import parse from "html-react-parser"
+import renderHTML from "./editorJsToHtml"
+import NProgress from "nprogress"
+import { GET_SOCAIL_MEDIA } from "./graphql/query"
 
 function Footer() {
-  const { error, loading, data } = useQuery(GET_SOCAIL_MEDIA);
-  if (error) console.log('error');
+  const { error, loading, data } = useQuery(GET_SOCAIL_MEDIA)
+  if (error) console.log("error")
   if (loading)
     return () => {
-      NProgress.start();
-      return null;
-    };
+      NProgress.start()
+      return null
+    }
 
   const DisplaySocailMedia = () => {
     return data.socailMedia.map((res, index) => {
@@ -23,9 +23,9 @@ function Footer() {
         <a href={`${res.link}`} target="_blank" key={index}>
           <img src={`https://admin.koompi.com` + res.logo} />
         </a>
-      );
-    });
-  };
+      )
+    })
+  }
 
   return (
     <div>
@@ -36,7 +36,7 @@ function Footer() {
 
         <div className="footer-container">
           <p className="copyRight">
-            Copyright © 2019-2020.<br></br> A brainchild of{' '}
+            Copyright © 2019-2020.<br></br> A brainchild of{" "}
             <a href="https://smallworldventure.com/" target="_blank">
               SmallWorld Venture
             </a>
@@ -81,7 +81,7 @@ function Footer() {
                 <p>Support</p>
               </Link>
               <Link to="">
-                <p>FAQs</p>
+                <p>Contact Us</p>
               </Link>
             </Col>
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
@@ -105,14 +105,14 @@ function Footer() {
                 KOOMPI OS
               </a>
               <Link to="/koompi-e13">KOOMPI E13</Link>
-              <Link to="koompi-e11">KOOMPI E11</Link>
+              {/* <Link to="koompi-e11">KOOMPI E11</Link> */}
               {/* <Link to="">KOOMPI B14</Link> */}
             </Col>
           </Row>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

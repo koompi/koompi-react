@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Menu, Affix } from 'antd';
+import React, { useState } from "react"
+import { NavLink } from "react-router-dom"
+import { Menu, Affix } from "antd"
 
 function SubNavbar({ title }) {
-  const [sticky, setSticky] = useState(false);
+  const [sticky, setSticky] = useState(false)
 
   return (
     <div>
-      <Affix offsetTop={0} onChange={affixed => setSticky(affixed)}>
+      <Affix offsetTop={0} onChange={(affixed) => setSticky(affixed)}>
         <div
-          className={sticky ? 'subNavbarPosition sticky' : 'subNavbarPosition'}
-          style={{ background: 'white' }}
+          className={sticky ? "subNavbarPosition sticky" : "subNavbarPosition"}
+          style={{ background: "white" }}
         >
           <Menu
-            style={{ borderBottom: 'none' }}
+            style={{ borderBottom: "none" }}
             className="container"
             theme="white"
             mode="horizontal"
@@ -26,18 +26,14 @@ function SubNavbar({ title }) {
             <Menu.Item className="sub-navbar-a">
               <NavLink
                 exact
-                activeStyle={{ color: '#1890ff' }}
+                activeStyle={{ color: "#1890ff" }}
                 to="/koompi-e13/specs"
               >
                 <span>Specifications</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item className="sub-navbar-a">
-              <NavLink
-                exact
-                activeStyle={{ color: '#1890ff' }}
-                to="/koompi-e13"
-              >
+              <NavLink exact activeStyle={{ color: "#1890ff" }} to="/koompi-e13">
                 <span>Overview</span>
               </NavLink>
             </Menu.Item>
@@ -45,7 +41,7 @@ function SubNavbar({ title }) {
         </div>
       </Affix>
     </div>
-  );
+  )
 }
 
-export default SubNavbar;
+export default SubNavbar

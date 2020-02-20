@@ -1,66 +1,59 @@
-import React from 'react';
-import { Row, Col, Card, Tag, Spin } from 'antd';
-import Navbar from './navbar';
-import Footer from './footer';
-import renderHTML from './editorJsToHtml';
-import NProgress from 'nprogress';
-import { GET_POSTS, GET_PAGES } from './graphql/query';
-import _ from 'lodash';
-import { useQuery } from '@apollo/react-hooks';
-import parse from 'html-react-parser';
-import moment from 'moment';
-import countWord from 'word-count';
-import { Link } from 'react-router-dom';
-import slugify from 'slugify';
-import { Helmet } from 'react-helmet';
+import React from "react"
+import { Row, Col, Card, Tag, Spin } from "antd"
+import Navbar from "./navbar"
+import Footer from "./footer"
+import renderHTML from "./editorJsToHtml"
+import NProgress from "nprogress"
+import { GET_POSTS, GET_PAGES } from "./graphql/query"
+import _ from "lodash"
+import { useQuery } from "@apollo/react-hooks"
+import parse from "html-react-parser"
+import moment from "moment"
+import { Link } from "react-router-dom"
+import slugify from "slugify"
+import { Helmet } from "react-helmet"
 
-function News(props) {
-  const { error, loading, data } = useQuery(GET_POSTS);
+function News() {
+  const { error, loading, data } = useQuery(GET_POSTS)
   if (error) {
-    console.log(error);
-    return null;
+    console.log(error)
+    return null
   }
   if (loading) {
-    NProgress.start();
+    NProgress.start()
     return (
       <Row className="Row-about" gutter={16} type="flex">
         <center>
           <Spin tip="Loading ..."></Spin>
         </center>
       </Row>
-    );
+    )
   }
 
-  NProgress.done();
+  NProgress.done()
 
   const DisplayNewsBanner = () => {
-    const { error, loading, data } = useQuery(GET_PAGES);
+    const { error, loading, data } = useQuery(GET_PAGES)
     if (error) {
-      console.log(error);
-      return null;
+      console.log(error)
+      return null
     }
     if (loading) {
-      NProgress.start();
-      return null;
+      NProgress.start()
+      return null
     }
-    const filterNews = _.filter(
-      data.pages,
-      page => page.category.slug === 'news'
-    );
+    const filterNews = _.filter(data.pages, (page) => page.category.slug === "news")
 
-    NProgress.done();
+    NProgress.done()
     return filterNews.map((res, index) => {
-      const { title, image, meta_desc } = res;
-      const description = renderHTML(res.description);
+      const { title, image, meta_desc } = res
+      const description = renderHTML(res.description)
 
       return (
         <React.Fragment key={index}>
           <Helmet>
-            <title>{title + ' - KOOMPI'}</title>
-            <meta
-              name="keywords"
-              content={res.keywords.map(res => res + ',')}
-            />
+            <title>{title + " - KOOMPI"}</title>
+            <meta name="keywords" content={res.keywords.map((res) => res + ",")} />
             <meta name="description" content={meta_desc} />
           </Helmet>
           <Row className="Row-news" gutter={16} type="flex">
@@ -72,15 +65,16 @@ function News(props) {
             </Col>
             <Col xs={24} sm={24} ms={24} lg={12} xl={12}>
               <img
-                style={{ maxWidth: '100%' }}
+                style={{ maxWidth: "100%" }}
                 src={`https://admin.koompi.com${image}`}
+                alt={title}
               />
             </Col>
           </Row>
         </React.Fragment>
-      );
-    });
-  };
+      )
+    })
+  }
 
   return (
     <React.Fragment>
@@ -90,14 +84,10 @@ function News(props) {
           <DisplayNewsBanner />
         </div>
       </div>
-      <div
-        style={{ marginTop: '90px', marginBottom: '50px' }}
-        className="container"
-      >
+      <div style={{ marginTop: "90px", marginBottom: "50px" }} className="container">
         <Row gutter={16} type="flex">
           {data.posts.map((data, index) => {
-            const title = data.title.replace(/^(.{70}[^\s]*).*/, '$1') + '\n';
-            const { slug, title: categoryTitle } = data.category;
+            const { slug, title: categoryTitle } = data.category
 
             return (
               // {`https://admin.koompi.com` + data.thumnail}
@@ -107,7 +97,7 @@ function News(props) {
                 md={12}
                 lg={8}
                 xl={8}
-                style={{ marginBottom: '24px' }}
+                style={{ marginBottom: "24px" }}
                 key={index}
               >
                 <div className="cardHeight">
@@ -116,9 +106,7 @@ function News(props) {
                       <Tag color="green">{categoryTitle}</Tag>
                     </Link>
                   </p>
-                  <Link
-                    to={`/news-and-events/${slugify(data.title.toLowerCase())}`}
-                  >
+                  <Link to={`/news-and-events/${slugify(data.title.toLowerCase())}`}>
                     <Card
                       cover={
                         <div
@@ -131,16 +119,14 @@ function News(props) {
                     >
                       <p>
                         <Tag color="blue">
-                          Date:{' '}
+                          Date:{" "}
                           {moment
                             .unix(data.created_at / 1000)
-                            .format('YYYY, MMMM DD')}
+                            .format("YYYY, MMMM DD")}
                         </Tag>
                       </p>
                       <h1 className="news-and-events-title">
-                        {countWord(data.title) > 12
-                          ? title + '...'
-                          : data.title}
+                        {data.title.substring(0, 50) + "..."}
                       </h1>
 
                       {/* <div className="news-and-events-desc">
@@ -150,13 +136,13 @@ function News(props) {
                   </Link>
                 </div>
               </Col>
-            );
+            )
           })}
         </Row>
       </div>
       <Footer />
     </React.Fragment>
-  );
+  )
 }
 
-export default News;
+export default News

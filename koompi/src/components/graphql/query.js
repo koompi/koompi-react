@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag"
 
 const GET_PAGES = gql`
   query {
@@ -21,7 +21,7 @@ const GET_PAGES = gql`
       created_at
     }
   }
-`;
+`
 
 const GET_RETAILERS = gql`
   query {
@@ -32,7 +32,7 @@ const GET_RETAILERS = gql`
       location
     }
   }
-`;
+`
 
 const GET_MEMBERS = gql`
   query {
@@ -44,7 +44,7 @@ const GET_MEMBERS = gql`
       department
     }
   }
-`;
+`
 
 const GET_LEGALS = gql`
   query {
@@ -54,7 +54,7 @@ const GET_LEGALS = gql`
       description
     }
   }
-`;
+`
 
 const GET_SOCAIL_MEDIA = gql`
   query {
@@ -64,7 +64,7 @@ const GET_SOCAIL_MEDIA = gql`
       name
     }
   }
-`;
+`
 
 const GET_POSTS = gql`
   query {
@@ -85,7 +85,7 @@ const GET_POSTS = gql`
       thumnail
     }
   }
-`;
+`
 
 const GET_POST = gql`
   query($slug: String!) {
@@ -107,7 +107,7 @@ const GET_POST = gql`
       thumnail
     }
   }
-`;
+`
 
 const SEARCH_POST = gql`
   query($query: String!) {
@@ -127,7 +127,20 @@ const SEARCH_POST = gql`
       thumnail
     }
   }
-`;
+`
+
+const GET_SOFTWARES = gql`
+  query {
+    softwares {
+      id
+      title
+      description
+      logo
+      image
+      created_by
+    }
+  }
+`
 
 export {
   GET_PAGES,
@@ -137,5 +150,6 @@ export {
   GET_POSTS,
   GET_POST,
   SEARCH_POST,
-  GET_LEGALS
-};
+  GET_LEGALS,
+  GET_SOFTWARES
+}

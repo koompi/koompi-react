@@ -1,0 +1,7 @@
+public/**
+build/**
+node_modules/**
+src/serviceWorker.js
+# index.js
+__tests__
+src/setupTests.js

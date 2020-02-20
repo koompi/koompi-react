@@ -1,62 +1,61 @@
-import React, { useState } from 'react';
-import { Row, Col, Modal } from 'antd';
-import Particles from 'react-particles-js';
-import { useQuery } from '@apollo/react-hooks';
-import parse from 'html-react-parser';
-import NProgress from 'nprogress';
-import { Link } from 'react-router-dom';
-import { Button, Icon, Result, Spin } from 'antd';
-import Navbar from './navbar';
-import { GET_PAGES } from './graphql/query';
-import Footer from './footer';
-import _ from 'lodash';
-import renderHTML from './editorJsToHtml';
-import { Helmet } from 'react-helmet';
-import ReactPlayer from 'react-player';
+import React, { useState } from "react"
+import { Row, Col, Modal } from "antd"
+import Particles from "react-particles-js"
+import { useQuery } from "@apollo/react-hooks"
+import parse from "html-react-parser"
+import NProgress from "nprogress"
+import { Link } from "react-router-dom"
+import { Button, Icon, Result, Spin } from "antd"
+import Navbar from "./navbar"
+import { GET_PAGES } from "./graphql/query"
+import Footer from "./footer"
+import _ from "lodash"
+import renderHTML from "./editorJsToHtml"
+import { Helmet } from "react-helmet"
+import ReactPlayer from "react-player"
 
 function Index() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
-  const { data } = useQuery(GET_PAGES);
+  const { data } = useQuery(GET_PAGES)
 
   const showModal = () => {
-    setVisible(true);
-  };
+    setVisible(true)
+  }
 
-  const handleOk = e => {
-    setVisible(false);
-  };
+  const handleOk = (e) => {
+    setVisible(false)
+  }
 
-  const handleCancel = e => {
-    setVisible(false);
-  };
+  const handleCancel = (e) => {
+    setVisible(false)
+  }
 
-  const { error, loading } = useQuery(GET_PAGES);
+  const { error, loading } = useQuery(GET_PAGES)
   if (error) {
     if (error.networkError) {
       return (
-        <Result
-          status="500"
-          title="500"
-          subTitle="Sorry, the server is wrong."
-        />
-      );
+        <Result status="500" title="500" subTitle="Sorry, the server is wrong." />
+      )
     }
   }
   if (loading) {
-    NProgress.start();
+    NProgress.start()
     return (
-      <Row className="Row-about" gutter={24}>
-        <center>
-          <Spin tip="Loading ..."></Spin>
-        </center>
-      </Row>
-    );
+      <React.Fragment>
+        <Navbar />
+        <Row className="Row-about" gutter={24}>
+          <center>
+            <Spin tip="Loading ..."></Spin>
+          </center>
+        </Row>
+      </React.Fragment>
+    )
   }
-  NProgress.done();
+  NProgress.done()
 
-  const dataIndex = data.pages.filter(res => res.category.slug === 'index');
-  const result = _.orderBy(dataIndex, 'sectionNumber', 'asc');
+  const dataIndex = data.pages.filter((res) => res.category.slug === "index")
+  const result = _.orderBy(dataIndex, "sectionNumber", "asc")
 
   return (
     <React.Fragment>
@@ -73,37 +72,32 @@ function Index() {
         />
       </Helmet>
       {result.map((data, index) => {
-        const description = renderHTML(data.description);
-        if (data.sectionNumber === '1') {
+        const description = renderHTML(data.description)
+        if (data.sectionNumber === "1") {
           return (
             <div className="banner">
               <div className="PhnomPenh"></div>
               <div className="container">
                 <Row>
-                  <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                  <Col xs={24} sm={24} md={12} lg={13} xl={13}>
                     <center>
                       <div className="banner_content">
                         {/* ========= KOOMPI SECTION =========  */}
                         <h1 className="bossTittle-KoompiHome">{data.title}</h1>
                         <div className="text-koompi-section-banner">
-                          {description.substring().length > 350
-                            ? parse(description.substring(0, 350) + '... ')
-                            : parse(description)}
+                          {parse(description)}
 
                           <Button className="koompiBtn">
-                            <Link to="/koompi-e11">Read More</Link>{' '}
+                            <Link to="/koompi-e13">Read More</Link>{" "}
                             <Icon type="arrow-right" />
                           </Button>
                         </div>
                         <div onClick={showModal} className="videoPlayBtn">
-                          <Icon
-                            type="play-circle"
-                            className="indexPlayButton"
-                          />
+                          <Icon type="play-circle" className="indexPlayButton" />
                         </div>
                         <div
                           style={{
-                            cursor: 'pointer'
+                            cursor: "pointer"
                           }}
                         >
                           <Modal
@@ -125,22 +119,20 @@ function Index() {
                       </div>
                     </center>
                   </Col>
-                  <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                  <Col xs={24} sm={24} md={12} lg={11} xl={11}>
                     <center>
                       <div className="index_banner">
-                        <img
-                          src={`https://admin.koompi.com` + data.image}
-                        ></img>
+                        <img src={`https://admin.koompi.com` + data.image}></img>
                       </div>
                     </center>
                   </Col>
                 </Row>
               </div>
             </div>
-          );
+          )
         }
-        if (data.sectionNumber === '2') {
-          const description = renderHTML(data.description);
+        if (data.sectionNumber === "2") {
+          const description = renderHTML(data.description)
           return (
             <div className="content1">
               <Particles
@@ -158,7 +150,7 @@ function Index() {
                     events: {
                       onhover: {
                         enable: true,
-                        mode: 'repulse'
+                        mode: "repulse"
                       }
                     }
                   }
@@ -169,11 +161,9 @@ function Index() {
                   <div className="koompi_content">
                     <h1 className="tittle-koompiPro-banner">{data.title}</h1>
                     <div className="text-container-content1 text-koompiePro-banner">
-                      {description.substring().length > 350
-                        ? parse(description.substring(0, 350) + '... ')
-                        : parse(description)}
+                      {parse(description)}
                       <Button className="koompiBtn">
-                        <Link to="/koompi-e13">Read More</Link>{' '}
+                        <Link to="/koompi-os">Read More</Link>{" "}
                         <Icon type="arrow-right" />
                       </Button>
                     </div>
@@ -184,10 +174,10 @@ function Index() {
                 </center>
               </div>
             </div>
-          );
+          )
         }
-        if (data.sectionNumber === '3') {
-          const description = renderHTML(data.description);
+        if (data.sectionNumber === "3") {
+          const description = renderHTML(data.description)
           return (
             <div className="koompi-os-index">
               <div className="koompi-logo-koompi-os-section"></div>
@@ -195,11 +185,9 @@ function Index() {
                 <center>
                   <div className="koompi_content">
                     <h1 className="bossTittle-KoompiHome">{data.title}</h1>
-                    <p className="koompi-os-index-desc">
-                      {parse(description.substring(0, 50))}
-                    </p>
+                    <p className="koompi-os-index-desc">{parse(description)}</p>
                     <div>
-                      <a href="https://pionux.org/" target="_blank">
+                      <a href="https://academy.koompi.com/" target="_blank">
                         <Button type="primary" className="koompiBtn">
                           Read More <Icon type="arrow-right" />
                         </Button>
@@ -212,7 +200,7 @@ function Index() {
                 </center>
               </div>
             </div>
-          );
+          )
         }
       })}
 
@@ -228,7 +216,7 @@ function Index() {
       </div> */}
       <Footer />
     </React.Fragment>
-  );
+  )
 }
 
-export default Index;
+export default Index

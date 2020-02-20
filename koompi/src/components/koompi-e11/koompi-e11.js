@@ -1,58 +1,52 @@
-import React, { useState, useContext } from 'react';
-import Navbar from '../navbar';
-import { Row, Col, Icon, Result, Button, Spin } from 'antd';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_PAGES } from '../graphql/query';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-import renderHTML from '../editorJsToHtml';
-import parse from 'html-react-parser';
+import React, { useState, useContext } from "react"
+import Navbar from "../navbar"
+import { Row, Col, Icon, Result, Button, Spin } from "antd"
+import { useQuery } from "@apollo/react-hooks"
+import { GET_PAGES } from "../graphql/query"
+import NProgress from "nprogress"
+import "nprogress/nprogress.css"
+import renderHTML from "../editorJsToHtml"
+import parse from "html-react-parser"
 
-import SubNavbar from './subNavbar';
-import screen from '../data/screen';
-import shapeliness from '../data/shapeliness';
-import performance from '../data/performance';
-import Footer from '../footer';
-import _ from 'lodash';
-import { CartContext } from '../../CartContext';
-import products from '../data/products';
+import SubNavbar from "./subNavbar"
+import screen from "../data/screen"
+import shapeliness from "../data/shapeliness"
+import performance from "../data/performance"
+import Footer from "../footer"
+import _ from "lodash"
+import { CartContext } from "../../CartContext"
+import products from "../data/products"
 
 function KoompiE11() {
-  const cartCtx = useContext(CartContext);
-  const [koompiColor, setKoompiColor] = useState(true);
-  const imageLink = `https://admin.koompi.com`;
+  const cartCtx = useContext(CartContext)
+  const [koompiColor, setKoompiColor] = useState(true)
+  const imageLink = `https://admin.koompi.com`
 
-  const { error, loading, data } = useQuery(GET_PAGES);
+  const { error, loading, data } = useQuery(GET_PAGES)
   if (error) {
     if (error.networkError) {
       return (
-        <Result
-          status="500"
-          title="500"
-          subTitle="Sorry, the server is wrong."
-        />
-      );
+        <Result status="500" title="500" subTitle="Sorry, the server is wrong." />
+      )
     }
   }
   if (loading) {
-    NProgress.start();
+    NProgress.start()
     return (
       <Row className="Row-about" gutter={24}>
         <center>
           <Spin tip="Loading ..."></Spin>
         </center>
       </Row>
-    );
+    )
   }
-  NProgress.done();
+  NProgress.done()
 
-  const dataIndex = data.pages.filter(
-    res => res.category.slug === 'koompi-e11'
-  );
-  const result = _.orderBy(dataIndex, 'sectionNumber', 'asc');
+  const dataIndex = data.pages.filter((res) => res.category.slug === "koompi-e11")
+  const result = _.orderBy(dataIndex, "sectionNumber", "asc")
 
   // ===== Chage KOOMPI Color =====
-  const changeKoompiColor = () => setKoompiColor(!koompiColor);
+  const changeKoompiColor = () => setKoompiColor(!koompiColor)
 
   // ===== KOOMPI E Top Section  =====
   const DisplayKOOMPIE = ({ title, description, image }) => {
@@ -62,16 +56,17 @@ function KoompiE11() {
 
         <div className="subTittle-E11">{description}</div>
         <h1 className="koompi-price">$369.00</h1>
-        <Button
-          className="koompiBtn"
-          onClick={() => cartCtx.addToCart(products[1])}
-        >
+        <Button className="koompiBtn" onClick={() => cartCtx.addToCart(products[1])}>
           Add To Card <Icon type="arrow-right" />
         </Button>
-        <img className="banner-overview-koompiE11" src={imageLink + image} />
+        <img
+          className="banner-overview-koompiE11"
+          src={imageLink + image}
+          alt={title}
+        />
       </center>
-    );
-  };
+    )
+  }
 
   // ===== KOOMPI E Screen Section  =====
   const DisplayScreen = ({ title, subTitle, description, image }) => {
@@ -94,18 +89,18 @@ function KoompiE11() {
                         <p className="koompi-e-section-desc">{data.value}</p>
                       </center>
                     </Col>
-                  );
+                  )
                 })}
               </Row>
             </div>
           </center>
         </div>
         <div className="koompi-e-background">
-          <img className="banner-overview-koompiE11" src={image} />
+          <img className="banner-overview-koompiE11" src={image} alt={title} />
         </div>
       </>
-    );
-  };
+    )
+  }
 
   // ===== KOOMPI E Shapeliness Section  =====
   const DisplayShapeliness = ({ title, subTitle, description, image }) => {
@@ -128,7 +123,7 @@ function KoompiE11() {
                         <p className="koompi-e-section-desc">{data.value}</p>
                       </center>
                     </Col>
-                  );
+                  )
                 })}
               </Row>
             </div>
@@ -139,15 +134,13 @@ function KoompiE11() {
             className="banner-overview-koompiE11"
             style={koompiColor ? null : { opacity: 0.5 }}
             src={koompiColor ? imageLink + image : imageLink + image}
+            alt={title}
           />
           <div className="switch-koompi-container">
             <Row gutter={16}>
               <Col span={12}>
                 <center>
-                  <div
-                    className="speceGrayCircle"
-                    onClick={changeKoompiColor}
-                  ></div>
+                  <div className="speceGrayCircle" onClick={changeKoompiColor}></div>
                   <p>Space Gray</p>
                 </center>
               </Col>
@@ -161,8 +154,8 @@ function KoompiE11() {
           </div>
         </div>
       </>
-    );
-  };
+    )
+  }
 
   // ===== KOOMPI E Batter Section  =====
   const DisplayBattery = ({ subTitle, title, description, image }) => {
@@ -185,7 +178,7 @@ function KoompiE11() {
                         <p className="koompi-e-section-desc">{data.value}</p>
                       </center>
                     </Col>
-                  );
+                  )
                 })}
               </Row>
             </div>
@@ -198,13 +191,14 @@ function KoompiE11() {
               <img
                 className="banner-overview-koompiE11"
                 src={imageLink + image}
+                alt={title}
               />
             </Col>
           </Row>
         </div>
       </>
-    );
-  };
+    )
+  }
 
   // ===== KOOMPI E Performance Section  =====
   const DisplayPerformance = ({ title, subTitle, description, image }) => {
@@ -227,18 +221,22 @@ function KoompiE11() {
                         <p className="koompi-e-section-desc">{data.value}</p>
                       </center>
                     </Col>
-                  );
+                  )
                 })}
               </Row>
             </div>
           </center>
         </div>
         <div className="container">
-          <img className="banner-overview-koompiE11" src={imageLink + image} />
+          <img
+            className="banner-overview-koompiE11"
+            src={imageLink + image}
+            alt={title}
+          />
         </div>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <React.Fragment>
@@ -283,8 +281,8 @@ function KoompiE11() {
 
           {result.map((data, index) => {
             //============== Top Banner Section==========
-            if (data.sectionNumber === '1') {
-              const description = renderHTML(data.description);
+            if (data.sectionNumber === "1") {
+              const description = renderHTML(data.description)
               return (
                 <div className="koompi-page-container">
                   <div className="koompiDetail">
@@ -295,11 +293,11 @@ function KoompiE11() {
                     />
                   </div>
                 </div>
-              );
+              )
             }
             //============== Screen Section==========
-            if (data.sectionNumber === '2') {
-              const description = renderHTML(data.description);
+            if (data.sectionNumber === "2") {
+              const description = renderHTML(data.description)
               return (
                 <div className="margin-display-koompiE11">
                   <DisplayScreen
@@ -309,11 +307,11 @@ function KoompiE11() {
                     image={imageLink + data.image}
                   />
                 </div>
-              );
+              )
             }
             //============== Shapeliness Section==========
-            if (data.sectionNumber === '3') {
-              const description = renderHTML(data.description);
+            if (data.sectionNumber === "3") {
+              const description = renderHTML(data.description)
               return (
                 <div className="shapeliness-margin-top">
                   <DisplayShapeliness
@@ -323,11 +321,11 @@ function KoompiE11() {
                     image={data.image}
                   />
                 </div>
-              );
+              )
             }
             //============== BATTERY Section==========
-            if (data.sectionNumber === '4') {
-              const description = renderHTML(data.description);
+            if (data.sectionNumber === "4") {
+              const description = renderHTML(data.description)
               return (
                 <div className="margin-battery-section shapeliness-margin-top">
                   <DisplayBattery
@@ -337,11 +335,11 @@ function KoompiE11() {
                     image={data.image}
                   />
                 </div>
-              );
+              )
             }
             //============== Shapeliness Section==========
-            if (data.sectionNumber === '5') {
-              const description = renderHTML(data.description);
+            if (data.sectionNumber === "5") {
+              const description = renderHTML(data.description)
               return (
                 <div className="shapeliness-margin-top">
                   <DisplayPerformance
@@ -351,14 +349,14 @@ function KoompiE11() {
                     image={data.image}
                   />
                 </div>
-              );
+              )
             }
           })}
         </div>
       </div>
       <Footer />
     </React.Fragment>
-  );
+  )
 }
 
-export default KoompiE11;
+export default KoompiE11
