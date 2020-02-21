@@ -64,7 +64,6 @@ function KoompiE13() {
             cartCtx.addToCart({
               name: title,
               price: 369,
-              desc: description,
               image: imageLink + image
             })
           }

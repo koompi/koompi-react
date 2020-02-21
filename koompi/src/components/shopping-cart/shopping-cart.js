@@ -5,6 +5,7 @@ import Navbar from "../navbar"
 import Axios from "axios"
 import Cash from "../payments/cash-or-delivery"
 import Footer from "../footer"
+import Cookies from "js-cookie"
 // import Bongloy from "bongloyjs";
 
 const { Option } = Select
@@ -75,7 +76,7 @@ function Cart(props) {
       okType: "danger",
       cancelText: "No",
       onOk() {
-        console.log("OK")
+        Cookies.remove("koompi")
       },
       onCancel() {
         console.log("Cancel")
@@ -84,10 +85,11 @@ function Cart(props) {
   }
 
   const DisplayItem = () => {
+    const result = Cookies.getJSON("koompi")
     return (
       <Row gutter={[16, 16]}>
         <Col span={17}>
-          {ctx.items.map((item) => {
+          {result.map((item) => {
             return (
               <div className="shopping-cart">
                 <div>
@@ -190,9 +192,9 @@ function Cart(props) {
   }
 
   const DisplayProduct = () => {
-    console.log(ctx.items)
+    // console.log(Cookies.getJSON("koompi") === undefined)
 
-    if (ctx.items.length === 0) {
+    if (ctx.items.length === 0 && Cookies.getJSON("koompi") === undefined) {
       return (
         <center>
           <div className="emptyCart">

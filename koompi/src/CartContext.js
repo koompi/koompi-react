@@ -1,16 +1,10 @@
 import React, { useState } from "react"
+import Cookies from "js-cookie"
 
 export const CartContext = React.createContext(null)
 
 export const CartProvider = (props) => {
   const [items, setItems] = useState([])
-
-  function addToCart(item) {
-    setItems(() => {
-      return [...items, item]
-    })
-    // window.localStorage.setItem("KOOMPI", JSON.stringify([...items, item]))
-  }
 
   function itemsWithQuantities(items) {
     return items.reduce((acc, item) => {
@@ -25,6 +19,32 @@ export const CartProvider = (props) => {
       }
       return acc
     }, [])
+  }
+
+  function addToCart(item) {
+    setItems(() => {
+      return [...items, item]
+    })
+
+    const getCircularReplacer = () => {
+      const seen = new WeakSet()
+      return (key, value) => {
+        if (typeof value === "object" && value !== null) {
+          if (seen.has(value)) {
+            return
+          }
+          seen.add(value)
+        }
+        return value
+      }
+    }
+    Cookies.set(
+      "koompi",
+      JSON.stringify(itemsWithQuantities([...items, item]), getCircularReplacer()),
+      {
+        expires: 7
+      }
+    )
   }
 
   return (
