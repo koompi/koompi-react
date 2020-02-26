@@ -1,18 +1,18 @@
-import React, { useState, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import LeftNavbar from "../navbar/left-navbar";
-import TopNavbar from "../navbar/top-navbar";
-import PageFooter from "../footer";
-import moment from "moment";
-import { Link } from "react-router-dom";
-import slugify from "slugify";
+import React, { useState, useContext } from "react"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import LeftNavbar from "../navbar/left-navbar"
+import TopNavbar from "../navbar/top-navbar"
+import PageFooter from "../footer"
+import moment from "moment"
+import { Link } from "react-router-dom"
+import slugify from "slugify"
 
-import { UserContext } from "../../context/userContext";
-import three_dots from "../../assets/img/three-dots.svg";
+import { UserContext } from "../../context/userContext"
+import three_dots from "../../assets/img/three-dots.svg"
 
 // ===== Query and Mutation Section =====
-import { GET_CATEGORIES } from "../../graphql/query";
-import { CREATE_CATEGORY, DELETE_CATEGORY } from "../../graphql/mutation";
+import { GET_CATEGORIES } from "../../graphql/query"
+import { CREATE_CATEGORY, DELETE_CATEGORY } from "../../graphql/mutation"
 
 // ===== Antd Section =====
 import {
@@ -26,27 +26,26 @@ import {
   message,
   Table,
   Divider,
-  Modal,
   Tag,
   Popconfirm
-} from "antd";
+} from "antd"
 
-const FormItem = Form.Item;
-const { Content } = Layout;
+const FormItem = Form.Item
+const { Content } = Layout
 
 function Category(props) {
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form
 
   // ===== State Management =====
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   // ===== User Context Section =====
-  const userData = useContext(UserContext);
+  const userData = useContext(UserContext)
 
   // ===== Mutation Varile Section =====
-  const [createCategory] = useMutation(CREATE_CATEGORY);
-  const [deleteCategory] = useMutation(DELETE_CATEGORY);
-  const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES);
+  const [createCategory] = useMutation(CREATE_CATEGORY)
+  const [deleteCategory] = useMutation(DELETE_CATEGORY)
+  const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES)
 
   // ===== Display Column in the Table Section =====
   const columns = [
@@ -84,28 +83,25 @@ function Category(props) {
       title: "Actions",
       dataIndex: "action"
     }
-  ];
+  ]
 
   // ===== Display Category Section =====
   const DisplayCategory = () => {
-    const { error, loading, data, refetch } = useQuery(GET_CATEGORIES);
-    if (error) console.log(error);
-    if (loading) return <Table loading={true}></Table>;
+    const { error, loading, data } = useQuery(GET_CATEGORIES)
+    if (error) console.log(error)
+    if (loading) return <Table loading={true}></Table>
     if (data) {
       return (
         <Table
           columns={columns}
-          dataSource={data.categories.map(cate => {
+          dataSource={data.categories.map((cate) => {
             return {
               key: cate.id,
               title: cate.title,
               slug: cate.slug,
               created_by: cate.created_by,
-              updated_by:
-                cate.updated_by === "" ? "No Update" : cate.updated_by,
-              created_at: moment
-                .unix(cate.created_at / 1000)
-                .format("YYYY-MM-DD"),
+              updated_by: cate.updated_by === "" ? "No Update" : cate.updated_by,
+              created_at: moment.unix(cate.created_at / 1000).format("YYYY-MM-DD"),
               updated_at:
                 cate.updated_at === null
                   ? "No Update"
@@ -123,9 +119,9 @@ function Category(props) {
                     placement="topRight"
                     title="Are you sure to delete this category?"
                     onConfirm={() => {
-                      deleteCategory({ variables: { id: `${cate.id}` } });
-                      message.success("The Category has been Deleted");
-                      categoryRefetch();
+                      deleteCategory({ variables: { id: `${cate.id}` } })
+                      message.success("The Category has been Deleted")
+                      categoryRefetch()
                     }}
                     okText="Yes"
                     cancelText="No"
@@ -136,43 +132,34 @@ function Category(props) {
                   </Popconfirm>
                 </div>
               )
-            };
+            }
           })}
         />
-      );
+      )
     }
-  };
+  }
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         createCategory({
           variables: { ...values, slug: slugify(values.title, { lower: true }) }
         })
           .then(async () => {
-            setLoading(true);
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
-            categoryRefetch();
-            props.form.resetFields();
-            await message.success("The Category created successfully.", 3);
+              setLoading(false)
+            }, 3000)
+            categoryRefetch()
+            props.form.resetFields()
+            await message.success("The Category created successfully.", 3)
           })
-          .catch(error => {
-            message.error(error.graphQLErrors[0].message, 5);
-          });
+          .catch((error) => {
+            message.error(error.graphQLErrors[0].message, 5)
+          })
       }
-    });
-  };
-
-  function onChange(pagination, filters, sorter, extra) {
-    console.log("params", pagination, filters, sorter, extra);
-  }
-
-  // =====  make the first letter of a string uppercase =====
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    })
   }
 
   return (
@@ -187,10 +174,10 @@ function Category(props) {
           {/* ======= Display content ====== */}
           <div className="koompi container">
             <div className="background_container">
-              <h1 className="title_new_post">Categories</h1>
+              <h1 className="title_new_post">Add Category</h1>
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Row gutter={[16, 16]}>
-                  <Col span={16}>
+                  <Col span={24}>
                     <FormItem>
                       {getFieldDecorator("title", {
                         rules: [
@@ -213,7 +200,7 @@ function Category(props) {
                       )}
                     </FormItem>
                   </Col>
-                  <Col span={4}>
+                  <Col span={4} style={{ display: "none" }}>
                     <FormItem>
                       {getFieldDecorator("created_by", {
                         initialValue: userData.user.fullname,
@@ -226,10 +213,7 @@ function Category(props) {
                       })(
                         <Input
                           prefix={
-                            <Icon
-                              type="user"
-                              style={{ color: "rgba(0,0,0,.25)" }}
-                            />
+                            <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                           }
                           size="large"
                           disabled
@@ -237,7 +221,10 @@ function Category(props) {
                       )}
                     </FormItem>
                   </Col>
-                  <Col span={4}>
+                  <Col
+                    span={24}
+                    style={{ marginTop: "-10px", marginBottom: "10px" }}
+                  >
                     <Button
                       type="primary"
                       htmlType="submit"
@@ -254,7 +241,8 @@ function Category(props) {
                   </Col>
                 </Row>
               </Form>
-
+              <br />
+              <h1 className="title_new_post">Categories</h1>
               <DisplayCategory />
             </div>
           </div>
@@ -262,7 +250,7 @@ function Category(props) {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Form.create()(Category);
+export default Form.create()(Category)

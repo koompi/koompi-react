@@ -1,30 +1,25 @@
-import React, { useState } from "react";
-import { Layout, message, Table, Divider, Modal, Tag, Popconfirm } from "antd";
-import TopNavbar from "../navbar/top-navbar";
-import LeftNavbar from "../navbar/left-navbar";
-import PageFooter from "../footer";
-import moment from "moment";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Layout, message, Table, Divider, Modal, Tag, Popconfirm } from "antd"
+import TopNavbar from "../navbar/top-navbar"
+import LeftNavbar from "../navbar/left-navbar"
+import PageFooter from "../footer"
+import moment from "moment"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import { Link } from "react-router-dom"
 
 // ===== Query and Mutation Section =====
-import { GET_MEMBERS } from "../../graphql/query";
-import { DELETE_MEMBER } from "../../graphql/mutation";
+import { GET_MEMBERS } from "../../graphql/query"
+import { DELETE_MEMBER } from "../../graphql/mutation"
 
-// =====  make the first letter of a string uppercase =====
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-const { Content } = Layout;
+const { Content } = Layout
 
 function Members() {
   // ===== State Management =====
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   // ===== Mutation Varile Section =====
-  const [deleteMember] = useMutation(DELETE_MEMBER);
-  const { refetch: memberRefetch } = useQuery(GET_MEMBERS);
+  const [deleteMember] = useMutation(DELETE_MEMBER)
+  const { refetch: memberRefetch } = useQuery(GET_MEMBERS)
 
   const columns = [
     {
@@ -66,33 +61,32 @@ function Members() {
       title: "Actions",
       dataIndex: "action"
     }
-  ];
+  ]
 
   const hideModal = () => {
-    setVisible(false);
-  };
+    setVisible(false)
+  }
 
   const DisplayPost = () => {
-    const { error, loading, data, refetch } = useQuery(GET_MEMBERS);
-    if (error) console.log(error);
-    if (loading) return <Table loading={true}></Table>;
+    const { error, loading, data } = useQuery(GET_MEMBERS)
+    if (error) console.log(error)
+    if (loading) return <Table loading={true}></Table>
     if (data) {
       const DisplayTable = () => {
         return (
           <Table
             columns={columns}
-            dataSource={data.members.map(member => {
+            dataSource={data.members.map((member) => {
               const {
                 id,
                 fullname,
                 phoneNumber,
                 email,
                 created_by,
-                position,
                 photo,
                 department,
                 created_at
-              } = member;
+              } = member
               return {
                 key: id,
                 photo: (
@@ -125,9 +119,15 @@ function Members() {
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deleteMember({ variables: { id: `${id}` } });
-                        message.success("The member has been Deleted");
-                        memberRefetch();
+                        deleteMember({ variables: { id: `${id}` } })
+                          .then(async (res) => {
+                            await message.success(res.data.delete_member.message)
+                            await memberRefetch()
+                          })
+                          .catch((error) => {
+                            console.log(error)
+                            return null
+                          })
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -136,12 +136,12 @@ function Members() {
                     </Popconfirm>
                   </div>
                 )
-              };
+              }
             })}
             pagination={visible ? false : true}
           />
-        );
-      };
+        )
+      }
       return (
         <div>
           <Modal
@@ -156,9 +156,9 @@ function Members() {
           </Modal>
           <DisplayTable />
         </div>
-      );
+      )
     }
-  };
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -181,7 +181,7 @@ function Members() {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Members;
+export default Members

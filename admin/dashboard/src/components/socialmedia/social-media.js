@@ -1,48 +1,26 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Row,
-  Col,
-  Upload,
-  Select,
-  Layout,
-  message,
-  Table,
-  Divider,
-  Modal,
-  Tag,
-  Breadcrumb,
-  Popconfirm
-} from "antd";
-import TopNavbar from "../navbar/top-navbar";
-import LeftNavbar from "../navbar/left-navbar";
-import PageFooter from "../footer";
-import moment from "moment";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import parse from "html-react-parser";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Layout, message, Table, Divider, Modal, Tag, Popconfirm } from "antd"
+import TopNavbar from "../navbar/top-navbar"
+import LeftNavbar from "../navbar/left-navbar"
+import PageFooter from "../footer"
+import moment from "moment"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import parse from "html-react-parser"
+import { Link } from "react-router-dom"
 
 // ===== Query and Mutation Section =====
-import { GET_SOCIAL_MEDIA } from "../../graphql/query";
-import { DELETE_SOCIAL_MEDIA } from "../../graphql/mutation";
+import { GET_SOCIAL_MEDIA } from "../../graphql/query"
+import { DELETE_SOCIAL_MEDIA } from "../../graphql/mutation"
 
-// =====  make the first letter of a string uppercase =====
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-const { Content } = Layout;
+const { Content } = Layout
 
 function SocialMedia() {
   // ===== State Management =====
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   // ===== Mutation Varile Section =====
-  const [deleteSocialMedia] = useMutation(DELETE_SOCIAL_MEDIA);
-  const { refetch: refetchSocialMedia } = useQuery(GET_SOCIAL_MEDIA);
+  const [deleteSocialMedia] = useMutation(DELETE_SOCIAL_MEDIA)
+  const { refetch: refetchSocialMedia } = useQuery(GET_SOCIAL_MEDIA)
 
   const columns = [
     {
@@ -74,40 +52,32 @@ function SocialMedia() {
       title: "Actions",
       dataIndex: "action"
     }
-  ];
+  ]
 
   const hideModal = () => {
-    setVisible(false);
-  };
+    setVisible(false)
+  }
 
   const DisplaySocailMedia = () => {
-    const { error, loading, data, refetch } = useQuery(GET_SOCIAL_MEDIA);
-    if (error) console.log(error);
-    if (loading) return <Table loading={true}></Table>;
+    const { error, loading, data, refetch } = useQuery(GET_SOCIAL_MEDIA)
+    if (error) console.log(error)
+    if (loading) return <Table loading={true}></Table>
     if (data) {
-      refetch();
+      refetch()
       const DisplayTable = () => {
         return (
           <Table
             columns={columns}
-            dataSource={data.socialMedia.map(socialMedia => {
-              const {
-                id,
-                name,
-                created_by,
-                link,
-                logo,
-                created_at
-              } = socialMedia;
+            dataSource={data.socialMedia.map((socialMedia) => {
+              const { id, name, created_by, link, logo, created_at } = socialMedia
               return {
                 key: parse(name),
                 logo: (
                   <img
                     src={`https://admin.koompi.com${logo}`}
                     alt={name}
-                    height="50px"
-                    width="50px"
-                    style={{ borderRadius: "50%" }}
+                    height="40px"
+                    width="40px"
                   />
                 ),
                 name,
@@ -130,9 +100,9 @@ function SocialMedia() {
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deleteSocialMedia({ variables: { id: `${id}` } });
-                        message.success(name + " has been Deleted");
-                        refetchSocialMedia();
+                        deleteSocialMedia({ variables: { id: `${id}` } })
+                        message.success(name + " has been Deleted")
+                        refetchSocialMedia()
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -141,12 +111,12 @@ function SocialMedia() {
                     </Popconfirm>
                   </div>
                 )
-              };
+              }
             })}
             pagination={visible ? false : true}
           />
-        );
-      };
+        )
+      }
       return (
         <div>
           <Modal
@@ -161,9 +131,9 @@ function SocialMedia() {
           </Modal>
           <DisplayTable />
         </div>
-      );
+      )
     }
-  };
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -186,7 +156,7 @@ function SocialMedia() {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default SocialMedia;
+export default SocialMedia

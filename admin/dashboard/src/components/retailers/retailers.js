@@ -1,48 +1,26 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Row,
-  Col,
-  Upload,
-  Select,
-  Layout,
-  message,
-  Table,
-  Divider,
-  Modal,
-  Tag,
-  Breadcrumb,
-  Popconfirm
-} from "antd";
-import TopNavbar from "../navbar/top-navbar";
-import LeftNavbar from "../navbar/left-navbar";
-import PageFooter from "../footer";
-import moment from "moment";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import parse from "html-react-parser";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Layout, message, Table, Divider, Modal, Tag, Popconfirm } from "antd"
+import TopNavbar from "../navbar/top-navbar"
+import LeftNavbar from "../navbar/left-navbar"
+import PageFooter from "../footer"
+import moment from "moment"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import parse from "html-react-parser"
+import { Link } from "react-router-dom"
 
 // ===== Query and Mutation Section =====
-import { GET_RETAILERS } from "../../graphql/query";
-import { DELETE_RETAILER } from "../../graphql/mutation";
+import { GET_RETAILERS } from "../../graphql/query"
+import { DELETE_RETAILER } from "../../graphql/mutation"
 
-// =====  make the first letter of a string uppercase =====
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-const { Content } = Layout;
+const { Content } = Layout
 
 function Retailers() {
   // ===== State Management =====
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   // ===== Mutation Varile Section =====
-  const [deleteRetailer] = useMutation(DELETE_RETAILER);
-  const { refetch: retailerRefetch } = useQuery(GET_RETAILERS);
+  const [deleteRetailer] = useMutation(DELETE_RETAILER)
+  const { refetch: retailerRefetch } = useQuery(GET_RETAILERS)
 
   const columns = [
     {
@@ -79,32 +57,31 @@ function Retailers() {
       title: "Actions",
       dataIndex: "action"
     }
-  ];
+  ]
 
   const hideModal = () => {
-    setVisible(false);
-  };
+    setVisible(false)
+  }
 
   const DisplayPost = () => {
-    const { error, loading, data, refetch } = useQuery(GET_RETAILERS);
-    if (error) console.log(error);
-    if (loading) return <Table loading={true}></Table>;
+    const { error, loading, data } = useQuery(GET_RETAILERS)
+    if (error) console.log(error)
+    if (loading) return <Table loading={true}></Table>
     if (data) {
       const DisplayTable = () => {
         return (
           <Table
             columns={columns}
-            dataSource={data.retailers.map(retailer => {
+            dataSource={data.retailers.map((retailer) => {
               const {
                 id,
                 name,
                 phoneNumber,
                 email,
                 created_by,
-                location,
                 logo,
                 created_at
-              } = retailer;
+              } = retailer
               return {
                 key: parse(name),
                 logo: (
@@ -137,9 +114,15 @@ function Retailers() {
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deleteRetailer({ variables: { id: `${id}` } });
-                        message.success("The Retailer has been Deleted");
-                        retailerRefetch();
+                        deleteRetailer({ variables: { id: `${id}` } })
+                          .then(async (res) => {
+                            await message.success(res.data.delete_retailer.message)
+                            await retailerRefetch()
+                          })
+                          .catch((error) => {
+                            console.log(error)
+                            return null
+                          })
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -148,12 +131,12 @@ function Retailers() {
                     </Popconfirm>
                   </div>
                 )
-              };
+              }
             })}
             pagination={visible ? false : true}
           />
-        );
-      };
+        )
+      }
       return (
         <div>
           <Modal
@@ -168,9 +151,9 @@ function Retailers() {
           </Modal>
           <DisplayTable />
         </div>
-      );
+      )
     }
-  };
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -193,7 +176,7 @@ function Retailers() {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Retailers;
+export default Retailers

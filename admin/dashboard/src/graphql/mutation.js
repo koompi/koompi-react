@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 
 const CREATE_USER = gql`
   mutation($fullname: String!, $email: String!, $password: String!) {
@@ -8,7 +8,7 @@ const CREATE_USER = gql`
       password
     }
   }
-`;
+`
 
 const UPDATE_USER = gql`
   mutation(
@@ -29,7 +29,7 @@ const UPDATE_USER = gql`
       email
     }
   }
-`;
+`
 
 const APPROVE_USER = gql`
   mutation($id: String!, $approve: Boolean!) {
@@ -39,7 +39,7 @@ const APPROVE_USER = gql`
       approved
     }
   }
-`;
+`
 
 const ISADMIN = gql`
   mutation($id: String!, $isAdmin: Boolean!) {
@@ -49,7 +49,7 @@ const ISADMIN = gql`
       isAdmin
     }
   }
-`;
+`
 
 const DELETE_USER = gql`
   mutation($id: String!) {
@@ -57,7 +57,7 @@ const DELETE_USER = gql`
       fullname
     }
   }
-`;
+`
 
 const CREATE_CATEGORY = gql`
   mutation($title: String!, $slug: String!, $created_by: String!) {
@@ -69,7 +69,7 @@ const CREATE_CATEGORY = gql`
       created_at
     }
   }
-`;
+`
 
 const DELETE_CATEGORY = gql`
   mutation($id: String!) {
@@ -77,7 +77,7 @@ const DELETE_CATEGORY = gql`
       title
     }
   }
-`;
+`
 
 const UPDATE_CATEGORY = gql`
   mutation(
@@ -99,7 +99,7 @@ const UPDATE_CATEGORY = gql`
       slug
     }
   }
-`;
+`
 
 const CREATE_POST = gql`
   mutation(
@@ -124,22 +124,18 @@ const CREATE_POST = gql`
       keywords: $keywords
       meta_desc: $meta_desc
     ) {
-      id
-      title
-      slug
-      created_by
-      created_at
+      message
     }
   }
-`;
+`
 
 const DELETE_POST = gql`
   mutation($id: String!) {
     delete_post(id: $id) {
-      title
+      message
     }
   }
-`;
+`
 
 const UPDATE_POST = gql`
   mutation(
@@ -168,14 +164,10 @@ const UPDATE_POST = gql`
       updated_by: $updated_by
       updated_at: $updated_at
     ) {
-      id
-      title
-      slug
-      created_by
-      created_at
+      message
     }
   }
-`;
+`
 
 const CREATE_PAGE = gql`
   mutation(
@@ -200,21 +192,18 @@ const CREATE_PAGE = gql`
       keywords: $keywords
       meta_desc: $meta_desc
     ) {
-      id
-      title
-      created_by
-      created_at
+      message
     }
   }
-`;
+`
 
 const DELETE_PAGE = gql`
   mutation($id: String!) {
     delete_page(id: $id) {
-      title
+      message
     }
   }
-`;
+`
 
 const UPDATE_PAGE = gql`
   mutation(
@@ -243,12 +232,10 @@ const UPDATE_PAGE = gql`
       updated_by: $updated_by
       updated_at: $updated_at
     ) {
-      id
-      title
-      created_at
+      message
     }
   }
-`;
+`
 
 const CREATE_MEMBER = gql`
   mutation(
@@ -269,24 +256,18 @@ const CREATE_MEMBER = gql`
       photo: $photo
       created_by: $created_by
     ) {
-      fullname
-      department
-      position
-      phoneNumber
-      email
-      photo
-      created_by
+      message
     }
   }
-`;
+`
 
 const DELETE_MEMBER = gql`
   mutation($id: String!) {
     delete_member(id: $id) {
-      fullname
+      message
     }
   }
-`;
+`
 
 const UPDATE_MEMBER = gql`
   mutation(
@@ -309,12 +290,10 @@ const UPDATE_MEMBER = gql`
       photo: $photo
       created_by: $created_by
     ) {
-      fullname
-      department
-      position
+      message
     }
   }
-`;
+`
 
 const CREATE_RETAILER = gql`
   mutation(
@@ -333,23 +312,18 @@ const CREATE_RETAILER = gql`
       email: $email
       created_by: $created_by
     ) {
-      name
-      location
-      logo
-      phoneNumber
-      email
-      created_by
+      message
     }
   }
-`;
+`
 
 const DELETE_RETAILER = gql`
   mutation($id: String!) {
     delete_retailer(id: $id) {
-      name
+      message
     }
   }
-`;
+`
 
 const UPDATE_RETAILER = gql`
   mutation(
@@ -368,23 +342,13 @@ const UPDATE_RETAILER = gql`
       phoneNumber: $phoneNumber
       email: $email
     ) {
-      name
-      location
-      logo
-      phoneNumber
-      email
-      created_by
+      message
     }
   }
-`;
+`
 
 const CREATE_SOCIAL_MEDIA = gql`
-  mutation(
-    $name: String!
-    $link: String!
-    $logo: String!
-    $created_by: String!
-  ) {
+  mutation($name: String!, $link: String!, $logo: String!, $created_by: String!) {
     add_social_media(
       name: $name
       link: $link
@@ -397,7 +361,7 @@ const CREATE_SOCIAL_MEDIA = gql`
       created_by
     }
   }
-`;
+`
 
 const DELETE_SOCIAL_MEDIA = gql`
   mutation($id: String!) {
@@ -405,7 +369,7 @@ const DELETE_SOCIAL_MEDIA = gql`
       name
     }
   }
-`;
+`
 
 const UPDATE_SOCIAL_MEDIA = gql`
   mutation($id: String!, $name: String!, $link: String!, $logo: String!) {
@@ -416,7 +380,95 @@ const UPDATE_SOCIAL_MEDIA = gql`
       created_by
     }
   }
-`;
+`
+
+const CREATE_LEGAL = gql`
+  mutation($title: String!, $description: String!, $created_by: String!) {
+    create_legal(title: $title, description: $description, created_by: $created_by) {
+      title
+      description
+    }
+  }
+`
+
+const UPDATE_LEGAL = gql`
+  mutation($id: String!, $title: String!, $description: String!) {
+    edit_legal(id: $id, title: $title, description: $description) {
+      title
+      description
+    }
+  }
+`
+
+const DELETE_LEGAL = gql`
+  mutation($id: String!) {
+    delete_legal(id: $id) {
+      title
+    }
+  }
+`
+
+const ADD_SOFTWARE = gql`
+  mutation(
+    $title: String!
+    $description: String!
+    $logo: String!
+    $image: String!
+    $created_by: String!
+  ) {
+    create_software(
+      title: $title
+      description: $description
+      logo: $logo
+      image: $image
+      created_by: $created_by
+    ) {
+      title
+      description
+      logo
+      image
+    }
+  }
+`
+
+const UPDATE_SOFTWARE = gql`
+  mutation(
+    $id: String!
+    $title: String!
+    $description: String!
+    $logo: String!
+    $image: String!
+  ) {
+    edit_software(
+      id: $id
+      title: $title
+      description: $description
+      logo: $logo
+      image: $image
+    ) {
+      title
+      description
+      logo
+      image
+    }
+  }
+`
+
+const DELETE_SOFTWARE = gql`
+  mutation($id: String!) {
+    delete_software(id: $id) {
+      title
+    }
+  }
+`
+
+const DELETE_PAYMENT = gql`
+  mutation($id: String!) {
+    delete_payment(id: $id) {
+      message
+    }
+  }
+`
 
 export {
   CREATE_USER,
@@ -441,5 +493,12 @@ export {
   CREATE_SOCIAL_MEDIA,
   DELETE_SOCIAL_MEDIA,
   UPDATE_SOCIAL_MEDIA,
-  UPDATE_USER
-};
+  UPDATE_USER,
+  CREATE_LEGAL,
+  UPDATE_LEGAL,
+  DELETE_LEGAL,
+  ADD_SOFTWARE,
+  UPDATE_SOFTWARE,
+  DELETE_SOFTWARE,
+  DELETE_PAYMENT
+}

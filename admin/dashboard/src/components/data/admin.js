@@ -1,20 +1,20 @@
-import React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import React from "react"
+import { useQuery } from "@apollo/react-hooks"
+import three_dots from "../../assets/img/three-dots-black.svg"
 
 // ===== Query Section =====
-import {
-  GET_USERS,
-  GET_POSTS,
-  GET_PAGES,
-  GET_RETAILERS
-} from "../../graphql/query";
+import { GET_USERS, GET_POSTS, GET_PAGES, GET_RETAILERS } from "../../graphql/query"
 
 const UserTotal = () => {
-  const { error, loading, data } = useQuery(GET_USERS);
+  const { error, loading, data } = useQuery(GET_USERS)
   if (loading) {
-    return <p className="card_desc">loading ...</p>;
+    return (
+      <center>
+        <img src={three_dots} alt="btn-loading" height="12" />
+      </center>
+    )
   }
-  if (error) console.log(error);
+  if (error) console.log(error)
   if (data) {
     return (
       <div>
@@ -24,15 +24,19 @@ const UserTotal = () => {
           </span>
         </center>
       </div>
-    );
+    )
   }
-};
+}
 const TotalPost = () => {
-  const { error, loading, data } = useQuery(GET_POSTS);
+  const { error, loading, data } = useQuery(GET_POSTS)
   if (loading) {
-    return <p className="card_desc">loading ...</p>;
+    return (
+      <center>
+        <img src={three_dots} alt="btn-loading" height="12" />
+      </center>
+    )
   }
-  if (error) console.log(error);
+  if (error) console.log(error)
   if (data) {
     return (
       <div>
@@ -42,16 +46,20 @@ const TotalPost = () => {
           </span>
         </center>
       </div>
-    );
+    )
   }
-};
+}
 
 const TotalPage = () => {
-  const { error, loading, data } = useQuery(GET_PAGES);
+  const { error, loading, data } = useQuery(GET_PAGES)
   if (loading) {
-    return <p className="card_desc">loading ...</p>;
+    return (
+      <center>
+        <img src={three_dots} alt="btn-loading" height="12" />
+      </center>
+    )
   }
-  if (error) console.log(error);
+  if (error) console.log(error)
   if (data) {
     return (
       <div>
@@ -61,16 +69,20 @@ const TotalPage = () => {
           </span>
         </center>
       </div>
-    );
+    )
   }
-};
+}
 
 const TotalRetailer = () => {
-  const { error, loading, data } = useQuery(GET_RETAILERS);
+  const { error, loading, data } = useQuery(GET_RETAILERS)
   if (loading) {
-    return <p className="card_desc">loading ...</p>;
+    return (
+      <center>
+        <img src={three_dots} alt="btn-loading" height="12" />
+      </center>
+    )
   }
-  if (error) console.log(error);
+  if (error) console.log(error)
   if (data) {
     return (
       <div>
@@ -80,7 +92,7 @@ const TotalRetailer = () => {
           </span>
         </center>
       </div>
-    );
+    )
   }
-};
-export { UserTotal, TotalPost, TotalPage, TotalRetailer };
+}
+export { UserTotal, TotalPost, TotalPage, TotalRetailer }

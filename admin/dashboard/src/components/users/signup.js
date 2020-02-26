@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { Form, Icon, Input, Button, message } from "antd";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
-import three_dots from "../../assets/img/three-dots.svg";
-import Particles from "react-particles-js";
+import React, { useState } from "react"
+import { Form, Icon, Input, Button, message } from "antd"
+import { Link } from "react-router-dom"
+import { useMutation } from "@apollo/react-hooks"
+import three_dots from "../../assets/img/three-dots.svg"
+import Particles from "react-particles-js"
 
 // ===== Create User =====
-import { CREATE_USER } from "../../graphql/mutation";
+import { CREATE_USER } from "../../graphql/mutation"
 
 function SignupForm(props) {
-  const [createUser] = useMutation(CREATE_USER);
+  const [createUser] = useMutation(CREATE_USER)
 
   // ===== State Section =====
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.form.validateFields(async (err, values) => {
       if (!err) {
-        const { fullname, email, password } = values;
+        const { fullname, email, password } = values
         await createUser({
           variables: {
             fullname,
@@ -27,25 +27,25 @@ function SignupForm(props) {
           }
         })
           .then(async () => {
-            setLoading(true);
-            await message.success("Register Successfully.", 3);
-            await window.location.replace("/login");
+            setLoading(true)
+            await message.success("Register Successfully.", 3)
+            await window.location.replace("/login")
           })
-          .catch(error => {
-            setLoading(true);
+          .catch((error) => {
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
-            let err = JSON.parse(JSON.stringify(error));
-            message.error(err.graphQLErrors[0].message);
-          });
+              setLoading(false)
+            }, 3000)
+            let err = JSON.parse(JSON.stringify(error))
+            message.error(err.graphQLErrors[0].message)
+          })
       } else {
-        console.log(err);
+        console.log(err)
       }
-    });
-  };
+    })
+  }
 
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form
   return (
     <>
       <Particles
@@ -75,15 +75,11 @@ function SignupForm(props) {
           {/* Full Name */}
           <Form.Item>
             {getFieldDecorator("fullname", {
-              rules: [
-                { required: true, message: "Please input your Full Name!" }
-              ]
+              rules: [{ required: true, message: "Please input your Full Name!" }]
             })(
               <Input
                 size="large"
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
+                prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
                 placeholder="Full Name"
               />
             )}
@@ -96,9 +92,7 @@ function SignupForm(props) {
             })(
               <Input
                 size="large"
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
+                prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
                 placeholder="Email"
               />
             )}
@@ -107,15 +101,11 @@ function SignupForm(props) {
           {/* Password */}
           <Form.Item>
             {getFieldDecorator("password", {
-              rules: [
-                { required: true, message: "Please input your Password!" }
-              ]
+              rules: [{ required: true, message: "Please input your Password!" }]
             })(
               <Input
                 size="large"
-                prefix={
-                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
+                prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
                 type="password"
                 placeholder="Password"
               />
@@ -144,7 +134,7 @@ function SignupForm(props) {
         </Form>
       </div>
     </>
-  );
+  )
 }
 
-export default Form.create()(SignupForm);
+export default Form.create()(SignupForm)

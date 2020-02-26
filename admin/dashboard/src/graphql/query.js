@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 
 const GET_USERS = gql`
   query {
@@ -11,7 +11,7 @@ const GET_USERS = gql`
       approved
     }
   }
-`;
+`
 
 const GET_USER = gql`
   query($email: String!) {
@@ -24,7 +24,7 @@ const GET_USER = gql`
       approved
     }
   }
-`;
+`
 
 const GET_CATEGORIES = gql`
   query {
@@ -38,7 +38,7 @@ const GET_CATEGORIES = gql`
       updated_at
     }
   }
-`;
+`
 
 const EDIT_CATEGORY = gql`
   query($id: String!) {
@@ -48,7 +48,7 @@ const EDIT_CATEGORY = gql`
       created_by
     }
   }
-`;
+`
 
 const GET_POSTS = gql`
   query {
@@ -72,7 +72,7 @@ const GET_POSTS = gql`
       thumnail
     }
   }
-`;
+`
 
 const GET_POST = gql`
   query($id: String!) {
@@ -94,7 +94,7 @@ const GET_POST = gql`
       thumnail
     }
   }
-`;
+`
 
 const GET_PAGES = gql`
   query {
@@ -116,7 +116,7 @@ const GET_PAGES = gql`
       created_at
     }
   }
-`;
+`
 
 const GET_PAGE = gql`
   query($id: String!) {
@@ -139,7 +139,7 @@ const GET_PAGE = gql`
       created_at
     }
   }
-`;
+`
 
 const GET_MEMBERS = gql`
   query {
@@ -155,7 +155,7 @@ const GET_MEMBERS = gql`
       created_at
     }
   }
-`;
+`
 
 const GET_MEMBER = gql`
   query($id: String!) {
@@ -171,7 +171,7 @@ const GET_MEMBER = gql`
       created_at
     }
   }
-`;
+`
 
 const GET_RETAILERS = gql`
   query {
@@ -186,7 +186,7 @@ const GET_RETAILERS = gql`
       created_at
     }
   }
-`;
+`
 
 const GET_RETAILER = gql`
   query($id: String!) {
@@ -201,7 +201,7 @@ const GET_RETAILER = gql`
       created_at
     }
   }
-`;
+`
 
 const GET_SOCIAL_MEDIA = gql`
   query {
@@ -214,7 +214,7 @@ const GET_SOCIAL_MEDIA = gql`
       created_at
     }
   }
-`;
+`
 const GET_ONE_SOCIAL_MEDIA = gql`
   query($id: String!) {
     oneSocialMedia(id: $id) {
@@ -226,7 +226,80 @@ const GET_ONE_SOCIAL_MEDIA = gql`
       created_at
     }
   }
-`;
+`
+
+const GET_LEGALS = gql`
+  query {
+    legals {
+      id
+      title
+      description
+      created_by
+      created_at
+    }
+  }
+`
+
+const GET_LEGAL = gql`
+  query($id: String!) {
+    legal(id: $id) {
+      id
+      title
+      description
+      created_by
+      created_at
+    }
+  }
+`
+
+const GET_PAYMENTS = gql`
+  query {
+    payments {
+      id
+      fname
+      lname
+      email
+      phoneNumber
+      message
+      product
+      cancle
+      price
+      created_at
+    }
+  }
+`
+
+const GET_SOFTWARES = gql`
+  query {
+    softwares {
+      id
+      title
+      description
+      logo
+      image
+      created_at
+      user {
+        fullname
+      }
+    }
+  }
+`
+
+const GET_SOFTWARE = gql`
+  query($id: String!) {
+    software(id: $id) {
+      id
+      title
+      description
+      logo
+      image
+      created_at
+      user {
+        fullname
+      }
+    }
+  }
+`
 
 export {
   GET_USERS,
@@ -242,5 +315,10 @@ export {
   GET_RETAILERS,
   GET_RETAILER,
   GET_SOCIAL_MEDIA,
-  GET_ONE_SOCIAL_MEDIA
-};
+  GET_ONE_SOCIAL_MEDIA,
+  GET_LEGALS,
+  GET_LEGAL,
+  GET_PAYMENTS,
+  GET_SOFTWARES,
+  GET_SOFTWARE
+}

@@ -1,32 +1,47 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Layout, Menu, Icon } from "antd";
-import { Link } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+import React, { useState, useContext } from "react"
+import { Layout, Menu } from "antd"
+import { Link } from "react-router-dom"
+import { UserContext } from "../../context/userContext"
+import {
+  FiBarChart,
+  FiFileText,
+  FiFile,
+  FiList,
+  FiUsers,
+  FiMapPin,
+  FiShare2,
+  FiDollarSign,
+  FiSend,
+  FiUserCheck,
+  FiUser,
+  FiLayers
+} from "react-icons/fi"
 
-const { Sider } = Layout;
-const { SubMenu } = Menu;
+const { Sider } = Layout
+const { SubMenu } = Menu
 
-function LeftNavbar(props) {
-  const userData = useContext(UserContext);
-  const [collapsed, setcollapsed] = useState(false);
-  const [isLight, setIsLight] = useState(false);
-  const onCollapse = () => {
-    setcollapsed(!collapsed);
-  };
+function LeftNavbar() {
+  const userData = useContext(UserContext)
+  const [isLight, setIsLight] = useState(true)
 
-  const pathname = window.location.pathname;
+  // const isDay = () => {
+  //   const hours = new Date().getHours();
+  //   return hours >= 6 && hours < 18;
+  // };
 
-  const { fullname, email, isAdmin } = userData.user;
+  const pathname = window.location.pathname
+
+  const { fullname, isAdmin } = userData.user
   if (fullname === "") {
-    return null;
+    return null
   }
 
-  const isDay = () => {
-    const hours = new Date().getHours();
-    return hours >= 6 && hours < 18;
-  };
+  const handleIsLight = () => {
+    setIsLight(!isLight)
+    localStorage.setItem("isLight", !isLight)
+  }
 
-  const sessionValue = window.sessionStorage.getItem("isLight") === "true";
+  const sessionIsLight = JSON.parse(localStorage.getItem("isLight"))
 
   return (
     <Sider
@@ -34,55 +49,33 @@ function LeftNavbar(props) {
       // collapsed={collapsed}
       // onCollapse={onCollapse}
       style={
-        isDay()
-          ? sessionValue
-            ? { backgroundColor: "#fff" }
-            : { backgroundColor: "rgb(30, 39, 46)" }
-          : sessionValue
-          ? { backgroundColor: "#fff" }
-          : { backgroundColor: "rgb(30, 39, 46)" }
+        sessionIsLight
+          ? { backgroundColor: "rgb(30, 39, 46)" }
+          : { backgroundColor: "#fff" }
       }
     >
       <div>
         <center>
           <img
             src={
-              isDay()
-                ? sessionValue
-                  ? "/images/KOOMPI_Logo_dark.svg"
-                  : "/images/KOOMPI_Logo.svg"
-                : sessionValue
-                ? "/images/KOOMPI_Logo_dark.svg"
-                : "/images/KOOMPI_Logo.svg"
+              sessionIsLight
+                ? "/images/KOOMPI_Logo.svg"
+                : "/images/KOOMPI_Logo_dark.svg"
             }
             alt=""
             className="KOOMPI_LOGO"
           />
         </center>
-        <div
-          className="themeChange"
-          onClick={() => {
-            setIsLight(!isLight);
-            window.sessionStorage.setItem("isLight", isLight);
-          }}
-        >
-          {sessionValue ? (
-            <img src="/images/night.svg" alt="koompi night" height="25px" />
-          ) : (
+        <div className="themeChange" onClick={handleIsLight}>
+          {sessionIsLight ? (
             <img src="/images/day.svg" alt="koompi day" height="25px" />
+          ) : (
+            <img src="/images/night.svg" alt="koompi night" height="25px" />
           )}
         </div>
       </div>
       <Menu
-        theme={
-          isDay()
-            ? sessionValue
-              ? "light"
-              : "dark"
-            : sessionValue
-            ? "light"
-            : "dark"
-        }
+        theme={sessionIsLight ? "dark" : "light"}
         defaultSelectedKeys={[pathname]}
         defaultOpenKeys={[pathname]}
         mode="inline"
@@ -90,7 +83,7 @@ function LeftNavbar(props) {
         {/* ========= Dashboard Section ========= */}
         <Menu.Item key="/admin/dashboard">
           <Link to="/admin/dashboard" className="nav-text">
-            <Icon type="pie-chart" />
+            <FiBarChart />
             <span>Dashboard</span>
           </Link>
         </Menu.Item>
@@ -105,10 +98,10 @@ function LeftNavbar(props) {
               : ""
           }
           title={
-            <span>
-              <Icon type="form" />
+            <div className="nav-text">
+              <FiFileText />
               <span>Posts</span>
-            </span>
+            </div>
           }
         >
           <Menu.Item key="/admin/new-post">
@@ -120,7 +113,6 @@ function LeftNavbar(props) {
         </SubMenu>
 
         {/* ========= Pages Section ========= */}
-
         <SubMenu
           key={
             pathname === "/admin/new-page"
@@ -130,10 +122,10 @@ function LeftNavbar(props) {
               : ""
           }
           title={
-            <span>
-              <Icon type="copy" />
+            <div className="nav-text">
+              <FiFile />
               <span>Pages</span>
-            </span>
+            </div>
           }
         >
           <Menu.Item key="/admin/new-page">
@@ -144,11 +136,35 @@ function LeftNavbar(props) {
           </Menu.Item>
         </SubMenu>
 
+        {/* ========= Software Section ========= */}
+        <SubMenu
+          key={
+            pathname === "/admin/add-software"
+              ? "/admin/add-software"
+              : "/admin/all-softwares"
+              ? "/admin/all-softwares"
+              : ""
+          }
+          title={
+            <div className="nav-text">
+              <FiLayers />
+              <span>Softwares</span>
+            </div>
+          }
+        >
+          <Menu.Item key="/admin/add-software">
+            <Link to="/admin/add-software">Add Software</Link>
+          </Menu.Item>
+          <Menu.Item key="/admin/all-softwares">
+            <Link to="/admin/all-softwares">All Software</Link>
+          </Menu.Item>
+        </SubMenu>
+
         {/* ========= Categories Section ========= */}
 
         <Menu.Item key="/admin/categories">
-          <Link to="/admin/categories">
-            <Icon type="appstore" />
+          <Link to="/admin/categories" className="nav-text">
+            <FiList />
             <span>Categories</span>
           </Link>
         </Menu.Item>
@@ -163,10 +179,10 @@ function LeftNavbar(props) {
               : ""
           }
           title={
-            <span>
-              <Icon type="team" />
+            <div className="nav-text">
+              <FiUsers />
               <span>Members</span>
-            </span>
+            </div>
           }
         >
           <Menu.Item key="/admin/new-member">
@@ -187,10 +203,10 @@ function LeftNavbar(props) {
               : ""
           }
           title={
-            <span>
-              <Icon type="carry-out" />
+            <div className="nav-text">
+              <FiMapPin />
               <span>Retailers</span>
-            </span>
+            </div>
           }
         >
           <Menu.Item key="/admin/new-retailer">
@@ -211,10 +227,10 @@ function LeftNavbar(props) {
               : ""
           }
           title={
-            <span>
-              <Icon type="deployment-unit" />
-              <span>Social Media</span>
-            </span>
+            <div className="nav-text">
+              <FiShare2 />
+              <span>Socail media</span>
+            </div>
           }
         >
           <Menu.Item key="/admin/add-social-media">
@@ -227,33 +243,70 @@ function LeftNavbar(props) {
 
         {/* ========= Payment Section ========= */}
         {isAdmin && (
-          <Menu.Item key="/admin/user/payment">
-            <Link to="/admin/user/payment" className="nav-text">
-              <Icon type="dollar" />
+          <Menu.Item key="/admin/user/payments">
+            <Link to="/admin/user/payments" className="nav-text">
+              <FiDollarSign />
               <span>User Payment</span>
             </Link>
           </Menu.Item>
         )}
 
         {/* ========= Mail Sender Section ========= */}
-        {isAdmin && (
+        {/* {isAdmin && (
           <Menu.Item key="/admin/send-mail">
             <Link to="/user/send-mail" className="nav-text">
               <Icon type="mail" />
               <span>Mail Sender</span>
             </Link>
           </Menu.Item>
+        )} */}
+
+        {/* ========= Mail Sender Section ========= */}
+        {isAdmin && (
+          <Menu.Item key="/admin/telegram-bot">
+            <Link to="/admin/telegram-bot" className="nav-text">
+              <FiSend />
+              <span>Telegram</span>
+            </Link>
+          </Menu.Item>
         )}
+
+        {/* ========= Mail Sender Section ========= */}
+        {isAdmin && (
+          <SubMenu
+            key={
+              pathname === "/admin/new-legal"
+                ? "/admin/new-legal"
+                : "/admin/all-legals"
+                ? "/admin/all-legals"
+                : ""
+            }
+            title={
+              <div className="nav-text">
+                <FiUserCheck />
+                <span>Legals</span>
+              </div>
+            }
+          >
+            <Menu.Item key="/admin/new-legal">
+              <Link to="/admin/new-legal">New Legal</Link>
+            </Menu.Item>
+            <Menu.Item key="/admin/all-legals">
+              <Link to="/admin/all-legals">All Legals</Link>
+            </Menu.Item>
+          </SubMenu>
+        )}
+
         {/* ========= Users Section ========= */}
         <Menu.Item key="/admin/users">
           <Link to="/admin/users" className="nav-text">
-            <Icon type="user" />
+            <FiUser />
             <span>Users</span>
           </Link>
         </Menu.Item>
       </Menu>
     </Sider>
-  );
+  )
 }
 
-export default LeftNavbar;
+export default LeftNavbar

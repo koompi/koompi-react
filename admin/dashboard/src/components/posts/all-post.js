@@ -1,48 +1,22 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Row,
-  Col,
-  Upload,
-  Select,
-  Layout,
-  message,
-  Table,
-  Divider,
-  Modal,
-  Tag,
-  Breadcrumb,
-  Popconfirm
-} from "antd";
-import TopNavbar from "../navbar/top-navbar";
-import LeftNavbar from "../navbar/left-navbar";
-import PageFooter from "../footer";
-import moment from "moment";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import parse from "html-react-parser";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Layout, message, Table, Divider, Tag, Popconfirm } from "antd"
+import TopNavbar from "../navbar/top-navbar"
+import LeftNavbar from "../navbar/left-navbar"
+import PageFooter from "../footer"
+import moment from "moment"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import { Link } from "react-router-dom"
 
 // ===== Query and Mutation Section =====
-import { GET_POSTS } from "../../graphql/query";
-import { DELETE_POST } from "../../graphql/mutation";
+import { GET_POSTS } from "../../graphql/query"
+import { DELETE_POST } from "../../graphql/mutation"
 
-// =====  make the first letter of a string uppercase =====
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-const { Content } = Layout;
+const { Content } = Layout
 
 function AllPosts() {
-  // ===== State Management =====
-  const [visible, setVisible] = useState(false);
-
   // ===== Mutation Varile Section =====
-  const [deletePost] = useMutation(DELETE_POST);
-  const { refetch: postRefetch } = useQuery(GET_POSTS);
+  const [deletePost] = useMutation(DELETE_POST)
+  const { refetch: postRefetch } = useQuery(GET_POSTS)
 
   const columns = [
     {
@@ -79,44 +53,30 @@ function AllPosts() {
       title: "Actions",
       dataIndex: "action"
     }
-  ];
-
-  const hideModal = () => {
-    setVisible(false);
-  };
+  ]
 
   const DisplayPost = () => {
-    const { error, loading, data } = useQuery(GET_POSTS);
-    if (error) console.log(error);
-    if (loading) return <Table loading={true}></Table>;
+    const { error, loading, data } = useQuery(GET_POSTS)
+    if (error) console.log(error)
+    if (loading) return <Table loading={true}></Table>
     if (data) {
       const DisplayTable = () => {
         return (
           <Table
             columns={columns}
-            dataSource={data.posts.map(post => {
-              const {
-                id,
-                title,
-                category,
-                tags,
-                created_at,
-                user,
-                slug
-              } = post;
+            dataSource={data.posts.map((post) => {
+              const { id, title, category, created_at, user, slug } = post
               return {
                 key: id,
                 image: (
                   <img
                     src={"https://admin.koompi.com" + post.thumnail}
                     alt="post"
-                    height="50px"
-                    width="50px"
-                    style={{ borderRadius: "50%" }}
+                    height="40px"
+                    width="60px"
                   />
                 ),
-                title:
-                  title.length <= 25 ? title : title.substring(0, 25) + " ...",
+                title: title.length <= 25 ? title : title.substring(0, 25) + " ...",
                 slug: slug.length <= 25 ? slug : slug.substring(0, 25) + " ...",
                 category: (
                   <Tag color="green">
@@ -140,9 +100,15 @@ function AllPosts() {
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deletePost({ variables: { id: `${id}` } });
-                        message.success("The Post has been Deleted");
-                        postRefetch();
+                        deletePost({ variables: { id: `${id}` } })
+                          .then(async (res) => {
+                            await message.success(res.data.delete_post.message)
+                            await postRefetch()
+                          })
+                          .catch((error) => {
+                            console.log(error)
+                            return null
+                          })
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -151,19 +117,19 @@ function AllPosts() {
                     </Popconfirm>
                   </div>
                 )
-              };
+              }
             })}
             pagination={true}
           />
-        );
-      };
+        )
+      }
       return (
         <div>
           <DisplayTable />
         </div>
-      );
+      )
     }
-  };
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -186,7 +152,7 @@ function AllPosts() {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default AllPosts;
+export default AllPosts

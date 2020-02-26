@@ -1,25 +1,21 @@
-import React, { useState } from "react";
-import { Row, Col, Layout } from "antd";
+import React, { useState } from "react"
+import { Row, Col, Layout } from "antd"
 
-import LeftNavbar from "./navbar/left-navbar";
-import TopNavbar from "./navbar/top-navbar";
-import PageFooter from "./footer";
-import { UserTotal, TotalPost, TotalPage, TotalRetailer } from "./data/admin";
+import LeftNavbar from "./navbar/left-navbar"
+import TopNavbar from "./navbar/top-navbar"
+import PageFooter from "./footer"
+import { UserTotal, TotalPost, TotalPage, TotalRetailer } from "./data/admin"
 
-import Chart from "react-apexcharts";
+import Chart from "react-apexcharts"
 
-const { Content } = Layout;
+const { Content } = Layout
 
 function Admin() {
   const [chart] = useState({
     series: [
       {
-        name: "series1",
-        data: [31, 40, 28, 51, 42, 109, 100]
-      },
-      {
-        name: "series2",
-        data: [11, 32, 45, 32, 34, 52, 41]
+        name: "Posts",
+        data: [1, 2, 1, 1, 3, 1, 2]
       }
     ],
     options: {
@@ -47,11 +43,12 @@ function Admin() {
       },
       tooltip: {
         x: {
-          format: "dd/MM/yy HH:mm"
+          format: "dd/MM/yy"
         }
       }
     }
-  });
+  })
+  // const { error, loading, data } = useQuery(GET_POSTS);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -150,7 +147,7 @@ function Admin() {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Admin;
+export default Admin

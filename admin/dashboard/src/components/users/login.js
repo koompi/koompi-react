@@ -1,81 +1,66 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Checkbox,
-  message,
-  notification
-} from "antd";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import three_dots from "../../assets/img/three-dots.svg";
-import jwt from "jsonwebtoken";
-import Cookie from "js-cookie";
-import Particles from "react-particles-js";
+import React, { useState } from "react"
+import { Form, Icon, Input, Button, Checkbox, message, notification } from "antd"
+import { Link } from "react-router-dom"
+import axios from "axios"
+import three_dots from "../../assets/img/three-dots.svg"
+import Cookie from "js-cookie"
+import Particles from "react-particles-js"
 
 function LoginForm(props) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
-  const openNotificationWithIcon = type => {
-    const token = window.localStorage.getItem("token");
-    const decodeToken = jwt.decode(token);
+  const openNotificationWithIcon = (type) => {
     notification[type]({
       message: `Hello there!`,
       description:
         "You don't permission to access it yet. Please ask the admin to approve your user.",
       closeIcon: true,
       duration: 10
-    });
-  };
+    })
+  }
 
-  const options = {
-    headers: { "X-Custom-Header": "value" }
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.form.validateFields((err, values) => {
       if (!err) {
-        console.log(values.remember);
+        console.log(values.remember)
 
         axios
           .post(`https://admin.koompi.com/login`, { ...values })
-          .then(async res => {
-            setLoading(true);
+          .then(async (res) => {
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
+              setLoading(false)
+            }, 3000)
             Cookie.set(
               "token",
               res.data.token,
               values.remember ? { expires: 7 } : null
-            );
-            await message.success("Login successfully.", 3);
-            window.location.replace("/admin/dashboard");
+            )
+            await message.success("Login successfully.", 3)
+            window.location.replace("/admin/dashboard")
           })
-          .catch(error => {
-            setLoading(true);
+          .catch((error) => {
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
+              setLoading(false)
+            }, 3000)
             if (
               error.response.data.message ===
               "You don't have a permission to access it"
             ) {
-              openNotificationWithIcon("info");
+              openNotificationWithIcon("info")
             } else {
-              message.error(error.response.data.message, 10);
+              message.error(error.response.data.message, 10)
             }
-          });
+          })
       } else {
-        console.log(err);
+        console.log(err)
       }
-    });
-  };
+    })
+  }
 
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form
   return (
     <div>
       {/* <div className="loginBackground"></div> */}
@@ -109,24 +94,18 @@ function LoginForm(props) {
             })(
               <Input
                 size="large"
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
+                prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
                 placeholder="Email"
               />
             )}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator("password", {
-              rules: [
-                { required: true, message: "Please input your Password!" }
-              ]
+              rules: [{ required: true, message: "Please input your Password!" }]
             })(
               <Input
                 size="large"
-                prefix={
-                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
+                prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
                 type="password"
                 placeholder="Password"
               />
@@ -137,9 +116,9 @@ function LoginForm(props) {
               valuePropName: "checked",
               initialValue: true
             })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">
+            {/* <a className="login-form-forgot" href="">
               Forgot password
-            </a>
+            </a> */}
             <br />
             <Button
               size="small"
@@ -160,7 +139,7 @@ function LoginForm(props) {
         </Form>
       </div>
     </div>
-  );
+  )
 }
 
-export default Form.create()(LoginForm);
+export default Form.create()(LoginForm)

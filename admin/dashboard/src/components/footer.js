@@ -1,13 +1,16 @@
-import React from "react";
-import { Layout } from "antd";
-const { Footer } = Layout;
+import React from "react"
+import { Layout } from "antd"
+const { Footer } = Layout
 
 function PageFooter() {
   return (
     <Footer style={{ textAlign: "center" }}>
-      <b>KOOMPI Design</b> © 2020 Created by <b>KOOMPI</b>
+      Copyright © 2020 Created by <b>KOOMPI</b>
+      <p>
+        A brainchild of <b>SmallWorld Venture</b>
+      </p>
     </Footer>
-  );
+  )
 }
 
-export default PageFooter;
+export default PageFooter

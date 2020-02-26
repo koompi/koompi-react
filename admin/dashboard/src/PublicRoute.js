@@ -1,24 +1,24 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import React from "react"
+import { Route, Redirect } from "react-router-dom"
 
-import jwt from "jsonwebtoken";
-import Cookie from "js-cookie";
+import jwt from "jsonwebtoken"
+import Cookie from "js-cookie"
 
 const PublicRoute = ({ component: Component, restricted, ...rest }) => {
-  let token = Cookie.get("token");
-  let user = jwt.decode(token);
+  let token = Cookie.get("token")
+  let user = jwt.decode(token)
 
   const isLogin = () => {
     if (!user) {
-      return false;
+      return false
     }
-    return true;
-  };
+    return true
+  }
 
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         isLogin() && restricted ? (
           <Redirect to="/admin/dashboard" />
         ) : (
@@ -26,7 +26,7 @@ const PublicRoute = ({ component: Component, restricted, ...rest }) => {
         )
       }
     />
-  );
-};
+  )
+}
 
-export default PublicRoute;
+export default PublicRoute

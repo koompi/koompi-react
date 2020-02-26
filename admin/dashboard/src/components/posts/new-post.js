@@ -1,64 +1,51 @@
-import React, { useState, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import LeftNavbar from "../navbar/left-navbar";
-import TopNavbar from "../navbar/top-navbar";
-import PageFooter from "../footer";
-import { UserContext } from "../../context/userContext";
+import React, { useState, useContext } from "react"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import LeftNavbar from "../navbar/left-navbar"
+import TopNavbar from "../navbar/top-navbar"
+import PageFooter from "../footer"
+import { UserContext } from "../../context/userContext"
 
-import three_dots from "../../assets/img/three-dots.svg";
+import three_dots from "../../assets/img/three-dots.svg"
 
 // ===== Import EditorJS =====
-import EditorJs from "react-editor-js";
-import { EDITOR_JS_TOOLS } from "./tools";
-import slugify from "slugify";
+import EditorJs from "react-editor-js"
+import { EDITOR_JS_TOOLS } from "./tools"
+import slugify from "slugify"
 
 // ===== Query and Mutation Section =====
-import { GET_CATEGORIES, GET_POSTS } from "../../graphql/query";
-import { CREATE_POST } from "../../graphql/mutation";
-import _ from "lodash";
+import { GET_CATEGORIES, GET_POSTS } from "../../graphql/query"
+import { CREATE_POST } from "../../graphql/mutation"
+import _ from "lodash"
 
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Row,
-  Col,
-  Upload,
-  Select,
-  Layout,
-  message,
-  Alert
-} from "antd";
+import { Form, Input, Button, Row, Col, Upload, Select, Layout, message } from "antd"
 
-const FormItem = Form.Item;
-const { Content } = Layout;
-const { TextArea } = Input;
-const { Option } = Select;
+const FormItem = Form.Item
+const { Content } = Layout
+const { TextArea } = Input
+const { Option } = Select
 
-const children = [];
+const children = []
 
 function NewPost(props) {
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form
 
   // ===== State Management =====
-  const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState({});
-  const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [image, setImage] = useState("")
 
   // ===== User Context Section =====
-  const userData = useContext(UserContext);
+  const userData = useContext(UserContext)
 
-  const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES);
-  const { refetch: postsRefetch } = useQuery(GET_POSTS);
-  const [createPost] = useMutation(CREATE_POST);
+  const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES)
+  const { refetch: postsRefetch } = useQuery(GET_POSTS)
+  const [createPost] = useMutation(CREATE_POST)
 
   const DisplayCategories = () => {
-    const { error, loading, data } = useQuery(GET_CATEGORIES);
-    if (error) console.log(error);
-    if (loading) return "Loading ...";
+    const { error, loading, data } = useQuery(GET_CATEGORIES)
+    if (error) console.log(error)
+    if (loading) return "Loading ..."
     if (data.categories.length === 0) {
-      message.error("Please create a category.", 5);
+      message.error("Please create a category.", 5)
       return (
         <Form.Item label="Categories">
           {getFieldDecorator("category", {
@@ -70,11 +57,11 @@ function NewPost(props) {
             ]
           })(<Select placeholder="No Category"></Select>)}
         </Form.Item>
-      );
+      )
     } else {
       const filtered_pages = _.filter(data.categories, function(p) {
-        return _.includes(["news", "events"], p.slug);
-      });
+        return _.includes(["news", "events"], p.slug)
+      })
 
       return (
         <Form.Item label="Categories">
@@ -88,19 +75,19 @@ function NewPost(props) {
             initialValue: filtered_pages[0].title
           })(
             <Select placeholder="Please select the category" size="large">
-              {filtered_pages.map(cate => {
+              {filtered_pages.map((cate) => {
                 return (
                   <Option value={cate.title} key={cate.id}>
                     {cate.title}
                   </Option>
-                );
+                )
               })}
             </Select>
           )}
         </Form.Item>
-      );
+      )
     }
-  };
+  }
 
   const uploadImage = {
     name: "file",
@@ -108,23 +95,23 @@ function NewPost(props) {
     action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
-      const { status } = info.file;
+      const { status } = info.file
       if (status !== "uploading") {
-        console.log(info.file, info.fileList);
+        console.log(info.file, info.fileList)
       }
       if (status === "done") {
-        setImage(info.file.name.replace(/\s+/g, "-").toLowerCase());
-        message.success(`${info.file.name} file uploaded successfully.`);
+        setImage(info.file.name.replace(/\s+/g, "-").toLowerCase())
+        message.success(`${info.file.name} file uploaded successfully.`)
       } else if (status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name} file upload failed.`)
       }
     }
-  };
+  }
 
   // ===== EditorJS =====
-  const editorJsRef = React.useRef(null);
+  const editorJsRef = React.useRef(null)
   const handleSubmit = React.useCallback(async () => {
-    const savedData = await editorJsRef.current.save();
+    const savedData = await editorJsRef.current.save()
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         createPost({
@@ -134,22 +121,23 @@ function NewPost(props) {
             description: JSON.stringify(savedData)
           }
         })
-          .then(async () => {
-            setLoading(true);
+          .then(async (res) => {
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
-            categoryRefetch();
-            postsRefetch();
-            props.form.resetFields();
-            await message.success("Post created successfully.", 3);
+              setLoading(false)
+            }, 3000)
+            categoryRefetch()
+            postsRefetch()
+            props.form.resetFields()
+            await message.success(res.data.create_post.message, 3)
           })
-          .catch(error => {
-            console.log(error);
-          });
+          .catch((error) => {
+            console.log(error)
+          })
       }
-    });
-  }, []);
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -193,9 +181,7 @@ function NewPost(props) {
 
                     <FormItem label="Description: ">
                       <EditorJs
-                        instanceRef={instance =>
-                          (editorJsRef.current = instance)
-                        }
+                        instanceRef={(instance) => (editorJsRef.current = instance)}
                         tools={EDITOR_JS_TOOLS}
                         placeholder="Let's write an awesome story!"
                       />
@@ -215,9 +201,11 @@ function NewPost(props) {
                             style={{ width: "100%" }}
                           />
                         ) : (
-                          <p className="ant-upload-drag-icon">
-                            <Icon type="file-image" />
-                          </p>
+                          <img
+                            src="/images/no-image.jpg"
+                            alt="koompi"
+                            width="100%"
+                          />
                         )}
                       </Upload.Dragger>
                       <div style={{ display: "none" }}>
@@ -246,11 +234,7 @@ function NewPost(props) {
                           }
                         ]
                       })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          size="large"
-                        >
+                        <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
                         </Select>
                       )}
@@ -266,11 +250,7 @@ function NewPost(props) {
                           }
                         ]
                       })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          size="large"
-                        >
+                        <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
                         </Select>
                       )}
@@ -313,7 +293,7 @@ function NewPost(props) {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Form.create()(NewPost);
+export default Form.create()(NewPost)

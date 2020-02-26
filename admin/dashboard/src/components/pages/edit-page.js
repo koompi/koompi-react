@@ -1,18 +1,17 @@
-import React, { useState, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import LeftNavbar from "../navbar/left-navbar";
-import TopNavbar from "../navbar/top-navbar";
-import PageFooter from "../footer";
-import { UserContext } from "../../context/userContext";
-import three_dots from "../../assets/img/three-dots.svg";
-import slugify from "slugify";
+import React, { useState, useContext } from "react"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import LeftNavbar from "../navbar/left-navbar"
+import TopNavbar from "../navbar/top-navbar"
+import PageFooter from "../footer"
+import { UserContext } from "../../context/userContext"
+import three_dots from "../../assets/img/three-dots.svg"
 // ===== Query and Mutation Section =====
-import { GET_PAGE, GET_PAGES, GET_CATEGORIES } from "../../graphql/query";
-import { UPDATE_PAGE } from "../../graphql/mutation";
+import { GET_PAGE, GET_PAGES, GET_CATEGORIES } from "../../graphql/query"
+import { UPDATE_PAGE } from "../../graphql/mutation"
 
 // ===== Import EditorJS =====
-import EditorJs from "react-editor-js";
-import { EDITOR_JS_TOOLS } from "./tools";
+import EditorJs from "react-editor-js"
+import { EDITOR_JS_TOOLS } from "./tools"
 
 import {
   Form,
@@ -25,37 +24,36 @@ import {
   Layout,
   message,
   InputNumber
-} from "antd";
+} from "antd"
 
-const FormItem = Form.Item;
-const { Content } = Layout;
-const { TextArea } = Input;
-const { Option } = Select;
+const FormItem = Form.Item
+const { Content } = Layout
+const { TextArea } = Input
+const { Option } = Select
 
-const children = [];
+const children = []
 
 function EditPage(props) {
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form
   //   ===== Global Data =====
   const { loading: pageLoading, data: pageData } = useQuery(GET_PAGE, {
     variables: { id: window.location.pathname.split("/")[4] }
-  });
+  })
 
   // ===== State Management =====
-  const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false)
+  const [image, setImage] = useState(null)
 
   // ===== User Context Section =====
-  const userData = useContext(UserContext);
+  const userData = useContext(UserContext)
 
-  const { refetch: pageRefetch } = useQuery(GET_PAGES);
-  const [updatePage] = useMutation(UPDATE_PAGE);
+  const { refetch: pageRefetch } = useQuery(GET_PAGES)
+  const [updatePage] = useMutation(UPDATE_PAGE)
 
   // ===== EditorJS =====
-  const editorJsRef = React.useRef(null);
+  const editorJsRef = React.useRef(null)
   const handleSubmit = React.useCallback(async () => {
-    const savedData = await editorJsRef.current.save();
+    const savedData = await editorJsRef.current.save()
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         updatePage({
@@ -66,21 +64,22 @@ function EditPage(props) {
             sectionNumber: values.sectionNumber.toString()
           }
         })
-          .then(async () => {
-            setLoading(true);
+          .then(async (res) => {
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
-            pageRefetch();
-            await message.success("Page updated successfully.", 3);
-            await props.history.push("/admin/all-pages");
+              setLoading(false)
+            }, 3000)
+            await message.success(res.data.update_page.message, 3)
+            await pageRefetch()
+            await props.history.push("/admin/all-pages")
           })
-          .catch(error => {
-            console.log(error);
-          });
+          .catch((error) => {
+            console.log(error)
+          })
       }
-    });
-  }, []);
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // ===== Handle Image Upload =====
   const uploadImage = {
@@ -89,25 +88,25 @@ function EditPage(props) {
     action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
-      const { status } = info.file;
+      const { status } = info.file
       if (status !== "uploading") {
-        console.log(info.file, info.fileList);
+        console.log(info.file, info.fileList)
       }
       if (status === "done") {
-        setImage(info.file.name.replace(/\s+/g, "-").toLowerCase());
-        message.success(`${info.file.name} file uploaded successfully.`);
+        setImage(info.file.name.replace(/\s+/g, "-").toLowerCase())
+        message.success(`${info.file.name} file uploaded successfully.`)
       } else if (status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name} file upload failed.`)
       }
     }
-  };
+  }
 
   const DisplayCategories = () => {
-    const { error, loading, data } = useQuery(GET_CATEGORIES);
-    if (error) console.log(error);
-    if (loading) return "Loading ...";
+    const { error, loading, data } = useQuery(GET_CATEGORIES)
+    if (error) console.log(error)
+    if (loading) return "Loading ..."
     if (data.categories.length === 0) {
-      message.error("Please create a category.", 5);
+      message.error("Please create a category.", 5)
       return (
         <Form.Item label="Categories">
           {getFieldDecorator("category", {
@@ -119,7 +118,7 @@ function EditPage(props) {
             ]
           })(<Select placeholder="No Category"></Select>)}
         </Form.Item>
-      );
+      )
     } else {
       return (
         <Form.Item label="Categories">
@@ -133,22 +132,22 @@ function EditPage(props) {
             initialValue: pageData.page.category.title
           })(
             <Select placeholder="Please select the category" size="large">
-              {data.categories.map(cate => {
+              {data.categories.map((cate) => {
                 return (
                   <Option value={cate.title} key={cate.id}>
                     {cate.title}
                   </Option>
-                );
+                )
               })}
             </Select>
           )}
         </Form.Item>
-      );
+      )
     }
-  };
+  }
 
   if (pageLoading) {
-    return "Loading...";
+    return "Loading..."
   }
 
   return (
@@ -212,9 +211,7 @@ function EditPage(props) {
                     </FormItem>
                     <FormItem label="Description: ">
                       <EditorJs
-                        instanceRef={instance =>
-                          (editorJsRef.current = instance)
-                        }
+                        instanceRef={(instance) => (editorJsRef.current = instance)}
                         tools={EDITOR_JS_TOOLS}
                         data={
                           pageLoading
@@ -316,11 +313,7 @@ function EditPage(props) {
                         ],
                         initialValue: pageLoading ? "" : pageData.page.keywords
                       })(
-                        <Select
-                          mode="tags"
-                          style={{ width: "100%" }}
-                          size="large"
-                        >
+                        <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
                         </Select>
                       )}
@@ -347,7 +340,7 @@ function EditPage(props) {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Form.create()(EditPage);
+export default Form.create()(EditPage)

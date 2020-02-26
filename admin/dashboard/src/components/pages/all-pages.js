@@ -1,43 +1,26 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Row,
-  Col,
-  Upload,
-  Select,
-  Layout,
-  message,
-  Table,
-  Divider,
-  Modal,
-  Tag,
-  Breadcrumb,
-  Popconfirm
-} from "antd";
-import TopNavbar from "../navbar/top-navbar";
-import LeftNavbar from "../navbar/left-navbar";
-import PageFooter from "../footer";
-import moment from "moment";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import parse from "html-react-parser";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Layout, message, Table, Divider, Modal, Tag, Popconfirm } from "antd"
+import TopNavbar from "../navbar/top-navbar"
+import LeftNavbar from "../navbar/left-navbar"
+import PageFooter from "../footer"
+import moment from "moment"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import parse from "html-react-parser"
+import { Link } from "react-router-dom"
 
 // ===== Query and Mutation Section =====
-import { GET_PAGES } from "../../graphql/query";
-import { DELETE_PAGE } from "../../graphql/mutation";
+import { GET_PAGES } from "../../graphql/query"
+import { DELETE_PAGE } from "../../graphql/mutation"
 
-const { Content } = Layout;
+const { Content } = Layout
 
 function AllPages() {
   // ===== State Management =====
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   // ===== Mutation Varile Section =====
-  const [deletePage] = useMutation(DELETE_PAGE);
-  const { refetch: pageRefetch } = useQuery(GET_PAGES);
+  const [deletePage] = useMutation(DELETE_PAGE)
+  const { refetch: pageRefetch } = useQuery(GET_PAGES)
 
   const columns = [
     {
@@ -78,22 +61,22 @@ function AllPages() {
       title: "Actions",
       dataIndex: "action"
     }
-  ];
+  ]
 
   const hideModal = () => {
-    setVisible(false);
-  };
+    setVisible(false)
+  }
 
   const DisplayPost = () => {
-    const { error, loading, data, refetch } = useQuery(GET_PAGES);
-    if (error) console.log(error);
-    if (loading) return <Table loading={true}></Table>;
+    const { error, loading, data } = useQuery(GET_PAGES)
+    if (error) console.log(error)
+    if (loading) return <Table loading={true}></Table>
     if (data) {
       const DisplayTable = () => {
         return (
           <Table
             columns={columns}
-            dataSource={data.pages.map(page => {
+            dataSource={data.pages.map((page) => {
               const {
                 id,
                 title,
@@ -103,7 +86,7 @@ function AllPages() {
                 created_at,
                 created_by,
                 updated_by
-              } = page;
+              } = page
 
               return {
                 key: parse(title.substring(0, 30)),
@@ -111,9 +94,8 @@ function AllPages() {
                   <img
                     src={"https://admin.koompi.com" + image}
                     alt="post"
-                    height="50px"
-                    width="50px"
-                    style={{ borderRadius: "50%" }}
+                    height="40px"
+                    width="60px"
                   />
                 ),
                 title:
@@ -144,9 +126,15 @@ function AllPages() {
                       okText="Yes"
                       cancelText="No"
                       onConfirm={() => {
-                        deletePage({ variables: { id: `${id}` } });
-                        message.success("The Page has been Deleted");
-                        pageRefetch();
+                        deletePage({ variables: { id: `${id}` } })
+                          .then(async (res) => {
+                            await message.success(res.data.delete_page.message)
+                            await pageRefetch()
+                          })
+                          .catch((error) => {
+                            console.log(error)
+                            return null
+                          })
                       }}
                     >
                       <Tag color="#f50" className="btn">
@@ -155,12 +143,12 @@ function AllPages() {
                     </Popconfirm>
                   </div>
                 )
-              };
+              }
             })}
             pagination={visible ? false : true}
           />
-        );
-      };
+        )
+      }
       return (
         <div>
           <Modal
@@ -175,9 +163,9 @@ function AllPages() {
           </Modal>
           <DisplayTable />
         </div>
-      );
+      )
     }
-  };
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -200,7 +188,7 @@ function AllPages() {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default AllPages;
+export default AllPages

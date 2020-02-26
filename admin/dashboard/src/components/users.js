@@ -1,22 +1,21 @@
-import React, { useContext } from "react";
-import { Table, Tag, Layout, Popconfirm, message } from "antd";
-import TopNavbar from "./navbar/top-navbar";
-import LeftNavbar from "./navbar/left-navbar";
-import PageFooter from "./footer";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { UserContext } from "../context/userContext";
-import { GET_USERS } from "../graphql/query";
-import { APPROVE_USER, DELETE_USER, ISADMIN } from "../graphql/mutation";
+import React, { useContext } from "react"
+import { Table, Tag, Layout, Popconfirm, message } from "antd"
+import TopNavbar from "./navbar/top-navbar"
+import LeftNavbar from "./navbar/left-navbar"
+import PageFooter from "./footer"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import { UserContext } from "../context/userContext"
+import { GET_USERS } from "../graphql/query"
+import { APPROVE_USER, DELETE_USER, ISADMIN } from "../graphql/mutation"
 
-const { Content } = Layout;
+const { Content } = Layout
 
 function Users() {
-  const [approveUser] = useMutation(APPROVE_USER);
-  const [deleteUser] = useMutation(DELETE_USER);
-  const [makeAsAdmin] = useMutation(ISADMIN);
-  const { refetch: refetchUser } = useQuery(GET_USERS);
-  const userContext = useContext(UserContext);
-  const { isAdmin } = userContext.user;
+  const [approveUser] = useMutation(APPROVE_USER)
+  const [deleteUser] = useMutation(DELETE_USER)
+  const [makeAsAdmin] = useMutation(ISADMIN)
+  const userContext = useContext(UserContext)
+  const { isAdmin } = userContext.user
 
   const columns = [
     {
@@ -39,7 +38,7 @@ function Users() {
       key: "approved",
       dataIndex: "approved"
     }
-  ];
+  ]
 
   const adminColumns = [
     {
@@ -66,20 +65,21 @@ function Users() {
       title: "Action",
       dataIndex: "action"
     }
-  ];
+  ]
 
   const DisplayUserAdmin = () => {
-    const { error, loading, data, refetch } = useQuery(GET_USERS);
+    const { error, loading, data, refetch } = useQuery(GET_USERS)
     if (loading) {
-      return "Loading ...";
+      return "Loading ..."
     }
-    if (error) console.log(error);
+    if (error) console.log(error)
 
     if (data) {
+      refetch()
       return (
         <Table
           dataSource={data.users.map((user, index) => {
-            const { id, fullname, email, isAdmin, approved } = user;
+            const { id, fullname, email, isAdmin, approved } = user
 
             return {
               key: index,
@@ -92,9 +92,8 @@ function Users() {
                   onConfirm={() => {
                     makeAsAdmin({
                       variables: { id: `${id}`, isAdmin: false }
-                    });
-                    message.success(`${fullname} updated successfully `);
-                    refetchUser();
+                    })
+                    message.success(`${fullname} updated successfully `)
                   }}
                   okText="Yes"
                   cancelText="No"
@@ -110,12 +109,11 @@ function Users() {
                   onConfirm={() => {
                     makeAsAdmin({
                       variables: { id: `${id}`, isAdmin: true }
-                    });
+                    })
 
                     message.success(
                       `${fullname} has been aprroved as admin successfully `
-                    );
-                    refetchUser();
+                    )
                   }}
                   okText="Yes"
                   cancelText="No"
@@ -127,14 +125,14 @@ function Users() {
               ),
               approved: approved ? (
                 <Popconfirm
+                  disabled={isAdmin ? true : false}
                   placement="topRight"
                   title="Are you sure disable this user?"
                   onConfirm={() => {
                     approveUser({
                       variables: { id: `${id}`, approve: false }
-                    });
-                    message.success(`${fullname} is disable `);
-                    refetchUser();
+                    })
+                    message.success(`${fullname} is disable `)
                   }}
                   okText="Yes"
                   cancelText="No"
@@ -145,16 +143,15 @@ function Users() {
                 </Popconfirm>
               ) : (
                 <Popconfirm
+                  disabled={isAdmin ? true : false}
                   placement="topRight"
                   title="Are you sure to approve this user?"
                   onConfirm={() => {
                     approveUser({
                       variables: { id: `${id}`, approve: true }
-                    });
-                    message.success(
-                      `${fullname} has been aprroved successfully `
-                    );
-                    refetchUser();
+                    })
+                    message.success(`${fullname} has been aprroved successfully `)
+                    refetch()
                   }}
                   okText="Yes"
                   cancelText="No"
@@ -167,12 +164,12 @@ function Users() {
               action: (
                 <div>
                   <Popconfirm
+                    disabled={isAdmin ? true : false}
                     placement="topRight"
                     title="Are you sure to delete this user?"
                     onConfirm={() => {
-                      deleteUser({ variables: { id: id } });
-                      message.success(`${fullname} Has been deleted `);
-                      refetchUser();
+                      deleteUser({ variables: { id: id } })
+                      message.success(`${fullname} Has been deleted `)
                     }}
                     okText="Yes"
                     cancelText="No"
@@ -183,26 +180,26 @@ function Users() {
                   </Popconfirm>
                 </div>
               )
-            };
+            }
           })}
           columns={adminColumns}
         />
-      );
+      )
     }
-  };
+  }
 
   const DisplayUser = () => {
-    const { error, loading, data, refetch } = useQuery(GET_USERS);
+    const { error, loading, data } = useQuery(GET_USERS)
     if (loading) {
-      return "Loading ...";
+      return "Loading ..."
     }
-    if (error) console.log(error);
+    if (error) console.log(error)
 
     if (data) {
       return (
         <Table
           dataSource={data.users.map((user, index) => {
-            const { id, fullname, email, isAdmin, approved } = user;
+            const { id, fullname, email, isAdmin, approved } = user
 
             return {
               key: index,
@@ -226,13 +223,13 @@ function Users() {
                   Pending
                 </Tag>
               )
-            };
+            }
           })}
           columns={columns}
         />
-      );
+      )
     }
-  };
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -254,7 +251,7 @@ function Users() {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Users;
+export default Users

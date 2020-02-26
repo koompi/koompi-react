@@ -1,58 +1,32 @@
-import React, { useState, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import ReactQuill from "react-quill"; // ES6
-import "react-quill/dist/quill.snow.css"; // ES6
-import LeftNavbar from "../navbar/left-navbar";
-import TopNavbar from "../navbar/top-navbar";
-import PageFooter from "../footer";
-import { UserContext } from "../../context/userContext";
-import three_dots from "../../assets/img/three-dots.svg";
+import React, { useState } from "react"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import "react-quill/dist/quill.snow.css" // ES6
+import LeftNavbar from "../navbar/left-navbar"
+import TopNavbar from "../navbar/top-navbar"
+import PageFooter from "../footer"
+import three_dots from "../../assets/img/three-dots.svg"
 // ===== Query and Mutation Section =====
-import { GET_RETAILERS, GET_RETAILER } from "../../graphql/query";
-import { UPDATE_RETAILER } from "../../graphql/mutation";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Row,
-  Col,
-  Upload,
-  Select,
-  Layout,
-  message,
-  Alert
-} from "antd";
+import { GET_RETAILERS, GET_RETAILER } from "../../graphql/query"
+import { UPDATE_RETAILER } from "../../graphql/mutation"
+import { Form, Input, Button, Row, Col, Upload, Layout, message } from "antd"
 
-const FormItem = Form.Item;
-const { Content } = Layout;
-const { TextArea } = Input;
-const { Option } = Select;
-
-const children = [];
+const FormItem = Form.Item
+const { Content } = Layout
 
 function EditRetailer(props) {
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form
 
   // ===== State Management =====
-  const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false)
+  const [image, setImage] = useState(null)
 
   //   ===== Global Data =====
   const { loading: postLoading, data: retailerData } = useQuery(GET_RETAILER, {
     variables: { id: window.location.pathname.split("/")[4] }
-  });
+  })
 
-  // ===== User Context Section =====
-  const userData = useContext(UserContext);
-
-  const { refetch: refechRetailer } = useQuery(GET_RETAILERS);
-  const [updateRetailer] = useMutation(UPDATE_RETAILER);
-
-  const handleDescChange = value => {
-    setDescription(value);
-  };
+  const { refetch: refechRetailer } = useQuery(GET_RETAILERS)
+  const [updateRetailer] = useMutation(UPDATE_RETAILER)
 
   const uploadImage = {
     name: "file",
@@ -60,47 +34,47 @@ function EditRetailer(props) {
     action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
-      const { status } = info.file;
+      const { status } = info.file
       if (status !== "uploading") {
-        console.log(info.file, info.fileList);
+        console.log(info.file, info.fileList)
       }
       if (status === "done") {
-        setImage(info.file.name.replace(/\s+/g, "-").toLowerCase());
-        message.success(`${info.file.name} file uploaded successfully.`);
+        setImage(info.file.name.replace(/\s+/g, "-").toLowerCase())
+        message.success(`${info.file.name} file uploaded successfully.`)
       } else if (status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name} file upload failed.`)
       }
     }
-  };
+  }
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values);
+        console.log(values)
 
         updateRetailer({
           variables: { id: window.location.pathname.split("/")[4], ...values }
         })
-          .then(async () => {
-            setLoading(true);
+          .then(async (res) => {
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
-            props.form.resetFields();
-            refechRetailer();
-            await message.success("Retailer updated successfully.", 3);
-            await props.history.push("/admin/retailers");
+              setLoading(false)
+            }, 3000)
+            props.form.resetFields()
+            await message.success(res.data.update_retailer.message, 3)
+            refechRetailer()
+            await props.history.push("/admin/retailers")
           })
-          .catch(error => {
-            console.log(error);
-          });
+          .catch((error) => {
+            console.log(error)
+          })
       }
-    });
-  };
+    })
+  }
 
   if (postLoading) {
-    return "Loading...";
+    return "Loading..."
   }
 
   return (
@@ -217,7 +191,7 @@ function EditRetailer(props) {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Form.create()(EditRetailer);
+export default Form.create()(EditRetailer)

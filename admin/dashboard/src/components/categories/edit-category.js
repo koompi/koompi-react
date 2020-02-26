@@ -1,33 +1,33 @@
-import React, { useState, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import LeftNavbar from "../navbar/left-navbar";
-import TopNavbar from "../navbar/top-navbar";
-import PageFooter from "../footer";
-import { UserContext } from "../../context/userContext";
-import three_dots from "../../assets/img/three-dots.svg";
-import slugify from "slugify";
+import React, { useState, useContext } from "react"
+import { useQuery, useMutation } from "@apollo/react-hooks"
+import LeftNavbar from "../navbar/left-navbar"
+import TopNavbar from "../navbar/top-navbar"
+import PageFooter from "../footer"
+import { UserContext } from "../../context/userContext"
+import three_dots from "../../assets/img/three-dots.svg"
+import slugify from "slugify"
 
 // ===== Query Section =====
-import { EDIT_CATEGORY } from "../../graphql/query";
+import { EDIT_CATEGORY } from "../../graphql/query"
 
 // ===== Mutation Section =====
-import { UPDATE_CATEGORY } from "../../graphql/mutation";
+import { UPDATE_CATEGORY } from "../../graphql/mutation"
 
 // ===== Antd Section =====
-import { Form, Input, Button, Row, Col, Layout, message } from "antd";
+import { Form, Input, Button, Row, Col, Layout, message } from "antd"
 
-const FormItem = Form.Item;
-const { Content } = Layout;
+const FormItem = Form.Item
+const { Content } = Layout
 
 function EditCategory(props) {
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form
   // ===== State Management =====
-  const [loading, setLoading] = useState(false);
-  const userData = useContext(UserContext);
-  const [updateCategory] = useMutation(UPDATE_CATEGORY);
+  const [loading, setLoading] = useState(false)
+  const userData = useContext(UserContext)
+  const [updateCategory] = useMutation(UPDATE_CATEGORY)
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         updateCategory({
@@ -38,27 +38,26 @@ function EditCategory(props) {
           }
         })
           .then(async () => {
-            setLoading(true);
+            setLoading(true)
             setTimeout(() => {
-              setLoading(false);
-            }, 3000);
-            await message.success("The Category update successfully.", 3);
-            await props.history.push("/admin/categories");
+              setLoading(false)
+            }, 3000)
+            await message.success("The Category update successfully.", 3)
+            await props.history.push("/admin/categories")
           })
-          .catch(error => {
-            message.error(error);
-          });
+          .catch((error) => {
+            message.error(error)
+          })
       }
-    });
-  };
+    })
+  }
 
-  const {
-    error: edit_category_error,
-    loading: edit_category_loading,
-    data: edit_category_data
-  } = useQuery(EDIT_CATEGORY, {
-    variables: { id: window.location.pathname.split("/")[4] }
-  });
+  const { loading: edit_category_loading, data: edit_category_data } = useQuery(
+    EDIT_CATEGORY,
+    {
+      variables: { id: window.location.pathname.split("/")[4] }
+    }
+  )
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -75,7 +74,7 @@ function EditCategory(props) {
               <h1 className="title_new_post">
                 {edit_category_loading
                   ? "loading ..."
-                  : "Update" + " " + edit_category_data.category.title}
+                  : `Update ${edit_category_data.category.title}`}
               </h1>
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Row gutter={[16, 16]}>
@@ -135,7 +134,7 @@ function EditCategory(props) {
         <PageFooter />
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default Form.create()(EditCategory);
+export default Form.create()(EditCategory)
