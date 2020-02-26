@@ -1,5 +1,4 @@
-import React from "react"
-import Navbar from "../navbar"
+import React, { useEffect } from "react"
 import { Row, Col, Spin } from "antd"
 import SubNavbar from "./subNavbar"
 import Footer from "../footer"
@@ -12,6 +11,10 @@ import parse from "html-react-parser"
 import { Helmet } from "react-helmet"
 
 function KOOMPIOS() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const DisplayBanner = () => {
     const { error, loading, data } = useQuery(GET_PAGES)
     if (error) {
@@ -44,7 +47,7 @@ function KOOMPIOS() {
       return (
         <React.Fragment key={index}>
           <Helmet>
-            <title>{title + " - KOOMPI"}</title>
+            <title>KOOMPI OS - KOOMPI</title>
             <meta name="keywords" content={res.keywords.map((res) => res + ",")} />
             <meta name="description" content={meta_desc} />
           </Helmet>
@@ -80,77 +83,74 @@ function KOOMPIOS() {
         </React.Fragment>
       )
     }
-    if (data) {
-      return data.softwares.map((software, index) => {
-        const { title, logo, image } = software
-        const description = renderHTML(software.description)
-        if (index % 2 == 0) {
-          return (
-            <Row gutter={[12, 12]} key={index}>
-              <Col xs={24} sm={24} md={10} lg={10} xl={10}>
-                <div className="koompi-os-apps paddingRight">
-                  <img
-                    src={`https://admin.koompi.com${logo}`}
-                    alt=""
-                    className="app-logo"
-                  />
-                  <h3 className="app-title">{title}</h3>
-                  <div>{parse(description)}</div>
-                </div>
-              </Col>
-              <Col xs={24} sm={24} md={14} lg={14} xl={14}>
-                <div className="app-image">
-                  <img
-                    src={`https://admin.koompi.com${image}`}
-                    alt={`KOOMPI ${title}`}
-                    style={{ float: "right" }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          )
-        } else {
-          return (
-            <Row gutter={[12, 12]} key={index}>
-              <Col xs={24} sm={24} md={14} lg={14} xl={14} className="bigScreen">
-                <div className="app-image">
-                  <img
-                    src={`https://admin.koompi.com${image}`}
-                    alt={`KOOMPI ${title}`}
-                    style={{ float: "left" }}
-                  />
-                </div>
-              </Col>
-              <Col xs={24} sm={24} md={10} lg={10} xl={10}>
-                <div className="koompi-os-apps paddingLeft">
-                  <img
-                    src={`https://admin.koompi.com${logo}`}
-                    alt={`KOOMPI ${title}`}
-                    className="app-logo"
-                  />
-                  <h3 className="app-title">{title}</h3>
-                  <div>{parse(description)}</div>
-                </div>
-              </Col>
-              <Col xs={24} sm={24} md={14} lg={14} xl={14} className="smallDevice">
-                <div className="app-image">
-                  <img
-                    src={`https://admin.koompi.com${image}`}
-                    alt={`KOOMPI ${title}`}
-                    style={{ float: "left" }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          )
-        }
-      })
-    }
+    return data.softwares.map((software, index) => {
+      const { title, logo, image } = software
+      const description = renderHTML(software.description)
+      if (index % 2 === 0) {
+        return (
+          <Row gutter={[12, 12]} key={index}>
+            <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+              <div className="koompi-os-apps paddingRight">
+                <img
+                  src={`https://admin.koompi.com${logo}`}
+                  alt=""
+                  className="app-logo"
+                />
+                <h3 className="app-title">{title}</h3>
+                {parse(description)}
+              </div>
+            </Col>
+            <Col xs={24} sm={24} md={14} lg={14} xl={14}>
+              <div className="app-image">
+                <img
+                  src={`https://admin.koompi.com${image}`}
+                  alt={`KOOMPI ${title}`}
+                  style={{ float: "right" }}
+                />
+              </div>
+            </Col>
+          </Row>
+        )
+      } else {
+        return (
+          <Row gutter={[12, 12]} key={index}>
+            <Col xs={24} sm={24} md={14} lg={14} xl={14} className="bigScreen">
+              <div className="app-image">
+                <img
+                  src={`https://admin.koompi.com${image}`}
+                  alt={`KOOMPI ${title}`}
+                  style={{ float: "left" }}
+                />
+              </div>
+            </Col>
+            <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+              <div className="koompi-os-apps paddingLeft">
+                <img
+                  src={`https://admin.koompi.com${logo}`}
+                  alt={`KOOMPI ${title}`}
+                  className="app-logo"
+                />
+                <h3 className="app-title">{title}</h3>
+                {parse(description)}
+              </div>
+            </Col>
+            <Col xs={24} sm={24} md={14} lg={14} xl={14} className="smallDevice">
+              <div className="app-image">
+                <img
+                  src={`https://admin.koompi.com${image}`}
+                  alt={`KOOMPI ${title}`}
+                  style={{ float: "left" }}
+                />
+              </div>
+            </Col>
+          </Row>
+        )
+      }
+    })
   }
 
   return (
-    <div>
-      <Navbar />
+    <React.Fragment>
       <SubNavbar title="KOOMPI OS" />
       <div className="container">
         <div className="koompi-os-banner">
@@ -163,7 +163,7 @@ function KOOMPIOS() {
         </div>
       </div>
       <Footer />
-    </div>
+    </React.Fragment>
   )
 }
 

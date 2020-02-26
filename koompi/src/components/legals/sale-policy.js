@@ -1,5 +1,4 @@
 import React, { Fragment } from "react"
-import Navbar from "../navbar"
 import Footer from "../footer"
 import { useQuery } from "@apollo/react-hooks"
 import parse from "html-react-parser"
@@ -22,7 +21,6 @@ function SalePolicy() {
   const description = renderHTML(result[0].description)
   return (
     <Fragment>
-      <Navbar />
       <div className="sale-policy-margin">
         <div className="container">
           {/* <h1>{result[0].title}</h1> */}

@@ -1,7 +1,5 @@
 import React from "react"
 import Navbar from "./navbar"
-import { Button } from "antd"
-import { Link } from "react-router-dom"
 import Footer from "./footer"
 
 function PageNotFound() {

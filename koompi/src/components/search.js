@@ -7,7 +7,6 @@ import moment from "moment"
 import countWord from "word-count"
 import { Link } from "react-router-dom"
 import slugify from "slugify"
-import Navbar from "./navbar"
 import Footer from "./footer"
 
 const queryString = require("query-string")
@@ -36,9 +35,12 @@ function Search(props) {
 
   return (
     <React.Fragment>
-      <Navbar />
-      <div style={{ marginTop: "90px", marginBottom: "50px" }} className="container">
+      <div className="container">
+        <br />
+        <br />
         <h2>Your Result: {result}</h2>
+        <br />
+        <br />
         <Row gutter={24}>
           {data.postSearch.map((data, index) => {
             const title = data.title.replace(/^(.{70}[^\s]*).*/, "$1") + "\n"

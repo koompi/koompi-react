@@ -4,16 +4,10 @@ import { useQuery } from "@apollo/react-hooks"
 import parse from "html-react-parser"
 import NProgress from "nprogress"
 import { GET_POST } from "./graphql/query"
-import Navbar from "./navbar"
 import moment from "moment"
 import renderHTML from "./editorJsToHtml"
 import Footer from "./footer"
 import { Helmet } from "react-helmet"
-import {
-  FacebookShareButton,
-  TelegramShareButton,
-  TwitterShareButton
-} from "react-share"
 
 function SinglePage(props) {
   const { error, loading, data } = useQuery(GET_POST, {
@@ -33,13 +27,11 @@ function SinglePage(props) {
   }
   NProgress.done()
 
-  const { title, thumnail, created_at, slug, keywords, meta_desc } = data.post
+  const { title, thumnail, created_at, keywords, meta_desc } = data.post
   const description = renderHTML(data.post.description)
 
   return (
     <div style={{ backgroundColor: "#fff" }}>
-      <Navbar />
-
       {/* All the Meta Tags */}
       <Helmet>
         <meta property="og:url" content={window.location} />
@@ -59,30 +51,6 @@ function SinglePage(props) {
               alt={title}
               className="img-responsive"
             />
-            <div>
-              <FacebookShareButton url={window.location}>
-                <img
-                  src="/img/socialMedia/facebook.png"
-                  alt=""
-                  className="background_socialMedia"
-                />
-              </FacebookShareButton>
-              <TelegramShareButton url={slug}>
-                <img
-                  src="/img/socialMedia/telegram.png"
-                  alt=""
-                  className="background_socialMedia"
-                />
-              </TelegramShareButton>
-
-              <TwitterShareButton url={slug}>
-                <img
-                  src="/img/socialMedia/twitter.png"
-                  alt=""
-                  className="background_socialMedia"
-                />
-              </TwitterShareButton>
-            </div>
             <div className="content-desc">
               <p>
                 <Tag color="blue">

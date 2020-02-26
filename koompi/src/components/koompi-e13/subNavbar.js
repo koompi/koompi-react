@@ -17,6 +17,7 @@ function SubNavbar({ title }) {
             className="container"
             theme="white"
             mode="horizontal"
+            onClick={() => window.scrollTo(0, 0)}
           >
             {sticky ? (
               <Menu.Item>

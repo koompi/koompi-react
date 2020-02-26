@@ -13,7 +13,7 @@ p {
   font-size: 18px !important;
 }
 /* html {
-  --antd-wave-shadow-color: #ffffff !important;
+  --antd-wave-shadow-color: #f2f2e6 !important;
 } */
 .logo {
   height: 40px !important;
@@ -42,7 +42,7 @@ p {
 }
 .text {
   font-size: 19px;
-  color: #ffffff;
+  color: #f2f2e6;
 }
 /* .content1 {
 	margin-top: 80px;
@@ -93,7 +93,7 @@ p {
   height: 900px;
 }
 .bossTittle-KoompiHome {
-  color: #4a4a4e;
+  color: #262e3c;
   font-size: 40px;
   font-weight: 800;
   /* margin-top: 50px; */
@@ -107,13 +107,13 @@ p {
   padding: 12px;
   background-color: #374957;
   padding: 5px 20px;
-  color: #fff;
+  color: #f2f2e6;
   border-radius: 15px;
   margin-left: 20px;
 }
 .sub-navbar-a span {
   font-size: 14px !important;
-  /* color: #ffffff !important; */
+  /* color: #f2f2e6 !important; */
 }
 .sub-navbar-a-koompi-b {
   float: right !important;
@@ -139,13 +139,13 @@ p {
   font-size: 64px;
   line-height: 67px;
   font-weight: 600;
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
   margin-top: 12px !important;
   margin-bottom: 80px !important;
 }
 .shopping-cart {
   padding: 40px !important;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 8px !important;
   margin: 15px 0px;
 }
@@ -161,7 +161,7 @@ p {
 
 .upperSpec-width-767px h1 {
   font-size: 20px !important;
-  color: #fff;
+  color: #f2f2e6;
 }
 .upperSpec-width-767px span {
   color: #63636e !important;
@@ -177,7 +177,7 @@ p {
 }
 .upperSpec h1 {
   font-size: 43px;
-  color: #fff;
+  color: #f2f2e6;
 }
 .upperSpec span {
   color: #63636e;
@@ -208,7 +208,7 @@ p {
   margin-top: 56px !important;
 }
 .professional-performance-h {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
   margin-top: 61px;
 }
 .professional-performance-p {
@@ -216,21 +216,21 @@ p {
   font-size: 21px;
 }
 .performance-koompi-b {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
 }
 .Microchip {
   margin-top: 60px;
   margin-bottom: 55px;
 }
 .background-color {
-  background-color: #333333;
+  background-color: #262e3c;
 }
 .banner-overview {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .ant-tabs-bar {
-  /* background-color: #333333; */
+  /* background-color: #262e3c; */
   width: 700px;
   margin: 0 auto !important;
   text-align: center !important;
@@ -250,7 +250,7 @@ p {
   color: #63636e !important;
 }
 .title-of-powerBattery-show {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
   margin-bottom: 4px !important;
 }
 .title-of-powerBattery-show span {
@@ -273,12 +273,12 @@ p {
   /* margin-top: 50px; */
 }
 .text-koompiePro-banner {
-  color: #ffffff;
+  color: #f2f2e6;
   font-size: 18px;
   padding: 0px 0px !important;
 }
 .tittle-koompiPro-banner {
-  color: #ffffff;
+  color: #f2f2e6;
   font-size: 40px;
   font-weight: 800;
   margin-top: 60px;
@@ -361,7 +361,7 @@ p {
   margin-top: 18px;
 }
 .title-of-slim {
-  color: #fff !important;
+  color: #f2f2e6 !important;
   margin-bottom: 4px !important;
 }
 .text-of-slim {
@@ -373,7 +373,7 @@ p {
   margin-top: 56px;
 }
 /* .title-of-slim {
-	color: #ffffff !important;
+	color: #f2f2e6 !important;
 	margin-bottom: 4px !important;
 } */
 
@@ -394,12 +394,11 @@ p {
 }
 .container {
   width: 60%;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin: 0px auto !important;
 }
 .upperSpec-width-767px h1 {
   font-size: 20px !important;
-  color: #fff;
+  color: #f2f2e6;
 }
 .upperSpec-width-767px span {
   color: #63636e !important;
@@ -415,7 +414,13 @@ p {
 }
 .upperSpec h1 {
   font-size: 43px;
-  color: #fff;
+  color: #f2f2e6;
+}
+.ant-modal-header {
+  border-radius: 8px 8px 0 0 !important;
+}
+.ant-modal-content {
+  border-radius: 8px !important;
 }
 .upperSpec span {
   color: #63636e;
@@ -446,7 +451,7 @@ p {
   margin-top: 56px !important;
 }
 .professional-performance-h {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
   margin-top: 61px;
 }
 .professional-performance-p {
@@ -454,21 +459,21 @@ p {
   font-size: 21px;
 }
 .performance-koompi-b {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
 }
 .Microchip {
   margin-top: 60px;
   margin-bottom: 55px;
 }
 .background-color {
-  background-color: #333333;
+  background-color: #262e3c;
 }
 .banner-overview {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .ant-tabs-bar {
-  /* background-color: #333333; */
+  /* background-color: #262e3c; */
   width: 700px;
   margin: 0 auto !important;
   text-align: center !important;
@@ -477,7 +482,7 @@ p {
   margin-bottom: 0.5em;
   font-weight: 800 !important;
   font-size: 35px !important;
-  color: #4a4a4e !important;
+  color: #262e3c !important;
   text-transform: uppercase;
 }
 .KoompiPro {
@@ -495,7 +500,7 @@ p {
   color: #63636e !important;
 }
 .title-of-powerBattery-show {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
   margin-bottom: 4px !important;
 }
 .title-of-powerBattery-show span {
@@ -596,7 +601,7 @@ p {
   margin-top: 18px;
 }
 .title-of-slim {
-  color: #fff !important;
+  color: #f2f2e6 !important;
   margin-bottom: 4px !important;
 }
 .text-of-slim {
@@ -608,7 +613,7 @@ p {
   margin-top: 56px;
 }
 /* .title-of-slim {
-	color: #ffffff !important;
+	color: #f2f2e6 !important;
 	margin-bottom: 4px !important;
 } */
 
@@ -620,7 +625,7 @@ p {
 }
 .header-of-slim {
   margin-top: 56px;
-  /* color: #ffffff !important; */
+  /* color: #f2f2e6 !important; */
   color: #374957 !important ;
 }
 .banner-overview-koompiE11 {
@@ -633,7 +638,7 @@ p {
   max-width: 100%;
 }
 .Title-Display-koompiE11 {
-  /* color: #ffffff !important; */
+  /* color: #f2f2e6 !important; */
   color: #374957 !important;
 }
 .text-Display-koompiE11 {
@@ -651,14 +656,14 @@ p {
   color: #63636e !important;
 }
 .title-Display-Descrip {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
 }
 .banner-Performance-koompiE11 {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .title-performance-koompiE11 {
-  /* color: #ffffff !important; */
+  /* color: #f2f2e6 !important; */
   color: #374957 !important;
 }
 .text-performence-koompiE11 {
@@ -672,7 +677,7 @@ p {
   margin-top: 130px;
 }
 .title-performance-koompiE11-descrip {
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
 }
 .title-performance-koompiE11-descrip span {
   font-size: 23px;
@@ -696,17 +701,17 @@ p {
 }
 .border-battery {
   margin-top: 26px !important;
-  border-top: 0.02px solid #ffffff;
+  border-top: 0.02px solid #f2f2e6;
   margin-bottom: 12px;
 }
 .ant-layout-header {
   height: 64px !important;
   padding: 8px 0px !important;
   line-height: 0px !important;
-  background: #333333 !important;
+  background: #262e3c !important;
 }
 .ant-menu-dark {
-  background: #333333 !important;
+  background: #262e3c !important;
 }
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item,
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
@@ -741,7 +746,7 @@ p {
 }
 .btn-banner {
   background: #001529 !important;
-  color: #ffffff !important;
+  color: #f2f2e6 !important;
   border: none !important;
   border-radius: 58px !important;
 }
@@ -768,7 +773,7 @@ p {
 button[type="submit"],
 .Form-Contact input[type="submit"] {
   background: #001529;
-  color: #ffffff;
+  color: #f2f2e6;
   text-transform: uppercase;
   border: none;
   margin-top: 40px;
@@ -787,7 +792,7 @@ button[type="submit"]:hover,
   background-color: red !important;
 }
 .footerBackground {
-  background-color: #1d262d;
+  background-color: #262e3c;
   padding: 20px 0px;
 }
 .footerBackground img {
@@ -801,7 +806,7 @@ button[type="submit"]:hover,
   font-size: 16px !important;
   font-weight: bold;
   text-align: left;
-  color: #ffffff;
+  color: #f2f2e6;
   text-transform: uppercase;
 }
 
@@ -813,7 +818,7 @@ button[type="submit"]:hover,
   transition: 0.5s;
 }
 .footerPMagin p:hover {
-  color: #fff !important;
+  color: #f2f2e6 !important;
 }
 .footer-container {
   width: 60% !important;
@@ -826,16 +831,16 @@ button[type="submit"]:hover,
   color: #acb8c1 !important;
 }
 .copyRight a {
-  color: #fff;
+  color: #f2f2e6;
 }
 .socailMedia {
-  background-color: #333333;
+  background-color: #262e3c;
   padding: 20px 0px;
   margin-top: 30px !important;
 }
 .connect-us-with {
   font-size: 20px !important;
-  color: #ffffff;
+  color: #f2f2e6;
   margin: 10px 0px 20px 0px !important;
   font-weight: 600;
 }
@@ -882,7 +887,7 @@ button[type="submit"]:hover,
 }
 .koompi_page_title {
   font-size: 40px !important;
-  color: #fff;
+  color: #f2f2e6;
   font-weight: bolder;
   padding-top: 100px;
   padding-bottom: 0px;
@@ -890,7 +895,7 @@ button[type="submit"]:hover,
   padding-right: 60px;
 }
 .koompi_page_subtitle {
-  color: #fff;
+  color: #f2f2e6;
   font-weight: 500;
   font-size: 25px;
   margin-bottom: 80px;
@@ -901,7 +906,7 @@ button[type="submit"]:hover,
 }
 .koompi_page_section_title {
   font-size: 40px;
-  color: #fff !important;
+  color: #f2f2e6 !important;
 }
 
 .koompi-os-main-title {
@@ -936,7 +941,7 @@ button[type="submit"]:hover,
 .footer_socail_media img {
   padding: 9px;
   height: 40px !important;
-  background: #fff;
+  background: #ffffff;
   width: 40px !important;
   border-radius: 20%;
   margin: 0px 3px;
@@ -955,7 +960,7 @@ button[type="submit"]:hover,
 }
 .koompi-os-privacy {
   box-shadow: 4px 4px 16px #cdcdcd;
-  background-color: #ffffff;
+  background-color: #f2f2e6;
   border-radius: 10px;
 } */
 
@@ -990,7 +995,7 @@ button[type="submit"]:hover,
   background-color: #008af436 !important;
   color: #008af4 !important;
   border-radius: 30px !important;
-  padding: 0px 40px !important;
+  padding: 20px 60px !important;
   font-weight: 600 !important;
   transition: 0.3s;
   box-shadow: none !important;
@@ -1029,7 +1034,7 @@ button[type="submit"]:hover,
 } */
 .koompi-page-container {
   width: 50%;
-  margin: 0px auto;
+  margin: 0px auto !important;
 }
 .koompi-page-specs-title {
   font-size: 28px !important;
@@ -1193,7 +1198,7 @@ button[type="submit"]:hover,
   }
 }
 .koompi-os-title-index {
-  color: #333333;
+  color: #262e3c;
   font-size: 50px;
   font-weight: 700;
   margin-top: 60px;
@@ -1308,7 +1313,7 @@ button[type="submit"]:hover,
 }
 .ant-back-top svg {
   font-size: 30px;
-  color: #fff;
+  color: #f2f2e6;
   position: relative;
   top: 6px;
 }
@@ -1329,7 +1334,7 @@ button[type="submit"]:hover,
 .ant-collapse-header {
   background: #d4d5d6;
   font-size: 18px !important;
-  color: #333333 !important;
+  color: #262e3c !important;
   font-weight: bold;
 }
 .ant-collapse-content > .ant-collapse-content-box {
@@ -1361,7 +1366,7 @@ button[type="submit"]:hover,
 .downloadBtn:hover {
   border: 0px !important;
   background-color: #008af4 !important;
-  color: #fff !important;
+  color: #f2f2e6 !important;
   border-radius: 30px !important;
   padding: 0px 25px !important;
   font-weight: 600 !important;
@@ -1370,10 +1375,10 @@ button[type="submit"]:hover,
 
 .koompiBtn:hover {
   background-color: #008af4 !important;
-  color: #fff !important;
+  color: #f2f2e6 !important;
 }
 .koompiBtn:hover a {
-  color: #fff !important;
+  color: #f2f2e6 !important;
 }
 .koompi-pro-index {
   background: #f2f2f2;
@@ -1410,7 +1415,7 @@ button[type="submit"]:hover,
 }
 .shopHere {
   border: 0px !important;
-  background: #1d262d2d !important;
+  background: #262e3c !important;
   color: #63636e !important;
   border-radius: 30px !important;
   padding: 0px 30px !important;
@@ -1419,7 +1424,7 @@ button[type="submit"]:hover,
 }
 .shopHere:hover {
   border: 0px;
-  background: #1d262d !important;
+  background: #262e3c !important;
   color: #cae3f8 !important;
 }
 .shopHere span {
@@ -1436,7 +1441,7 @@ button[type="submit"]:hover,
 .retailers-title {
   font-size: 18px !important;
   font-weight: 700 !important;
-  color: #1d262db7 !important;
+  color: #262e3cb7 !important;
   position: relative;
   z-index: 1;
 }
@@ -1506,7 +1511,7 @@ button[type="submit"]:hover,
 }
 .ant-tag-green {
   color: #210013 !important;
-  background: #fff !important;
+  background: #f2f2e6 !important;
   border: none !important;
   font-size: 14px !important;
   padding: 1px 20px !important;
@@ -1568,9 +1573,9 @@ button[type="submit"]:hover,
   width: 100%;
 }
 .background-single-page {
-  background-color: #ffffff;
-  padding: 0px 0px !important;
-  margin: 40px 0px !important;
+  background-color: #f2f2e6;
+  padding: 60px 0px !important;
+  margin: 0px auto !important;
   border-radius: 8px;
   width: 80% !important;
 }
@@ -1593,7 +1598,7 @@ button[type="submit"]:hover,
   transition: 0.5s;
 }
 .background_socialMedia:hover {
-  background-color: #ffffff;
+  background-color: #f2f2e6;
 }
 .memberPhotoBlur {
   filter: blur(50px);
@@ -1640,6 +1645,14 @@ button[type="submit"]:hover,
 .videoModal .ant-modal-close-x {
   font-size: 25px !important;
 }
+.ant-modal-close-x svg {
+  font-size: 22px !important;
+  position: relative;
+  top: 5px;
+}
+.batterSection {
+  width: 70%;
+}
 .page-not-found {
   width: 100%;
   margin: 40px 0px !important;
@@ -1653,7 +1666,7 @@ button[type="submit"]:hover,
   padding: 0 50px !important;
 }
 .koompi-active {
-  color: #fff !important;
+  color: #f2f2e6 !important;
   font-weight: 600 !important;
 }
 .ant-input-prefix svg {
@@ -1683,7 +1696,7 @@ button[type="submit"]:hover,
 }
 .ant-badge-count {
   background: #008af4 !important;
-  box-shadow: 0 0 0 0px #fff0 !important;
+  box-shadow: 0 0 0 4px #262e3c !important;
 }
 .ant-badge-count p {
   font-size: 14px !important;
@@ -1695,7 +1708,7 @@ button[type="submit"]:hover,
   line-height: 40px;
 }
 .sale-policy-margin {
-  margin: 100px 0px;
+  margin: 70px 0px;
 }
 .koompi-os-banner {
   padding: 120px 0px;
@@ -1721,7 +1734,7 @@ button[type="submit"]:hover,
   width: 90%;
 }
 .apps {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 50px 0px;
 }
 .subNavbarPosition .ant-menu-item {
@@ -1749,7 +1762,7 @@ code {
   display: none !important;
 }
 .legals-background {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 40px;
   border-radius: 8px;
 }
@@ -1764,6 +1777,48 @@ code {
 }
 .cdx-list--ordered li {
   font-size: 18px;
+}
+.paymentModal {
+  width: 35% !important;
+}
+.paymentModal h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.paymentModal .ant-modal-body {
+  padding: 30px !important;
+}
+.paymentModal .ant-input-lg,
+.paymentModal .ant-input-number-lg {
+  height: 50px;
+  padding: 5px 15px !important;
+  font-size: 16px;
+  margin-bottom: 5px;
+  background: #eaeef2 !important;
+  border: 1px solid transparent;
+  border-radius: 5px !important;
+  font-size: 16px !important;
+  width: 100% !important;
+}
+.ant-input-number-input {
+  padding: 0 0px !important;
+}
+.paymentModal textarea {
+  background-color: #eaeef2;
+  border-radius: 5px !important;
+  border: 1px solid transparent;
+  font-size: 16px !important;
+  padding: 12px !important;
+}
+.paymentBtn img {
+  position: relative;
+  top: -5px;
+}
+.switch_laptop {
+  width: 65% !important;
+  margin: 0px auto;
+  padding-bottom: 30px;
 }
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =
@@ -1954,7 +2009,7 @@ code {
     left: 50%;
   }
   .mobileMenu {
-    color: #fff;
+    color: #f2f2e6;
     font-size: 30px;
     position: absolute;
     top: 1.7%;
@@ -2095,6 +2150,12 @@ code {
   }
   .koompi-os-banner {
     padding: 60px 0px;
+  }
+  .batterSection {
+    width: 90%;
+  }
+  .switch_laptop {
+    width: 100% !important;
   }
 }
 

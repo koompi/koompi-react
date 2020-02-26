@@ -1,6 +1,5 @@
 import React from "react"
 import { Row, Col, Card, Tag, Spin } from "antd"
-import Navbar from "./navbar"
 import Footer from "./footer"
 import renderHTML from "./editorJsToHtml"
 import NProgress from "nprogress"
@@ -14,24 +13,6 @@ import slugify from "slugify"
 import { Helmet } from "react-helmet"
 
 function News() {
-  const { error, loading, data } = useQuery(GET_POSTS)
-  if (error) {
-    console.log(error)
-    return null
-  }
-  if (loading) {
-    NProgress.start()
-    return (
-      <Row className="Row-about" gutter={16} type="flex">
-        <center>
-          <Spin tip="Loading ..."></Spin>
-        </center>
-      </Row>
-    )
-  }
-
-  NProgress.done()
-
   const DisplayNewsBanner = () => {
     const { error, loading, data } = useQuery(GET_PAGES)
     if (error) {
@@ -40,7 +21,15 @@ function News() {
     }
     if (loading) {
       NProgress.start()
-      return null
+      return (
+        <React.Fragment>
+          <Row className="Row-about" gutter={16} type="flex">
+            <center>
+              <Spin tip="Loading ..."></Spin>
+            </center>
+          </Row>
+        </React.Fragment>
+      )
     }
     const filterNews = _.filter(data.pages, (page) => page.category.slug === "news")
 
@@ -76,9 +65,28 @@ function News() {
     })
   }
 
+  const { error, loading, data } = useQuery(GET_POSTS)
+  if (error) {
+    console.log(error)
+    return null
+  }
+  if (loading) {
+    NProgress.start()
+    return (
+      <React.Fragment>
+        <Row className="Row-about" gutter={16} type="flex">
+          <center>
+            <Spin tip="Loading ..."></Spin>
+          </center>
+        </Row>
+      </React.Fragment>
+    )
+  }
+
+  NProgress.done()
+
   return (
     <React.Fragment>
-      <Navbar />
       <div className="backgroud-news">
         <div className="container news-and-events-banner">
           <DisplayNewsBanner />

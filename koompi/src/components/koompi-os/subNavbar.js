@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Menu, Affix, Button, BackTop } from "antd"
+import { Menu, Affix, Button } from "antd"
 
 function SubNavbar({ title }) {
   const [sticky, setSticky] = useState(false)
@@ -16,6 +16,7 @@ function SubNavbar({ title }) {
             className="container"
             theme="white"
             mode="horizontal"
+            onClick={() => window.scrollTo(0, 0)}
           >
             {sticky ? (
               <Menu.Item>
@@ -27,7 +28,12 @@ function SubNavbar({ title }) {
               </Menu.Item>
             )}
             <Menu.Item className="sub-navbar-a">
-              <Button className="downloadBtn">Download</Button>
+              <a
+                href="https://repo.pionux.org/iso/x86_64/koompi-os-v2.1.3-x86_64.iso"
+                download={true}
+              >
+                <Button className="downloadBtn">Download</Button>
+              </a>
             </Menu.Item>
           </Menu>
         </div>

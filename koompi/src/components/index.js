@@ -6,7 +6,6 @@ import parse from "html-react-parser"
 import NProgress from "nprogress"
 import { Link } from "react-router-dom"
 import { Button, Icon, Result, Spin } from "antd"
-import Navbar from "./navbar"
 import { GET_PAGES } from "./graphql/query"
 import Footer from "./footer"
 import _ from "lodash"
@@ -43,7 +42,6 @@ function Index() {
     NProgress.start()
     return (
       <React.Fragment>
-        <Navbar />
         <Row className="Row-about" gutter={24}>
           <center>
             <Spin tip="Loading ..."></Spin>
@@ -57,9 +55,151 @@ function Index() {
   const dataIndex = data.pages.filter((res) => res.category.slug === "index")
   const result = _.orderBy(dataIndex, "sectionNumber", "asc")
 
+  const DisplayData = () => {
+    return result.map((data, index) => {
+      const description = renderHTML(data.description)
+      if (data.sectionNumber === "1") {
+        return (
+          <div className="banner" key={index}>
+            <div className="PhnomPenh"></div>
+            <div className="container">
+              <Row>
+                <Col xs={24} sm={24} md={12} lg={13} xl={13}>
+                  <center>
+                    <div className="banner_content">
+                      {/* ========= KOOMPI SECTION =========  */}
+                      <h1 className="bossTittle-KoompiHome">{data.title}</h1>
+                      <div className="text-koompi-section-banner">
+                        {parse(description)}
+
+                        <Button className="koompiBtn">
+                          <Link to="/koompi-e13">Read More</Link>{" "}
+                          <Icon type="arrow-right" />
+                        </Button>
+                      </div>
+                      <div onClick={showModal} className="videoPlayBtn">
+                        <Icon type="play-circle" className="indexPlayButton" />
+                      </div>
+                      <div
+                        style={{
+                          cursor: "pointer"
+                        }}
+                      >
+                        <Modal
+                          onCancel={handleCancel}
+                          onOk={handleOk}
+                          visible={visible}
+                          footer={false}
+                          className="videoModal"
+                        >
+                          <ReactPlayer
+                            height="auto"
+                            width="100%"
+                            controls={true}
+                            url="https://admin.koompi.com/public/videos/koompi.mp4"
+                            playing={visible}
+                          />
+                        </Modal>
+                      </div>
+                    </div>
+                  </center>
+                </Col>
+                <Col xs={24} sm={24} md={12} lg={11} xl={11}>
+                  <center>
+                    <div className="index_banner">
+                      <img
+                        src={`https://admin.koompi.com` + data.image}
+                        alt="koompi"
+                      ></img>
+                    </div>
+                  </center>
+                </Col>
+              </Row>
+            </div>
+          </div>
+        )
+      }
+      if (data.sectionNumber === "2") {
+        const description = renderHTML(data.description)
+        return (
+          <div className="content1" key={index}>
+            <Particles
+              className="banner1"
+              params={{
+                particles: {
+                  number: {
+                    value: 50
+                  },
+                  size: {
+                    value: 3
+                  }
+                },
+                interactivity: {
+                  events: {
+                    onhover: {
+                      enable: true,
+                      mode: "repulse"
+                    }
+                  }
+                }
+              }}
+            />
+            <div className="koompi_section_position">
+              <center>
+                <div className="koompi_content">
+                  <h1 className="tittle-koompiPro-banner">{data.title}</h1>
+                  <div className="text-container-content1 text-koompiePro-banner">
+                    {parse(description)}
+                    <Button className="koompiBtn">
+                      <Link to="/koompi-os">Read More</Link>{" "}
+                      <Icon type="arrow-right" />
+                    </Button>
+                  </div>
+                </div>
+                <div className="subBanner-koompiPro">
+                  <img src={`https://admin.koompi.com` + data.image} alt="koompi" />
+                </div>
+              </center>
+            </div>
+          </div>
+        )
+      }
+      if (data.sectionNumber === "3") {
+        const description = renderHTML(data.description)
+        return (
+          <div className="koompi-os-index" key={index}>
+            <div className="koompi-logo-koompi-os-section"></div>
+            <div className="container">
+              <center>
+                <div className="koompi_content">
+                  <h1 className="bossTittle-KoompiHome">{data.title}</h1>
+                  <div className="koompi-os-index-desc">{parse(description)}</div>
+                  <div>
+                    <a
+                      href="https://academy.koompi.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button type="primary" className="koompiBtn">
+                        Read More <Icon type="arrow-right" />
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+                <div className="subBanner-koompiPro">
+                  <img src={`https://admin.koompi.com` + data.image} alt="koompi" />
+                </div>
+              </center>
+            </div>
+          </div>
+        )
+      }
+      return null
+    })
+  }
+
   return (
     <React.Fragment>
-      <Navbar />
       <Helmet>
         <title>KOOMPI</title>
         <meta
@@ -71,138 +211,7 @@ function Index() {
           content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KramaOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
         />
       </Helmet>
-      {result.map((data, index) => {
-        const description = renderHTML(data.description)
-        if (data.sectionNumber === "1") {
-          return (
-            <div className="banner">
-              <div className="PhnomPenh"></div>
-              <div className="container">
-                <Row>
-                  <Col xs={24} sm={24} md={12} lg={13} xl={13}>
-                    <center>
-                      <div className="banner_content">
-                        {/* ========= KOOMPI SECTION =========  */}
-                        <h1 className="bossTittle-KoompiHome">{data.title}</h1>
-                        <div className="text-koompi-section-banner">
-                          {parse(description)}
-
-                          <Button className="koompiBtn">
-                            <Link to="/koompi-e13">Read More</Link>{" "}
-                            <Icon type="arrow-right" />
-                          </Button>
-                        </div>
-                        <div onClick={showModal} className="videoPlayBtn">
-                          <Icon type="play-circle" className="indexPlayButton" />
-                        </div>
-                        <div
-                          style={{
-                            cursor: "pointer"
-                          }}
-                        >
-                          <Modal
-                            onCancel={handleCancel}
-                            onOk={handleOk}
-                            visible={visible}
-                            footer={false}
-                            className="videoModal"
-                          >
-                            <ReactPlayer
-                              height="auto"
-                              width="100%"
-                              controls={true}
-                              url="https://admin.koompi.com/public/videos/koompi.mp4"
-                              playing={visible}
-                            />
-                          </Modal>
-                        </div>
-                      </div>
-                    </center>
-                  </Col>
-                  <Col xs={24} sm={24} md={12} lg={11} xl={11}>
-                    <center>
-                      <div className="index_banner">
-                        <img src={`https://admin.koompi.com` + data.image}></img>
-                      </div>
-                    </center>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-          )
-        }
-        if (data.sectionNumber === "2") {
-          const description = renderHTML(data.description)
-          return (
-            <div className="content1">
-              <Particles
-                className="banner1"
-                params={{
-                  particles: {
-                    number: {
-                      value: 50
-                    },
-                    size: {
-                      value: 3
-                    }
-                  },
-                  interactivity: {
-                    events: {
-                      onhover: {
-                        enable: true,
-                        mode: "repulse"
-                      }
-                    }
-                  }
-                }}
-              />
-              <div className="koompi_section_position">
-                <center>
-                  <div className="koompi_content">
-                    <h1 className="tittle-koompiPro-banner">{data.title}</h1>
-                    <div className="text-container-content1 text-koompiePro-banner">
-                      {parse(description)}
-                      <Button className="koompiBtn">
-                        <Link to="/koompi-os">Read More</Link>{" "}
-                        <Icon type="arrow-right" />
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="subBanner-koompiPro">
-                    <img src={`https://admin.koompi.com` + data.image} />
-                  </div>
-                </center>
-              </div>
-            </div>
-          )
-        }
-        if (data.sectionNumber === "3") {
-          const description = renderHTML(data.description)
-          return (
-            <div className="koompi-os-index">
-              <div className="koompi-logo-koompi-os-section"></div>
-              <div className="container">
-                <center>
-                  <div className="koompi_content">
-                    <h1 className="bossTittle-KoompiHome">{data.title}</h1>
-                    <p className="koompi-os-index-desc">{parse(description)}</p>
-                    <div>
-                      <a href="https://academy.koompi.com/" target="_blank">
-                        <Button type="primary" className="koompiBtn">
-                          Read More <Icon type="arrow-right" />
-                        </Button>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="subBanner-koompiPro">
-                    <img src={`https://admin.koompi.com` + data.image} />
-                  </div>
-                </center>
-              </div>
-            </div>
-          )
-        }
-      })}
+      <DisplayData />
 
       {/* =============Big Section ===============*/}
 

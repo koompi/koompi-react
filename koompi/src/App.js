@@ -6,13 +6,11 @@ import { CartProvider } from "./CartContext"
 import Index from "./components/index"
 import KOOMPI_E13 from "./components/koompi-e13/koompi-e13"
 import KOOMPI_E13_Specs from "./components/koompi-e13/koompi-e13-specs"
-import KOOMPI_E11 from "./components/koompi-e11/koompi-e11"
-import KOOMPI_E11_Specs from "./components/koompi-e11/koompi-e11-specs"
 
 import Item from "./components/item"
 import ShopingCart from "./components/shopping-cart/shopping-cart"
 import Contact from "./components/contact"
-import About from "./components/About"
+import About from "./components/about"
 import News from "./components/news"
 import Retailer from "./components/retailer"
 import { BackTop, Icon } from "antd"
@@ -22,6 +20,8 @@ import PageNotFound from "./components/page-not-found"
 import NProgress from "nprogress"
 import SalePolicy from "./components/legals/sale-policy"
 import KOOMPIOS from "./components/koompi-os/index"
+import Navbar from "./components/navbar"
+import PrivacyPolicy from "./components/legals/policy"
 function App() {
   NProgress.configure({ showSpinner: false })
   return (
@@ -29,7 +29,10 @@ function App() {
       <BackTop>
         <Icon type="caret-up" />
       </BackTop>
+
       <Router>
+        <Navbar />
+
         <Switch>
           {/* <Route exact path="/koompi-e11" component={KOOMPI_E11}></Route>
           <Route
@@ -44,12 +47,13 @@ function App() {
           <Route exact path="/shop/bag" component={ShopingCart}></Route>
           <Route exact path="/contact" component={Contact}></Route>
           <Route exact path="/about-us" component={About}></Route>
-          <Route exact path="/retailers" component={Retailer}></Route>
+          <Route exact path="/shop/retailers" component={Retailer}></Route>
           <Route
             exact
             path="/whitepaper/salespolicies"
             component={SalePolicy}
           ></Route>
+          <Route exact path="/legal/privacy" component={PrivacyPolicy}></Route>
           {/* ===== News and Events Route */}
           <Route exact path="/category" component={News}></Route>
           <Route exact path="/news-and-events" component={News}></Route>
@@ -57,7 +61,7 @@ function App() {
           <Route exact path="/search" component={Search}></Route>
           <Route exact path="/search?query=:title" component={Search}></Route>
 
-          <Route exact path="/" exact component={Index}></Route>
+          <Route exact path="/" component={Index}></Route>
           <Route exact path="*" component={PageNotFound}></Route>
         </Switch>
       </Router>

@@ -1,6 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Row, Col } from "antd"
-import Navbar from "../navbar"
 import SubNavbar from "./subNavbar"
 import Footer from "../footer"
 import parse from "html-react-parser"
@@ -63,9 +62,11 @@ const dataSpacs = [
   }
 ]
 function Koompi_E_Spec() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div>
-      <Navbar />
       <SubNavbar title="KOOMPI E13" />
       <div className="spec-background">
         <div className="container">

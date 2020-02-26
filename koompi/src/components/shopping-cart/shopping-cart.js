@@ -1,20 +1,17 @@
 import React, { useState, useContext } from "react"
 import { Row, Col, Select, Button, Modal, Input, Form } from "antd"
 import { CartContext } from "../../CartContext"
-import Navbar from "../navbar"
 import Axios from "axios"
 import Cash from "../payments/cash-or-delivery"
 import Footer from "../footer"
 import Cookies from "js-cookie"
+import { FiX } from "react-icons/fi"
+import Helmet from "react-helmet"
 // import Bongloy from "bongloyjs";
 
 const { Option } = Select
 
 const { confirm } = Modal
-
-function totalPrice(items) {
-  return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0)
-}
 
 function Cart(props) {
   const ctx = useContext(CartContext)
@@ -89,9 +86,9 @@ function Cart(props) {
     return (
       <Row gutter={[16, 16]}>
         <Col span={17}>
-          {result.map((item) => {
+          {result.map((item, index) => {
             return (
-              <div className="shopping-cart">
+              <div className="shopping-cart" key={index}>
                 <div>
                   <Row gutter={16}>
                     <Col span={24}>
@@ -150,7 +147,15 @@ function Cart(props) {
                   <h5>Subtotal</h5>
                 </Col>
                 <Col span={12}>
-                  <h5 style={{ textAlign: "right" }}>US ${totalPrice(ctx.items)}</h5>
+                  <h5 style={{ textAlign: "right" }}>US ${result[0].price}</h5>
+                  {/* <h5 style={{ textAlign: "right" }}>US ${totalPrice(ctx.items)}</h5> */}
+                </Col>
+                <Col span={12}>
+                  <h5>Quantity</h5>
+                </Col>
+                <Col span={12}>
+                  <h5 style={{ textAlign: "right" }}>{result[0].quantity}</h5>
+                  {/* <h5 style={{ textAlign: "right" }}>US ${totalPrice(ctx.items)}</h5> */}
                 </Col>
               </Row>
               <hr className="hrSummary" />
@@ -159,7 +164,9 @@ function Cart(props) {
                   <h3 className="total">Total</h3>
                 </Col>
                 <Col span={16}>
-                  <h3 className="totalPrice">US ${totalPrice(ctx.items)}</h3>
+                  <h3 className="totalPrice">
+                    US ${result[0].quantity * result[0].price}
+                  </h3>
                 </Col>
               </Row>
               <h4>Choose a payment to checkout</h4>
@@ -208,11 +215,22 @@ function Cart(props) {
 
   return (
     <div>
-      <Navbar />
+      <Helmet>
+        <title>Bag - KOOMPI</title>
+        <meta
+          name="keywords"
+          content="KOOMPI, KOOMPI Bag, KOOMPI OS, KOOMPI ACADEMY, KHMER LAPTOP,koompi e13, koompi laptop, koompi computer, koompi os, koompi review"
+        />
+        <meta
+          name="description"
+          content="Immerse yourself into endless possibilities. Start with the classic KOOMPI, the E13. Built-in integrated software suite. Lightweight and compact."
+        />
+      </Helmet>
       <br />
       <div className="container">
         <DisplayProduct />
       </div>
+      <br />
       <Footer />
 
       {/* === Payment === */}
@@ -221,6 +239,7 @@ function Cart(props) {
         title="Master/Visa Card"
         visible={visible.aba}
         onCancel={hideModal}
+        closeIcon={<FiX />}
       >
         <Form onSubmit={handleSubmit}>
           <h2 className="payment_title">Personal Information</h2>

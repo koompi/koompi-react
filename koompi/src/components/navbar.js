@@ -4,12 +4,13 @@ import { Layout, Menu, Badge, Icon, Drawer } from "antd"
 import { IoMdMenu } from "react-icons/io"
 import { CartContext } from "../CartContext"
 import { FiShoppingCart } from "react-icons/fi"
+import Cookies from "js-cookie"
 
-const { Header, Sider } = Layout
-const laptop = localStorage.getItem("koompi")
+const { Header } = Layout
 
 function RightNavbar() {
   const ctx = useContext(CartContext)
+  const result = Cookies.getJSON("koompi")
 
   return (
     <div className="rightNavbarHidden">
@@ -33,14 +34,20 @@ function RightNavbar() {
         </Menu.Item>
 
         <Menu.Item>
-          <a href="https://pionux.org/" rel="noopener noreferrer" target="_blank">
+          <a
+            href="https://academy.koompi.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <span>KOOMPI ACADEMY</span>
           </a>
         </Menu.Item>
         {/* JSON.parse(laptop).length */}
         <Menu.Item>
           <NavLink exact activeStyle={{ color: "white" }} to="/shop/bag">
-            <Badge count={ctx.items.length}>
+            <Badge
+              count={result === undefined ? 0 : result.length || ctx.items.length}
+            >
               <FiShoppingCart className="shopping-cart-icon" />
             </Badge>
           </NavLink>
@@ -94,7 +101,7 @@ function Navbar() {
 
                 <Menu.Item>
                   <a
-                    href="https://pionux.org/"
+                    href="https://academy.koompi.com/"
                     rel="noopener noreferrer"
                     target="_blank"
                   >

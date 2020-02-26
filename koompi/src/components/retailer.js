@@ -1,15 +1,13 @@
 import React from "react"
-import Navbar from "./navbar"
 import { Row, Col, Typography, Card, Button, Spin } from "antd"
 import Footer from "./footer"
 import _ from "lodash"
 import { useQuery } from "@apollo/react-hooks"
-import parse from "html-react-parser"
 import NProgress from "nprogress"
 import { GET_RETAILERS } from "./graphql/query"
 import { Link } from "react-router-dom"
 
-const { Title, Paragraph, Text } = Typography
+const { Title } = Typography
 
 function Retailer() {
   const randomImage = [
@@ -27,22 +25,23 @@ function Retailer() {
   if (loading) {
     NProgress.start()
     return (
-      <Row className="Row-about" gutter={24}>
-        <center>
-          <Spin tip="Loading ..."></Spin>
-        </center>
-      </Row>
+      <React.Fragment>
+        <Row className="Row-about" gutter={16} type="flex">
+          <center>
+            <Spin tip="Loading ..."></Spin>
+          </center>
+        </Row>
+      </React.Fragment>
     )
   }
   NProgress.done()
 
   return (
     <React.Fragment>
-      <Navbar />
       <div className="boss-banner-retailer">
         <div className="container">
           <Row gutter={16}>
-            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h2 className="title-retailer-banner">GET KOOMPI</h2>
               <p>
                 We aim to satisfy your individual needs while offering the best and
@@ -53,7 +52,7 @@ function Retailer() {
                 listed below:
               </p>
             </Col>
-            <Col sm={7}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               {/* <img
                 style={{ maxWidth: '100%' }}
                 src="/img/Koompi_Retailer.png"
@@ -68,7 +67,7 @@ function Retailer() {
 
             <div>
               <Row gutter={24} type="flex">
-                {data.retailers.map((res) => {
+                {data.retailers.map((res, index) => {
                   return (
                     <Col
                       xs={24}
@@ -77,6 +76,7 @@ function Retailer() {
                       lg={6}
                       xl={6}
                       style={{ marginBottom: "24px", height: "100%" }}
+                      key={index}
                     >
                       <div
                         className="cardBackground"
@@ -100,7 +100,7 @@ function Retailer() {
                           <Title level={4} className="retailers-title">
                             {res.name}
                           </Title>
-                          <Link to={data.location}>
+                          <Link to={res.location}>
                             <Button className="shopHere">Shop Here</Button>
                           </Link>
                         </center>

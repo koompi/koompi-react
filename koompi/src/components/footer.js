@@ -3,25 +3,23 @@ import { Row, Col } from "antd"
 import { Link } from "react-router-dom"
 
 import { useQuery } from "@apollo/react-hooks"
-import parse from "html-react-parser"
-import renderHTML from "./editorJsToHtml"
-import NProgress from "nprogress"
 import { GET_SOCAIL_MEDIA } from "./graphql/query"
 
 function Footer() {
   const { error, loading, data } = useQuery(GET_SOCAIL_MEDIA)
   if (error) console.log("error")
-  if (loading)
-    return () => {
-      NProgress.start()
-      return null
-    }
+  if (loading) return "Loading ..."
 
   const DisplaySocailMedia = () => {
     return data.socailMedia.map((res, index) => {
       return (
-        <a href={`${res.link}`} target="_blank" key={index}>
-          <img src={`https://admin.koompi.com` + res.logo} />
+        <a
+          href={`${res.link}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={index}
+        >
+          <img src={`https://admin.koompi.com` + res.logo} alt={res.name} />
         </a>
       )
     })
@@ -31,13 +29,21 @@ function Footer() {
     <div>
       <div className="footerBackground">
         <center>
-          <img className="koompi-footer-logo" src="/img/Koompi-White.png" />
+          <img
+            className="koompi-footer-logo"
+            src="/img/Koompi-White.png"
+            alt="koompi"
+          />
         </center>
 
         <div className="footer-container">
           <p className="copyRight">
             Copyright © 2019-2020.<br></br> A brainchild of{" "}
-            <a href="https://smallworldventure.com/" target="_blank">
+            <a
+              href="https://smallworldventure.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               SmallWorld Venture
             </a>
           </p>
@@ -45,13 +51,13 @@ function Footer() {
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
               <h4>Legal</h4>
               <Link to="">
-                <p>Terms & conditions</p>
+                <p>Terms & Conditions</p>
               </Link>
               <Link to="">
                 <p>License Agreement</p>
               </Link>
-              <Link to="">
-                <p>Privacy policy</p>
+              <Link to="/legal/privacy">
+                <p>Privacy Policy</p>
               </Link>
               <Link to="/whitepaper/salespolicies">
                 <p>Sale Policy</p>
@@ -67,10 +73,14 @@ function Footer() {
                 <p>About Us</p>
               </Link>
 
-              <Link to="">
+              <a
+                href="https://github.com/koompi/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <p>Become a contributor</p>
-              </Link>
-              <Link to="retailers">
+              </a>
+              <Link to="/shop/retailers">
                 <p>Retailers</p>
               </Link>
             </Col>
@@ -100,10 +110,15 @@ function Footer() {
               <p className="koompiProjectTitle"> KOOMPI Products</p>
             </Col>
             <Col span={18} className="koompiProjects">
-              <Link to="">KOOMPI ACADEMY</Link>
-              <a href="https://pionux.org/" target="_blank">
-                KOOMPI OS
+              <a
+                href="https://academy.koompi.com"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                KOOMPI ACADEMY
               </a>
+              <Link to="/koompi-os">KOOMPI OS</Link>
+
               <Link to="/koompi-e13">KOOMPI E13</Link>
               {/* <Link to="koompi-e11">KOOMPI E11</Link> */}
               {/* <Link to="">KOOMPI B14</Link> */}
