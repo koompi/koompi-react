@@ -19,9 +19,6 @@ const bongloy = new Stripe(process.env.BONGLOY_SECRET_KEY, {
   host: "api.bongloy.com"
 });
 
-const ABA_PAYWAY_MERCHANT_ID = "koompi";
-const ABA_PAYWAY_API_KEY = "db1f0f35d312e2efb92dabb32aa0b7ca";
-
 // set up cors to allow us to accept requests from our client
 // app.use(
 //   cors({
