@@ -11,7 +11,7 @@ const cache = new InMemoryCache()
 // const client = new ApolloClient({
 //   cache,
 //   uri: "https://admin.koompi.com/admin"
-// });
+// })
 
 const client = new ApolloClient({
   cache,

@@ -101,8 +101,16 @@ function SocialMedia() {
                       cancelText="No"
                       onConfirm={() => {
                         deleteSocialMedia({ variables: { id: `${id}` } })
-                        message.success(name + " has been Deleted")
-                        refetchSocialMedia()
+                          .then(async (res) => {
+                            await message.success(
+                              res.data.delete_social_media.message
+                            )
+                            await refetchSocialMedia()
+                          })
+                          .catch((error) => {
+                            console.log(error)
+                            return null
+                          })
                       }}
                     >
                       <Tag color="#f50" className="btn">

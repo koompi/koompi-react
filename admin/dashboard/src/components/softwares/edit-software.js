@@ -53,14 +53,14 @@ function EditSoftware(props) {
             description: JSON.stringify(savedData)
           }
         })
-          .then(async () => {
+          .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
-            refetch()
-            await message.success("Software updated successfully.", 3)
-            await props.history.push("/admin/all-software")
+            await message.success(res.data.edit_software.message, 3)
+            await refetch()
+            await props.history.push("/admin/all-softwares")
           })
           .catch((error) => {
             console.log(error)

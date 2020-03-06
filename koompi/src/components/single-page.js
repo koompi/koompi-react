@@ -31,7 +31,7 @@ function SinglePage(props) {
   const description = renderHTML(data.post.description)
 
   return (
-    <div style={{ backgroundColor: "#fff" }}>
+    <div>
       {/* All the Meta Tags */}
       <Helmet>
         <meta property="og:url" content={window.location} />
@@ -44,12 +44,12 @@ function SinglePage(props) {
         <meta name="description" content={meta_desc} />
       </Helmet>
       <div className="container">
-        <div>
+        <div className="margin_single_page">
           <div className="background-single-page">
             <img
               src={`https://admin.koompi.com${thumnail}`}
               alt={title}
-              className="img-responsive"
+              className="img-responsive single-image"
             />
             <div className="content-desc">
               <p>

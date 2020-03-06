@@ -45,7 +45,7 @@ function Legals() {
   ]
 
   // ===== Display Category Section =====
-  const DisplayCategory = () => {
+  const DisplayLegals = () => {
     const { error, loading, data } = useQuery(GET_LEGALS)
     if (error) console.log(error)
     if (loading) return <Table loading={true}></Table>
@@ -71,10 +71,16 @@ function Legals() {
                   <Popconfirm
                     placement="topRight"
                     title="Are you sure to delete this legal?"
-                    onConfirm={() => {
+                    onConfirm={(res) => {
                       deleteLegal({ variables: { id: `${data.id}` } })
-                      message.success("The Legal has been Deleted")
-                      legalRefetch()
+                        .then(async (res) => {
+                          await message.success(res.data.delete_legal.message)
+                          await legalRefetch()
+                        })
+                        .catch((error) => {
+                          console.log(error)
+                          return null
+                        })
                     }}
                     okText="Yes"
                     cancelText="No"
@@ -104,7 +110,7 @@ function Legals() {
           <div className="koompi container">
             <div className="background_container">
               <h1 className="title_new_post">Legals</h1>
-              <DisplayCategory />
+              <DisplayLegals />
             </div>
           </div>
         </Content>

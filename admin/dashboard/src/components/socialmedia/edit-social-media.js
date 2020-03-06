@@ -59,14 +59,15 @@ function EditSocialMedia(props) {
         updateSocialMedia({
           variables: { id: window.location.pathname.split("/")[4], ...values }
         })
-          .then(async () => {
+          .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
-            props.form.resetFields()
-            refechSocialMedia()
-            await message.success("Social Media updated successfully.", 3)
+
+            await message.success(res.data.update_social_media.message, 3)
+            await props.form.resetFields()
+            await refechSocialMedia()
             await props.history.push("/admin/social-media")
           })
           .catch((error) => {

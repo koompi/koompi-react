@@ -61,10 +61,10 @@ function Index() {
       if (data.sectionNumber === "1") {
         return (
           <div className="banner" key={index}>
-            <div className="PhnomPenh"></div>
+            {/* <div className="PhnomPenh"></div> */}
             <div className="container">
               <Row>
-                <Col xs={24} sm={24} md={12} lg={13} xl={13}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                   <center>
                     <div className="banner_content">
                       {/* ========= KOOMPI SECTION =========  */}
@@ -104,7 +104,7 @@ function Index() {
                     </div>
                   </center>
                 </Col>
-                <Col xs={24} sm={24} md={12} lg={11} xl={11}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                   <center>
                     <div className="index_banner">
                       <img
@@ -115,6 +115,8 @@ function Index() {
                   </center>
                 </Col>
               </Row>
+              <br />
+              <br />
             </div>
           </div>
         )
@@ -123,7 +125,27 @@ function Index() {
         const description = renderHTML(data.description)
         return (
           <div className="content1" key={index}>
-            <Particles
+            <div className="koompi_section_position">
+              <center>
+                <div className="container">
+                  <h1 className="tittle-koompiPro-banner">{data.title}</h1>
+                  <div className="text-koompiePro-banner">
+                    {parse(description)}
+                    <Button className="openSourceBtn">
+                      <Link to="/koompi-os">Read More</Link>{" "}
+                      <Icon type="arrow-right" />
+                    </Button>
+                  </div>
+                  <div className="subBanner-koompiPro">
+                    <img
+                      src={`https://admin.koompi.com` + data.image}
+                      alt="koompi"
+                    />
+                  </div>
+                </div>
+              </center>
+            </div>
+            {/* <Particles
               className="banner1"
               params={{
                 particles: {
@@ -143,24 +165,7 @@ function Index() {
                   }
                 }
               }}
-            />
-            <div className="koompi_section_position">
-              <center>
-                <div className="koompi_content">
-                  <h1 className="tittle-koompiPro-banner">{data.title}</h1>
-                  <div className="text-container-content1 text-koompiePro-banner">
-                    {parse(description)}
-                    <Button className="koompiBtn">
-                      <Link to="/koompi-os">Read More</Link>{" "}
-                      <Icon type="arrow-right" />
-                    </Button>
-                  </div>
-                </div>
-                <div className="subBanner-koompiPro">
-                  <img src={`https://admin.koompi.com` + data.image} alt="koompi" />
-                </div>
-              </center>
-            </div>
+            /> */}
           </div>
         )
       }

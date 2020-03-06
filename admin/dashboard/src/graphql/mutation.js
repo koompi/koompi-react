@@ -355,10 +355,7 @@ const CREATE_SOCIAL_MEDIA = gql`
       logo: $logo
       created_by: $created_by
     ) {
-      name
-      link
-      logo
-      created_by
+      message
     }
   }
 `
@@ -366,7 +363,7 @@ const CREATE_SOCIAL_MEDIA = gql`
 const DELETE_SOCIAL_MEDIA = gql`
   mutation($id: String!) {
     delete_social_media(id: $id) {
-      name
+      message
     }
   }
 `
@@ -374,10 +371,7 @@ const DELETE_SOCIAL_MEDIA = gql`
 const UPDATE_SOCIAL_MEDIA = gql`
   mutation($id: String!, $name: String!, $link: String!, $logo: String!) {
     update_social_media(id: $id, name: $name, link: $link, logo: $logo) {
-      name
-      link
-      logo
-      created_by
+      message
     }
   }
 `
@@ -385,8 +379,7 @@ const UPDATE_SOCIAL_MEDIA = gql`
 const CREATE_LEGAL = gql`
   mutation($title: String!, $description: String!, $created_by: String!) {
     create_legal(title: $title, description: $description, created_by: $created_by) {
-      title
-      description
+      message
     }
   }
 `
@@ -394,8 +387,7 @@ const CREATE_LEGAL = gql`
 const UPDATE_LEGAL = gql`
   mutation($id: String!, $title: String!, $description: String!) {
     edit_legal(id: $id, title: $title, description: $description) {
-      title
-      description
+      message
     }
   }
 `
@@ -403,7 +395,7 @@ const UPDATE_LEGAL = gql`
 const DELETE_LEGAL = gql`
   mutation($id: String!) {
     delete_legal(id: $id) {
-      title
+      message
     }
   }
 `
@@ -423,10 +415,7 @@ const ADD_SOFTWARE = gql`
       image: $image
       created_by: $created_by
     ) {
-      title
-      description
-      logo
-      image
+      message
     }
   }
 `
@@ -446,10 +435,7 @@ const UPDATE_SOFTWARE = gql`
       logo: $logo
       image: $image
     ) {
-      title
-      description
-      logo
-      image
+      message
     }
   }
 `
@@ -457,7 +443,7 @@ const UPDATE_SOFTWARE = gql`
 const DELETE_SOFTWARE = gql`
   mutation($id: String!) {
     delete_software(id: $id) {
-      title
+      message
     }
   }
 `

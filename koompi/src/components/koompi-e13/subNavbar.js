@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { NavLink } from "react-router-dom"
 import { Menu, Affix } from "antd"
+import { CartContext } from "../../CartContext"
 
-function SubNavbar({ title }) {
+function SubNavbar({ title, history }) {
   const [sticky, setSticky] = useState(false)
+  const cartCtx = useContext(CartContext)
+  const [loading, setLoading] = useState(false)
 
   return (
     <div>
@@ -24,6 +27,25 @@ function SubNavbar({ title }) {
                 <h2 className="subnavbar-logo">{title}</h2>
               </Menu.Item>
             ) : null}
+            <Menu.Item className="sub-navbar-a">
+              <div
+                onClick={async () => {
+                  await cartCtx.addToCart({
+                    name: "KOOMPI E13",
+                    price: 369,
+                    image: ""
+                  })
+                  setLoading(true)
+                  window.setTimeout(() => {
+                    history.push("/shop/bag")
+                  }, 2000)
+                }}
+              >
+                <span className={loading ? "buyBtnLoading" : "buyBtn"}>
+                  {loading ? "Loading ..." : "Buy"}
+                </span>
+              </div>
+            </Menu.Item>
             <Menu.Item className="sub-navbar-a">
               <NavLink
                 exact

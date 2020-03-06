@@ -13,10 +13,14 @@ const jwt = require("jsonwebtoken");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const Stripe = require("stripe");
+const CryptoJS = require("crypto-js");
 
 const bongloy = new Stripe(process.env.BONGLOY_SECRET_KEY, {
   host: "api.bongloy.com"
 });
+
+const ABA_PAYWAY_MERCHANT_ID = "koompi";
+const ABA_PAYWAY_API_KEY = "db1f0f35d312e2efb92dabb32aa0b7ca";
 
 // set up cors to allow us to accept requests from our client
 // app.use(
@@ -32,7 +36,9 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
 // parse application/json
+// app.use(express.json({ limit: "50mb" }));
 app.use(express.json());
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 app.use(
   cookieSession({
@@ -45,7 +51,13 @@ app.use(
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/static", express.static(path.join(__dirname, "public")));
 
-app.use(fileUpload());
+app.use(
+  fileUpload({
+    limits: {
+      fileSize: 5 * 1024 * 1024 * 1024 //5MB max file(s) size
+    }
+  })
+);
 
 // parse cookies
 app.use(cookieParser());
@@ -96,6 +108,19 @@ app.use(
     })
   })
 );
+
+const getHash = (transactionId, amount) => {
+  const hash = CryptoJS.HmacSHA512(
+    ABA_PAYWAY_MERCHANT_ID + transactionId + amount,
+    ABA_PAYWAY_API_KEY
+  );
+  return hash.toString(CryptoJS.enc.Base64);
+};
+
+app.post("/payment/option/create", (req, res) => {
+  const { transactionId, amount } = req.body;
+  return res.status(200).send(getHash(transactionId, amount));
+});
 
 app.post("/charge", (req, res) => {
   try {
@@ -153,7 +178,7 @@ app.post("/upload/image", (req, res) => {
   console.log(req.files);
 
   if (req.files === null) {
-    return res.status(400).json({ msg: "no file uploaded" });
+    return res.status(400).json({ msg: "No file uploaded" });
   }
 
   const file = req.files.file;
@@ -174,7 +199,10 @@ app.post("/upload/image", (req, res) => {
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    auth: {
+      authdb: "admin"
+    }
   })
   .then(() => console.log("Databse is connected..."))
   .catch(err => console.log(err));

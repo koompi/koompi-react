@@ -9,15 +9,21 @@ const Page = require("../models/Page");
 const Member = require("../models/Member");
 const Retailer = require("../models/Retailer");
 const SocialMedia = require("../models/SocialMedia");
+const Legal = require("../models/Legal");
+const Payment = require("../models/Payment");
+const Software = require("../models/Software");
 
 // ======== Type Section =========
-const UserType = require("./types/user");
-const CategoryType = require("./types/category");
-const PostType = require("./types/post");
-const PageType = require("./types/page");
-const MemberType = require("./types/member");
-const RetailerType = require("./types/retailer");
-const SocialMediaType = require("./types/socialMedia");
+const UserType = require("../data-types/user");
+const CategoryType = require("../data-types/category");
+const PostType = require("../data-types/post");
+const PageType = require("../data-types/page");
+const MemberType = require("../data-types/member");
+const RetailerType = require("../data-types/retailer");
+const SocialMediaType = require("../data-types/socialMedia");
+const LegalType = require("../data-types/legal");
+const PaymentType = require("../data-types/payment");
+const SoftwareType = require("../data-types/software");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -139,6 +145,47 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve: (parent, args) => {
         return SocialMedia.findById({ _id: args.id });
+      }
+    },
+    // ===== Get Legal by ID  =====
+    legal: {
+      type: LegalType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Legal.findById({ _id: args.id });
+      }
+    },
+    // ===== Get Legals  =====
+    legals: {
+      type: new GraphQLList(LegalType),
+      resolve: (parent, args) => {
+        return Legal.find().sort({ created_at: -1 });
+      }
+    },
+    // ===== Get Payments  =====
+    payments: {
+      type: new GraphQLList(PaymentType),
+      resolve: (parent, args) => {
+        return Payment.find().sort({ created_at: -1 });
+      }
+    },
+    // ===== Get Software  =====
+    software: {
+      type: SoftwareType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        return Software.findById({ _id: args.id });
+      }
+    },
+    // ===== Get Softwares  =====
+    softwares: {
+      type: new GraphQLList(SoftwareType),
+      resolve: (parent, args) => {
+        return Software.find().sort({ created_at: -1 });
       }
     }
   }

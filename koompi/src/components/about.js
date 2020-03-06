@@ -245,18 +245,21 @@ function About() {
     return onlyAboutUs.map((about, index) => {
       const description = renderHTML(about.description)
       return (
-        <Row className="Row-about" gutter={24} key={index}>
-          <Col sm={12}>
-            <div className="aboutPosition">{parse(description)}</div>
-          </Col>
-          <Col sm={12}>
-            <Img
-              src={`https://admin.koompi.com` + about.image}
-              className="aboutBannerImg"
-              alt={about.title}
-            />
-          </Col>
-        </Row>
+        // <div className="aboutBannerHeight">
+        <div
+          className="aboutBanner"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(38, 46, 60, 0.95), rgba(38, 46, 60, 0.95)),url(https://admin.koompi.com${about.image})`
+          }}
+        >
+          <div className="container-banner-about">
+            <Row className="Row-about" gutter={24} key={index}>
+              <Col sm={24}>
+                <div className="aboutPosition">{parse(description)}</div>
+              </Col>
+            </Row>
+          </div>
+        </div>
       )
     })
   }
@@ -264,9 +267,7 @@ function About() {
   return (
     <React.Fragment>
       <div className="backgroud-about">
-        <div className="container" style={{ position: "relative" }}>
-          <DisplayAboutUs />
-        </div>
+        <DisplayAboutUs />
 
         <div>
           <center>

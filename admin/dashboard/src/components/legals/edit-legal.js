@@ -17,6 +17,7 @@ import { Form, Icon, Input, Button, Row, Col, Layout, message } from "antd"
 import { UPDATE_LEGAL } from "../../graphql/mutation"
 // ===== Query Section =====
 import { GET_LEGAL } from "../../graphql/query"
+import { GET_LEGALS } from "../../graphql/query"
 
 const FormItem = Form.Item
 const { Content } = Layout
@@ -26,6 +27,7 @@ function EditLegal(props) {
 
   // ===== User Context Section =====
   const userData = useContext(UserContext)
+  const { refetch: refetchLegal } = useQuery(GET_LEGALS)
 
   const { error: errorLegal, loading: dataLoading, data: legalData } = useQuery(
     GET_LEGAL,
@@ -50,13 +52,14 @@ function EditLegal(props) {
             description: JSON.stringify(savedData)
           }
         })
-          .then(async () => {
+          .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
-            props.form.resetFields()
-            await message.success("Legal updated successfully.", 3)
+            await message.success(res.data.edit_legal.message, 3)
+            await refetchLegal()
+            await props.history.push("/admin/all-legals")
           })
           .catch((error) => {
             console.log(error)

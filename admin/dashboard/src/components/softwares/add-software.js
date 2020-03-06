@@ -83,14 +83,14 @@ function AddSoftware(props) {
             description: JSON.stringify(savedData)
           }
         })
-          .then(async () => {
+          .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
             refetch()
             props.form.resetFields()
-            await message.success("Software added successfully.", 3)
+            await message.success(res.data.create_software.message, 3)
           })
           .catch((error) => {
             console.log(error)

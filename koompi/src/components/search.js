@@ -76,7 +76,7 @@ function Search(props) {
                         </Tag>
                       </p>
                       <h1 className="news-and-events-title">
-                        {countWord(data.title) > 12 ? title + "..." : data.title}
+                        {data.title.substring(0, 40) + "..."}
                       </h1>
 
                       {/* <div className="news-and-events-desc">

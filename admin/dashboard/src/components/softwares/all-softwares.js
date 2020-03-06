@@ -17,7 +17,7 @@ function AllSoftwares() {
   // ===== Mutation Varile Section =====
   const [deleteSoftware] = useMutation(DELETE_SOFTWARE)
 
-  const { refetch: refetchPost } = useQuery(GET_SOFTWARES)
+  const { refetch: refetchSoftware } = useQuery(GET_SOFTWARES)
 
   const columns = [
     {
@@ -99,8 +99,14 @@ function AllSoftwares() {
                       cancelText="No"
                       onConfirm={() => {
                         deleteSoftware({ variables: { id: `${id}` } })
-                        message.success("The software has been Deleted")
-                        refetchPost()
+                          .then(async (res) => {
+                            await message.success(res.data.delete_software.message)
+                            await refetchSoftware()
+                          })
+                          .catch((error) => {
+                            console.log(error)
+                            return null
+                          })
                       }}
                     >
                       <Tag color="#f50" className="btn">

@@ -61,13 +61,13 @@ const dataSpacs = [
     desc: "<p>Li-polymer battery 5000mAH up to 7H</p>"
   }
 ]
-function Koompi_E_Spec() {
+function Koompi_E_Spec(props) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
   return (
     <div>
-      <SubNavbar title="KOOMPI E13" />
+      <SubNavbar title="KOOMPI E13" history={props.history} />
       <div className="spec-background">
         <div className="container">
           {dataSpacs.map((res) => {

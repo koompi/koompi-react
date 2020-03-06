@@ -10,15 +10,21 @@ const Page = require("../models/Page");
 const Member = require("../models/Member");
 const Retailer = require("../models/Retailer");
 const SocialMedia = require("../models/SocialMedia");
+const Legal = require("../models/Legal");
+const Software = require("../models/Software");
+const Payment = require("../models/Payment");
 
 // ======== Type Section =========
-const UserType = require("./types/user");
-const CategoryType = require("./types/category");
-const PostType = require("./types/post");
-const PageType = require("./types/page");
-const MemberType = require("./types/member");
-const RetailerType = require("./types/retailer");
-const SocialMediaType = require("./types/socialMedia");
+const UserType = require("../data-types/user");
+const CategoryType = require("../data-types/category");
+const PostType = require("../data-types/post");
+const PageType = require("../data-types/page");
+const MemberType = require("../data-types/member");
+const RetailerType = require("../data-types/retailer");
+const SocialMediaType = require("../data-types/socialMedia");
+const LegalType = require("../data-types/legal");
+const SoftwareType = require("../data-types/software");
+const PaymentType = require("../data-types/payment");
 
 const {
   GraphQLObjectType,
@@ -216,10 +222,11 @@ const RootMutation = new GraphQLObjectType({
         keywords: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
         meta_desc: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
+      resolve: async (parent, args) => {
         try {
           const post = new Post({ ...args });
-          return post.save();
+          await post.save();
+          return { message: "The post created successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -230,8 +237,9 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
-        return Post.findOneAndDelete({ _id: args.id });
+      resolve: async (parent, args) => {
+        await Post.findOneAndDelete({ _id: args.id });
+        return { message: "The post deleted successfully." };
       }
     },
     // ===== Update Category =====
@@ -253,7 +261,7 @@ const RootMutation = new GraphQLObjectType({
       resolve: async (parent, args) => {
         try {
           await Post.updateOne({ _id: args.id }, { ...args });
-          return Post.findById(args.id);
+          return { message: "The post updated successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -273,10 +281,11 @@ const RootMutation = new GraphQLObjectType({
         keywords: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
         meta_desc: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
+      resolve: async (parent, args) => {
         try {
           const page = new Page({ ...args });
-          return page.save();
+          await page.save();
+          return { message: "The Page created successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -288,8 +297,9 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
-        return Page.findOneAndDelete({ _id: args.id });
+      resolve: async (parent, args) => {
+        await Page.findOneAndDelete({ _id: args.id });
+        return { message: "The Page deleted successfully." };
       }
     },
     // ===== Update Page =====
@@ -311,7 +321,7 @@ const RootMutation = new GraphQLObjectType({
       resolve: async (parent, args) => {
         try {
           await Page.updateOne({ _id: args.id }, { ...args });
-          return Page.findById(args.id);
+          return { message: "The Page updated successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -329,10 +339,11 @@ const RootMutation = new GraphQLObjectType({
         photo: { type: new GraphQLNonNull(GraphQLString) },
         department: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
+      resolve: async (parent, args) => {
         try {
           const member = new Member({ ...args });
-          return member.save();
+          await member.save();
+          return { message: "The memeber added successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -344,8 +355,9 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
-        return Member.findOneAndDelete({ _id: args.id });
+      resolve: async (parent, args) => {
+        await Member.findOneAndDelete({ _id: args.id });
+        return { message: "The memeber deleted successfully." };
       }
     },
     // ===== Update Page =====
@@ -364,7 +376,7 @@ const RootMutation = new GraphQLObjectType({
       resolve: async (parent, args) => {
         try {
           await Member.updateOne({ _id: args.id }, { ...args });
-          return Member.findById(args.id);
+          return { message: "The memeber updated successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -381,10 +393,11 @@ const RootMutation = new GraphQLObjectType({
         logo: { type: new GraphQLNonNull(GraphQLString) },
         created_by: { type: GraphQLString }
       },
-      resolve: (parent, args) => {
+      resolve: async (parent, args) => {
         try {
           const retailer = new Retailer({ ...args });
-          return retailer.save();
+          await retailer.save();
+          return { message: "The retailer added successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -396,8 +409,9 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
-        return Retailer.findOneAndDelete({ _id: args.id });
+      resolve: async (parent, args) => {
+        await Retailer.findOneAndDelete({ _id: args.id });
+        return { message: "The retailer deleted successfully." };
       }
     },
     // ===== Add Retailer =====
@@ -414,7 +428,7 @@ const RootMutation = new GraphQLObjectType({
       resolve: async (parent, args) => {
         try {
           await Retailer.updateOne({ _id: args.id }, { ...args });
-          return Retailer.findById(args.id);
+          return { message: "The retailer updated successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -429,10 +443,11 @@ const RootMutation = new GraphQLObjectType({
         logo: { type: new GraphQLNonNull(GraphQLString) },
         created_by: { type: GraphQLString }
       },
-      resolve: (parent, args) => {
+      resolve: async (parent, args) => {
         try {
           const socialMedia = new SocialMedia({ ...args });
-          return socialMedia.save();
+          await socialMedia.save();
+          return { message: "The social media created successfully." };
         } catch (error) {
           console.log(error);
         }
@@ -444,8 +459,9 @@ const RootMutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve: (parent, args) => {
-        return SocialMedia.findOneAndDelete({ _id: args.id });
+      resolve: async (parent, args) => {
+        await SocialMedia.findOneAndDelete({ _id: args.id });
+        return { message: "The social media deleted successfully." };
       }
     },
     // ===== Add Retailer =====
@@ -460,10 +476,121 @@ const RootMutation = new GraphQLObjectType({
       resolve: async (parent, args) => {
         try {
           await SocialMedia.updateOne({ _id: args.id }, { ...args });
-          return SocialMedia.findById(args.id);
+          return { message: "The social media updated successfully." };
         } catch (error) {
           console.log(error);
         }
+      }
+    },
+    // ===== Create Legal =====
+    create_legal: {
+      type: LegalType,
+      args: {
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: new GraphQLNonNull(GraphQLString) },
+        created_by: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        try {
+          const legal = new Legal({ ...args });
+          await legal.save();
+          return { message: "The legal created successfully." };
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
+      }
+    },
+    // ===== Edit Legal =====
+    edit_legal: {
+      type: LegalType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        try {
+          await Legal.updateOne({ _id: args.id }, { ...args });
+          return { message: "The legal updated successfully." };
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
+      }
+    },
+    // ===== Delete Legal =====
+    delete_legal: {
+      type: LegalType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        await Legal.findOneAndDelete({ _id: args.id });
+        return { message: "The legal deleted successfully." };
+      }
+    },
+    // ===== Create Legal =====
+    create_software: {
+      type: SoftwareType,
+      args: {
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: new GraphQLNonNull(GraphQLString) },
+        logo: { type: new GraphQLNonNull(GraphQLString) },
+        image: { type: new GraphQLNonNull(GraphQLString) },
+        created_by: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        try {
+          const software = new Software({ ...args });
+          await software.save();
+          return { message: "The software created successfully." };
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
+      }
+    },
+    // ===== Edit Software =====
+    edit_software: {
+      type: SoftwareType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: new GraphQLNonNull(GraphQLString) },
+        logo: { type: new GraphQLNonNull(GraphQLString) },
+        image: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        try {
+          await Software.updateOne({ _id: args.id }, { ...args });
+          return { message: "The software updated successfully." };
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
+      }
+    },
+    // ===== Delete Software =====
+    delete_software: {
+      type: SoftwareType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        await Software.findOneAndDelete({ _id: args.id });
+        return { message: "The software deleted successfully." };
+      }
+    },
+    // ===== Delete Software =====
+    delete_payment: {
+      type: PaymentType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        await Payment.findOneAndDelete({ _id: args.id });
+        return { message: "The payment deleted successfully." };
       }
     }
   }

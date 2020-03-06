@@ -5,7 +5,6 @@ import Footer from "./footer"
 function PageNotFound() {
   return (
     <div style={{ backgroundColor: "#fff" }}>
-      <Navbar />
       <div className="container">
         <center>
           <img src="/img/404-02.png" alt="404" className="page-not-found" />

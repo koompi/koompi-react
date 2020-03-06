@@ -93,7 +93,7 @@ function News() {
         </div>
       </div>
       <div style={{ marginTop: "90px", marginBottom: "50px" }} className="container">
-        <Row gutter={16} type="flex">
+        <Row gutter={24} type="flex">
           {data.posts.map((data, index) => {
             const { slug, title: categoryTitle } = data.category
 
@@ -119,12 +119,15 @@ function News() {
                       cover={
                         <div
                           style={{
-                            backgroundImage: `url("https://admin.koompi.com${data.thumnail}")`
+                            backgroundImage: `linear-gradient(rgba(8, 8, 8, 0.09), rgba(8, 8, 8, 0.09)),url("https://admin.koompi.com${data.thumnail}")`
                           }}
                           className="postThumnail"
                         ></div>
                       }
                     >
+                      <h1 className="news-and-events-title">
+                        {data.title.substring(0, 40) + "..."}
+                      </h1>
                       <p>
                         <Tag color="blue">
                           Date:{" "}
@@ -133,9 +136,6 @@ function News() {
                             .format("YYYY, MMMM DD")}
                         </Tag>
                       </p>
-                      <h1 className="news-and-events-title">
-                        {data.title.substring(0, 50) + "..."}
-                      </h1>
 
                       {/* <div className="news-and-events-desc">
                     {parse(description.substring(0, 200) + '...')}

@@ -18,7 +18,7 @@ import _ from "lodash"
 import { CartContext } from "../../CartContext"
 import Helmet from "react-helmet"
 
-function KoompiE13() {
+function KoompiE13(props) {
   const cartCtx = useContext(CartContext)
   const [koompiColor, setKoompiColor] = useState(true)
   const imageLink = `https://admin.koompi.com`
@@ -63,20 +63,8 @@ function KoompiE13() {
 
         <div className="subTittle-E11">{description}</div>
         <h1 className="koompi-price">$369.00</h1>
-        <Button
-          className="koompiBtn"
-          onClick={() =>
-            cartCtx.addToCart({
-              name: title.toUpperCase(),
-              price: 369,
-              image: imageLink + image
-            })
-          }
-        >
-          Add To Cart <Icon type="arrow-right" />
-        </Button>
         <img
-          className="banner-overview-koompiE11"
+          className="banner-overview-koompiE11 koompiScale"
           src={imageLink + image}
           alt={title}
         />
@@ -158,18 +146,19 @@ function KoompiE13() {
               alt={title}
             />
           </div>
+          <br />
           <div className="switch-koompi-container">
             <Row gutter={16}>
               <Col span={12}>
                 <center>
                   <div className="speceGrayCircle" onClick={changeKoompiColor}></div>
-                  <p>Space Gray</p>
+                  <p className="koompi-color-laptop">Space Gray</p>
                 </center>
               </Col>
               <Col span={12}>
                 <center>
                   <div className="roseCircle" onClick={changeKoompiColor}></div>
-                  <p>Rose Gold</p>
+                  <p className="koompi-color-laptop">Rose Gold</p>
                 </center>
               </Col>
             </Row>
@@ -250,11 +239,9 @@ function KoompiE13() {
           </center>
         </div>
         <div className="container">
-          <img
-            className="banner-overview-koompiE11"
-            src={imageLink + image}
-            alt={title}
-          />
+          <center>
+            <img className="koompi-e13-image" src={imageLink + image} alt={title} />
+          </center>
         </div>
       </>
     )
@@ -351,7 +338,7 @@ function KoompiE13() {
         />
       </Helmet>
       <div>
-        <SubNavbar title="KOOMPI E13" />
+        <SubNavbar title="KOOMPI E13" history={props.history} />
         <div className="background-color-Koompi-E">
           <div className="area">
             <ul className="circles">

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { Row, Col, Select, Button, Modal, Input, Form } from "antd"
 import { CartContext } from "../../CartContext"
 import Axios from "axios"
@@ -7,11 +7,20 @@ import Footer from "../footer"
 import Cookies from "js-cookie"
 import { FiX } from "react-icons/fi"
 import Helmet from "react-helmet"
+
 // import Bongloy from "bongloyjs";
 
 const { Option } = Select
 
 const { confirm } = Modal
+
+const transactionId = Date.now()
+const amount = "369"
+const firstName = "Loeurt"
+const lastName = "Chenda"
+const phone = "016884415"
+const email = "loeurt.chenda@ababank.com"
+const shipping = "2.00"
 
 function Cart(props) {
   const ctx = useContext(CartContext)
@@ -19,15 +28,53 @@ function Cart(props) {
   const [visible, setVisible] = useState({
     aba: false
   })
+  const [hash, setHash] = useState("")
+
+  const [data, setData] = useState(null)
 
   const { getFieldDecorator } = props.form
+
+  const handleTest = async () => {
+    // await Axios.post("`http://localhost:8080/helloworld", {
+    //   amount: "369",
+    //   transactionId: `${transactionId}`
+    // })
+    window.AbaPayway.checkout()
+  }
+
+  useEffect(() => {
+    setData(Cookies.getJSON("koompi"))
+    Axios.post("http://localhost:8080/payment/option/create", {
+      transactionId,
+      amount
+    })
+      .then((res) => {
+        setHash(res.data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }, [])
 
   const hideModal = () => {
     setVisible(false)
   }
 
-  const handleABA = () => {
-    setVisible({ aba: true })
+  const handleABA = (e) => {
+    e.preventDefault()
+
+    props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        // Axios.post("https://payway-staging.ababank.com/api/pwkoompik/", values)
+        //   .then(console.log("Start POST Request to ABA ..."))
+        //   .catch((e) => console.log(e))
+        // window.AbaPayway.checkout()
+        // console.log(values)
+        console.log("====================================")
+        // console.log(window.AbaPayway.checkout())
+        console.log("====================================")
+      }
+    })
   }
 
   const handleSubmit = (e) => {
@@ -74,6 +121,7 @@ function Cart(props) {
       cancelText: "No",
       onOk() {
         Cookies.remove("koompi")
+        setData(null)
       },
       onCancel() {
         console.log("Cancel")
@@ -86,7 +134,7 @@ function Cart(props) {
     return (
       <Row gutter={[16, 16]}>
         <Col span={17}>
-          {result.map((item, index) => {
+          {data.map((item, index) => {
             return (
               <div className="shopping-cart" key={index}>
                 <div>
@@ -176,7 +224,7 @@ function Cart(props) {
                 <Cash />
               </Col>
               <Col span={24}>
-                <div className="payment_cart" onClick={handleABA}>
+                <div className="payment_cart" onClick={handleTest}>
                   <img
                     src="/img/master-card.png"
                     height="25px"
@@ -187,7 +235,7 @@ function Cart(props) {
                 </div>
               </Col>
               <Col span={24}>
-                <div className="payment_cart" onClick={handleABA}>
+                <div className="payment_cart">
                   <img src="/img/wing.png" height="25px" width="25px" alt="" /> Wing
                 </div>
               </Col>
@@ -201,7 +249,7 @@ function Cart(props) {
   const DisplayProduct = () => {
     // console.log(Cookies.getJSON("koompi") === undefined)
 
-    if (ctx.items.length === 0 && Cookies.getJSON("koompi") === undefined) {
+    if (data === null || data === undefined) {
       return (
         <center>
           <div className="emptyCart">
@@ -234,93 +282,82 @@ function Cart(props) {
       <Footer />
 
       {/* === Payment === */}
-      <Modal
-        footer={null}
-        title="Master/Visa Card"
-        visible={visible.aba}
-        onCancel={hideModal}
-        closeIcon={<FiX />}
-      >
-        <Form onSubmit={handleSubmit}>
-          <h2 className="payment_title">Personal Information</h2>
-          {/* <Form.Item>
-            {getFieldDecorator("name", {
-              rules: [{ required: true, message: "Please input your name!" }]
-            })(
-              <Input
-                size="large"
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                placeholder="Name"
-              />
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("email address", {
-              rules: [{ required: true, message: "Please input your email!" }]
-            })(
-              <Input
-                size="large"
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                placeholder="Email"
-              />
-            )}
-          </Form.Item>
 
-          <Form.Item>
-            {getFieldDecorator("phoneNumber", {
-              rules: [
-                { required: true, message: "Please input your Phone Number!" }
-              ]
-            })(
-              <Input
-                size="large"
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                placeholder="Phone Number"
-              />
-            )}
-          </Form.Item> */}
-
-          <h2 className="payment_title">Payment Information</h2>
-          <Form.Item label="Card Number">
-            {getFieldDecorator("name", {
-              rules: [{ required: true, message: "Please input your name!" }]
-            })(<Input size="large" placeholder="1234 1234 1234 1234" />)}
+      <div className="container">
+        {/* <Form target="aba_webservice" onSubmit={handleABA}>
+          <Form.Item label="Hash">
+            {getFieldDecorator("hash", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue:
+                "Oq+rorJQbHQuhsZ6qBaXBign300hAU1XumuLMYk96Sds8iIYA7z+h1CTyYANf63sqQTM3dSmkP84mnttszmfPA=="
+            })(<Input size="large" />)}
           </Form.Item>
-          <Form.Item label="Card Holder Name">
-            {getFieldDecorator("name", {
-              rules: [{ required: true, message: "Please input your name!" }]
+          <Form.Item label="tran_id">
+            {getFieldDecorator("tran_id", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: transactionId
             })(<Input size="large" placeholder="KOOMPI" />)}
           </Form.Item>
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item label="Expiration Date">
-                {getFieldDecorator("name", {
-                  rules: [{ required: true, message: "Please input your name!" }]
-                })(<Input size="large" placeholder="MM / YY" />)}
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item label="CVC Code">
-                {getFieldDecorator("name", {
-                  rules: [{ required: true, message: "Please input your name!" }]
-                })(<Input size="large" placeholder="CVC" />)}
-              </Form.Item>
-            </Col>
-          </Row>
+          <Form.Item label="amount">
+            {getFieldDecorator("amount", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: amount
+            })(<Input size="large" placeholder="KOOMPI" />)}
+          </Form.Item>
+          <Form.Item label="firstname">
+            {getFieldDecorator("firstName", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: firstName
+            })(<Input size="large" placeholder="KOOMPI" />)}
+          </Form.Item>
+          <Form.Item label="lastname">
+            {getFieldDecorator("lastName", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: lastName
+            })(<Input size="large" placeholder="KOOMPI" />)}
+          </Form.Item>
+          <Form.Item label="phone">
+            {getFieldDecorator("phone", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: phone
+            })(<Input size="large" placeholder="KOOMPI" />)}
+          </Form.Item>
+          <Form.Item label="email">
+            {getFieldDecorator("email", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: email
+            })(<Input size="large" placeholder="KOOMPI" />)}
+          </Form.Item>
+
           <center>
             <Button type="primary" htmlType="submit" className="paymentBtn">
               Submit
             </Button>
           </center>
         </Form>
-      </Modal>
-
+        <br />
+        <br /> */}
+      </div>
+      <div className="container">
+        <div id="aba_main_modal" class="aba-modal">
+          <div class="aba-modal-content">
+            <form
+              method="POST"
+              target="aba_webservice"
+              action="https://payway-staging.ababank.com/api/pwkoompik/"
+              id="aba_merchant_request"
+            >
+              <input type="text" name="hash" value={hash} id="hash" />
+              <input type="text" name="tran_id" value={transactionId} id="tran_id" />
+              <input type="text" name="amount" value={amount} id="amount" />
+              <input type="text" name="firstname" value={firstName} />
+              <input type="text" name="lastname" value={lastName} />
+              <input type="text" name="phone" value={phone} />
+              <input type="text" name="email" value={email} />
+            </form>
+          </div>
+        </div>
+      </div>
       {/* === End Payment */}
     </div>
   )

@@ -1,6 +1,6 @@
 import React from "react"
 import { Row, Col } from "antd"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 import { useQuery } from "@apollo/react-hooks"
 import { GET_SOCAIL_MEDIA } from "./graphql/query"
@@ -28,50 +28,32 @@ function Footer() {
   return (
     <div>
       <div className="footerBackground">
-        <center>
-          <img
-            className="koompi-footer-logo"
-            src="/img/Koompi-White.png"
-            alt="koompi"
-          />
-        </center>
-
         <div className="footer-container">
-          <p className="copyRight">
-            Copyright © 2019-2020.<br></br> A brainchild of{" "}
-            <a
-              href="https://smallworldventure.com/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              SmallWorld Venture
-            </a>
-          </p>
           <Row gutter={16} type="flex" className="footerPMagin">
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
               <h4>Legal</h4>
-              <Link to="">
+              <NavLink to="/legal/terms-and-conditions">
                 <p>Terms & Conditions</p>
-              </Link>
-              <Link to="">
+              </NavLink>
+              <NavLink to="">
                 <p>License Agreement</p>
-              </Link>
-              <Link to="/legal/privacy">
+              </NavLink>
+              <NavLink to="/legal/privacy">
                 <p>Privacy Policy</p>
-              </Link>
-              <Link to="/whitepaper/salespolicies">
+              </NavLink>
+              <NavLink to="/whitepaper/salespolicies">
                 <p>Sale Policy</p>
-              </Link>
+              </NavLink>
             </Col>
 
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
               <h4>Information</h4>
-              <Link to="/news-and-events">
+              <NavLink to="/news-and-events">
                 <p>News and Event</p>
-              </Link>
-              <Link to="/about-us">
+              </NavLink>
+              <NavLink to="/about-us">
                 <p>About Us</p>
-              </Link>
+              </NavLink>
 
               <a
                 href="https://github.com/koompi/"
@@ -80,24 +62,27 @@ function Footer() {
               >
                 <p>Become a contributor</p>
               </a>
-              <Link to="/shop/retailers">
+              <NavLink to="/shop/retailers">
                 <p>Retailers</p>
-              </Link>
+              </NavLink>
             </Col>
 
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
               <h4 className="footerMarginTop">Help</h4>
-              <Link to="">
+              <NavLink to="">
                 <p>Support</p>
-              </Link>
-              <Link to="">
+              </NavLink>
+              <NavLink to="">
                 <p>Contact Us</p>
-              </Link>
+              </NavLink>
             </Col>
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
               <h4 className="footerMarginTop">Connect With Us</h4>
               <div className="footer_socail_media">
                 <DisplaySocailMedia />
+                <br />
+                <br />
+                <p>© 2020 KOOMPI All Rights Reserved </p>
               </div>
             </Col>
           </Row>
@@ -117,9 +102,13 @@ function Footer() {
               >
                 KOOMPI ACADEMY
               </a>
-              <Link to="/koompi-os">KOOMPI OS</Link>
+              <NavLink to="/koompi-os" activeClassName="koompi-active">
+                KOOMPI OS
+              </NavLink>
 
-              <Link to="/koompi-e13">KOOMPI E13</Link>
+              <NavLink to="/koompi-e13" activeClassName="koompi-active">
+                KOOMPI E13
+              </NavLink>
               {/* <Link to="koompi-e11">KOOMPI E11</Link> */}
               {/* <Link to="">KOOMPI B14</Link> */}
             </Col>

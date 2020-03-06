@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import LeftNavbar from "../navbar/left-navbar"
 import TopNavbar from "../navbar/top-navbar"
 import PageFooter from "../footer"
-import { useMutation } from "@apollo/react-hooks"
+import { useMutation, useQuery } from "@apollo/react-hooks"
 
 import { UserContext } from "../../context/userContext"
 import three_dots from "../../assets/img/three-dots.svg"
@@ -15,6 +15,7 @@ import { EDITOR_JS_TOOLS } from "./tools"
 import { Form, Icon, Input, Button, Row, Col, Layout, message } from "antd"
 
 import { CREATE_LEGAL } from "../../graphql/mutation"
+import { GET_LEGALS } from "../../graphql/query"
 
 const FormItem = Form.Item
 const { Content } = Layout
@@ -22,6 +23,7 @@ const { Content } = Layout
 function Legal(props) {
   const { getFieldDecorator } = props.form
   const [createLegal] = useMutation(CREATE_LEGAL)
+  const { refetch: refetchLegal } = useQuery(GET_LEGALS)
 
   // ===== User Context Section =====
   const userData = useContext(UserContext)
@@ -42,13 +44,14 @@ function Legal(props) {
             description: JSON.stringify(savedData)
           }
         })
-          .then(async () => {
+          .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
             props.form.resetFields()
-            await message.success("Legal created successfully.", 3)
+            await message.success(res.data.create_legal.message, 3)
+            await refetchLegal()
           })
           .catch((error) => {
             console.log(error)

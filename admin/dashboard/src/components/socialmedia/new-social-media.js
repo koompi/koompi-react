@@ -51,17 +51,15 @@ function NewSocialMedia(props) {
     e.preventDefault()
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values)
-
         addSocailMedia({ variables: { ...values } })
-          .then(async () => {
+          .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
-            refetchRetailer()
-            props.form.resetFields()
-            await message.success("Socail Media added successfully.", 3)
+            await message.success(res.data.add_social_media.message, 3)
+            await refetchRetailer()
+            await props.form.resetFields()
           })
           .catch((error) => {
             console.log(error)

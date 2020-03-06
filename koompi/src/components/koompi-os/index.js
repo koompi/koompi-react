@@ -89,23 +89,24 @@ function KOOMPIOS() {
       if (index % 2 === 0) {
         return (
           <Row gutter={[12, 12]} key={index}>
-            <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+            <Col xs={24} sm={24} md={13} lg={13} xl={13}>
               <div className="koompi-os-apps paddingRight">
-                <img
+                {/* <img
                   src={`https://admin.koompi.com${logo}`}
                   alt=""
                   className="app-logo"
-                />
+                /> */}
                 <h3 className="app-title">{title}</h3>
                 {parse(description)}
               </div>
             </Col>
-            <Col xs={24} sm={24} md={14} lg={14} xl={14}>
+            <Col xs={24} sm={24} md={11} lg={11} xl={11}>
               <div className="app-image">
                 <img
                   src={`https://admin.koompi.com${image}`}
                   alt={`KOOMPI ${title}`}
                   style={{ float: "right" }}
+                  className="drawImage"
                 />
               </div>
             </Col>
@@ -125,11 +126,11 @@ function KOOMPIOS() {
             </Col>
             <Col xs={24} sm={24} md={10} lg={10} xl={10}>
               <div className="koompi-os-apps paddingLeft">
-                <img
+                {/* <img
                   src={`https://admin.koompi.com${logo}`}
                   alt={`KOOMPI ${title}`}
                   className="app-logo"
-                />
+                /> */}
                 <h3 className="app-title">{title}</h3>
                 {parse(description)}
               </div>

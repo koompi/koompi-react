@@ -22,6 +22,7 @@ import SalePolicy from "./components/legals/sale-policy"
 import KOOMPIOS from "./components/koompi-os/index"
 import Navbar from "./components/navbar"
 import PrivacyPolicy from "./components/legals/policy"
+import TermsAndConditions from "./components/legals/terms-and-conditions"
 function App() {
   NProgress.configure({ showSpinner: false })
   return (
@@ -54,6 +55,11 @@ function App() {
             component={SalePolicy}
           ></Route>
           <Route exact path="/legal/privacy" component={PrivacyPolicy}></Route>
+          <Route
+            exact
+            path="/legal/terms-and-conditions"
+            component={TermsAndConditions}
+          ></Route>
           {/* ===== News and Events Route */}
           <Route exact path="/category" component={News}></Route>
           <Route exact path="/news-and-events" component={News}></Route>

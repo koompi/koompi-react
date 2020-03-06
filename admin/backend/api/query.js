@@ -10,15 +10,19 @@ const Page = require("../models/Page");
 const Member = require("../models/Member");
 const Retailer = require("../models/Retailer");
 const SocialMedia = require("../models/SocialMedia");
+const Legal = require("../models/Legal");
+const Software = require("../models/Software");
 
 // ======== Type Section =========
-const UserType = require("./types/user");
-const CategoryType = require("./types/category");
-const PostType = require("./types/post");
-const PageType = require("./types/page");
-const MemberType = require("./types/member");
-const RetailerType = require("./types/retailer");
-const SocialMediaType = require("./types/socialMedia");
+const UserType = require("../data-types/user");
+const CategoryType = require("../data-types/category");
+const PostType = require("../data-types/post");
+const PageType = require("../data-types/page");
+const MemberType = require("../data-types/member");
+const RetailerType = require("../data-types/retailer");
+const SocialMediaType = require("../data-types/socialMedia");
+const LegalType = require("../data-types/legal");
+const SoftwareType = require("../data-types/software");
 
 const RootQuery = new GraphQLObjectType({
   name: "APIQueryType",
@@ -43,7 +47,7 @@ const RootQuery = new GraphQLObjectType({
     posts: {
       type: new GraphQLList(PostType),
       resolve: (parent, args) => {
-        return Post.find();
+        return Post.find().sort({ created_at: -1 });
       }
     },
 
@@ -98,7 +102,21 @@ const RootQuery = new GraphQLObjectType({
         query: { type: GraphQLString }
       },
       resolve: (parent, args) => {
-        return Category.find({ slug: args.query });
+        return Legal.find({ slug: args.query });
+      }
+    },
+    // ===== Get Legals  =====
+    legals: {
+      type: new GraphQLList(LegalType),
+      resolve: (parent, args) => {
+        return Legal.find();
+      }
+    },
+    // ===== Get Legals  =====
+    softwares: {
+      type: new GraphQLList(SoftwareType),
+      resolve: (parent, args) => {
+        return Software.find();
       }
     }
   }
