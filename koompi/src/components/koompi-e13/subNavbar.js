@@ -33,12 +33,22 @@ function SubNavbar({ title, history }) {
                   await cartCtx.addToCart({
                     name: "KOOMPI E13",
                     price: 369,
-                    image: ""
+                    image: [
+                      {
+                        color: "gray",
+                        image: "http://localhost:3000/img/koompi-e/koompi-gray.png"
+                      },
+                      {
+                        color: "pink",
+                        image:
+                          "http://localhost:3000/img/koompi-e/koompi-rose-gold.png"
+                      }
+                    ]
                   })
                   setLoading(true)
                   window.setTimeout(() => {
                     history.push("/shop/bag")
-                  }, 2000)
+                  }, 1000)
                 }}
               >
                 <span className={loading ? "buyBtnLoading" : "buyBtn"}>

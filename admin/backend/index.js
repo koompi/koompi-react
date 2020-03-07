@@ -14,8 +14,16 @@ const fileUpload = require("express-fileupload");
 const path = require("path");
 const Stripe = require("stripe");
 const CryptoJS = require("crypto-js");
+// ===== Import env proccess =====
+const {
+  MongoURI,
+  ACCESS_TOKEN_SECRET,
+  BONGLOY_SECRET_KEY,
+  ABA_PAYWAY_MERCHANT_ID,
+  ABA_PAYWAY_API_KEY
+} = process.env;
 
-const bongloy = new Stripe(process.env.BONGLOY_SECRET_KEY, {
+const bongloy = new Stripe(BONGLOY_SECRET_KEY, {
   host: "api.bongloy.com"
 });
 
@@ -58,10 +66,6 @@ app.use(
 
 // parse cookies
 app.use(cookieParser());
-
-// ===== User Models =====
-const User = require("./models/User");
-const { MongoURI, ACCESS_TOKEN_SECRET } = process.env;
 
 // ===== Authentication =====
 const isAuth = (req, res, next) => {
@@ -119,6 +123,7 @@ app.post("/payment/option/create", (req, res) => {
   return res.status(200).send(getHash(transactionId, amount));
 });
 
+// The payment with Bongloy
 app.post("/charge", (req, res) => {
   try {
     bongloy.charges
@@ -139,6 +144,7 @@ app.post("/charge", (req, res) => {
 //  ===== Login =====
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
+  const User = require("./models/User");
   try {
     const user = await User.findOne({ email });
     if (!user) {
@@ -171,6 +177,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
+// ===== Upload Image Management =====
 app.post("/upload/image", (req, res) => {
   console.log(req.files);
 
@@ -193,6 +200,7 @@ app.post("/upload/image", (req, res) => {
   );
 });
 
+// ===== Database Connection =====
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,

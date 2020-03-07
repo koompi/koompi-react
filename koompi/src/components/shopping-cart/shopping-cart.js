@@ -29,9 +29,8 @@ function Cart(props) {
     aba: false
   })
   const [hash, setHash] = useState("")
-
   const [data, setData] = useState(null)
-
+  const [koompiColor, setKoompiColor] = useState("gray")
   const { getFieldDecorator } = props.form
 
   const handleTest = async () => {
@@ -59,6 +58,10 @@ function Cart(props) {
   const hideModal = () => {
     setVisible(false)
   }
+
+  // ===== Chage KOOMPI Color =====
+  // const handleToPink = setKoompiColor("pink")
+  // const handleToGray = setKoompiColor("gray")
 
   const handleABA = (e) => {
     e.preventDefault()
@@ -141,15 +144,44 @@ function Cart(props) {
                   <Row gutter={16}>
                     <Col span={24}>
                       <Row gutter={16}>
-                        <Col span={8}>
-                          <img style={{ width: "100%" }} src={item.image} alt="" />
+                        <Col span={12}>
+                          <img
+                            style={{ width: "100%" }}
+                            src={
+                              koompiColor === "gray"
+                                ? item.image[0].image
+                                : item.image[1].image
+                            }
+                            alt=""
+                          />
                         </Col>
-                        <Col span={16}>
+                        <Col span={12}>
                           <h1>{item.name}</h1>
                           {/* <p className="shopDesc">{item.desc}</p> */}
                           <h4 className="KoompiPRICE">
                             USD <b>${item.price}</b>
                           </h4>
+                          Select your favarite color:
+                          <Row
+                            gutter={16}
+                            style={{ width: "100%", marginTop: "20px" }}
+                          >
+                            <Col span={3}>
+                              <div
+                                onClick={() => setKoompiColor("gray")}
+                                className="speceGrayCircle"
+                              ></div>
+                            </Col>
+                            <Col span={3}>
+                              <center>
+                                <div
+                                  className="roseCircle"
+                                  onClick={() => setKoompiColor("pink")}
+                                ></div>
+                              </center>
+                            </Col>
+                          </Row>
+                          <br />
                           <Row gutter={16}>
                             <Col span={12}>
                               <div>

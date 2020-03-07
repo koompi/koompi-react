@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/react-hooks"
 import parse from "html-react-parser"
 import NProgress from "nprogress"
 import { Link } from "react-router-dom"
-import { Button, Icon, Result, Spin } from "antd"
+import { Button, Icon, Result, Spin, Carousel } from "antd"
 import { GET_PAGES } from "./graphql/query"
 import Footer from "./footer"
 import _ from "lodash"
@@ -192,7 +192,20 @@ function Index() {
                   </div>
                 </div>
                 <div className="subBanner-koompiPro">
-                  <img src={`https://admin.koompi.com` + data.image} alt="koompi" />
+                  <Carousel autoplay>
+                    <div>
+                      <img
+                        src={`https://admin.koompi.com` + data.image}
+                        alt="koompi"
+                      />
+                    </div>
+                    <div>
+                      <img
+                        src={`https://admin.koompi.com` + data.image}
+                        alt="koompi"
+                      />
+                    </div>
+                  </Carousel>
                 </div>
               </center>
             </div>

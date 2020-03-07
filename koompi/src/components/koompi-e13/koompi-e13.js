@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react"
-import { Row, Col, Icon, Result, Button, Spin } from "antd"
+import { Row, Col, Icon, Result, Button, Spin, Carousel } from "antd"
 import { useQuery } from "@apollo/react-hooks"
 import { GET_PAGES } from "../graphql/query"
 import NProgress from "nprogress"
@@ -239,9 +239,26 @@ function KoompiE13(props) {
           </center>
         </div>
         <div className="container">
-          <center>
-            <img className="koompi-e13-image" src={imageLink + image} alt={title} />
-          </center>
+          <Carousel autoplay>
+            <div>
+              <center>
+                <img
+                  className="koompi-e13-image"
+                  src={imageLink + image}
+                  alt={title}
+                />
+              </center>
+            </div>
+            <div>
+              <center>
+                <img
+                  className="koompi-e13-image"
+                  src={imageLink + image}
+                  alt={title}
+                />
+              </center>
+            </div>
+          </Carousel>
         </div>
       </>
     )
