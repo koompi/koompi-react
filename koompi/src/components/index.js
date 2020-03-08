@@ -13,6 +13,14 @@ import renderHTML from "./editorJsToHtml"
 import { Helmet } from "react-helmet"
 import ReactPlayer from "react-player"
 
+const academy_images = [
+  "/img/academy/photo_2019-07-12_20-03-15.jpg",
+  "/img/academy/photo_2019-07-12_20-03-25.jpg",
+  "/img/academy/photo_2019-07-12_20-36-53.jpg",
+  "/img/academy/photo_2019-07-12_20-37-39.jpg",
+  "/img/academy/photo_2020-03-08_19-48-50.jpg"
+]
+
 function Index() {
   const [visible, setVisible] = useState(false)
 
@@ -193,18 +201,13 @@ function Index() {
                 </div>
                 <div className="subBanner-koompiPro">
                   <Carousel autoplay>
-                    <div>
-                      <img
-                        src={`https://admin.koompi.com` + data.image}
-                        alt="koompi"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src={`https://admin.koompi.com` + data.image}
-                        alt="koompi"
-                      />
-                    </div>
+                    {academy_images.map((data) => {
+                      return (
+                        <div>
+                          <img src={data} alt="koompi" />
+                        </div>
+                      )
+                    })}
                   </Carousel>
                 </div>
               </center>
