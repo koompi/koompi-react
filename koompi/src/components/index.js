@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Row, Col, Modal } from "antd"
-import Particles from "react-particles-js"
+// import Particles from "react-particles-js"
 import { useQuery } from "@apollo/react-hooks"
 import parse from "html-react-parser"
 import NProgress from "nprogress"
@@ -14,11 +14,11 @@ import { Helmet } from "react-helmet"
 import ReactPlayer from "react-player"
 
 const academy_images = [
-  "/img/academy/photo_2019-07-12_20-03-15.jpg",
-  "/img/academy/photo_2019-07-12_20-03-25.jpg",
-  "/img/academy/photo_2019-07-12_20-36-53.jpg",
-  "/img/academy/photo_2019-07-12_20-37-39.jpg",
-  "/img/academy/photo_2020-03-08_19-48-50.jpg"
+  "/img/academy/1-01.png",
+  "/img/academy/11-01.png",
+  "/img/academy/5-01.png",
+  "/img/academy/6-01.png",
+  "/img/academy/8-01.png"
 ]
 
 function Index() {
@@ -137,14 +137,14 @@ function Index() {
               <center>
                 <div className="container">
                   <h1 className="tittle-koompiPro-banner">{data.title}</h1>
-                  <div className="text-koompiePro-banner">
+                  <div className="text-koompi-section-banner index-section2">
                     {parse(description)}
                     <Button className="openSourceBtn">
                       <Link to="/koompi-os">Read More</Link>{" "}
                       <Icon type="arrow-right" />
                     </Button>
                   </div>
-                  <div className="subBanner-koompiPro">
+                  <div className="subBanner-koompiPro koompiOSImage">
                     <img
                       src={`https://admin.koompi.com` + data.image}
                       alt="koompi"
@@ -186,7 +186,9 @@ function Index() {
               <center>
                 <div className="koompi_content">
                   <h1 className="bossTittle-KoompiHome">{data.title}</h1>
-                  <div className="koompi-os-index-desc">{parse(description)}</div>
+                  <div className="text-koompi-section-banner">
+                    {parse(description)}
+                  </div>
                   <div>
                     <a
                       href="https://academy.koompi.com/"
@@ -201,9 +203,9 @@ function Index() {
                 </div>
                 <div className="subBanner-koompiPro">
                   <Carousel autoplay>
-                    {academy_images.map((data) => {
+                    {academy_images.map((data, index) => {
                       return (
-                        <div>
+                        <div key={index}>
                           <img src={data} alt="koompi" />
                         </div>
                       )

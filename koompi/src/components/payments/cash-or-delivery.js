@@ -28,7 +28,7 @@ function Cash(props) {
         createPayment({
           variables: {
             ...values,
-            phoneNumber: `${values.phoneNumber}`,
+            phone: `${values.phone}`,
             product: ["KOOMPI E13"],
             price: 369.0
           }
@@ -64,19 +64,35 @@ function Cash(props) {
       >
         <h2>Pay later / Cash on delivery</h2>
         <Form onSubmit={handleSubmit}>
+          {/* ===== Color */}
+          <Form.Item label="color" className="formDisplayNone">
+            {getFieldDecorator("color", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: props.color
+            })(<Input size="large" />)}
+          </Form.Item>
+
+          {/* ===== Color */}
+          <Form.Item label="payBy" className="formDisplayNone">
+            {getFieldDecorator("payBy", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: "Cash"
+            })(<Input size="large" />)}
+          </Form.Item>
+
           <Row gutter={12}>
-            <Col span={12}>
+            <Col xs={24} sm={24} md={24} lg={12} xl={12}>
               <Form.Item>
-                {getFieldDecorator("fname", {
+                {getFieldDecorator("firstname", {
                   rules: [
                     { required: true, message: "Please input your First Name!" }
                   ]
                 })(<Input size="large" placeholder="First Name" autoFocus={true} />)}
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} sm={24} md={24} lg={12} xl={12}>
               <Form.Item>
-                {getFieldDecorator("lname", {
+                {getFieldDecorator("lastname", {
                   rules: [
                     { required: true, message: "Please input your Last Name!" }
                   ]
@@ -97,7 +113,7 @@ function Cash(props) {
           </Form.Item>
 
           <Form.Item>
-            {getFieldDecorator("phoneNumber", {
+            {getFieldDecorator("phone", {
               rules: [
                 {
                   required: true,

@@ -35,9 +35,9 @@ function Footer() {
               <NavLink to="/legal/terms-and-conditions">
                 <p>Terms & Conditions</p>
               </NavLink>
-              <NavLink to="">
+              {/* <NavLink to="">
                 <p>License Agreement</p>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/legal/privacy">
                 <p>Privacy Policy</p>
               </NavLink>
@@ -62,9 +62,9 @@ function Footer() {
               >
                 <p>Become a contributor</p>
               </a>
-              <NavLink to="/shop/retailers">
+              {/* <NavLink to="/shop/retailers">
                 <p>Retailers</p>
-              </NavLink>
+              </NavLink> */}
             </Col>
 
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
@@ -72,9 +72,9 @@ function Footer() {
               <NavLink to="">
                 <p>Support</p>
               </NavLink>
-              <NavLink to="">
+              {/* <NavLink to="">
                 <p>Contact Us</p>
-              </NavLink>
+              </NavLink> */}
             </Col>
             <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
               <h4 className="footerMarginTop">Connect With Us</h4>

@@ -4,7 +4,6 @@ import NProgress from "nprogress"
 import { SEARCH_POST } from "./graphql/query"
 import { useQuery } from "@apollo/react-hooks"
 import moment from "moment"
-import countWord from "word-count"
 import { Link } from "react-router-dom"
 import slugify from "slugify"
 import Footer from "./footer"
@@ -43,7 +42,6 @@ function Search(props) {
         <br />
         <Row gutter={24}>
           {data.postSearch.map((data, index) => {
-            const title = data.title.replace(/^(.{70}[^\s]*).*/, "$1") + "\n"
             return (
               // {`https://admin.koompi.com` + data.thumnail}
               <Col

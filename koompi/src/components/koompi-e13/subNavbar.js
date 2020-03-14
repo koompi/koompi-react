@@ -36,12 +36,11 @@ function SubNavbar({ title, history }) {
                     image: [
                       {
                         color: "gray",
-                        image: "http://localhost:3000/img/koompi-e/koompi-gray.png"
+                        image: "/img/koompi-e/koompi-gray.png"
                       },
                       {
                         color: "pink",
-                        image:
-                          "http://localhost:3000/img/koompi-e/koompi-rose-gold.png"
+                        image: "/img/koompi-e/koompi-rose-gold.png"
                       }
                     ]
                   })

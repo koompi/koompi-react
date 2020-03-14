@@ -52,16 +52,16 @@ function KOOMPIOS() {
             <meta name="description" content={meta_desc} />
           </Helmet>
           <Row gutter={24}>
-            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-              <h3 className="koompi-os-banner-title">{title}</h3>
-              {parse(description)}
-            </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12} className="bigScreen">
               <img
                 src={`https://admin.koompi.com${image}`}
                 alt={title}
                 className="koompi-os-banner-image"
               />
+            </Col>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+              <h3 className="koompi-os-banner-title">{title}</h3>
+              {parse(description)}
             </Col>
           </Row>
         </React.Fragment>
@@ -84,7 +84,7 @@ function KOOMPIOS() {
       )
     }
     return data.softwares.map((software, index) => {
-      const { title, logo, image } = software
+      const { title, image } = software
       const description = renderHTML(software.description)
       if (index % 2 === 0) {
         return (

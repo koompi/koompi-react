@@ -1,0 +1,193 @@
+import React, { useState, useEffect } from "react"
+import { Row, Col, Button, Modal, Input, Form } from "antd"
+import Axios from "axios"
+import { useMutation } from "@apollo/react-hooks"
+import { CREATE_PAYMENT } from "../graphql/mutation"
+
+function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
+  const { getFieldDecorator } = form
+  const [createPayment] = useMutation(CREATE_PAYMENT)
+  const [loading, setLoading] = useState(false)
+
+  //   ===== State Management =====
+  const [abaData, setAbaData] = useState({
+    transactionId: Date.now(),
+    amount: amount,
+    firstname: "",
+    lastname: "",
+    phone: "",
+    email: ""
+  })
+  const [hash, setHash] = useState("")
+
+  useEffect(() => {
+    const { transactionId, amount } = abaData
+    Axios.post("https://admin.koompi.com/payment/option/create", {
+      transactionId,
+      amount
+    })
+      .then((res) => {
+        setHash(res.data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }, [abaData])
+
+  const handleABA = async (e) => {
+    e.preventDefault()
+
+    await form.validateFieldsAndScroll(async (err, values) => {
+      const { firstname, lastname, phone, email } = values
+      if (!err) {
+        await setAbaData({ firstname, lastname, phone, email })
+        await window.AbaPayway.checkout()
+        await createPayment({
+          variables: {
+            ...values,
+            product: ["KOOMPI E13"],
+            price: abaData.amount
+          }
+        })
+          .then(async () => {
+            setLoading(true)
+            setTimeout(() => {
+              setLoading(false)
+            }, 3000)
+            form.resetFields()
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+    })
+  }
+  return (
+    <div>
+      {/* =====  ABA FORM ===== */}
+      <div className="container">
+        <div id="aba_main_modal" className="aba-modal">
+          <div className="aba-modal-content">
+            <form
+              method="POST"
+              target="aba_webservice"
+              action="https://payway-staging.ababank.com/api/pwkoompik/"
+              id="aba_merchant_request"
+            >
+              <input type="text" name="hash" defaultValue={hash} id="hash" />
+              <input
+                type="text"
+                name="tran_id"
+                defaultValue={abaData.transactionId}
+                id="tran_id"
+              />
+              <input
+                type="text"
+                name="amount"
+                defaultValue={abaData.amount}
+                id="amount"
+              />
+              <input type="text" name="firstname" defaultValue={abaData.firstname} />
+              <input type="text" name="lastname" defaultValue={abaData.lastname} />
+              <input type="text" name="phone" defaultValue={abaData.phone} />
+              <input type="text" name="email" defaultValue={abaData.email} />
+            </form>
+          </div>
+        </div>
+      </div>
+      {/* ===== End ABA FORM ===== */}
+      <Modal
+        title={null}
+        visible={visible}
+        onOk={handleOk}
+        onCancel={handleCancle}
+        className="abaPaywayModal paymentModal"
+        footer={false}
+      >
+        <Form target="aba_webservice" onSubmit={handleABA}>
+          <h2 className="titleAbaForm">Enter your personal information</h2>
+          {/* ===== Hash Data */}
+          <Form.Item label="Hash" className="formDisplayNone">
+            {getFieldDecorator("hash", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: hash
+            })(<Input size="large" />)}
+          </Form.Item>
+
+          {/* ===== Transition ID */}
+          <Form.Item label="tran_id" className="formDisplayNone">
+            {getFieldDecorator("tran_id", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: abaData.transactionId
+            })(<Input size="large" />)}
+          </Form.Item>
+
+          {/* ===== Amount */}
+          <Form.Item label="amount" className="formDisplayNone">
+            {getFieldDecorator("amount", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: abaData.amount
+            })(<Input size="large" />)}
+          </Form.Item>
+
+          {/* ===== Amount */}
+          <Form.Item label="payBy" className="formDisplayNone">
+            {getFieldDecorator("payBy", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: "ABA Payway"
+            })(<Input size="large" />)}
+          </Form.Item>
+
+          {/* ===== Amount */}
+          <Form.Item label="color" className="formDisplayNone">
+            {getFieldDecorator("color", {
+              rules: [{ required: true, message: "File is required" }],
+              initialValue: color
+            })(<Input size="large" />)}
+          </Form.Item>
+
+          <Row gutter={12}>
+            {/* ===== First Name */}
+            <Col span={12}>
+              <Form.Item label="First Name">
+                {getFieldDecorator("firstname", {
+                  rules: [{ required: true, message: "File is required" }]
+                })(<Input size="large" autoFocus={true} autoComplete="off" />)}
+              </Form.Item>
+            </Col>
+            {/* ===== Last Name */}
+            <Col span={12}>
+              <Form.Item label="Last Name">
+                {getFieldDecorator("lastname", {
+                  rules: [{ required: true, message: "File is required" }]
+                })(<Input size="large" autoComplete="off" />)}
+              </Form.Item>
+            </Col>
+          </Row>
+
+          {/* ===== Email */}
+          <Form.Item label="Email">
+            {getFieldDecorator("email", {
+              rules: [{ required: true, message: "File is required" }]
+            })(<Input size="large" autoComplete="off" />)}
+          </Form.Item>
+
+          {/* ===== Phone Number */}
+          <Form.Item label="Phone Number">
+            {getFieldDecorator("phone", {
+              rules: [{ required: true, message: "File is required" }]
+            })(<Input size="large" autoComplete="off" />)}
+          </Form.Item>
+
+          <center>
+            <Button type="primary" htmlType="submit" className="paymentBtn">
+              {loading ? "Processing..." : "Next"}
+            </Button>
+          </center>
+        </Form>
+      </Modal>
+    </div>
+  )
+}
+
+export default Form.create()(AbaPayway)

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react"
 import { NavLink, Link } from "react-router-dom"
-import { Layout, Menu, Badge, Icon, Drawer } from "antd"
-import { IoMdMenu } from "react-icons/io"
+import { Layout, Menu, Badge, Drawer } from "antd"
+import { FiAlignLeft } from "react-icons/fi"
 import { CartContext } from "../CartContext"
 import { FiShoppingCart } from "react-icons/fi"
 import Cookies from "js-cookie"
@@ -67,7 +67,7 @@ function Navbar() {
     <React.Fragment>
       <Header className="header">
         <div className="container">
-          <IoMdMenu className="mobileMenu" onClick={handleChange} />
+          <FiAlignLeft className="mobileMenu" onClick={handleChange} />
           <Link to="/">
             <img className="logo" src="/img/koompi-sym-01.png" alt="koompi" />
           </Link>
@@ -109,11 +109,9 @@ function Navbar() {
                   </a>
                 </Menu.Item>
 
-                <Menu.Item>
-                  <NavLink exact activeStyle={{ color: "white" }} to="/shop/bag">
-                    <Badge>
-                      <Icon type="shopping-cart" className="shopping-cart-icon" />
-                    </Badge>
+                <Menu.Item key="/shop/bag">
+                  <NavLink exact activeClassName="koompi-active" to="/shop/bag">
+                    <span>KOOMPI SHOP</span>
                   </NavLink>
                 </Menu.Item>
               </Menu>

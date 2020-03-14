@@ -1,118 +1,33 @@
-import React, { useState, useContext, useEffect } from "react"
-import { Row, Col, Select, Button, Modal, Input, Form } from "antd"
-import { CartContext } from "../../CartContext"
-import Axios from "axios"
+import React, { useState, useEffect } from "react"
+import { Row, Col, Button, Modal, Form } from "antd"
 import Cash from "../payments/cash-or-delivery"
 import Footer from "../footer"
 import Cookies from "js-cookie"
-import { FiX } from "react-icons/fi"
 import Helmet from "react-helmet"
-
-// import Bongloy from "bongloyjs";
-
-const { Option } = Select
+import AbaPayway from "../payments/aba-payway"
 
 const { confirm } = Modal
 
-const transactionId = Date.now()
-const amount = "369"
-const firstName = "Loeurt"
-const lastName = "Chenda"
-const phone = "016884415"
-const email = "loeurt.chenda@ababank.com"
-const shipping = "2.00"
-
-function Cart(props) {
-  const ctx = useContext(CartContext)
-
-  const [visible, setVisible] = useState({
-    aba: false
-  })
-  const [hash, setHash] = useState("")
+function Cart() {
+  const [visible, setVisible] = useState(false)
   const [data, setData] = useState(null)
   const [koompiColor, setKoompiColor] = useState("gray")
-  const { getFieldDecorator } = props.form
+  const result = Cookies.getJSON("koompi")
 
-  const handleTest = async () => {
-    // await Axios.post("`http://localhost:8080/helloworld", {
-    //   amount: "369",
-    //   transactionId: `${transactionId}`
-    // })
-    window.AbaPayway.checkout()
+  const handleCancle = () => {
+    setVisible(false)
+  }
+
+  const handleOk = () => {
+    setVisible(false)
+  }
+  const handleVisible = () => {
+    setVisible(true)
   }
 
   useEffect(() => {
     setData(Cookies.getJSON("koompi"))
-    Axios.post("http://localhost:8080/payment/option/create", {
-      transactionId,
-      amount
-    })
-      .then((res) => {
-        setHash(res.data)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
   }, [])
-
-  const hideModal = () => {
-    setVisible(false)
-  }
-
-  // ===== Chage KOOMPI Color =====
-  // const handleToPink = setKoompiColor("pink")
-  // const handleToGray = setKoompiColor("gray")
-
-  const handleABA = (e) => {
-    e.preventDefault()
-
-    props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        // Axios.post("https://payway-staging.ababank.com/api/pwkoompik/", values)
-        //   .then(console.log("Start POST Request to ABA ..."))
-        //   .catch((e) => console.log(e))
-        // window.AbaPayway.checkout()
-        // console.log(values)
-        console.log("====================================")
-        // console.log(window.AbaPayway.checkout())
-        console.log("====================================")
-      }
-    })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    props.form.validateFieldsAndScroll((err) => {
-      if (!err) {
-        var cardObject = {
-          number: "6200000000000005",
-          exp_month: 12,
-          exp_year: 21,
-          cvc: 123
-        }
-
-        // console.log(values);
-        window.Bongloy.setPublishableKey(
-          "pk_test_Tbch5Re5EfwhmsZKWqCD0VxTGblcFgGkiWgvp-ivsbk"
-        )
-
-        window.Bongloy.createToken("card", cardObject, function(
-          statusCode,
-          response
-        ) {
-          if (statusCode === 201) {
-            console.log("response", response.id)
-
-            Axios.post("https://admin.koompi.com/charge", {
-              bongloyToken: response.id
-            }).then(console.log(response))
-          } else {
-            console.log("err")
-          }
-        })
-      }
-    })
-  }
 
   // =====  Show Delete Comfirm  =====
   const showDeleteConfirm = () => {
@@ -133,10 +48,9 @@ function Cart(props) {
   }
 
   const DisplayItem = () => {
-    const result = Cookies.getJSON("koompi")
     return (
       <Row gutter={[16, 16]}>
-        <Col span={17}>
+        <Col xs={24} sm={24} md={24} lg={17} xl={17}>
           {data.map((item, index) => {
             return (
               <div className="shopping-cart" key={index}>
@@ -144,7 +58,7 @@ function Cart(props) {
                   <Row gutter={16}>
                     <Col span={24}>
                       <Row gutter={16}>
-                        <Col span={12}>
+                        <Col xs={24} sm={24} md={24} lg={10} xl={10}>
                           <img
                             style={{ width: "100%" }}
                             src={
@@ -152,39 +66,38 @@ function Cart(props) {
                                 ? item.image[0].image
                                 : item.image[1].image
                             }
-                            alt=""
+                            alt="koompi color"
                           />
                         </Col>
-                        <Col span={12}>
-                          <h1>{item.name}</h1>
-                          {/* <p className="shopDesc">{item.desc}</p> */}
-                          <h4 className="KoompiPRICE">
-                            USD <b>${item.price}</b>
-                          </h4>
-                          Select your favarite color:
-                          <Row
-                            gutter={16}
-                            style={{ width: "100%", marginTop: "20px" }}
-                          >
-                            <Col span={3}>
-                              <div
-                                onClick={() => setKoompiColor("gray")}
-                                className="speceGrayCircle"
-                              ></div>
-                            </Col>
-                            <Col span={3}>
-                              <center>
-                                <div
-                                  className="roseCircle"
-                                  onClick={() => setKoompiColor("pink")}
-                                ></div>
-                              </center>
-                            </Col>
-                          </Row>
-                          <br />
-                          <Row gutter={16}>
-                            <Col span={12}>
-                              <div>
+                        <Col xs={24} sm={24} md={24} lg={14} xl={14}>
+                          <div className="shoppingCart_title">
+                            <h1>{item.name}</h1>
+                            {/* <p className="shopDesc">{item.desc}</p> */}
+                            <h4 className="KoompiPRICE">
+                              USD <b>${item.price}</b>
+                            </h4>
+                            <Row gutter={16}>
+                              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                                <h6 style={{ fontSize: "18px" }}>
+                                  Select your favorite color:{" "}
+                                </h6>
+                                <div className="switch-koompi-container-shopping-cart">
+                                  <Row gutter={16}>
+                                    <Col span={12}>
+                                      <div
+                                        className="speceGrayCircle"
+                                        onClick={() => setKoompiColor("gray")}
+                                      ></div>
+                                    </Col>
+                                    <Col span={12}>
+                                      <div
+                                        className="roseCircle"
+                                        onClick={() => setKoompiColor("rose-gold")}
+                                      ></div>
+                                    </Col>
+                                  </Row>
+                                </div>
+                                {/* <div>
                                 <span className="quantity">Quantity: </span>
                                 <Select
                                   value={item.quantity}
@@ -197,18 +110,19 @@ function Cart(props) {
                                   <Option value={4}>4</Option>
                                   <Option value={5}>5+</Option>
                                 </Select>
-                              </div>
-                            </Col>
-                            <Col span={12}>
-                              <Button
-                                onClick={showDeleteConfirm}
-                                type="danger"
-                                className="btnRemove"
-                              >
-                                Remove
-                              </Button>
-                            </Col>
-                          </Row>
+                              </div> */}
+                              </Col>
+                              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                                <Button
+                                  onClick={showDeleteConfirm}
+                                  type="danger"
+                                  className="btnRemove"
+                                >
+                                  Remove
+                                </Button>
+                              </Col>
+                            </Row>
+                          </div>
                         </Col>
                       </Row>
                     </Col>
@@ -218,7 +132,7 @@ function Cart(props) {
             )
           })}
         </Col>
-        <Col span={7}>
+        <Col xs={24} sm={24} md={24} lg={7} xl={7}>
           <div className="order_summary">
             <h3 className="order_summary_title">Order Summary</h3>
             <div className="subTotal">
@@ -253,24 +167,24 @@ function Cart(props) {
             </div>
             <Row gutter={16}>
               <Col span={24}>
-                <Cash />
+                <Cash color={koompiColor} />
               </Col>
               <Col span={24}>
-                <div className="payment_cart" onClick={handleTest}>
+                <div className="payment_cart" onClick={handleVisible}>
                   <img
                     src="/img/master-card.png"
                     height="25px"
                     width="25px"
-                    alt=""
-                  />{" "}
+                    alt="master card"
+                  />
                   Master/Visa Card
                 </div>
               </Col>
-              <Col span={24}>
+              {/* <Col span={24}>
                 <div className="payment_cart">
                   <img src="/img/wing.png" height="25px" width="25px" alt="" /> Wing
                 </div>
-              </Col>
+              </Col> */}
             </Row>
           </div>
         </Col>
@@ -309,87 +223,17 @@ function Cart(props) {
       <br />
       <div className="container">
         <DisplayProduct />
+        <AbaPayway
+          visible={visible}
+          handleOk={handleOk}
+          handleCancle={handleCancle}
+          amount={result === undefined ? 0 : result[0].quantity * result[0].price}
+          color={koompiColor}
+        />
       </div>
       <br />
       <Footer />
 
-      {/* === Payment === */}
-
-      <div className="container">
-        {/* <Form target="aba_webservice" onSubmit={handleABA}>
-          <Form.Item label="Hash">
-            {getFieldDecorator("hash", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue:
-                "Oq+rorJQbHQuhsZ6qBaXBign300hAU1XumuLMYk96Sds8iIYA7z+h1CTyYANf63sqQTM3dSmkP84mnttszmfPA=="
-            })(<Input size="large" />)}
-          </Form.Item>
-          <Form.Item label="tran_id">
-            {getFieldDecorator("tran_id", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: transactionId
-            })(<Input size="large" placeholder="KOOMPI" />)}
-          </Form.Item>
-          <Form.Item label="amount">
-            {getFieldDecorator("amount", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: amount
-            })(<Input size="large" placeholder="KOOMPI" />)}
-          </Form.Item>
-          <Form.Item label="firstname">
-            {getFieldDecorator("firstName", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: firstName
-            })(<Input size="large" placeholder="KOOMPI" />)}
-          </Form.Item>
-          <Form.Item label="lastname">
-            {getFieldDecorator("lastName", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: lastName
-            })(<Input size="large" placeholder="KOOMPI" />)}
-          </Form.Item>
-          <Form.Item label="phone">
-            {getFieldDecorator("phone", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: phone
-            })(<Input size="large" placeholder="KOOMPI" />)}
-          </Form.Item>
-          <Form.Item label="email">
-            {getFieldDecorator("email", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: email
-            })(<Input size="large" placeholder="KOOMPI" />)}
-          </Form.Item>
-
-          <center>
-            <Button type="primary" htmlType="submit" className="paymentBtn">
-              Submit
-            </Button>
-          </center>
-        </Form>
-        <br />
-        <br /> */}
-      </div>
-      <div className="container">
-        <div id="aba_main_modal" class="aba-modal">
-          <div class="aba-modal-content">
-            <form
-              method="POST"
-              target="aba_webservice"
-              action="https://payway-staging.ababank.com/api/pwkoompik/"
-              id="aba_merchant_request"
-            >
-              <input type="text" name="hash" value={hash} id="hash" />
-              <input type="text" name="tran_id" value={transactionId} id="tran_id" />
-              <input type="text" name="amount" value={amount} id="amount" />
-              <input type="text" name="firstname" value={firstName} />
-              <input type="text" name="lastname" value={lastName} />
-              <input type="text" name="phone" value={phone} />
-              <input type="text" name="email" value={email} />
-            </form>
-          </div>
-        </div>
-      </div>
       {/* === End Payment */}
     </div>
   )

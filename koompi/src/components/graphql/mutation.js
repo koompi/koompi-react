@@ -2,20 +2,24 @@ import gql from "graphql-tag"
 
 const CREATE_PAYMENT = gql`
   mutation(
-    $fname: String!
-    $lname: String!
+    $firstname: String!
+    $lastname: String!
     $email: String!
-    $phoneNumber: String!
-    $message: String!
+    $phone: String!
+    $message: String
+    $color: String!
+    $payBy: String!
     $product: [String]!
     $price: Float!
   ) {
     create_payment(
-      fname: $fname
-      lname: $lname
+      firstname: $firstname
+      lastname: $lastname
       email: $email
-      phoneNumber: $phoneNumber
+      phone: $phone
       message: $message
+      color: $color
+      payBy: $payBy
       product: $product
       price: $price
     ) {
