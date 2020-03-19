@@ -1,0 +1,7 @@
+telethon
+python-dotenv
+fastapi
+uvicorn
+jinja2
+python-multipart
+pandas

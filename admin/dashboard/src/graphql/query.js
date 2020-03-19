@@ -256,10 +256,12 @@ const GET_PAYMENTS = gql`
   query {
     payments {
       id
-      fname
-      lname
+      firstname
+      lastname
       email
-      phoneNumber
+      phone
+      color
+      payBy
       message
       product
       cancle

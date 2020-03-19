@@ -1,0 +1,18 @@
+{
+    "python.pythonPath": "/home/msi/.local/share/virtualenvs/mail-marketings-4IO7Cq3W/bin/python",
+    "cSpell.words": [
+        "Kdxx",
+        "Koompi",
+        "Nquizb",
+        "smtplib"
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.testing.pytestArgs": [
+        "MailMarketing"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.linting.flake8Enabled": true
+}

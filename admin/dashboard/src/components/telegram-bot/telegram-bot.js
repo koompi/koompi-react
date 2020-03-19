@@ -25,7 +25,7 @@ function TelegramBot(props) {
     e.preventDefault()
 
     axios
-      .post(`http://127.0.0.1:8000/sendrequest?phone=${phone}`)
+      .post(`http://127.0.0.1:8001/sendrequest?phone=${phone}`)
       .then(async () => {
         message.success("Hello World")
       })

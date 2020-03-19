@@ -20,11 +20,11 @@ function Payment() {
   const columns = [
     {
       title: "First Name",
-      dataIndex: "fname"
+      dataIndex: "firstname"
     },
     {
       title: "Last Name",
-      dataIndex: "lname"
+      dataIndex: "lastname"
     },
     {
       title: "Email",
@@ -32,11 +32,19 @@ function Payment() {
     },
     {
       title: "Phone Number",
-      dataIndex: "phoneNumber"
+      dataIndex: "phone"
     },
     {
       title: "Product",
       dataIndex: "product"
+    },
+    {
+      title: "Pay By",
+      dataIndex: "payBy"
+    },
+    {
+      title: "Color",
+      dataIndex: "color"
     },
     {
       title: "Price",
@@ -56,7 +64,7 @@ function Payment() {
     }
   ]
 
-  const DisplayPost = () => {
+  const DisplayPayment = () => {
     const { error, loading, data } = useQuery(GET_PAYMENTS)
     if (error) console.log(error)
     if (loading) return <Table loading={true}></Table>
@@ -70,21 +78,25 @@ function Payment() {
             dataSource={data.payments.map((payment) => {
               const {
                 id,
-                fname,
-                lname,
+                firstname,
+                lastname,
                 email,
                 created_at,
-                phoneNumber,
+                phone,
                 price,
                 product,
-                cancle
+                cancle,
+                payBy,
+                color
               } = payment
               return {
                 key: id,
-                fname,
-                lname,
+                firstname,
+                lastname,
                 email,
-                phoneNumber,
+                phone,
+                payBy,
+                color,
                 product: product.map((data) => {
                   return <Tag color="blue">{data}</Tag>
                 }),
@@ -148,7 +160,7 @@ function Payment() {
 
             <div className="background_container">
               <h1 className="title_new_post">Payments</h1>
-              <DisplayPost />
+              <DisplayPayment />
             </div>
           </div>
         </Content>

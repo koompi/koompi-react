@@ -39,7 +39,7 @@ function HandleMessage(props) {
 
   return (
     <div style={{ marginBottom: "24px" }}>
-      <h4>Verify Code telegram</h4>
+      <h4>Send a telegram</h4>
       <Form className="login-form" onSubmit={handleMessage}>
         <Row gutter={12}>
           <Col span={12}>
@@ -93,7 +93,7 @@ function HandleMessage(props) {
                     message: "The message is required"
                   }
                 ]
-              })(<TextArea></TextArea>)}
+              })(<TextArea rows={5}></TextArea>)}
             </FormItem>
           </Col>
 

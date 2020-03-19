@@ -21,11 +21,13 @@ const RootMutation = new GraphQLObjectType({
     create_payment: {
       type: paymentType,
       args: {
-        fname: { type: new GraphQLNonNull(GraphQLString) },
-        lname: { type: new GraphQLNonNull(GraphQLString) },
+        firstname: { type: new GraphQLNonNull(GraphQLString) },
+        lastname: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
-        phoneNumber: { type: new GraphQLNonNull(GraphQLString) },
-        message: { type: new GraphQLNonNull(GraphQLString) },
+        phone: { type: new GraphQLNonNull(GraphQLString) },
+        color: { type: new GraphQLNonNull(GraphQLString) },
+        payBy: { type: new GraphQLNonNull(GraphQLString) },
+        message: { type: GraphQLString },
         product: { type: new GraphQLList(GraphQLString) },
         price: { type: new GraphQLNonNull(GraphQLFloat) }
       },

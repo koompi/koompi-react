@@ -434,3 +434,17 @@
 .ant-layout {
   background: #f0f2f5a1;
 }
+.ant-form-item-children .ant-input {
+  background-color: #f1f4f6 !important;
+  border: 1px solid transparent !important;
+}
+.ant-form-item-children .ant-input:focus {
+  background-color: #f1f4f6 !important;
+  border: 1px solid #339afb !important;
+}
+.background_container h4 {
+  font-size: 18px !important;
+}
+.ant-form-item label {
+  font-size: 18px !important;
+}

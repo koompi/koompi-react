@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: false }));
 // parse application/json
 // app.use(express.json({ limit: "50mb" }));
 app.use(express.json());
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
+app.use(express.urlencoded());
 
 app.use(
   cookieSession({
@@ -69,6 +69,8 @@ app.use(cookieParser());
 
 // ===== Authentication =====
 const isAuth = (req, res, next) => {
+  console.log("Token", req.headers["authorization"]);
+
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
   if (!token) return res.status(401).send("Access Denied");
@@ -83,7 +85,7 @@ const isAuth = (req, res, next) => {
 
 app.use(
   "/admin",
-  // isAuth,
+  isAuth,
   graphqlHTTP({
     schema,
     graphiql: true,
@@ -95,6 +97,10 @@ app.use(
     })
   })
 );
+
+app.get("/hello", (req, res) => {
+  res.send("Hello");
+});
 
 app.use(
   "/api",
@@ -201,6 +207,7 @@ app.post("/upload/image", (req, res) => {
 });
 
 // ===== Database Connection =====
+const port = 8080;
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,
@@ -209,10 +216,11 @@ mongoose
       authdb: "admin"
     }
   })
-  .then(() => console.log("Databse is connected..."))
+  .then(() => {
+    console.info("##########################################################");
+    console.info("#####               STARTING SERVER                  #####");
+    console.info("##########################################################");
+    console.info(`DataBase connected successfully...`);
+    console.info(`App running on ${port} ...`);
+  })
   .catch(err => console.log(err));
-
-const port = 8080;
-app.listen(port, () => {
-  console.log(`App is listening on port ${port}`);
-});

@@ -36,7 +36,8 @@ function HandleVerify(props) {
 
   return (
     <Form className="login-form" onSubmit={handleVerify}>
-      <Row gutter={24}>
+      <h4>Verify Code telegram</h4>
+      <Row gutter={12}>
         <Col span={18}>
           <FormItem>
             {getFieldDecorator("phone", {

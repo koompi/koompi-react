@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const PaymentSchema = mongoose.Schema({
-  fname: {
+  firstname: {
     type: String,
     required: true
   },
-  lname: {
+  lastname: {
     type: String,
     required: true
   },
@@ -13,7 +13,7 @@ const PaymentSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  phoneNumber: {
+  phone: {
     type: Number,
     required: true
   },
@@ -22,6 +22,14 @@ const PaymentSchema = mongoose.Schema({
   },
   product: {
     type: [String],
+    required: true
+  },
+  color: {
+    type: String,
+    required: true
+  },
+  payBy: {
+    type: String,
     required: true
   },
   cancel: {
