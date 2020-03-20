@@ -423,7 +423,7 @@ p {
 }
 .order_summary {
   padding: 25px;
-  background-color: #ffffff;
+  background-color: #d3d9de;
   margin: 15px 0px;
   border-radius: 8px !important;
 }
@@ -431,7 +431,7 @@ p {
   font-weight: bolder;
 }
 .container {
-  width: 55%;
+  width: 60%;
   margin: 0px auto !important;
 }
 .upperSpec-width-767px h1 {
@@ -1045,7 +1045,7 @@ button[type="submit"]:hover,
 }
 .payment_cart {
   padding: 15px;
-  background-color: #eaeef2;
+  background-color: #ffffff;
   border-radius: 8px;
   margin: 5px 0px;
   width: 100% !important;
@@ -1980,6 +1980,26 @@ code {
 }
 .text-koompi-section-banner.index-section2 {
   color: #ffffff;
+}
+.weaccept {
+  background-color: #ffffff;
+  padding: 15px 0px;
+}
+.weaccept h4 {
+  font-size: 20px !important;
+  font-weight: 600;
+}
+.CreditDebitCard {
+  font-size: 16px !important;
+  font-weight: 700;
+}
+.PayCashDelivery {
+  font-size: 16px !important;
+  font-weight: 600;
+}
+.mastercard {
+  position: relative;
+  top: 8px;
 }
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =

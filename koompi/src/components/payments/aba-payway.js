@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react"
-import { Row, Col, Button, Modal, Input, Form } from "antd"
+import { Row, Col, Button, Modal, Input, Form, InputNumber } from "antd"
 import Axios from "axios"
 import { useMutation } from "@apollo/react-hooks"
 import { CREATE_PAYMENT } from "../graphql/mutation"
 
-function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
+function AbaPayway({
+  visible,
+  form,
+  handleOk,
+  handleCancle,
+  amount,
+  color,
+  paymentOption
+}) {
   const { getFieldDecorator } = form
   const [createPayment] = useMutation(CREATE_PAYMENT)
   const [loading, setLoading] = useState(false)
@@ -34,14 +42,14 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
       })
   }, [abaData])
 
-  const handleABA = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-
     await form.validateFieldsAndScroll(async (err, values) => {
       const { firstname, lastname, phone, email } = values
       if (!err) {
         await setAbaData({ firstname, lastname, phone, email })
         await window.AbaPayway.checkout()
+
         await createPayment({
           variables: {
             ...values,
@@ -62,6 +70,7 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
       }
     })
   }
+
   return (
     <div>
       {/* =====  ABA FORM ===== */}
@@ -91,6 +100,11 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
               <input type="text" name="lastname" defaultValue={abaData.lastname} />
               <input type="text" name="phone" defaultValue={abaData.phone} />
               <input type="text" name="email" defaultValue={abaData.email} />
+              <input
+                type="hidden"
+                name="payment_option"
+                defaultValue={paymentOption}
+              />
             </form>
           </div>
         </div>
@@ -104,12 +118,12 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
         className="abaPaywayModal paymentModal"
         footer={false}
       >
-        <Form target="aba_webservice" onSubmit={handleABA}>
+        <Form onSubmit={handleSubmit}>
           <h2 className="titleAbaForm">Enter your personal information</h2>
           {/* ===== Hash Data */}
           <Form.Item label="Hash" className="formDisplayNone">
             {getFieldDecorator("hash", {
-              rules: [{ required: true, message: "File is required" }],
+              rules: [{ required: true, message: "This field is required!" }],
               initialValue: hash
             })(<Input size="large" />)}
           </Form.Item>
@@ -117,7 +131,7 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
           {/* ===== Transition ID */}
           <Form.Item label="tran_id" className="formDisplayNone">
             {getFieldDecorator("tran_id", {
-              rules: [{ required: true, message: "File is required" }],
+              rules: [{ required: true, message: "This field is required!" }],
               initialValue: abaData.transactionId
             })(<Input size="large" />)}
           </Form.Item>
@@ -125,7 +139,7 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
           {/* ===== Amount */}
           <Form.Item label="amount" className="formDisplayNone">
             {getFieldDecorator("amount", {
-              rules: [{ required: true, message: "File is required" }],
+              rules: [{ required: true, message: "This field is required!" }],
               initialValue: abaData.amount
             })(<Input size="large" />)}
           </Form.Item>
@@ -133,15 +147,15 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
           {/* ===== Amount */}
           <Form.Item label="payBy" className="formDisplayNone">
             {getFieldDecorator("payBy", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: "ABA Payway"
+              rules: [{ required: true, message: "This field is required!" }],
+              initialValue: paymentOption === "abapay" ? "ABA Pay" : "Credit Card"
             })(<Input size="large" />)}
           </Form.Item>
 
           {/* ===== Amount */}
           <Form.Item label="color" className="formDisplayNone">
             {getFieldDecorator("color", {
-              rules: [{ required: true, message: "File is required" }],
+              rules: [{ required: true, message: "This field is required!" }],
               initialValue: color
             })(<Input size="large" />)}
           </Form.Item>
@@ -151,7 +165,7 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
             <Col span={12}>
               <Form.Item label="First Name">
                 {getFieldDecorator("firstname", {
-                  rules: [{ required: true, message: "File is required" }]
+                  rules: [{ required: true, message: "This field is required!" }]
                 })(<Input size="large" autoFocus={true} autoComplete="off" />)}
               </Form.Item>
             </Col>
@@ -159,7 +173,7 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
             <Col span={12}>
               <Form.Item label="Last Name">
                 {getFieldDecorator("lastname", {
-                  rules: [{ required: true, message: "File is required" }]
+                  rules: [{ required: true, message: "This field is required!" }]
                 })(<Input size="large" autoComplete="off" />)}
               </Form.Item>
             </Col>
@@ -168,15 +182,29 @@ function AbaPayway({ visible, form, handleOk, handleCancle, amount, color }) {
           {/* ===== Email */}
           <Form.Item label="Email">
             {getFieldDecorator("email", {
-              rules: [{ required: true, message: "File is required" }]
+              rules: [
+                {
+                  type: "email",
+                  message: "The input is not valid email!"
+                },
+                {
+                  required: true,
+                  message: "Please input your email!"
+                }
+              ]
             })(<Input size="large" autoComplete="off" />)}
           </Form.Item>
 
           {/* ===== Phone Number */}
           <Form.Item label="Phone Number">
             {getFieldDecorator("phone", {
-              rules: [{ required: true, message: "File is required" }]
-            })(<Input size="large" autoComplete="off" />)}
+              rules: [
+                {
+                  required: true,
+                  message: "Please input your phone number!"
+                }
+              ]
+            })(<InputNumber size="large" autoComplete="off" />)}
           </Form.Item>
 
           <center>

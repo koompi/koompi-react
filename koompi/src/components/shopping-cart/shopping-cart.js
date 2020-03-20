@@ -10,6 +10,7 @@ const { confirm } = Modal
 
 function Cart() {
   const [visible, setVisible] = useState(false)
+  const [creditCardVisible, setHandleCreditCardVisible] = useState(false)
   const [data, setData] = useState(null)
   const [koompiColor, setKoompiColor] = useState("gray")
   const result = Cookies.getJSON("koompi")
@@ -21,8 +22,21 @@ function Cart() {
   const handleOk = () => {
     setVisible(false)
   }
+
   const handleVisible = () => {
     setVisible(true)
+  }
+
+  const handleCardCancle = () => {
+    setHandleCreditCardVisible(false)
+  }
+
+  const handleCardOk = () => {
+    setHandleCreditCardVisible(false)
+  }
+
+  const handleCreditCardVisible = () => {
+    setHandleCreditCardVisible(true)
   }
 
   useEffect(() => {
@@ -50,7 +64,7 @@ function Cart() {
   const DisplayItem = () => {
     return (
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={24} lg={17} xl={17}>
+        <Col xs={24} sm={24} md={24} lg={16} xl={16}>
           {data.map((item, index) => {
             return (
               <div className="shopping-cart" key={index}>
@@ -132,7 +146,7 @@ function Cart() {
             )
           })}
         </Col>
-        <Col xs={24} sm={24} md={24} lg={7} xl={7}>
+        <Col xs={24} sm={24} md={24} lg={8} xl={8}>
           <div className="order_summary">
             <h3 className="order_summary_title">Order Summary</h3>
             <div className="subTotal">
@@ -167,19 +181,49 @@ function Cart() {
             </div>
             <Row gutter={16}>
               <Col span={24}>
-                <Cash color={koompiColor} />
+                <div className="payment_cart" onClick={handleCreditCardVisible}>
+                  <Row gutter={12}>
+                    <Col span={6}>
+                      <img
+                        src="/img/payments/creditcard.png"
+                        height="35px"
+                        alt="master card"
+                        className="mastercard"
+                      />
+                    </Col>
+                    <Col span={18}>
+                      <div className="CreditDebitCard">Credit/Debit Card</div>
+                      <img
+                        src="/img/payments/A-3Card_2x.png"
+                        height="15px"
+                        alt="Credit/Debit Card"
+                      />
+                    </Col>
+                  </Row>
+                </div>
               </Col>
               <Col span={24}>
                 <div className="payment_cart" onClick={handleVisible}>
-                  <img
-                    src="/img/master-card.png"
-                    height="25px"
-                    width="25px"
-                    alt="master card"
-                  />
-                  Master/Visa Card
+                  <Row gutter={12}>
+                    <Col span={6}>
+                      <img
+                        src="/img/payments/aba-pay.svg"
+                        height="35px"
+                        alt="master card"
+                        className="mastercard"
+                      />
+                    </Col>
+                    <Col span={18}>
+                      <div className="CreditDebitCard">ABA PAY</div>
+                      <div>Scan to pay with ABA mobile</div>
+                    </Col>
+                  </Row>
                 </div>
               </Col>
+              <Col span={24}>
+                <Cash color={koompiColor} />
+              </Col>
+
               {/* <Col span={24}>
                 <div className="payment_cart">
                   <img src="/img/wing.png" height="25px" width="25px" alt="" /> Wing
@@ -224,11 +268,12 @@ function Cart() {
       <div className="container">
         <DisplayProduct />
         <AbaPayway
-          visible={visible}
-          handleOk={handleOk}
-          handleCancle={handleCancle}
+          visible={visible ? visible : creditCardVisible}
+          handleOk={visible ? handleOk : handleCardOk}
+          handleCancle={visible ? handleCancle : handleCardCancle}
           amount={result === undefined ? 0 : result[0].quantity * result[0].price}
           color={koompiColor}
+          paymentOption={visible ? "abapay" : "cards"}
         />
       </div>
       <br />

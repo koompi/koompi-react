@@ -80,10 +80,11 @@ function Footer() {
               <h4 className="footerMarginTop">Connect With Us</h4>
               <div className="footer_socail_media">
                 <DisplaySocailMedia />
-                <br />
-                <br />
-                <p>© 2020 KOOMPI All Rights Reserved </p>
               </div>
+              <br />
+
+              <br />
+              <p>© 2020 KOOMPI All Rights Reserved </p>
             </Col>
           </Row>
         </div>
@@ -115,6 +116,12 @@ function Footer() {
           </Row>
         </div>
       </div>
+      <center>
+        <div className="weaccept">
+          <h4>We accept:</h4>
+          <img src="/img/payments/weaccept.png" height="35px" alt="we accept" />
+        </div>
+      </center>
     </div>
   )
 }

@@ -51,8 +51,16 @@ function Cash(props) {
   return (
     <React.Fragment>
       <div className="payment_cart" onClick={showModal}>
-        <img src="/img/riel.png" height="25px" width="25px" alt="" /> Pay later /
-        Cash on delivery
+        <Row gutter={12}>
+          <Col span={6}>
+            <center>
+              <img src="/img/riel.png" height="25px" width="25px" alt="" />
+            </center>
+          </Col>
+          <Col span={18}>
+            <div className="PayCashDelivery">Pay/Cash on delivery</div>
+          </Col>
+        </Row>
       </div>
 
       <Modal
