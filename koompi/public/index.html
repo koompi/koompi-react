@@ -8,10 +8,6 @@
       content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
     />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KOOMPIOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
-    />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href="https://koompi.com/" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -25,19 +21,88 @@
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
+    <!-- The social media meta tags -->
+
+    <!-- Primary Meta Tags -->
+    <title>KOOMPI</title>
+    <meta name="title" content="KOOMPI" />
+    <meta
+      name="description"
+      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KOOMPIOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+    />
+    <meta
+      name="keywords"
+      content="koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://koompi.com/" />
+    <meta property="og:title" content="KOOMPI" />
+    <meta
+      property="og:description"
+      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KOOMPIOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+    />
+    <meta
+      property="og:image"
+      content="https://koompi.com/img/koompi-meta-tags.png"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://koompi.com/" />
+    <meta property="twitter:title" content="KOOMPI" />
+    <meta
+      property="twitter:description"
+      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KOOMPIOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+    />
+    <meta
+      property="twitter:image"
+      content="https://koompi.com/img/koompi-meta-tags.png"
+    />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://js.bongloy.com/v3"></script>
-    
-    <!-- These javaScript files are using for only production  -->
-    <link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
-    <script src="https://payway.ababank.com/checkout-popup.html?file=js"></script>
 
-    <title>KOOMPI</title>
+    <!-- These javaScript files are using for only production  -->
+    <link
+      rel="stylesheet"
+      href="https://payway.ababank.com/checkout-popup.html?file=css"
+    />
+    <script src="https://payway.ababank.com/checkout-popup.html?file=js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-   
+    <!-- Facebook -->
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml: true,
+          version: "v5.0"
+        })
+      }
+      ;(function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0]
+        if (d.getElementById(id)) return
+        js = d.createElement(s)
+        js.id = id
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"
+        fjs.parentNode.insertBefore(js, fjs)
+      })(document, "script", "facebook-jssdk")
+    </script>
+
+    <!-- Your customer chat code -->
+    <div
+      class="fb-customerchat"
+      attribution="setup_tool"
+      page_id="207093766731226"
+      logged_in_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
+      logged_out_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
+    ></div>
   </body>
 </html>

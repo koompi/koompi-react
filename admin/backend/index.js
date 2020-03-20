@@ -71,8 +71,7 @@ app.use(cookieParser());
 const isAuth = (req, res, next) => {
   console.log("Token", req.headers["authorization"]);
 
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
+  const token = req.headers["authorization"];
   if (!token) return res.status(401).send("Access Denied");
   try {
     const verified = jwt.verify(token, ACCESS_TOKEN_SECRET);
@@ -97,10 +96,6 @@ app.use(
     })
   })
 );
-
-app.get("/hello", (req, res) => {
-  res.send("Hello");
-});
 
 app.use(
   "/api",
@@ -207,20 +202,24 @@ app.post("/upload/image", (req, res) => {
 });
 
 // ===== Database Connection =====
-const port = 8080;
-mongoose
-  .connect(MongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    auth: {
-      authdb: "admin"
-    }
-  })
-  .then(() => {
-    console.info("##########################################################");
-    console.info("#####               STARTING SERVER                  #####");
-    console.info("##########################################################");
-    console.info(`DataBase connected successfully...`);
-    console.info(`App running on ${port} ...`);
-  })
-  .catch(err => console.log(err));
+const PORT = 8080;
+
+try {
+  mongoose.set("useCreateIndex", true);
+  mongoose.set("useNewUrlParser", true);
+  mongoose.set("useFindAndModify", false);
+  mongoose
+    .connect(MongoURI, err => {
+      if (err) {
+        console.error(err);
+      }
+      console.log("Connected to Database...");
+    })
+    .then(() => {
+      app.listen(PORT, () =>
+        console.log(`Server started with port ${PORT}...`)
+      );
+    });
+} catch (e) {
+  console.error(e);
+}

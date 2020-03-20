@@ -54,7 +54,8 @@ function AbaPayway({
           variables: {
             ...values,
             product: ["KOOMPI E13"],
-            price: abaData.amount
+            price: abaData.amount,
+            phone: values.phone.toString()
           }
         })
           .then(async () => {
@@ -80,7 +81,7 @@ function AbaPayway({
             <form
               method="POST"
               target="aba_webservice"
-              action="https://payway-staging.ababank.com/api/pwkoompik/"
+              action="https://payway.ababank.com/api/pwkoompik/"
               id="aba_merchant_request"
             >
               <input type="text" name="hash" defaultValue={hash} id="hash" />

@@ -118,7 +118,7 @@ function Footer() {
       </div>
       <center>
         <div className="weaccept">
-          <h4>We accept:</h4>
+          <h4>We accept</h4>
           <img src="/img/payments/weaccept.png" height="35px" alt="we accept" />
         </div>
       </center>
