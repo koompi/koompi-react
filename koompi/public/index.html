@@ -3,23 +3,36 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/img/favicon.svg" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="theme-color" content="#000000" />
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="canonical" href="https://koompi.com/" />
+    <link rel="canonical" href="https://koompi.com" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link
       href="https://fonts.googleapis.com/css?family=Saira+Condensed&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://video-react.github.io/assets/video-react.css"
-    />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Meta Tags -->
+    <meta name="google-site-verification" content="-9vNAwltGBQ3KaRp3i_2jjBz8pYB43R9vj2J-3Hbd8w" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135640949-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-135640949-2');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KGBRB47');</script>
+      <!-- End Google Tag Manager -->
+
 
     <!-- The social media meta tags -->
 
@@ -46,7 +59,6 @@
       property="og:image"
       content="https://koompi.com/img/koompi-meta-tags.png"
     />
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://koompi.com/" />
@@ -59,7 +71,6 @@
       property="twitter:image"
       content="https://koompi.com/img/koompi-meta-tags.png"
     />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://js.bongloy.com/v3"></script>
 
@@ -74,35 +85,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-    <!-- Facebook -->
-
-    <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml: true,
-          version: "v5.0"
-        })
-      }
-      ;(function(d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0]
-        if (d.getElementById(id)) return
-        js = d.createElement(s)
-        js.id = id
-        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"
-        fjs.parentNode.insertBefore(js, fjs)
-      })(document, "script", "facebook-jssdk")
-    </script>
-
-    <!-- Your customer chat code -->
-    <div
-      class="fb-customerchat"
-      attribution="setup_tool"
-      page_id="207093766731226"
-      logged_in_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
-      logged_out_greeting="សួស្តី តើអ្នកចង់ដឹងអ្វីបន្ថែមពី​ KOOMPI ដែរឬទេ?"
-    ></div>
+    
+    
   </body>
 </html>

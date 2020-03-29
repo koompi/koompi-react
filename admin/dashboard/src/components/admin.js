@@ -1,53 +1,61 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Row, Col, Layout } from "antd"
 
 import LeftNavbar from "./navbar/left-navbar"
 import TopNavbar from "./navbar/top-navbar"
 import PageFooter from "./footer"
+import { useQuery } from "@apollo/react-hooks"
 import { UserTotal, TotalPost, TotalPage, TotalRetailer } from "./data/admin"
+import { GET_USERS, GET_POSTS, GET_PAGES, GET_RETAILERS } from "../graphql/query"
+import three_dots from "../assets/img/three-dots-black.svg"
 
 import Chart from "react-apexcharts"
 
 const { Content } = Layout
 
 function Admin() {
-  const [chart] = useState({
-    series: [
-      {
-        name: "Posts",
-        data: [1, 2, 1, 1, 3, 1, 2]
-      }
-    ],
+  const [chart, setChart] = useState({
     options: {
       chart: {
-        height: 350,
-        type: "area"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "smooth"
+        id: "basic-bar"
       },
       xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00",
-          "2018-09-19T01:30:00",
-          "2018-09-19T02:30:00",
-          "2018-09-19T03:30:00",
-          "2018-09-19T04:30:00",
-          "2018-09-19T05:30:00",
-          "2018-09-19T06:30:00"
-        ]
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy"
-        }
+        categories: [1580824977965, 1580805757866, 1580805757866]
       }
-    }
+    },
+    series: [
+      {
+        name: "series-1",
+        data: [30, 40, 45]
+      }
+    ]
   })
+
+  const UserTotal = () => {
+    const { error, loading, data } = useQuery(GET_USERS)
+    if (loading) {
+      return (
+        <center>
+          <img src={three_dots} alt="btn-loading" height="12" />
+        </center>
+      )
+    }
+    if (error) console.log(error)
+    if (data) {
+      console.log("Data", data)
+
+      return (
+        <div>
+          <center>
+            <span className="adminFirstSectionFont">
+              <b>{data.users.length}</b> users
+            </span>
+          </center>
+        </div>
+      )
+    }
+  }
+
   // const { error, loading, data } = useQuery(GET_POSTS);
 
   return (
@@ -117,7 +125,16 @@ function Admin() {
                   <Chart
                     series={chart.series}
                     options={chart.options}
-                    type="area"
+                    type="bar"
+                  ></Chart>
+                </div>
+              </Col>
+              {/* <Col span={8}>
+                <div className="card_back">
+                  <Chart
+                    series={chart.series}
+                    options={chart.options}
+                    type="bar"
                   ></Chart>
                 </div>
               </Col>
@@ -126,19 +143,10 @@ function Admin() {
                   <Chart
                     series={chart.series}
                     options={chart.options}
-                    type="line"
-                  ></Chart>
-                </div>
-              </Col>
-              <Col span={8}>
-                <div className="card_back">
-                  <Chart
-                    series={chart.series}
-                    options={chart.options}
                     type="area"
                   ></Chart>
                 </div>
-              </Col>
+              </Col> */}
             </Row>
           </div>
 

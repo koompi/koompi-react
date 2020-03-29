@@ -12,6 +12,7 @@ import _ from "lodash"
 import renderHTML from "./editorJsToHtml"
 import { Helmet } from "react-helmet"
 import ReactPlayer from "react-player"
+import Img from "react-image"
 
 const academy_images = [
   "/img/academy/1-01.png",
@@ -115,10 +116,15 @@ function Index() {
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                   <center>
                     <div className="index_banner">
-                      <img
+                      <Img
                         src={`https://admin.koompi.com` + data.image}
-                        alt="koompi"
-                      ></img>
+                        loader={
+                          <Img
+                            className="memberPhotoBlur"
+                            src={`https://admin.koompi.com` + data.image}
+                          />
+                        }
+                      />
                     </div>
                   </center>
                 </Col>
@@ -145,35 +151,19 @@ function Index() {
                     </Button>
                   </div>
                   <div className="subBanner-koompiPro koompiOSImage">
-                    <img
+                    <Img
                       src={`https://admin.koompi.com` + data.image}
-                      alt="koompi"
+                      loader={
+                        <Img
+                          className="memberPhotoBlur"
+                          src={`https://admin.koompi.com` + data.image}
+                        />
+                      }
                     />
                   </div>
                 </div>
               </center>
             </div>
-            {/* <Particles
-              className="banner1"
-              params={{
-                particles: {
-                  number: {
-                    value: 50
-                  },
-                  size: {
-                    value: 3
-                  }
-                },
-                interactivity: {
-                  events: {
-                    onhover: {
-                      enable: true,
-                      mode: "repulse"
-                    }
-                  }
-                }
-              }}
-            /> */}
           </div>
         )
       }

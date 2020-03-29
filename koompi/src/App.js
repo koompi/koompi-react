@@ -41,6 +41,7 @@ function App() {
             path="/koompi-e11/specs"
             component={KOOMPI_E11_Specs}
           ></Route> */}
+          <Route exact path="/" component={Index}></Route>
           <Route exact path="/koompi-e13" component={KOOMPI_E13}></Route>
           <Route exact path="/koompi-e13/specs" component={KOOMPI_E13_Specs}></Route>
           <Route exact path="/koompi-os" component={KOOMPIOS}></Route>
@@ -67,7 +68,6 @@ function App() {
           <Route exact path="/search" component={Search}></Route>
           <Route exact path="/search?query=:title" component={Search}></Route>
 
-          <Route exact path="/" component={Index}></Route>
           <Route exact path="*" component={PageNotFound}></Route>
         </Switch>
       </Router>

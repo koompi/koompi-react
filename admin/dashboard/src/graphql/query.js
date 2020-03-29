@@ -9,6 +9,7 @@ const GET_USERS = gql`
       isAdmin
       id
       approved
+      created_at
     }
   }
 `
