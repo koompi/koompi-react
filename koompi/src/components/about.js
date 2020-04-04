@@ -8,6 +8,7 @@ import NProgress from "nprogress"
 import { GET_MEMBERS, GET_PAGES } from "./graphql/query"
 import _ from "lodash"
 import Img from "react-image"
+import { Helmet } from "react-helmet"
 
 function About() {
   useEffect(() => {
@@ -69,6 +70,7 @@ function About() {
                   <Img
                     className="memberPhoto"
                     src={`https://admin.koompi.com` + member.photo}
+                    alt={member.fullname}
                     loader={
                       <Img className="memberPhotoBlur" src="/img/blur-image.png" />
                     }
@@ -95,6 +97,7 @@ function About() {
                 <center>
                   <Img
                     className="memberPhoto"
+                    alt={member.fullname}
                     src={`https://admin.koompi.com` + member.photo}
                     loader={
                       <Img className="memberPhotoBlur" src="/img/blur-image.png" />
@@ -122,6 +125,7 @@ function About() {
                 <center>
                   <Img
                     className="memberPhoto"
+                    alt={member.fullname}
                     src={`https://admin.koompi.com` + member.photo}
                     loader={
                       <Img className="memberPhotoBlur" src="/img/blur-image.png" />
@@ -149,6 +153,7 @@ function About() {
                 <center>
                   <Img
                     className="memberPhoto"
+                    alt={member.fullname}
                     src={`https://admin.koompi.com` + member.photo}
                     loader={
                       <Img className="memberPhotoBlur" src="/img/blur-image.png" />
@@ -176,6 +181,7 @@ function About() {
                 <center>
                   <Img
                     className="memberPhoto"
+                    alt={member.fullname}
                     src={`https://admin.koompi.com` + member.photo}
                     loader={
                       <Img className="memberPhotoBlur" src="/img/blur-image.png" />
@@ -203,6 +209,7 @@ function About() {
                 <center>
                   <Img
                     className="memberPhoto"
+                    alt={member.fullname}
                     src={`https://admin.koompi.com` + member.photo}
                     loader={
                       <Img className="memberPhotoBlur" src="/img/blur-image.png" />
@@ -249,7 +256,7 @@ function About() {
         <div
           className="aboutBanner"
           style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(38, 46, 60, 0.95), rgba(38, 46, 60, 0.95)),url(https://admin.koompi.com${about.image})`
+            backgroundImage: `linear-gradient(to bottom, rgba(38, 46, 60, 0.95), rgba(38, 46, 60, 0.95)),url(https://admin.koompi.com${about.image})`,
           }}
         >
           <div className="container-banner-about">
@@ -266,6 +273,18 @@ function About() {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>About Us- KOOMPI</title>
+        <meta
+          name="keywords"
+          content="koompi, koompi.com, www.koompi.com, https://koompi.com/about-us, koompi-us, about koompi, about us"
+        />
+        <meta
+          name="description"
+          content="KOOMPI was created with an ambitious mission, to build tools for and to create the next generation of engineers, problem solvers, and discoverers. "
+        />
+        <link rel="canonical" href="https://koompi.com/about-us" />
+      </Helmet>
       <div className="backgroud-about">
         <DisplayAboutUs />
 

@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet"
 
 function SinglePage(props) {
   const { error, loading, data } = useQuery(GET_POST, {
-    variables: { slug: props.location.pathname.split("/")[2] }
+    variables: { slug: props.location.pathname.split("/")[2] },
   })
 
   if (error) console.log(error)
@@ -30,18 +30,48 @@ function SinglePage(props) {
   const { title, thumnail, created_at, keywords, meta_desc } = data.post
   const description = renderHTML(data.post.description)
 
+  const metaElements = []
+
+  if (title) {
+    metaElements.push(
+      <title key="title">{title}</title>,
+      <meta key="og:site_name" property="og:site_name" content={title} />,
+      <meta key="twitter:site" property="twitter:site" content={title} />
+    )
+  }
+
+  if (description) {
+    metaElements.push(
+      <meta key="description" name="description" content={description} />,
+      <meta key="og:description" property="og:description" content={description} />,
+      <meta
+        key="twitter:description"
+        property="twitter:description"
+        content={description}
+      />
+    )
+  }
+
+  if (keywords) {
+    metaElements.push(<meta key="keywords" name="keywords" content={keywords} />)
+  }
+
+  if (thumnail) {
+    metaElements.push(
+      <meta key="og:image" name="og:image" content={thumnail} />,
+      <meta key="twitter:image" name="twitter:image" content={thumnail} />
+    )
+  }
+
   return (
     <div>
       {/* All the Meta Tags */}
       <Helmet>
-        <meta property="og:url" content={window.location} />
-        <meta property="og:type" content="koompi" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={parse(description)} />
-        <meta property="og:image" content={`https://admin.koompi.com${thumnail}`} />
-        <title>{title + " - KOOMPI"}</title>
-        <meta name="keywords" content={keywords.map((res) => res + ",")} />
-        <meta name="description" content={meta_desc} />
+        {metaElements}
+        <link
+          rel="canonical"
+          href={`https://koompi.com/${window.location.pathname}`}
+        />
       </Helmet>
       <div className="container">
         <div className="margin_single_page">

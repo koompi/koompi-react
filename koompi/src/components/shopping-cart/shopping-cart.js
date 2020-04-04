@@ -57,7 +57,7 @@ function Cart() {
       },
       onCancel() {
         console.log("Cancel")
-      }
+      },
     })
   }
 
@@ -263,6 +263,7 @@ function Cart() {
           name="description"
           content="Immerse yourself into endless possibilities. Start with the classic KOOMPI, the E13. Built-in integrated software suite. Lightweight and compact."
         />
+        <link rel="canonical" href="https://koompi.com/shop/bag" />
       </Helmet>
       <br />
       <div className="container">

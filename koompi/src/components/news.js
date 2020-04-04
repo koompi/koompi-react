@@ -44,6 +44,7 @@ function News() {
             <title>{title + " - KOOMPI"}</title>
             <meta name="keywords" content={res.keywords.map((res) => res + ",")} />
             <meta name="description" content={meta_desc} />
+            <link rel="canonical" href="https://koompi.com/news-and-events" />
           </Helmet>
           <Row className="Row-news" gutter={16} type="flex">
             <Col xs={24} sm={24} ms={12} lg={12} xl={12}>
@@ -119,7 +120,7 @@ function News() {
                       cover={
                         <div
                           style={{
-                            backgroundImage: `linear-gradient(rgba(8, 8, 8, 0.09), rgba(8, 8, 8, 0.09)),url("https://admin.koompi.com${data.thumnail}")`
+                            backgroundImage: `linear-gradient(rgba(8, 8, 8, 0.09), rgba(8, 8, 8, 0.09)),url("https://admin.koompi.com${data.thumnail}")`,
                           }}
                           className="postThumnail"
                         ></div>

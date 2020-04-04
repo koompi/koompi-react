@@ -89,36 +89,9 @@ function Footer() {
           </Row>
         </div>
       </div>
-      <div className="footer-project">
-        <div className="footer-container">
-          <Row gutter={12}>
-            <Col span={6}>
-              <p className="koompiProjectTitle"> KOOMPI Products</p>
-            </Col>
-            <Col span={18} className="koompiProjects">
-              <a
-                href="https://academy.koompi.com"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                KOOMPI ACADEMY
-              </a>
-              <NavLink to="/koompi-os" activeClassName="koompi-active">
-                KOOMPI OS
-              </NavLink>
-
-              <NavLink to="/koompi-e13" activeClassName="koompi-active">
-                KOOMPI E13
-              </NavLink>
-              {/* <Link to="koompi-e11">KOOMPI E11</Link> */}
-              {/* <Link to="">KOOMPI B14</Link> */}
-            </Col>
-          </Row>
-        </div>
-      </div>
       <center>
         <div className="weaccept">
-          <h4>We accept</h4>
+          <span>We accept</span>
           <img src="/img/payments/weaccept.png" height="35px" alt="we accept" />
         </div>
       </center>

@@ -50,6 +50,7 @@ function KOOMPIOS() {
             <title>KOOMPI OS - KOOMPI</title>
             <meta name="keywords" content={res.keywords.map((res) => res + ",")} />
             <meta name="description" content={meta_desc} />
+            <link rel="canonical" href="https://koompi.com/koompi-os" />
           </Helmet>
           <Row gutter={24}>
             <Col xs={24} sm={24} md={12} lg={12} xl={12} className="bigScreen">

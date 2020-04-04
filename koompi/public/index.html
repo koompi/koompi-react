@@ -2,8 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/img/favicon.svg" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" href="%PUBLIC_URL%/img/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <meta name="theme-color" content="#000000" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href="https://koompi.com" />
@@ -13,26 +16,6 @@
       rel="stylesheet"
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    
-    <!-- Google Meta Tags -->
-    <meta name="google-site-verification" content="-9vNAwltGBQ3KaRp3i_2jjBz8pYB43R9vj2J-3Hbd8w" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135640949-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-135640949-2');
-    </script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-KGBRB47');</script>
-      <!-- End Google Tag Manager -->
-
 
     <!-- The social media meta tags -->
 
@@ -40,13 +23,14 @@
     <title>KOOMPI</title>
     <meta name="title" content="KOOMPI" />
     <meta
-      name="description"
-      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KOOMPIOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
-    />
-    <meta
       name="keywords"
       content="koompi, koompi laptop, koompi computer, koompi os, kroma os, krama os, kramaos, koompi.com, kosmos os, koompi review, smallworld venture"
     />
+    <meta
+      name="description"
+      content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KOOMPIOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+    />
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://koompi.com/" />
@@ -80,12 +64,35 @@
       href="https://payway.ababank.com/checkout-popup.html?file=css"
     />
     <script src="https://payway.ababank.com/checkout-popup.html?file=js"></script>
+    <meta name="google-site-verification" content="-9vNAwltGBQ3KaRp3i_2jjBz8pYB43R9vj2J-3Hbd8w" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
     
+    <!-- The PWA -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker.register("/worker.js").then(
+            function(registration) {
+              // Registration was successful
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope
+              );
+            },
+            function(err) {
+              // registration failed :(
+              console.log("ServiceWorker registration failed: ", err);
+            }
+          );
+        });
+      }
+    </script>
+
+    <!-- End The PWA -->
+
     
   </body>
 </html>

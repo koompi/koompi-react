@@ -368,6 +368,7 @@ function KoompiE13(props) {
           name="description"
           content="Immerse yourself into endless possibilities. Start with the classic KOOMPI, the E13. Built-in integrated software suite. Lightweight and compact."
         />
+        <link rel="canonical" href="https://koompi.com/koompi-e13" />
       </Helmet>
       <div>
         <SubNavbar title="KOOMPI E13" history={props.history} />

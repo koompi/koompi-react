@@ -13,13 +13,14 @@ import renderHTML from "./editorJsToHtml"
 import { Helmet } from "react-helmet"
 import ReactPlayer from "react-player"
 import Img from "react-image"
+import ReactImageAppear from "react-image-appear"
 
 const academy_images = [
   "/img/academy/1-01.png",
   "/img/academy/11-01.png",
   "/img/academy/5-01.png",
   "/img/academy/6-01.png",
-  "/img/academy/8-01.png"
+  "/img/academy/8-01.png",
 ]
 
 function Index() {
@@ -91,7 +92,7 @@ function Index() {
                       </div>
                       <div
                         style={{
-                          cursor: "pointer"
+                          cursor: "pointer",
                         }}
                       >
                         <Modal
@@ -179,17 +180,6 @@ function Index() {
                   <div className="text-koompi-section-banner">
                     {parse(description)}
                   </div>
-                  <div>
-                    <a
-                      href="https://academy.koompi.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button type="primary" className="koompiBtn">
-                        Read More <Icon type="arrow-right" />
-                      </Button>
-                    </a>
-                  </div>
                 </div>
                 <div className="subBanner-koompiPro">
                   <Carousel autoplay>
@@ -223,6 +213,7 @@ function Index() {
           name="description"
           content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KramaOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
         />
+        <link rel="canonical" href="https://koompi.com/" />
       </Helmet>
       <DisplayData />
 

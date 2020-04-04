@@ -26,6 +26,14 @@ h6 {
 p {
   font-size: 22px !important;
 }
+.intro {
+  height: 100vh;
+}
+.intro video {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
 /* html {
   --antd-wave-shadow-color: #ffffff !important;
 } */
@@ -58,7 +66,8 @@ p {
   color: #ffffff;
 }
 .content1 {
-  background-color: #262e3c;
+  background: linear-gradient(rgba(24, 24, 24, 0.87), rgba(24, 24, 24, 0.87)),
+    url("/img/background.jpg");
 }
 .text-container-content1 {
   /* width: 41%; */
@@ -2009,6 +2018,13 @@ code {
 .mastercard {
   position: relative;
   top: 8px;
+}
+.weaccept span {
+  font-weight: 800;
+  font-size: 22px;
+  position: relative;
+  top: 5px;
+  left: -20px;
 }
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =
