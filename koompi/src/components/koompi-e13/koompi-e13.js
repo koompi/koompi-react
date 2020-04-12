@@ -14,6 +14,7 @@ import performance from "../data/performance"
 import battery from "../data/battery"
 import Footer from "../footer"
 import _ from "lodash"
+import ProgressiveImage from "react-progressive-image"
 
 import Helmet from "react-helmet"
 
@@ -59,11 +60,24 @@ function KoompiE13(props) {
 
           <div className="subTittle-E11">{description}</div>
           <h1 className="koompi-price">$369.00</h1>
-          <img
-            className="banner-overview-koompiE11 koompiScale"
-            src={imageLink + image}
-            alt={title}
-          />
+          <ProgressiveImage src={imageLink + image}>
+            {(src, loading) =>
+              loading ? (
+                <img
+                  className="banner-overview-koompiE11 koompiScale"
+                  src="/img/three-dots-black.svg"
+                  alt={title}
+                  height="10px"
+                />
+              ) : (
+                <img
+                  className="banner-overview-koompiE11 koompiScale"
+                  src={src}
+                  alt={title}
+                />
+              )
+            }
+          </ProgressiveImage>
         </center>
       </div>
     )
@@ -99,7 +113,20 @@ function KoompiE13(props) {
           </div>
         </div>
         <div className="koompi-e-background">
-          <img className="banner-overview-koompiE11" src={image} alt={title} />
+          <ProgressiveImage src={image}>
+            {(src, loading) =>
+              loading ? (
+                <img
+                  className="banner-overview-koompiE11 koompiScale"
+                  src="/img/three-dots-black.svg"
+                  alt={title}
+                  height="10px"
+                />
+              ) : (
+                <img className="banner-overview-koompiE11" src={src} alt={title} />
+              )
+            }
+          </ProgressiveImage>
         </div>
       </>
     )
@@ -208,11 +235,24 @@ function KoompiE13(props) {
           <Row gutter={16}>
             <Col span={24}>
               <center>
-                <img
-                  className="banner-overview-koompiE11 koompiBattery"
-                  src={imageLink + image}
-                  alt={title}
-                />
+                <ProgressiveImage src={imageLink + image}>
+                  {(src, loading) =>
+                    loading ? (
+                      <img
+                        className="banner-overview-koompiE11 koompiScale"
+                        src="/img/three-dots-black.svg"
+                        alt={title}
+                        height="10px"
+                      />
+                    ) : (
+                      <img
+                        className="banner-overview-koompiE11 koompiBattery"
+                        src={src}
+                        alt={title}
+                      />
+                    )
+                  }
+                </ProgressiveImage>
               </center>
             </Col>
           </Row>

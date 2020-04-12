@@ -13,7 +13,7 @@ import renderHTML from "./editorJsToHtml"
 import { Helmet } from "react-helmet"
 import ReactPlayer from "react-player"
 import Img from "react-image"
-import ReactImageAppear from "react-image-appear"
+import ProgressiveImage from "react-progressive-image"
 
 const academy_images = [
   "/img/academy/1-01.png",
@@ -117,15 +117,21 @@ function Index() {
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                   <center>
                     <div className="index_banner">
-                      <Img
+                      <ProgressiveImage
                         src={`https://admin.koompi.com` + data.image}
-                        loader={
-                          <Img
-                            className="memberPhotoBlur"
-                            src={`https://admin.koompi.com` + data.image}
-                          />
+                      >
+                        {(src, loading) =>
+                          loading ? (
+                            "Loading ..."
+                          ) : (
+                            <img
+                              style={{ opacity: loading ? 0.5 : 1 }}
+                              src={src}
+                              alt="KOOMPI E13"
+                            />
+                          )
                         }
-                      />
+                      </ProgressiveImage>
                     </div>
                   </center>
                 </Col>
@@ -152,15 +158,19 @@ function Index() {
                     </Button>
                   </div>
                   <div className="subBanner-koompiPro koompiOSImage">
-                    <Img
-                      src={`https://admin.koompi.com` + data.image}
-                      loader={
-                        <Img
-                          className="memberPhotoBlur"
-                          src={`https://admin.koompi.com` + data.image}
-                        />
+                    <ProgressiveImage src={`https://admin.koompi.com` + data.image}>
+                      {(src, loading) =>
+                        loading ? (
+                          "Loading ..."
+                        ) : (
+                          <img
+                            style={{ opacity: loading ? 0.5 : 1 }}
+                            src={src}
+                            alt="an image"
+                          />
+                        )
                       }
-                    />
+                    </ProgressiveImage>
                   </div>
                 </div>
               </center>
@@ -186,7 +196,19 @@ function Index() {
                     {academy_images.map((data, index) => {
                       return (
                         <div key={index}>
-                          <img src={data} alt="koompi" />
+                          <ProgressiveImage src={data}>
+                            {(src, loading) =>
+                              loading ? (
+                                "Loading ..."
+                              ) : (
+                                <img
+                                  style={{ opacity: loading ? 0.5 : 1 }}
+                                  src={src}
+                                  alt="an image"
+                                />
+                              )
+                            }
+                          </ProgressiveImage>
                         </div>
                       )
                     })}

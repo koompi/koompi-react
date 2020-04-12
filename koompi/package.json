@@ -34,6 +34,7 @@
     "react-particle-effect-button": "^1.0.1",
     "react-particles-js": "^2.7.0",
     "react-player": "^1.15.2",
+    "react-progressive-image": "^0.6.0",
     "react-responsive-modal": "^4.0.1",
     "react-router-dom": "^5.1.2",
     "react-router-sitemap": "^1.2.0",

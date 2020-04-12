@@ -66,7 +66,7 @@ p {
   color: #ffffff;
 }
 .content1 {
-  background: linear-gradient(rgba(24, 24, 24, 0.87), rgba(24, 24, 24, 0.87)),
+  background: linear-gradient(rgba(24, 24, 24, 0.945), rgba(24, 24, 24, 0.945)),
     url("/img/background.jpg");
 }
 .text-container-content1 {

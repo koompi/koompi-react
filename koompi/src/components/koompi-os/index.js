@@ -9,6 +9,7 @@ import _ from "lodash"
 import { useQuery } from "@apollo/react-hooks"
 import parse from "html-react-parser"
 import { Helmet } from "react-helmet"
+import ProgressiveImage from "react-progressive-image"
 
 function KOOMPIOS() {
   useEffect(() => {
@@ -54,11 +55,21 @@ function KOOMPIOS() {
           </Helmet>
           <Row gutter={24}>
             <Col xs={24} sm={24} md={12} lg={12} xl={12} className="bigScreen">
-              <img
-                src={`https://admin.koompi.com${image}`}
-                alt={title}
-                className="koompi-os-banner-image"
-              />
+              <ProgressiveImage src={`https://admin.koompi.com${image}`}>
+                {(src, loading) =>
+                  loading ? (
+                    <center>
+                      <img
+                        src="/img/three-dots-black.svg"
+                        alt={title}
+                        height="10px"
+                      />
+                    </center>
+                  ) : (
+                    <img src={src} alt={title} className="koompi-os-banner-image" />
+                  )
+                }
+              </ProgressiveImage>
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h3 className="koompi-os-banner-title">{title}</h3>
@@ -74,15 +85,7 @@ function KOOMPIOS() {
     const { error, loading, data } = useQuery(GET_SOFTWARES)
     if (error) console.log(error)
     if (loading) {
-      return (
-        <React.Fragment>
-          <Row className="Row-about" gutter={24}>
-            <center>
-              <Spin tip="Loading ..."></Spin>
-            </center>
-          </Row>
-        </React.Fragment>
-      )
+      return null
     }
     return data.softwares.map((software, index) => {
       const { title, image } = software
@@ -103,12 +106,26 @@ function KOOMPIOS() {
             </Col>
             <Col xs={24} sm={24} md={11} lg={11} xl={11}>
               <div className="app-image">
-                <img
-                  src={`https://admin.koompi.com${image}`}
-                  alt={`KOOMPI ${title}`}
-                  style={{ float: "right" }}
-                  className="drawImage"
-                />
+                <ProgressiveImage src={`https://admin.koompi.com${image}`}>
+                  {(src, loading) =>
+                    loading ? (
+                      <center>
+                        <img
+                          src="/img/three-dots-black.svg"
+                          alt={title}
+                          height="10px"
+                        />
+                      </center>
+                    ) : (
+                      <img
+                        src={src}
+                        alt={`KOOMPI ${title}`}
+                        style={{ float: "right" }}
+                        className="drawImage"
+                      />
+                    )
+                  }
+                </ProgressiveImage>
               </div>
             </Col>
           </Row>
@@ -118,11 +135,26 @@ function KOOMPIOS() {
           <Row gutter={[12, 12]} key={index}>
             <Col xs={24} sm={24} md={14} lg={14} xl={14} className="bigScreen">
               <div className="app-image">
-                <img
-                  src={`https://admin.koompi.com${image}`}
-                  alt={`KOOMPI ${title}`}
-                  style={{ float: "left" }}
-                />
+                <ProgressiveImage src={`https://admin.koompi.com${image}`}>
+                  {(src, loading) =>
+                    loading ? (
+                      <center>
+                        <img
+                          src="/img/three-dots-black.svg"
+                          alt={title}
+                          height="10px"
+                        />
+                      </center>
+                    ) : (
+                      <img
+                        src={src}
+                        alt={`KOOMPI ${title}`}
+                        style={{ float: "left" }}
+                        className="drawImage"
+                      />
+                    )
+                  }
+                </ProgressiveImage>
               </div>
             </Col>
             <Col xs={24} sm={24} md={10} lg={10} xl={10}>
@@ -138,11 +170,26 @@ function KOOMPIOS() {
             </Col>
             <Col xs={24} sm={24} md={14} lg={14} xl={14} className="smallDevice">
               <div className="app-image">
-                <img
-                  src={`https://admin.koompi.com${image}`}
-                  alt={`KOOMPI ${title}`}
-                  style={{ float: "left" }}
-                />
+                <ProgressiveImage src={`https://admin.koompi.com${image}`}>
+                  {(src, loading) =>
+                    loading ? (
+                      <center>
+                        <img
+                          src="/img/three-dots-black.svg"
+                          alt={title}
+                          height="10px"
+                        />
+                      </center>
+                    ) : (
+                      <img
+                        src={src}
+                        alt={`KOOMPI ${title}`}
+                        style={{ float: "left" }}
+                        className="drawImage"
+                      />
+                    )
+                  }
+                </ProgressiveImage>
               </div>
             </Col>
           </Row>

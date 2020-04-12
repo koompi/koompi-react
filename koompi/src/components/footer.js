@@ -8,7 +8,7 @@ import { GET_SOCAIL_MEDIA } from "./graphql/query"
 function Footer() {
   const { error, loading, data } = useQuery(GET_SOCAIL_MEDIA)
   if (error) console.log("error")
-  if (loading) return "Loading ..."
+  if (loading) return ""
 
   const DisplaySocailMedia = () => {
     return data.socailMedia.map((res, index) => {
