@@ -12,8 +12,11 @@ import _ from "lodash"
 import renderHTML from "./editorJsToHtml"
 import { Helmet } from "react-helmet"
 import ReactPlayer from "react-player"
-import Img from "react-image"
 import ProgressiveImage from "react-progressive-image"
+import { motion } from "framer-motion"
+import ScrollAnimation from "react-animate-on-scroll"
+import "animate.css/animate.min.css"
+import PreOrder from "./preorder/preorder"
 
 const academy_images = [
   "/img/academy/1-01.png",
@@ -70,133 +73,40 @@ function Index() {
       const description = renderHTML(data.description)
       if (data.sectionNumber === "1") {
         return (
-          <div className="banner" key={index}>
-            {/* <div className="PhnomPenh"></div> */}
-            <div className="container">
-              <Row>
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <center>
-                    <div className="banner_content">
-                      {/* ========= KOOMPI SECTION =========  */}
-                      <h1 className="bossTittle-KoompiHome">{data.title}</h1>
-                      <div className="text-koompi-section-banner">
-                        {parse(description)}
-
-                        <Button className="koompiBtn">
-                          <Link to="/koompi-e13">Read More</Link>{" "}
-                          <Icon type="arrow-right" />
-                        </Button>
-                      </div>
-                      <div onClick={showModal} className="videoPlayBtn">
-                        <Icon type="play-circle" className="indexPlayButton" />
-                      </div>
-                      <div
-                        style={{
-                          cursor: "pointer",
-                        }}
-                      >
-                        <Modal
-                          onCancel={handleCancel}
-                          onOk={handleOk}
-                          visible={visible}
-                          footer={false}
-                          className="videoModal"
-                        >
-                          <ReactPlayer
-                            height="auto"
-                            width="100%"
-                            controls={true}
-                            url="https://admin.koompi.com/public/videos/koompi.mp4"
-                            playing={visible}
-                          />
-                        </Modal>
-                      </div>
-                    </div>
-                  </center>
-                </Col>
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <center>
-                    <div className="index_banner">
-                      <ProgressiveImage
-                        src={`https://admin.koompi.com` + data.image}
-                      >
-                        {(src, loading) =>
-                          loading ? (
-                            "Loading ..."
-                          ) : (
-                            <img
-                              style={{ opacity: loading ? 0.5 : 1 }}
-                              src={src}
-                              alt="KOOMPI E13"
-                            />
-                          )
-                        }
-                      </ProgressiveImage>
-                    </div>
-                  </center>
-                </Col>
-              </Row>
-              <br />
-              <br />
-            </div>
-          </div>
-        )
-      }
-      if (data.sectionNumber === "2") {
-        const description = renderHTML(data.description)
-        return (
-          <div className="content1" key={index}>
-            <div className="koompi_section_position">
-              <center>
+          <ScrollAnimation animateIn="fadeIn">
+            <div className="e13-index-banner">
+              {/* <div className="PhnomPenh"></div> */}
+              <div className="koompi-e13-position">
                 <div className="container">
-                  <h1 className="tittle-koompiPro-banner">{data.title}</h1>
-                  <div className="text-koompi-section-banner index-section2">
-                    {parse(description)}
-                    <Button className="openSourceBtn">
-                      <Link to="/koompi-os">Read More</Link>{" "}
-                      <Icon type="arrow-right" />
-                    </Button>
-                  </div>
-                  <div className="subBanner-koompiPro koompiOSImage">
-                    <ProgressiveImage src={`https://admin.koompi.com` + data.image}>
-                      {(src, loading) =>
-                        loading ? (
-                          "Loading ..."
-                        ) : (
-                          <img
-                            style={{ opacity: loading ? 0.5 : 1 }}
-                            src={src}
-                            alt="an image"
-                          />
-                        )
-                      }
-                    </ProgressiveImage>
-                  </div>
-                </div>
-              </center>
-            </div>
-          </div>
-        )
-      }
-      if (data.sectionNumber === "3") {
-        const description = renderHTML(data.description)
-        return (
-          <div className="koompi-os-index" key={index}>
-            <div className="koompi-logo-koompi-os-section"></div>
-            <div className="container">
-              <center>
-                <div className="koompi_content">
-                  <h1 className="bossTittle-KoompiHome">{data.title}</h1>
-                  <div className="text-koompi-section-banner">
-                    {parse(description)}
-                  </div>
-                </div>
-                <div className="subBanner-koompiPro">
-                  <Carousel autoplay>
-                    {academy_images.map((data, index) => {
-                      return (
-                        <div key={index}>
-                          <ProgressiveImage src={data}>
+                  <Row gutter={50}>
+                    <Col xs={24} sm={24} md={24} lg={13} xl={13}>
+                      <div className="banner_content">
+                        {/* ========= KOOMPI SECTION =========  */}
+                        <h2 className="koompi-e11-title">KOOMPI E13</h2>
+                        <h1 className="bossTittle-KoompiHome">{data.title}</h1>
+
+                        <div className="text-koompi-section-banner">
+                          {parse(description)}
+                          <div className="btn-center">
+                            <Link to="/koompi-os">
+                              <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="koompiBtn"
+                              >
+                                Learn More
+                              </motion.button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={24} md={24} lg={11} xl={11}>
+                      <center>
+                        <div className="index_banner">
+                          <ProgressiveImage
+                            src={`https://admin.koompi.com` + data.image}
+                          >
                             {(src, loading) =>
                               loading ? (
                                 "Loading ..."
@@ -204,19 +114,125 @@ function Index() {
                                 <img
                                   style={{ opacity: loading ? 0.5 : 1 }}
                                   src={src}
-                                  alt="an image"
+                                  alt="KOOMPI E13"
                                 />
                               )
                             }
                           </ProgressiveImage>
                         </div>
-                      )
-                    })}
-                  </Carousel>
+                      </center>
+                    </Col>
+                  </Row>
+                  <br />
+                  <br />
                 </div>
-              </center>
+              </div>
+            </div>
+          </ScrollAnimation>
+        )
+      }
+      if (data.sectionNumber === "2") {
+        const description = renderHTML(data.description)
+        return (
+          //
+
+          <div className="os-index-banner">
+            <div className="koompi-os-position">
+              <div className="container">
+                <ScrollAnimation animateIn="fadeIn">
+                  <Row gutter={50}>
+                    <Col xs={24} sm={24} md={24} lg={13} xl={13}>
+                      <div className="banner_content">
+                        {/* ========= KOOMPI SECTION =========  */}
+                        <h2 className="koompi-e11-title">KOOMPI OS</h2>
+                        <h1 className="bossTittle-KoompiHome">{data.title}</h1>
+
+                        <div className="text-koompi-section-banner">
+                          {parse(description)}
+                          <div className="btn-center">
+                            <Link to="/koompi-os">
+                              <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="koompiBtn"
+                              >
+                                Learn More
+                              </motion.button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={24} md={24} lg={11} xl={11}>
+                      <center>
+                        <div className="index_banner">
+                          <ProgressiveImage
+                            src={`https://admin.koompi.com` + data.image}
+                          >
+                            {(src, loading) =>
+                              loading ? (
+                                "Loading ..."
+                              ) : (
+                                <img
+                                  style={{ opacity: loading ? 0.5 : 1 }}
+                                  src={src}
+                                  alt="KOOMPI E13"
+                                  className="index-image"
+                                />
+                              )
+                            }
+                          </ProgressiveImage>
+                        </div>
+                      </center>
+                    </Col>
+                  </Row>
+                </ScrollAnimation>
+              </div>
             </div>
           </div>
+        )
+      }
+      if (data.sectionNumber === "3") {
+        const description = renderHTML(data.description)
+        return (
+          <ScrollAnimation animateIn="fadeIn">
+            <div className="koompi-os-index" key={index}>
+              <div className="koompi-logo-koompi-os-section"></div>
+              <div className="container">
+                <center>
+                  <div className="koompi_content">
+                    <h1 className="bossTittle-KoompiHome">{data.title}</h1>
+                    <div className="text-koompi-section-banner">
+                      {parse(description)}
+                    </div>
+                  </div>
+                  <div className="subBanner-koompiPro">
+                    <Carousel autoplay>
+                      {academy_images.map((data, index) => {
+                        return (
+                          <div key={index}>
+                            <ProgressiveImage src={data}>
+                              {(src, loading) =>
+                                loading ? (
+                                  "Loading ..."
+                                ) : (
+                                  <img
+                                    style={{ opacity: loading ? 0.5 : 1 }}
+                                    src={src}
+                                    alt="koompi"
+                                  />
+                                )
+                              }
+                            </ProgressiveImage>
+                          </div>
+                        )
+                      })}
+                    </Carousel>
+                  </div>
+                </center>
+              </div>
+            </div>
+          </ScrollAnimation>
         )
       }
       return null
@@ -237,14 +253,69 @@ function Index() {
         />
         <link rel="canonical" href="https://koompi.com/" />
       </Helmet>
-      <DisplayData />
 
+      <div className="first-index-banner">
+        {/* <div className="PhnomPenh"></div> */}
+        {/* <img src="/img/4.png" alt="" className="index-img-4" /> */}
+        {/* <img src="/img/3.png" alt="" className="index-img-3" />
+        <img src="/img/2.png" alt="" className="index-img-2" />
+        <img src="/img/1.png" alt="" className="index-img-1" /> */}
+        <div className="koompi-e11-position">
+          <div className="container">
+            <ScrollAnimation animateIn="fadeIn">
+              <Row gutter={50}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <div className="banner_content">
+                    {/* ========= KOOMPI SECTION =========  */}
+                    <center>
+                      <p className="index-new">New</p>
+                    </center>
+                    <h1 className="bossTittle-KoompiHome-e11">KOOMPI E11</h1>
+                    <div className="koompi-e11-desc">
+                      <p>
+                        After releasing our classic E13, we never stopped working
+                        towards our mission, to see every student own their personal
+                        computer. Our one-student-one notebook initiative cannot
+                        become a reality if computers are not affordable.
+                      </p>
+                      <p>
+                        The E11 was built to make computing possible for everyone.
+                      </p>
+                    </div>
+                    <center>
+                      <p>Starting at $149</p>
+                      <Link to="/koompi-e11-order">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="koompiBtn"
+                        >
+                          Pre-Order
+                        </motion.button>
+                      </Link>
+
+                      <Link to="/koompi-e11" className="learnMoreLink">
+                        <p className="learnMoreIndex">Learn More</p>
+                      </Link>
+                    </center>
+                    <center>
+                      <img src="/img/e11.png" alt="" className="koompiE11-image" />
+                    </center>
+                  </div>
+                </Col>
+              </Row>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </div>
+
+      <DisplayData />
       {/* =============Big Section ===============*/}
 
       {/* <div className="koompi-pro-index">
         <div className="container">
           <center>
-            <Display_Pro_Section />
+            <h2>Hello</h2>
           </center>
         </div>
         <div className="koompi-logo-koompi-pro-section"></div>

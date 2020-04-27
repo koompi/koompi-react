@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;800&display=swap");
 
 * {
   font-family: "Quicksand", sans-serif !important;
@@ -8,20 +8,15 @@
 body {
   background: #869fb22b !important;
 }
-.background-color-Koompi-E {
-  background-color: #f0f3f7;
-  position: relative;
 
-  overflow: hidden;
-}
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", sans-serif !important;
-  font-weight: 900 !important;
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 800 !important;
 }
 p {
   font-size: 22px !important;
@@ -42,6 +37,11 @@ p {
   margin-top: 2px !important;
   float: left;
 }
+.background-color-Koompi-E {
+  background-color: #f0f3f7;
+  position: relative;
+  overflow: hidden;
+}
 .background-color {
   overflow: hidden;
 }
@@ -53,8 +53,11 @@ p {
 .banner {
   overflow: hidden;
   position: relative;
-  padding: 80px 0px 0px 0px;
+  /* padding: 80px 0px 0px 0px; */
   clear: both;
+  height: 100vh;
+  background-color: #04041c;
+  background-image: linear-gradient(0deg, #04041c 0%, #04041c !important 100%);
 }
 .readmore {
   margin-top: -14px;
@@ -116,7 +119,7 @@ p {
   height: 900px;
 }
 .bossTittle-KoompiHome {
-  color: #262e3c;
+  color: #262e3c !important;
   font-size: 40px;
   font-weight: 700;
   /* margin-top: 80px; */
@@ -249,14 +252,14 @@ p {
   margin-bottom: 55px;
 }
 .background-color {
-  background-color: #262e3c;
+  background-color: #262e3c !important;
 }
 .banner-overview {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .ant-tabs-bar {
-  /* background-color: #262e3c; */
+  /* background-color: #262e3c !important; */
   width: 700px;
   margin: 0 auto !important;
   text-align: center !important;
@@ -523,14 +526,14 @@ p {
   margin-bottom: 55px;
 }
 .background-color {
-  background-color: #262e3c;
+  background-color: #262e3c !important;
 }
 .banner-overview {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .ant-tabs-bar {
-  /* background-color: #262e3c; */
+  /* background-color: #262e3c !important; */
   width: 700px;
   margin: 0 auto !important;
   text-align: center !important;
@@ -690,7 +693,13 @@ p {
   /* color: #ffffff !important; */
   color: #374957 !important ;
 }
-.banner-overview-koompiE11 {
+.banner-overview-koompiE11,
+.banner-overview-screen {
+  width: 100% !important;
+  transform: scale(1) !important;
+  margin: 0px 0px;
+}
+ {
   /* max-width: 1143px; */
   width: 100%;
   max-width: 100%;
@@ -760,7 +769,7 @@ p {
   font-size: 21px;
 }
 .margin-display-koompiE11 {
-  margin-top: 130px;
+  margin-top: 0px;
 }
 .margin-performence-koompiE11 {
   margin-top: 130px;
@@ -881,7 +890,7 @@ button[type="submit"]:hover,
   background-color: red !important;
 }
 .footerBackground {
-  background-color: #262e3c;
+  background-color: #262e3c !important;
   padding: 50px 0px;
 }
 .footerBackground img {
@@ -923,7 +932,7 @@ button[type="submit"]:hover,
   color: #ffffff;
 }
 .socailMedia {
-  background-color: #262e3c;
+  background-color: #262e3c !important;
   padding: 20px 0px;
   margin-top: 30px !important;
 }
@@ -1100,14 +1109,16 @@ button[type="submit"]:hover,
 }
 .PhnomPenh {
   background: url("/img/Background_Web1-01.svg");
-  background-repeat: repeat;
-  height: 400px;
-  position: absolute;
+  background-position: center;
   width: 100%;
-  bottom: -33px;
   background-repeat: no-repeat;
-  left: 19%;
-  opacity: 0.03;
+  opacity: 0.04;
+  height: 550px;
+  position: absolute;
+  bottom: -40px;
+  /* left: 50%; */
+  overflow: hidden;
+  z-index: 0;
 }
 .margin-display-koompiE11 {
   background: #ffffff;
@@ -1128,105 +1139,6 @@ button[type="submit"]:hover,
 }
 .koompi-page-specs-padding {
   padding: 30px 0px;
-}
-.area {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-}
-.circles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.circles li {
-  position: absolute;
-  display: block;
-  list-style: none;
-  width: 20px;
-  height: 20px;
-  background: url("/img/favicon.svg");
-  animation: animate 20s linear infinite;
-  bottom: -100px;
-}
-
-.circles li:nth-child(1) {
-  left: 25%;
-  width: 50px;
-  height: 50px;
-  animation-delay: 0s;
-}
-
-.circles li:nth-child(2) {
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 2s;
-  animation-duration: 12s;
-}
-
-.circles li:nth-child(3) {
-  left: 70%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 4s;
-}
-
-.circles li:nth-child(4) {
-  left: 40%;
-  width: 30px;
-  height: 30px;
-  animation-delay: 0s;
-  animation-duration: 18s;
-}
-
-.circles li:nth-child(5) {
-  left: 65%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-}
-
-.circles li:nth-child(6) {
-  left: 75%;
-  width: 70px;
-  height: 70px;
-  animation-delay: 3s;
-}
-
-.circles li:nth-child(7) {
-  left: 35%;
-  width: 80px;
-  height: 80px;
-  animation-delay: 7s;
-}
-
-.circles li:nth-child(8) {
-  left: 50%;
-  width: 25px;
-  height: 25px;
-  animation-delay: 15s;
-  animation-duration: 45s;
-}
-
-.circles li:nth-child(9) {
-  left: 20%;
-  width: 15px;
-  height: 15px;
-  animation-delay: 2s;
-  animation-duration: 35s;
-}
-
-.circles li:nth-child(10) {
-  left: 85%;
-  width: 70px;
-  height: 70px;
-  animation-delay: 0s;
-  animation-duration: 11s;
 }
 
 @keyframes animate {
@@ -1283,7 +1195,7 @@ button[type="submit"]:hover,
   }
 }
 .koompi-os-title-index {
-  color: #262e3c;
+  color: #262e3c !important;
   font-size: 50px;
   font-weight: 700;
   margin-top: 60px;
@@ -1294,6 +1206,25 @@ button[type="submit"]:hover,
 .koompi-os-index {
   position: relative;
   margin-bottom: 80px;
+}
+.e13-index-banner {
+  background-color: #eaeef2;
+  height: 80vh;
+  position: relative;
+}
+.koompi-e13-position,
+.koompi-os-position {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.index-new {
+  color: red;
+  margin-bottom: 0px !important;
+}
+.learnMoreIndex {
+  margin-top: 15px;
+  margin-bottom: -8px;
 }
 .koompi-logo-koompi-os-section {
   background: url("/img/favicon.svg");
@@ -1412,7 +1343,6 @@ button[type="submit"]:hover,
   font-weight: 800;
   font-size: 50px !important;
   margin-bottom: 40px;
-  text-shadow: 3px 3px 3px rgba(255, 255, 255, 0.418);
 }
 .koompi-width {
   width: 45%;
@@ -1435,20 +1365,20 @@ button[type="submit"]:hover,
   border-bottom-color: currentcolor;
   border-bottom-style: none;
   border-bottom-width: 0px;
-  margin: 20px 0px 60px 0px;
-  background-color: #008af436 !important;
-  color: #008af4 !important;
+  margin: 0px 10px;
+  background-color: #008af4 !important;
+  color: #ffffff !important;
   border-radius: 0px !important;
   padding: 0px 40px !important;
   font-weight: 600 !important;
-  transition: 0.3s;
   height: 40px !important;
   border-radius: 40px !important;
   border-bottom: 0px solid #008af4 !important;
+  cursor: pointer;
 }
 
 .koompiBtn a {
-  color: #008af4 !important;
+  color: #ffffff !important;
   font-size: 16px !important;
 }
 .buyBtn {
@@ -1491,15 +1421,8 @@ button[type="submit"]:hover,
   transition: 0.3s;
 }
 
-.koompiBtn:hover {
-  background-color: #008af4 !important;
-  color: #ffffff !important;
-}
-.koompiBtn:hover a {
-  color: #ffffff !important;
-}
 .koompi-pro-index {
-  background: #f2f2f2;
+  background: #eaeef2;
   padding: 20px 0px 80px 0px;
   position: relative;
 }
@@ -1561,7 +1484,7 @@ button[type="submit"]:hover,
 .retailers-title {
   font-size: 18px !important;
   font-weight: 700 !important;
-  color: #262e3cb7 !important;
+  color: #262e3c !importantb7 !important;
   position: relative;
   z-index: 1;
 }
@@ -1922,7 +1845,7 @@ code {
   margin: 0px auto;
 }
 .aboutBannerHeight {
-  background: #262e3c;
+  background: #262e3c !important;
 }
 .container-banner-about {
   width: 50% !important;
@@ -2026,6 +1949,153 @@ code {
   top: 5px;
   left: -20px;
 }
+.first-index-banner {
+  background-color: #ffffff;
+  padding-top: 80px;
+  position: relative !important;
+}
+.os-index-banner {
+  background-color: #ffffff !important;
+  height: 80vh;
+  position: relative;
+}
+.down-index {
+  position: absolute;
+  bottom: -55%;
+  color: #ffffff;
+  left: 50%;
+}
+/* .koompi-e11-position {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+.koompi-e11-position .koompiE11-image {
+  width: 90% !important;
+  position: relative;
+  margin-top: 10% !important;
+}
+.learnMoreLink {
+  color: #262e3c !important;
+}
+.learnMoreLink:hover {
+  color: #262e3c !important;
+}
+.hrLearnMore {
+  width: 118px;
+}
+.koompi-e11-desc {
+  width: 75%;
+  margin: 0px auto;
+  text-align: center;
+}
+.koompi-e11-position .index_banner .koompi-e13 {
+  position: relative;
+  z-index: 0 !important;
+  transform: translateY(15%);
+}
+.koompi-e13-section .banner_content {
+  position: absolute;
+  left: 20%;
+  width: 100%;
+  transform: translateY(70%);
+}
+.container-e13-index {
+  width: 90%;
+  margin: 0px auto;
+}
+.koompi-e13-title {
+  color: #ffffff !important;
+}
+.koompi-e13-title-index {
+  color: #c7c7c7;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.koompi-index-desc p {
+  color: #b7b8b9;
+}
+.banner_content {
+  z-index: 1 !important;
+}
+.index-img-1 {
+  height: 100px;
+  position: absolute;
+  opacity: 0.08;
+  right: 100px;
+  bottom: 100px;
+}
+.index-img-2 {
+  height: 200px;
+  position: absolute;
+  opacity: 0.08;
+  left: 10px;
+  bottom: 20px;
+}
+.index-img-3 {
+  height: 200px;
+  position: absolute;
+  opacity: 0.08;
+  right: 10px;
+  top: 20px;
+}
+.index-img-4 {
+  height: 150px;
+  position: absolute;
+  opacity: 0.08;
+  right: 400px;
+  top: 200px;
+  animation: upAndDown 5s infinite alternate;
+}
+.koompi-e11-title {
+  font-size: 90px;
+  position: absolute;
+  opacity: 0.09;
+  top: 30%;
+  color: #333;
+  z-index: -1;
+}
+.index-image {
+  position: relative;
+  margin-top: 15% !important;
+}
+.bossTittle-KoompiHome-e11 {
+  color: #262e3c !important;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px !important;
+}
+.desc-color-e11 {
+  color: #262e3c !important;
+}
+.koompi-e11-page-width {
+  width: 80% !important;
+  max-width: 80% !important;
+}
+.container-preoder {
+  width: 50%;
+  margin: 0px auto;
+  position: relative;
+  padding: 80px 0px;
+}
+.container-preoder h2 {
+  font-size: 30px !important;
+  text-align: center;
+}
+.container-preoder p {
+  text-align: center;
+}
+
+@keyframes upAndDown {
+  0% {
+    top: 200px;
+  }
+  100% {
+    top: 300px;
+  }
+}
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =
 =====================================================*/
@@ -2102,18 +2172,7 @@ code {
   .banner1 canvas {
     display: none;
   }
-  .PhnomPenh {
-    background: url("/img/Background_Web1-01.svg");
-    background-repeat: repeat;
-    background-repeat: repeat;
-    height: 250px;
-    position: absolute;
-    width: 75%;
-    bottom: -33px;
-    background-repeat: no-repeat;
-    left: 10%;
-    opacity: 0.03;
-  }
+
   .koompi-logo-koompi-os-section {
     display: none;
   }
@@ -2158,6 +2217,83 @@ code {
     max-width: 100%;
     text-align: center !important;
   }
+  .koompi-e11-desc {
+    width: 100%;
+    margin: 0px auto;
+    text-align: left;
+  }
+  .first-index-banner {
+    padding: 0px !important;
+    margin-bottom: 30px;
+  }
+  .koompi-e13-position,
+  .koompi-os-position {
+    position: relative;
+    top: auto;
+    transform: translate(0);
+  }
+  .e13-index-banner {
+    height: auto;
+  }
+  .index_banner img {
+    width: 100% !important;
+    top: 30px !important;
+    transform: scale(1) !important;
+  }
+  .os-index-banner {
+    height: 100vh;
+  }
+  .koompi-e11-position .koompiE11-image {
+    width: 100% !important;
+    margin-bottom: 30px;
+  }
+  .btn-center {
+    text-align: center;
+  }
+  .koompi-e11-title {
+    font-size: 80px;
+  }
+  .koompi-e13-section .banner_content {
+    position: relative;
+    left: 0;
+    transform: translateY(0);
+  }
+  .koompi-e11-position .index_banner .koompi-e13 {
+    transform: scale(1.4) !important;
+  }
+  .banner-overview-screen {
+    width: 100% !important;
+    transform: scale(1.7) !important;
+    margin: 20px 0px;
+  }
+  .koompi-e-section-margin {
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+  .switch_laptop {
+    padding-bottom: 20px !important;
+  }
+  .koompi-e11-page-width {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .ant-drawer-body {
+    padding: 0px !important;
+  }
+  .menuNavbarLogo {
+    background: #00000d;
+    margin-top: 0px !important;
+    height: 64px !important;
+  }
+  .menuNavbarLogo img {
+    top: 10px;
+  }
+  .ant-drawer-mask {
+    background-color: rgba(0, 0, 0, 0.69) !important;
+  }
+  .container-preoder {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 850px) {
@@ -2179,7 +2315,7 @@ code {
   }
   .index_banner img {
     width: 100% !important;
-    top: 40vh !important;
+    top: 30px !important;
     transform: scale(1) !important;
   }
   .content1 {
@@ -2403,11 +2539,12 @@ code {
     padding-top: 0px !important;
   }
   .index_banner img {
-    margin: 40px 0px !important;
+    margin-top: 90px !important;
   }
   .koompiBtn {
-    padding: 0px 30px !important;
+    padding: 0px 20px !important;
     height: 35px !important;
+    font-size: 14px !important;
   }
   .openSourceBtn {
     padding: 0px 30px !important;

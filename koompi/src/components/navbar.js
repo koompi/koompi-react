@@ -15,11 +15,11 @@ function RightNavbar() {
   return (
     <div className="rightNavbarHidden">
       <Menu theme="dark" mode="horizontal">
-        {/* <Menu.Item>
+        <Menu.Item>
           <NavLink activeClassName="koompi-active" to="/koompi-e11">
             <span>KOOMPI E11</span>
           </NavLink>
-        </Menu.Item> */}
+        </Menu.Item>
 
         <Menu.Item key="/koompi-e">
           <NavLink exact activeClassName="koompi-active" to="/koompi-e13">
@@ -81,25 +81,34 @@ function Navbar() {
               visible={visible}
             >
               <Menu>
-                {/* <Menu.Item>
+                <Menu.Item className="menuNavbarLogo" onClick={handleChange}>
+                  <Link to="/">
+                    <img
+                      className="logo"
+                      src="/img/koompi-sym-01.png"
+                      alt="koompi"
+                    />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item onClick={handleChange}>
                   <NavLink activeClassName="koompi-active" to="/koompi-e11">
                     <span>KOOMPI E11</span>
                   </NavLink>
-                </Menu.Item> */}
+                </Menu.Item>
 
-                <Menu.Item key="/koompi-e">
+                <Menu.Item key="/koompi-e" onClick={handleChange}>
                   <NavLink exact activeClassName="koompi-active" to="/koompi-e13">
                     <span>KOOMPI E13</span>
                   </NavLink>
                 </Menu.Item>
 
-                <Menu.Item key="/koompi-os">
+                <Menu.Item key="/koompi-os" onClick={handleChange}>
                   <NavLink exact activeClassName="koompi-active" to="/koompi-os">
                     <span>KOOMPI OS</span>
                   </NavLink>
                 </Menu.Item>
 
-                <Menu.Item>
+                <Menu.Item onClick={handleChange}>
                   <a
                     href="https://academy.koompi.com/"
                     rel="noopener noreferrer"
@@ -109,7 +118,7 @@ function Navbar() {
                   </a>
                 </Menu.Item>
 
-                <Menu.Item key="/shop/bag">
+                <Menu.Item key="/shop/bag" onClick={handleChange}>
                   <NavLink exact activeClassName="koompi-active" to="/shop/bag">
                     <span>KOOMPI SHOP</span>
                   </NavLink>

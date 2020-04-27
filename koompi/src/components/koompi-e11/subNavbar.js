@@ -27,6 +27,15 @@ function SubNavbar({ title }) {
               <NavLink
                 exact
                 activeStyle={{ color: "#1890ff" }}
+                to="/koompi-e11-order"
+              >
+                <span className="buyBtn">Preorder</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item className="sub-navbar-a">
+              <NavLink
+                exact
+                activeStyle={{ color: "#1890ff" }}
                 to="/koompi-e11/specs"
               >
                 <span>Specifications</span>

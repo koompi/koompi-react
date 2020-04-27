@@ -4,24 +4,25 @@ import Navbar from "../navbar"
 import SubNavbar from "./subNavbar"
 import Footer from "../footer"
 import parse from "html-react-parser"
+import ScrollAnimation from "react-animate-on-scroll"
 
 const dataSpacs = [
   {
     title: "Operating System",
-    desc: "<p>KOOMPI OS</p>"
+    desc: "<p>KOOMPI OS</p>",
   },
   {
     title: "Processor",
-    desc: "<p>Intel® Celeron CPU N4100 Processor</p>"
+    desc: "<p>Apollo Lake N3350, Dual Cores</p>",
   },
   {
     title: "Storage",
-    desc: "<p>M2 SATA3 SSD 128GB / 256GB </p>"
+    desc: "<p>eMMC 128GB</p>",
   },
 
   {
     title: "Memory",
-    desc: "<p>8GB DDR4</p>"
+    desc: "<p>4GB</p>",
   },
   {
     title: "Display",
@@ -30,7 +31,7 @@ const dataSpacs = [
             <p>Resolution: 1920 x 1080</p>
             <p>Screen-To-Body Ratio: 73.44%</p>
             <p>Aspect Ratio: 16:9</p>
-    `
+    `,
   },
   {
     title: "Dimension and Weight",
@@ -38,51 +39,52 @@ const dataSpacs = [
             <p>Height    210mm</p>
             <p>Depth    14.2mm</p>
             <p>Weight    1.28kg</p>
-          `
+          `,
   },
   {
     title: "Material",
-    desc: "<p>Full Aluminum alloy</p>"
+    desc: "<p>Full Aluminum alloy</p>",
   },
   {
     title: "Colour",
-    desc: "<p>Rose Gold / Space Grey</p>"
+    desc: "<p>Rose Gold / Space Grey</p>",
   },
 
   {
     title: "WebCam",
-    desc: "<p>0.3MP</p>"
+    desc: "<p>0.3MP</p>",
   },
   {
     title: "Audio",
-    desc: "<p>Built-in 1W Stereo Speaker *2</p>"
+    desc: "<p>Built-in 1W Stereo Speaker *2</p>",
   },
   {
     title: "Battery",
-    desc: "<p>Li-polymer battery 5000mAH up to 7H</p>"
-  }
+    desc: "<p>Li-polymer battery 5000mAH up to 8H</p>",
+  },
 ]
 function Koompi_E_Spec() {
   return (
     <div>
-      <Navbar />
-      <SubNavbar title="KOOMPI E13" />
+      <SubNavbar title="KOOMPI E11" />
       <div className="spec-background">
         <div className="container">
-          {dataSpacs.map((res) => {
-            return (
-              <div style={{ padding: "5px 0px" }}>
-                <Row gutter={[16, 16]} type="flex">
-                  <Col xs={24} sm={12} md={8} lg={7} xl={7}>
-                    <h2 className="spacTitle">{res.title}</h2>
-                  </Col>
-                  <Col xs={24} sm={12} md={16} lg={17} xl={17}>
-                    <div>{parse(res.desc)}</div>
-                  </Col>
-                </Row>
-              </div>
-            )
-          })}
+          <ScrollAnimation animateIn="fadeIn">
+            {dataSpacs.map((res) => {
+              return (
+                <div style={{ padding: "5px 0px" }}>
+                  <Row gutter={[16, 16]} type="flex">
+                    <Col xs={24} sm={12} md={8} lg={7} xl={7}>
+                      <h2 className="spacTitle">{res.title}</h2>
+                    </Col>
+                    <Col xs={24} sm={12} md={16} lg={17} xl={17}>
+                      <div>{parse(res.desc)}</div>
+                    </Col>
+                  </Row>
+                </div>
+              )
+            })}{" "}
+          </ScrollAnimation>
         </div>
       </div>
       <Footer />

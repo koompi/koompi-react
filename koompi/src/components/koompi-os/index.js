@@ -10,6 +10,7 @@ import { useQuery } from "@apollo/react-hooks"
 import parse from "html-react-parser"
 import { Helmet } from "react-helmet"
 import ProgressiveImage from "react-progressive-image"
+import ScrollAnimation from "react-animate-on-scroll"
 
 function KOOMPIOS() {
   useEffect(() => {
@@ -59,11 +60,7 @@ function KOOMPIOS() {
                 {(src, loading) =>
                   loading ? (
                     <center>
-                      <img
-                        src="/img/three-dots-black.svg"
-                        alt={title}
-                        height="10px"
-                      />
+                      <img src="/img/oval.svg" alt={title} height="60px" />
                     </center>
                   ) : (
                     <img src={src} alt={title} className="koompi-os-banner-image" />
@@ -110,11 +107,7 @@ function KOOMPIOS() {
                   {(src, loading) =>
                     loading ? (
                       <center>
-                        <img
-                          src="/img/three-dots-black.svg"
-                          alt={title}
-                          height="10px"
-                        />
+                        <img src="/img/oval.svg" alt={title} height="60px" />
                       </center>
                     ) : (
                       <img
@@ -133,17 +126,13 @@ function KOOMPIOS() {
       } else {
         return (
           <Row gutter={[12, 12]} key={index}>
-            <Col xs={24} sm={24} md={14} lg={14} xl={14} className="bigScreen">
+            <Col xs={24} sm={24} md={12} lg={12} xl={12} className="bigScreen">
               <div className="app-image">
                 <ProgressiveImage src={`https://admin.koompi.com${image}`}>
                   {(src, loading) =>
                     loading ? (
                       <center>
-                        <img
-                          src="/img/three-dots-black.svg"
-                          alt={title}
-                          height="10px"
-                        />
+                        <img src="/img/oval.svg" alt={title} height="60px" />
                       </center>
                     ) : (
                       <img
@@ -157,7 +146,7 @@ function KOOMPIOS() {
                 </ProgressiveImage>
               </div>
             </Col>
-            <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <div className="koompi-os-apps paddingLeft">
                 {/* <img
                   src={`https://admin.koompi.com${logo}`}
@@ -168,17 +157,13 @@ function KOOMPIOS() {
                 {parse(description)}
               </div>
             </Col>
-            <Col xs={24} sm={24} md={14} lg={14} xl={14} className="smallDevice">
+            <Col xs={24} sm={24} md={12} lg={12} xl={12} className="smallDevice">
               <div className="app-image">
                 <ProgressiveImage src={`https://admin.koompi.com${image}`}>
                   {(src, loading) =>
                     loading ? (
                       <center>
-                        <img
-                          src="/img/three-dots-black.svg"
-                          alt={title}
-                          height="10px"
-                        />
+                        <img src="/img/oval.svg" alt={title} height="60px" />
                       </center>
                     ) : (
                       <img
@@ -208,7 +193,9 @@ function KOOMPIOS() {
       </div>
       <div className="apps">
         <div className="container">
-          <DisplaySoftware />
+          <ScrollAnimation animateIn="fadeIn">
+            <DisplaySoftware />
+          </ScrollAnimation>
         </div>
       </div>
       <Footer />

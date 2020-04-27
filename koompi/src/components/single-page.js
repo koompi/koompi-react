@@ -42,12 +42,12 @@ function SinglePage(props) {
 
   if (description) {
     metaElements.push(
-      <meta key="description" name="description" content={description} />,
-      <meta key="og:description" property="og:description" content={description} />,
+      <meta key="description" name="description" content={meta_desc} />,
+      <meta key="og:description" property="og:description" content={meta_desc} />,
       <meta
         key="twitter:description"
         property="twitter:description"
-        content={description}
+        content={meta_desc}
       />
     )
   }

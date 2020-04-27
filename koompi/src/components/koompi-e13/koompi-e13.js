@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Row, Col, Result, Spin, Carousel } from "antd"
+import { Row, Col, Result, Spin, Carousel, Icon, Button } from "antd"
 import { useQuery } from "@apollo/react-hooks"
 import { GET_PAGES } from "../graphql/query"
 import NProgress from "nprogress"
@@ -15,8 +15,10 @@ import battery from "../data/battery"
 import Footer from "../footer"
 import _ from "lodash"
 import ProgressiveImage from "react-progressive-image"
+import ScrollAnimation from "react-animate-on-scroll"
 
 import Helmet from "react-helmet"
+import { Link } from "react-router-dom"
 
 function KoompiE13(props) {
   const [koompiColor, setKoompiColor] = useState("gray")
@@ -54,31 +56,50 @@ function KoompiE13(props) {
   // ===== KOOMPI E Top Section  =====
   const DisplayKOOMPIE = ({ title, description, image }) => {
     return (
-      <div className="container">
-        <center>
-          <h2 className="KoompiE11">{title}</h2>
+      <div className="banner">
+        {/* <div className="PhnomPenh"></div> */}
+        {/* <img src="/img/4.png" alt="" className="index-img-4" /> */}
+        <div className="koompi-e11-position">
+          <ScrollAnimation animateIn="fadeIn">
+            <div className="container-e13-index">
+              <div className="koompi-e13-section">
+                <Row gutter={50}>
+                  <Col
+                    xs={24}
+                    sm={24}
+                    md={24}
+                    lg={10}
+                    xl={10}
+                    style={{ zIndex: "1" }}
+                  >
+                    <div className="banner_content">
+                      {/* ========= KOOMPI SECTION =========  */}
+                      <center>
+                        <h1 className="koompi-e13-title-index">{title}</h1>
+                      </center>
 
-          <div className="subTittle-E11">{description}</div>
-          <h1 className="koompi-price">$369.00</h1>
-          <ProgressiveImage src={imageLink + image}>
-            {(src, loading) =>
-              loading ? (
-                <img
-                  className="banner-overview-koompiE11 koompiScale"
-                  src="/img/three-dots-black.svg"
-                  alt={title}
-                  height="10px"
-                />
-              ) : (
-                <img
-                  className="banner-overview-koompiE11 koompiScale"
-                  src={src}
-                  alt={title}
-                />
-              )
-            }
-          </ProgressiveImage>
-        </center>
+                      <div className="text-koompi-section-banner">
+                        <center>
+                          <div className="koompi-index-desc">{description}</div>
+                          <h1 class="koompi-price">$369</h1>
+                        </center>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col xs={24} sm={24} md={24} lg={14} xl={14}>
+                    <center>
+                      <div className="index_banner">
+                        <img src="/img/19.jpg" alt="" className="koompi-e13" />
+                      </div>
+                    </center>
+                  </Col>
+                </Row>
+              </div>
+              <br />
+              <br />
+            </div>
+          </ScrollAnimation>
+        </div>
       </div>
     )
   }
@@ -116,14 +137,9 @@ function KoompiE13(props) {
           <ProgressiveImage src={image}>
             {(src, loading) =>
               loading ? (
-                <img
-                  className="banner-overview-koompiE11 koompiScale"
-                  src="/img/three-dots-black.svg"
-                  alt={title}
-                  height="10px"
-                />
+                <img src="/img/oval.svg" alt={title} height="60px" />
               ) : (
-                <img className="banner-overview-koompiE11" src={src} alt={title} />
+                <img className="banner-overview-screen" src={src} alt={title} />
               )
             }
           </ProgressiveImage>
@@ -238,12 +254,7 @@ function KoompiE13(props) {
                 <ProgressiveImage src={imageLink + image}>
                   {(src, loading) =>
                     loading ? (
-                      <img
-                        className="banner-overview-koompiE11 koompiScale"
-                        src="/img/three-dots-black.svg"
-                        alt={title}
-                        height="10px"
-                      />
+                      <img src="/img/oval.svg" alt={title} height="60px" />
                     ) : (
                       <img
                         className="banner-overview-koompiE11 koompiBattery"
@@ -326,13 +337,11 @@ function KoompiE13(props) {
             className="koompi-page-container text-koompi-section-banner"
             key={index}
           >
-            <div className="koompiDetail">
-              <DisplayKOOMPIE
-                title={data.title}
-                description={parse(description)}
-                image={data.image}
-              />
-            </div>
+            <DisplayKOOMPIE
+              title={data.title}
+              description={parse(description)}
+              image={data.image}
+            />
           </div>
         )
       }
@@ -413,21 +422,6 @@ function KoompiE13(props) {
       <div>
         <SubNavbar title="KOOMPI E13" history={props.history} />
         <div className="background-color-Koompi-E">
-          <div className="area">
-            <ul className="circles">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-
           <DisplayData />
         </div>
       </div>
