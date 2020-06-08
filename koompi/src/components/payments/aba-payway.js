@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { Row, Col, Button, Modal, Input, Form, InputNumber } from "antd"
+import { Row, Col, Button, Modal, Input, Form, InputNumber, message } from "antd"
 import Axios from "axios"
 import { useMutation } from "@apollo/react-hooks"
-import { CREATE_PAYMENT } from "../graphql/mutation"
+import { CREATE_CUSTOMER } from "../graphql/mutation"
+import { FiX } from "react-icons/fi"
+import phoneValidation from "./phoneValidation"
 
 function AbaPayway({
   visible,
@@ -11,10 +13,10 @@ function AbaPayway({
   handleCancle,
   amount,
   color,
-  paymentOption
+  paymentOption,
 }) {
   const { getFieldDecorator } = form
-  const [createPayment] = useMutation(CREATE_PAYMENT)
+  const [createCustomer] = useMutation(CREATE_CUSTOMER)
   const [loading, setLoading] = useState(false)
 
   //   ===== State Management =====
@@ -24,7 +26,7 @@ function AbaPayway({
     firstname: "",
     lastname: "",
     phone: "",
-    email: ""
+    email: "",
   })
   const [hash, setHash] = useState("")
 
@@ -32,7 +34,7 @@ function AbaPayway({
     const { transactionId, amount } = abaData
     Axios.post("https://admin.koompi.com/payment/option/create", {
       transactionId,
-      amount
+      amount,
     })
       .then((res) => {
         setHash(res.data)
@@ -46,28 +48,32 @@ function AbaPayway({
     e.preventDefault()
     await form.validateFieldsAndScroll(async (err, values) => {
       const { firstname, lastname, phone, email } = values
-      if (!err) {
-        await setAbaData({ firstname, lastname, phone, email })
-        await window.AbaPayway.checkout()
+      if (!phoneValidation(`${values.phone}`)) {
+        message.error("Your phone number is invalid")
+      } else {
+        if (!err) {
+          await setAbaData({ firstname, lastname, phone, email })
+          await window.AbaPayway.checkout()
 
-        await createPayment({
-          variables: {
-            ...values,
-            product: ["KOOMPI E13"],
-            price: abaData.amount,
-            phone: values.phone.toString()
-          }
-        })
-          .then(async () => {
-            setLoading(true)
-            setTimeout(() => {
-              setLoading(false)
-            }, 3000)
-            form.resetFields()
+          await createCustomer({
+            variables: {
+              ...values,
+              product: ["KOOMPI E13"],
+              price: abaData.amount,
+              phone: values.phone.toString(),
+            },
           })
-          .catch((error) => {
-            console.log(error)
-          })
+            .then(async () => {
+              setLoading(true)
+              setTimeout(() => {
+                setLoading(false)
+              }, 3000)
+              form.resetFields()
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        }
       }
     })
   }
@@ -116,48 +122,49 @@ function AbaPayway({
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancle}
+        closeIcon={<FiX />}
         className="abaPaywayModal paymentModal"
         footer={false}
       >
         <Form onSubmit={handleSubmit}>
-          <h2 className="titleAbaForm">Enter your personal information</h2>
-          {/* ===== Hash Data */}
+          <h2>Enter your personal information</h2>
+          {/* ===== Hash Data =====*/}
           <Form.Item label="Hash" className="formDisplayNone">
             {getFieldDecorator("hash", {
               rules: [{ required: true, message: "This field is required!" }],
-              initialValue: hash
+              initialValue: hash,
             })(<Input size="large" />)}
           </Form.Item>
 
-          {/* ===== Transition ID */}
+          {/* ===== Transition ID =====*/}
           <Form.Item label="tran_id" className="formDisplayNone">
             {getFieldDecorator("tran_id", {
               rules: [{ required: true, message: "This field is required!" }],
-              initialValue: abaData.transactionId
+              initialValue: abaData.transactionId,
             })(<Input size="large" />)}
           </Form.Item>
 
-          {/* ===== Amount */}
+          {/* ===== Amount =====*/}
           <Form.Item label="amount" className="formDisplayNone">
             {getFieldDecorator("amount", {
               rules: [{ required: true, message: "This field is required!" }],
-              initialValue: abaData.amount
+              initialValue: abaData.amount,
             })(<Input size="large" />)}
           </Form.Item>
 
-          {/* ===== Amount */}
+          {/* ===== Pay By =====*/}
           <Form.Item label="payBy" className="formDisplayNone">
             {getFieldDecorator("payBy", {
               rules: [{ required: true, message: "This field is required!" }],
-              initialValue: paymentOption === "abapay" ? "ABA Pay" : "Credit Card"
+              initialValue: paymentOption === "abapay" ? "ABA Pay" : "Credit Card",
             })(<Input size="large" />)}
           </Form.Item>
 
-          {/* ===== Amount */}
+          {/* ===== Color =====*/}
           <Form.Item label="color" className="formDisplayNone">
             {getFieldDecorator("color", {
               rules: [{ required: true, message: "This field is required!" }],
-              initialValue: color
+              initialValue: color,
             })(<Input size="large" />)}
           </Form.Item>
 
@@ -166,7 +173,7 @@ function AbaPayway({
             <Col span={12}>
               <Form.Item label="First Name">
                 {getFieldDecorator("firstname", {
-                  rules: [{ required: true, message: "This field is required!" }]
+                  rules: [{ required: true, message: "This field is required!" }],
                 })(<Input size="large" autoFocus={true} autoComplete="off" />)}
               </Form.Item>
             </Col>
@@ -174,7 +181,7 @@ function AbaPayway({
             <Col span={12}>
               <Form.Item label="Last Name">
                 {getFieldDecorator("lastname", {
-                  rules: [{ required: true, message: "This field is required!" }]
+                  rules: [{ required: true, message: "This field is required!" }],
                 })(<Input size="large" autoComplete="off" />)}
               </Form.Item>
             </Col>
@@ -186,13 +193,13 @@ function AbaPayway({
               rules: [
                 {
                   type: "email",
-                  message: "The input is not valid email!"
+                  message: "The input is not valid email!",
                 },
                 {
                   required: true,
-                  message: "Please input your email!"
-                }
-              ]
+                  message: "Please input your email!",
+                },
+              ],
             })(<Input size="large" autoComplete="off" />)}
           </Form.Item>
 
@@ -202,9 +209,9 @@ function AbaPayway({
               rules: [
                 {
                   required: true,
-                  message: "Please input your phone number!"
-                }
-              ]
+                  message: "Please input your phone number!",
+                },
+              ],
             })(<InputNumber size="large" autoComplete="off" />)}
           </Form.Item>
 

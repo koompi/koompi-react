@@ -60,7 +60,7 @@ function KOOMPIOS() {
                 {(src, loading) =>
                   loading ? (
                     <center>
-                      <img src="/img/oval.svg" alt={title} height="60px" />
+                      <img src="/img/loading.svg" alt={title} height="60px" />
                     </center>
                   ) : (
                     <img src={src} alt={title} className="koompi-os-banner-image" />
@@ -107,7 +107,7 @@ function KOOMPIOS() {
                   {(src, loading) =>
                     loading ? (
                       <center>
-                        <img src="/img/oval.svg" alt={title} height="60px" />
+                        <img src="/img/loading.svg" alt={title} height="60px" />
                       </center>
                     ) : (
                       <img
@@ -132,7 +132,7 @@ function KOOMPIOS() {
                   {(src, loading) =>
                     loading ? (
                       <center>
-                        <img src="/img/oval.svg" alt={title} height="60px" />
+                        <img src="/img/loading.svg" alt={title} height="60px" />
                       </center>
                     ) : (
                       <img
@@ -163,7 +163,7 @@ function KOOMPIOS() {
                   {(src, loading) =>
                     loading ? (
                       <center>
-                        <img src="/img/oval.svg" alt={title} height="60px" />
+                        <img src="/img/loading.svg" alt={title} height="60px" />
                       </center>
                     ) : (
                       <img

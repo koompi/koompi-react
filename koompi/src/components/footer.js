@@ -67,7 +67,7 @@ function Footer() {
               </NavLink> */}
             </Col>
 
-            <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
+            <Col xs={12} sm={12} ms={5} lg={5} xl={5}>
               <h4 className="footerMarginTop">Help</h4>
               <NavLink to="">
                 <p>Support</p>
@@ -76,7 +76,7 @@ function Footer() {
                 <p>Contact Us</p>
               </NavLink> */}
             </Col>
-            <Col xs={12} sm={12} ms={6} lg={6} xl={6}>
+            <Col xs={24} sm={24} ms={7} lg={7} xl={7}>
               <h4 className="footerMarginTop">Connect With Us</h4>
               <div className="footer_socail_media">
                 <DisplaySocailMedia />

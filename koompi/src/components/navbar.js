@@ -1,16 +1,13 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import { NavLink, Link } from "react-router-dom"
 import { Layout, Menu, Badge, Drawer } from "antd"
 import { FiAlignLeft } from "react-icons/fi"
-import { CartContext } from "../CartContext"
 import { FiShoppingCart } from "react-icons/fi"
-import Cookies from "js-cookie"
 
 const { Header } = Layout
 
 function RightNavbar() {
-  const ctx = useContext(CartContext)
-  const result = Cookies.getJSON("koompi")
+  const [data] = useState(0)
 
   return (
     <div className="rightNavbarHidden">
@@ -28,9 +25,13 @@ function RightNavbar() {
         </Menu.Item>
 
         <Menu.Item key="/koompi-os">
-          <NavLink exact activeClassName="koompi-active" to="/koompi-os">
+          <a
+            href="https://www.koompi.org/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <span>KOOMPI OS</span>
-          </NavLink>
+          </a>
         </Menu.Item>
 
         <Menu.Item>
@@ -45,12 +46,20 @@ function RightNavbar() {
         {/* JSON.parse(laptop).length */}
         <Menu.Item>
           <NavLink exact activeStyle={{ color: "white" }} to="/shop/bag">
-            <Badge
-              count={result === undefined ? 0 : result.length || ctx.items.length}
-            >
+            <Badge count={data.length}>
               <FiShoppingCart className="shopping-cart-icon" />
             </Badge>
           </NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <button style={{ height: "50px", color: "#333", lineHeight: "0px" }}>
+            En
+          </button>
+        </Menu.Item>
+        <Menu.Item>
+          <button style={{ height: "50px", color: "#333", lineHeight: "0px" }}>
+            Kh
+          </button>
         </Menu.Item>
       </Menu>
     </div>
@@ -103,9 +112,13 @@ function Navbar() {
                 </Menu.Item>
 
                 <Menu.Item key="/koompi-os" onClick={handleChange}>
-                  <NavLink exact activeClassName="koompi-active" to="/koompi-os">
+                  <a
+                    href="https://www.koompi.org/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     <span>KOOMPI OS</span>
-                  </NavLink>
+                  </a>
                 </Menu.Item>
 
                 <Menu.Item onClick={handleChange}>

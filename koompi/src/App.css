@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
-  font-family: "Quicksand", sans-serif !important;
+  font-family: "Muli", sans-serif;
   letter-spacing: 0.5px;
 }
 body {
@@ -15,11 +13,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Open Sans", sans-serif !important;
-  font-weight: 800 !important;
+  font-family: "Muli", sans-serif;
+}
+h1 {
+  font-weight: 900 !important;
 }
 p {
-  font-size: 22px !important;
+  font-size: 20px !important;
+  margin: 10px 0px !important;
+  font-weight: 400;
 }
 .intro {
   height: 100vh;
@@ -42,6 +44,11 @@ p {
   position: relative;
   overflow: hidden;
 }
+.background-color-Koompi {
+  position: relative;
+  overflow: hidden;
+  background-color: #141414;
+}
 .background-color {
   overflow: hidden;
 }
@@ -56,13 +63,46 @@ p {
   /* padding: 80px 0px 0px 0px; */
   clear: both;
   height: 100vh;
-  background-color: #04041c;
-  background-image: linear-gradient(0deg, #04041c 0%, #04041c !important 100%);
+  background-color: #141414;
+  background-image: linear-gradient(0deg, #141414 0%, #141414 !important 100%);
 }
 .readmore {
   margin-top: -14px;
   margin-bottom: 38px;
   font-size: 15px;
+}
+.banner-preorder {
+  width: 100%;
+}
+.background-e11 {
+  margin-top: 40px;
+}
+.background-e11 h2 {
+  font-size: 30px;
+}
+.ant-row-flex h2 {
+  font-size: 20px !important;
+}
+.ant-row-flex p {
+  font-size: 26px;
+}
+.ant-row-flex div p {
+  margin-bottom: 10px !important;
+}
+.ant-row-flex h2,
+.ant-row-flex p {
+  margin: 0px !important;
+}
+.ant-row-flex {
+  padding: 10px !important;
+}
+.specsBackground1 {
+  background-color: #ffffff;
+  padding: 10px !important;
+}
+.specsBackground2 {
+  padding: 10px !important;
+  background-color: #ffffff69;
 }
 .text {
   font-size: 19px;
@@ -76,6 +116,7 @@ p {
   /* width: 41%; */
   max-width: 700px;
 }
+
 /* .banner1 {
 	background-image: url('/img/banner1.jpg');
 	
@@ -119,9 +160,9 @@ p {
   height: 900px;
 }
 .bossTittle-KoompiHome {
-  color: #262e3c !important;
+  color: #141414 !important;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 900;
   /* margin-top: 80px; */
 }
 .subBanner-koompiPro img {
@@ -140,10 +181,6 @@ p {
   border-radius: 15px;
   margin-left: 20px;
 }
-.sub-navbar-a span {
-  font-size: 16px !important;
-  /* color: #ffffff !important; */
-}
 .sub-navbar-a-koompi-b {
   float: right !important;
 }
@@ -159,9 +196,8 @@ p {
 
 .subTittle-E11 p {
   font-weight: 500 !important;
-  width: 85% !important;
+  width: 73% !important;
   margin-bottom: 10px !important;
-  font-size: 22px !important;
 }
 
 .subTittle-Pro {
@@ -252,14 +288,14 @@ p {
   margin-bottom: 55px;
 }
 .background-color {
-  background-color: #262e3c !important;
+  background-color: #141414 !important;
 }
 .banner-overview {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .ant-tabs-bar {
-  /* background-color: #262e3c !important; */
+  /* background-color: #141414 !important; */
   width: 700px;
   margin: 0 auto !important;
   text-align: center !important;
@@ -301,8 +337,15 @@ p {
   font-size: 18px;
   /* margin-top: 50px; */
 }
+.text-koompi-section-banner .koompi-desc p {
+  max-width: 72% !important;
+  margin: 0px auto !important;
+  text-align: center;
+  padding-top: 20px;
+}
+
 .text-koompi-section-banner p {
-  max-width: 85%;
+  max-width: 80% !important;
 }
 .text-koompiePro-banner {
   color: #ffffff;
@@ -404,6 +447,10 @@ p {
 .koompi_content .bossTittle-KoompiHome {
   margin-top: 80px;
 }
+.collapse-div .icon {
+  position: relative;
+  top: 3px;
+}
 .voice-text {
   font-size: 23px;
   color: #63636e !important;
@@ -445,9 +492,57 @@ p {
 }
 .order_summary {
   padding: 25px;
-  background-color: #d3d9de;
-  margin: 15px 0px;
+  background-color: #e2e8ed;
   border-radius: 8px !important;
+}
+.ant-table-tbody {
+  background-color: #ffffff !important;
+}
+.item-background {
+  background-color: #ffffff !important;
+}
+.item-background .item-title {
+  margin-bottom: 0px !important;
+  margin-top: 10px;
+}
+.item-hardware-detail {
+  padding: 10px 0px;
+}
+.collapse-div {
+  cursor: pointer;
+}
+.collapse-div p {
+  margin-bottom: 10px !important;
+}
+.item-hardware-detail p {
+  margin: 0px;
+  padding: 0px 0px;
+  font-size: 17px !important;
+  font-weight: bold;
+}
+.koompi-cart-detail {
+  padding: 20px 20px;
+}
+.cart-container {
+  width: 70%;
+  margin: 0px auto !important;
+}
+.item-hardware-detail ul {
+  padding: 0px 45px;
+}
+.memberPosition {
+  font-size: 18px !important;
+}
+.item-hardware-detail ul li {
+  padding: 3px 0px;
+  font-size: 16px;
+}
+.contactUs {
+  font-size: 17px !important;
+  color: red;
+}
+.ant-carousel .slick-slide h3 {
+  color: #fff;
 }
 .order_summary h3 {
   font-weight: bolder;
@@ -526,24 +621,30 @@ p {
   margin-bottom: 55px;
 }
 .background-color {
-  background-color: #262e3c !important;
+  background-color: #141414 !important;
 }
 .banner-overview {
   /* max-width: 1143px; */
   max-width: 100%;
 }
 .ant-tabs-bar {
-  /* background-color: #262e3c !important; */
+  /* background-color: #141414 !important; */
   width: 700px;
   margin: 0 auto !important;
   text-align: center !important;
 }
 .KoompiE11 {
   margin-bottom: 0.5em;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   font-size: 50px !important;
-  color: #262e3c !important;
-  text-transform: uppercase;
+  color: #141414 !important;
+  /* text-transform: uppercase; */
+  width: 75%;
+  margin: 0px auto;
+  text-align: center;
+}
+.koompi-e-background {
+  overflow: hidden !important;
 }
 .koompi-e-background img {
   margin-top: 100px;
@@ -695,9 +796,19 @@ p {
 }
 .banner-overview-koompiE11,
 .banner-overview-screen {
-  width: 100% !important;
+  width: 80% !important;
   transform: scale(1) !important;
   margin: 0px 0px;
+}
+.e11-shapeliness {
+  width: 60% !important;
+}
+.koompi-e-background .banner-overview-koompiE11 {
+  width: 100% !important;
+}
+.e11-screen,
+.e13-screen {
+  width: 100% !important;
 }
  {
   /* max-width: 1143px; */
@@ -806,10 +917,10 @@ p {
   height: 64px !important;
   padding: 8px 0px !important;
   line-height: 0px !important;
-  background: #262e3c !important;
+  background: #141414 !important;
 }
 .ant-menu-dark {
-  background: #262e3c !important;
+  background: #141414 !important;
 }
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item,
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
@@ -819,7 +930,7 @@ p {
   border-bottom: 0 !important;
   font-size: 18px !important;
   letter-spacing: 0px !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
 }
 .ant-menu.ant-menu-dark .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
@@ -890,7 +1001,7 @@ button[type="submit"]:hover,
   background-color: red !important;
 }
 .footerBackground {
-  background-color: #262e3c !important;
+  background-color: #141414 !important;
   padding: 50px 0px;
 }
 .footerBackground img {
@@ -909,7 +1020,7 @@ button[type="submit"]:hover,
 }
 
 .footerPMagin p {
-  color: #869fb2 !important;
+  color: #a7a7a7 !important;
   text-align: left;
   font-size: 18px !important;
   margin-bottom: 5px;
@@ -932,7 +1043,7 @@ button[type="submit"]:hover,
   color: #ffffff;
 }
 .socailMedia {
-  background-color: #262e3c !important;
+  background-color: #141414 !important;
   padding: 20px 0px;
   margin-top: 30px !important;
 }
@@ -973,10 +1084,11 @@ button[type="submit"]:hover,
   font-weight: 600 !important;
 }
 .btnRemove {
-  float: right;
-  padding: 0px 50px !important;
-  border: 0px !important;
-  font-weight: 600 !important;
+  position: absolute !important;
+  top: -30px !important;
+  right: -20px !important;
+  font-size: 25px !important;
+  cursor: pointer;
 }
 .shopping-cart-icon {
   font-size: 24px !important;
@@ -1037,12 +1149,12 @@ button[type="submit"]:hover,
   text-transform: uppercase !important;
 }
 .footer_socail_media img {
-  padding: 9px;
+  padding: 2px;
   height: 40px !important;
   background: #ffffff;
   width: 40px !important;
-  border-radius: 20%;
-  margin: 0px 3px;
+  border-radius: 8px;
+  margin: 3px 3px;
 }
 .ant-cart-border {
   background: #f0f3f7 !important;
@@ -1075,10 +1187,51 @@ button[type="submit"]:hover,
   padding: 15px;
   background-color: #ffffff;
   border-radius: 8px;
-  margin: 5px 0px;
+  margin: 10px 0px;
   width: 100% !important;
   max-width: 100%;
   cursor: pointer;
+}
+.kp-cart {
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin: 10px 0px;
+  width: 100% !important;
+  max-width: 100%;
+  position: relative;
+}
+.kp-cart > p {
+  z-index: 10 !important;
+}
+.pp-back {
+  position: absolute;
+  background-image: url(/img/pp_back.svg);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  z-index: 0 !important;
+  opacity: 0.03 !important;
+}
+.kp-e-cart {
+  background-color: #ffffff;
+  margin: 10px 0px;
+  width: 100% !important;
+  max-width: 100%;
+  border-radius: 0px 0px 10px 10px !important;
+}
+.cartPadding {
+  padding: 10px 20px !important;
+}
+.cartTitle {
+  font-size: 24px !important;
+  font-weight: 800;
+  margin: 10px 0px !important;
+  text-align: center;
 }
 .ant-input {
   font-size: 15px !important;
@@ -1086,6 +1239,13 @@ button[type="submit"]:hover,
 .ant-modal-title {
   font-size: 18px !important;
   font-weight: bold !important;
+}
+.koompiSummary {
+  margin: 20px 0px !important;
+}
+.moreProductsTitle {
+  font-size: 24px;
+  margin: 40px 0px 0px 0px !important;
 }
 .paymentBtn {
   border: 0px !important;
@@ -1101,8 +1261,19 @@ button[type="submit"]:hover,
   text-transform: none !important;
 }
 .bagIsEmpty {
-  font-size: 60px;
+  font-size: 60px !important;
   padding: 50px;
+  font-weight: 900 !important;
+  font-style: italic !important;
+}
+.loading-position {
+  position: relative;
+}
+.loading-position .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .emptyCart {
   padding: 50px 0px;
@@ -1195,7 +1366,7 @@ button[type="submit"]:hover,
   }
 }
 .koompi-os-title-index {
-  color: #262e3c !important;
+  color: #141414 !important;
   font-size: 50px;
   font-weight: 700;
   margin-top: 60px;
@@ -1256,15 +1427,27 @@ button[type="submit"]:hover,
 .koompi-screen-section {
   position: relative;
 }
+.koompiDetail {
+  background-color: #141414;
+}
+.koompiE11Back .KoompiE11 {
+  color: #ffffff !important;
+}
+.koompiE11Back .subTittle-E11 p {
+  color: #b1b1b1;
+}
 .koompi-screen-section h3 {
   position: absolute;
   left: 50%;
-  font-size: 100px;
-  font-weight: 800;
-  top: -110px;
+  font-size: 70px;
+  font-weight: 900;
+  top: -70px;
   transform: translate(-50%);
   opacity: 0.1;
   text-transform: uppercase;
+}
+.shoppingCartContainer {
+  margin: 20px 0px;
 }
 .koompi-screen-section h2 {
   z-index: 1;
@@ -1275,17 +1458,16 @@ button[type="submit"]:hover,
   margin-bottom: 40px;
 }
 .koompi-e-section-title {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 900;
   text-transform: uppercase;
-  opacity: 0.5;
-  color: #008af4;
+  color: #d6dade;
 }
 .koompi-e-section-desc {
-  font-size: 35px !important;
-  font-weight: 700;
+  font-size: 26px !important;
+  font-weight: 800;
   position: relative;
-  color: #333;
+  color: #141414;
   margin: 0px !important;
   position: relative;
   top: -15px;
@@ -1294,13 +1476,38 @@ button[type="submit"]:hover,
 .shapeliness-margin-top {
   padding-top: 200px;
   padding-bottom: 50px;
+  background-color: #f4f4f4;
+}
+.performance-margin-top {
+  padding-top: 200px;
+  padding-bottom: 50px;
+  background-color: #ffffff;
+}
+.battery-section-background {
+  padding-top: 200px;
+  padding-bottom: 50px;
+  background-color: #f5f5f5;
 }
 .roseCircle,
 .speceGrayCircle {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   cursor: pointer;
+}
+.koompi-e-performance {
+  width: 100% !important;
+}
+.appsImageWidth {
+  width: 90% !important;
+  margin: 30px 0px;
+}
+.playerWidth {
+  width: 85% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: -10% !important;
+  z-index: 0 !important;
 }
 .roseCircle {
   background-color: #fcc;
@@ -1313,7 +1520,7 @@ button[type="submit"]:hover,
   margin: 0px auto;
 }
 .switch-koompi-container-shopping-cart {
-  width: 50%;
+  width: 40%;
 }
 .margin-battery-section {
   background: #ffffff;
@@ -1324,13 +1531,12 @@ button[type="submit"]:hover,
   right: 30px !important;
   bottom: 50px !important;
   z-index: 10;
-  background: #008af4;
+  background: #3b3b3e;
   text-align: center;
   border-radius: 50%;
   width: 45px !important;
   height: 45px !important;
-  box-shadow: 0 0px 10px -1px rgba(0, 0, 0, 0.246),
-    0 2px 4px -1px rgba(0, 0, 0, 0.205) !important;
+  box-shadow: none !important;
 }
 .ant-back-top svg {
   font-size: 30px;
@@ -1354,7 +1560,7 @@ button[type="submit"]:hover,
 .ant-collapse-header {
   background: #d4d5d6;
   font-size: 18px !important;
-  color: #262e3c !important;
+  color: #141414 !important;
   font-weight: bold;
 }
 .ant-collapse-content > .ant-collapse-content-box {
@@ -1365,13 +1571,13 @@ button[type="submit"]:hover,
   border-bottom-color: currentcolor;
   border-bottom-style: none;
   border-bottom-width: 0px;
-  margin: 0px 10px;
+  margin: 10px 10px;
   background-color: #008af4 !important;
   color: #ffffff !important;
   border-radius: 0px !important;
   padding: 0px 40px !important;
   font-weight: 600 !important;
-  height: 40px !important;
+  height: 35px !important;
   border-radius: 40px !important;
   border-bottom: 0px solid #008af4 !important;
   cursor: pointer;
@@ -1467,7 +1673,7 @@ button[type="submit"]:hover,
 }
 .shopHere:hover {
   border: 0px;
-  background: #262e3c !important;
+  background: #141414 !important;
   color: #cae3f8 !important;
 }
 .shopHere span {
@@ -1484,7 +1690,7 @@ button[type="submit"]:hover,
 .retailers-title {
   font-size: 18px !important;
   font-weight: 700 !important;
-  color: #262e3c !importantb7 !important;
+  color: #141414 !importantb7 !important;
   position: relative;
   z-index: 1;
 }
@@ -1511,19 +1717,51 @@ button[type="submit"]:hover,
 }
 .title-retailer-banner {
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 900;
 }
 .ourRetailers {
   margin: 40px 0px;
 }
 .teamMember {
   font-size: 35px !important;
-  font-weight: 700;
+  font-weight: 900;
   margin: 60px 0px;
 }
 .memberName {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0px !important;
+}
+.img-holder {
+  background-image: url("/img/CPU-03.svg");
+  height: 900px;
+  position: absolute;
+  width: 900px;
+  background-repeat: no-repeat;
+  left: -400px;
+  opacity: 0.2;
+}
+.seenOn {
+  background-color: #ffffff;
+  padding: 40px 0px;
+}
+.seenOnSlide .slick-dots {
+  display: none !important;
+}
+.seenOnImage {
+  filter: grayscale(100%);
+  width: 100% !important;
+  padding: 0px 10px;
+  transition: 0.3s;
+}
+.seenOnImage:hover {
+  filter: grayscale(0%);
+  cursor: pointer;
+}
+.seenOnTitle {
+  font-size: 30px !important;
+  font-weight: 900;
+  margin-bottom: 35px;
 }
 .memberPhoto {
   width: 80%;
@@ -1531,11 +1769,23 @@ button[type="submit"]:hover,
 }
 .teamDepartment {
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   color: #545555;
 }
+.teamDepartment svg {
+  position: relative;
+  top: 3px;
+}
+.about-us-title {
+  color: #fff;
+  font-size: 70px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .backgroud-about {
   margin-bottom: 80px;
+  background-color: #ffffff;
 }
 .aboutPosition h2 {
   font-size: 30px;
@@ -1548,30 +1798,31 @@ button[type="submit"]:hover,
   color: #ffffff !important;
 }
 .news-and-events-title {
-  font-size: 24px !important;
-  font-weight: bold;
+  font-size: 20px !important;
+  font-weight: 700 !important;
 }
 .ant-tag-blue {
   color: #008af4 !important;
   background: #008af417 !important;
-  border-color: #008af417 !important;
+  border-color: 0px solid #008af417 !important;
   font-size: 14px !important;
   padding: 1px 20px !important;
-  border-radius: 2px !important;
+  border-radius: 4px !important;
   font-weight: 600 !important;
 }
 .ant-tag-green {
   color: #210013 !important;
   background: #ffffff !important;
   border: none !important;
-  font-size: 14px !important;
-  padding: 1px 20px !important;
-  border-radius: 13px !important;
+  font-size: 12px !important;
+  padding: 0px 15px !important;
+  border-radius: 4px !important;
   font-weight: 600 !important;
 }
+
 .Row-news {
   padding: 80px 0px 0px 0px;
-  margin-bottom: 20px !important;
+  margin-bottom: 40px !important;
 }
 .ant-card {
   cursor: pointer;
@@ -1580,7 +1831,7 @@ button[type="submit"]:hover,
 }
 .postCategory {
   position: absolute;
-  top: 10px;
+  top: 0px;
   left: 25px;
   cursor: pointer !important;
   z-index: 1;
@@ -1600,24 +1851,39 @@ button[type="submit"]:hover,
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 3px 3px 0px 0px !important;
+  overflow: hidden;
+  transition: 0.3s;
 }
 .cardHeight {
   /* height: 27vw !important; */
   border-radius: 3px !important;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.cardHeight:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.cardHeight:hover .postThumnail {
+  transform: scale(1.02);
 }
 .postCategory a span {
   cursor: pointer !important;
 }
 .newsBannerTitle {
-  font-weight: 700;
+  font-weight: 900;
   font-size: 28px;
 }
 .backgroud-news {
   position: relative;
 }
+
 .news-and-events-banner-text {
   position: absolute;
-  transform: translate(0, 20%);
+  transform: translate(0, 15%);
+}
+.ant-card-cover {
+  position: relative;
 }
 .img-responsive {
   min-width: 100%;
@@ -1631,7 +1897,7 @@ button[type="submit"]:hover,
   width: 90% !important;
 }
 .background-single-page .single-image {
-  border-radius: 0px !important;
+  border-radius: 8px 8px 0px 0px !important;
 }
 .margin_single_page {
   margin: 60px 0px;
@@ -1642,6 +1908,20 @@ button[type="submit"]:hover,
 }
 .content-desc {
   padding: 40px !important;
+}
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  margin-bottom: 50px !important;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.player-wrapper > .react-player > video {
+  border-radius: 20px !important;
 }
 .background_socialMedia {
   /* background-color: #eaeef2; */
@@ -1681,7 +1961,7 @@ button[type="submit"]:hover,
 }
 .subnavbar-logo {
   margin: 0px !important;
-  font-weight: 700;
+  font-weight: 900;
 }
 .videoModal {
   width: 70vw !important;
@@ -1706,7 +1986,8 @@ button[type="submit"]:hover,
   font-size: 24px !important;
 }
 .batterSection {
-  width: 70%;
+  width: 100%;
+  /* margin: 0px auto; */
 }
 .page-not-found {
   width: 100%;
@@ -1747,7 +2028,7 @@ button[type="submit"]:hover,
 }
 .ant-badge-count {
   background: #008af4 !important;
-  box-shadow: 0 0 0 4px #262e3c !important;
+  box-shadow: 0 0 0 4px #141414 !important;
 }
 .ant-badge-count p {
   font-size: 14px !important;
@@ -1840,12 +2121,44 @@ code {
   /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   width: 100%;
   margin: 0px auto;
+  height: 350px;
 }
 .aboutBannerHeight {
-  background: #262e3c !important;
+  background: #141414 !important;
+}
+.about-card-title {
+  font-size: 24px !important;
+  font-weight: 900;
+  margin-top: 15px;
+}
+.about-card-desc p {
+  font-size: 16px !important;
+  transition: 0.4s;
+}
+.about-card img {
+  width: 100px !important;
+}
+.about-card {
+  background-color: #ffffff;
+  padding: 15px;
+  margin: 0px 0px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.readMoreBack {
+  padding: 2px 5px;
+  font-size: 12px !important;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.line-about {
+  width: 77%;
+  margin: 0px auto;
 }
 .container-banner-about {
   width: 50% !important;
@@ -1862,10 +2175,11 @@ code {
 }
 .koompi-color-laptop {
   margin-top: 10px;
+  font-weight: 600;
 }
 .paymentModal .ant-input-lg,
 .paymentModal .ant-input-number-lg {
-  height: 50px;
+  height: 45px;
   padding: 5px 15px !important;
   font-size: 16px;
   margin-bottom: 5px;
@@ -1894,6 +2208,9 @@ code {
   margin: 0px auto;
   padding-bottom: 80px;
 }
+.switch_laptop .banner-overview-koompiE11 {
+  width: 100% !important;
+}
 .aboutBannerImg {
   width: 60% !important;
   /* position: absolute !important; */
@@ -1913,8 +2230,8 @@ code {
   z-index: 100;
 }
 .koompi-active {
-  color: #ffffff !important;
-  font-weight: 600 !important;
+  color: #008af4 !important;
+  /* font-weight: 800 !important; */
 }
 .drawImage {
   transform: scale(1.3);
@@ -1934,6 +2251,14 @@ code {
   font-size: 16px !important;
   font-weight: 600;
 }
+.specDesc p {
+  font-size: 22px !important;
+}
+.appsName {
+  font-weight: 700;
+  margin: 15px 0px;
+  color: #beb9b9;
+}
 .PayCashDelivery {
   font-size: 16px !important;
   font-weight: 600;
@@ -1951,9 +2276,15 @@ code {
 }
 .first-index-banner {
   background-color: #ffffff;
-  padding-top: 80px;
   position: relative !important;
+  padding: 60px 0px;
 }
+.first-index-banner-e13 {
+  background-color: #eaeef2;
+  position: relative !important;
+  padding-top: 60px;
+}
+
 .os-index-banner {
   background-color: #ffffff !important;
   height: 80vh;
@@ -1973,28 +2304,83 @@ code {
   transform: translate(-50%, -50%);
 } */
 .koompi-e11-position .koompiE11-image {
-  width: 90% !important;
+  width: 85% !important;
   position: relative;
-  margin-top: 10% !important;
+  margin-top: 5% !important;
 }
+.appsImage {
+  width: 100% !important;
+  position: relative;
+  margin-top: 5% !important;
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.appsWidth {
+  width: 85%;
+  margin: 0px auto;
+}
+.image-shared-kp {
+  position: relative;
+  width: 1000px;
+  height: 588px;
+  background-size: 1000px 588px;
+  background-repeat: no-repeat;
+  background-image: url("/img/apps/koompi-e13-back.png");
+}
+
+.mba-screen {
+  position: absolute;
+  top: 77px;
+  left: 193px;
+}
+
+.image-app-updates-screen-photos {
+  width: 621px;
+  height: 375px;
+  background-size: 621px 375px;
+  background-repeat: no-repeat;
+  /* background-image: url("/img/apps/Chrome.png"); */
+  border-radius: 2px;
+}
+
 .learnMoreLink {
-  color: #262e3c !important;
+  color: #141414 !important;
 }
 .learnMoreLink:hover {
-  color: #262e3c !important;
+  color: #141414 !important;
 }
 .hrLearnMore {
   width: 118px;
 }
+.ant-tag-has-color {
+  cursor: pointer !important;
+}
+.yourShopping {
+  margin-top: 0px;
+  margin-bottom: 20px !important;
+  font-weight: 800;
+  font-style: italic;
+}
 .koompi-e11-desc {
-  width: 75%;
+  width: 80%;
   margin: 0px auto;
   text-align: center;
 }
 .koompi-e11-position .index_banner .koompi-e13 {
   position: relative;
   z-index: 0 !important;
-  transform: translateY(15%);
+  transform: translateY(20%);
+  top: 30px;
+  overflow: hidden !important;
+  width: 85% !important;
 }
 .koompi-e13-section .banner_content {
   position: absolute;
@@ -2013,6 +2399,7 @@ code {
   color: #c7c7c7;
   font-size: 40px;
   text-transform: uppercase;
+  font-weight: 900;
 }
 .koompi-index-desc p {
   color: #b7b8b9;
@@ -2054,7 +2441,7 @@ code {
   position: absolute;
   opacity: 0.09;
   top: 30%;
-  color: #333;
+  color: #141414;
   z-index: -1;
 }
 .index-image {
@@ -2062,17 +2449,14 @@ code {
   margin-top: 15% !important;
 }
 .bossTittle-KoompiHome-e11 {
-  color: #262e3c !important;
+  color: #141414 !important;
   font-size: 40px;
   text-align: center;
   margin-bottom: 20px !important;
+  font-weight: 900;
 }
 .desc-color-e11 {
-  color: #262e3c !important;
-}
-.koompi-e11-page-width {
-  width: 80% !important;
-  max-width: 80% !important;
+  color: #141414 !important;
 }
 .container-preoder {
   width: 50%;
@@ -2087,15 +2471,312 @@ code {
 .container-preoder p {
   text-align: center;
 }
+.sub-navbar-a span {
+  font-size: 14px !important;
+  /* color: #ffffff !important; */
+}
+.koompiApps {
+  height: 80px;
+  background-color: #eaeef2;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.single-page-image {
+  height: 600px;
+  background-position: center;
+  background-size: cover;
+}
+
+/* ============ Icons For every section ============== */
+.streamline-icon-robot {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 250.41px;
+  top: 109px;
+  background: url("/img/icons/streamline-icon-robot@140x140.png");
+  transform: rotate(11.77deg);
+  background-size: 100px 100px;
+  opacity: 5%;
+  /* animation: upAndDown 4s infinite alternate; */
+}
+.streamline-icon-drone-controller {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 400px;
+  top: 185.29px;
+  background: url("/img/icons/streamline-icon-drone-controller-1@140x140.png");
+  transform: rotate(-15.24deg);
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+
+.streamline-icon-virtual-house {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 200px;
+  top: 482px;
+  background: url("/img/icons/streamline-icon-virtual-house@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-bendable-phone-touch {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 400px;
+  top: 543px;
+  background: url("/img/icons/streamline-icon-bendable-phone-touch@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+
+.streamline-icon-programming-language-http {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 280.41px;
+  top: 120px;
+  background: url("/img/icons/streamline-icon-programming-language-http@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-programming-user-head {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 400px;
+  top: 100.29px;
+  background: url("/img/icons/streamline-icon-programming-user-head@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-user-live {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 450px;
+  top: 482px;
+  background: url("/img/icons/streamline-icon-user-live@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-shield-key {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 300px;
+  top: 543px;
+  background: url("/img/icons/streamline-icon-shield-key@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+
+.streamline-icon-app-window-lock {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 280.41px;
+  top: 120px;
+  background: url("/img/icons/streamline-icon-app-window-lock-1@140x140.png");
+  transform: rotate(14.9deg);
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-programming-flag {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 400px;
+  top: 100.29px;
+  background: url("/img/icons/streamline-icon-programming-flag@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-database-flash {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 450px;
+  top: 482px;
+  background: url("/img/icons/streamline-icon-database-flash@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-responsive-design-expand-1 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 300px;
+  top: 543px;
+  background: url("/img/icons/streamline-icon-responsive-design-expand-1@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+
+.streamline-icon-study-notebook-maths {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 280.41px;
+  top: 120px;
+  background: url("/img/icons/streamline-icon-study-notebook-maths@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-study-maths-brain {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 400px;
+  top: 100.29px;
+  background: url("/img/icons/streamline-icon-study-maths-brain@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-library-maths {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 200px;
+  top: 482px;
+  background: url("/img/icons/streamline-icon-library-maths@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.streamline-icon-school-locker {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 300px;
+  top: 543px;
+  background: url("/img/icons/streamline-icon-school-locker@140x140.png");
+  background-size: 100px 100px;
+  opacity: 5%;
+}
+.ant-carousel .slick-dots li.slick-active button {
+  background: #0090ff !important;
+}
+/* .ant-carousel .slick-prev, .ant-carousel .slick-next */
+.ant-carousel .kp-apps-arrows .slick-next {
+  background-image: url("/img/icons/icons8-chevron-right-24.png");
+  background-size: 25px 25px !important;
+  transform: translateY(-50%) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.ant-carousel .kp-apps-arrows .slick-next:hover,
+.ant-carousel .kp-apps-arrows .slick-next:focus {
+  background-image: url("/img/icons/icons8-chevron-right-24.png");
+}
+
+.ant-carousel .kp-apps-arrows .slick-prev {
+  background-image: url("/img/icons/icons8-chevron-left-24.png");
+  background-size: 25px 25px !important;
+  transform: translateY(-40%) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+.ant-carousel .kp-apps-arrows .slick-prev:hover,
+.ant-carousel .kp-apps-arrows .slick-prev:focus {
+  background-image: url("/img/icons/icons8-chevron-left-24.png");
+}
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #eaeef2 !important;
+  padding: 10px !important;
+  border-radius: 50% !important;
+}
+
+.ant-carousel .slick-next {
+  right: -45px !important;
+}
+.dateTime {
+  font-size: 14px !important;
+}
+
+.ant-carousel .slick-prev {
+  left: -50px !important;
+}
+
+.ant-carousel .kp-apps-arrows li button {
+  height: 15px !important;
+  width: 15px !important;
+  background-color: #0090ff !important;
+  border-radius: 50% !important;
+}
+
+/* ============End Icons For every section ============== */
 
 @keyframes upAndDown {
   0% {
-    top: 200px;
+    top: 50px;
   }
   100% {
-    top: 300px;
+    top: 150px;
   }
 }
+
+.fade-in {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =
 =====================================================*/
@@ -2149,6 +2830,12 @@ code {
 }
 
 @media only screen and (max-width: 979px) {
+  p {
+    font-size: 16px !important;
+  }
+  .koompi-e13-title-index {
+    font-size: 30px !important;
+  }
   .banner {
     padding: 0px !important;
     height: auto !important;
@@ -2214,18 +2901,26 @@ code {
     width: 100% !important;
   }
   .text-koompi-section-banner p {
-    max-width: 100%;
-    text-align: center !important;
+    max-width: 100% !important;
   }
   .koompi-e11-desc {
     width: 100%;
     margin: 0px auto;
     text-align: left;
   }
-  .first-index-banner {
-    padding: 0px !important;
-    margin-bottom: 30px;
+  .paymentModal h2 {
+    font-size: 20px;
   }
+  .bagIsEmpty {
+    font-size: 24px !important;
+  }
+  .first-index-banner,
+  .first-index-banner-e13 {
+    padding: 0px !important;
+    margin-bottom: 0px;
+    padding-bottom: 50px !important;
+  }
+
   .koompi-e13-position,
   .koompi-os-position {
     position: relative;
@@ -2245,7 +2940,10 @@ code {
   }
   .koompi-e11-position .koompiE11-image {
     width: 100% !important;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
+  }
+  .appsImageWidth {
+    width: 100% !important;
   }
   .btn-center {
     text-align: center;
@@ -2259,7 +2957,7 @@ code {
     transform: translateY(0);
   }
   .koompi-e11-position .index_banner .koompi-e13 {
-    transform: scale(1.4) !important;
+    transform: scale(1.2) !important;
   }
   .banner-overview-screen {
     width: 100% !important;
@@ -2268,7 +2966,7 @@ code {
   }
   .koompi-e-section-margin {
     margin-top: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
   }
   .switch_laptop {
     padding-bottom: 20px !important;
@@ -2281,7 +2979,7 @@ code {
     padding: 0px !important;
   }
   .menuNavbarLogo {
-    background: #00000d;
+    background: #141414 !important;
     margin-top: 0px !important;
     height: 64px !important;
   }
@@ -2294,14 +2992,50 @@ code {
   .container-preoder {
     width: 100%;
   }
+  .e11-screen,
+  .e13-screen {
+    width: 100% !important;
+    transform: scale(1.3) !important;
+  }
+  .weaccept img {
+    height: 25px;
+  }
+  .weaccept span {
+    font-size: 18px !important;
+  }
+  .xs-hidden {
+    display: none;
+  }
+  .card-margin {
+    margin-top: 24px !important;
+  }
+  .bossTittle-KoompiHome-e11 {
+    font-size: 30px !important;
+    margin: 0px !important;
+  }
 }
 
 @media only screen and (max-width: 850px) {
+  .performance-margin-top,
+  .battery-section-background {
+    padding-top: 30px;
+  }
+  .img-holder {
+    display: none;
+  }
+  .subTittle-E11 p {
+    width: 100% !important;
+  }
+  .ant-carousel .kp-apps-arrows .slick-prev,
+  .ant-carousel .kp-apps-arrows .slick-next {
+    display: none !important;
+  }
+  .appsWidth {
+    width: 100% !important;
+    margin-bottom: 100px !important;
+  }
   .switch-koompi-container-shopping-cart {
     width: 35%;
-  }
-  p {
-    font-size: 18px !important;
   }
   .rightNavbarHidden {
     display: none;
@@ -2402,14 +3136,14 @@ code {
   }
   .koompi-active {
     color: #008af4 !important;
-    font-weight: 600 !important;
+    font-weight: 800 !important;
   }
   .koompi-screen-section h3 {
     position: relative;
     left: 0%;
     font-size: 40px !important;
-    font-weight: 700;
-    top: 42px !important;
+    font-weight: 900;
+    top: 30px !important;
     transform: none;
     opacity: 0.1;
     text-transform: uppercase;
@@ -2421,7 +3155,9 @@ code {
     width: 60%;
   }
   .KoompiE11 {
-    font-size: 25px !important;
+    font-size: 22px !important;
+    width: 100%;
+    text-align: left;
   }
   .margin-display-koompiE11 {
     padding: 50px 0px 0px 0px;
@@ -2451,8 +3187,7 @@ code {
     display: none;
   }
   .koompi-e-section-title {
-    font-size: 18px !important;
-    text-align: left;
+    font-size: 14px !important;
   }
   .koompi-e-section-desc {
     font-size: 20px !important;
@@ -2482,7 +3217,17 @@ code {
     display: none;
   }
   .memberPhoto {
-    width: 65% !important;
+    width: 100% !important;
+  }
+  .memberName {
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .memberPosition {
+    font-size: 14px !important;
+  }
+  .about-us-title {
+    font-size: 35px;
   }
   .koompi-price {
     font-size: 30px !important;
@@ -2497,6 +3242,9 @@ code {
     margin-right: 10px;
     transition: 0.5s;
   }
+  .aboutBanner {
+    height: 150px;
+  }
   .content-desc {
     padding: 0px !important;
     margin-top: 15px;
@@ -2509,6 +3257,10 @@ code {
     margin-bottom: 0px !important;
     font-weight: 700;
   }
+  .spec-background {
+    padding: 20px 0px;
+  }
+
   .app-image img {
     width: 100%;
   }
@@ -2593,11 +3345,7 @@ code {
     background-color: transparent;
     padding: 40px 0px !important;
   }
-  .btnRemove {
-    float: left;
-    position: relative;
-    top: 20px !important;
-  }
+
   .shoppingCart_title {
     position: relative;
     margin-top: 20px !important;
@@ -2605,6 +3353,39 @@ code {
   .paymentModal {
     width: 100% !important;
     max-width: 90% !important;
+  }
+  .e11-screen {
+    width: 100% !important;
+    transform: scale(1.3) !important;
+  }
+  .roseCircle,
+  .speceGrayCircle {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .koompiApps {
+    height: 60px;
+  }
+  .readMoreBack {
+    font-size: 14px !important;
+  }
+  .playerWidth {
+    width: 100% !important;
+    top: 20% !important;
+  }
+  .text-koompi-section-banner .koompi-desc p {
+    max-width: 100% !important;
+    text-align: left;
+    padding-top: 10px;
+  }
+  .specDesc p {
+    font-size: 16px !important;
+  }
+  .sub-navbar-a span {
+    font-size: 12px !important;
+    /* color: #ffffff !important; */
   }
 }
 
@@ -2644,8 +3425,11 @@ code {
     margin-top: 30px !important;
   }
   .text-koompi-section-banner p {
-    text-align: left !important;
     width: 100% !important;
+  }
+  .e11-screen {
+    width: 100% !important;
+    transform: scale(1.3) !important;
   }
 }
 

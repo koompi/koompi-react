@@ -30,20 +30,7 @@ function SubNavbar({ title, history }) {
             <Menu.Item className="sub-navbar-a">
               <div
                 onClick={async () => {
-                  await cartCtx.addToCart({
-                    name: "KOOMPI E13",
-                    price: 369,
-                    image: [
-                      {
-                        color: "gray",
-                        image: "/img/koompi-e/koompi-gray.png"
-                      },
-                      {
-                        color: "pink",
-                        image: "/img/koompi-e/koompi-rose-gold.png"
-                      }
-                    ]
-                  })
+                  await cartCtx.addToCart("koompi-e13", 1)
                   setLoading(true)
                   window.setTimeout(() => {
                     history.push("/shop/bag")

@@ -76,11 +76,15 @@ function SinglePage(props) {
       <div className="container">
         <div className="margin_single_page">
           <div className="background-single-page">
-            <img
+            {/* <img
               src={`https://admin.koompi.com${thumnail}`}
               alt={title}
               className="img-responsive single-image"
-            />
+            /> */}
+            <div
+              style={{ backgroundImage: `url(https://admin.koompi.com${thumnail})` }}
+              className="single-page-image"
+            ></div>
             <div className="content-desc">
               <p>
                 <Tag color="blue">

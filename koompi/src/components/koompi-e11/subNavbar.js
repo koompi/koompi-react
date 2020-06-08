@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { NavLink } from "react-router-dom"
 import { Menu, Affix } from "antd"
+import { CartContext } from "../../CartContext"
 
-function SubNavbar({ title }) {
+function SubNavbar({ title, history }) {
   const [sticky, setSticky] = useState(false)
+  const cartCtx = useContext(CartContext)
+  const [loading, setLoading] = useState(false)
 
   return (
     <div>
@@ -17,6 +20,7 @@ function SubNavbar({ title }) {
             className="container"
             theme="white"
             mode="horizontal"
+            onClick={() => window.scrollTo(0, 0)}
           >
             {sticky ? (
               <Menu.Item>
@@ -24,13 +28,19 @@ function SubNavbar({ title }) {
               </Menu.Item>
             ) : null}
             <Menu.Item className="sub-navbar-a">
-              <NavLink
-                exact
-                activeStyle={{ color: "#1890ff" }}
-                to="/koompi-e11-order"
+              <div
+                onClick={async () => {
+                  await cartCtx.addToCart("koompi-e11", 1)
+                  setLoading(true)
+                  window.setTimeout(() => {
+                    history.push("/shop/bag")
+                  }, 1000)
+                }}
               >
-                <span className="buyBtn">Preorder</span>
-              </NavLink>
+                <span className={loading ? "buyBtnLoading" : "buyBtn"}>
+                  {loading ? "Loading ..." : "Pre-Order"}
+                </span>
+              </div>
             </Menu.Item>
             <Menu.Item className="sub-navbar-a">
               <NavLink

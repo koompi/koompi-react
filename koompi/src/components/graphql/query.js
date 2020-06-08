@@ -142,6 +142,17 @@ const GET_SOFTWARES = gql`
   }
 `
 
+const GET_PRODUCTS = gql`
+  query {
+    products {
+      id
+      name
+      price
+      purchasingType
+    }
+  }
+`
+
 export {
   GET_PAGES,
   GET_RETAILERS,
@@ -151,5 +162,6 @@ export {
   GET_POST,
   SEARCH_POST,
   GET_LEGALS,
-  GET_SOFTWARES
+  GET_SOFTWARES,
+  GET_PRODUCTS,
 }

@@ -1,0 +1,54 @@
+[
+  {
+    "name": "phnompenhpost",
+    "link": "https://www.phnompenhpost.com/business/company-set-launch-koompi-kingdoms-first-domestic-laptop?__cf_chl_jschl_tk__=1386625a231536f1a25dbd700eb54cd29fc85618-1591253421-0-AV6Xj1wEJDw71vAy7IDwCZlnCAaSP2cQOhA8wdNo89QMAqgYI5UttypzxS5eKVcf6jesbnTbssS4NXZpLf7ReRv7xHGjFQnas3uMdn8SEMYxOk1vcZh62NtVXJMNAI7CphUJyrDqBPGQMbvIjuhBNhN8dO2V5r8cCHVT0VMmlhiXavq27iB6AmTj02ndOUUVXbmG1k3zqHda-WKp8tg1iBkskhI_goDajSkssXcQk0M-7uFRaRz9EsQnGgzRmSwDI3AB8BHbzkkWC-ecJIIv6grS3Cng11xAl26HUAy6VXObNCp3hUzPyHi9UH7PRvxAb-7v5Dx5BPu9poVZI8UguRtR_wxjfLXLEUpnaUn2PJkP",
+    "logo": "/img/seen-on/pppost.png"
+  },
+  {
+    "name": "channelnewsasia",
+    "link": "https://www.channelnewsasia.com/news/asia/cambodian-computer-koompi-cheap-10364288",
+    "logo": "/img/seen-on/news-asai.png"
+  },
+  {
+    "name": "thediplomat",
+    "link": "https://thediplomat.com/2018/10/cambodias-coming-ai-revolution/",
+    "logo": "/img/seen-on/diplomat_logo_black.png"
+  },
+
+  {
+    "name": "voa",
+    "link": "https://www.voacambodia.com/a/cambodian-inventor-shares-creative-insights-plans-for-the-future/4671318.html",
+    "logo": "/img/seen-on/voa.png"
+  },
+  {
+    "name": "lepetitjournal",
+    "link": "https://lepetitjournal.com/cambodge/actualites/koompi-le-premier-ordinateur-portable-cambodgien-249410",
+    "logo": "/img/seen-on/lepetitjournal.png"
+  },
+
+  {
+    "name": "geeksincambodia",
+    "link": "http://geeksincambodia.com/cambodias-first-homegrown-laptops-koompi/",
+    "logo": "/img/seen-on/geek.png"
+  },
+  {
+    "name": "thepeopleofasia",
+    "link": "https://thepeopleofasia.com/articles/topic-tech-environment/cambodia-to-launch-its-first-homegrown-laptop/",
+    "logo": "/img/seen-on/thepeopleofasia.png"
+  },
+  {
+    "name": "khmertimeskh",
+    "link": "https://www.khmertimeskh.com/547519/homegrown-laptop-koompi-captures-japans-interest/",
+    "logo": "/img/seen-on/khtimes.png"
+  },
+  {
+    "name": "sabay",
+    "link": "https://news.sabay.com.kh/article/1096028",
+    "logo": "/img/seen-on/sabay.png"
+  },
+  {
+    "name": "nikkei",
+    "link": "https://asia.nikkei.com/Business/Startups/Cambodian-PC-brand-targets-growing-regional-market",
+    "logo": "/img/seen-on/nikkei.png"
+  }
+]

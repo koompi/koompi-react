@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { Row, Col, Result, Spin, Carousel } from "antd"
+import React, { useEffect } from "react"
+import { Row, Col, Result, Spin } from "antd"
 import { useQuery } from "@apollo/react-hooks"
 import { GET_PAGES } from "../graphql/query"
 import NProgress from "nprogress"
@@ -16,11 +16,11 @@ import Footer from "../footer"
 import _ from "lodash"
 import ProgressiveImage from "react-progressive-image"
 import ScrollAnimation from "react-animate-on-scroll"
+import ReactPlayer from "react-player"
 
 import Helmet from "react-helmet"
 
 function KoompiE13(props) {
-  const [koompiColor, setKoompiColor] = useState("gray")
   const imageLink = `https://admin.koompi.com`
 
   useEffect(() => {
@@ -39,9 +39,9 @@ function KoompiE13(props) {
     NProgress.start()
     return (
       <React.Fragment>
-        <Row className="Row-about" gutter={16} type="flex">
+        <Row className="Row-about" gutter={16}>
           <center>
-            <Spin tip="Loading ..."></Spin>
+            <img src="/img/loading.svg" alt="koompi loading" height="40px" />
           </center>
         </Row>
       </React.Fragment>
@@ -54,30 +54,32 @@ function KoompiE13(props) {
   const result = _.orderBy(dataIndex, "sectionNumber", "asc")
 
   // ===== KOOMPI E11 Top Section  =====
-  const DisplayKOOMPIE = ({ title, description, image }) => {
+  const DisplayKOOMPIE = ({ title, description }) => {
     return (
-      <div className="container">
-        <ScrollAnimation animateIn="fadeIn">
-          <center>
-            <h2 className="KoompiE11">{title}</h2>
+      <div className="koompiE11Back">
+        <div className="container">
+          <ScrollAnimation animateIn="fadeIn">
+            <center>
+              <h2 className="koompi-e13-title-index">{title}</h2>
 
-            <div className="subTittle-E11">{description}</div>
-            <h1 className="koompi-price">$179</h1>
-            <ProgressiveImage src={imageLink + image}>
-              {(src, loading) =>
-                loading ? (
-                  <img src="/img/oval.svg" alt={title} height="60px" />
-                ) : (
-                  <img
-                    className="banner-overview-koompiE11 koompi-e11-page-width"
-                    src={src}
-                    alt={title}
-                  />
-                )
-              }
-            </ProgressiveImage>
-          </center>
-        </ScrollAnimation>
+              <div className="subTittle-E11">{description}</div>
+              <h1 className="koompi-price">$179</h1>
+              <ProgressiveImage src="/img/e11.png">
+                {(src, loading) =>
+                  loading ? (
+                    <img src="/img/loading.svg" alt={title} height="60px" />
+                  ) : (
+                    <img
+                      className="banner-overview-koompiE11 koompi-e11-page-width"
+                      src={src}
+                      alt={title}
+                    />
+                  )
+                }
+              </ProgressiveImage>
+            </center>
+          </ScrollAnimation>
+        </div>
       </div>
     )
   }
@@ -89,27 +91,23 @@ function KoompiE13(props) {
         <div className="koompi-page-container text-koompi-section-banner">
           <div className="container">
             <ScrollAnimation animateIn="fadeIn">
-              <center>
-                <div className="koompi-screen-section">
-                  <h3>{subTitle}</h3>
-                  <h2 className="KoompiE11">{title}</h2>
-                </div>
-                <div className="subTittle-E11">{description}</div>
-                <div className="koompi-e-section-margin">
-                  <Row gutter={16}>
-                    {screen.map((data, index) => {
-                      return (
-                        <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
-                          <center>
-                            <h3 className="koompi-e-section-title">{data.title}</h3>
-                            <p className="koompi-e-section-desc">{data.value}</p>
-                          </center>
-                        </Col>
-                      )
-                    })}
-                  </Row>
-                </div>
-              </center>
+              <div className="koompi-screen-section">
+                <h3>{subTitle}</h3>
+                <h2 className="KoompiE11">{title}</h2>
+              </div>
+              <div className="subTittle-E11">{description}</div>
+              <div className="koompi-e-section-margin">
+                <Row gutter={16}>
+                  {screen.map((data, index) => {
+                    return (
+                      <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
+                        <h3 className="koompi-e-section-title">{data.title}</h3>
+                        <p className="koompi-e-section-desc">{data.value}</p>
+                      </Col>
+                    )
+                  })}
+                </Row>
+              </div>
             </ScrollAnimation>
           </div>
         </div>
@@ -117,56 +115,10 @@ function KoompiE13(props) {
           <ProgressiveImage src={image}>
             {(src, loading) =>
               loading ? (
-                <img src="/img/oval.svg" alt={title} height="60px" />
-              ) : (
-                <img className="banner-overview-koompiE11" src={src} alt={title} />
-              )
-            }
-          </ProgressiveImage>
-        </div>
-      </>
-    )
-  }
-
-  // ===== KOOMPI E Shapeliness Section  =====
-  const DisplayShapeliness = ({ title, subTitle, description, image }) => {
-    return (
-      <>
-        <div className="koompi-page-container text-koompi-section-banner">
-          <div className="container">
-            <ScrollAnimation animateIn="fadeIn">
-              <center>
-                <div className="koompi-screen-section">
-                  <h3>{subTitle}</h3>
-                  <h2 className="KoompiE11">{title}</h2>
-                </div>
-                <div className="subTittle-E11">{description}</div>
-                <div className="koompi-e-section-margin">
-                  <Row gutter={16}>
-                    {shapeliness.map((data, index) => {
-                      return (
-                        <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
-                          <center>
-                            <h3 className="koompi-e-section-title">{data.title}</h3>
-                            <p className="koompi-e-section-desc">{data.value}</p>
-                          </center>
-                        </Col>
-                      )
-                    })}
-                  </Row>
-                </div>
-              </center>{" "}
-            </ScrollAnimation>
-          </div>
-        </div>
-        <div className="container">
-          <ProgressiveImage src={image}>
-            {(src, loading) =>
-              loading ? (
-                <img src="/img/oval.svg" alt={title} height="60px" />
+                <img src="/img/loading.svg" alt={title} height="60px" />
               ) : (
                 <img
-                  className="banner-overview-koompiE11 koompiBattery"
+                  className="banner-overview-koompiE11 e11-screen"
                   src={src}
                   alt={title}
                 />
@@ -178,34 +130,90 @@ function KoompiE13(props) {
     )
   }
 
-  // ===== KOOMPI E Batter Section  =====
-  const DisplayBattery = ({ subTitle, title, description, image }) => {
+  // ===== KOOMPI E Shapeliness Section  =====
+  const DisplayShapeliness = ({ title, subTitle, description }) => {
     return (
       <>
         <div className="koompi-page-container text-koompi-section-banner">
           <div className="container">
             <ScrollAnimation animateIn="fadeIn">
-              <center>
-                <div className="koompi-screen-section">
-                  <h3>{subTitle}</h3>
-                  <h2 className="KoompiE11">{title}</h2>
-                </div>
-                <div className="subTittle-E11">{description}</div>
-                <div className="koompi-e-section-margin batterSection">
-                  <Row gutter={16}>
-                    {battery.map((data, index) => {
-                      return (
-                        <Col xs={12} sm={12} md={8} lg={12} xl={12} key={index}>
-                          <center>
-                            <h3 className="koompi-e-section-title">{data.title}</h3>
-                            <p className="koompi-e-section-desc">{data.value}</p>
-                          </center>
-                        </Col>
-                      )
-                    })}
-                  </Row>
-                </div>
-              </center>{" "}
+              <div className="koompi-screen-section">
+                <h3>{subTitle}</h3>
+                <h2 className="KoompiE11">{title}</h2>
+              </div>
+              <div className="subTittle-E11">{description}</div>
+              <div className="koompi-e-section-margin">
+                <Row gutter={16}>
+                  {shapeliness.map((data, index) => {
+                    return (
+                      <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
+                        <h3 className="koompi-e-section-title">{data.title}</h3>
+                        <p className="koompi-e-section-desc">{data.value}</p>
+                      </Col>
+                    )
+                  })}
+                </Row>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+        <div className="container">
+          {/* <center>
+            <ProgressiveImage src={image}>
+              {(src, loading) =>
+                loading ? (
+                  <img src="/img/loading.svg" alt={title} height="60px" />
+                ) : (
+                  <img
+                    className="banner-overview-koompiE11 e11-shapeliness"
+                    src={src}
+                    alt={title}
+                  />
+                )
+              }
+            </ProgressiveImage>
+          </center> */}
+          <center>
+            <div className="player-wrapper">
+              <ReactPlayer
+                playing
+                loop
+                className="react-player playerWidth"
+                url={[{ src: "/img/SHAPELINESS.mp4", type: "video/webm" }]}
+                width="100%"
+                height="100%"
+                playbackRate="0.8"
+              />
+            </div>
+          </center>
+        </div>
+      </>
+    )
+  }
+
+  // ===== KOOMPI E Batter Section  =====
+  const DisplayBattery = ({ subTitle, title }) => {
+    return (
+      <>
+        <div className="koompi-page-container text-koompi-section-banner">
+          <div className="container">
+            <ScrollAnimation animateIn="fadeIn">
+              <div className="koompi-screen-section">
+                <h3>{subTitle}</h3>
+                <h2 className="KoompiE11">{title}</h2>
+              </div>
+              <div className="koompi-e-section-margin batterSection">
+                <Row gutter={16}>
+                  {battery.map((data, index) => {
+                    return (
+                      <Col xs={12} sm={12} md={6} lg={6} xl={6} key={index}>
+                        <h3 className="koompi-e-section-title">{data.title}</h3>
+                        <p className="koompi-e-section-desc">{data.value}</p>
+                      </Col>
+                    )
+                  })}
+                </Row>
+              </div>
             </ScrollAnimation>
           </div>
         </div>
@@ -213,19 +221,17 @@ function KoompiE13(props) {
           <Row gutter={16}>
             <Col span={24}>
               <center>
-                <ProgressiveImage src={imageLink + image}>
-                  {(src, loading) =>
-                    loading ? (
-                      <img src="/img/oval.svg" alt={title} height="60px" />
-                    ) : (
-                      <img
-                        className="banner-overview-koompiE11 koompiBattery"
-                        src={src}
-                        alt={title}
-                      />
-                    )
-                  }
-                </ProgressiveImage>
+                <div className="player-wrapper">
+                  <ReactPlayer
+                    playing
+                    loop
+                    className="react-player"
+                    url={[{ src: "/img/e11-battery.mp4", type: "video/webm" }]}
+                    width="100%"
+                    height="100%"
+                    playbackRate="0.8"
+                  />
+                </div>
               </center>
             </Col>
           </Row>
@@ -241,27 +247,23 @@ function KoompiE13(props) {
         <div className="koompi-page-container text-koompi-section-banner">
           <div className="container">
             <ScrollAnimation animateIn="fadeIn">
-              <center>
-                <div className="koompi-screen-section">
-                  <h3>{subTitle}</h3>
-                  <h2 className="KoompiE11">{title}</h2>
-                </div>
-                <div className="subTittle-E11">{description}</div>
-                <div className="koompi-e-section-margin">
-                  <Row gutter={16} type="flex">
-                    {performance.map((data, index) => {
-                      return (
-                        <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
-                          <center>
-                            <h3 className="koompi-e-section-title">{data.title}</h3>
-                            <p className="koompi-e-section-desc">{data.value}</p>
-                          </center>
-                        </Col>
-                      )
-                    })}
-                  </Row>
-                </div>
-              </center>{" "}
+              <div className="koompi-screen-section">
+                <h3>{subTitle}</h3>
+                <h2 className="KoompiE11">{title}</h2>
+              </div>
+              <div className="subTittle-E11">{description}</div>
+              <div className="koompi-e-section-margin">
+                <Row gutter={16} type="flex">
+                  {performance.map((data, index) => {
+                    return (
+                      <Col xs={12} sm={12} md={8} lg={6} xl={6} key={index}>
+                        <h3 className="koompi-e-section-title">{data.title}</h3>
+                        <p className="koompi-e-section-desc">{data.value}</p>
+                      </Col>
+                    )
+                  })}
+                </Row>
+              </div>
             </ScrollAnimation>
           </div>
         </div>
@@ -271,7 +273,7 @@ function KoompiE13(props) {
               <ProgressiveImage src={imageLink + image}>
                 {(src, loading) =>
                   loading ? (
-                    <img src="/img/oval.svg" alt={title} height="60px" />
+                    <img src="/img/loading.svg" alt={title} height="60px" />
                   ) : (
                     <img
                       className="banner-overview-koompiE11 koompi-e11-page-width"
@@ -294,16 +296,18 @@ function KoompiE13(props) {
       if (data.sectionNumber === "1") {
         const description = renderHTML(data.description)
         return (
-          <div
-            className="koompi-page-container text-koompi-section-banner"
-            key={index}
-          >
-            <div className="koompiDetail">
-              <DisplayKOOMPIE
-                title={data.title}
-                description={parse(description)}
-                image={data.image}
-              />
+          <div className="background-color-Koompi">
+            <div
+              className="koompi-page-container text-koompi-section-banner"
+              key={index}
+            >
+              <div className="koompiDetail">
+                <DisplayKOOMPIE
+                  title={data.title}
+                  description={parse(description)}
+                  image={data.image}
+                />
+              </div>
             </div>
           </div>
         )
@@ -336,25 +340,11 @@ function KoompiE13(props) {
           </div>
         )
       }
-      //============== BATTERY Section==========
+      //============== Performance Section==========
       if (data.sectionNumber === "4") {
         const description = renderHTML(data.description)
         return (
-          <div className="margin-battery-section shapeliness-margin-top" key={index}>
-            <DisplayBattery
-              subTitle={data.subTitle}
-              title={data.title}
-              description={parse(description)}
-              image={data.image}
-            />
-          </div>
-        )
-      }
-      //============== Shapeliness Section==========
-      if (data.sectionNumber === "5") {
-        const description = renderHTML(data.description)
-        return (
-          <div className="shapeliness-margin-top" key={index}>
+          <div className="performance-margin-top" key={index}>
             <DisplayPerformance
               subTitle={data.subTitle}
               title={data.title}
@@ -364,6 +354,21 @@ function KoompiE13(props) {
           </div>
         )
       }
+      //============== BATTERY Section==========
+      if (data.sectionNumber === "5") {
+        const description = renderHTML(data.description)
+        return (
+          <div className="battery-section-background" key={index}>
+            <DisplayBattery
+              subTitle={data.subTitle}
+              title={data.title}
+              description={parse(description)}
+              image={data.image}
+            />
+          </div>
+        )
+      }
+
       return null
     })
   }
@@ -384,7 +389,7 @@ function KoompiE13(props) {
       </Helmet>
       <div>
         <SubNavbar title="KOOMPI E11" history={props.history} />
-        <div className="background-color-Koompi-E">
+        <div>
           <DisplayData />
         </div>
       </div>

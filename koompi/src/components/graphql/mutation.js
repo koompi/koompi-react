@@ -1,31 +1,23 @@
 import gql from "graphql-tag"
 
-const CREATE_PAYMENT = gql`
+const CREATE_CUSTOMER = gql`
   mutation(
     $firstname: String!
     $lastname: String!
     $email: String!
     $phone: String!
-    $message: String
-    $color: String!
-    $payBy: String!
-    $product: [String]!
-    $price: Float!
+    $products: String!
   ) {
-    create_payment(
+    create_customer(
       firstname: $firstname
       lastname: $lastname
       email: $email
       phone: $phone
-      message: $message
-      color: $color
-      payBy: $payBy
-      product: $product
-      price: $price
+      products: $products
     ) {
-      message
+      firstname
     }
   }
 `
 
-export { CREATE_PAYMENT }
+export { CREATE_CUSTOMER }

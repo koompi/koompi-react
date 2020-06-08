@@ -1,6 +1,5 @@
 import React from "react"
 import { Row, Col } from "antd"
-import Navbar from "../navbar"
 import SubNavbar from "./subNavbar"
 import Footer from "../footer"
 import parse from "html-react-parser"
@@ -13,7 +12,7 @@ const dataSpacs = [
   },
   {
     title: "Processor",
-    desc: "<p>Apollo Lake N3350, Dual Cores</p>",
+    desc: "<p>Intel Celeron N3350, Dual Cores</p>",
   },
   {
     title: "Storage",
@@ -26,7 +25,7 @@ const dataSpacs = [
   },
   {
     title: "Display",
-    desc: ` <p>Screen Size: 13.3 inches</p>
+    desc: ` <p>Screen Size: 11.6 inches</p>
             <p>Screen Type: IPS Anti-Glare</p>
             <p>Resolution: 1920 x 1080</p>
             <p>Screen-To-Body Ratio: 73.44%</p>
@@ -35,10 +34,10 @@ const dataSpacs = [
   },
   {
     title: "Dimension and Weight",
-    desc: ` <p>Width    318mm</p>
-            <p>Height    210mm</p>
-            <p>Depth    14.2mm</p>
-            <p>Weight    1.28kg</p>
+    desc: ` <p>Width:    190.3mm</p>
+            <p>Height:    277mm</p>
+            <p>Slim:    16.9mm</p>
+            <p>Weight:    0.93kg</p>
           `,
   },
   {
@@ -47,7 +46,7 @@ const dataSpacs = [
   },
   {
     title: "Colour",
-    desc: "<p>Rose Gold / Space Grey</p>",
+    desc: "<p>Blue</p>",
   },
 
   {
@@ -70,20 +69,35 @@ function Koompi_E_Spec() {
       <div className="spec-background">
         <div className="container">
           <ScrollAnimation animateIn="fadeIn">
-            {dataSpacs.map((res) => {
-              return (
-                <div style={{ padding: "5px 0px" }}>
-                  <Row gutter={[16, 16]} type="flex">
-                    <Col xs={24} sm={12} md={8} lg={7} xl={7}>
-                      <h2 className="spacTitle">{res.title}</h2>
-                    </Col>
-                    <Col xs={24} sm={12} md={16} lg={17} xl={17}>
-                      <div>{parse(res.desc)}</div>
-                    </Col>
-                  </Row>
-                </div>
-              )
-            })}{" "}
+            {dataSpacs.map((res, index) => {
+              if (index % 2 === 0) {
+                return (
+                  <div style={{ padding: "5px 0px" }} className="specsBackground1">
+                    <Row gutter={12} type="flex">
+                      <Col xs={24} sm={12} md={8} lg={7} xl={7}>
+                        <h2 className="spacTitle">{res.title}</h2>
+                      </Col>
+                      <Col xs={24} sm={12} md={16} lg={17} xl={17}>
+                        <div className="specDesc">{parse(res.desc)}</div>
+                      </Col>
+                    </Row>
+                  </div>
+                )
+              } else {
+                return (
+                  <div className="specsBackground2" style={{ padding: "5px 0px" }}>
+                    <Row gutter={12} type="flex">
+                      <Col xs={24} sm={12} md={8} lg={7} xl={7}>
+                        <h2 className="spacTitle">{res.title}</h2>
+                      </Col>
+                      <Col xs={24} sm={12} md={16} lg={17} xl={17}>
+                        <div className="specDesc">{parse(res.desc)}</div>
+                      </Col>
+                    </Row>
+                  </div>
+                )
+              }
+            })}
           </ScrollAnimation>
         </div>
       </div>

@@ -4,7 +4,15 @@
     "value": "5000mAH"
   },
   {
-    "title": "Battery life",
-    "value": "Up to 8h"
+    "title": "web browsing ",
+    "value": "8 hrs"
+  },
+  {
+    "title": "video playback ",
+    "value": "12 hrs"
+  },
+  {
+    "title": "regular work ",
+    "value": "14 hrs"
   }
 ]

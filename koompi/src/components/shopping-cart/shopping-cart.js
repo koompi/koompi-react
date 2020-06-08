@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from "react"
-import { Row, Col, Button, Modal, Form } from "antd"
-import Cash from "../payments/cash-or-delivery"
+import React, { useState } from "react"
+import { Row, Col, Modal, Form, Select, Tag, Table } from "antd"
 import Footer from "../footer"
 import Cookies from "js-cookie"
 import Helmet from "react-helmet"
 import AbaPayway from "../payments/aba-payway"
+import CashOrDelivery from "../payments/cash-or-delivery"
+
+import _ from "lodash"
 
 const { confirm } = Modal
+const { Option } = Select
+
+function currencyFormat(num) {
+  return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
+
+function initailState() {
+  let initailData = Cookies.getJSON("kp-store-cache")
+  return initailData
+}
 
 function Cart() {
   const [visible, setVisible] = useState(false)
   const [creditCardVisible, setHandleCreditCardVisible] = useState(false)
-  const [data, setData] = useState(null)
-  const [koompiColor, setKoompiColor] = useState("gray")
-  const result = Cookies.getJSON("koompi")
+  const [data, setData] = useState(initailState)
+  const [koompiColor] = useState("gray")
+  const [, setQty] = useState(1)
 
   const handleCancle = () => {
     setVisible(false)
@@ -39,21 +51,28 @@ function Cart() {
     setHandleCreditCardVisible(true)
   }
 
-  useEffect(() => {
-    setData(Cookies.getJSON("koompi"))
-  }, [])
+  const updateQty = (value, index) => {
+    let new_data = data
+    new_data[index].qty = value
+    setData([...new_data])
+    Cookies.set("kp-store-cache", JSON.stringify(data))
+  }
 
   // =====  Show Delete Comfirm  =====
-  const showDeleteConfirm = () => {
+  const showDeleteConfirm = (id) => {
     confirm({
-      title: "Are you sure delete this task?",
-      content: "Some descriptions",
+      title: "Are you sure delete this item?",
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
-      onOk() {
-        Cookies.remove("koompi")
-        setData(null)
+      onOk: async () => {
+        const new_data = data
+        _.remove(new_data, function (e) {
+          return e.id === id
+        })
+        setData([...new_data])
+        Cookies.set("kp-store-cache", data)
+        window.location.reload()
       },
       onCancel() {
         console.log("Cancel")
@@ -61,185 +80,184 @@ function Cart() {
     })
   }
 
-  const DisplayItem = () => {
-    return (
-      <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={24} lg={16} xl={16}>
-          {data.map((item, index) => {
-            return (
-              <div className="shopping-cart" key={index}>
-                <div>
-                  <Row gutter={16}>
-                    <Col span={24}>
-                      <Row gutter={16}>
-                        <Col xs={24} sm={24} md={24} lg={10} xl={10}>
-                          <img
-                            style={{ width: "100%" }}
-                            src={
-                              koompiColor === "gray"
-                                ? item.image[0].image
-                                : item.image[1].image
-                            }
-                            alt="koompi color"
-                          />
-                        </Col>
-                        <Col xs={24} sm={24} md={24} lg={14} xl={14}>
-                          <div className="shoppingCart_title">
-                            <h1>{item.name}</h1>
-                            {/* <p className="shopDesc">{item.desc}</p> */}
-                            <h4 className="KoompiPRICE">
-                              USD <b>${item.price}</b>
-                            </h4>
-                            <Row gutter={16}>
-                              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-                                <h6 style={{ fontSize: "18px" }}>
-                                  Select your favorite color:{" "}
-                                </h6>
-                                <div className="switch-koompi-container-shopping-cart">
-                                  <Row gutter={16}>
-                                    <Col span={12}>
-                                      <div
-                                        className="speceGrayCircle"
-                                        onClick={() => setKoompiColor("gray")}
-                                      ></div>
-                                    </Col>
-                                    <Col span={12}>
-                                      <div
-                                        className="roseCircle"
-                                        onClick={() => setKoompiColor("rose-gold")}
-                                      ></div>
-                                    </Col>
-                                  </Row>
-                                </div>
-                                {/* <div>
-                                <span className="quantity">Quantity: </span>
-                                <Select
-                                  value={item.quantity}
-                                  placeholder="Select a option and change input text above"
-                                  style={{ width: "80px" }}
-                                >
-                                  <Option value={1}>1</Option>
-                                  <Option value={2}>2</Option>
-                                  <Option value={3}>3</Option>
-                                  <Option value={4}>4</Option>
-                                  <Option value={5}>5+</Option>
-                                </Select>
-                              </div> */}
-                              </Col>
-                              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-                                <Button
-                                  onClick={showDeleteConfirm}
-                                  type="danger"
-                                  className="btnRemove"
-                                >
-                                  Remove
-                                </Button>
-                              </Col>
-                            </Row>
-                          </div>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </div>
-              </div>
-            )
-          })}
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={8} xl={8}>
-          <div className="order_summary">
-            <h3 className="order_summary_title">Order Summary</h3>
-            <div className="subTotal">
-              <Row gutter={16} className="subtotal">
-                <Col span={12}>
-                  <h5>Subtotal</h5>
-                </Col>
-                <Col span={12}>
-                  <h5 style={{ textAlign: "right" }}>US ${result[0].price}</h5>
-                  {/* <h5 style={{ textAlign: "right" }}>US ${totalPrice(ctx.items)}</h5> */}
-                </Col>
-                <Col span={12}>
-                  <h5>Quantity</h5>
-                </Col>
-                <Col span={12}>
-                  <h5 style={{ textAlign: "right" }}>{result[0].quantity}</h5>
-                  {/* <h5 style={{ textAlign: "right" }}>US ${totalPrice(ctx.items)}</h5> */}
-                </Col>
-              </Row>
-              <hr className="hrSummary" />
-              <Row gutter={16} className="subtotal">
-                <Col span={8}>
-                  <h3 className="total">Total</h3>
-                </Col>
-                <Col span={16}>
-                  <h3 className="totalPrice">
-                    US ${result[0].quantity * result[0].price}
-                  </h3>
-                </Col>
-              </Row>
-              <h4>Choose a payment to checkout</h4>
-            </div>
-            <Row gutter={16}>
-              <Col span={24}>
-                <div className="payment_cart" onClick={handleCreditCardVisible}>
-                  <Row gutter={12}>
-                    <Col span={6}>
-                      <img
-                        src="/img/payments/creditcard.png"
-                        height="35px"
-                        alt="master card"
-                        className="mastercard"
-                      />
-                    </Col>
-                    <Col span={18}>
-                      <div className="CreditDebitCard">Credit/Debit Card</div>
-                      <img
-                        src="/img/payments/A-3Card_2x.png"
-                        height="15px"
-                        alt="Credit/Debit Card"
-                      />
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Col span={24}>
-                <div className="payment_cart" onClick={handleVisible}>
-                  <Row gutter={12}>
-                    <Col span={6}>
-                      <img
-                        src="/img/payments/aba-pay.svg"
-                        height="35px"
-                        alt="master card"
-                        className="mastercard"
-                      />
-                    </Col>
-                    <Col span={18}>
-                      <div className="CreditDebitCard">ABA PAY</div>
-                      <div>Scan to pay with ABA mobile</div>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Col span={24}>
-                <Cash color={koompiColor} />
-              </Col>
+  const columns = [
+    {
+      title: "Image",
+      dataIndex: "image",
+      render: (data) => {
+        return <img src={data} alt={data} height="40px" />
+      },
+    },
+    {
+      title: "Items",
+      dataIndex: "name",
+      responsive: ["md"],
+    },
+    {
+      title: "Purchasing Type",
+      dataIndex: "purchasingType",
+      render: (data) => {
+        return !data ? "Buy" : "Pre-Order"
+      },
+    },
 
-              {/* <Col span={24}>
-                <div className="payment_cart">
-                  <img src="/img/wing.png" height="25px" width="25px" alt="" /> Wing
-                </div>
-              </Col> */}
-            </Row>
+    {
+      title: "Quantity",
+      dataIndex: "qty",
+      render: (key, data, index) => {
+        return (
+          <Select
+            defaultValue={data.qty}
+            onChange={(e) => {
+              updateQty(e, index)
+              setQty(data.qty)
+            }}
+            style={{ width: "80px" }}
+          >
+            <Option value={1}>1</Option>
+            <Option value={2}>2</Option>
+            <Option value={3}>3</Option>
+            <Option value={4}>4</Option>
+            <Option value={5}>5</Option>
+            <Option value={6}>6</Option>
+            <Option value={7}>7</Option>
+            <Option value={8}>8</Option>
+            <Option value={9}>9</Option>
+            <Option value={10}>10</Option>
+          </Select>
+        )
+      },
+    },
+    {
+      title: "Unit Price",
+      dataIndex: "price",
+      render: (data) => currencyFormat(data),
+    },
+    {
+      title: "Deposit",
+      render: (data) => {
+        if (data.id === "koompie11") return currencyFormat(10)
+        else return currencyFormat(369)
+      },
+    },
+    {
+      title: "Deposit Amount",
+      render: (data) => {
+        if (data.id === "koompie11") return currencyFormat(10 * data.qty)
+        else return currencyFormat(369 * data.qty)
+      },
+    },
+    {
+      title: "Amount",
+      render: (data) => currencyFormat(data.qty * data.price),
+    },
+    {
+      title: "Action",
+      render: (data) => {
+        return (
+          <div onClick={() => showDeleteConfirm(data.id)}>
+            <Tag color="#f50">Remove</Tag>
           </div>
-        </Col>
-      </Row>
-    )
+        )
+      },
+    },
+  ]
+
+  const displayTotal = () => {
+    let initialValue = 0
+    let sum = data.reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue.price * currentValue.qty
+    }, initialValue)
+    return sum
+  }
+  const displayTotalDeposit = () => {
+    let initialValue = 0
+    let sum = data.reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue.deposit * currentValue.qty
+    }, initialValue)
+    return sum
   }
 
+  const DisplayItem = () => {
+    return (
+      <React.Fragment>
+        <h2 className="yourShopping">Your shopping cart: </h2>
+        <Table
+          scroll={{ x: true }}
+          columns={columns}
+          dataSource={data}
+          pagination={false}
+        />
+        <div className="shoppingCartContainer">
+          <Row gutter={[20, 20]}>
+            <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+              <p className="koompiSummary">
+                <b>Order Summary</b>
+              </p>
+              <div className="kp-cart">
+                <p>
+                  Total: <b>{currencyFormat(displayTotal())}</b>
+                </p>
+                <p>
+                  Total Deposit: <b>{currencyFormat(displayTotalDeposit())}</b>
+                </p>
+                <p>
+                  Total remain:{" "}
+                  <b>{currencyFormat(displayTotal() - displayTotalDeposit())}</b>
+                </p>
+                <div className="pp-back"></div>
+              </div>
+            </Col>
+            <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+              <p className="koompiSummary">
+                <b>Choose a payment to checkout</b>
+              </p>
+              <div className="payment_cart" onClick={handleCreditCardVisible}>
+                <Row gutter={12}>
+                  <Col span={6}>
+                    <img
+                      src="/img/payments/creditcard.png"
+                      height="30px"
+                      alt="master card"
+                      className="mastercard"
+                    />
+                  </Col>
+                  <Col span={18}>
+                    <div className="CreditDebitCard">Credit/Debit Card</div>
+                    <img
+                      src="/img/payments/A-3Card_2x.png"
+                      height="15px"
+                      alt="Credit/Debit Card"
+                    />
+                  </Col>
+                </Row>
+              </div>
+              <div className="payment_cart" onClick={handleVisible}>
+                <Row gutter={12}>
+                  <Col span={6}>
+                    <img
+                      src="/img/payments/aba-pay.svg"
+                      height="30px"
+                      alt="master card"
+                      className="mastercard"
+                    />
+                  </Col>
+                  <Col span={18}>
+                    <div className="CreditDebitCard">ABA PAY</div>
+                    <div>Scan to pay with ABA mobile</div>
+                  </Col>
+                </Row>
+              </div>
+              <CashOrDelivery />
+            </Col>
+          </Row>
+        </div>
+      </React.Fragment>
+    )
+  }
+  // || data.length === 0
   const DisplayProduct = () => {
-    // console.log(Cookies.getJSON("koompi") === undefined)
-
-    if (data === null || data === undefined) {
+    if (data === null || data === undefined || data.length === 0) {
       return (
         <center>
           <div className="emptyCart">
@@ -248,9 +266,21 @@ function Cart() {
           </div>
         </center>
       )
-    } else return <DisplayItem />
+    } else
+      return (
+        <React.Fragment>
+          <DisplayItem />
+          <AbaPayway
+            visible={visible ? visible : creditCardVisible}
+            handleOk={visible ? handleOk : handleCardOk}
+            handleCancle={visible ? handleCancle : handleCardCancle}
+            amount={displayTotalDeposit()}
+            color={koompiColor}
+            paymentOption={visible ? "abapay" : "cards"}
+          />
+        </React.Fragment>
+      )
   }
-
   return (
     <div>
       <Helmet>
@@ -268,14 +298,6 @@ function Cart() {
       <br />
       <div className="container">
         <DisplayProduct />
-        <AbaPayway
-          visible={visible ? visible : creditCardVisible}
-          handleOk={visible ? handleOk : handleCardOk}
-          handleCancle={visible ? handleCancle : handleCardCancle}
-          amount={result === undefined ? 0 : result[0].quantity * result[0].price}
-          color={koompiColor}
-          paymentOption={visible ? "abapay" : "cards"}
-        />
       </div>
       <br />
       <Footer />

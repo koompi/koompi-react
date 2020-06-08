@@ -16,7 +16,7 @@ function Retailer() {
     "/img/svg-img/03.svg",
     "/img/svg-img/04.svg",
     "/img/svg-img/05.svg",
-    "/img/svg-img/06.svg"
+    "/img/svg-img/06.svg",
   ]
 
   const { error, loading, data } = useQuery(GET_RETAILERS)
@@ -28,7 +28,7 @@ function Retailer() {
       <React.Fragment>
         <Row className="Row-about" gutter={16} type="flex">
           <center>
-            <Spin tip="Loading ..."></Spin>
+            <img src="/img/loading.svg" alt="koompi loading" height="40px" />
           </center>
         </Row>
       </React.Fragment>
@@ -83,7 +83,7 @@ function Retailer() {
                         style={{
                           backgroundImage: `url(${
                             randomImage[_.random(randomImage.length - 1)]
-                          })`
+                          })`,
                         }}
                       ></div>
                       <Card

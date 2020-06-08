@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "title": "Thin",
-    "value": "13.5 mm"
+    "title": "Slim",
+    "value": "16.9mm"
   },
   {
     "id": 2,
-    "title": "Light",
-    "value": "0.93 kgs"
+    "title": "Length",
+    "value": "277mm"
   },
   {
     "id": 3,
-    "title": "Compact design",
-    "value": "11.6\" size"
+    "title": "Width",
+    "value": "190.3mm"
   },
   {
     "id": 4,
-    "title": "Slim",
-    "value": "13.5mm size"
+    "title": "Weight",
+    "value": "0.93KG"
   }
 ]

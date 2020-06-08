@@ -11,6 +11,7 @@ import moment from "moment"
 import { Link } from "react-router-dom"
 import slugify from "slugify"
 import { Helmet } from "react-helmet"
+import ProgressiveImage from "react-progressive-image"
 
 function News() {
   const DisplayNewsBanner = () => {
@@ -21,15 +22,7 @@ function News() {
     }
     if (loading) {
       NProgress.start()
-      return (
-        <React.Fragment>
-          <Row className="Row-about" gutter={16} type="flex">
-            <center>
-              <Spin tip="Loading ..."></Spin>
-            </center>
-          </Row>
-        </React.Fragment>
-      )
+      return null
     }
     const filterNews = _.filter(data.pages, (page) => page.category.slug === "news")
 
@@ -46,19 +39,29 @@ function News() {
             <meta name="description" content={meta_desc} />
             <link rel="canonical" href="https://koompi.com/news-and-events" />
           </Helmet>
-          <Row className="Row-news" gutter={16} type="flex">
-            <Col xs={24} sm={24} ms={12} lg={12} xl={12}>
+          <Row className="Row-news" gutter={16}>
+            <Col xs={24} sm={24} ms={12} lg={11} xl={11}>
               <div className="news-and-events-banner-text">
                 <h2 className="newsBannerTitle">{title}</h2>
                 <div className="about-paragraph">{parse(description)}</div>
               </div>
             </Col>
-            <Col xs={24} sm={24} ms={24} lg={12} xl={12}>
-              <img
-                style={{ maxWidth: "100%" }}
-                src={`https://admin.koompi.com${image}`}
-                alt={title}
-              />
+            <Col xs={24} sm={24} ms={12} lg={13} xl={13}>
+              <ProgressiveImage src={`https://admin.koompi.com${image}`}>
+                {(src, loading) =>
+                  loading ? (
+                    <center>
+                      <img
+                        src="/img/loading.svg"
+                        alt="koompi loading"
+                        height="40px"
+                      />
+                    </center>
+                  ) : (
+                    <img style={{ maxWidth: "100%" }} src={src} alt={title} />
+                  )
+                }
+              </ProgressiveImage>
             </Col>
           </Row>
         </React.Fragment>
@@ -75,9 +78,9 @@ function News() {
     NProgress.start()
     return (
       <React.Fragment>
-        <Row className="Row-about" gutter={16} type="flex">
+        <Row className="Row-about" gutter={16}>
           <center>
-            <Spin tip="Loading ..."></Spin>
+            <img src="/img/loading.svg" alt="koompi loading" height="40px" />
           </center>
         </Row>
       </React.Fragment>
@@ -127,15 +130,13 @@ function News() {
                       }
                     >
                       <h1 className="news-and-events-title">
-                        {data.title.substring(0, 40) + "..."}
+                        {data.title.length > 40
+                          ? data.title.substring(0, 40) + "..."
+                          : data.title}
                       </h1>
-                      <p>
-                        <Tag color="blue">
-                          Date:{" "}
-                          {moment
-                            .unix(data.created_at / 1000)
-                            .format("YYYY, MMMM DD")}
-                        </Tag>
+                      <p className="dateTime">
+                        Published:{" "}
+                        {moment.unix(data.created_at / 1000).format("YYYY, MMMM DD")}
                       </p>
 
                       {/* <div className="news-and-events-desc">

@@ -2,15 +2,22 @@ import React, { useState } from "react"
 import { Row, Col, Button, Modal, Input, Form, InputNumber, message } from "antd"
 import { FiX } from "react-icons/fi"
 import { useMutation } from "@apollo/react-hooks"
+import Cookies from "js-cookie"
+import phoneValidation from "./phoneValidation"
 
-import { CREATE_PAYMENT } from "../graphql/mutation"
-const { TextArea } = Input
+import { CREATE_CUSTOMER } from "../graphql/mutation"
+import Axios from "axios"
+
+function initailState() {
+  let initailData = Cookies.getJSON("kp-store-cache")
+  return initailData
+}
 
 function Cash(props) {
   // ===== State Management =====
   const [loading, setLoading] = useState(false)
   const [visible, setVisible] = useState({ form: false })
-  const [createPayment] = useMutation(CREATE_PAYMENT)
+  const [createCustomer] = useMutation(CREATE_CUSTOMER)
 
   const showModal = () => {
     setVisible({ form: true })
@@ -25,25 +32,43 @@ function Cash(props) {
     e.preventDefault()
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        createPayment({
-          variables: {
-            ...values,
-            phone: `${values.phone}`,
-            product: ["KOOMPI E13"],
-            price: 369.0
-          }
-        })
-          .then(async (res) => {
-            setLoading(true)
-            setTimeout(() => {
-              setLoading(false)
-            }, 3000)
-            props.form.resetFields()
-            await message.success(res.data.create_payment.message, 3)
+        const { firstname, lastname, email, products } = values
+        if (!phoneValidation(`${values.phone}`)) {
+          message.error("Your phone number is invalid")
+        } else {
+          Axios.post("https://admin.koompi.com/koompi/mail/comfirm-order-items", {
+            email,
+            firstname,
+            lastname,
+            items: `${products}`,
           })
-          .catch((error) => {
-            console.log(error)
-          })
+            .then((res) => message.success(res.data.message, 5))
+            .then(() =>
+              createCustomer({
+                variables: {
+                  ...values,
+                  phone: `${values.phone}`,
+                  products: `${values.products}`,
+                },
+              })
+                .then(async () => {
+                  setLoading(true)
+                  setTimeout(() => {
+                    setLoading(false)
+                  }, 3000)
+                  await props.form.resetFields()
+                  // await openNotificationWithIcon(res.data.create_payment.message)
+                  await setVisible(false)
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+            )
+            .catch((e) => {
+              console.log(e)
+              message.error(e)
+            })
+        }
       }
     })
   }
@@ -58,7 +83,8 @@ function Cash(props) {
             </center>
           </Col>
           <Col span={18}>
-            <div className="PayCashDelivery">Pay/Cash on delivery</div>
+            <div className="PayCashDelivery">Cash</div>
+            {/* <div>Our them will contact you ASAP</div> */}
           </Col>
         </Row>
       </div>
@@ -70,71 +96,71 @@ function Cash(props) {
         closeIcon={<FiX />}
         className="paymentModal"
       >
-        <h2>Pay later / Cash on delivery</h2>
+        <h2>Pay on delivery</h2>
         <Form onSubmit={handleSubmit}>
-          {/* ===== Color */}
-          <Form.Item label="color" className="formDisplayNone">
-            {getFieldDecorator("color", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: props.color
-            })(<Input size="large" />)}
-          </Form.Item>
-
-          {/* ===== Color */}
-          <Form.Item label="payBy" className="formDisplayNone">
-            {getFieldDecorator("payBy", {
-              rules: [{ required: true, message: "File is required" }],
-              initialValue: "Cash"
-            })(<Input size="large" />)}
-          </Form.Item>
-
           <Row gutter={12}>
-            <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-              <Form.Item>
+            {/* ===== First Name */}
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+              <Form.Item label="First Name">
                 {getFieldDecorator("firstname", {
-                  rules: [
-                    { required: true, message: "Please input your First Name!" }
-                  ]
-                })(<Input size="large" placeholder="First Name" autoFocus={true} />)}
+                  rules: [{ required: true, message: "First Name is required!" }],
+                })(<Input size="large" autoFocus={true} autoComplete="off" />)}
               </Form.Item>
             </Col>
-            <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-              <Form.Item>
+            {/* ===== Last Name */}
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+              <Form.Item label="Last Name">
                 {getFieldDecorator("lastname", {
-                  rules: [
-                    { required: true, message: "Please input your Last Name!" }
-                  ]
-                })(<Input size="large" placeholder="Last Name" />)}
+                  rules: [{ required: true, message: "Last Name is required!" }],
+                })(<Input size="large" autoComplete="off" />)}
               </Form.Item>
             </Col>
           </Row>
-          <Form.Item>
+
+          {/* ===== Email */}
+          <Form.Item label="Email">
             {getFieldDecorator("email", {
               rules: [
                 {
                   type: "email",
-                  message: "The input is not valid email!"
+                  message: "The input is not valid email!",
                 },
-                { required: true, message: "Please input your email!" }
-              ]
-            })(<Input size="large" placeholder="Email" />)}
+                {
+                  required: true,
+                  message: "Please input your email!",
+                },
+              ],
+            })(<Input size="large" autoComplete="off" />)}
           </Form.Item>
 
-          <Form.Item>
+          {/* ===== Phone Number */}
+          <Form.Item label="Phone Number">
             {getFieldDecorator("phone", {
               rules: [
                 {
+                  type: "number",
+                  message: "The input is not valid number!",
+                },
+                {
                   required: true,
-                  message: "Please input your Phone Number!"
-                }
-              ]
-            })(<InputNumber size="large" placeholder="Phone Number" />)}
+                  message: "Please input your phone number!",
+                },
+              ],
+            })(<InputNumber size="large" autoComplete="off" />)}
           </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("message", {
-              rules: [{ required: true, message: "Please input your Phone Number!" }]
-            })(<TextArea rows={4} placeholder="Your awesome message" />)}
+
+          <Form.Item label="Products" style={{ display: "none" }}>
+            {getFieldDecorator("products", {
+              rules: [
+                {
+                  required: true,
+                  message: "Please input your products!",
+                },
+              ],
+              initialValue: JSON.stringify(initailState()),
+            })(<Input size="large" autoComplete="off" />)}
           </Form.Item>
+
           <center>
             <Button type="primary" htmlType="submit" className="paymentBtn">
               {loading ? (
