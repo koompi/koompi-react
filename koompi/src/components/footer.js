@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Row, Col } from "antd"
 import { NavLink } from "react-router-dom"
 
@@ -6,7 +6,15 @@ import { useQuery } from "@apollo/react-hooks"
 import { GET_SOCAIL_MEDIA } from "./graphql/query"
 
 function Footer() {
-  const { error, loading, data } = useQuery(GET_SOCAIL_MEDIA)
+  const [lang, setLang] = useState(true)
+  const { error, loading, data } = useQuery(GET_SOCAIL_MEDIA, {
+    variables: { lang: lang ? "kh" : "en" },
+  })
+
+  const changeLang = () => {
+    setLang(!lang)
+  }
+
   if (error) console.log("error")
   if (loading) return ""
 
@@ -20,6 +28,7 @@ function Footer() {
           key={index}
         >
           <img src={`https://admin.koompi.com` + res.logo} alt={res.name} />
+          <p>{res.name}</p>
         </a>
       )
     })
@@ -80,6 +89,9 @@ function Footer() {
               <h4 className="footerMarginTop">Connect With Us</h4>
               <div className="footer_socail_media">
                 <DisplaySocailMedia />
+                <div onClick={changeLang}>
+                  <p>En</p>
+                </div>
               </div>
               <br />
 

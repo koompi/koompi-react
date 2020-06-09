@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom"
 import { Layout, Menu, Badge, Drawer } from "antd"
 import { FiAlignLeft } from "react-icons/fi"
 import { FiShoppingCart } from "react-icons/fi"
+import { useTranslation } from "react-i18next"
 
 const { Header } = Layout
 
@@ -51,29 +52,39 @@ function RightNavbar() {
             </Badge>
           </NavLink>
         </Menu.Item>
-        <Menu.Item>
-          <button style={{ height: "50px", color: "#333", lineHeight: "0px" }}>
-            En
-          </button>
-        </Menu.Item>
-        <Menu.Item>
-          <button style={{ height: "50px", color: "#333", lineHeight: "0px" }}>
-            Kh
-          </button>
-        </Menu.Item>
       </Menu>
     </div>
   )
 }
 
 function Navbar() {
+  const { t, i18n } = useTranslation()
   const [visible, setVisible] = useState(false)
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang)
+  }
 
   const handleChange = () => {
     setVisible(!visible)
   }
   return (
     <React.Fragment>
+      <button
+        onClick={async () => {
+          changeLanguage("en")
+          await window.location.reload()
+        }}
+      >
+        en
+      </button>
+      <button
+        onClick={async () => {
+          changeLanguage("kh")
+          await window.location.reload()
+        }}
+      >
+        kh
+      </button>
       <Header className="header">
         <div className="container">
           <FiAlignLeft className="mobileMenu" onClick={handleChange} />

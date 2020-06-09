@@ -27,7 +27,9 @@ const academy_images = [
 function Index() {
   const [appsKey, setAppsKey] = useState("1")
 
-  const { error, loading, data } = useQuery(GET_PAGES)
+  const { error, loading, data } = useQuery(GET_PAGES, {
+    variables: { lang: window.localStorage.getItem("i18nextLng") },
+  })
   if (error) {
     if (error.networkError) {
       return (
@@ -167,12 +169,14 @@ function Index() {
   }
 
   const dataIndex = data.pages.filter((res) => res.category.slug === "index")
+  console.log(dataIndex)
+
   const result = _.orderBy(dataIndex, "sectionNumber", "asc")
 
   const displayData = () => {
-    return result.map((data, index) => {
+    return dataIndex.map((data, index) => {
       const description = renderHTML(data.description)
-      if (data.sectionNumber === "1") {
+      if (index === 0) {
         return (
           <div className="first-index-banner-e13">
             <div className="koompi-e11-position">
@@ -436,47 +440,46 @@ function Index() {
           <div className="container">
             <ScrollAnimation animateIn="fadeIn">
               <Row gutter={50}>
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <div className="banner_content">
-                    {/* ========= KOOMPI SECTION =========  */}
-                    <center>
-                      <p className="index-new">New</p>
-                    </center>
-                    <h1 className="bossTittle-KoompiHome-e11">KOOMPI E11</h1>
-                    <div className="koompi-e11-desc">
-                      <p>
-                        After releasing our classic E13, we never stopped working
-                        towards our mission, to see every student own their personal
-                        computer. Our one-student-one notebook initiative cannot
-                        become a reality if computers are not affordable.
-                      </p>
-                      <p>
-                        The E11 was built to make computing possible for everyone.
-                      </p>
-                    </div>
-                    <center>
-                      <Link to="/koompi-e11">
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="koompiBtn"
-                        >
-                          Learn More
-                        </motion.button>
-                      </Link>
-                    </center>
-                    <center>
-                      <img src="/img/e11.png" alt="" className="koompiE11-image" />
-                    </center>
-                  </div>
-                </Col>
+                {dataIndex.map((res) => {
+                  const description = renderHTML(res.description)
+                  return (
+                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                      <div className="banner_content">
+                        {/* ========= KOOMPI SECTION =========  */}
+                        <center>
+                          <p className="index-new">New</p>
+                        </center>
+                        <h1 className="bossTittle-KoompiHome-e11">{res.title}</h1>
+                        <div className="koompi-e11-desc">{parse(description)}</div>
+                        <center>
+                          <Link to="/koompi-e11">
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.9 }}
+                              className="koompiBtn"
+                            >
+                              Learn More
+                            </motion.button>
+                          </Link>
+                        </center>
+                        <center>
+                          <img
+                            src="/img/e11.png"
+                            alt=""
+                            className="koompiE11-image"
+                          />
+                        </center>
+                      </div>
+                    </Col>
+                  )
+                })}
               </Row>
             </ScrollAnimation>
           </div>
         </div>
       </div>
 
-      {displayData()}
+      {/* {displayData()} */}
       <Footer />
     </React.Fragment>
   )

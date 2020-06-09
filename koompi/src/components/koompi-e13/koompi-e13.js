@@ -16,6 +16,7 @@ import Footer from "../footer"
 import _ from "lodash"
 import ProgressiveImage from "react-progressive-image"
 import ScrollAnimation from "react-animate-on-scroll"
+import { useTranslation } from "react-i18next"
 
 import Helmet from "react-helmet"
 
@@ -30,6 +31,7 @@ const test = {
 }
 
 function KoompiE13(props) {
+  const { t, i18n } = useTranslation()
   const [koompiColor, setKoompiColor] = useState("koompi-gray")
   const imageLink = `https://admin.koompi.com`
 
@@ -40,6 +42,10 @@ function KoompiE13(props) {
     } else {
       setKoompiColor("koompi-gray")
     }
+  }
+
+  const handleLangs = (lang) => {
+    i18n.changeLanguage(lang)
   }
 
   const { error, loading, data } = useQuery(GET_PAGES)
@@ -434,7 +440,7 @@ function KoompiE13(props) {
   return (
     <React.Fragment>
       <Helmet>
-        <title>KOOMPI E13 - KOOMPI</title>
+        <title>{t("koompiE13.title")}</title>
         <meta
           name="keywords"
           content="KOOMPI, KOOMPI OS, KOOMPI ACADEMY, KHMER LAPTOP,koompi e13, koompi laptop, koompi computer, koompi os, koompi review"
@@ -446,6 +452,18 @@ function KoompiE13(props) {
         <link rel="canonical" href="https://koompi.com/koompi-e13" />
       </Helmet>
       <div>
+        <button
+          style={{ height: "50px", color: "#333", lineHeight: "0px" }}
+          onClick={() => handleLangs("en")}
+        >
+          En
+        </button>
+        <button
+          style={{ height: "50px", color: "#333", lineHeight: "0px" }}
+          onClick={() => handleLangs("kh")}
+        >
+          Kh
+        </button>
         <SubNavbar title="KOOMPI E13" history={props.history} />
         <div>
           <DisplayData />
