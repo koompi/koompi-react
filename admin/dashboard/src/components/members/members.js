@@ -24,43 +24,43 @@ function Members() {
   const columns = [
     {
       title: "Photo",
-      dataIndex: "photo"
+      dataIndex: "photo",
     },
     {
       title: "Full Name",
       dataIndex: "fullname",
-      key: "fullname"
+      key: "fullname",
     },
     {
       title: "Department",
       dataIndex: "department",
-      key: "department"
+      key: "department",
     },
     {
       title: "Email",
       dataIndex: "email",
-      key: "email"
+      key: "email",
     },
     {
       title: "Phone Number",
       dataIndex: "phoneNumber",
-      key: "phoneNumber"
+      key: "phoneNumber",
     },
     {
       title: "Author",
       dataIndex: "created_by",
-      key: "created_by"
+      key: "created_by",
     },
     {
       title: "Date",
       dataIndex: "created_at",
-      key: "created_at"
+      key: "created_at",
     },
 
     {
       title: "Actions",
-      dataIndex: "action"
-    }
+      dataIndex: "action",
+    },
   ]
 
   const hideModal = () => {
@@ -85,13 +85,13 @@ function Members() {
                 created_by,
                 photo,
                 department,
-                created_at
+                created_at,
               } = member
               return {
                 key: id,
                 photo: (
                   <img
-                    src={`https://admin.koompi.com${photo}`}
+                    src={`https://admin-demo.koompi.com${photo}`}
                     alt="post"
                     height="50px"
                     width="50px"
@@ -135,7 +135,7 @@ function Members() {
                       </Tag>
                     </Popconfirm>
                   </div>
-                )
+                ),
               }
             })}
             pagination={visible ? false : true}

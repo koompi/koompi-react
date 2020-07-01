@@ -5,7 +5,8 @@ import Cookies from "js-cookie"
 export const CartContext = React.createContext(null)
 
 export function CartProvider({ children }) {
-  const [state, setState] = useState([])
+  const initailData = Cookies.getJSON("kp-store-cache")
+  const [state, setState] = useState(initailData)
 
   let addToCart = (name, qty) => {
     let item_to_push
@@ -36,13 +37,13 @@ export function CartProvider({ children }) {
         break
     }
 
-    if (state.length === 0) {
+    if (state === undefined ? [] : state.length === 0) {
       setState([item_to_push])
       Cookies.set("kp-store-cache", JSON.stringify([item_to_push]), {
         expires: 7,
       })
     }
-    if (state.length > 0) {
+    if (state === undefined ? [] : state.length > 0) {
       let new_state = state
       let found = false
       let found_at_index = 0

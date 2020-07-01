@@ -1,8 +1,13 @@
 import React from "react"
 import { Carousel, Row } from "antd"
 import data from "./data.json"
+import { useTranslation } from "react-i18next"
 
 function SeenOn() {
+  const { i18n } = useTranslation()
+  // Language Context
+  const lang = i18n.language
+
   const settings = {
     // dots: true,
     infinite: true,
@@ -43,7 +48,7 @@ function SeenOn() {
     <div className="seenOn">
       <div className="container">
         <center>
-          <h2 className="seenOnTitle">Seen On</h2>
+          <h2 className="seenOnTitle">{lang === "en" ? "Seen On" : "បានឃើញនៅលើ"}</h2>
           <Row gutter={[24, 24]}>
             <Carousel {...settings} draggable={true} className="seenOnSlide">
               {data.map((res, index) => {

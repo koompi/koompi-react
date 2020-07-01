@@ -26,14 +26,15 @@ function SalePolicy() {
         <title>SALES POLICY - KOOMPI</title>
         <meta
           name="keywords"
-          content="koompi, koompi.com, www.koompi.com, https://koompi.com/whitepaper/salespolicies, koompi-SALES POLICY, koompi SALES POLICY, SALES POLICY"
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <meta
           name="description"
-          content="Thank you for your purchase! At KOOMPI, we ideally want our products to be smooth, effective, and enjoyable. For secure customer experience, KOOMPI provides a certain warranty to all KOOMPI products that you purchase."
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <link rel="canonical" href="https://koompi.com/whitepaper/salespolicies" />
       </Helmet>
+
       <div className="sale-policy-margin">
         <div className="container">
           {/* <h1>{result[0].title}</h1> */}

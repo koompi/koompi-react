@@ -172,17 +172,19 @@ const UPDATE_POST = gql`
 const CREATE_PAGE = gql`
   mutation(
     $title: String!
+    $lang: String!
     $subTitle: String
     $created_by: String!
-    $description: String!
+    $description: String
     $image: String
     $category: String!
-    $sectionNumber: String!
+    $sectionNumber: String
     $keywords: [String]!
     $meta_desc: String!
   ) {
     create_page(
       title: $title
+      lang: $lang
       subTitle: $subTitle
       created_by: $created_by
       description: $description
@@ -210,7 +212,7 @@ const UPDATE_PAGE = gql`
     $id: String!
     $title: String!
     $subTitle: String
-    $description: String!
+    $description: String
     $image: String
     $category: String!
     $sectionNumber: String!
@@ -448,9 +450,9 @@ const DELETE_SOFTWARE = gql`
   }
 `
 
-const DELETE_PAYMENT = gql`
+const DELETE_CUSTOMER = gql`
   mutation($id: String!) {
-    delete_payment(id: $id) {
+    delete_customer(id: $id) {
       message
     }
   }
@@ -486,5 +488,5 @@ export {
   ADD_SOFTWARE,
   UPDATE_SOFTWARE,
   DELETE_SOFTWARE,
-  DELETE_PAYMENT
+  DELETE_CUSTOMER,
 }

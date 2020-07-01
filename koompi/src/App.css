@@ -1,27 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-* {
-  font-family: "Muli", sans-serif;
-  letter-spacing: 0.5px;
-}
+/* @import url("https://fonts.googleapis.com/css2?family=Bayon&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Nokora:wght@400;700&display=swap");
+
 body {
   background: #869fb22b !important;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Muli", sans-serif;
-}
 h1 {
   font-weight: 900 !important;
 }
 p {
-  font-size: 20px !important;
-  margin: 10px 0px !important;
+  font-size: 22px;
+  /* margin: 10px 0px !important; */
   font-weight: 400;
+}
+.ant-scroll-number-only > p {
+  font-size: 14px !important;
 }
 .intro {
   height: 100vh;
@@ -39,10 +33,38 @@ p {
   margin-top: 2px !important;
   float: left;
 }
+.khmerLang {
+  word-spacing: -5px !important;
+  line-height: 43px;
+}
+.enLang {
+  word-spacing: 0px !important;
+}
+.btnKhmerLang {
+  font-size: 18px !important;
+}
+.ant-badge-count {
+  box-shadow: none !important;
+}
 .background-color-Koompi-E {
   background-color: #f0f3f7;
   position: relative;
   overflow: hidden;
+}
+.flag img {
+  height: 23px;
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+.displayOnMobile {
+  display: none;
+}
+.cartBadge {
+  position: absolute;
+  right: 80px;
+  top: 18px;
+  color: #fff;
 }
 .background-color-Koompi {
   position: relative;
@@ -1392,6 +1414,8 @@ button[type="submit"]:hover,
 .index-new {
   color: red;
   margin-bottom: 0px !important;
+  font-size: 30px;
+  font-weight: bold;
 }
 .learnMoreIndex {
   margin-top: 15px;
@@ -1727,6 +1751,24 @@ button[type="submit"]:hover,
   font-weight: 900;
   margin: 60px 0px;
 }
+.aboutUs {
+  font-size: 35px !important;
+  font-weight: 900;
+
+  position: relative;
+}
+.aboutUsContent p {
+  width: 70%;
+  text-align: center;
+}
+.aboutUsContent {
+  margin-top: 60px !important;
+  background-color: #ffffff;
+  padding: 30px 0px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
 .memberName {
   font-size: 18px;
   font-weight: 700;
@@ -1877,10 +1919,13 @@ button[type="submit"]:hover,
 .backgroud-news {
   position: relative;
 }
+.news-and-events-banner {
+  margin-bottom: 100px !important;
+}
 
 .news-and-events-banner-text {
   position: absolute;
-  transform: translate(0, 15%);
+  transform: translate(0, 10%);
 }
 .ant-card-cover {
   position: relative;
@@ -2026,13 +2071,7 @@ button[type="submit"]:hover,
 .spacTitle {
   font-weight: 600;
 }
-.ant-badge-count {
-  background: #008af4 !important;
-  box-shadow: 0 0 0 4px #141414 !important;
-}
-.ant-badge-count p {
-  font-size: 14px !important;
-}
+
 .sale-poilcy {
   margin: 40px 0px;
 }
@@ -2135,7 +2174,7 @@ code {
   margin-top: 15px;
 }
 .about-card-desc p {
-  font-size: 16px !important;
+  font-size: 18px !important;
   transition: 0.4s;
 }
 .about-card img {
@@ -2148,6 +2187,7 @@ code {
   border-radius: 8px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  height: 365px !important;
 }
 .readMoreBack {
   padding: 2px 5px;
@@ -2483,9 +2523,13 @@ code {
   cursor: pointer;
 }
 .single-page-image {
-  height: 600px;
   background-position: center;
   background-size: cover;
+  height: 500px;
+}
+.myBadge .shopping-cart-icon,
+.myBadge .ant-badge-count {
+  top: 5px;
 }
 
 /* ============ Icons For every section ============== */
@@ -2498,7 +2542,7 @@ code {
   background: url("/img/icons/streamline-icon-robot@140x140.png");
   transform: rotate(11.77deg);
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
   /* animation: upAndDown 4s infinite alternate; */
 }
 .streamline-icon-drone-controller {
@@ -2510,7 +2554,7 @@ code {
   background: url("/img/icons/streamline-icon-drone-controller-1@140x140.png");
   transform: rotate(-15.24deg);
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 
 .streamline-icon-virtual-house {
@@ -2521,7 +2565,7 @@ code {
   top: 482px;
   background: url("/img/icons/streamline-icon-virtual-house@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-bendable-phone-touch {
   position: absolute;
@@ -2531,7 +2575,7 @@ code {
   top: 543px;
   background: url("/img/icons/streamline-icon-bendable-phone-touch@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 
 .streamline-icon-programming-language-http {
@@ -2542,7 +2586,7 @@ code {
   top: 120px;
   background: url("/img/icons/streamline-icon-programming-language-http@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-programming-user-head {
   position: absolute;
@@ -2552,7 +2596,7 @@ code {
   top: 100.29px;
   background: url("/img/icons/streamline-icon-programming-user-head@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-user-live {
   position: absolute;
@@ -2562,7 +2606,7 @@ code {
   top: 482px;
   background: url("/img/icons/streamline-icon-user-live@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-shield-key {
   position: absolute;
@@ -2572,7 +2616,7 @@ code {
   top: 543px;
   background: url("/img/icons/streamline-icon-shield-key@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 
 .streamline-icon-app-window-lock {
@@ -2584,7 +2628,7 @@ code {
   background: url("/img/icons/streamline-icon-app-window-lock-1@140x140.png");
   transform: rotate(14.9deg);
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-programming-flag {
   position: absolute;
@@ -2594,7 +2638,7 @@ code {
   top: 100.29px;
   background: url("/img/icons/streamline-icon-programming-flag@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-database-flash {
   position: absolute;
@@ -2604,7 +2648,7 @@ code {
   top: 482px;
   background: url("/img/icons/streamline-icon-database-flash@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-responsive-design-expand-1 {
   position: absolute;
@@ -2614,7 +2658,7 @@ code {
   top: 543px;
   background: url("/img/icons/streamline-icon-responsive-design-expand-1@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 
 .streamline-icon-study-notebook-maths {
@@ -2625,7 +2669,7 @@ code {
   top: 120px;
   background: url("/img/icons/streamline-icon-study-notebook-maths@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-study-maths-brain {
   position: absolute;
@@ -2635,7 +2679,7 @@ code {
   top: 100.29px;
   background: url("/img/icons/streamline-icon-study-maths-brain@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.05;
 }
 .streamline-icon-library-maths {
   position: absolute;
@@ -2645,7 +2689,7 @@ code {
   top: 482px;
   background: url("/img/icons/streamline-icon-library-maths@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .streamline-icon-school-locker {
   position: absolute;
@@ -2655,7 +2699,7 @@ code {
   top: 543px;
   background: url("/img/icons/streamline-icon-school-locker@140x140.png");
   background-size: 100px 100px;
-  opacity: 5%;
+  opacity: 0.09;
 }
 .ant-carousel .slick-dots li.slick-active button {
   background: #0090ff !important;
@@ -2831,7 +2875,10 @@ code {
 
 @media only screen and (max-width: 979px) {
   p {
-    font-size: 16px !important;
+    font-size: 18px !important;
+  }
+  .khmerLang {
+    line-height: 33px !important;
   }
   .koompi-e13-title-index {
     font-size: 30px !important;
@@ -2876,6 +2923,17 @@ code {
   }
   .container {
     width: 90% !important;
+  }
+  .flag img {
+    height: 23px;
+    border-radius: 2px;
+    position: relative;
+    top: 0;
+    float: right;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
   }
   .videoPlayBtn {
     position: absolute;
@@ -2975,6 +3033,9 @@ code {
     width: 100% !important;
     max-width: 100% !important;
   }
+  .ant-drawer {
+    z-index: 1000000000000 !important;
+  }
   .ant-drawer-body {
     padding: 0px !important;
   }
@@ -3012,6 +3073,21 @@ code {
   .bossTittle-KoompiHome-e11 {
     font-size: 30px !important;
     margin: 0px !important;
+  }
+  .displayOnMobile {
+    display: block;
+  }
+  .single-page-image {
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+  }
+  .about-card {
+    height: auto !important;
+  }
+  .aboutUsContent p {
+    width: 100%;
   }
 }
 
@@ -3081,6 +3157,9 @@ code {
   }
   .cardHeight {
     height: auto !important;
+  }
+  .news-and-events-banner {
+    margin-bottom: 0px !important;
   }
   .news-and-events-banner-text {
     position: static;
@@ -3324,7 +3403,7 @@ code {
     margin: 3px 3px !important;
   }
   .Row-news {
-    padding: 30px 0px !important;
+    padding-top: 30px !important;
   }
   .container-banner-about {
     width: 90% !important;

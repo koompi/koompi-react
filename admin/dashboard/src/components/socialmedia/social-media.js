@@ -25,33 +25,33 @@ function SocialMedia() {
   const columns = [
     {
       title: "Logo",
-      dataIndex: "logo"
+      dataIndex: "logo",
     },
     {
       title: "Name",
       dataIndex: "name",
-      key: "name"
+      key: "name",
     },
     {
       title: "Link",
       dataIndex: "link",
-      key: "link"
+      key: "link",
     },
     {
       title: "Author",
       dataIndex: "created_by",
-      key: "created_by"
+      key: "created_by",
     },
     {
       title: "Date",
       dataIndex: "created_at",
-      key: "created_at"
+      key: "created_at",
     },
 
     {
       title: "Actions",
-      dataIndex: "action"
-    }
+      dataIndex: "action",
+    },
   ]
 
   const hideModal = () => {
@@ -74,7 +74,7 @@ function SocialMedia() {
                 key: parse(name),
                 logo: (
                   <img
-                    src={`https://admin.koompi.com${logo}`}
+                    src={`https://admin-demo.koompi.com${logo}`}
                     alt={name}
                     height="40px"
                     width="40px"
@@ -118,7 +118,7 @@ function SocialMedia() {
                       </Tag>
                     </Popconfirm>
                   </div>
-                )
+                ),
               }
             })}
             pagination={visible ? false : true}

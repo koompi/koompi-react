@@ -7,6 +7,7 @@ import moment from "moment"
 import { useQuery, useMutation } from "@apollo/react-hooks"
 import parse from "html-react-parser"
 import { Link } from "react-router-dom"
+import { v4 as uuidv4 } from "uuid"
 
 // ===== Query and Mutation Section =====
 import { GET_PAGES } from "../../graphql/query"
@@ -24,43 +25,124 @@ function AllPages() {
 
   const columns = [
     {
+      key: `${uuidv4()}`,
       title: "Image",
-      dataIndex: "image"
+      dataIndex: "image",
+      render: (data) => {
+        return (
+          <img
+            src={
+              data === "/public/uploads/"
+                ? "/images/Error-01.png"
+                : "https://admin-demo.koompi.com" + data
+            }
+            alt="post"
+            width="60px"
+          />
+        )
+      },
     },
     {
+      key: `${uuidv4()}`,
       title: "Title",
       dataIndex: "title",
-      key: "title"
     },
     {
+      key: `${uuidv4()}`,
       title: "SubTitle",
       dataIndex: "subTitle",
-      key: "subTitle"
+      render: (data) => {
+        return data === null ? (
+          <Tag color="red">N/A</Tag>
+        ) : (
+          <Tag color="green">{data}</Tag>
+        )
+      },
     },
     {
+      key: `${uuidv4()}`,
+      title: "Lang",
+      dataIndex: "lang",
+      sorter: (a, b) => {
+        return a.lang.lang.localeCompare(b.lang.lang)
+      },
+      render: (data) => {
+        return data.lang
+      },
+    },
+    {
+      key: `${uuidv4()}`,
       title: "Page",
       dataIndex: "category",
-      key: "category",
-      sorter: (a, b) => a.category.length - b.category.length
+      sorter: (a, b) => a.category.title.length - b.category.title.length,
+      render: (data) => {
+        return data === null ? "No category" : data.title
+      },
     },
     {
+      key: `${uuidv4()}`,
       title: "Author",
       dataIndex: "created_by",
-      key: "created_by"
+      render: (data) => {
+        return data
+      },
     },
     {
+      key: `${uuidv4()}`,
       title: "Date",
       dataIndex: "created_at",
-      key: "created_at"
+      render: (data) => {
+        return moment.unix(data / 1000).format("DD, MMM YYYY")
+      },
     },
     {
+      key: `${uuidv4()}`,
       title: "Updated By",
-      dataIndex: "updated_by"
+      dataIndex: "updated_by",
+      render: (data) => {
+        return data === null ? "No Update" : data
+      },
     },
     {
+      key: `${uuidv4()}`,
       title: "Actions",
-      dataIndex: "action"
-    }
+      dataIndex: "action",
+      render: (index, data) => {
+        // console.log(data)
+        const { id } = data
+        return (
+          <div>
+            <Link to={`/admin/page/edit/${id}`}>
+              <Tag className="btn" color="#2db7f5">
+                Edit
+              </Tag>
+            </Link>
+            <Divider type="vertical" />
+            <Popconfirm
+              placement="topRight"
+              title="Are you sure to delete this Page?"
+              okText="Yes"
+              cancelText="No"
+              onConfirm={() => {
+                deletePage({ variables: { id: `${id}` } })
+                  .then(async (res) => {
+                    await message.success(res.data.delete_page.message)
+                    await pageRefetch()
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                    return null
+                  })
+              }}
+            >
+              <Tag color="#f50" className="btn">
+                Delete
+              </Tag>
+            </Popconfirm>
+          </div>
+        )
+      },
+    },
   ]
 
   const hideModal = () => {
@@ -72,96 +154,20 @@ function AllPages() {
     if (error) console.log(error)
     if (loading) return <Table loading={true}></Table>
     if (data) {
-      const DisplayTable = () => {
-        return (
-          <Table
-            columns={columns}
-            dataSource={data.pages.map((page) => {
-              const {
-                id,
-                title,
-                subTitle,
-                category,
-                image,
-                created_at,
-                created_by,
-                updated_by
-              } = page
-
-              return {
-                key: parse(title.substring(0, 30)),
-                image: (
-                  <img
-                    src={"https://admin.koompi.com" + image}
-                    alt="post"
-                    height="40px"
-                    width="60px"
-                  />
-                ),
-                title:
-                  title.substring().length > 25
-                    ? parse(title.substring(0, 25) + "... ")
-                    : parse(title),
-                subTitle:
-                  subTitle === null ? (
-                    <Tag color="red">N/A</Tag>
-                  ) : (
-                    <Tag color="green">{subTitle.toUpperCase()}</Tag>
-                  ),
-                category: category === null ? "No category" : category.title,
-                created_by,
-                updated_by: updated_by === null ? "No Update" : updated_by,
-                created_at: moment.unix(created_at / 1000).format("YYYY-MM-DD"),
-                action: visible ? null : (
-                  <div>
-                    <Link to={`/admin/page/edit/${id}`}>
-                      <Tag className="btn" color="#2db7f5">
-                        Edit
-                      </Tag>
-                    </Link>
-                    <Divider type="vertical" />
-                    <Popconfirm
-                      placement="topRight"
-                      title="Are you sure to delete this Page?"
-                      okText="Yes"
-                      cancelText="No"
-                      onConfirm={() => {
-                        deletePage({ variables: { id: `${id}` } })
-                          .then(async (res) => {
-                            await message.success(res.data.delete_page.message)
-                            await pageRefetch()
-                          })
-                          .catch((error) => {
-                            console.log(error)
-                            return null
-                          })
-                      }}
-                    >
-                      <Tag color="#f50" className="btn">
-                        Delete
-                      </Tag>
-                    </Popconfirm>
-                  </div>
-                )
-              }
-            })}
-            pagination={visible ? false : true}
-          />
-        )
-      }
       return (
         <div>
-          <Modal
-            title={"Details Informtion"}
-            visible={visible}
-            onOk={hideModal}
-            onCancel={hideModal}
-            footer={null}
-            width="98%"
-          >
-            <DisplayTable />
-          </Modal>
-          <DisplayTable />
+          <Table
+            rowKey={() => uuidv4()}
+            columns={columns}
+            dataSource={data.pages}
+            pagination={{
+              defaultCurrent: 1,
+              total: data.pages.length,
+              showTotal: (total, range) =>
+                `${range[0]}-${range[1]} of ${total} items`,
+              pageSize: 20,
+            }}
+          />
         </div>
       )
     }

@@ -8,6 +8,7 @@ import three_dots from "../../assets/img/three-dots.svg"
 // ===== Query and Mutation Section =====
 import { GET_PAGE, GET_PAGES, GET_CATEGORIES } from "../../graphql/query"
 import { UPDATE_PAGE } from "../../graphql/mutation"
+import QuillTextEditor from "../QuillTextEditor"
 
 // ===== Import EditorJS =====
 import EditorJs from "react-editor-js"
@@ -23,7 +24,7 @@ import {
   Select,
   Layout,
   message,
-  InputNumber
+  InputNumber,
 } from "antd"
 
 const FormItem = Form.Item
@@ -37,12 +38,13 @@ function EditPage(props) {
   const { getFieldDecorator } = props.form
   //   ===== Global Data =====
   const { loading: pageLoading, data: pageData } = useQuery(GET_PAGE, {
-    variables: { id: window.location.pathname.split("/")[4] }
+    variables: { id: window.location.pathname.split("/")[4] },
   })
 
   // ===== State Management =====
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState(null)
+  const [desc, setDesc] = useState("")
 
   // ===== User Context Section =====
   const userData = useContext(UserContext)
@@ -50,19 +52,23 @@ function EditPage(props) {
   const { refetch: pageRefetch } = useQuery(GET_PAGES)
   const [updatePage] = useMutation(UPDATE_PAGE)
 
+  const handleDescChange = (value) => {
+    console.log(value)
+    setDesc(value)
+  }
+
   // ===== EditorJS =====
   const editorJsRef = React.useRef(null)
-  const handleSubmit = React.useCallback(async () => {
-    const savedData = await editorJsRef.current.save()
+  const handleSubmit = () =>
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         updatePage({
           variables: {
             id: window.location.pathname.split("/")[4],
-            description: JSON.stringify(savedData),
             ...values,
-            sectionNumber: values.sectionNumber.toString()
-          }
+            description: desc === "" ? pageData.page.description : desc,
+            sectionNumber: values.sectionNumber.toString(),
+          },
         })
           .then(async (res) => {
             setLoading(true)
@@ -78,14 +84,12 @@ function EditPage(props) {
           })
       }
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   // ===== Handle Image Upload =====
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin.koompi.com/upload/image",
+    action: "https://admin-demo.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -98,7 +102,7 @@ function EditPage(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const DisplayCategories = () => {
@@ -113,9 +117,9 @@ function EditPage(props) {
             rules: [
               {
                 required: true,
-                message: "Please select your category!"
-              }
-            ]
+                message: "Please select your category!",
+              },
+            ],
           })(<Select placeholder="No Category"></Select>)}
         </Form.Item>
       )
@@ -126,10 +130,10 @@ function EditPage(props) {
             rules: [
               {
                 required: true,
-                message: "Please select your category!"
-              }
+                message: "Please select your category!",
+              },
             ],
-            initialValue: pageData.page.category.title
+            initialValue: pageData.page.category.title,
           })(
             <Select placeholder="Please select the category" size="large">
               {data.categories.map((cate) => {
@@ -173,16 +177,16 @@ function EditPage(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The title is required"
-                          }
+                            message: "The title is required",
+                          },
                         ],
-                        initialValue: pageData.page.title
+                        initialValue: pageData.page.title,
                       })(<Input size="large" />)}
                     </FormItem>
 
                     <FormItem label="SubTitle">
                       {getFieldDecorator("subTitle", {
-                        initialValue: pageData.page.subTitle
+                        initialValue: pageData.page.subTitle,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -191,10 +195,10 @@ function EditPage(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -203,21 +207,16 @@ function EditPage(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: new Date().toISOString()
+                        initialValue: new Date().toISOString(),
                       })(<Input size="large" />)}
                     </FormItem>
                     <FormItem label="Description: ">
-                      <EditorJs
-                        instanceRef={(instance) => (editorJsRef.current = instance)}
-                        tools={EDITOR_JS_TOOLS}
-                        data={
-                          pageLoading
-                            ? "Loading ..."
-                            : JSON.parse(pageData.page.description)
-                        }
+                      <QuillTextEditor
+                        handleDescChange={handleDescChange}
+                        defaultValue={desc === "" ? pageData.page.description : desc}
                       />
                     </FormItem>
 
@@ -245,15 +244,17 @@ function EditPage(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              pageData.page.image}`}
+                            src={`${
+                              "https://admin-demo.koompi.com" + pageData.page.image
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              image}`}
+                            src={`${
+                              "https://admin-demo.koompi.com/public/uploads/" + image
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -264,13 +265,13 @@ function EditPage(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Imae is required"
-                            }
+                              message: "Imae is required",
+                            },
                           ],
                           initialValue:
                             image === null
                               ? pageData.page.image
-                              : "/public/uploads/" + image
+                              : "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
@@ -283,10 +284,10 @@ function EditPage(props) {
                             rules: [
                               {
                                 required: true,
-                                message: "The Section Number is required"
-                              }
+                                message: "The Section Number is required",
+                              },
                             ],
-                            initialValue: pageData.page.sectionNumber
+                            initialValue: pageData.page.sectionNumber,
                           })(
                             <InputNumber
                               min={1}
@@ -308,10 +309,10 @@ function EditPage(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The keywords is required"
-                          }
+                            message: "The keywords is required",
+                          },
                         ],
-                        initialValue: pageLoading ? "" : pageData.page.keywords
+                        initialValue: pageLoading ? "" : pageData.page.keywords,
                       })(
                         <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
@@ -325,10 +326,10 @@ function EditPage(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The Meta Description is required"
-                          }
+                            message: "The Meta Description is required",
+                          },
                         ],
-                        initialValue: pageLoading ? "" : pageData.page.meta_desc
+                        initialValue: pageLoading ? "" : pageData.page.meta_desc,
                       })(<TextArea rows={4} />)}
                     </FormItem>
                   </Col>

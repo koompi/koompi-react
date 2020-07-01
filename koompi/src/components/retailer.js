@@ -1,5 +1,5 @@
 import React from "react"
-import { Row, Col, Typography, Card, Button, Spin } from "antd"
+import { Row, Col, Typography, Card, Button } from "antd"
 import Footer from "./footer"
 import _ from "lodash"
 import { useQuery } from "@apollo/react-hooks"

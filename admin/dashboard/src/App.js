@@ -7,6 +7,7 @@ import LoginForm from "./components/users/login"
 import SignupForm from "./components/users/signup"
 import PrivateRoute from "./PrivateRoute"
 import PublicRoute from "./PublicRoute"
+import { UserProvider } from "./context/userContext"
 
 // Call Component
 import Admin from "./components/admin"
@@ -16,7 +17,6 @@ import NewPage from "./components/pages/new-page"
 import AllPages from "./components/pages/all-pages"
 import Users from "./components/users"
 import Logout from "./components/users/logout"
-import { UserProvider } from "./context/userContext"
 import Category from "./components/categories/category"
 import "nprogress/nprogress.css"
 import editCategory from "./components/categories/edit-category"
@@ -40,6 +40,7 @@ import Payment from "./components/payments/payment"
 import AddSoftware from "./components/softwares/add-software"
 import AllSoftwares from "./components/softwares/all-softwares"
 import EditSoftware from "./components/softwares/edit-software"
+import Preorder from "./components/preorder/preorder"
 
 function App() {
   return (
@@ -100,8 +101,11 @@ function App() {
             path="/admin/social-media/edit/:id"
             component={editSocialMedia}
           />
-          {/* ===== Social Media Route Section ===== */}
+          {/* ===== Payment Route Section ===== */}
           <PrivateRoute exact path="/admin/user/payments" component={Payment} />
+
+          {/* ===== PreOrder Route Section ===== */}
+          <PrivateRoute exact path="/admin/user/pre-order" component={Preorder} />
           {/* ===== Telegram Route Section ===== */}
           <PrivateRoute exact path="/admin/telegram-bot" component={TelegramBot} />
           {/* ===== Legal Route Section ===== */}

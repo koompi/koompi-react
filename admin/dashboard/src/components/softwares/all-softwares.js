@@ -22,32 +22,32 @@ function AllSoftwares() {
   const columns = [
     {
       title: "Logo",
-      dataIndex: "logo"
+      dataIndex: "logo",
     },
     {
       title: "Image",
-      dataIndex: "image"
+      dataIndex: "image",
     },
     {
       title: "Title",
       dataIndex: "title",
-      key: "title"
+      key: "title",
     },
     {
       title: "Author",
       dataIndex: "created_by",
-      key: "created_by"
+      key: "created_by",
     },
     {
       title: "Date",
       dataIndex: "created_at",
-      key: "created_at"
+      key: "created_at",
     },
 
     {
       title: "Actions",
-      dataIndex: "action"
-    }
+      dataIndex: "action",
+    },
   ]
 
   const DisplayPost = () => {
@@ -65,7 +65,7 @@ function AllSoftwares() {
                 key: id,
                 logo: (
                   <img
-                    src={"https://admin.koompi.com" + software.logo}
+                    src={"https://admin-demo.koompi.com" + software.logo}
                     alt="software"
                     height="50px"
                     width="50px"
@@ -73,7 +73,7 @@ function AllSoftwares() {
                 ),
                 image: (
                   <img
-                    src={"https://admin.koompi.com" + software.image}
+                    src={"https://admin-demo.koompi.com" + software.image}
                     alt="software"
                     height="50px"
                     width="50px"
@@ -114,7 +114,7 @@ function AllSoftwares() {
                       </Tag>
                     </Popconfirm>
                   </div>
-                )
+                ),
               }
             })}
             pagination={true}

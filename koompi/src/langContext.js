@@ -1,13 +1,15 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 export const LangContext = React.createContext(null)
 
-const initailState = window.localStorage.i18nextLng
-
 export function LangProvider({ children }) {
-  const [state, setState] = useState(initailState)
+  const [lang, setLang] = useState("en")
 
-  console.log("initailState", initailState)
+  useEffect(() => {
+    setLang(window.localStorage.getItem("i18nextLng"))
+  }, [])
 
-  return <LangContext.Provider value={{ state }}>{children}</LangContext.Provider>
+  return (
+    <LangContext.Provider value={{ state: lang }}>{children}</LangContext.Provider>
+  )
 }

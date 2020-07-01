@@ -29,9 +29,15 @@ import TermsAndConditions from "./components/legals/terms-and-conditions"
 import { HelmetProvider } from "react-helmet-async"
 import "animate.css/animate.min.css"
 import PreOrder from "./components/preorder/preorder"
-
+import { useTranslation } from "react-i18next"
 function App() {
   NProgress.configure({ showSpinner: false })
+  const { i18n } = useTranslation()
+
+  // Language Context
+  const lang = i18n.language
+
+  console.log("lang", lang)
 
   return (
     <HelmetProvider>
@@ -40,9 +46,38 @@ function App() {
           <Icon type="caret-up" />
         </BackTop>
 
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              * {
+                font-family: ${
+                  lang === "en" ? `"Muli", sans-serif` : `"Nokora", serif`
+                }; 
+                letter-spacing: 0.5px;
+              }
+              h1,
+              h2,
+              h3,
+              h4,
+              h5,
+              h6 {
+                font-family: ${
+                  lang === "en" ? `"Muli", sans-serif` : `"Nokora", serif`
+                }; 
+              }
+              .koompi span{
+                font-family: "Muli", sans-serif;
+              }
+
+              p{
+                font-size: ${lang === "en" ? "22px" : "26px"}
+              }
+    `,
+          }}
+        />
+
         <Router>
           <Navbar />
-
           <Switch>
             <Route exact path="/koompi-e11-order" component={PreOrder}></Route>
             <Route exact path="/koompi-e11" component={KOOMPI_E11}></Route>

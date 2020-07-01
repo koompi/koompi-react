@@ -1,5 +1,5 @@
-import React from "react"
-import { Layout, message, Table, Tag, Popconfirm } from "antd"
+import React, { Fragment, useState } from "react"
+import { Layout, message, Table, Tag, Popconfirm, Badge, Modal } from "antd"
 import TopNavbar from "../navbar/top-navbar"
 import LeftNavbar from "../navbar/left-navbar"
 import PageFooter from "../footer"
@@ -7,143 +7,202 @@ import moment from "moment"
 import { useQuery, useMutation } from "@apollo/react-hooks"
 
 // ===== Query and Mutation Section =====
-import { GET_PAYMENTS } from "../../graphql/query"
-import { DELETE_PAYMENT } from "../../graphql/mutation"
+import { GET_CUSTOMERS, GET_PRODUCT } from "../../graphql/query"
+import { DELETE_CUSTOMER } from "../../graphql/mutation"
 
 const { Content } = Layout
+const { Column, ColumnGroup } = Table
+
+function currencyFormat(num) {
+  return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
 
 function Payment() {
+  const [productData, setProductData] = React.useState(null)
   // ===== Mutation Varile Section =====
-  const [deletePayment] = useMutation(DELETE_PAYMENT)
-  const { refetch: paymentRefetch } = useQuery(GET_PAYMENTS)
+  const [deleteCustomer] = useMutation(DELETE_CUSTOMER)
+  const { refetch: paymentRefetch } = useQuery(GET_CUSTOMERS)
+  const [state, setState] = useState({ visible: false })
+
+  const showModal = () => {
+    setState({
+      visible: true,
+    })
+  }
+
+  const handleOk = (e) => {
+    console.log(e)
+    setState({
+      visible: false,
+    })
+  }
+
+  const handleCancel = (e) => {
+    console.log(e)
+    setState({
+      visible: false,
+    })
+  }
+
+  const ProductInfo = () => {
+    const { error, loading, data } = useQuery(GET_PRODUCT, {
+      variables: { id: "5eb3ab2d16100b46720b3a45" },
+    })
+    if (error) console.log(error)
+    if (loading) {
+      return "loading ..."
+    }
+    if (data) {
+      setProductData(data)
+      return null
+    }
+    return null
+  }
 
   const columns = [
     {
-      title: "First Name",
-      dataIndex: "firstname"
+      title: "User Info",
+      children: [
+        {
+          title: "Full Name",
+          render: (data) => {
+            const { firstname, lastname } = data
+            return `${firstname} ${lastname}`
+          },
+        },
+        {
+          title: "Email",
+          dataIndex: "email",
+        },
+        {
+          title: "Phone",
+          dataIndex: "phone",
+        },
+      ],
     },
-    {
-      title: "Last Name",
-      dataIndex: "lastname"
-    },
-    {
-      title: "Email",
-      dataIndex: "email"
-    },
-    {
-      title: "Phone Number",
-      dataIndex: "phone"
-    },
+
     {
       title: "Product",
-      dataIndex: "product"
+      children: [
+        {
+          title: "Items",
+          render: (data) => {
+            const result = JSON.parse(data.products)
+            return result.map((res) => <div>{res.name}</div>)
+          },
+        },
+        {
+          title: "Qty",
+          render: (data) => {
+            const result = JSON.parse(data.products)
+            return result.map((res) => <div>{res.qty}</div>)
+          },
+        },
+        {
+          title: "Price",
+          render: (data) => {
+            const result = JSON.parse(data.products)
+            return result.map((res) => <div>{currencyFormat(res.price)}</div>)
+          },
+        },
+        {
+          title: "Total",
+          render: (data) => {
+            const result = JSON.parse(data.products)
+            return result.map((res) => (
+              <div>{currencyFormat(res.price * res.qty)}</div>
+            ))
+          },
+        },
+
+        {
+          title: "Deposit",
+          render: (data) => {
+            const result = JSON.parse(data.products)
+            return result.map((res) => <div>{currencyFormat(res.deposit)}</div>)
+          },
+        },
+        {
+          title: "Total Deposit",
+          render: (data) => {
+            const result = JSON.parse(data.products)
+            return result.map((res) => (
+              <div>{currencyFormat(res.deposit * res.qty)}</div>
+            ))
+          },
+        },
+        {
+          title: "Remain",
+          render: (data) => {
+            const result = JSON.parse(data.products)
+            return result.map((res) => (
+              <div>
+                <Tag color="red">
+                  {currencyFormat(res.price * res.qty - res.deposit * res.qty)}
+                </Tag>
+              </div>
+            ))
+          },
+        },
+      ],
     },
     {
-      title: "Pay By",
-      dataIndex: "payBy"
+      title: "Purchase At",
+      dataIndex: "created_at",
+      render: (data) => {
+        return moment.unix(data / 1000).format("YYYY-MM-DD")
+      },
     },
     {
-      title: "Color",
-      dataIndex: "color"
+      title: "Action",
+      render: (data) => {
+        return (
+          <Fragment>
+            <Popconfirm
+              placement="topRight"
+              title="Are you sure to delete this payment?"
+              okText="Yes"
+              cancelText="No"
+              onConfirm={() => {
+                deleteCustomer({ variables: { id: `${data.id}` } })
+                  .then(async (res) => {
+                    await message.success(res.data.delete_customer.message)
+                    await paymentRefetch()
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                    return null
+                  })
+              }}
+            >
+              <Tag color="red" style={{ cursor: "pointer" }}>
+                Delete
+              </Tag>
+            </Popconfirm>
+          </Fragment>
+        )
+      },
     },
-    {
-      title: "Price",
-      dataIndex: "price"
-    },
-    {
-      title: "Cancle",
-      dataIndex: "cancle"
-    },
-    {
-      title: "Created At",
-      dataIndex: "created_at"
-    },
-    {
-      title: "Actions",
-      dataIndex: "action"
-    }
   ]
 
   const DisplayPayment = () => {
-    const { error, loading, data } = useQuery(GET_PAYMENTS)
+    const { error, loading, data } = useQuery(GET_CUSTOMERS)
     if (error) console.log(error)
     if (loading) return <Table loading={true}></Table>
     if (data) {
-      console.log(data)
-
-      const DisplayTable = () => {
-        return (
-          <Table
-            columns={columns}
-            dataSource={data.payments.map((payment) => {
-              const {
-                id,
-                firstname,
-                lastname,
-                email,
-                created_at,
-                phone,
-                price,
-                product,
-                cancle,
-                payBy,
-                color
-              } = payment
-              return {
-                key: id,
-                firstname,
-                lastname,
-                email,
-                phone,
-                payBy,
-                color,
-                product: product.map((data) => {
-                  return <Tag color="blue">{data}</Tag>
-                }),
-                price: `$${price}.00`,
-                cancle: cancle ? (
-                  <Tag color="red">Yes</Tag>
-                ) : (
-                  <Tag color="green">No</Tag>
-                ),
-                created_at: moment.unix(created_at / 1000).format("YYYY-MM-DD"),
-                action: (
-                  <div>
-                    <Popconfirm
-                      placement="topRight"
-                      title="Are you sure to delete this payment?"
-                      okText="Yes"
-                      cancelText="No"
-                      onConfirm={() => {
-                        deletePayment({ variables: { id: `${id}` } })
-                          .then(async (res) => {
-                            await message.success(res.data.delete_payment.message)
-                            await paymentRefetch()
-                          })
-                          .catch((error) => {
-                            console.log(error)
-                            return null
-                          })
-                      }}
-                    >
-                      <Tag color="#f50" className="btn">
-                        Delete
-                      </Tag>
-                    </Popconfirm>
-                  </div>
-                )
-              }
-            })}
-            pagination={true}
-          />
-        )
-      }
       return (
         <div>
-          <DisplayTable />
+          <Table
+            bordered
+            columns={columns}
+            dataSource={data.customers}
+            pagination={{ pageSize: 20 }}
+          />
+          {/* {JSON.stringify(JSON.parse(data.customers[0].products), 0, 2)} */}
         </div>
       )
     }
+    return null
   }
 
   return (
@@ -161,6 +220,7 @@ function Payment() {
             <div className="background_container">
               <h1 className="title_new_post">Payments</h1>
               <DisplayPayment />
+              <ProductInfo />
             </div>
           </div>
         </Content>

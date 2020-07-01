@@ -5,8 +5,8 @@ import Cookies from "js-cookie"
 import Helmet from "react-helmet"
 import AbaPayway from "../payments/aba-payway"
 import CashOrDelivery from "../payments/cash-or-delivery"
-
 import _ from "lodash"
+import { useTranslation } from "react-i18next"
 
 const { confirm } = Modal
 const { Option } = Select
@@ -26,6 +26,10 @@ function Cart() {
   const [data, setData] = useState(initailState)
   const [koompiColor] = useState("gray")
   const [, setQty] = useState(1)
+  const { i18n } = useTranslation()
+
+  // Language Context
+  const lang = i18n.language
 
   const handleCancle = () => {
     setVisible(false)
@@ -65,7 +69,7 @@ function Cart() {
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
-      onOk: async () => {
+      onOk: () => {
         const new_data = data
         _.remove(new_data, function (e) {
           return e.id === id
@@ -82,19 +86,19 @@ function Cart() {
 
   const columns = [
     {
-      title: "Image",
+      title: lang === "en" ? "Image" : "រូបភាព",
       dataIndex: "image",
       render: (data) => {
         return <img src={data} alt={data} height="40px" />
       },
     },
     {
-      title: "Items",
+      title: lang === "en" ? "Items" : "ប្រភេទទំនិញ",
       dataIndex: "name",
       responsive: ["md"],
     },
     {
-      title: "Purchasing Type",
+      title: lang === "en" ? "Purchasing Type" : "ប្រភេទទិញ",
       dataIndex: "purchasingType",
       render: (data) => {
         return !data ? "Buy" : "Pre-Order"
@@ -102,7 +106,7 @@ function Cart() {
     },
 
     {
-      title: "Quantity",
+      title: lang === "en" ? "Quantity" : "បរិមាណ",
       dataIndex: "qty",
       render: (key, data, index) => {
         return (
@@ -129,30 +133,30 @@ function Cart() {
       },
     },
     {
-      title: "Unit Price",
+      title: lang === "en" ? "Unit Price" : "តម្លៃ​ឯកតា",
       dataIndex: "price",
       render: (data) => currencyFormat(data),
     },
     {
-      title: "Deposit",
+      title: lang === "en" ? "Deposit" : "ប្រាក់កក់",
       render: (data) => {
         if (data.id === "koompie11") return currencyFormat(10)
         else return currencyFormat(369)
       },
     },
     {
-      title: "Deposit Amount",
+      title: lang === "en" ? "Deposit Amount" : "តម្លៃកក់សរុប",
       render: (data) => {
         if (data.id === "koompie11") return currencyFormat(10 * data.qty)
         else return currencyFormat(369 * data.qty)
       },
     },
     {
-      title: "Amount",
+      title: lang === "en" ? "Amount" : "តម្លៃសរុប",
       render: (data) => currencyFormat(data.qty * data.price),
     },
     {
-      title: "Action",
+      title: lang === "en" ? "Action" : "សកម្មភាព",
       render: (data) => {
         return (
           <div onClick={() => showDeleteConfirm(data.id)}>
@@ -181,7 +185,9 @@ function Cart() {
   const DisplayItem = () => {
     return (
       <React.Fragment>
-        <h2 className="yourShopping">Your shopping cart: </h2>
+        <h2 className="yourShopping">
+          {lang === "en" ? "Your shopping cart:" : "បញ្ជីរទំនិញ"}{" "}
+        </h2>
         <Table
           scroll={{ x: true }}
           columns={columns}
@@ -192,17 +198,19 @@ function Cart() {
           <Row gutter={[20, 20]}>
             <Col xs={24} sm={24} md={16} lg={16} xl={16}>
               <p className="koompiSummary">
-                <b>Order Summary</b>
+                <b>{lang === "en" ? "Order Summary" : "សង្ខេបការបញ្ជាទិញ"}</b>
               </p>
               <div className="kp-cart">
                 <p>
-                  Total: <b>{currencyFormat(displayTotal())}</b>
+                  {lang === "en" ? "Total" : "សរុប"}:{" "}
+                  <b>{currencyFormat(displayTotal())}</b>
                 </p>
                 <p>
-                  Total Deposit: <b>{currencyFormat(displayTotalDeposit())}</b>
+                  {lang === "en" ? "Total Deposit" : "ប្រាក់កក់សរុប"}:{" "}
+                  <b>{currencyFormat(displayTotalDeposit())}</b>
                 </p>
                 <p>
-                  Total remain:{" "}
+                  {lang === "en" ? "Total remain" : "ប្រាក់ដែលត្រូវបង់បន្ថែម"}:{" "}
                   <b>{currencyFormat(displayTotal() - displayTotalDeposit())}</b>
                 </p>
                 <div className="pp-back"></div>
@@ -210,7 +218,7 @@ function Cart() {
             </Col>
             <Col xs={24} sm={24} md={8} lg={8} xl={8}>
               <p className="koompiSummary">
-                <b>Choose a payment to checkout</b>
+                <b>{lang === "en" ? "Payment Options" : "ជម្រើសទូទាត់ប្រាក់"}</b>
               </p>
               <div className="payment_cart" onClick={handleCreditCardVisible}>
                 <Row gutter={12}>
@@ -248,7 +256,7 @@ function Cart() {
                   </Col>
                 </Row>
               </div>
-              <CashOrDelivery />
+              <CashOrDelivery cashLang={lang === "en" ? "Cash" : "សាច់ប្រាក់"} />
             </Col>
           </Row>
         </div>
@@ -287,11 +295,11 @@ function Cart() {
         <title>Bag - KOOMPI</title>
         <meta
           name="keywords"
-          content="KOOMPI, KOOMPI Bag, KOOMPI OS, KOOMPI ACADEMY, KHMER LAPTOP,koompi e13, koompi laptop, koompi computer, koompi os, koompi review"
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <meta
           name="description"
-          content="Immerse yourself into endless possibilities. Start with the classic KOOMPI, the E13. Built-in integrated software suite. Lightweight and compact."
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <link rel="canonical" href="https://koompi.com/shop/bag" />
       </Helmet>

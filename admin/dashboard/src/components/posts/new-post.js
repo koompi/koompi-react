@@ -4,7 +4,7 @@ import LeftNavbar from "../navbar/left-navbar"
 import TopNavbar from "../navbar/top-navbar"
 import PageFooter from "../footer"
 import { UserContext } from "../../context/userContext"
-
+import QuillTextEditor from "../QuillTextEditor"
 import three_dots from "../../assets/img/three-dots.svg"
 
 // ===== Import EditorJS =====
@@ -32,6 +32,7 @@ function NewPost(props) {
   // ===== State Management =====
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState("")
+  const [desc, setDesc] = useState("")
 
   // ===== User Context Section =====
   const userData = useContext(UserContext)
@@ -39,6 +40,10 @@ function NewPost(props) {
   const { refetch: categoryRefetch } = useQuery(GET_CATEGORIES)
   const { refetch: postsRefetch } = useQuery(GET_POSTS)
   const [createPost] = useMutation(CREATE_POST)
+
+  const handleDescChange = (value) => {
+    setDesc(value)
+  }
 
   const DisplayCategories = () => {
     const { error, loading, data } = useQuery(GET_CATEGORIES)
@@ -52,14 +57,14 @@ function NewPost(props) {
             rules: [
               {
                 required: true,
-                message: "Please select your category!"
-              }
-            ]
+                message: "Please select your category!",
+              },
+            ],
           })(<Select placeholder="No Category"></Select>)}
         </Form.Item>
       )
     } else {
-      const filtered_pages = _.filter(data.categories, function(p) {
+      const filtered_pages = _.filter(data.categories, function (p) {
         return _.includes(["news", "events"], p.slug)
       })
 
@@ -69,10 +74,10 @@ function NewPost(props) {
             rules: [
               {
                 required: true,
-                message: "Please select your category!"
-              }
+                message: "Please select your category!",
+              },
             ],
-            initialValue: filtered_pages[0].title
+            initialValue: filtered_pages[0].title,
           })(
             <Select placeholder="Please select the category" size="large">
               {filtered_pages.map((cate) => {
@@ -92,7 +97,7 @@ function NewPost(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin.koompi.com/upload/image",
+    action: "https://admin-demo.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -105,27 +110,27 @@ function NewPost(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   // ===== EditorJS =====
   const editorJsRef = React.useRef(null)
-  const handleSubmit = React.useCallback(async () => {
-    const savedData = await editorJsRef.current.save()
+  const handleSubmit = () => {
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         createPost({
           variables: {
             ...values,
             slug: slugify(values.title, { lower: true }),
-            description: JSON.stringify(savedData)
-          }
+            description: desc === "" ? null : desc,
+          },
         })
           .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
+            setDesc("")
             categoryRefetch()
             postsRefetch()
             props.form.resetFields()
@@ -136,8 +141,7 @@ function NewPost(props) {
           })
       }
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -161,9 +165,9 @@ function NewPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The title is required"
-                          }
-                        ]
+                            message: "The title is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -172,18 +176,22 @@ function NewPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
                     <FormItem label="Description: ">
-                      <EditorJs
+                      {/* <EditorJs
                         instanceRef={(instance) => (editorJsRef.current = instance)}
                         tools={EDITOR_JS_TOOLS}
                         placeholder="Let's write an awesome story!"
+                      /> */}
+                      <QuillTextEditor
+                        handleDescChange={handleDescChange}
+                        defaultValue={desc}
                       />
                     </FormItem>
                   </Col>
@@ -195,8 +203,10 @@ function NewPost(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image ? (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              `${image}`}`}
+                            src={`${
+                              "https://admin-demo.koompi.com/public/uploads/" +
+                              `${image}`
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -213,10 +223,10 @@ function NewPost(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Thumnail is required"
-                            }
+                              message: "Thumnail is required",
+                            },
                           ],
-                          initialValue: "/public/uploads/" + image
+                          initialValue: "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
@@ -230,9 +240,9 @@ function NewPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The tags is required"
-                          }
-                        ]
+                            message: "The tags is required",
+                          },
+                        ],
                       })(
                         <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
@@ -246,9 +256,9 @@ function NewPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The keywords is required"
-                          }
-                        ]
+                            message: "The keywords is required",
+                          },
+                        ],
                       })(
                         <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
@@ -262,9 +272,9 @@ function NewPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The Meta Description is required"
-                          }
-                        ]
+                            message: "The Meta Description is required",
+                          },
+                        ],
                       })(<TextArea rows={4} />)}
                     </FormItem>
 

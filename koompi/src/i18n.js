@@ -8,51 +8,7 @@ import LanguageDetector from "i18next-browser-languagedetector"
 // have a look at the Quick start guide
 // for passing in lng and translations on init
 
-const languages = ["en", "kh"]
-
-const options = {
-  // order and from where user language should be detected
-  order: [
-    "querystring",
-    "cookie",
-    "localStorage",
-    "navigator",
-    "htmlTag",
-    "path",
-    "subdomain",
-  ],
-
-  // keys or params to lookup language from
-  lookupQuerystring: "lng",
-  lookupCookie: "i18next",
-  lookupLocalStorage: "i18nextLng",
-  lookupFromPathIndex: 0,
-  lookupFromSubdomainIndex: 0,
-
-  // cache user language on
-  caches: ["localStorage", "cookie"],
-  excludeCacheFor: ["cimode"], // languages to not persist (cookie, localStorage)
-
-  // optional expire and domain for set cookie
-  cookieMinutes: 10,
-  cookieDomain: "myDomain",
-
-  // optional htmlTag with lang attribute, the default is:
-  htmlTag: document.documentElement,
-
-  // only detect languages that are in the whitelist
-  checkWhitelist: true,
-
-  // fallback to a similar whitelist language
-  // Example 1: Browser language is 'es'
-  // if 'es' is not found in whitelist, first fallback to any whitelist language that starts with 'es-', then fallback to fallbackLng ('es' -> 'es-*' -> fallbackLng)
-  // Example 2: Browser language is 'es-MX'
-  // if 'es-MX' is not found in whitelist, first fallback to 'es', then fallback to 'es-*', then fallback to fallbackLng ('es-MX' -> 'es' -> 'es-*' -> fallbackLng)
-  checkForSimilarInWhitelist: false,
-
-  // optional set cookie options, reference:[MDN Set-Cookie docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
-  cookieOptions: { path: "/" },
-}
+const languages = ["kh", "en"]
 
 i18n
   // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -69,7 +25,7 @@ i18n
     fallbackLng: "en",
     debug: true,
     whitelist: languages,
-    detection: options,
+    // detection: options,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

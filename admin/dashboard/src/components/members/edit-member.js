@@ -24,7 +24,7 @@ function EditMember(props) {
 
   //   ===== Global Data =====
   const { loading: postLoading, data: memberData } = useQuery(GET_MEMBER, {
-    variables: { id: window.location.pathname.split("/")[4] }
+    variables: { id: window.location.pathname.split("/")[4] },
   })
 
   // ===== User Context Section =====
@@ -36,7 +36,7 @@ function EditMember(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin.koompi.com/upload/image",
+    action: "https://admin-demo.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -49,7 +49,7 @@ function EditMember(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const handleSubmit = (e) => {
@@ -59,7 +59,7 @@ function EditMember(props) {
         console.log(values)
 
         updateMember({
-          variables: { id: window.location.pathname.split("/")[4], ...values }
+          variables: { id: window.location.pathname.split("/")[4], ...values },
         })
           .then(async (res) => {
             setLoading(true)
@@ -104,10 +104,10 @@ function EditMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The fullname is required"
-                          }
+                            message: "The fullname is required",
+                          },
                         ],
-                        initialValue: memberData.member.fullname
+                        initialValue: memberData.member.fullname,
                       })(<Input size="large" />)}
                     </FormItem>
                     {/* ======= Deparment Sections ======= */}
@@ -116,10 +116,10 @@ function EditMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Please select member department!"
-                          }
+                            message: "Please select member department!",
+                          },
                         ],
-                        initialValue: memberData.member.department
+                        initialValue: memberData.member.department,
                       })(
                         <Select>
                           <Option value="business-development">
@@ -143,10 +143,10 @@ function EditMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Position is required"
-                          }
+                            message: "Position is required",
+                          },
                         ],
-                        initialValue: memberData.member.position
+                        initialValue: memberData.member.position,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -155,10 +155,10 @@ function EditMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Phone Number is required"
-                          }
+                            message: "Phone Number is required",
+                          },
                         ],
-                        initialValue: memberData.member.phoneNumber
+                        initialValue: memberData.member.phoneNumber,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -167,10 +167,10 @@ function EditMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Email is required"
-                          }
+                            message: "Email is required",
+                          },
                         ],
-                        initialValue: memberData.member.email
+                        initialValue: memberData.member.email,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -179,10 +179,10 @@ function EditMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
@@ -210,15 +210,18 @@ function EditMember(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              memberData.member.photo}`}
+                            src={`${
+                              "https://admin-demo.koompi.com" +
+                              memberData.member.photo
+                            }`}
                             alt="avatar"
                             style={{ width: "250px", height: "250px" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              image}`}
+                            src={`${
+                              "https://admin-demo.koompi.com/public/uploads/" + image
+                            }`}
                             alt="avatar"
                             style={{ width: "250px", height: "250px" }}
                           />
@@ -229,13 +232,13 @@ function EditMember(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Thumnail is required"
-                            }
+                              message: "Thumnail is required",
+                            },
                           ],
                           initialValue:
                             image === null
                               ? memberData.member.photo
-                              : "/public/uploads/" + image
+                              : "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>

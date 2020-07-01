@@ -38,6 +38,8 @@ const TotalPost = () => {
   }
   if (error) console.log(error)
   if (data) {
+    console.log("data", data.posts.created_at)
+
     return (
       <div>
         <center>

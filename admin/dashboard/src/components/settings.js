@@ -24,7 +24,7 @@ function Settings(props) {
 
   //   ===== Global Data =====
   const { loading: userLoading, data: userQuery, refetch } = useQuery(GET_USER, {
-    variables: { email: userData.user.email }
+    variables: { email: userData.user.email },
   })
 
   const [updateUser] = useMutation(UPDATE_USER)
@@ -36,7 +36,7 @@ function Settings(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin.koompi.com/upload/image",
+    action: "https://admin-demo.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -49,7 +49,7 @@ function Settings(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const handleSubmit = (e) => {
@@ -64,8 +64,8 @@ function Settings(props) {
             fullname,
             avatar,
             oldPassword,
-            newPassword
-          }
+            newPassword,
+          },
         })
           .then(async () => {
             setLoading(true)
@@ -110,15 +110,17 @@ function Settings(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              userQuery.user.avatar}`}
+                            src={`${
+                              "https://admin-demo.koompi.com" + userQuery.user.avatar
+                            }`}
                             alt="avatar"
                             style={{ height: "133.5px", width: "133.5px" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              image}`}
+                            src={`${
+                              "https://admin-demo.koompi.com/public/uploads/" + image
+                            }`}
                             alt="avatar"
                             style={{ height: "133.5px", width: "133.5px" }}
                           />
@@ -129,13 +131,13 @@ function Settings(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Avatar is required"
-                            }
+                              message: "Avatar is required",
+                            },
                           ],
                           initialValue:
                             image === null
                               ? userQuery.user.avatar
-                              : "/public/uploads/" + image
+                              : "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
@@ -145,10 +147,10 @@ function Settings(props) {
                         rules: [
                           {
                             required: true,
-                            message: "FullName is required"
-                          }
+                            message: "FullName is required",
+                          },
                         ],
-                        initialValue: userQuery.user.fullname
+                        initialValue: userQuery.user.fullname,
                       })(<Input size="large" />)}
                     </FormItem>
 

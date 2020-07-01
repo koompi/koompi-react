@@ -14,17 +14,22 @@ const fileUpload = require("express-fileupload");
 const path = require("path");
 const Stripe = require("stripe");
 const CryptoJS = require("crypto-js");
+const sesClient = require("./ses-client");
+const bodyParser = require("body-parser");
+const invoice = require("./invoice");
+
 // ===== Import env proccess =====
 const {
+  DevMongoURI,
   MongoURI,
   ACCESS_TOKEN_SECRET,
   BONGLOY_SECRET_KEY,
   ABA_PAYWAY_MERCHANT_ID,
-  ABA_PAYWAY_API_KEY
+  ABA_PAYWAY_API_KEY,
 } = process.env;
 
 const bongloy = new Stripe(BONGLOY_SECRET_KEY, {
-  host: "api.bongloy.com"
+  host: "api.bongloy.com",
 });
 
 // set up cors to allow us to accept requests from our client
@@ -38,18 +43,15 @@ const bongloy = new Stripe(BONGLOY_SECRET_KEY, {
 app.use(cors());
 
 // parse application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: false }));
 
-// parse application/json
-// app.use(express.json({ limit: "50mb" }));
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(
   cookieSession({
     name: "sid",
     keys: ["secret_key"],
-    maxAge: 24 * 60 * 60 * 1000 // session will expire after 24 hours}))
+    maxAge: 24 * 60 * 60 * 1000, // session will expire after 24 hours}))
   })
 );
 
@@ -59,8 +61,8 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 app.use(
   fileUpload({
     limits: {
-      fileSize: 5 * 1024 * 1024 * 1024 //5MB max file(s) size
-    }
+      fileSize: 5 * 1024 * 1024 * 1024, //5MB max file(s) size
+    },
   })
 );
 
@@ -69,8 +71,6 @@ app.use(cookieParser());
 
 // ===== Authentication =====
 const isAuth = (req, res, next) => {
-  console.log("Token", req.headers["authorization"]);
-
   const token = req.headers["authorization"];
   if (!token) return res.status(401).send("Access Denied");
   try {
@@ -82,18 +82,30 @@ const isAuth = (req, res, next) => {
   }
 };
 
+app.post("/koompi/mail/comfirm-order-items", async (req, res) => {
+  // call sesClient to send an email
+  const { email, firstname, lastname, items } = req.body;
+  sesClient.sendEmail(
+    email,
+    "Order Comfirmation",
+    `${invoice(`${firstname + " " + lastname}`, items)}`
+  );
+
+  res.send({ message: "Your order has been submitted." });
+});
+
 app.use(
   "/admin",
-  isAuth,
+  // isAuth,
   graphqlHTTP({
     schema,
     graphiql: true,
-    customFormatErrorFn: error => ({
+    customFormatErrorFn: (error) => ({
       message: error.message,
       state: error.originalError && error.originalError.state,
       locations: error.locations,
-      path: error.path
-    })
+      path: error.path,
+    }),
   })
 );
 
@@ -102,12 +114,12 @@ app.use(
   graphqlHTTP({
     schema: api,
     graphiql: true,
-    customFormatErrorFn: error => ({
+    customFormatErrorFn: (error) => ({
       message: error.message,
       state: error.originalError && error.originalError.state,
       locations: error.locations,
-      path: error.path
-    })
+      path: error.path,
+    }),
   })
 );
 
@@ -131,12 +143,12 @@ app.post("/charge", (req, res) => {
       .create({
         amount: 36900,
         currency: "usd",
-        source: req.body.bongloyToken
+        source: req.body.bongloyToken,
       })
       .then(() => {
         res.json({ message: "Successful" });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   } catch (err) {
     res.send(err);
   }
@@ -166,7 +178,7 @@ app.post("/login", async (req, res) => {
             fullname: user.fullname,
             isAdmin: user.isAdmin,
             avatar: user.avatar,
-            approved: user.approved
+            approved: user.approved,
           },
           ACCESS_TOKEN_SECRET
         );
@@ -191,7 +203,7 @@ app.post("/upload/image", (req, res) => {
 
   file.mv(
     `${__dirname}/public/uploads/${file.name.replace(/ /g, "-").toLowerCase()}`,
-    err => {
+    (err) => {
       if (err) {
         console.error(err);
         return res.status(500).send(err);
@@ -202,24 +214,37 @@ app.post("/upload/image", (req, res) => {
 });
 
 // ===== Database Connection =====
-const PORT = 8080;
+const PORT = 7000;
 
 try {
   mongoose.set("useCreateIndex", true);
   mongoose.set("useNewUrlParser", true);
   mongoose.set("useFindAndModify", false);
   mongoose
-    .connect(MongoURI, err => {
+    .connect(MongoURI, (err) => {
       if (err) {
         console.error(err);
       }
       console.log("Connected to Database...");
     })
     .then(() => {
-      app.listen(PORT, () =>
-        console.log(`Server started with port ${PORT}...`)
-      );
+      app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     });
 } catch (e) {
   console.error(e);
 }
+
+// mongoose.connect(
+//   "mongodb://sanvuthy:vuthy1997@ds037571.mlab.com:37571/koompi-bi",
+//   { useNewUrlParser: true, useUnifiedTopology: true },
+//   (err) => {
+//     {
+//       if (err) {
+//         console.log("Some problem with the connection " + err);
+//       } else {
+//         console.log("The Mongoose connection is ready");
+//         app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+//       }
+//     }
+//   }
+// );

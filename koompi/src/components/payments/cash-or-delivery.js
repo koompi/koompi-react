@@ -83,7 +83,7 @@ function Cash(props) {
             </center>
           </Col>
           <Col span={18}>
-            <div className="PayCashDelivery">Cash</div>
+            <div className="PayCashDelivery">{props.cashLang}</div>
             {/* <div>Our them will contact you ASAP</div> */}
           </Col>
         </Row>

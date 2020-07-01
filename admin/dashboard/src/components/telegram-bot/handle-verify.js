@@ -20,12 +20,12 @@ function HandleVerify(props) {
       if (!err) {
         axios
           .post(
-            `http://127.0.0.1:8000/telegramlogin?phone=${
+            `https://bot.koompi.com/telegramlogin?phone=${
               values.phone
             }&code=${parseInt(values.code)}`
           )
-          .then(async () => {
-            message.success("Hello World")
+          .then(async (res) => {
+            message.success(res.data.message)
           })
           .catch((error) => {
             console.log(error)
@@ -44,10 +44,10 @@ function HandleVerify(props) {
               rules: [
                 {
                   required: true,
-                  message: "The Phone Number is required"
-                }
+                  message: "The Phone Number is required",
+                },
               ],
-              initialValue: props.phone
+              initialValue: props.phone,
             })(
               <Input
                 prefix={
@@ -66,9 +66,9 @@ function HandleVerify(props) {
               rules: [
                 {
                   required: true,
-                  message: "The Code is required"
-                }
-              ]
+                  message: "The Code is required",
+                },
+              ],
             })(
               <Input
                 prefix={

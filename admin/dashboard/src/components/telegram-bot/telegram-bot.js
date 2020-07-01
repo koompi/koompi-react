@@ -9,6 +9,7 @@ import three_dots from "../../assets/img/three-dots.svg"
 import { Form, Icon, Input, Button, Row, Col, Layout, message } from "antd"
 import HandleVerify from "./handle-verify"
 import HandleMessage from "./handle-message"
+import TelegramLogout from "./logout"
 import axios from "axios"
 
 const FormItem = Form.Item
@@ -25,9 +26,9 @@ function TelegramBot(props) {
     e.preventDefault()
 
     axios
-      .post(`http://127.0.0.1:8001/sendrequest?phone=${phone}`)
-      .then(async () => {
-        message.success("Hello World")
+      .post(`https://bot.koompi.com/sendrequest?phone=${phone}`)
+      .then(async (res) => {
+        message.success(res.data.message)
       })
       .catch((error) => {
         console.log(error)
@@ -63,9 +64,9 @@ function TelegramBot(props) {
                           rules: [
                             {
                               required: true,
-                              message: "The Phone Number is required"
-                            }
-                          ]
+                              message: "The Phone Number is required",
+                            },
+                          ],
                         })(
                           <Input
                             prefix={
