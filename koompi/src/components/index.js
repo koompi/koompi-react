@@ -422,32 +422,34 @@ function Index() {
                   </div>
                 </div>
                 <div className="subBanner-koompiPro">
-                  <Carousel
-                    effect="fade"
-                    speed="600"
-                    draggable={true}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {academy_images.map((data, index) => {
-                      return (
-                        <div key={index}>
-                          <ProgressiveImage src={data}>
-                            {(src, loading) =>
-                              loading ? (
-                                "Loading ..."
-                              ) : (
-                                <img
-                                  style={{ opacity: loading ? 0.5 : 1 }}
-                                  src={src}
-                                  alt="koompi"
-                                />
-                              )
-                            }
-                          </ProgressiveImage>
-                        </div>
-                      )
-                    })}
-                  </Carousel>
+                  <center>
+                    <Carousel
+                      effect="fade"
+                      speed="600"
+                      draggable={true}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {academy_images.map((data, index) => {
+                        return (
+                          <div key={index}>
+                            <ProgressiveImage src={data}>
+                              {(src, loading) =>
+                                loading ? (
+                                  "Loading ..."
+                                ) : (
+                                  <img
+                                    style={{ opacity: loading ? 0.5 : 1 }}
+                                    src={src}
+                                    alt="koompi"
+                                  />
+                                )
+                              }
+                            </ProgressiveImage>
+                          </div>
+                        )
+                      })}
+                    </Carousel>
+                  </center>
                 </div>
               </div>
             </div>

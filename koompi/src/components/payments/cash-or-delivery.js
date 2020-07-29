@@ -48,6 +48,7 @@ function Cash(props) {
                 variables: {
                   ...values,
                   phone: `${values.phone}`,
+                  payBy: `Cash`,
                   products: `${values.products}`,
                 },
               })
@@ -79,12 +80,18 @@ function Cash(props) {
         <Row gutter={12}>
           <Col span={6}>
             <center>
-              <img src="/img/riel.png" height="25px" width="25px" alt="" />
+              <img
+                src="/img/riel.png"
+                height="28px"
+                width="25px"
+                alt="koompi pay by Cash"
+                className="payByCashImg"
+              />
             </center>
           </Col>
           <Col span={18}>
             <div className="PayCashDelivery">{props.cashLang}</div>
-            {/* <div>Our them will contact you ASAP</div> */}
+            {/* <div>Pay by cash</div> */}
           </Col>
         </Row>
       </div>

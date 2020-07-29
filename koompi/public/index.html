@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#004ba0" data-react-helmet="true" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript" src="https://js.bongloy.com/v3"></script>
+    <!-- <script type="text/javascript" src="https://js.bongloy.com/v3"></script> -->
 
     <!-- These javaScript files are using for only production  -->
 
@@ -39,6 +39,32 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v7.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="207093766731226"
+      theme_color="#008af4">
+    </div>
 
     <!-- The PWA -->
     <!-- <script>

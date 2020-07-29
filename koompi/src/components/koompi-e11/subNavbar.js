@@ -51,13 +51,13 @@ function SubNavbar({ title, history }) {
               <NavLink
                 exact
                 activeStyle={{ color: "#1890ff" }}
-                to="/koompi-e11/specs"
+                to="/koompi/e11/specs"
               >
                 <span>{lang === "kh" ? "ពត័មានលំអិត" : "Specifications"}</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item className="sub-navbar-a">
-              <NavLink exact activeStyle={{ color: "#1890ff" }} to="/koompi-e11">
+              <NavLink exact activeStyle={{ color: "#1890ff" }} to="/koompi/e11">
                 <span>{lang === "kh" ? "ពត័មានទូទៅ" : "Overview"}</span>
               </NavLink>
             </Menu.Item>

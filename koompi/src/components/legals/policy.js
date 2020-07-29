@@ -16,10 +16,13 @@ function PrivacyPolicy() {
     return null
   }
 
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
   const result = _.filter(data.legals, (data) => data.title === "Privacy Policy")
 
   NProgress.done()
   const description = renderHTML(result[0].description)
+
   return (
     <Fragment>
       <Helmet>

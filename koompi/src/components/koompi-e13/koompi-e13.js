@@ -61,7 +61,6 @@ function KoompiE13(props) {
   NProgress.done()
 
   const dataIndex = data.pages.filter((res) => res.category.slug === "koompi-e13")
-  console.log("dataIndex", dataIndex)
 
   const result = _.orderBy(dataIndex, "sectionNumber", "asc")
 
@@ -180,19 +179,21 @@ function KoompiE13(props) {
           </div>
         </div>
         <div className="koompi-e-background">
-          <ProgressiveImage src={image}>
-            {(src, loading) =>
-              loading ? (
-                <img src="/img/loading.svg" alt={title} height="60px" />
-              ) : (
-                <img
-                  className="banner-overview-screen e13-screen"
-                  src={src}
-                  alt={title}
-                />
-              )
-            }
-          </ProgressiveImage>
+          <center>
+            <ProgressiveImage src={image}>
+              {(src, loading) =>
+                loading ? (
+                  <img src="/img/loading.svg" alt={title} height="60px" />
+                ) : (
+                  <img
+                    className="banner-overview-screen e13-screen"
+                    src={src}
+                    alt={title}
+                  />
+                )
+              }
+            </ProgressiveImage>
+          </center>
         </div>
       </>
     )
@@ -354,23 +355,25 @@ function KoompiE13(props) {
               </div>
               <div className="container">
                 <div className="switch_laptop">
-                  <ProgressiveImage src={`/img/koompi-e/${koompiColor}.png`}>
-                    {(src, loading) =>
-                      loading ? (
-                        <img
-                          src="/img/koompi-e/koompi-gray.png"
-                          alt={data.title}
-                          className="banner-overview-koompiE11"
-                        />
-                      ) : (
-                        <img
-                          className="banner-overview-koompiE11 animated fadeIn"
-                          src={src}
-                          alt={data.title}
-                        />
-                      )
-                    }
-                  </ProgressiveImage>
+                  <center>
+                    <ProgressiveImage src={`/img/koompi-e/${koompiColor}.png`}>
+                      {(src, loading) =>
+                        loading ? (
+                          <img
+                            src="/img/koompi-e/koompi-gray.png"
+                            alt={data.title}
+                            className="banner-overview-koompiE11"
+                          />
+                        ) : (
+                          <img
+                            className="banner-overview-koompiE11 animated fadeIn"
+                            src={src}
+                            alt={data.title}
+                          />
+                        )
+                      }
+                    </ProgressiveImage>
+                  </center>
                 </div>
                 <div className="switch-koompi-container">
                   <Row gutter={16}>

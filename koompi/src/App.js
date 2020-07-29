@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./App.css"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import withTracker from "./withTracker"
@@ -30,6 +30,9 @@ import { HelmetProvider } from "react-helmet-async"
 import "animate.css/animate.min.css"
 import PreOrder from "./components/preorder/preorder"
 import { useTranslation } from "react-i18next"
+import Cookies from "js-cookie"
+import VideoLive from "./components/videoLive"
+
 function App() {
   NProgress.configure({ showSpinner: false })
   const { i18n } = useTranslation()
@@ -37,7 +40,12 @@ function App() {
   // Language Context
   const lang = i18n.language
 
-  console.log("lang", lang)
+  useEffect(() => {
+    const kmpStore = Cookies.get("kp-store-cache")
+    if (kmpStore === undefined || kmpStore === null) {
+      Cookies.set("kp-store-cache", JSON.stringify([]))
+    }
+  }, [])
 
   return (
     <HelmetProvider>
@@ -45,13 +53,12 @@ function App() {
         <BackTop>
           <Icon type="caret-up" />
         </BackTop>
-
         <style
           dangerouslySetInnerHTML={{
             __html: `
               * {
                 font-family: ${
-                  lang === "en" ? `"Muli", sans-serif` : `"Nokora", serif`
+                  lang === "en" ? `alibaba-sans, sans-serif` : `"Nokora", serif`
                 }; 
                 letter-spacing: 0.5px;
               }
@@ -62,11 +69,11 @@ function App() {
               h5,
               h6 {
                 font-family: ${
-                  lang === "en" ? `"Muli", sans-serif` : `"Nokora", serif`
+                  lang === "en" ? `alibaba-sans, sans-serif` : `"Nokora", serif`
                 }; 
               }
               .koompi span{
-                font-family: "Muli", sans-serif;
+                font-family: alibaba-sans, sans-serif;
               }
 
               p{
@@ -80,21 +87,21 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path="/koompi-e11-order" component={PreOrder}></Route>
-            <Route exact path="/koompi-e11" component={KOOMPI_E11}></Route>
+            <Route exact path="/koompi/e11" component={KOOMPI_E11}></Route>
             <Route
               exact
-              path="/koompi-e11/specs"
+              path="/koompi/e11/specs"
               component={KOOMPI_E11_Specs}
             ></Route>
             <Route exact path="/" component={withTracker(Index)}></Route>
             <Route
               exact
-              path="/koompi-e13"
+              path="/koompi/e13"
               component={withTracker(KOOMPI_E13)}
             ></Route>
             <Route
               exact
-              path="/koompi-e13/specs"
+              path="/koompi/e13/specs"
               component={withTracker(KOOMPI_E13_Specs)}
             ></Route>
             <Route exact path="/koompi-os" component={withTracker(KOOMPIOS)}></Route>
@@ -143,6 +150,11 @@ function App() {
               exact
               path="/search?query=:title"
               component={withTracker(Search)}
+            ></Route>
+            <Route
+              exact
+              path="/koompi/ask-my-anythings"
+              component={withTracker(VideoLive)}
             ></Route>
 
             <Route exact path="*" component={withTracker(PageNotFound)}></Route>

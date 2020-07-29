@@ -138,20 +138,6 @@ function Cart() {
       render: (data) => currencyFormat(data),
     },
     {
-      title: lang === "en" ? "Deposit" : "ប្រាក់កក់",
-      render: (data) => {
-        if (data.id === "koompie11") return currencyFormat(10)
-        else return currencyFormat(369)
-      },
-    },
-    {
-      title: lang === "en" ? "Deposit Amount" : "តម្លៃកក់សរុប",
-      render: (data) => {
-        if (data.id === "koompie11") return currencyFormat(10 * data.qty)
-        else return currencyFormat(369 * data.qty)
-      },
-    },
-    {
       title: lang === "en" ? "Amount" : "តម្លៃសរុប",
       render: (data) => currencyFormat(data.qty * data.price),
     },
@@ -174,13 +160,13 @@ function Cart() {
     }, initialValue)
     return sum
   }
-  const displayTotalDeposit = () => {
-    let initialValue = 0
-    let sum = data.reduce(function (accumulator, currentValue) {
-      return accumulator + currentValue.deposit * currentValue.qty
-    }, initialValue)
-    return sum
-  }
+  // const displayTotalDeposit = () => {
+  //   let initialValue = 0
+  //   let sum = data.reduce(function (accumulator, currentValue) {
+  //     return accumulator + currentValue.deposit * currentValue.qty
+  //   }, initialValue)
+  //   return sum
+  // }
 
   const DisplayItem = () => {
     return (
@@ -196,7 +182,7 @@ function Cart() {
         />
         <div className="shoppingCartContainer">
           <Row gutter={[20, 20]}>
-            <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+            {/* <Col xs={24} sm={24} md={16} lg={16} xl={16}>
               <p className="koompiSummary">
                 <b>{lang === "en" ? "Order Summary" : "សង្ខេបការបញ្ជាទិញ"}</b>
               </p>
@@ -215,48 +201,56 @@ function Cart() {
                 </p>
                 <div className="pp-back"></div>
               </div>
-            </Col>
-            <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            </Col> */}
+            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <p className="koompiSummary">
                 <b>{lang === "en" ? "Payment Options" : "ជម្រើសទូទាត់ប្រាក់"}</b>
               </p>
-              <div className="payment_cart" onClick={handleCreditCardVisible}>
-                <Row gutter={12}>
-                  <Col span={6}>
-                    <img
-                      src="/img/payments/creditcard.png"
-                      height="30px"
-                      alt="master card"
-                      className="mastercard"
-                    />
-                  </Col>
-                  <Col span={18}>
-                    <div className="CreditDebitCard">Credit/Debit Card</div>
-                    <img
-                      src="/img/payments/A-3Card_2x.png"
-                      height="15px"
-                      alt="Credit/Debit Card"
-                    />
-                  </Col>
-                </Row>
-              </div>
-              <div className="payment_cart" onClick={handleVisible}>
-                <Row gutter={12}>
-                  <Col span={6}>
-                    <img
-                      src="/img/payments/aba-pay.svg"
-                      height="30px"
-                      alt="master card"
-                      className="mastercard"
-                    />
-                  </Col>
-                  <Col span={18}>
-                    <div className="CreditDebitCard">ABA PAY</div>
-                    <div>Scan to pay with ABA mobile</div>
-                  </Col>
-                </Row>
-              </div>
-              <CashOrDelivery cashLang={lang === "en" ? "Cash" : "សាច់ប្រាក់"} />
+              <Row gutter={[24, 24]}>
+                <Col span={8}>
+                  <div className="payment_cart" onClick={handleCreditCardVisible}>
+                    <Row gutter={12}>
+                      <Col span={6}>
+                        <img
+                          src="/img/payments/creditcard.png"
+                          height="30px"
+                          alt="master card"
+                          className="mastercard"
+                        />
+                      </Col>
+                      <Col span={18}>
+                        <div className="CreditDebitCard">Credit/Debit Card</div>
+                        <img
+                          src="/img/payments/A-3Card_2x.png"
+                          height="15px"
+                          alt="Credit/Debit Card"
+                        />
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+                <Col span={8}>
+                  <div className="payment_cart" onClick={handleVisible}>
+                    <Row gutter={12}>
+                      <Col span={6}>
+                        <img
+                          src="/img/payments/aba-pay.svg"
+                          height="30px"
+                          alt="master card"
+                          className="mastercard"
+                        />
+                      </Col>
+                      <Col span={18}>
+                        <div className="CreditDebitCard">ABA PAY</div>
+                        <div>Scan to pay with ABA mobile</div>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+                <Col span={8}>
+                  <CashOrDelivery cashLang={lang === "en" ? "Cash" : "សាច់ប្រាក់"} />
+                </Col>
+              </Row>
             </Col>
           </Row>
         </div>
@@ -282,7 +276,7 @@ function Cart() {
             visible={visible ? visible : creditCardVisible}
             handleOk={visible ? handleOk : handleCardOk}
             handleCancle={visible ? handleCancle : handleCardCancle}
-            amount={displayTotalDeposit()}
+            amount={displayTotal()}
             color={koompiColor}
             paymentOption={visible ? "abapay" : "cards"}
           />

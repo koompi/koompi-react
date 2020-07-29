@@ -6,6 +6,7 @@ const CREATE_CUSTOMER = gql`
     $lastname: String!
     $email: String!
     $phone: String!
+    $payBy: String!
     $products: String!
   ) {
     create_customer(
@@ -13,6 +14,7 @@ const CREATE_CUSTOMER = gql`
       lastname: $lastname
       email: $email
       phone: $phone
+      payBy: $payBy
       products: $products
     ) {
       firstname

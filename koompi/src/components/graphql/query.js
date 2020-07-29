@@ -153,6 +153,21 @@ const GET_PRODUCTS = gql`
   }
 `
 
+const GET_AMAS = gql`
+  query {
+    amas {
+      id
+      image
+      title
+      name
+      desc
+      date
+      category
+      url
+    }
+  }
+`
+
 export {
   GET_PAGES,
   GET_RETAILERS,
@@ -164,4 +179,5 @@ export {
   GET_LEGALS,
   GET_SOFTWARES,
   GET_PRODUCTS,
+  GET_AMAS,
 }

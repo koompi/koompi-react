@@ -16,6 +16,8 @@ function TermsAndConditions() {
     return null
   }
 
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
   const result = _.filter(
     data.legals,
     (data) => data.title === "Terms and Conditions"

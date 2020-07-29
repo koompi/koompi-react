@@ -32,7 +32,7 @@ function Footer() {
   }
 
   return (
-    <div>
+    <div className="footerMargin">
       <div className="footerBackground">
         <div className="footer-container">
           <Row gutter={16} type="flex" className="footerPMagin">

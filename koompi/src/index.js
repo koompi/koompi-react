@@ -9,8 +9,12 @@ import "./i18n"
 import { hydrate, render } from "react-dom"
 
 const client = new ApolloClient({
-  uri: "https://admin-demo.koompi.com/api",
+  uri: "https://admin.koompi.com/api",
 })
+
+// const client = new ApolloClient({
+//   uri: "http://localhost:7000/api",
+// })
 
 const rootElement = document.getElementById("root")
 

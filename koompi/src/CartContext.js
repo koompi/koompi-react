@@ -6,7 +6,7 @@ export const CartContext = React.createContext(null)
 
 export function CartProvider({ children }) {
   const initailData = Cookies.getJSON("kp-store-cache")
-  const [state, setState] = useState(initailData)
+  const [state, setState] = useState(initailData === undefined ? [] : initailData)
 
   let addToCart = (name, qty) => {
     let item_to_push
@@ -16,8 +16,8 @@ export function CartProvider({ children }) {
           id: "koompie11",
           name: "KOOMPI E11",
           qty: qty,
-          price: 149,
-          deposit: 10,
+          price: 148.99,
+          deposit: 148.99,
           purchasingType: true,
           image: "https://admin.koompi.com/public/uploads/444(1).png",
         }
@@ -47,6 +47,10 @@ export function CartProvider({ children }) {
       let new_state = state
       let found = false
       let found_at_index = 0
+
+      if (new_state === undefined) {
+        new_state = []
+      }
 
       for (let i = 0; i < new_state.length; ) {
         if (new_state[i].name === item_to_push.name) {

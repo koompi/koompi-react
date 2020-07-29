@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react"
 import { NavLink, Link } from "react-router-dom"
-import { Layout, Menu, Badge, Drawer } from "antd"
+import { Layout, Menu, Badge, Drawer, Row, Col } from "antd"
 import { FiAlignLeft } from "react-icons/fi"
 import { FiShoppingCart } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
@@ -29,6 +29,30 @@ function Navbar() {
   }
   return (
     <React.Fragment>
+      <center>
+        {/* <h3>
+          The site is under development. We will have an official launch at 1st
+          August.
+        </h3> */}
+      </center>
+      {/* <div className="mobileNavbar">
+        <Row gutter={[12, 12]}>
+          <Col span={4}>
+            <img src="/img/koompi-sym-01.png" alt="" height="30px" />
+          </Col>
+          <Col span={4}>
+            <Link to="/koompi/e11">E11</Link>
+          </Col>
+          <Col span={4}>
+            <Link to="/koompi/e13">E13</Link>
+          </Col>
+          <Col span={4}>
+            <Link to="/koompi/ask-my-anythings">AMA</Link>
+          </Col>
+          <Col span={4}>OS</Col>
+          <Col span={4}>ACADEMY</Col>
+        </Row>
+      </div> */}
       <Header className="header">
         <div className="container">
           <FiAlignLeft className="mobileMenu" onClick={handleChange} />
@@ -68,17 +92,23 @@ function Navbar() {
             <div className="rightNavbarHidden">
               <Menu theme="dark" mode="horizontal">
                 <Menu.Item>
-                  <NavLink activeClassName="koompi-active" to="/koompi-e11">
+                  <NavLink activeClassName="koompi-active" to="/koompi/e11">
                     <span> KOOMPI E11</span>
                   </NavLink>
                 </Menu.Item>
-
                 <Menu.Item key="/koompi-e">
-                  <NavLink exact activeClassName="koompi-active" to="/koompi-e13">
+                  <NavLink exact activeClassName="koompi-active" to="/koompi/e13">
                     <span>KOOMPI E13</span>
                   </NavLink>
                 </Menu.Item>
-
+                <Menu.Item key="/koompi/ask-my-anythings">
+                  <NavLink
+                    activeClassName="koompi-active"
+                    to="/koompi/ask-my-anythings"
+                  >
+                    <span>AMA</span>
+                  </NavLink>
+                </Menu.Item>
                 <Menu.Item key="/koompi-os">
                   <a
                     href="https://www.koompi.org/"
@@ -88,7 +118,6 @@ function Navbar() {
                     <span>KOOMPI OS</span>
                   </a>
                 </Menu.Item>
-
                 <Menu.Item>
                   <a
                     href="https://academy.koompi.com/"
@@ -98,6 +127,7 @@ function Navbar() {
                     <span>KOOMPI ACADEMY</span>
                   </a>
                 </Menu.Item>
+
                 <Menu.Item>
                   <NavLink exact activeStyle={{ color: "white" }} to="/shop/bag">
                     <Badge
@@ -133,7 +163,6 @@ function Navbar() {
                 </Menu.Item>
               </Menu>
             </div>
-
             {/* Mobile Navbar */}
             <Drawer
               title={false}
@@ -153,15 +182,24 @@ function Navbar() {
                   </Link>
                 </Menu.Item>
                 <Menu.Item onClick={handleChange}>
-                  <NavLink activeClassName="koompi-active" to="/koompi-e11">
+                  <NavLink activeClassName="koompi-active" to="/koompi/e11">
                     <span>KOOMPI E11</span>
                   </NavLink>
                 </Menu.Item>
 
                 <Menu.Item key="/koompi-e" onClick={handleChange}>
-                  <NavLink exact activeClassName="koompi-active" to="/koompi-e13">
+                  <NavLink exact activeClassName="koompi-active" to="/koompi/e13">
                     <span>KOOMPI E13</span>
                   </NavLink>
+                </Menu.Item>
+
+                <Menu.Item key="/koompi/ask-my-anythings" onClick={handleChange}>
+                  <Link
+                    activeClassName="koompi-active"
+                    to="/koompi/ask-my-anythings"
+                  >
+                    <span>AMA</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="/koompi-os" onClick={handleChange}>

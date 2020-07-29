@@ -16,6 +16,8 @@ function SalePolicy() {
     return null
   }
 
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
   const result = _.filter(data.legals, (data) => data.title === "Sales Policy")
 
   NProgress.done()
