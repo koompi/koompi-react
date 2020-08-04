@@ -31,7 +31,7 @@ function EditRetailer(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -154,8 +154,7 @@ function EditRetailer(props) {
                         {image === null ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com" +
-                              retailerData.retailer.logo
+                              "https://admin.koompi.com" + retailerData.retailer.logo
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}
@@ -163,7 +162,7 @@ function EditRetailer(props) {
                         ) : (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" + image
+                              "https://admin.koompi.com/public/uploads/" + image
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}

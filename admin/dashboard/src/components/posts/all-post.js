@@ -25,7 +25,7 @@ function AllPosts() {
       render: (data) => {
         return (
           <img
-            src={"https://admin-demo.koompi.com" + data}
+            src={"https://admin.koompi.com" + data}
             alt="post"
             height="40px"
             width="40px"

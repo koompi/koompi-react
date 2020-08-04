@@ -47,7 +47,7 @@ function Navbar() {
             <Link to="/koompi/e13">E13</Link>
           </Col>
           <Col span={4}>
-            <Link to="/koompi/ask-my-anythings">AMA</Link>
+            <Link to="/koompi/ask-me-anythings">AMA</Link>
           </Col>
           <Col span={4}>OS</Col>
           <Col span={4}>ACADEMY</Col>
@@ -101,10 +101,10 @@ function Navbar() {
                     <span>KOOMPI E13</span>
                   </NavLink>
                 </Menu.Item>
-                <Menu.Item key="/koompi/ask-my-anythings">
+                <Menu.Item key="/koompi/ask-me-anythings">
                   <NavLink
                     activeClassName="koompi-active"
-                    to="/koompi/ask-my-anythings"
+                    to="/koompi/ask-me-anythings"
                   >
                     <span>AMA</span>
                   </NavLink>
@@ -193,10 +193,10 @@ function Navbar() {
                   </NavLink>
                 </Menu.Item>
 
-                <Menu.Item key="/koompi/ask-my-anythings" onClick={handleChange}>
+                <Menu.Item key="/koompi/ask-me-anythings" onClick={handleChange}>
                   <Link
                     activeClassName="koompi-active"
-                    to="/koompi/ask-my-anythings"
+                    to="/koompi/ask-me-anythings"
                   >
                     <span>AMA</span>
                   </Link>

@@ -26,7 +26,7 @@ function LoginForm(props) {
         console.log(values.remember)
 
         axios
-          .post(`https://admin-demo.koompi.com/login`, { ...values })
+          .post(`https://admin.koompi.com/login`, { ...values })
           .then(async (res) => {
             setLoading(true)
             setTimeout(() => {

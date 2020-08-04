@@ -458,6 +458,68 @@ const DELETE_CUSTOMER = gql`
   }
 `
 
+const ADD_AMA = gql`
+  mutation(
+    $name: String!
+    $title: String!
+    $image: String!
+    $desc: String!
+    $date: String!
+    $url: String!
+    $category: String!
+    $created_by: String!
+    $created_at: String!
+  ) {
+    create_ama(
+      name: $name
+      title: $title
+      image: $image
+      desc: $desc
+      date: $date
+      url: $url
+      category: $category
+      created_by: $created_by
+      created_at: $created_at
+    ) {
+      message
+    }
+  }
+`
+
+const DELETE_AMA = gql`
+  mutation($id: String!) {
+    delete_ama(id: $id) {
+      message
+    }
+  }
+`
+
+const UPDATE_AMA = gql`
+  mutation(
+    $id: String!
+    $name: String!
+    $title: String!
+    $image: String!
+    $desc: String!
+    $date: String!
+    $url: String!
+    $category: String!
+  ) {
+    update_ama(
+      id: $id
+      name: $name
+      title: $title
+      image: $image
+      desc: $desc
+      date: $date
+      url: $url
+      category: $category
+    ) {
+      message
+    }
+  }
+`
+
 export {
   CREATE_USER,
   CREATE_CATEGORY,
@@ -489,4 +551,7 @@ export {
   UPDATE_SOFTWARE,
   DELETE_SOFTWARE,
   DELETE_CUSTOMER,
+  ADD_AMA,
+  DELETE_AMA,
+  UPDATE_AMA,
 }

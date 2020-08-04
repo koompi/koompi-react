@@ -13,6 +13,7 @@ const SocialMedia = require("../models/SocialMedia");
 const Legal = require("../models/Legal");
 const Software = require("../models/Software");
 const Product = require("../models/Product");
+const AMA = require("../models/AMA");
 
 // ======== Type Section =========
 const UserType = require("../data-types/user");
@@ -25,6 +26,7 @@ const SocialMediaType = require("../data-types/socialMedia");
 const LegalType = require("../data-types/legal");
 const SoftwareType = require("../data-types/software");
 const ProductType = require("../data-types/product");
+const AMAType = require("../data-types/ama");
 
 const RootQuery = new GraphQLObjectType({
   name: "APIQueryType",
@@ -130,6 +132,13 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(SoftwareType),
       resolve: (parent, args) => {
         return Software.find();
+      },
+    },
+    // ===== Get AMA  =====
+    amas: {
+      type: new GraphQLList(AMAType),
+      resolve: (parent, args) => {
+        return AMA.find().sort({ created_at: -1 });
       },
     },
   },

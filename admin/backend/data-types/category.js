@@ -16,9 +16,9 @@ const CategoryType = new GraphQLObjectType({
       type: UserType,
       resolve: (parent, args) => {
         return User.findOne({ fullname: parent.created_by });
-      }
-    }
-  })
+      },
+    },
+  }),
 });
 
 module.exports = CategoryType;

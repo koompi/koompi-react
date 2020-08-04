@@ -14,6 +14,7 @@ const Legal = require("../models/Legal");
 const Software = require("../models/Software");
 const Customer = require("../models/Customer");
 const Lang = require("../models/Languages");
+const AMA = require("../models/AMA");
 
 // ======== Type Section =========
 const UserType = require("../data-types/user");
@@ -27,6 +28,7 @@ const LegalType = require("../data-types/legal");
 const SoftwareType = require("../data-types/software");
 const CustomerType = require("../data-types/customer");
 const LangType = require("../data-types/language");
+const AMAType = require("../data-types/ama");
 
 const {
   GraphQLObjectType,
@@ -612,6 +614,94 @@ const RootMutation = new GraphQLObjectType({
         return { message: "The customer deleted successfully." };
       },
     },
+    // ===== Create AMA =====
+    create_ama: {
+      type: AMAType,
+      args: {
+        image: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        desc: { type: new GraphQLNonNull(GraphQLString) },
+        url: { type: new GraphQLNonNull(GraphQLString) },
+        date: { type: new GraphQLNonNull(GraphQLString) },
+        category: { type: new GraphQLNonNull(GraphQLString) },
+        created_by: { type: new GraphQLNonNull(GraphQLString) },
+        created_at: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve: (parent, args) => {
+        try {
+          const ama = new AMA({ ...args });
+          return ama.save();
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
+      },
+    },
+    // ===== Delete Software =====
+    delete_ama: {
+      type: AMAType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve: async (parent, args) => {
+        await AMA.findOneAndDelete({ _id: args.id });
+        return { message: "The ama deleted successfully." };
+      },
+    },
+    // ===== Create AMA =====
+    update_ama: {
+      type: AMAType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        image: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        desc: { type: new GraphQLNonNull(GraphQLString) },
+        url: { type: new GraphQLNonNull(GraphQLString) },
+        date: { type: new GraphQLNonNull(GraphQLString) },
+        category: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve: async (parent, args) => {
+        try {
+          await AMA.findByIdAndUpdate({ _id: args.id }, { ...args });
+          return { message: "The ama updated successfully." };
+        } catch (error) {
+          console.log(error);
+          throw error;
+        }
+      },
+    },
+    // // ===== Create Category =====
+    // delete_category: {
+    //   type: CategoryType,
+    //   args: {
+    //     id: { type: new GraphQLNonNull(GraphQLString) },
+    //   },
+    //   resolve: (parent, args) => {
+    //     return Category.findOneAndDelete({ _id: args.id });
+    //   },
+    // },
+    // // ===== Update Category =====
+    // update_category: {
+    //   type: CategoryType,
+    //   args: {
+    //     id: { type: new GraphQLNonNull(GraphQLString) },
+    //     title: { type: new GraphQLNonNull(GraphQLString) },
+    //     slug: { type: new GraphQLNonNull(GraphQLString) },
+    //     updated_at: { type: new GraphQLNonNull(GraphQLString) },
+    //     updated_by: { type: new GraphQLNonNull(GraphQLString) },
+    //   },
+    //   resolve: async (parent, args) => {
+    //     try {
+    //       await Category.updateOne({ _id: args.id }, { ...args });
+    //       return Category.findById(args.id);
+    //     } catch (error) {
+    //       console.log(error);
+    //       throw new Error("This category title is already exist...");
+    //     }
+    //   },
+    // },
   },
 });
 

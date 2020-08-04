@@ -5,14 +5,14 @@
   },
   {
     "title": "web browsing ",
-    "value": "8 hrs"
-  },
-  {
-    "title": "video playback ",
     "value": "12 hrs"
   },
   {
+    "title": "video playback ",
+    "value": "8 hrs"
+  },
+  {
     "title": "regular work ",
-    "value": "14 hrs"
+    "value": "10 hrs"
   }
 ]

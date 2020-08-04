@@ -34,10 +34,10 @@ function AllPages() {
             src={
               data === "/public/uploads/"
                 ? "/images/Error-01.png"
-                : "https://admin-demo.koompi.com" + data
+                : "https://admin.koompi.com" + data
             }
             alt="post"
-            width="60px"
+            width="50px"
           />
         )
       },
@@ -46,6 +46,9 @@ function AllPages() {
       key: `${uuidv4()}`,
       title: "Title",
       dataIndex: "title",
+      render: (data) => {
+        return data.length <= 25 ? data : data.substring(0, 25) + " ..."
+      },
     },
     {
       key: `${uuidv4()}`,
@@ -59,17 +62,17 @@ function AllPages() {
         )
       },
     },
-    {
-      key: `${uuidv4()}`,
-      title: "Lang",
-      dataIndex: "lang",
-      sorter: (a, b) => {
-        return a.lang.lang.localeCompare(b.lang.lang)
-      },
-      render: (data) => {
-        return data.lang
-      },
-    },
+    // {
+    //   key: `${uuidv4()}`,
+    //   title: "Lang",
+    //   dataIndex: "lang",
+    //   sorter: (a, b) => {
+    //     return a.lang.lang.localeCompare(b.lang.lang)
+    //   },
+    //   render: (data) => {
+    //     return data.lang
+    //   },
+    // },
     {
       key: `${uuidv4()}`,
       title: "Page",

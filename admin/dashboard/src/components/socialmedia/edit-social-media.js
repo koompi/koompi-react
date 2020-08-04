@@ -34,7 +34,7 @@ function EditSocialMedia(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -147,7 +147,7 @@ function EditSocialMedia(props) {
                         {image === null ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com" +
+                              "https://admin.koompi.com" +
                               socialMediaData.oneSocialMedia.logo
                             }`}
                             alt="avatar"
@@ -156,7 +156,7 @@ function EditSocialMedia(props) {
                         ) : (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" + image
+                              "https://admin.koompi.com/public/uploads/" + image
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}

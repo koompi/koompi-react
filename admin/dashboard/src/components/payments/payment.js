@@ -9,6 +9,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks"
 // ===== Query and Mutation Section =====
 import { GET_CUSTOMERS, GET_PRODUCT } from "../../graphql/query"
 import { DELETE_CUSTOMER } from "../../graphql/mutation"
+import { CSVLink, CSVDownload } from "react-csv"
 
 const { Content } = Layout
 const { Column, ColumnGroup } = Table
@@ -23,6 +24,7 @@ function Payment() {
   const [deleteCustomer] = useMutation(DELETE_CUSTOMER)
   const { refetch: paymentRefetch } = useQuery(GET_CUSTOMERS)
   const [state, setState] = useState({ visible: false })
+  const { error, loading, data } = useQuery(GET_CUSTOMERS)
 
   const showModal = () => {
     setState({
@@ -44,22 +46,12 @@ function Payment() {
     })
   }
 
-  const ProductInfo = () => {
-    const { error, loading, data } = useQuery(GET_PRODUCT, {
-      variables: { id: "5eb3ab2d16100b46720b3a45" },
-    })
-    if (error) console.log(error)
-    if (loading) {
-      return "loading ..."
-    }
-    if (data) {
-      setProductData(data)
-      return null
-    }
-    return null
-  }
-
   const columns = [
+    {
+      title: "No",
+      key: "index",
+      render: (text, record, index) => index + 1,
+    },
     {
       title: "User Info",
       children: [
@@ -80,7 +72,6 @@ function Payment() {
         },
       ],
     },
-
     {
       title: "Product",
       children: [
@@ -99,7 +90,7 @@ function Payment() {
           },
         },
         {
-          title: "Price",
+          title: "Unit Price",
           render: (data) => {
             const result = JSON.parse(data.products)
             return result.map((res) => <div>{currencyFormat(res.price)}</div>)
@@ -114,35 +105,10 @@ function Payment() {
             ))
           },
         },
-
         {
-          title: "Deposit",
-          render: (data) => {
-            const result = JSON.parse(data.products)
-            return result.map((res) => <div>{currencyFormat(res.deposit)}</div>)
-          },
-        },
-        {
-          title: "Total Deposit",
-          render: (data) => {
-            const result = JSON.parse(data.products)
-            return result.map((res) => (
-              <div>{currencyFormat(res.deposit * res.qty)}</div>
-            ))
-          },
-        },
-        {
-          title: "Remain",
-          render: (data) => {
-            const result = JSON.parse(data.products)
-            return result.map((res) => (
-              <div>
-                <Tag color="red">
-                  {currencyFormat(res.price * res.qty - res.deposit * res.qty)}
-                </Tag>
-              </div>
-            ))
-          },
+          title: "Pay by",
+          dataIndex: "payBy",
+          key: "payBy",
         },
       ],
     },
@@ -186,18 +152,19 @@ function Payment() {
   ]
 
   const DisplayPayment = () => {
-    const { error, loading, data } = useQuery(GET_CUSTOMERS)
     if (error) console.log(error)
     if (loading) return <Table loading={true}></Table>
     if (data) {
       return (
         <div>
+          <CSVLink data={data.customers}> Download CSV</CSVLink>
           <Table
             bordered
             columns={columns}
             dataSource={data.customers}
             pagination={{ pageSize: 20 }}
           />
+
           {/* {JSON.stringify(JSON.parse(data.customers[0].products), 0, 2)} */}
         </div>
       )
@@ -220,7 +187,8 @@ function Payment() {
             <div className="background_container">
               <h1 className="title_new_post">Payments</h1>
               <DisplayPayment />
-              <ProductInfo />
+
+              {/* <ProductInfo /> */}
             </div>
           </div>
         </Content>

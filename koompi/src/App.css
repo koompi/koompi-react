@@ -2388,6 +2388,12 @@ code {
   margin-top: 5% !important;
   animation: fadeIn 0.5s ease;
 }
+.koompi-price99 {
+  font-size: 28px;
+  position: relative;
+  left: -10px;
+  font-weight: bold;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -2552,7 +2558,7 @@ code {
   height: 80px;
   background-color: #eaeef2;
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 8px;
   cursor: pointer;
 }
 .single-page-image {
@@ -2835,6 +2841,7 @@ code {
 .ama-desc {
   font-size: 17px !important;
   color: #333333;
+  margin-bottom: 0px !important;
 }
 .ama-banner-date {
   margin-bottom: 15px;
@@ -2946,6 +2953,27 @@ code {
 =            Bootstrap 2.3.2 Media Queries            =
 =====================================================*/
 @media only screen and (max-width: 1600px) {
+  p {
+    font-size: 20px !important;
+  }
+  .bossTittle-KoompiHome-e11 {
+    font-size: 35px;
+  }
+  .index-new {
+    font-size: 18px !important;
+  }
+  .koompi-e11-desc {
+    width: 70% !important;
+  }
+  .koompiBtn {
+    padding: 0px 30px !important;
+    height: 30px !important;
+  }
+  .koompi-e11-position .koompiE11-image {
+    width: 80% !important;
+    position: relative;
+    margin-top: 1% !important;
+  }
   .container {
     width: 80% !important;
   }
@@ -2957,14 +2985,37 @@ code {
     -webkit-transform: scale(1) !important;
     transform: scale(1) !important;
   }
+  .appsImageWidth {
+    width: 85% !important;
+  }
+  .koompiApps {
+    height: 70px;
+    border-radius: 8px;
+  }
+  .footerPMagin p {
+    font-size: 16px !important;
+  }
+  .footer-container h4 {
+    font-size: 16px !important;
+  }
+  .footer_socail_media img {
+    height: 35px !important;
+    width: 35px !important;
+  }
+  .weaccept span {
+    font-size: 16px !important;
+    top: 3px;
+  }
+  .weaccept img {
+    height: 32px !important;
+  }
+  .koompi-page-container {
+    width: 100% !important;
+  }
+
   .index_banner img {
     width: 70%;
     transform: scale(1) !important;
-  }
-  .banner {
-    padding: 0px !important;
-    height: auto !important;
-    margin-top: 50px;
   }
   .banner_content {
     top: 15vh;
@@ -2992,8 +3043,19 @@ code {
     height: auto !important;
   }
   .banner-overview-koompiE11 {
-    width: 100% !important;
+    width: 85% !important;
     transform: scale(1) !important;
+  }
+  .koompi-e13-section .banner_content {
+    transform: translateY(0%);
+  }
+  .koompi-e11-position .index_banner .koompi-e13 {
+    position: relative;
+    z-index: 0 !important;
+    transform: translateY(20%);
+    top: 100px;
+    overflow: hidden !important;
+    width: 100% !important;
   }
 }
 
@@ -3086,7 +3148,7 @@ code {
     max-width: 100% !important;
   }
   .koompi-e11-desc {
-    width: 100%;
+    width: 100% !important;
     margin: 0px auto;
     text-align: left;
   }
@@ -3139,7 +3201,7 @@ code {
     transform: translateY(0);
   }
   .koompi-e11-position .index_banner .koompi-e13 {
-    transform: scale(1.2) !important;
+    transform: scale(1) !important;
   }
   .banner-overview-screen {
     width: 100% !important;
@@ -3231,15 +3293,16 @@ code {
     color: #ffffff;
     height: 55px;
   }
-  .footerMargin {
-    position: relative;
-    bottom: 59px;
-  }
   .img-coming-soon {
     position: absolute;
     left: 5px;
     height: 40px;
     top: 40px;
+  }
+  .seenOn {
+    background-color: #ffffff;
+    padding: 20px 0px;
+    height: 235px;
   }
 }
 
@@ -3525,7 +3588,7 @@ code {
     margin-top: 90px !important;
   }
   .koompiBtn {
-    padding: 0px 20px !important;
+    padding: 0px 40px !important;
     height: 35px !important;
     font-size: 14px !important;
   }

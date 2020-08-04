@@ -74,7 +74,7 @@ function SocialMedia() {
                 key: parse(name),
                 logo: (
                   <img
-                    src={`https://admin-demo.koompi.com${logo}`}
+                    src={`https://admin.koompi.com${logo}`}
                     alt={name}
                     height="40px"
                     width="40px"

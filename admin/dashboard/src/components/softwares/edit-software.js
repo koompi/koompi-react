@@ -73,7 +73,7 @@ function EditSoftware(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -92,7 +92,7 @@ function EditSoftware(props) {
   const uploadLogo = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -187,8 +187,7 @@ function EditSoftware(props) {
                         {logo === null ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com" +
-                              softwareData.software.logo
+                              "https://admin.koompi.com" + softwareData.software.logo
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}
@@ -196,7 +195,7 @@ function EditSoftware(props) {
                         ) : (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" + logo
+                              "https://admin.koompi.com/public/uploads/" + logo
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}
@@ -224,7 +223,7 @@ function EditSoftware(props) {
                         {image === null ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com" +
+                              "https://admin.koompi.com" +
                               softwareData.software.image
                             }`}
                             alt="avatar"
@@ -233,7 +232,7 @@ function EditSoftware(props) {
                         ) : (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" + image
+                              "https://admin.koompi.com/public/uploads/" + image
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}

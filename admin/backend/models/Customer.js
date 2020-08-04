@@ -17,6 +17,10 @@ const CustomerSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  payBy: {
+    type: String,
+    required: true,
+  },
   products: {
     type: String,
     required: true,

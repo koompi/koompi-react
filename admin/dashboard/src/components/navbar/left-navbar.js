@@ -88,6 +88,29 @@ function LeftNavbar() {
           </Link>
         </Menu.Item>
         <Menu.ItemGroup key="site-management" title="Site Management">
+          {/* ========= AMA Section ========= */}
+          <SubMenu
+            key={
+              pathname === "/admin/add-ama"
+                ? "/admin/add-ama"
+                : "/admin/all-amas"
+                ? "/admin/all-amas"
+                : ""
+            }
+            title={
+              <div className="nav-text">
+                <FiFileText />
+                <span>AMA</span>
+              </div>
+            }
+          >
+            <Menu.Item key="/admin/add-ama">
+              <Link to="/admin/add-ama">Add AMA</Link>
+            </Menu.Item>
+            <Menu.Item key="/admin/all-amas">
+              <Link to="/admin/all-amas">All AMA</Link>
+            </Menu.Item>
+          </SubMenu>
           {/* ========= Posts Section ========= */}
           <SubMenu
             key={

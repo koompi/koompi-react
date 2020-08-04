@@ -12,11 +12,11 @@ import { setContext } from "apollo-link-context"
 import { InMemoryCache } from "apollo-cache-inmemory"
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:7000/admin",
+  uri: "http://localhost:7006/admin",
 })
 
 // const httpLink = createHttpLink({
-//   uri: "https://admin-demo.koompi.com/admin",
+//   uri: "https://admin.koompi.com/admin",
 // })
 
 const authLink = setContext((_, { headers }) => {

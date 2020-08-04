@@ -448,11 +448,11 @@
 }
 .ant-form-item-children .ant-input {
   background-color: #f1f4f6 !important;
-  border: 1px solid transparent !important;
+  border: 1px solid transparent;
 }
 .ant-form-item-children .ant-input:focus {
   background-color: #f1f4f6 !important;
-  border: 1px solid #339afb !important;
+  border: 1px solid #339afb;
 }
 .background_container h4 {
   font-size: 18px !important;

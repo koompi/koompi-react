@@ -36,7 +36,7 @@ function AddSoftware(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -55,7 +55,7 @@ function AddSoftware(props) {
   const uploadLogo = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -157,8 +157,7 @@ function AddSoftware(props) {
                         {logo ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" +
-                              `${logo}`
+                              "https://admin.koompi.com/public/uploads/" + `${logo}`
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}
@@ -189,8 +188,7 @@ function AddSoftware(props) {
                         {image ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" +
-                              `${image}`
+                              "https://admin.koompi.com/public/uploads/" + `${image}`
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}

@@ -15,6 +15,7 @@ const Software = require("../models/Software");
 const Preorder = require("../models/Preorder");
 const Product = require("../models/Product");
 const Lang = require("../models/Languages");
+const AMA = require("../models/AMA");
 
 // ======== Type Section =========
 const UserType = require("../data-types/user");
@@ -30,6 +31,8 @@ const SoftwareType = require("../data-types/software");
 const PreorderType = require("../data-types/preorder");
 const ProductType = require("../data-types/product");
 const LangType = require("../data-types/language");
+
+const AMAType = require("../data-types/ama");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -229,6 +232,22 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(PreorderType),
       resolve: (parent, args) => {
         return Preorder.find().sort({ created_at: -1 });
+      },
+    },
+    // ===== Get PreOrder  =====
+    amas: {
+      type: new GraphQLList(AMAType),
+      resolve: (parent, args) => {
+        return AMA.find().sort({ created_at: -1 });
+      },
+    },
+    ama: {
+      type: AMAType,
+      args: {
+        id: { type: GraphQLString },
+      },
+      resolve: (parent, args) => {
+        return AMA.findById({ _id: args.id });
       },
     },
   },

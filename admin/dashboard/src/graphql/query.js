@@ -264,6 +264,7 @@ const GET_CUSTOMERS = gql`
       lastname
       email
       phone
+      payBy
       products
       created_at
     }
@@ -313,6 +314,43 @@ const GET_PRODUCT = gql`
   }
 `
 
+const GET_AMAS = gql`
+  query {
+    amas {
+      id
+      name
+      title
+      image
+      desc
+      date
+      category
+      created_at
+      user {
+        fullname
+      }
+    }
+  }
+`
+
+const GET_AMA = gql`
+  query($id: String!) {
+    ama(id: $id) {
+      id
+      name
+      title
+      image
+      desc
+      date
+      category
+      created_at
+      url
+      user {
+        fullname
+      }
+    }
+  }
+`
+
 export {
   GET_USERS,
   GET_USER,
@@ -334,4 +372,6 @@ export {
   GET_SOFTWARES,
   GET_SOFTWARE,
   GET_PRODUCT,
+  GET_AMAS,
+  GET_AMA,
 }

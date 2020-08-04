@@ -65,7 +65,7 @@ function AllSoftwares() {
                 key: id,
                 logo: (
                   <img
-                    src={"https://admin-demo.koompi.com" + software.logo}
+                    src={"https://admin.koompi.com" + software.logo}
                     alt="software"
                     height="50px"
                     width="50px"
@@ -73,7 +73,7 @@ function AllSoftwares() {
                 ),
                 image: (
                   <img
-                    src={"https://admin-demo.koompi.com" + software.image}
+                    src={"https://admin.koompi.com" + software.image}
                     alt="software"
                     height="50px"
                     width="50px"

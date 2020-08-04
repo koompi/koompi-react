@@ -91,7 +91,7 @@ function Members() {
                 key: id,
                 photo: (
                   <img
-                    src={`https://admin-demo.koompi.com${photo}`}
+                    src={`https://admin.koompi.com${photo}`}
                     alt="post"
                     height="50px"
                     width="50px"

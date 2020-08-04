@@ -44,7 +44,7 @@ function VideoLive() {
         <meta
           data-react-helmet="true"
           property="og:url"
-          content="https://www.koompi.com/koompi/ask-my-anythings"
+          content="https://www.koompi.com/koompi/ask-me-anythings"
         />
         <meta
           data-react-helmet="true"

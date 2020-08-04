@@ -213,7 +213,7 @@ function Index() {
                           {parse(data.description)}
                         </div>
                         <center>
-                          <Link to="/koompi-e11">
+                          <Link to="/koompi/e11">
                             <KpButtom />
                           </Link>
                         </center>
@@ -254,7 +254,7 @@ function Index() {
                           {parse(data.description)}
                         </div>
                         <center>
-                          <Link to="/koompi-e13">
+                          <Link to="/koompi/e13">
                             <KpButtom />
                           </Link>
                         </center>

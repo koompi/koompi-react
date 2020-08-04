@@ -30,6 +30,7 @@ const RootMutation = new GraphQLObjectType({
         lastname: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
         phone: { type: new GraphQLNonNull(GraphQLString) },
+        payBy: { type: new GraphQLNonNull(GraphQLString) },
         products: { type: GraphQLString },
       },
       resolve: async (parent, args) => {

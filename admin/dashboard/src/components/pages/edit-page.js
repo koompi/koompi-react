@@ -89,7 +89,7 @@ function EditPage(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -245,7 +245,7 @@ function EditPage(props) {
                         {image === null ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com" + pageData.page.image
+                              "https://admin.koompi.com" + pageData.page.image
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}
@@ -253,7 +253,7 @@ function EditPage(props) {
                         ) : (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" + image
+                              "https://admin.koompi.com/public/uploads/" + image
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}

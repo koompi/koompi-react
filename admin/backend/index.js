@@ -96,10 +96,10 @@ app.post("/koompi/mail/comfirm-order-items", async (req, res) => {
 
 app.use(
   "/admin",
-  // isAuth,
+  isAuth,
   graphqlHTTP({
     schema,
-    graphiql: true,
+    graphiql: false,
     customFormatErrorFn: (error) => ({
       message: error.message,
       state: error.originalError && error.originalError.state,
@@ -113,7 +113,7 @@ app.use(
   "/api",
   graphqlHTTP({
     schema: api,
-    graphiql: true,
+    graphiql: false,
     customFormatErrorFn: (error) => ({
       message: error.message,
       state: error.originalError && error.originalError.state,
@@ -214,12 +214,13 @@ app.post("/upload/image", (req, res) => {
 });
 
 // ===== Database Connection =====
-const PORT = 7000;
+const PORT = 7006;
 
 try {
   mongoose.set("useCreateIndex", true);
   mongoose.set("useNewUrlParser", true);
   mongoose.set("useFindAndModify", false);
+  mongoose.set("useUnifiedTopology", true);
   mongoose
     .connect(MongoURI, (err) => {
       if (err) {

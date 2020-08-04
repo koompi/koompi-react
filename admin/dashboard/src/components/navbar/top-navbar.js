@@ -41,7 +41,7 @@ function TopNavbar() {
           content={content}
         >
           <img
-            src={`https://admin-demo.koompi.com` + avatar}
+            src={`https://admin.koompi.com` + avatar}
             alt={fullname}
             className="avatar"
           />

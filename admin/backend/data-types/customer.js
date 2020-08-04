@@ -16,6 +16,7 @@ const CustomerType = new GraphQLObjectType({
     lastname: { type: GraphQLString },
     email: { type: GraphQLString },
     phone: { type: GraphQLString },
+    payBy: { type: GraphQLString },
     products: { type: GraphQLString },
     message: { type: GraphQLString },
     created_at: { type: GraphQLString },

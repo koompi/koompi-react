@@ -153,7 +153,7 @@ function App() {
             ></Route>
             <Route
               exact
-              path="/koompi/ask-my-anythings"
+              path="/koompi/ask-me-anythings"
               component={withTracker(VideoLive)}
             ></Route>
 

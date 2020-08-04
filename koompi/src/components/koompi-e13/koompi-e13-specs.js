@@ -54,11 +54,11 @@ const dataSpacs = [
   },
   {
     title: "Audio",
-    desc: "<p>Built-in 1W Stereo Speaker *2</p>",
+    desc: "<p>Built-in 1W Stereo Speaker</p>",
   },
   {
     title: "Battery",
-    desc: "<p>Li-polymer battery 5000mAH up to 7H</p>",
+    desc: "<p>Li-polymer battery 5000mAH</p>",
   },
 ]
 function Koompi_E_Spec(props) {

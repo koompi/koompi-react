@@ -13,14 +13,18 @@
   },
   {
     "title": "Speed",
-    "value": "537 MB/s"
+    "value": "6 Gb/s"
   },
   {
     "title": "RAM DDR4",
     "value": "8GB"
   },
   {
-    "title": "USB-C Port",
-    "value": "10Gbps"
+    "title": "I/O Ports",
+    "value": "Type C x1, A x2"
+  },
+  {
+    "title": "Extendable Display",
+    "value": "Type C | Micro HDMI"
   }
 ]

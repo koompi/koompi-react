@@ -41,6 +41,9 @@ import AddSoftware from "./components/softwares/add-software"
 import AllSoftwares from "./components/softwares/all-softwares"
 import EditSoftware from "./components/softwares/edit-software"
 import Preorder from "./components/preorder/preorder"
+import AddAMA from "./components/amas/new-ama"
+import AllAMA from "./components/amas/amas"
+import editAma from "./components/amas/edit-ama"
 
 function App() {
   return (
@@ -77,6 +80,10 @@ function App() {
             path="/admin/category/edit/:id"
             component={editCategory}
           />
+          {/* ===== AMA Route Section ===== */}
+          <PrivateRoute exact path="/admin/add-ama" component={AddAMA} />
+          <PrivateRoute exact path="/admin/all-amas" component={AllAMA} />
+          <PrivateRoute exact path="/admin/ama/edit/:id" component={editAma} />
           {/* ===== Member Route Section ===== */}
           <PrivateRoute exact path="/admin/new-member" component={newMember} />
           <PrivateRoute exact path="/admin/members" component={Members} />

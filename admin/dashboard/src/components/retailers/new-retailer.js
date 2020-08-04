@@ -31,7 +31,7 @@ function NewRetailer(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -154,8 +154,7 @@ function NewRetailer(props) {
                         {image ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" +
-                              `${image}`
+                              "https://admin.koompi.com/public/uploads/" + `${image}`
                             }`}
                             alt="avatar"
                             style={{ width: "100%" }}

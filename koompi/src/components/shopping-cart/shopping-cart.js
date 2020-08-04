@@ -207,7 +207,7 @@ function Cart() {
                 <b>{lang === "en" ? "Payment Options" : "ជម្រើសទូទាត់ប្រាក់"}</b>
               </p>
               <Row gutter={[24, 24]}>
-                <Col span={8}>
+                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
                   <div className="payment_cart" onClick={handleCreditCardVisible}>
                     <Row gutter={12}>
                       <Col span={6}>
@@ -229,7 +229,7 @@ function Cart() {
                     </Row>
                   </div>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
                   <div className="payment_cart" onClick={handleVisible}>
                     <Row gutter={12}>
                       <Col span={6}>
@@ -247,7 +247,7 @@ function Cart() {
                     </Row>
                   </div>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
                   <CashOrDelivery cashLang={lang === "en" ? "Cash" : "សាច់ប្រាក់"} />
                 </Col>
               </Row>

@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5e16d12c2c28a740c98253ba"},"name":"facebook","link":"https://www.facebook.com/koompi/","logo":"/public/uploads/icon-01.png","created_by":"SAN Vuthy","created_at":{"$date":"2020-01-09T07:07:24.041Z"},"__v":0}
+{"_id":{"$oid":"5e32780e29ab8d0d89953a89"},"name":"Telegram","link":"https://t.me/koompi","logo":"/public/uploads/icon-07.png","created_by":"SAN Vuthy","created_at":{"$date":"2020-01-30T06:30:38.603Z"},"__v":0}
+{"_id":{"$oid":"5e32784929ab8d0d89953a8a"},"name":"Medium","link":"https://medium.com/koompi","logo":"/public/uploads/icon-06.png","created_by":"SAN Vuthy","created_at":{"$date":"2020-01-30T06:31:37.061Z"},"__v":0}
+{"_id":{"$oid":"5e3278a629ab8d0d89953a8b"},"name":"Twitter","link":"https://twitter.com/koompi_official","logo":"/public/uploads/icon-02.png","created_by":"SAN Vuthy","created_at":{"$date":"2020-01-30T06:33:10.523Z"},"__v":0}
+{"_id":{"$oid":"5ed08507eb45d15017d0152e"},"name":"Youtube","link":"https://www.youtube.com/channel/UC3fiB0ZtxidRUd6_EpdUaTA","logo":"/public/uploads/youtube-08.png","created_by":"SAN Vuthy","created_at":{"$date":"2020-05-29T03:44:07.083Z"},"__v":0}
+{"_id":{"$oid":"5ed869efe42b914c80282296"},"name":"Linkedin","link":"https://www.linkedin.com/company/koompi","logo":"/public/uploads/icon-05.png","created_by":"SAN Vuthy","created_at":{"$date":"2020-06-04T03:26:39.409Z"},"__v":0}

@@ -36,7 +36,7 @@ function Settings(props) {
   const uploadImage = {
     name: "file",
     multiple: false,
-    action: "https://admin-demo.koompi.com/upload/image",
+    action: "https://admin.koompi.com/upload/image",
     defaultFileList: image,
     onChange(info) {
       const { status } = info.file
@@ -111,7 +111,7 @@ function Settings(props) {
                         {image === null ? (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com" + userQuery.user.avatar
+                              "https://admin.koompi.com" + userQuery.user.avatar
                             }`}
                             alt="avatar"
                             style={{ height: "133.5px", width: "133.5px" }}
@@ -119,7 +119,7 @@ function Settings(props) {
                         ) : (
                           <img
                             src={`${
-                              "https://admin-demo.koompi.com/public/uploads/" + image
+                              "https://admin.koompi.com/public/uploads/" + image
                             }`}
                             alt="avatar"
                             style={{ height: "133.5px", width: "133.5px" }}

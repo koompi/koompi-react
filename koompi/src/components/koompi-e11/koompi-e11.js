@@ -81,7 +81,9 @@ function KoompiE13(props) {
                 >
                   {description}
                 </div>
-                <h1 className="koompi-price">$179</h1>
+                <h1 className="koompi-price">
+                  $148 <span className="koompi-price99">.99</span>
+                </h1>
                 <ProgressiveImage src={image}>
                   {(src, loading) =>
                     loading ? (
