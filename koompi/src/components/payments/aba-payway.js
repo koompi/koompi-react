@@ -60,24 +60,24 @@ function AbaPayway({
         if (!err) {
           await setAbaData({ firstname, lastname, phone, email })
           await window.AbaPayway.checkout()
-          console.log(values)
-          await createCustomer({
-            variables: {
-              ...values,
-              phone: `${values.phone}`,
-              products: `${values.products}`,
-            },
-          })
-            .then(async () => {
-              setLoading(true)
-              setTimeout(() => {
-                setLoading(false)
-              }, 3000)
-              form.resetFields()
-            })
-            .catch((error) => {
-              console.log(error)
-            })
+
+          // await createCustomer({
+          //   variables: {
+          //     ...values,
+          //     phone: `${values.phone}`,
+          //     products: `${values.products}`,
+          //   },
+          // })
+          //   .then(async () => {
+          //     setLoading(true)
+          //     setTimeout(() => {
+          //       setLoading(false)
+          //     }, 3000)
+          //     form.resetFields()
+          //   })
+          //   .catch((error) => {
+          //     console.log(error)
+          //   })
         }
       }
     })

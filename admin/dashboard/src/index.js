@@ -11,13 +11,13 @@ import { createHttpLink } from "apollo-link-http"
 import { setContext } from "apollo-link-context"
 import { InMemoryCache } from "apollo-cache-inmemory"
 
-const httpLink = createHttpLink({
-  uri: "http://localhost:7006/admin",
-})
-
 // const httpLink = createHttpLink({
-//   uri: "https://admin.koompi.com/admin",
+//   uri: "http://localhost:7006/admin",
 // })
+
+const httpLink = createHttpLink({
+  uri: "https://admin.koompi.com/admin",
+})
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
