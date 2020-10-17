@@ -1,17 +1,53 @@
 module.exports = (name, items) => {
   const products = JSON.parse(items);
   const displayProducts = () => {
-    return products.map(
-      (res) =>
-        `<tr>
-      <td style="padding: 5px 15px 5px 0;">${res.name}</td>
-      <td style="padding: 0 15px;">${res.qty}</td>
-      <td style="padding: 0 0 0 15px;" align="right">
-        $${res.deposit}.00
-      </td>
-    </tr>`
-    );
+    return products.map((res) => {
+      if (res.id === "koompie11") {
+        return `<tr>
+          <td style="padding: 5px 15px 5px 0;">${res.name}</td>
+          <td style="padding: 0 15px;">${res.qty}</td>
+          <td style="padding: 0 0 0 15px;" align="right">
+            $${res.deposit}
+          </td>
+        </tr>`;
+      } else {
+        return `<tr>
+          <td style="padding: 5px 15px 5px 0;">${res.name}</td>
+          <td style="padding: 0 15px;">${res.qty}</td>
+          <td style="padding: 0 0 0 15px;" align="right">
+            $${res.deposit}.00
+          </td>
+        </tr>`;
+      }
+    });
   };
+
+  const displayMessage = () => {
+    if (products.length === 1) {
+      return products.map((res) => {
+        if (res.id === "koompie11") {
+          return `<p>
+          Thank you for pre-ordering KOOMPI E11! We are processing your order. 
+          Please be informed that your package will arrive in early October. 
+          You may refer to the information below to review your order.
+        </p>`;
+        } else {
+          return `<p>
+          Thank you for ordering. We received your order and
+          will begin processing it soon. Your order
+          information appears below.
+        </p>`;
+        }
+      });
+    } else {
+      return `<p>
+      Thank you for ordering. We received your order and
+      will begin processing it soon. Your order
+      information appears below.
+    </p>`;
+    }
+  };
+
   return `<!DOCTYPE html>
   <html
     xmlns="http://www.w3.org/1999/xhtml"
@@ -319,11 +355,7 @@ module.exports = (name, items) => {
                           >
                             <p>Hello <b>${name}</b>,</p>
   
-                            <p>
-                              Thank you for ordering. We received your order and
-                              will begin processing it soon. Your order
-                              information appears below.
-                            </p>
+                            ${displayMessage()}
                           </div>
                         </td>
                       </tr>
