@@ -111,6 +111,18 @@
   -o-border-radius: 5px;
   box-shadow: 0 0px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
 }
+.card_back_content {
+  background-color: #fff;
+  padding: 30px 10px;
+  position: relative;
+  margin-top: 0px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: 0 0px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
 .card_icon {
   position: absolute;
   left: 50%;
@@ -436,15 +448,19 @@
 }
 .ant-form-item-children .ant-input {
   background-color: #f1f4f6 !important;
-  border: 1px solid transparent !important;
+  border: 1px solid transparent;
 }
 .ant-form-item-children .ant-input:focus {
   background-color: #f1f4f6 !important;
-  border: 1px solid #339afb !important;
+  border: 1px solid #339afb;
 }
 .background_container h4 {
   font-size: 18px !important;
 }
 .ant-form-item label {
   font-size: 18px !important;
+}
+
+.ant-menu-item-group-title {
+  font-size: 16px !important;
 }

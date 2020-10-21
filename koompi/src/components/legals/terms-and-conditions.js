@@ -16,6 +16,8 @@ function TermsAndConditions() {
     return null
   }
 
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
   const result = _.filter(
     data.legals,
     (data) => data.title === "Terms and Conditions"
@@ -29,11 +31,11 @@ function TermsAndConditions() {
         <title>TERMS AND CONDITIONS - KOOMPI</title>
         <meta
           name="keywords"
-          content="koompi, koompi.com, www.koompi.com, https://koompi.com/legal/terms-and-conditions, koompi-terms-and-conditions, koompi terms and conditions, terms and conditions"
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <meta
           name="description"
-          content="These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service."
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <link rel="canonical" href="https://koompi.com/legal/terms-and-conditions" />
       </Helmet>

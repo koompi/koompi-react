@@ -21,7 +21,7 @@ function TopNavbar() {
 
   const DisplayUser = () => {
     const { error, loading, data } = useQuery(GET_USER, {
-      variables: { email }
+      variables: { email },
     })
     if (error) console.log(error)
     if (loading) return "Loading ..."

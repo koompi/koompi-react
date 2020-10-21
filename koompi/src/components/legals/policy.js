@@ -16,21 +16,24 @@ function PrivacyPolicy() {
     return null
   }
 
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
   const result = _.filter(data.legals, (data) => data.title === "Privacy Policy")
 
   NProgress.done()
   const description = renderHTML(result[0].description)
+
   return (
     <Fragment>
       <Helmet>
         <title>PRIVACY POLICY - KOOMPI</title>
         <meta
           name="keywords"
-          content="koompi, koompi.com, www.koompi.com, https://koompi.com/legal/privacy, koompi-privacy, koompi privacy, privacy"
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <meta
           name="description"
-          content="We will gather the data you provide to improve the Service. By using the Service, you agree to the term and condition use of information in accordance with this policy."
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
         <link rel="canonical" href="https://koompi.com/legal/privacy" />
       </Helmet>

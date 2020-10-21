@@ -31,9 +31,9 @@ export const EDITOR_JS_TOOLS = {
         uploadByFile: (file) => {
           const myAxios = axios.post(`https://admin.koompi.com/upload/image`)
           console.log(myAxios)
-        }
-      }
-    }
+        },
+      },
+    },
   },
   raw: Raw,
   header: Header,
@@ -41,5 +41,5 @@ export const EDITOR_JS_TOOLS = {
   checklist: CheckList,
   delimiter: Delimiter,
   inlineCode: InlineCode,
-  simpleImage: SimpleImage
+  simpleImage: SimpleImage,
 }

@@ -1,10 +1,9 @@
 import React, { useEffect } from "react"
-import { Row, Col, Result, Spin } from "antd"
+import { Row, Col, Result } from "antd"
 import { useQuery } from "@apollo/react-hooks"
 import { GET_PAGES } from "../graphql/query"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
-import renderHTML from "../editorJsToHtml"
 import parse from "html-react-parser"
 
 import SubNavbar from "./subNavbar"
@@ -19,15 +18,23 @@ import ScrollAnimation from "react-animate-on-scroll"
 import ReactPlayer from "react-player"
 
 import Helmet from "react-helmet"
+import { useTranslation } from "react-i18next"
 
 function KoompiE13(props) {
   const imageLink = `https://admin.koompi.com`
+  const { i18n } = useTranslation()
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
-  const { error, loading, data } = useQuery(GET_PAGES)
+  // Language Context
+  const lang = i18n.language
+
+  const { error, loading, data } = useQuery(GET_PAGES, {
+    variables: { lang },
+  })
+
   if (error) {
     if (error.networkError) {
       return (
@@ -51,36 +58,50 @@ function KoompiE13(props) {
   NProgress.done()
 
   const dataIndex = data.pages.filter((res) => res.category.slug === "koompi-e11")
+  console.log(dataIndex)
+
   const result = _.orderBy(dataIndex, "sectionNumber", "asc")
 
   // ===== KOOMPI E11 Top Section  =====
-  const DisplayKOOMPIE = ({ title, description }) => {
+  const DisplayKOOMPIE = ({ title, description, image }) => {
     return (
-      <div className="koompiE11Back">
-        <div className="container">
-          <ScrollAnimation animateIn="fadeIn">
-            <center>
-              <h2 className="koompi-e13-title-index">{title}</h2>
+      <React.Fragment>
+        <div className="koompiE11Back">
+          <div className="container">
+            <ScrollAnimation animateIn="fadeIn">
+              <center>
+                <h2 className="koompi-e13-title-index">{title}</h2>
 
-              <div className="subTittle-E11">{description}</div>
-              <h1 className="koompi-price">$179</h1>
-              <ProgressiveImage src="/img/e11.png">
-                {(src, loading) =>
-                  loading ? (
-                    <img src="/img/loading.svg" alt={title} height="60px" />
-                  ) : (
-                    <img
-                      className="banner-overview-koompiE11 koompi-e11-page-width"
-                      src={src}
-                      alt={title}
-                    />
-                  )
-                }
-              </ProgressiveImage>
-            </center>
-          </ScrollAnimation>
+                <div
+                  className={
+                    lang === "kh"
+                      ? "subTittle-E11 khmerLang"
+                      : "subTittle-E11 enLang"
+                  }
+                >
+                  {description}
+                </div>
+                <h1 className="koompi-price">
+                  $178 <span className="koompi-price99">.99</span>
+                </h1>
+                <ProgressiveImage src={image}>
+                  {(src, loading) =>
+                    loading ? (
+                      <img src="/img/loading.svg" alt={title} height="60px" />
+                    ) : (
+                      <img
+                        className="banner-overview-koompiE11 koompi-e11-page-width"
+                        src={src}
+                        alt={title}
+                      />
+                    )
+                  }
+                </ProgressiveImage>
+              </center>
+            </ScrollAnimation>
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 
@@ -95,7 +116,13 @@ function KoompiE13(props) {
                 <h3>{subTitle}</h3>
                 <h2 className="KoompiE11">{title}</h2>
               </div>
-              <div className="subTittle-E11">{description}</div>
+              <div
+                className={
+                  lang === "kh" ? "subTittle-E11 khmerLang" : "subTittle-E11 enLang"
+                }
+              >
+                {description}
+              </div>
               <div className="koompi-e-section-margin">
                 <Row gutter={16}>
                   {screen.map((data, index) => {
@@ -141,7 +168,13 @@ function KoompiE13(props) {
                 <h3>{subTitle}</h3>
                 <h2 className="KoompiE11">{title}</h2>
               </div>
-              <div className="subTittle-E11">{description}</div>
+              <div
+                className={
+                  lang === "kh" ? "subTittle-E11 khmerLang" : "subTittle-E11 enLang"
+                }
+              >
+                {description}
+              </div>
               <div className="koompi-e-section-margin">
                 <Row gutter={16}>
                   {shapeliness.map((data, index) => {
@@ -251,7 +284,13 @@ function KoompiE13(props) {
                 <h3>{subTitle}</h3>
                 <h2 className="KoompiE11">{title}</h2>
               </div>
-              <div className="subTittle-E11">{description}</div>
+              <div
+                className={
+                  lang === "kh" ? "subTittle-E11 khmerLang" : "subTittle-E11 enLang"
+                }
+              >
+                {description}
+              </div>
               <div className="koompi-e-section-margin">
                 <Row gutter={16} type="flex">
                   {performance.map((data, index) => {
@@ -294,7 +333,7 @@ function KoompiE13(props) {
     return result.map((data, index) => {
       //============== Top Banner Section==========
       if (data.sectionNumber === "1") {
-        const description = renderHTML(data.description)
+        // const description = renderHTML(data.description)
         return (
           <div className="background-color-Koompi">
             <div
@@ -304,8 +343,10 @@ function KoompiE13(props) {
               <div className="koompiDetail">
                 <DisplayKOOMPIE
                   title={data.title}
-                  description={parse(description)}
-                  image={data.image}
+                  description={
+                    data.description === null ? "" : parse(data.description)
+                  }
+                  image={imageLink + data.image}
                 />
               </div>
             </div>
@@ -314,13 +355,13 @@ function KoompiE13(props) {
       }
       //============== Screen Section==========
       if (data.sectionNumber === "2") {
-        const description = renderHTML(data.description)
+        // const description = renderHTML(data.description)
         return (
           <div className="margin-display-koompiE11" key={index}>
             <DisplayScreen
               subTitle={data.subTitle}
               title={data.title}
-              description={parse(description)}
+              description={data.description === null ? "" : parse(data.description)}
               image={imageLink + data.image}
             />
           </div>
@@ -328,13 +369,13 @@ function KoompiE13(props) {
       }
       //============== Shapeliness Section==========
       if (data.sectionNumber === "3") {
-        const description = renderHTML(data.description)
+        // const description = renderHTML(data.description)
         return (
           <div className="shapeliness-margin-top" key={index}>
             <DisplayShapeliness
               subTitle={data.subTitle}
               title={data.title}
-              description={parse(description)}
+              description={data.description === null ? "" : parse(data.description)}
               image={imageLink + data.image}
             />
           </div>
@@ -342,13 +383,13 @@ function KoompiE13(props) {
       }
       //============== Performance Section==========
       if (data.sectionNumber === "4") {
-        const description = renderHTML(data.description)
+        // const description = renderHTML(data.description)
         return (
           <div className="performance-margin-top" key={index}>
             <DisplayPerformance
               subTitle={data.subTitle}
               title={data.title}
-              description={parse(description)}
+              description={data.description === null ? "" : parse(data.description)}
               image={data.image}
             />
           </div>
@@ -356,13 +397,13 @@ function KoompiE13(props) {
       }
       //============== BATTERY Section==========
       if (data.sectionNumber === "5") {
-        const description = renderHTML(data.description)
+        // const description = renderHTML(data.description)
         return (
           <div className="battery-section-background" key={index}>
             <DisplayBattery
               subTitle={data.subTitle}
               title={data.title}
-              description={parse(description)}
+              description={data.description === null ? "" : parse(data.description)}
               image={data.image}
             />
           </div>
@@ -376,19 +417,45 @@ function KoompiE13(props) {
   return (
     <React.Fragment>
       <Helmet>
+        {/* <!-- Primary Meta Tags --> */}
         <title>KOOMPI E11 - KOOMPI</title>
-        <meta
-          name="keywords"
-          content="KOOMPI, KOOMPI OS, KOOMPI ACADEMY, KHMER LAPTOP,koompi e13, koompi laptop, koompi computer, koompi os, koompi review"
-        />
+        <meta name="title" content="KOOMPI E11 - KOOMPI" />
         <meta
           name="description"
-          content="Immerse yourself into endless possibilities. Start with the classic KOOMPI, the E13. Built-in integrated software suite. Lightweight and compact."
+          content="Built for students, the KOOMPI E11 is your starting point for computing. As compact as the E13, but lighter. No compromise on open-source performance. Perfect for students on the go."
         />
-        <link rel="canonical" href="https://koompi.com/koompi-e13" />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.koompi.com" />
+        <meta property="og:title" content="KOOMPI E11 - KOOMPI" />
+        <meta
+          property="og:description"
+          content="Built for students, the KOOMPI E11 is your starting point for computing. As compact as the E13, but lighter. No compromise on open-source performance. Perfect for students on the go."
+        />
+        <meta
+          property="og:image"
+          content="https://admin.koompi.com/public/uploads/e11-meta-tag.png"
+        />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.koompi.com" />
+        <meta property="twitter:title" content="KOOMPI E11 - KOOMPI" />
+        <meta
+          property="twitter:description"
+          content="Built for students, the KOOMPI E11 is your starting point for computing. As compact as the E13, but lighter. No compromise on open-source performance. Perfect for students on the go."
+        />
+        <meta
+          property="twitter:image"
+          content="https://admin.koompi.com/public/uploads/e11-meta-tag.png"
+        />
       </Helmet>
       <div>
-        <SubNavbar title="KOOMPI E11" history={props.history} />
+        <SubNavbar
+          title={lang === "kh" ? "គម្ពីរ E11" : "KOOMPI E11"}
+          history={props.history}
+        />
         <div>
           <DisplayData />
         </div>

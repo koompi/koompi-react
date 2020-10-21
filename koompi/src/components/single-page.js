@@ -5,7 +5,6 @@ import parse from "html-react-parser"
 import NProgress from "nprogress"
 import { GET_POST } from "./graphql/query"
 import moment from "moment"
-import renderHTML from "./editorJsToHtml"
 import Footer from "./footer"
 import { Helmet } from "react-helmet"
 
@@ -27,50 +26,32 @@ function SinglePage(props) {
   }
   NProgress.done()
 
-  const { title, thumnail, created_at, keywords, meta_desc } = data.post
-  const description = renderHTML(data.post.description)
-
-  const metaElements = []
-
-  if (title) {
-    metaElements.push(
-      <title key="title">{title}</title>,
-      <meta key="og:site_name" property="og:site_name" content={title} />,
-      <meta key="twitter:site" property="twitter:site" content={title} />
-    )
-  }
-
-  if (description) {
-    metaElements.push(
-      <meta key="description" name="description" content={meta_desc} />,
-      <meta key="og:description" property="og:description" content={meta_desc} />,
-      <meta
-        key="twitter:description"
-        property="twitter:description"
-        content={meta_desc}
-      />
-    )
-  }
-
-  if (keywords) {
-    metaElements.push(<meta key="keywords" name="keywords" content={keywords} />)
-  }
-
-  if (thumnail) {
-    metaElements.push(
-      <meta key="og:image" name="og:image" content={thumnail} />,
-      <meta key="twitter:image" name="twitter:image" content={thumnail} />
-    )
-  }
+  const { title, thumnail, created_at, meta_desc, description } = data.post
 
   return (
     <div>
       {/* All the Meta Tags */}
       <Helmet>
-        {metaElements}
-        <link
-          rel="canonical"
-          href={`https://koompi.com/${window.location.pathname}`}
+        {/* <!-- Primary Meta Tags --> */}
+        <title>{title} - KOOMPI</title>
+        <meta name="title" content={title + "- KOOMPI"} />
+        <meta name="description" content={meta_desc} />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.koompi.com" />
+        <meta property="og:title" content={title + "- KOOMPI"} />
+        <meta property="og:description" content={meta_desc} />
+        <meta property="og:image" content={`https://admin.koompi.com${thumnail}`} />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.koompi.com" />
+        <meta property="twitter:title" content={title + "- KOOMPI"} />
+        <meta property="twitter:description" content={meta_desc} />
+        <meta
+          property="twitter:image"
+          content={`https://admin.koompi.com${thumnail}`}
         />
       </Helmet>
       <div className="container">

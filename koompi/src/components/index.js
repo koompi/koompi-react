@@ -5,11 +5,10 @@ import { useQuery } from "@apollo/react-hooks"
 import parse from "html-react-parser"
 import NProgress from "nprogress"
 import { Link } from "react-router-dom"
-import { Result, Spin, Carousel } from "antd"
+import { Result, Carousel } from "antd"
 import { GET_PAGES } from "./graphql/query"
 import Footer from "./footer"
 import _ from "lodash"
-import renderHTML from "./editorJsToHtml"
 import { Helmet } from "react-helmet"
 import ProgressiveImage from "react-progressive-image"
 import { motion } from "framer-motion"
@@ -27,7 +26,9 @@ const academy_images = [
 function Index() {
   const [appsKey, setAppsKey] = useState("1")
 
-  const { error, loading, data } = useQuery(GET_PAGES)
+  const { error, loading, data } = useQuery(GET_PAGES, {
+    variables: { lang: window.localStorage.getItem("i18nextLng") },
+  })
   if (error) {
     if (error.networkError) {
       return (
@@ -167,38 +168,94 @@ function Index() {
   }
 
   const dataIndex = data.pages.filter((res) => res.category.slug === "index")
-  const result = _.orderBy(dataIndex, "sectionNumber", "asc")
+
+  const sectionOrder = _.orderBy(dataIndex, "sectionNumber", "asc")
+
+  const khLang = window.localStorage.getItem("i18nextLng") === "kh"
+
+  const KpButtom = () => {
+    return (
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.9 }}
+        className={khLang ? "koompiBtn btnKhmerLang" : "koompiBtn"}
+      >
+        {khLang ? "អានបន្ថែម" : "Read More"}
+      </motion.button>
+    )
+  }
 
   const displayData = () => {
-    return result.map((data, index) => {
-      const description = renderHTML(data.description)
-      if (data.sectionNumber === "1") {
+    return sectionOrder.map((data, index) => {
+      if (index === 0) {
         return (
-          <div className="first-index-banner-e13">
+          <div className="first-index-banner">
+            <div className="img-holder"></div>
             <div className="koompi-e11-position">
-              {/* <section>
-                <div className="streamline-icon-programming-language-http"></div>
-                <div className="streamline-icon-programming-user-head"></div>
-                <div className="streamline-icon-user-live"></div>
-                <div className="streamline-icon-shield-key"></div>
-              </section> */}
               <div className="container">
                 <ScrollAnimation animateIn="fadeIn">
                   <Row gutter={50}>
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                       <div className="banner_content">
                         {/* ========= KOOMPI SECTION =========  */}
-                        <h1 className="bossTittle-KoompiHome-e11">{data.title}</h1>
-                        <div className="koompi-e11-desc">{parse(description)}</div>
                         <center>
-                          <Link to="/koompi-e11">
-                            <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.9 }}
-                              className="koompiBtn"
-                            >
-                              Learn More
-                            </motion.button>
+                          <p className="index-new">{khLang ? "ថ្មី" : "New"}</p>
+                        </center>
+                        <h1 className="bossTittle-KoompiHome-e11">{data.title}</h1>
+
+                        <div
+                          className={
+                            khLang
+                              ? "koompi-e11-desc khmerLang"
+                              : "koompi-e11-desc enLang"
+                          }
+                        >
+                          {parse(data.description)}
+                        </div>
+                        <center>
+                          <Link to="/koompi/e11">
+                            <KpButtom />
+                          </Link>
+                        </center>
+                        <center>
+                          <img
+                            src={`https://admin.koompi.com${data.image}`}
+                            alt={data.title}
+                            className="koompiE11-image"
+                          />
+                        </center>
+                      </div>
+                    </Col>
+                  </Row>
+                </ScrollAnimation>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      if (index === 1) {
+        return (
+          <div className="first-index-banner-e13">
+            <div className="koompi-e11-position">
+              <div className="container">
+                <ScrollAnimation animateIn="fadeIn">
+                  <Row gutter={50}>
+                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                      <div className="banner_content">
+                        <h1 className="bossTittle-KoompiHome-e11">{data.title}</h1>
+                        <div
+                          className={
+                            khLang
+                              ? "koompi-e11-desc khmerLang"
+                              : "koompi-e11-desc enLang"
+                          }
+                        >
+                          {parse(data.description)}
+                        </div>
+                        <center>
+                          <Link to="/koompi/e13">
+                            <KpButtom />
                           </Link>
                         </center>
                         <center>
@@ -209,8 +266,8 @@ function Index() {
                               ) : (
                                 <img
                                   style={{ opacity: loading ? 0.5 : 1 }}
-                                  src={src}
-                                  alt="KOOMPI E13"
+                                  src={`https://admin.koompi.com${data.image}`}
+                                  alt={data.title}
                                   className="koompiE11-image"
                                 />
                               )
@@ -226,39 +283,34 @@ function Index() {
           </div>
         )
       }
-      if (data.sectionNumber === "2") {
-        const description = renderHTML(data.description)
+      if (index === 2) {
         return (
           <div className="first-index-banner">
             <div className="koompi-e11-position">
-              {/* <section>
-                <div className="streamline-icon-app-window-lock"></div>
-                <div className="streamline-icon-programming-flag"></div>
-                <div className="streamline-icon-database-flash"></div>
-                <div className="streamline-icon-responsive-design-expand-1"></div>
-              </section> */}
               <div className="container">
                 <Row gutter={50}>
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div className="banner_content">
-                      {/* ========= KOOMPI SECTION =========  */}
                       <h1 className="bossTittle-KoompiHome-e11">{data.title}</h1>
-                      <div className="koompi-e11-desc">{parse(description)}</div>
+                      <div
+                        className={
+                          khLang
+                            ? "koompi-e11-desc khmerLang"
+                            : "koompi-e11-desc enLang"
+                        }
+                      >
+                        {parse(data.description)}
+                      </div>
                       <center>
                         <a
                           href="https://www.koompi.org/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="koompiBtn"
-                          >
-                            Learn More
-                          </motion.button>
+                          <KpButtom />
                         </a>
                       </center>
+
                       <center></center>
                       <div className="appsWidth">
                         <center>
@@ -266,21 +318,7 @@ function Index() {
                             {koompiApps.map((res, index) => {
                               if (`${index + 1}` === `${appsKey}`) {
                                 return (
-                                  // <figure className="image-shared-kp">
-                                  //   <div
-                                  //     className="image-app-updates-screen-photos mba-screen"
-                                  //     // style={{
-                                  //     //   backgroundImage: `url(${res.image})`,
-                                  //     // }}
-                                  //   ></div>
-                                  // </figure>
-                                  // <img
-                                  //   src={res.image}
-                                  //   alt={res.title}
-                                  //   className="appsImageWidth animated fadeIn"
-                                  // />
-
-                                  <ProgressiveImage src={res.image}>
+                                  <ProgressiveImage src={res.image} key={index}>
                                     {(src, loading) =>
                                       loading ? (
                                         <img
@@ -312,7 +350,14 @@ function Index() {
                           >
                             {koompiApps.map((res, index) => {
                               return (
-                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                                <Col
+                                  xs={24}
+                                  sm={24}
+                                  md={24}
+                                  lg={24}
+                                  xl={24}
+                                  key={index}
+                                >
                                   <div
                                     onClick={() => {
                                       setAppsKey(`${index + 1}`)
@@ -349,8 +394,8 @@ function Index() {
           </div>
         )
       }
-      if (data.sectionNumber === "3") {
-        const description = renderHTML(data.description)
+      if (index === 3) {
+        // const description = renderHTML(data.description)
         return (
           <ScrollAnimation animateIn="fadeIn">
             <div className="koompi-os-index" key={index}>
@@ -366,43 +411,52 @@ function Index() {
                   <center>
                     <h1 className="bossTittle-KoompiHome">{data.title}</h1>
                   </center>
-                  <div className="text-koompi-section-banner">
-                    <center>{parse(description)}</center>
+                  <div
+                    className={
+                      khLang
+                        ? "text-koompi-section-banner khmerLang"
+                        : "text-koompi-section-banner enLang"
+                    }
+                  >
+                    <center>{parse(data.description)}</center>
                   </div>
                 </div>
                 <div className="subBanner-koompiPro">
-                  <Carousel
-                    effect="fade"
-                    speed="600"
-                    draggable={true}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {academy_images.map((data, index) => {
-                      return (
-                        <div key={index}>
-                          <ProgressiveImage src={data}>
-                            {(src, loading) =>
-                              loading ? (
-                                "Loading ..."
-                              ) : (
-                                <img
-                                  style={{ opacity: loading ? 0.5 : 1 }}
-                                  src={src}
-                                  alt="koompi"
-                                />
-                              )
-                            }
-                          </ProgressiveImage>
-                        </div>
-                      )
-                    })}
-                  </Carousel>
+                  <center>
+                    <Carousel
+                      effect="fade"
+                      speed="600"
+                      draggable={true}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {academy_images.map((data, index) => {
+                        return (
+                          <div key={index}>
+                            <ProgressiveImage src={data}>
+                              {(src, loading) =>
+                                loading ? (
+                                  "Loading ..."
+                                ) : (
+                                  <img
+                                    style={{ opacity: loading ? 0.5 : 1 }}
+                                    src={src}
+                                    alt="koompi"
+                                  />
+                                )
+                              }
+                            </ProgressiveImage>
+                          </div>
+                        )
+                      })}
+                    </Carousel>
+                  </center>
                 </div>
               </div>
             </div>
           </ScrollAnimation>
         )
       }
+
       return null
     })
   }
@@ -412,69 +466,58 @@ function Index() {
   return (
     <React.Fragment>
       <Helmet>
-        <title>KOOMPI</title>
+        {/* <!-- Primary Meta Tags --> */}
+        <meta name="theme-color" content="#004ba0" data-react-helmet="true" />
+        <title data-react-helmet="true">KOOMPI</title>
+        <meta data-react-helmet="true" name="title" content="KOOMPI" />
         <meta
-          name="keywords"
-          content="KOOMPI, KOOMPI OS, KOOMPI ACADEMY, KHMER LAPTOP,koompi, koompi laptop, koompi computer, koompi os, koompi review"
-        />
-        <meta
+          data-react-helmet="true"
           name="description"
-          content="KOOMPI is a practical, affordable and effective entry level laptop. High-end perform daily tasks for working and schooling. Create with a customized operating system by our own called, KramaOS based on well-known open source Linux. Both philosophy and design fit specifically with KOOMPI’s hardware."
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
         />
-        <link rel="canonical" href="https://koompi.com/" />
-      </Helmet>
 
-      <div className="first-index-banner">
-        {/* <section>
-          <div className="streamline-icon-robot"></div>
-          <div className="streamline-icon-drone-controller"></div>
-          <div className="streamline-icon-virtual-house"></div>
-          <div className="streamline-icon-bendable-phone-touch"></div>
-        </section> */}
-        <div className="img-holder"></div>
-        <div className="koompi-e11-position">
-          <div className="container">
-            <ScrollAnimation animateIn="fadeIn">
-              <Row gutter={50}>
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <div className="banner_content">
-                    {/* ========= KOOMPI SECTION =========  */}
-                    <center>
-                      <p className="index-new">New</p>
-                    </center>
-                    <h1 className="bossTittle-KoompiHome-e11">KOOMPI E11</h1>
-                    <div className="koompi-e11-desc">
-                      <p>
-                        After releasing our classic E13, we never stopped working
-                        towards our mission, to see every student own their personal
-                        computer. Our one-student-one notebook initiative cannot
-                        become a reality if computers are not affordable.
-                      </p>
-                      <p>
-                        The E11 was built to make computing possible for everyone.
-                      </p>
-                    </div>
-                    <center>
-                      <Link to="/koompi-e11">
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="koompiBtn"
-                        >
-                          Learn More
-                        </motion.button>
-                      </Link>
-                    </center>
-                    <center>
-                      <img src="/img/e11.png" alt="" className="koompiE11-image" />
-                    </center>
-                  </div>
-                </Col>
-              </Row>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </div>
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta data-react-helmet="true" property="og:type" content="website" />
+        <meta
+          data-react-helmet="true"
+          property="og:url"
+          content="https://www.koompi.com"
+        />
+        <meta data-react-helmet="true" property="og:title" content="KOOMPI" />
+        <meta
+          data-react-helmet="true"
+          property="og:description"
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
+        />
+        <meta
+          data-react-helmet="true"
+          property="og:image"
+          content="https://demo.koompi.com/img/koompi-meta-tags.png"
+        />
+
+        {/* <!-- Twitter --> */}
+        <meta
+          data-react-helmet="true"
+          property="twitter:card"
+          content="summary_large_image"
+        />
+        <meta
+          data-react-helmet="true"
+          property="twitter:url"
+          content="https://www.koompi.com"
+        />
+        <meta data-react-helmet="true" property="twitter:title" content="KOOMPI" />
+        <meta
+          data-react-helmet="true"
+          property="twitter:description"
+          content="KOOMPI, together with KOOMPI OS, are value-added learning and productivity tools built upon the acclaimed Linux operating system."
+        />
+        <meta
+          data-react-helmet="true"
+          property="twitter:image"
+          content="https://demo.koompi.com/img/koompi-meta-tags.png"
+        />
+      </Helmet>
 
       {displayData()}
       <Footer />

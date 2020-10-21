@@ -22,7 +22,7 @@ function EditRetailer(props) {
 
   //   ===== Global Data =====
   const { loading: postLoading, data: retailerData } = useQuery(GET_RETAILER, {
-    variables: { id: window.location.pathname.split("/")[4] }
+    variables: { id: window.location.pathname.split("/")[4] },
   })
 
   const { refetch: refechRetailer } = useQuery(GET_RETAILERS)
@@ -44,7 +44,7 @@ function EditRetailer(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const handleSubmit = (e) => {
@@ -54,7 +54,7 @@ function EditRetailer(props) {
         console.log(values)
 
         updateRetailer({
-          variables: { id: window.location.pathname.split("/")[4], ...values }
+          variables: { id: window.location.pathname.split("/")[4], ...values },
         })
           .then(async (res) => {
             setLoading(true)
@@ -99,21 +99,21 @@ function EditRetailer(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The name is required"
-                          }
+                            message: "The name is required",
+                          },
                         ],
-                        initialValue: retailerData.retailer.name
+                        initialValue: retailerData.retailer.name,
                       })(<Input size="large" />)}
                     </FormItem>
                     <FormItem label="Email">
                       {getFieldDecorator("email", {
-                        initialValue: retailerData.retailer.email
+                        initialValue: retailerData.retailer.email,
                       })(<Input size="large" />)}
                     </FormItem>
 
                     <FormItem label="Phone Number">
                       {getFieldDecorator("phoneNumber", {
-                        initialValue: retailerData.retailer.phoneNumber
+                        initialValue: retailerData.retailer.phoneNumber,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -122,10 +122,10 @@ function EditRetailer(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Link Location is required"
-                          }
+                            message: "Link Location is required",
+                          },
                         ],
-                        initialValue: retailerData.retailer.location
+                        initialValue: retailerData.retailer.location,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -153,15 +153,17 @@ function EditRetailer(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              retailerData.retailer.logo}`}
+                            src={`${
+                              "https://admin.koompi.com" + retailerData.retailer.logo
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              image}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + image
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -172,13 +174,13 @@ function EditRetailer(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Logo is required"
-                            }
+                              message: "Logo is required",
+                            },
                           ],
                           initialValue:
                             image === null
                               ? retailerData.retailer.logo
-                              : "/public/uploads/" + image
+                              : "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>

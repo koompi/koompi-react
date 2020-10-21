@@ -45,7 +45,7 @@ function NewMember(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const handleSubmit = (e) => {
@@ -91,9 +91,9 @@ function NewMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The fullname is required"
-                          }
-                        ]
+                            message: "The fullname is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -103,10 +103,10 @@ function NewMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Please select member department!"
-                          }
+                            message: "Please select member department!",
+                          },
                         ],
-                        initialValue: "software-team"
+                        initialValue: "software-team",
                       })(
                         <Select size="large">
                           <Option value="business-development">
@@ -130,9 +130,9 @@ function NewMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Position is required"
-                          }
-                        ]
+                            message: "Position is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -141,9 +141,9 @@ function NewMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Phone Number is required"
-                          }
-                        ]
+                            message: "Phone Number is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -152,13 +152,13 @@ function NewMember(props) {
                         rules: [
                           {
                             type: "email",
-                            message: "The input is not valid E-mail!"
+                            message: "The input is not valid E-mail!",
                           },
                           {
                             required: true,
-                            message: "Email is required"
-                          }
-                        ]
+                            message: "Email is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -167,10 +167,10 @@ function NewMember(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
@@ -198,8 +198,9 @@ function NewMember(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image ? (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              `${image}`}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + `${image}`
+                            }`}
                             alt="avatar"
                             style={{ width: "250px", height: "250px" }}
                           />
@@ -216,10 +217,10 @@ function NewMember(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Photo is required"
-                            }
+                              message: "Photo is required",
+                            },
                           ],
-                          initialValue: "/public/uploads/" + image
+                          initialValue: "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>

@@ -25,10 +25,10 @@ function HandleMessage(props) {
 
         axios
           .post(
-            `http://127.0.0.1:8000/telegrammsg?phone=${values.phone}&channel=${values.channel}&msg=${values.msg}`
+            `https://bot.koompi.com/telegrammsg?phone=${values.phone}&channel=${values.channel}&msg=${values.msg}`
           )
-          .then(async () => {
-            message.success("Hello World")
+          .then(async (res) => {
+            message.success(res.data.message)
           })
           .catch((error) => {
             console.log(error)
@@ -48,10 +48,10 @@ function HandleMessage(props) {
                 rules: [
                   {
                     required: true,
-                    message: "The Phone Number is required"
-                  }
+                    message: "The Phone Number is required",
+                  },
                 ],
-                initialValue: props.phone
+                initialValue: props.phone,
               })(
                 <Input
                   prefix={
@@ -70,9 +70,9 @@ function HandleMessage(props) {
                 rules: [
                   {
                     required: true,
-                    message: "The Channel is required"
-                  }
-                ]
+                    message: "The Channel is required",
+                  },
+                ],
               })(
                 <Input
                   prefix={
@@ -90,9 +90,9 @@ function HandleMessage(props) {
                 rules: [
                   {
                     required: true,
-                    message: "The message is required"
-                  }
-                ]
+                    message: "The message is required",
+                  },
+                ],
               })(<TextArea rows={5}></TextArea>)}
             </FormItem>
           </Col>

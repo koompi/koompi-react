@@ -12,6 +12,8 @@ const Retailer = require("../models/Retailer");
 const SocialMedia = require("../models/SocialMedia");
 const Legal = require("../models/Legal");
 const Software = require("../models/Software");
+const Product = require("../models/Product");
+const AMA = require("../models/AMA");
 
 // ======== Type Section =========
 const UserType = require("../data-types/user");
@@ -23,6 +25,8 @@ const RetailerType = require("../data-types/retailer");
 const SocialMediaType = require("../data-types/socialMedia");
 const LegalType = require("../data-types/legal");
 const SoftwareType = require("../data-types/software");
+const ProductType = require("../data-types/product");
+const AMAType = require("../data-types/ama");
 
 const RootQuery = new GraphQLObjectType({
   name: "APIQueryType",
@@ -32,15 +36,26 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(PostType),
       resolve: (parent, args) => {
         return Post.find();
-      }
+      },
+    },
+
+    // ===== Get Products  =====
+    products: {
+      type: new GraphQLList(ProductType),
+      resolve: (parent, args) => {
+        return Product.find();
+      },
     },
 
     // ===== Get Pages  =====
     pages: {
       type: new GraphQLList(PageType),
+      args: {
+        lang: { type: GraphQLString },
+      },
       resolve: (parent, args) => {
-        return Page.find();
-      }
+        return Page.find({ lang: args.lang }).sort({ created_at: -1 });
+      },
     },
 
     // ===== Get Posts  =====
@@ -48,29 +63,29 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(PostType),
       resolve: (parent, args) => {
         return Post.find().sort({ created_at: -1 });
-      }
+      },
     },
 
     // ===== Get Post  =====
     post: {
       type: PostType,
       args: {
-        slug: { type: GraphQLString }
+        slug: { type: GraphQLString },
       },
       resolve: (parent, args) => {
         return Post.findOne({ slug: args.slug });
-      }
+      },
     },
 
     // ===== Get Post  =====
     postSearch: {
       type: new GraphQLList(PostType),
       args: {
-        query: { type: GraphQLString }
+        query: { type: GraphQLString },
       },
       resolve: (parent, args) => {
         return Post.find({ category: { $regex: args.query, $options: "i" } });
-      }
+      },
     },
 
     // ===== Get Member  =====
@@ -78,7 +93,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(MemberType),
       resolve: (parent, args) => {
         return Member.find();
-      }
+      },
     },
 
     // ===== Get Retailers  =====
@@ -86,40 +101,47 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(RetailerType),
       resolve: (parent, args) => {
         return Retailer.find();
-      }
+      },
     },
     // ===== Get Socail Media  =====
     socailMedia: {
       type: new GraphQLList(SocialMediaType),
+      args: {
+        lang: { type: GraphQLString },
+      },
       resolve: (parent, args) => {
-        return SocialMedia.find();
-      }
+        return SocialMedia.find({ lang: args.lang });
+      },
     },
     // ===== Get Category  =====
     categories: {
       type: new GraphQLList(CategoryType),
-      args: {
-        query: { type: GraphQLString }
-      },
       resolve: (parent, args) => {
-        return Legal.find({ slug: args.query });
-      }
+        return Category.find();
+      },
     },
     // ===== Get Legals  =====
     legals: {
       type: new GraphQLList(LegalType),
       resolve: (parent, args) => {
         return Legal.find();
-      }
+      },
     },
     // ===== Get Legals  =====
     softwares: {
       type: new GraphQLList(SoftwareType),
       resolve: (parent, args) => {
         return Software.find();
-      }
-    }
-  }
+      },
+    },
+    // ===== Get AMA  =====
+    amas: {
+      type: new GraphQLList(AMAType),
+      resolve: (parent, args) => {
+        return AMA.find().sort({ created_at: -1 });
+      },
+    },
+  },
 });
 
 module.exports = RootQuery;

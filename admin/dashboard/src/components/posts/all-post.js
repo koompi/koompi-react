@@ -21,38 +21,102 @@ function AllPosts() {
   const columns = [
     {
       title: "Image",
-      dataIndex: "image"
+      dataIndex: "thumnail",
+      render: (data) => {
+        return (
+          <img
+            src={"https://admin.koompi.com" + data}
+            alt="post"
+            height="40px"
+            width="40px"
+            style={{ borderRadius: "8px" }}
+          />
+        )
+      },
     },
     {
       title: "Title",
       dataIndex: "title",
-      key: "title"
+      render: (data) => {
+        return data.length <= 25 ? data : data.substring(0, 25) + " ..."
+      },
+      key: "title",
     },
     {
       title: "Slug",
       dataIndex: "slug",
-      key: "slug"
+      key: "slug",
+      render: (slug) => {
+        return slug.length <= 25 ? slug : slug.substring(0, 25) + " ..."
+      },
     },
     {
       title: "Category",
       dataIndex: "category",
-      key: "category"
+      key: "category",
+      render: (category) => {
+        return (
+          <Tag color="green">
+            {category === null ? "No category" : category.title}
+          </Tag>
+        )
+      },
     },
     {
       title: "Author",
-      dataIndex: "created_by",
-      key: "created_by"
+      dataIndex: "user",
+      key: "created_by",
+      render: (user) => {
+        return user === null ? "Null" : user.fullname
+      },
     },
     {
       title: "Date",
       dataIndex: "created_at",
-      key: "created_at"
+      key: "created_at",
+      render: (created_at) => {
+        return moment.unix(created_at / 1000).format("YYYY-MM-DD")
+      },
     },
 
     {
       title: "Actions",
-      dataIndex: "action"
-    }
+      dataIndex: "action",
+      render: (index, data) => {
+        const { id } = data
+        return (
+          <div>
+            <Link to={`/admin/post/edit/${id}`}>
+              <Tag className="btn" color="#2db7f5">
+                Edit
+              </Tag>
+            </Link>
+            <Divider type="vertical" />
+            <Popconfirm
+              placement="topRight"
+              title="Are you sure to delete this Post?"
+              okText="Yes"
+              cancelText="No"
+              onConfirm={() => {
+                deletePost({ variables: { id: `${id}` } })
+                  .then(async (res) => {
+                    await message.success(res.data.delete_post.message)
+                    await postRefetch()
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                    return null
+                  })
+              }}
+            >
+              <Tag color="#f50" className="btn">
+                Delete
+              </Tag>
+            </Popconfirm>
+          </div>
+        )
+      },
+    },
   ]
 
   const DisplayPost = () => {
@@ -64,62 +128,14 @@ function AllPosts() {
         return (
           <Table
             columns={columns}
-            dataSource={data.posts.map((post) => {
-              const { id, title, category, created_at, user, slug } = post
-              return {
-                key: id,
-                image: (
-                  <img
-                    src={"https://admin.koompi.com" + post.thumnail}
-                    alt="post"
-                    height="40px"
-                    width="60px"
-                  />
-                ),
-                title: title.length <= 25 ? title : title.substring(0, 25) + " ...",
-                slug: slug.length <= 25 ? slug : slug.substring(0, 25) + " ...",
-                category: (
-                  <Tag color="green">
-                    {category === null ? "No category" : category.title}
-                  </Tag>
-                ),
-
-                created_by: user === null ? "Null" : user.fullname,
-                created_at: moment.unix(created_at / 1000).format("YYYY-MM-DD"),
-                action: (
-                  <div>
-                    <Link to={`/admin/post/edit/${id}`}>
-                      <Tag className="btn" color="#2db7f5">
-                        Edit
-                      </Tag>
-                    </Link>
-                    <Divider type="vertical" />
-                    <Popconfirm
-                      placement="topRight"
-                      title="Are you sure to delete this Post?"
-                      okText="Yes"
-                      cancelText="No"
-                      onConfirm={() => {
-                        deletePost({ variables: { id: `${id}` } })
-                          .then(async (res) => {
-                            await message.success(res.data.delete_post.message)
-                            await postRefetch()
-                          })
-                          .catch((error) => {
-                            console.log(error)
-                            return null
-                          })
-                      }}
-                    >
-                      <Tag color="#f50" className="btn">
-                        Delete
-                      </Tag>
-                    </Popconfirm>
-                  </div>
-                )
-              }
-            })}
-            pagination={true}
+            dataSource={data.posts}
+            pagination={{
+              defaultCurrent: 1,
+              total: data.posts.length,
+              showTotal: (total, range) =>
+                `${range[0]}-${range[1]} of ${total} items`,
+              pageSize: 20,
+            }}
           />
         )
       }

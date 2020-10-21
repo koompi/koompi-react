@@ -5,22 +5,26 @@
   },
   {
     "title": "Boost to",
-    "value": "1.1GHz"
+    "value": "2.40 GHz"
   },
   {
-    "title": "eMMC 128GB",
-    "value": "Extra SSD Slot"
+    "title": "Storage",
+    "value": "eMMC 128GB"
   },
   {
-    "title": "Speed",
-    "value": "500 MB/s"
+    "title": "R/W Speed",
+    "value": "200/300 MB/s"
   },
   {
-    "title": "RAM DDR4",
-    "value": "4GB"
+    "title": "RAM",
+    "value": "DDR4 4GB"
   },
   {
-    "title": "USB-C Port",
-    "value": "10Gbps"
+    "title": "Connection",
+    "value": "USB 3 x2"
+  },
+  {
+    "title": "Extendable Display",
+    "value": "FHD Mini HDMI"
   }
 ]

@@ -1,0 +1,11 @@
+version: "3"
+services:
+  admin:
+    image: node:13
+    container_name: admin.koompi.com
+    working_dir: /usr/src/admin
+    volumes:
+      - "./:/usr/src/admin"
+    ports:
+      - "7006:7006"
+    command: "./install-pack.sh"

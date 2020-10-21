@@ -22,32 +22,32 @@ function AllSoftwares() {
   const columns = [
     {
       title: "Logo",
-      dataIndex: "logo"
+      dataIndex: "logo",
     },
     {
       title: "Image",
-      dataIndex: "image"
+      dataIndex: "image",
     },
     {
       title: "Title",
       dataIndex: "title",
-      key: "title"
+      key: "title",
     },
     {
       title: "Author",
       dataIndex: "created_by",
-      key: "created_by"
+      key: "created_by",
     },
     {
       title: "Date",
       dataIndex: "created_at",
-      key: "created_at"
+      key: "created_at",
     },
 
     {
       title: "Actions",
-      dataIndex: "action"
-    }
+      dataIndex: "action",
+    },
   ]
 
   const DisplayPost = () => {
@@ -114,7 +114,7 @@ function AllSoftwares() {
                       </Tag>
                     </Popconfirm>
                   </div>
-                )
+                ),
               }
             })}
             pagination={true}

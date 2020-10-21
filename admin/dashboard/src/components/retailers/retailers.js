@@ -25,38 +25,38 @@ function Retailers() {
   const columns = [
     {
       title: "Logo",
-      dataIndex: "logo"
+      dataIndex: "logo",
     },
     {
       title: "Name",
       dataIndex: "name",
-      key: "name"
+      key: "name",
     },
     {
       title: "Phone Number",
       dataIndex: "phoneNumber",
-      key: "phoneNumber"
+      key: "phoneNumber",
     },
     {
       title: "Email",
       dataIndex: "email",
-      key: "email"
+      key: "email",
     },
     {
       title: "Author",
       dataIndex: "created_by",
-      key: "created_by"
+      key: "created_by",
     },
     {
       title: "Date",
       dataIndex: "created_at",
-      key: "created_at"
+      key: "created_at",
     },
 
     {
       title: "Actions",
-      dataIndex: "action"
-    }
+      dataIndex: "action",
+    },
   ]
 
   const hideModal = () => {
@@ -80,7 +80,7 @@ function Retailers() {
                 email,
                 created_by,
                 logo,
-                created_at
+                created_at,
               } = retailer
               return {
                 key: parse(name),
@@ -130,7 +130,7 @@ function Retailers() {
                       </Tag>
                     </Popconfirm>
                   </div>
-                )
+                ),
               }
             })}
             pagination={visible ? false : true}

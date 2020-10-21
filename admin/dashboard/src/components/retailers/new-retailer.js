@@ -44,7 +44,7 @@ function NewRetailer(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const handleSubmit = (e) => {
@@ -92,9 +92,9 @@ function NewRetailer(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The name is required"
-                          }
-                        ]
+                            message: "The name is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -111,9 +111,9 @@ function NewRetailer(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Link Location is required"
-                          }
-                        ]
+                            message: "Link Location is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -122,10 +122,10 @@ function NewRetailer(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
@@ -153,8 +153,9 @@ function NewRetailer(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image ? (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              `${image}`}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + `${image}`
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -171,10 +172,10 @@ function NewRetailer(props) {
                           rules: [
                             {
                               required: true,
-                              message: "logo is required"
-                            }
+                              message: "logo is required",
+                            },
                           ],
-                          initialValue: "/public/uploads/" + image
+                          initialValue: "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>

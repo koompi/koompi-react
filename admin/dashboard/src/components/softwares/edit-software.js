@@ -22,7 +22,7 @@ function EditSoftware(props) {
   const { getFieldDecorator } = props.form
   //   ===== Global Data =====
   const { loading: softwareLoading, data: softwareData } = useQuery(GET_SOFTWARE, {
-    variables: { id: window.location.pathname.split("/")[4] }
+    variables: { id: window.location.pathname.split("/")[4] },
   })
 
   // ===== State Management =====
@@ -50,8 +50,8 @@ function EditSoftware(props) {
             id: window.location.pathname.split("/")[4],
             ...values,
             slug: slugify(values.title, { lower: true }),
-            description: JSON.stringify(savedData)
-          }
+            description: JSON.stringify(savedData),
+          },
         })
           .then(async (res) => {
             setLoading(true)
@@ -86,7 +86,7 @@ function EditSoftware(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const uploadLogo = {
@@ -105,7 +105,7 @@ function EditSoftware(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} logo upload failed.`)
       }
-    }
+    },
   }
 
   if (softwareLoading) {
@@ -135,10 +135,10 @@ function EditSoftware(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The title is required"
-                          }
+                            message: "The title is required",
+                          },
                         ],
-                        initialValue: softwareData.software.title
+                        initialValue: softwareData.software.title,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -147,10 +147,10 @@ function EditSoftware(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -159,10 +159,10 @@ function EditSoftware(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: new Date().toISOString()
+                        initialValue: new Date().toISOString(),
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -186,15 +186,17 @@ function EditSoftware(props) {
                       <Upload.Dragger {...uploadLogo}>
                         {logo === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              softwareData.software.logo}`}
+                            src={`${
+                              "https://admin.koompi.com" + softwareData.software.logo
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              logo}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + logo
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -205,13 +207,13 @@ function EditSoftware(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Logo is required"
-                            }
+                              message: "Logo is required",
+                            },
                           ],
                           initialValue:
                             logo === null
                               ? softwareData.software.logo
-                              : "/public/uploads/" + logo
+                              : "/public/uploads/" + logo,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
@@ -220,15 +222,18 @@ function EditSoftware(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              softwareData.software.image}`}
+                            src={`${
+                              "https://admin.koompi.com" +
+                              softwareData.software.image
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              image}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + image
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -239,13 +244,13 @@ function EditSoftware(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Image is required"
-                            }
+                              message: "Image is required",
+                            },
                           ],
                           initialValue:
                             image === null
                               ? softwareData.software.image
-                              : "/public/uploads/" + image
+                              : "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>

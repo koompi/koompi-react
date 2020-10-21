@@ -2,11 +2,16 @@ import React, { useState, useContext } from "react"
 import { NavLink } from "react-router-dom"
 import { Menu, Affix } from "antd"
 import { CartContext } from "../../CartContext"
+import { useTranslation } from "react-i18next"
 
 function SubNavbar({ title, history }) {
   const [sticky, setSticky] = useState(false)
   const cartCtx = useContext(CartContext)
   const [loading, setLoading] = useState(false)
+  const { i18n } = useTranslation()
+
+  // Language Context
+  const lang = i18n.language
 
   return (
     <div>
@@ -38,7 +43,11 @@ function SubNavbar({ title, history }) {
                 }}
               >
                 <span className={loading ? "buyBtnLoading" : "buyBtn"}>
-                  {loading ? "Loading ..." : "Buy"}
+                  {loading
+                    ? "Loading ..."
+                    : lang === "kh"
+                    ? "បញ្ជាទិញ"
+                    : "Order Now"}
                 </span>
               </div>
             </Menu.Item>
@@ -46,14 +55,14 @@ function SubNavbar({ title, history }) {
               <NavLink
                 exact
                 activeStyle={{ color: "#1890ff" }}
-                to="/koompi-e13/specs"
+                to="/koompi/e13/specs"
               >
-                <span>Specifications</span>
+                <span>{lang === "kh" ? "ពត័មានលំអិត" : "Specifications"}</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item className="sub-navbar-a">
-              <NavLink exact activeStyle={{ color: "#1890ff" }} to="/koompi-e13">
-                <span>Overview</span>
+              <NavLink exact activeStyle={{ color: "#1890ff" }} to="/koompi/e13">
+                <span>{lang === "kh" ? "ពត័មានទូទៅ" : "Overview"}</span>
               </NavLink>
             </Menu.Item>
           </Menu>

@@ -10,6 +10,7 @@ import { GET_USERS, GET_POSTS, GET_PAGES, GET_RETAILERS } from "../graphql/query
 import three_dots from "../assets/img/three-dots-black.svg"
 
 import Chart from "react-apexcharts"
+import moment from "moment"
 
 const { Content } = Layout
 
@@ -17,18 +18,18 @@ function Admin() {
   const [chart, setChart] = useState({
     options: {
       chart: {
-        id: "basic-bar"
+        id: "basic-bar",
       },
       xaxis: {
-        categories: [1580824977965, 1580805757866, 1580805757866]
-      }
+        categories: [1580871334388, 1580799414274, 1580377941997],
+      },
     },
     series: [
       {
         name: "series-1",
-        data: [30, 40, 45]
-      }
-    ]
+        data: [30, 40, 45],
+      },
+    ],
   })
 
   const UserTotal = () => {
@@ -42,7 +43,12 @@ function Admin() {
     }
     if (error) console.log(error)
     if (data) {
-      console.log("Data", data)
+      console.log(
+        "Data",
+        data.users.sort(function (o) {
+          return moment(o.created_at).unix()
+        })
+      )
 
       return (
         <div>
@@ -120,13 +126,11 @@ function Admin() {
               </Col>
             </Row>
             <Row gutter={[16, 16]}>
-              <Col span={8}>
-                <div className="card_back">
-                  <Chart
-                    series={chart.series}
-                    options={chart.options}
-                    type="bar"
-                  ></Chart>
+              <Col span={24}>
+                <div className="card_back_content">
+                  <center>
+                    <img src="/images/coursenotfound.gif" height="400px" alt="" />
+                  </center>
                 </div>
               </Col>
               {/* <Col span={8}>

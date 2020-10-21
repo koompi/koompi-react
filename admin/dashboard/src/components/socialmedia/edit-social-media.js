@@ -24,7 +24,7 @@ function EditSocialMedia(props) {
   const { loading: socialMediaLoading, data: socialMediaData } = useQuery(
     GET_ONE_SOCIAL_MEDIA,
     {
-      variables: { id: window.location.pathname.split("/")[4] }
+      variables: { id: window.location.pathname.split("/")[4] },
     }
   )
 
@@ -47,7 +47,7 @@ function EditSocialMedia(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const handleSubmit = (e) => {
@@ -57,7 +57,7 @@ function EditSocialMedia(props) {
         console.log(values)
 
         updateSocialMedia({
-          variables: { id: window.location.pathname.split("/")[4], ...values }
+          variables: { id: window.location.pathname.split("/")[4], ...values },
         })
           .then(async (res) => {
             setLoading(true)
@@ -103,10 +103,10 @@ function EditSocialMedia(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The name is required"
-                          }
+                            message: "The name is required",
+                          },
                         ],
-                        initialValue: socialMediaData.oneSocialMedia.name
+                        initialValue: socialMediaData.oneSocialMedia.name,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -115,10 +115,10 @@ function EditSocialMedia(props) {
                         rules: [
                           {
                             required: true,
-                            message: "Link is required"
-                          }
+                            message: "Link is required",
+                          },
                         ],
-                        initialValue: socialMediaData.oneSocialMedia.link
+                        initialValue: socialMediaData.oneSocialMedia.link,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -146,15 +146,18 @@ function EditSocialMedia(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              socialMediaData.oneSocialMedia.logo}`}
+                            src={`${
+                              "https://admin.koompi.com" +
+                              socialMediaData.oneSocialMedia.logo
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              image}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + image
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -165,13 +168,13 @@ function EditSocialMedia(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Logo is required"
-                            }
+                              message: "Logo is required",
+                            },
                           ],
                           initialValue:
                             image === null
                               ? socialMediaData.oneSocialMedia.logo
-                              : "/public/uploads/" + image
+                              : "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>

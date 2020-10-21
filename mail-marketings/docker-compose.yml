@@ -1,0 +1,11 @@
+version: "3"
+services:
+  mail-marketing:
+    build: .
+    restart: always
+    working_dir: /mail-marketing
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/mail-marketing
+    command: "python ./MailMarketing/app.py"

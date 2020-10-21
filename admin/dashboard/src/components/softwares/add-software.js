@@ -49,7 +49,7 @@ function AddSoftware(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const uploadLogo = {
@@ -68,7 +68,7 @@ function AddSoftware(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} logo upload failed.`)
       }
-    }
+    },
   }
 
   // ===== EditorJS =====
@@ -80,8 +80,8 @@ function AddSoftware(props) {
         createSoftware({
           variables: {
             ...values,
-            description: JSON.stringify(savedData)
-          }
+            description: JSON.stringify(savedData),
+          },
         })
           .then(async (res) => {
             setLoading(true)
@@ -122,9 +122,9 @@ function AddSoftware(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The title is required"
-                          }
-                        ]
+                            message: "The title is required",
+                          },
+                        ],
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -133,10 +133,10 @@ function AddSoftware(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
@@ -156,8 +156,9 @@ function AddSoftware(props) {
                       <Upload.Dragger {...uploadLogo}>
                         {logo ? (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              `${logo}`}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + `${logo}`
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -174,10 +175,10 @@ function AddSoftware(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Logo is required"
-                            }
+                              message: "Logo is required",
+                            },
                           ],
-                          initialValue: "/public/uploads/" + logo
+                          initialValue: "/public/uploads/" + logo,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
@@ -186,8 +187,9 @@ function AddSoftware(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image ? (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              `${image}`}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + `${image}`
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -204,10 +206,10 @@ function AddSoftware(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Image is required"
-                            }
+                              message: "Image is required",
+                            },
                           ],
-                          initialValue: "/public/uploads/" + image
+                          initialValue: "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>

@@ -5,6 +5,12 @@ import { useMutation } from "@apollo/react-hooks"
 import { CREATE_CUSTOMER } from "../graphql/mutation"
 import { FiX } from "react-icons/fi"
 import phoneValidation from "./phoneValidation"
+import Cookies from "js-cookie"
+
+function initailState() {
+  let initailData = Cookies.getJSON("kp-store-cache")
+  return initailData
+}
 
 function AbaPayway({
   visible,
@@ -55,24 +61,23 @@ function AbaPayway({
           await setAbaData({ firstname, lastname, phone, email })
           await window.AbaPayway.checkout()
 
-          await createCustomer({
-            variables: {
-              ...values,
-              product: ["KOOMPI E13"],
-              price: abaData.amount,
-              phone: values.phone.toString(),
-            },
-          })
-            .then(async () => {
-              setLoading(true)
-              setTimeout(() => {
-                setLoading(false)
-              }, 3000)
-              form.resetFields()
-            })
-            .catch((error) => {
-              console.log(error)
-            })
+          // await createCustomer({
+          //   variables: {
+          //     ...values,
+          //     phone: `${values.phone}`,
+          //     products: `${values.products}`,
+          //   },
+          // })
+          //   .then(async () => {
+          //     setLoading(true)
+          //     setTimeout(() => {
+          //       setLoading(false)
+          //     }, 3000)
+          //     form.resetFields()
+          //   })
+          //   .catch((error) => {
+          //     console.log(error)
+          //   })
         }
       }
     })
@@ -160,12 +165,16 @@ function AbaPayway({
             })(<Input size="large" />)}
           </Form.Item>
 
-          {/* ===== Color =====*/}
-          <Form.Item label="color" className="formDisplayNone">
-            {getFieldDecorator("color", {
-              rules: [{ required: true, message: "This field is required!" }],
-              initialValue: color,
-            })(<Input size="large" />)}
+          <Form.Item label="Products" style={{ display: "none" }}>
+            {getFieldDecorator("products", {
+              rules: [
+                {
+                  required: true,
+                  message: "Please input your products!",
+                },
+              ],
+              initialValue: JSON.stringify(initailState()),
+            })(<Input size="large" autoComplete="off" />)}
           </Form.Item>
 
           <Row gutter={12}>

@@ -106,6 +106,9 @@ const GET_PAGES = gql`
       category {
         title
       }
+      lang {
+        lang
+      }
       sectionNumber
       created_by
       description
@@ -253,20 +256,16 @@ const GET_LEGAL = gql`
   }
 `
 
-const GET_PAYMENTS = gql`
+const GET_CUSTOMERS = gql`
   query {
-    payments {
+    customers {
       id
       firstname
       lastname
       email
       phone
-      color
       payBy
-      message
-      product
-      cancle
-      price
+      products
       created_at
     }
   }
@@ -304,6 +303,54 @@ const GET_SOFTWARE = gql`
   }
 `
 
+const GET_PRODUCT = gql`
+  query($id: String!) {
+    product(id: $id) {
+      id
+      name
+      price
+      purchasingType
+    }
+  }
+`
+
+const GET_AMAS = gql`
+  query {
+    amas {
+      id
+      name
+      title
+      image
+      desc
+      date
+      category
+      created_at
+      user {
+        fullname
+      }
+    }
+  }
+`
+
+const GET_AMA = gql`
+  query($id: String!) {
+    ama(id: $id) {
+      id
+      name
+      title
+      image
+      desc
+      date
+      category
+      created_at
+      url
+      user {
+        fullname
+      }
+    }
+  }
+`
+
 export {
   GET_USERS,
   GET_USER,
@@ -321,7 +368,10 @@ export {
   GET_ONE_SOCIAL_MEDIA,
   GET_LEGALS,
   GET_LEGAL,
-  GET_PAYMENTS,
+  GET_CUSTOMERS,
   GET_SOFTWARES,
-  GET_SOFTWARE
+  GET_SOFTWARE,
+  GET_PRODUCT,
+  GET_AMAS,
+  GET_AMA,
 }

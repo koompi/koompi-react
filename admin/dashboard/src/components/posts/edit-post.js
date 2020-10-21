@@ -9,6 +9,7 @@ import three_dots from "../../assets/img/three-dots.svg"
 import { GET_CATEGORIES, GET_POST, GET_POSTS } from "../../graphql/query"
 import { UPDATE_POST } from "../../graphql/mutation"
 import _ from "lodash"
+import QuillTextEditor from "../QuillTextEditor"
 
 // ===== Import EditorJS =====
 import EditorJs from "react-editor-js"
@@ -27,18 +28,24 @@ function EditPost(props) {
   const { getFieldDecorator } = props.form
   //   ===== Global Data =====
   const { loading: postLoading, data: postData } = useQuery(GET_POST, {
-    variables: { id: window.location.pathname.split("/")[4] }
+    variables: { id: window.location.pathname.split("/")[4] },
   })
 
   // ===== State Management =====
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState(null)
+  const [desc, setDesc] = useState("")
 
   // ===== User Context Section =====
   const userData = useContext(UserContext)
 
   // ===== EditorJS =====
   const editorJsRef = React.useRef(null)
+
+  const handleDescChange = (value) => {
+    console.log(value)
+    setDesc(value)
+  }
 
   const { refetch: postRefetch } = useQuery(GET_POSTS)
   const [updatePost] = useMutation(UPDATE_POST)
@@ -48,7 +55,7 @@ function EditPost(props) {
     if (error) console.log(error)
     if (loading) return "Loading ..."
 
-    const filtered_pages = _.filter(data.categories, function(p) {
+    const filtered_pages = _.filter(data.categories, function (p) {
       return _.includes(["news", "events"], p.slug)
     })
     return (
@@ -57,10 +64,10 @@ function EditPost(props) {
           rules: [
             {
               required: true,
-              message: "Please select your category!"
-            }
+              message: "Please select your category!",
+            },
           ],
-          initialValue: postData.post.category.title
+          initialValue: postData.post.category.title,
         })(
           <Select placeholder="Please select the category" size="large">
             {filtered_pages.map((cate) => {
@@ -76,8 +83,7 @@ function EditPost(props) {
     )
   }
 
-  const handleSubmit = React.useCallback(async () => {
-    const savedData = await editorJsRef.current.save()
+  const handleSubmit = () => {
     props.form.validateFieldsAndScroll((err, values) => {
       console.log(slugify(values.title, { lower: true }))
 
@@ -87,8 +93,8 @@ function EditPost(props) {
             id: window.location.pathname.split("/")[4],
             ...values,
             slug: slugify(values.title, { lower: true }),
-            description: JSON.stringify(savedData)
-          }
+            description: desc === "" ? postData.post.description : desc,
+          },
         })
           .then(async (res) => {
             setLoading(true)
@@ -104,8 +110,7 @@ function EditPost(props) {
           })
       }
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }
 
   // const handleSubmit = async e => {
   //   e.preventDefault();
@@ -151,7 +156,7 @@ function EditPost(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   if (postLoading) {
@@ -181,10 +186,10 @@ function EditPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The title is required"
-                          }
+                            message: "The title is required",
+                          },
                         ],
-                        initialValue: postData.post.title
+                        initialValue: postData.post.title,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -193,10 +198,10 @@ function EditPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input size="large" />)}
                     </FormItem>
 
@@ -205,22 +210,17 @@ function EditPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: new Date().toISOString()
+                        initialValue: new Date().toISOString(),
                       })(<Input size="large" />)}
                     </FormItem>
 
                     <FormItem label="Description: ">
-                      <EditorJs
-                        instanceRef={(instance) => (editorJsRef.current = instance)}
-                        tools={EDITOR_JS_TOOLS}
-                        data={
-                          postLoading
-                            ? "Loading ..."
-                            : JSON.parse(postData.post.description)
-                        }
+                      <QuillTextEditor
+                        handleDescChange={handleDescChange}
+                        defaultValue={desc === "" ? postData.post.description : desc}
                       />
                     </FormItem>
                   </Col>
@@ -232,15 +232,17 @@ function EditPost(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image === null ? (
                           <img
-                            src={`${"https://admin.koompi.com" +
-                              postData.post.thumnail}`}
+                            src={`${
+                              "https://admin.koompi.com" + postData.post.thumnail
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
                         ) : (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              image}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + image
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -251,13 +253,13 @@ function EditPost(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Thumnail is required"
-                            }
+                              message: "Thumnail is required",
+                            },
                           ],
                           initialValue:
                             image === null
                               ? postData.post.thumnail
-                              : "/public/uploads/" + image
+                              : "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
@@ -271,10 +273,10 @@ function EditPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The tags is required"
-                          }
+                            message: "The tags is required",
+                          },
                         ],
-                        initialValue: postLoading ? "" : postData.post.tags
+                        initialValue: postLoading ? "" : postData.post.tags,
                       })(
                         <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
@@ -288,10 +290,10 @@ function EditPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The keywords is required"
-                          }
+                            message: "The keywords is required",
+                          },
                         ],
-                        initialValue: postLoading ? "" : postData.post.keywords
+                        initialValue: postLoading ? "" : postData.post.keywords,
                       })(
                         <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
@@ -305,10 +307,10 @@ function EditPost(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The Meta Description is required"
-                          }
+                            message: "The Meta Description is required",
+                          },
                         ],
-                        initialValue: postLoading ? "" : postData.post.meta_desc
+                        initialValue: postLoading ? "" : postData.post.meta_desc,
                       })(<TextArea rows={4} />)}
                     </FormItem>
                     <div style={{ float: "right" }}>

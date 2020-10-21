@@ -21,7 +21,7 @@ const dataSpacs = [
 
   {
     title: "Memory",
-    desc: "<p>4GB</p>",
+    desc: "<p>4GB DDR4</p>",
   },
   {
     title: "Display",
@@ -42,11 +42,11 @@ const dataSpacs = [
   },
   {
     title: "Material",
-    desc: "<p>Full Aluminum alloy</p>",
+    desc: "<p>Acrylonitrile Butadiene Styrene</p>",
   },
   {
-    title: "Colour",
-    desc: "<p>Blue</p>",
+    title: "Color",
+    desc: "<p>Light Sky Blue</p>",
   },
 
   {
@@ -55,7 +55,7 @@ const dataSpacs = [
   },
   {
     title: "Audio",
-    desc: "<p>Built-in 1W Stereo Speaker *2</p>",
+    desc: "<p>Built-in 1W Stereo Speaker</p>",
   },
   {
     title: "Battery",

@@ -15,7 +15,7 @@ function LoginForm(props) {
       description:
         "You don't permission to access it yet. Please ask the admin to approve your user.",
       closeIcon: true,
-      duration: 10
+      duration: 10,
     })
   }
 
@@ -69,20 +69,20 @@ function LoginForm(props) {
         params={{
           particles: {
             number: {
-              value: 50
+              value: 50,
             },
             size: {
-              value: 3
-            }
+              value: 3,
+            },
           },
           interactivity: {
             events: {
               onhover: {
                 enable: true,
-                mode: "repulse"
-              }
-            }
-          }
+                mode: "repulse",
+              },
+            },
+          },
         }}
       />
       <div className="loginContainer">
@@ -90,7 +90,7 @@ function LoginForm(props) {
         <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator("email", {
-              rules: [{ required: true, message: "Please input your Email!" }]
+              rules: [{ required: true, message: "Please input your Email!" }],
             })(
               <Input
                 size="large"
@@ -101,7 +101,7 @@ function LoginForm(props) {
           </Form.Item>
           <Form.Item>
             {getFieldDecorator("password", {
-              rules: [{ required: true, message: "Please input your Password!" }]
+              rules: [{ required: true, message: "Please input your Password!" }],
             })(
               <Input
                 size="large"
@@ -114,7 +114,7 @@ function LoginForm(props) {
           <Form.Item>
             {getFieldDecorator("remember", {
               valuePropName: "checked",
-              initialValue: true
+              initialValue: true,
             })(<Checkbox>Remember me</Checkbox>)}
             {/* <a className="login-form-forgot" href="">
               Forgot password

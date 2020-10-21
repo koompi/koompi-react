@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react"
-// import QuillTextEditor from "../QuillTextEditor";
+import QuillTextEditor from "../QuillTextEditor"
 import LeftNavbar from "../navbar/left-navbar"
 import TopNavbar from "../navbar/top-navbar"
 import PageFooter from "../footer"
@@ -22,7 +22,7 @@ import {
   Select,
   Layout,
   message,
-  InputNumber
+  InputNumber,
 } from "antd"
 
 // ===== Query and Mutation Section =====
@@ -43,30 +43,33 @@ function NewPage(props) {
   // ===== state management =====
   const [image, setImage] = useState("")
   const [loading, setLoading] = useState(false)
+  const [desc, setDesc] = useState("")
 
   const { refetch: pageRefetch } = useQuery(GET_PAGES)
 
   // ===== User Context Section =====
   const userData = useContext(UserContext)
 
-  // ===== EditorJS =====
-  const editorJsRef = React.useRef(null)
-  const handleSubmit = React.useCallback(async () => {
-    const savedData = await editorJsRef.current.save()
+  const handleDescChange = (value) => {
+    setDesc(value)
+  }
+  const handleSubmit = () => {
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
+        console.log(values)
         createPage({
           variables: {
             ...values,
-            description: JSON.stringify(savedData),
-            sectionNumber: values.sectionNumber.toString()
-          }
+            description: desc === "" ? null : desc,
+            sectionNumber: values.sectionNumber.toString(),
+          },
         })
           .then(async (res) => {
             setLoading(true)
             setTimeout(() => {
               setLoading(false)
             }, 3000)
+            handleDescChange("")
             props.form.resetFields()
             pageRefetch()
             await message.success(res.data.create_page.message, 3)
@@ -76,8 +79,7 @@ function NewPage(props) {
           })
       }
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }
 
   const uploadImage = {
     name: "file",
@@ -95,7 +97,7 @@ function NewPage(props) {
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`)
       }
-    }
+    },
   }
 
   const DisplayCategories = () => {
@@ -111,9 +113,9 @@ function NewPage(props) {
             rules: [
               {
                 required: true,
-                message: "Please select your category!"
-              }
-            ]
+                message: "Please select your category!",
+              },
+            ],
           })(<Select placeholder="No Category"></Select>)}
         </Form.Item>
       )
@@ -124,10 +126,10 @@ function NewPage(props) {
             rules: [
               {
                 required: true,
-                message: "Please select your category!"
-              }
+                message: "Please select your category!",
+              },
             ],
-            initialValue: data.categories[0].title
+            initialValue: data.categories[0].title,
           })(
             <Select placeholder="Please select the category" size="large">
               {data.categories.map((cate) => {
@@ -161,38 +163,67 @@ function NewPage(props) {
               <Form className="login-form">
                 <Row gutter={[24, 8]}>
                   <Col span={16}>
-                    <FormItem label="Title: ">
-                      {getFieldDecorator("title", {
-                        rules: [
-                          {
-                            required: true,
-                            message: "The title is required"
-                          }
-                        ]
-                      })(<Input size="large" />)}
-                    </FormItem>
-
-                    <FormItem label="SubTitle: ">
-                      {getFieldDecorator("subTitle")(<Input size="large" />)}
-                    </FormItem>
+                    <Row gutter={[24]}>
+                      <Col span={8}>
+                        <FormItem label="Language: ">
+                          {getFieldDecorator("lang", {
+                            rules: [
+                              {
+                                required: true,
+                                message: "The Langauge is required",
+                              },
+                            ],
+                            initialValue: "en",
+                          })(
+                            <Select
+                              placeholder="Please select the category"
+                              size="large"
+                            >
+                              <Option value="en" key="en">
+                                English
+                              </Option>
+                              <Option value="kh" key="en">
+                                Khmer
+                              </Option>
+                            </Select>
+                          )}
+                        </FormItem>
+                      </Col>
+                      <Col span={8}>
+                        <FormItem label="Title: ">
+                          {getFieldDecorator("title", {
+                            rules: [
+                              {
+                                required: true,
+                                message: "The title is required",
+                              },
+                            ],
+                          })(<Input size="large" />)}
+                        </FormItem>
+                      </Col>
+                      <Col span={8}>
+                        <FormItem label="SubTitle: ">
+                          {getFieldDecorator("subTitle")(<Input size="large" />)}
+                        </FormItem>
+                      </Col>
+                    </Row>
 
                     <FormItem label="Created By: " style={{ display: "none" }}>
                       {getFieldDecorator("created_by", {
                         rules: [
                           {
                             required: true,
-                            message: "The user name is required"
-                          }
+                            message: "The user name is required",
+                          },
                         ],
-                        initialValue: userData.user.fullname
+                        initialValue: userData.user.fullname,
                       })(<Input placeholder="SAN Vuthy" size="large" />)}
                     </FormItem>
 
                     <FormItem label="Description: ">
-                      <EditorJs
-                        instanceRef={(instance) => (editorJsRef.current = instance)}
-                        tools={EDITOR_JS_TOOLS}
-                        placeholder="Let's write an awesome story!"
+                      <QuillTextEditor
+                        handleDescChange={handleDescChange}
+                        defaultValue={desc}
                       />
                     </FormItem>
                   </Col>
@@ -203,8 +234,9 @@ function NewPage(props) {
                       <Upload.Dragger {...uploadImage}>
                         {image ? (
                           <img
-                            src={`${"https://admin.koompi.com/public/uploads/" +
-                              `${image}`}`}
+                            src={`${
+                              "https://admin.koompi.com/public/uploads/" + `${image}`
+                            }`}
                             alt="avatar"
                             style={{ width: "100%" }}
                           />
@@ -221,10 +253,10 @@ function NewPage(props) {
                           rules: [
                             {
                               required: true,
-                              message: "Image is required"
-                            }
+                              message: "Image is required",
+                            },
                           ],
-                          initialValue: "/public/uploads/" + image
+                          initialValue: "/public/uploads/" + image,
                         })(<Input size="large" />)}
                       </div>
                     </FormItem>
@@ -237,10 +269,10 @@ function NewPage(props) {
                             rules: [
                               {
                                 required: true,
-                                message: "The Section Number is required"
-                              }
+                                message: "The Section Number is required",
+                              },
                             ],
-                            initialValue: 1
+                            initialValue: 1,
                           })(
                             <InputNumber
                               min={1}
@@ -262,9 +294,9 @@ function NewPage(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The keywords is required"
-                          }
-                        ]
+                            message: "The keywords is required",
+                          },
+                        ],
                       })(
                         <Select mode="tags" style={{ width: "100%" }} size="large">
                           {children}
@@ -278,9 +310,9 @@ function NewPage(props) {
                         rules: [
                           {
                             required: true,
-                            message: "The Meta Description is required"
-                          }
-                        ]
+                            message: "The Meta Description is required",
+                          },
+                        ],
                       })(<TextArea rows={4} />)}
                     </FormItem>
                     <div style={{ float: "right" }}>

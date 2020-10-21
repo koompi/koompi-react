@@ -3,49 +3,51 @@ const mongoose = require("mongoose");
 const PageSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   subTitle: {
-    type: String
+    type: String,
   },
   description: {
     type: String,
-    required: true
   },
   image: {
-    type: String
+    type: String,
+  },
+  lang: {
+    type: String,
+    default: "en",
   },
   category: {
     type: String,
-    required: true
+    required: true,
   },
   sectionNumber: {
     type: Number,
-    required: true
   },
   keywords: {
-    type: [String]
+    type: [String],
   },
   meta_desc: {
     type: String,
-    required: true
+    required: true,
   },
   created_by: {
     type: String,
-    required: true
+    required: true,
   },
   created_at: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   updated_by: {
     type: String,
-    default: null
+    default: null,
   },
   updated_at: {
     type: Date,
-    default: null
-  }
+    default: null,
+  },
 });
 
 const Page = mongoose.model("Page", PageSchema);

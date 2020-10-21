@@ -1,8 +1,8 @@
 import gql from "graphql-tag"
 
 const GET_PAGES = gql`
-  query {
-    pages {
+  query($lang: String) {
+    pages(lang: $lang) {
       id
       title
       subTitle
@@ -57,8 +57,8 @@ const GET_LEGALS = gql`
 `
 
 const GET_SOCAIL_MEDIA = gql`
-  query {
-    socailMedia {
+  query($lang: String) {
+    socailMedia(lang: $lang) {
       logo
       link
       name
@@ -153,6 +153,21 @@ const GET_PRODUCTS = gql`
   }
 `
 
+const GET_AMAS = gql`
+  query {
+    amas {
+      id
+      image
+      title
+      name
+      desc
+      date
+      category
+      url
+    }
+  }
+`
+
 export {
   GET_PAGES,
   GET_RETAILERS,
@@ -164,4 +179,5 @@ export {
   GET_LEGALS,
   GET_SOFTWARES,
   GET_PRODUCTS,
+  GET_AMAS,
 }
