@@ -3260,9 +3260,6 @@ code {
     font-size: 30px !important;
     margin: 0px !important;
   }
-  .displayOnMobile {
-    display: block;
-  }
   .single-page-image {
     height: 300px;
     background-position: center;
@@ -3307,6 +3304,9 @@ code {
 }
 
 @media only screen and (max-width: 850px) {
+  .displayOnMobile {
+    display: block;
+  }
   .performance-margin-top,
   .battery-section-background {
     padding-top: 30px;

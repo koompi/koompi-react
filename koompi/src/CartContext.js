@@ -16,8 +16,8 @@ export function CartProvider({ children }) {
           id: "koompie11",
           name: "KOOMPI E11",
           qty: qty,
-          price: 148.99,
-          deposit: 148.99,
+          price: 178.99,
+          deposit: 178.99,
           purchasingType: true,
           image: "https://admin.koompi.com/public/uploads/444(1).png",
         }

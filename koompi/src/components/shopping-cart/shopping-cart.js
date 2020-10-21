@@ -101,7 +101,7 @@ function Cart() {
       title: lang === "en" ? "Purchasing Type" : "ប្រភេទទិញ",
       dataIndex: "purchasingType",
       render: (data) => {
-        return !data ? "Buy" : "Pre-Order"
+        return !data ? "Buy" : "Buy"
       },
     },
 

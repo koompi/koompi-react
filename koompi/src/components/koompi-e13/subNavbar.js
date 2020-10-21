@@ -43,7 +43,11 @@ function SubNavbar({ title, history }) {
                 }}
               >
                 <span className={loading ? "buyBtnLoading" : "buyBtn"}>
-                  {loading ? "Loading ..." : lang === "kh" ? "ទិញ" : "Buy"}
+                  {loading
+                    ? "Loading ..."
+                    : lang === "kh"
+                    ? "បញ្ជាទិញ"
+                    : "Order Now"}
                 </span>
               </div>
             </Menu.Item>

@@ -8,13 +8,13 @@ import { ApolloProvider } from "@apollo/react-hooks"
 import "./i18n"
 import { hydrate, render } from "react-dom"
 
-// const client = new ApolloClient({
-//   uri: "https://admin.koompi.com/api",
-// })
-
 const client = new ApolloClient({
-  uri: "http://localhost:7006/api",
+  uri: "https://admin.koompi.com/api",
 })
+
+// const client = new ApolloClient({
+//   uri: "http://localhost:7006/api",
+// })
 
 const rootElement = document.getElementById("root")
 
