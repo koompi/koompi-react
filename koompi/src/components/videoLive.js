@@ -207,7 +207,7 @@ function VideoLive() {
           <h2 className="amaCategory">
             <span>USER AMA</span>
           </h2>
-          <Row gutter={[24, 24]}>
+          <Row gutter={[24, 24]} type="flex">
             {userAMA.map((res) => {
               const { name, title, desc, image } = res
               return (

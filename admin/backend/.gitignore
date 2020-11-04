@@ -8,7 +8,6 @@ build
 
 # misc
 #remove mp4
-*.mp4
 .DS_Store
 .env
 config.js

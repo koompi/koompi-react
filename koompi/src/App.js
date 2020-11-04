@@ -32,6 +32,7 @@ import PreOrder from "./components/preorder/preorder"
 import { useTranslation } from "react-i18next"
 import Cookies from "js-cookie"
 import VideoLive from "./components/videoLive"
+import { FiArrowUp } from "react-icons/fi"
 
 function App() {
   NProgress.configure({ showSpinner: false })
@@ -51,14 +52,14 @@ function App() {
     <HelmetProvider>
       <CartProvider>
         <BackTop>
-          <Icon type="caret-up" />
+          <FiArrowUp />
         </BackTop>
         <style
           dangerouslySetInnerHTML={{
             __html: `
               * {
                 font-family: ${
-                  lang === "en" ? `alibaba-sans, sans-serif` : `"Nokora", serif`
+                  lang === "en" ? `alibaba-sans, sans-serif` : `Nokora, alibaba-sans`
                 }; 
                 letter-spacing: 0.5px;
               }
@@ -69,7 +70,7 @@ function App() {
               h5,
               h6 {
                 font-family: ${
-                  lang === "en" ? `alibaba-sans, sans-serif` : `"Nokora", serif`
+                  lang === "en" ? `alibaba-sans, sans-serif` : `Nokora, alibaba-sans`
                 }; 
               }
               .koompi span{

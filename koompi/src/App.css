@@ -1561,20 +1561,20 @@ button[type="submit"]:hover,
 
 .ant-back-top {
   right: 30px !important;
-  bottom: 50px !important;
+  bottom: 100px !important;
   z-index: 10;
   background: #3b3b3e;
   text-align: center;
   border-radius: 50%;
-  width: 45px !important;
-  height: 45px !important;
+  width: 60px !important;
+  height: 60px !important;
   box-shadow: none !important;
 }
 .ant-back-top svg {
   font-size: 30px;
   color: #ffffff;
   position: relative;
-  top: 6px;
+  top: 15px;
 }
 .koompi-price {
   color: rgb(0, 138, 244);
@@ -1607,10 +1607,10 @@ button[type="submit"]:hover,
   background-color: #008af4 !important;
   color: #ffffff !important;
   border-radius: 0px !important;
-  padding: 0px 40px !important;
+  padding: 0px 50px !important;
   font-weight: 600 !important;
-  height: 35px !important;
-  border-radius: 40px !important;
+  height: 40px !important;
+  border-radius: 30px !important;
   border-bottom: 0px solid #008af4 !important;
   cursor: pointer;
   box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.15),

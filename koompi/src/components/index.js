@@ -492,7 +492,7 @@ function Index() {
         <meta
           data-react-helmet="true"
           property="og:image"
-          content="https://demo.koompi.com/img/koompi-meta-tags.png"
+          content="https://koompi.com/img/koompi-meta-tags.png"
         />
 
         {/* <!-- Twitter --> */}
@@ -515,7 +515,7 @@ function Index() {
         <meta
           data-react-helmet="true"
           property="twitter:image"
-          content="https://demo.koompi.com/img/koompi-meta-tags.png"
+          content="https://koompi.com/img/koompi-meta-tags.png"
         />
       </Helmet>
 
