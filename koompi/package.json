@@ -13,7 +13,7 @@
     "ant-responsive-table": "^1.0.8",
     "antd": "^3.26.5",
     "apollo-boost": "^0.4.7",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "eslint-config-airbnb": "^18.0.1",
